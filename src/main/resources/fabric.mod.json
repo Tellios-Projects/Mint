@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "template",
+  "version": "${version}",
+
+  "name": "Template",
+  "description": "ADDME",
+  "authors": [
+    "Leah (@leafenzio), Tellio (@tellioaridoitsu)"
+  ],
+  "contact": {
+    "homepage": "ADDME - website link",
+    "sources": "ADDME - github link"
+  },
+
+  "license": "MIT",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.leafenzo.template.ModInit"
+    ],
+    "client": [
+      "net.leafenzo.template.ModClientInit"
+    ],
+    "fabric-datagen": [
+      "net.leafenzo.template.datageneration.ModDataGenerator"
+    ]
+  },
+  "mixins": [
+    "squashed.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.14",
+    "fabric-api": "*",
+    "minecraft": "~1.20.1",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
