@@ -16,7 +16,7 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
-        this.addDrop(ModBlocks.MINT, (Block block) -> this.cropDrops(block, ModItems.MINT_SPRIG, ModItems.MINT_SEEDS,
+        this.addDrop(ModBlocks.MINT, (Block block) -> this.cropDrops(block, ModItems.MINT_SPRIG, ModItems.MINT_SPRIG,
                 BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(MintCropBlock.AGE, 6))
         ));
         this.addDrop(ModBlocks.MINT_WOOL);

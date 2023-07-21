@@ -1,5 +1,6 @@
 package net.leafenzo.mint.item;
 
+import net.leafenzo.mint.block.ModBlocks;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffects;
@@ -13,9 +14,9 @@ import net.minecraft.util.UseAction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
-public class MintSprigItem extends Item {
+public class MintSprigItem extends AliasedBlockItem {
     public MintSprigItem(Settings settings) {
-        super(settings);
+        super(ModBlocks.MINT, settings);
     }
 
     private static final int MAX_USE_TIME = 24;
@@ -32,11 +33,11 @@ public class MintSprigItem extends Item {
             stack.decrement(1);
         }
         if (!world.isClient) {
-            //add 5 seconds of freezing per snack, maxing out 25 seconds of freezing
+            //add 5 seconds of freezing per snack, maxing out at 25 seconds of freezing
             user.setFrozenTicks(user.getFrozenTicks() <= 500 ? user.getFrozenTicks() + 100 : user.getFrozenTicks());
 
-            // increasing chance of curing certain ailments
-            if(Random.create().nextFloat() < 0.25f + (0.75f / user.getFrozenTicks())) {
+            // steadily increasing chance of curing stomach ailments
+            if(Random.create().nextFloat() < 0.25f + (0.75f * user.getFrozenTicks() / 380 )) { // 500 - (5 * 24) = 380
                 user.removeStatusEffect(StatusEffects.POISON);
                 user.removeStatusEffect(StatusEffects.NAUSEA);
                 user.removeStatusEffect(StatusEffects.HUNGER);

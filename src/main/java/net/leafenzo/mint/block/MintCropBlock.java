@@ -18,7 +18,7 @@ public class MintCropBlock extends CropBlock {
 
     @Override
     protected ItemConvertible getSeedsItem() {
-        return ModItems.MINT_SEEDS;
+        return ModItems.MINT_SPRIG;
     }
 
     @Override
@@ -35,4 +35,6 @@ public class MintCropBlock extends CropBlock {
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(AGE);
     }
+
+    //TODO Add Weed Behavior
 }

@@ -3,6 +3,7 @@ package net.leafenzo.mint.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.leafenzo.mint.Super;
+import net.leafenzo.mint.block.ModBlocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -17,10 +18,15 @@ public class ModItemGroups {
 
         public static ItemGroup MINT = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "mint"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.mint"))
-                    .icon(() -> new ItemStack(ModItems.MINT_SEEDS)).entries((displayContext, entries) -> {
-                     entries.add(ModItems.MINT_SEEDS);
+                    .icon(() -> new ItemStack(ModItems.MINT_SPRIG)).entries((displayContext, entries) -> {
                      entries.add(ModItems.MINT_SPRIG);
                      entries.add(ModItems.MINT_DYE);
+                     entries.add(ModBlocks.MINT_CONCRETE);
+                     entries.add(ModBlocks.MINT_WOOL);
+                     entries.add(ModBlocks.MINT_STAINED_GLASS);
+                     entries.add(ModBlocks.MINT_TERRACOTTA);
+                     entries.add(ModBlocks.MINT_GLAZED_TERRACOTTA);
+
                     }).build());
 
 

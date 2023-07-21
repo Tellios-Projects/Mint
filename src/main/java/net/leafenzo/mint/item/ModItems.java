@@ -11,9 +11,6 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
-    public static final Item MINT_SEEDS = registerItem("mint_seeds", new AliasedBlockItem(ModBlocks.MINT, new FabricItemSettings()));
-    //public static final Item MINT_SEEDS = registerItem("mint_seeds", new AliasedBlockItem(ModBlocks.MINT, new FabricItemSettings().group(ModItemGroups.MINT))); //before 1.20
-
     public static final Item MINT_SPRIG = registerItem("mint_sprig", new MintSprigItem(new FabricItemSettings()
             .food(new FoodComponent.Builder()
                     .alwaysEdible()
