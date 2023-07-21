@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "mint:mint_concrete",
+    "mint:mint_terracotta",
+    "mint:mint_glazed_terracotta"
+  ]
+}

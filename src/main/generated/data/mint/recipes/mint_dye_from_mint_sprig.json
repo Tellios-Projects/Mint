@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "misc",
+  "ingredients": [
+    {
+      "item": "mint:mint_sprig"
+    }
+  ],
+  "result": {
+    "item": "mint:mint_dye"
+  }
+}

@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "id": "template",
+  "id": "mint",
   "version": "${version}",
 
-  "name": "Template",
-  "description": "ADDME",
+  "name": "Mint",
+  "description": "Mint and Mint Colored Dye for Minecraft Java Edition!",
   "authors": [
-    "Leah (@leafenzio), Tellio (@tellioaridoitsu)"
+    "Leah (@leafenzio) and Eliza (@tellioaridoitsu)"
   ],
   "contact": {
     "homepage": "ADDME - website link",
-    "sources": "ADDME - github link"
+    "sources": "https://github.com/Tellios-Projects/Mint"
   },
 
   "license": "MIT",
@@ -19,13 +19,13 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.leafenzo.template.ModInit"
+      "net.leafenzo.mint.ModInit"
     ],
     "client": [
-      "net.leafenzo.template.ModClientInit"
+      "net.leafenzo.mint.ModClientInit"
     ],
     "fabric-datagen": [
-      "net.leafenzo.template.datageneration.ModDataGenerator"
+      "net.leafenzo.mint.datageneration.ModDataGenerator"
     ]
   },
   "mixins": [
