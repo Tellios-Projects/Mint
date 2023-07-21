@@ -10,6 +10,8 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 
+import java.util.stream.IntStream;
+
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
         super(output);
@@ -27,13 +29,10 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
     // Block Models
-
-        blockStateModelGenerator.registerCrop(ModBlocks.MINT, MintCropBlock.AGE);
-
+        blockStateModelGenerator.registerCrop(ModBlocks.MINT, MintCropBlock.AGE, IntStream.rangeClosed(0, MintCropBlock.MAX_AGE).toArray());
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_WOOL);
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_STAINED_GLASS);
         //blockStateModelGenerator.registerGlassPane(ModBlocks.MINT_STAINED_GLASS, ModBlocks.MINT_STAINED_GLASS_PANE); //TODO ADDME
-
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_CONCRETE);
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_TERRACOTTA);
         registerUpDefaultOrientable(blockStateModelGenerator, ModBlocks.MINT_GLAZED_TERRACOTTA, TexturedModel.CUBE_ALL);

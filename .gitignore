@@ -46,5 +46,5 @@ local.properties
 
 .DS_Store
 *.csv~
-# src/main/generated/.cache/*
+src/main/generated/.cache/*
 *.png~
