@@ -9,7 +9,7 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 
 public class MintCropBlock extends CropBlock {
-    public static final int MAX_AGE = 6;
+    public static final int MAX_AGE = 4;
     public static final IntProperty AGE = IntProperty.of("age", 0, MAX_AGE);
 
     public MintCropBlock(Settings settings) {

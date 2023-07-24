@@ -16,14 +16,13 @@ import net.minecraft.world.World;
 
 public class MintSprigItem extends AliasedBlockItem {
     public MintSprigItem(Settings settings) {
-        super(ModBlocks.MINT, settings);
+        super(ModBlocks.MINT_CROP, settings);
     }
 
     private static final int MAX_USE_TIME = 24;
-    public int getMaxUseTime(ItemStack stack) {
+    public int getMaxUseTime(ItemStack stack) { //oddity: for some reason the vanilla game's milk bucket uses a hard coded value for this alongside a MAX_USE_TIME that are not fields of one another
         return 24;
     }
-
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (user instanceof ServerPlayerEntity serverPlayerEntity) {
             Criteria.CONSUME_ITEM.trigger(serverPlayerEntity, stack);

@@ -1,0 +1,26 @@
+{
+  "item.mint.mint_sprig": "Sprig of Mint",
+  "item.mint.mint_dye": "Mint Dye",
+  "item.mint.mint_cookie": "Mint Chocolate Chip Cookie",
+  "item.mint.mint_tea":  "Spearmint Tea",
+
+  "block.mint.mint_crop": "Mint",
+  "block.mint.wild_mint": "Wild Mint",
+  "block.mint.mint_wool":  "Mint Wool",
+  "block.mint.mint_carpet": "Mint Carpet",
+  "block.mint.mint_concrete":  "Mint Concrete",
+  "block.mint.mint_concrete_powder":  "Mint Concrete Powder",
+  "block.mint.mint_terracotta": "Mint Terracotta",
+  "block.mint.mint_glazed_terracotta":  "Mint Glazed Terracotta",
+  "block.mint.mint_stained_glass": "Mint Stained Glass",
+  "block.mint.mint_candle":  "Mint Candle",
+  "block.mint.mint_candle_cake": "Mint Candle Cake",
+
+
+  "itemgroup.mint": "Mint",
+
+  "item.minecraft.potion.effect.menthol": "Potion of Mint Chill",
+  "item.minecraft.splash_potion.effect.menthol": "Splash Potion of Mint Chill",
+  "item.minecraft.lingering_potion.effect.menthol": "Lingering Potion of Mint Chill",
+  "effect.mint.menthol": "Mint Chill"
+}
