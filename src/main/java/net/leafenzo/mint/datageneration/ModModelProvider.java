@@ -1,10 +1,15 @@
 package net.leafenzo.mint.datageneration;
 
+import com.ibm.icu.text.Normalizer2;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.item.ModItems;
+import net.leafenzo.mint.util.ModModels;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
@@ -25,20 +30,27 @@ public class ModModelProvider extends FabricModelProvider {
     private static BlockStateVariantMap createUpDefaultRotationStates() {
         return BlockStateVariantMap.create(Properties.FACING).register(Direction.DOWN, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R180)).register(Direction.UP, BlockStateVariant.create()).register(Direction.NORTH, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R90)).register(Direction.SOUTH, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.Y, VariantSettings.Rotation.R180)).register(Direction.WEST, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.Y, VariantSettings.Rotation.R270)).register(Direction.EAST, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.Y, VariantSettings.Rotation.R90));
     }
+    private void registerWithModelId(BlockStateModelGenerator blockStateModelGenerator, Block block, Identifier ModelId) {
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(block, ModelId));
+    }
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
     // Block Models
-        blockStateModelGenerator.registerCrop(ModBlocks.MINT, MintCropBlock.AGE, IntStream.rangeClosed(0, MintCropBlock.MAX_AGE).toArray());
-        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_WOOL);
+        blockStateModelGenerator.registerCrop(ModBlocks.MINT_CROP, MintCropBlock.AGE, IntStream.rangeClosed(0, MintCropBlock.MAX_AGE).toArray());
+        blockStateModelGenerator.registerWoolAndCarpet(ModBlocks.MINT_WOOL, ModBlocks.MINT_CARPET);
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_STAINED_GLASS);
+
         //blockStateModelGenerator.registerGlassPane(ModBlocks.MINT_STAINED_GLASS, ModBlocks.MINT_STAINED_GLASS_PANE); //TODO ADDME
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_CONCRETE);
+        blockStateModelGenerator.registerRandomHorizontalRotations(TexturedModel.CUBE_ALL, ModBlocks.MINT_CONCRETE_POWDER);
+
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_TERRACOTTA);
         registerUpDefaultOrientable(blockStateModelGenerator, ModBlocks.MINT_GLAZED_TERRACOTTA, TexturedModel.CUBE_ALL);
+        blockStateModelGenerator.registerCandle(ModBlocks.MINT_CANDLE, ModBlocks.MINT_CANDLE_CAKE);
 
-
-
+        blockStateModelGenerator.registerTintableCross(ModBlocks.WILD_MINT, BlockStateModelGenerator.TintType.NOT_TINTED);
+        //blockStateModelGenerator.registerSingleton(ModBlocks.WILD_MINT, new TextureMap().put(TextureKey.CROSS, TextureMap.getId(ModBlocks.WILD_MINT)), ModModels.FULLHEIGHT_CROSS);
 
         // Cube with all sides the same texture, IE Dirt
         // blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.COMPRESSED_STONE);
@@ -55,12 +67,26 @@ public class ModModelProvider extends FabricModelProvider {
         // Leaves Like Blocks, includes things that sample from Biome Color maps.
         //blockStateModelGenerator.registerSingleton(ModBlocks.GRASS_CLIPPINGS_BLOCK, TexturedModel.LEAVES);
 
-     // BlockItem Models, every block model needs one of these
-        //Copy Parent
-        //blockStateModelGenerator.registerParentedItemModel(ModBlocks.BLAZE_ROD_BLOCK, Super.asResource("block/blaze_rod_block"));
+
+        // Block Item Models
+//        blockStateModelGenerator.registerParentedItemModel(ModBlocks.MINT_CROP, Super.asResource("block/mint_crop"));
+//        blockStateModelGenerator.registerParentedItemModel(ModBlocks.WILD_MINT, Super.asResource("block/wild_mint"));
+//        blockStateModelGenerator.registerParentedItemModel(ModBlocks.MINT_WOOL, Super.asResource("block/mint_wool"));
+//        blockStateModelGenerator.registerParentedItemModel(ModBlocks.MINT_CARPET, Super.asResource("block/mint_carpet"));
+//        blockStateModelGenerator.registerParentedItemModel(ModBlocks.MINT_CONCRETE, Super.asResource("block/mint_concrete"));
+//        blockStateModelGenerator.registerParentedItemModel(ModBlocks.MINT_CONCRETE_POWDER, Super.asResource("block/mint_concrete_powder"));
+//        blockStateModelGenerator.registerParentedItemModel(ModBlocks.MINT_TERRACOTTA, Super.asResource("block/mint_terracotta"));
+//        blockStateModelGenerator.registerParentedItemModel(ModBlocks.MINT_GLAZED_TERRACOTTA, Super.asResource("block/mint_glazed_terracotta"));
+//        blockStateModelGenerator.registerParentedItemModel(ModBlocks.MINT_STAINED_GLASS, Super.asResource("block/mint_stained_glass"));
+//        blockStateModelGenerator.registerParentedItemModel(ModBlocks.MINT_CANDLE, Super.asResource("block/mint_candle"));
+//        blockStateModelGenerator.registerParentedItemModel(ModBlocks.MINT_CANDLE_CAKE, Super.asResource("block/mint_candle_cake"));
     }
+
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-
+        //itemModelGenerator.register(ModItems.MINT_SPRIG, Models.GENERATED); // this is a duplicate... somehow???????
+        itemModelGenerator.register(ModItems.MINT_COOKIE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MINT_DYE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MINT_TEA, Models.GENERATED);
     }
 }

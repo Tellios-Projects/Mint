@@ -15,7 +15,21 @@ public class ModItems {
             .food(new FoodComponent.Builder()
                     .alwaysEdible()
                     //.hunger(0)
-                    .saturationModifier(5.0f)
+                    .saturationModifier(4.0f)
+                    .build())));
+
+    public static final Item MINT_COOKIE = registerItem("mint_cookie", new MintCookieItem(new FabricItemSettings()
+            .food(new FoodComponent.Builder()
+                    .alwaysEdible()
+                    .hunger(4)
+                    .saturationModifier(0.8f) //double that of a vanilla game cookie
+                    .build())));
+
+    public static final Item MINT_TEA = registerItem("mint_tea", new MintTeaItem(new FabricItemSettings().maxCount(1)
+            .food(new FoodComponent.Builder()
+                    .alwaysEdible()
+                    //.hunger(0)
+                    .saturationModifier(4.0f)
                     .build())));
 
     public static final Item MINT_DYE = registerItem("mint_dye", new DyeItem(DyeColor.BLACK, new FabricItemSettings()));
@@ -24,7 +38,6 @@ public class ModItems {
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), item);
     }
-
     public static void registerModItems() {
         ModInit.LOGGER.info("Registering Mod Items for " + Super.MOD_ID);
         //ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientItemGroup);
