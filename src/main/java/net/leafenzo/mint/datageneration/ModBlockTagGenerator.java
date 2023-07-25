@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -48,6 +49,11 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
                 .add(ModBlocks.MINT_CANDLE)
         ;
 
+        getOrCreateTagBuilder(BlockTags.CANDLE_CAKES)
+                .add(ModBlocks.MINT_CANDLE_CAKE)
+        ;
+
+
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.MINT_CONCRETE)
                 .add(ModBlocks.MINT_TERRACOTTA)
@@ -58,9 +64,9 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
 //        //.add(ModBlocks.)
 //        ;
 //
-//        getOrCreateTagBuilder(BlockTags.LEAVES)
-//        //.add(ModBlocks.)
-//        ;
+        getOrCreateTagBuilder(BlockTags.LEAVES)
+            .add(ModBlocks.MINT_SPRIG_BLOCK)
+        ;
 
         getOrCreateTagBuilder(BlockTags.WOOL)
                 .add(ModBlocks.MINT_WOOL)

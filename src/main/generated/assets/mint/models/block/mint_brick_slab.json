@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "mint:block/mint_brick",
+    "side": "mint:block/mint_brick",
+    "top": "mint:block/mint_brick"
+  }
+}

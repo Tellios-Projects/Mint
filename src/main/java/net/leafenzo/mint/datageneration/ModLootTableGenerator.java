@@ -51,8 +51,11 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(ModBlocks.MINT_CONCRETE);
         this.addDrop(ModBlocks.MINT_CONCRETE_POWDER);
 
+        this.addDrop(ModBlocks.MINT_SPRIG_BLOCK);
+
         this.addDropWithSilkTouch(ModBlocks.MINT_STAINED_GLASS);
         //this.addDropWithSilkTouch(ModBlocks.MINT_STAINED_GLASS_PANE); //TODO ADDME
+
 
         this.addDrop(ModBlocks.MINT_TERRACOTTA);
         this.addDrop(ModBlocks.MINT_GLAZED_TERRACOTTA);
