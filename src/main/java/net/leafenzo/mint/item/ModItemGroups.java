@@ -30,9 +30,16 @@ public class ModItemGroups {
                         entries.add(ModBlocks.MINT_CONCRETE_POWDER);
                         entries.add(ModBlocks.MINT_TERRACOTTA);
                         entries.add(ModBlocks.MINT_GLAZED_TERRACOTTA);
-                        //entries.add(ModBlocks.MINT_STAINED_GLASS);
-                        //entries.add(ModBlocks.MINT_CANDLE);
-                        //entries.add(ModBlocks.MINT_CANDLE_CAKE);
+                        entries.add(ModBlocks.MINT_SPRIG_BLOCK);
+                        entries.add(ModBlocks.MINT_STAINED_GLASS);
+                        //entries.add(ModBlocks.MINT_STAINED_GLASS_PANE);
+
+                        entries.add(ModBlocks.MINT_CANDLE);
+                        entries.add(ModBlocks.MINT_CANDLE_CAKE);
+
+                        entries.add(ModBlocks.MINT_BRICKS);
+                        entries.add(ModBlocks.MINT_BRICKS_SLAB);
+                        entries.add(ModBlocks.MINT_BRICKS_STAIRS);
                     }).build());
 
     public static void registerModItemGroups() {

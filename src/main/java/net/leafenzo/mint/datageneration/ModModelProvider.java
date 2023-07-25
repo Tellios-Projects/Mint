@@ -49,8 +49,18 @@ public class ModModelProvider extends FabricModelProvider {
         registerUpDefaultOrientable(blockStateModelGenerator, ModBlocks.MINT_GLAZED_TERRACOTTA, TexturedModel.CUBE_ALL);
         blockStateModelGenerator.registerCandle(ModBlocks.MINT_CANDLE, ModBlocks.MINT_CANDLE_CAKE);
 
+        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_SPRIG_BLOCK);
+
         blockStateModelGenerator.registerTintableCross(ModBlocks.WILD_MINT, BlockStateModelGenerator.TintType.NOT_TINTED);
-        //blockStateModelGenerator.registerSingleton(ModBlocks.WILD_MINT, new TextureMap().put(TextureKey.CROSS, TextureMap.getId(ModBlocks.WILD_MINT)), ModModels.FULLHEIGHT_CROSS);
+
+        BlockStateModelGenerator.BlockTexturePool mintBricksTexturePool =
+        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_BRICKS);
+        mintBricksTexturePool.slab(ModBlocks.MINT_BRICKS_SLAB);
+        mintBricksTexturePool.stairs(ModBlocks.MINT_BRICKS_STAIRS);
+
+
+
+
 
         // Cube with all sides the same texture, IE Dirt
         // blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.COMPRESSED_STONE);
