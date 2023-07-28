@@ -53,7 +53,6 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
                 .add(ModBlocks.MINT_CANDLE_CAKE)
         ;
 
-
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.MINT_CONCRETE)
                 .add(ModBlocks.MINT_TERRACOTTA)
