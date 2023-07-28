@@ -36,9 +36,8 @@ public class ModBlocks {
     public static final Block MINT_SPRIG_BLOCK = registerBlock("mint_sprig_block", new Block(FabricBlockSettings.copyOf(Blocks.ACACIA_LEAVES).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
     public static final Block MINT_STAINED_GLASS = registerBlock("mint_stained_glass", new StainedGlassBlock(DyeColor.BLACK, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
     //public static final Block MINT_STAINED_GLASS_PANE = registerBlock("mint_stained_glass_pane", new StainedGlassPaneBlock(DyeColor.MINT, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
-    //public static final Block MINT_BED = createBedBlock(DyeColor.BLACK); //TODO CHANGEME
-    //public static final Block MINT_SHULKER_BOX = createShulkerBoxBlock //TODO ADDME
-    //public static final Block MINT_SHULKER_BOX = createShulkerBoxBlock //TODO ADDME
+    public static final Block MINT_BED = createBedBlock(DyeColor.BLACK); //TODO CHANGEME
+    public static final Block MINT_SHULKER_BOX = createShulkerBoxBlock //TODO ADDME
     public static final Block MINT_CANDLE = registerBlock("mint_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
     public static final Block MINT_CANDLE_CAKE = registerBlock("mint_candle_cake", new CandleCakeBlock(MINT_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.MINT);
 
