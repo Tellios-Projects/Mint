@@ -4,6 +4,7 @@
   "package": "net.leafenzo.mint.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "SpiderEntityMixin"
   ],
   "client": [
     "BlockEntityTypeMixin",

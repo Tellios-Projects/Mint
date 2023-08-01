@@ -1,5 +1,6 @@
 package net.leafenzo.mint.registry.tag;
 
+import net.leafenzo.mint.Super;
 import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
@@ -11,8 +12,9 @@ public class ModBlockTags {
 
     private ModBlockTags() {
     }
+    public static final TagKey<Block> SPIDER_REPELLENTS = of("spider_repellents");
 
     private static TagKey<Block> of(String id) {
-        return TagKey.of(RegistryKeys.BLOCK, new Identifier(id));
+        return TagKey.of(RegistryKeys.BLOCK, new Identifier(Super.MOD_ID, id));
     }
 }
