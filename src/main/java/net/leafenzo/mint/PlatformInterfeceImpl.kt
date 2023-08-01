@@ -6,7 +6,7 @@
 
 package net.leafenzo.mint
 import com.chocohead.mm.api.ClassTinkerers
-import net.leafenzo.mint.util.ModDyeColors
+import net.leafenzo.mint.util.ModDyeColor
 import net.minecraft.util.DyeColor
 
 @Suppress("unused")
@@ -16,6 +16,6 @@ object PlatformInterfaceImpl {
     }
 
     @JvmStatic fun getMintDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColors.Values.MINT.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.MINT.fieldName)
 
 }

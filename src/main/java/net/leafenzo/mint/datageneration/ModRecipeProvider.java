@@ -43,8 +43,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         this.offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.MINT_SPRIG, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_SPRIG_BLOCK);
 
         offerStainedGlassDyeingRecipe(exporter, ModBlocks.MINT_STAINED_GLASS, ModItems.MINT_DYE);
-        //offerStainedGlassPaneRecipe(exporter, ModBlocks.MINT_STAINED_GLASS_PANE, ModBlocks.MINT_STAINED_GLASS); //TODO ADDME
-        //offerStainedGlassPaneDyeingRecipe(exporter, ModBlocks.MINT_STAINED_GLASS_PANE, ModItems.MINT_DYE); //TODO ADDME
+        offerStainedGlassPaneRecipe(exporter, ModBlocks.MINT_STAINED_GLASS_PANE, ModBlocks.MINT_STAINED_GLASS);
+        offerStainedGlassPaneDyeingRecipe(exporter, ModBlocks.MINT_STAINED_GLASS_PANE, ModItems.MINT_DYE);
         offerConcretePowderDyeingRecipe(exporter, ModBlocks.MINT_CONCRETE_POWDER, ModItems.MINT_DYE);
 
         offerTerracottaDyeingRecipe(exporter, ModBlocks.MINT_TERRACOTTA, ModItems.MINT_DYE);

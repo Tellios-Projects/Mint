@@ -31,7 +31,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.MINT_GLAZED_TERRACOTTA);
                         entries.add(ModBlocks.MINT_SPRIG_BLOCK);
                         entries.add(ModBlocks.MINT_STAINED_GLASS);
-                        //entries.add(ModBlocks.MINT_STAINED_GLASS_PANE); //TODO ADDME
+                        entries.add(ModBlocks.MINT_STAINED_GLASS_PANE);
 
                         entries.add(ModBlocks.MINT_CANDLE);
                         entries.add(ModBlocks.MINT_CANDLE_CAKE);
