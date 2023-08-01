@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.item.ModItemGroups;
+import net.leafenzo.mint.util.ModDyeColors;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.BedPart;
 import net.minecraft.block.piston.PistonBehavior;
@@ -24,6 +25,8 @@ import net.minecraft.world.BlockView;
 
 import java.util.function.ToIntFunction;
 
+import static net.leafenzo.mint.PlatformInterfaceImpl.getMintDyeColor;
+
 public class ModBlocks {
     public static final Block MINT_CROP = registerBlockWithoutBlockItem("mint_crop", new MintCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT).mapColor(MapColor.LICHEN_GREEN)));
     public static final Block WILD_MINT = registerBlock("wild_mint", new FernBlock(FabricBlockSettings.copyOf(Blocks.FERN).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
@@ -35,9 +38,10 @@ public class ModBlocks {
     public static final Block MINT_GLAZED_TERRACOTTA = registerBlock("mint_glazed_terracotta", new ReversiblePillarBlock(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
     public static final Block MINT_SPRIG_BLOCK = registerBlock("mint_sprig_block", new Block(FabricBlockSettings.copyOf(Blocks.ACACIA_LEAVES).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
     public static final Block MINT_STAINED_GLASS = registerBlock("mint_stained_glass", new StainedGlassBlock(DyeColor.BLACK, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
+    //TODO fixme
     //public static final Block MINT_STAINED_GLASS_PANE = registerBlock("mint_stained_glass_pane", new StainedGlassPaneBlock(DyeColor.MINT, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
-    public static final Block MINT_BED = createBedBlock(DyeColor.BLACK); //TODO CHANGEME
-    public static final Block MINT_SHULKER_BOX = createShulkerBoxBlock //TODO ADDME
+    //public static final Block MINT_BED = createBedBlock(ModDyeColors.MINT);
+    //public static final Block MINT_SHULKER_BOX = createShulkerBoxBlock(ModDyeColors.MINT);
     public static final Block MINT_CANDLE = registerBlock("mint_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
     public static final Block MINT_CANDLE_CAKE = registerBlock("mint_candle_cake", new CandleCakeBlock(MINT_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.MINT);
 
@@ -62,9 +66,11 @@ public class ModBlocks {
     }
 
     private static BedBlock createBedBlock(DyeColor color) {
-       //Add to BlockEntityType list
-       // BlockEntityType.BED.
         return new BedBlock(color, AbstractBlock.Settings.create().mapColor(state -> state.get(BedBlock.PART) == BedPart.FOOT ? color.getMapColor() : MapColor.WHITE_GRAY).sounds(BlockSoundGroup.WOOD).strength(0.2f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY));
+    }
+
+    private static ShulkerBoxBlock createShulkerBoxBlock(DyeColor color) {
+        return new ShulkerBoxBlock (color, FabricBlockSettings.copyOf(Blocks.SHULKER_BOX).mapColor(MapColor.LICHEN_GREEN));
     }
 
     public static Block registerBlockWithoutBlockItem(String name, Block block) {
@@ -85,7 +91,7 @@ public class ModBlocks {
 
     private static Item registerBlockItem(String name, Block block, ItemGroup group) {
         BlockItem blockItem = new BlockItem(block, new FabricItemSettings());
-        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(blockItem));
+        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(blockItem)); // only for pre 1.20.1, around cuz I'd forget otherwise
         return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), blockItem);
     }
 
