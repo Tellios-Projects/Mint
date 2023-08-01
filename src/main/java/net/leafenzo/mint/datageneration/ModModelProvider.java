@@ -1,15 +1,11 @@
 package net.leafenzo.mint.datageneration;
 
-import com.ibm.icu.text.Normalizer2;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
-import net.leafenzo.mint.util.ModModels;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
@@ -55,8 +51,9 @@ public class ModModelProvider extends FabricModelProvider {
 
         BlockStateModelGenerator.BlockTexturePool mintBricksTexturePool =
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_BRICKS);
-        mintBricksTexturePool.slab(ModBlocks.MINT_BRICKS_SLAB);
-        mintBricksTexturePool.stairs(ModBlocks.MINT_BRICKS_STAIRS);
+        mintBricksTexturePool.slab(ModBlocks.MINT_BRICK_SLAB);
+        mintBricksTexturePool.stairs(ModBlocks.MINT_BRICK_STAIRS);
+        //mintBricksTexturePool.wall(ModBlocks.MINT_BRICK_WALL);
 
 
 

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "mint:block/mint_brick"
+    "all": "mint:block/mint_bricks"
   }
 }
