@@ -4,7 +4,7 @@
       "model": "mint:block/mint_brick_slab"
     },
     "type=double": {
-      "model": "mint:block/mint_brick"
+      "model": "mint:block/mint_bricks"
     },
     "type=top": {
       "model": "mint:block/mint_brick_slab_top"

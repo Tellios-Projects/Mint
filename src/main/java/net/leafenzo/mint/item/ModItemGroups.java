@@ -6,7 +6,6 @@ import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
@@ -32,14 +31,15 @@ public class ModItemGroups {
                         entries.add(ModBlocks.MINT_GLAZED_TERRACOTTA);
                         entries.add(ModBlocks.MINT_SPRIG_BLOCK);
                         entries.add(ModBlocks.MINT_STAINED_GLASS);
-                        //entries.add(ModBlocks.MINT_STAINED_GLASS_PANE);
+                        //entries.add(ModBlocks.MINT_STAINED_GLASS_PANE); //TODO ADDME
 
                         entries.add(ModBlocks.MINT_CANDLE);
                         entries.add(ModBlocks.MINT_CANDLE_CAKE);
 
                         entries.add(ModBlocks.MINT_BRICKS);
-                        entries.add(ModBlocks.MINT_BRICKS_SLAB);
-                        entries.add(ModBlocks.MINT_BRICKS_STAIRS);
+                        entries.add(ModBlocks.MINT_BRICK_SLAB);
+                        entries.add(ModBlocks.MINT_BRICK_STAIRS);
+                        //entries.add(ModBlocks.MINT_BRICK_WALL);
                     }).build());
 
     public static void registerModItemGroups() {
