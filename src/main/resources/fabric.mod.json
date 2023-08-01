@@ -9,7 +9,7 @@
     "Leah (@leafenzio) and Eliza (@tellioaridoitsu)"
   ],
   "contact": {
-    "homepage": "ADDME - website link",
+    "homepage": "TODO ADDME - website link",
     "sources": "https://github.com/Tellios-Projects/Mint"
   },
 
@@ -18,25 +18,33 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "net.leafenzo.mint.ModInit"
-    ],
-    "client": [
-      "net.leafenzo.mint.ModClientInit"
-    ],
-    "fabric-datagen": [
-      "net.leafenzo.mint.datageneration.ModDataGenerator"
-    ]
+    "main": [{
+      "adapter": "kotlin",
+      "value": "net.leafenzo.mint.ModInit"
+    }],
+    "client": [{
+      "adapter": "kotlin",
+      "value":  "net.leafenzo.mint.ModClientInit"
+    }],
+    "fabric-datagen": [{
+      "adapter": "kotlin",
+      "value":  "net.leafenzo.mint.datageneration.ModDataGenerator"
+    }],
+    "mm:early_risers": [{
+      "adapter": "kotlin",
+      "value": "net.leafenzo.mint.ModEarlyRiser"
+    }]
   },
   "mixins": [
-    "squashed.mixins.json"
+    "mint.mixins.json"
   ],
 
   "depends": {
     "fabricloader": ">=0.14.14",
     "fabric-api": "*",
     "minecraft": "~1.20.1",
-    "java": ">=17"
+    "java": ">=17",
+    "fabric-language-kotlin": ">=1.10.8+kotlin.1.9.0"
   },
   "suggests": {
     "another-mod": "*"

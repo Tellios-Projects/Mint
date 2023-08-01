@@ -1,5 +1,8 @@
+/*
+* Sources:
+* https://github.com/witches-kitchen/WK/blob/5457108485584d1e435b7d8701a41d6e3bf4e18b/src/main/java/cf/witcheskitchen/client/registry/WKColorProviderRegistry.java#LL13C10-L13C10
+*/
 package net.leafenzo.mint.client.render;
-
 
 public class ModColorHandler {
     public static void registerBlockColorProviders() {
@@ -19,7 +22,3 @@ public class ModColorHandler {
 //        );
     }
 }
-
-
-// Sources:
-// https://github.com/witches-kitchen/WK/blob/5457108485584d1e435b7d8701a41d6e3bf4e18b/src/main/java/cf/witcheskitchen/client/registry/WKColorProviderRegistry.java#LL13C10-L13C10

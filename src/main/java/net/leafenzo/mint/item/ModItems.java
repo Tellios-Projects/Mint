@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.util.ModDyeColors;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -32,7 +33,9 @@ public class ModItems {
                     .saturationModifier(4.0f)
                     .build())));
 
-    public static final Item MINT_DYE = registerItem("mint_dye", new DyeItem(DyeColor.BLACK, new FabricItemSettings()));
+    //TODO - figure out what's up with slapping the sheep with the same color over and over again?
+    // ...is it something to do with <sheepEntity.getColor() != this.color> going off of .byId?
+    public static final Item MINT_DYE = registerItem("mint_dye", new DyeItem(ModDyeColors.MINT, new FabricItemSettings()));
 
 
     private static Item registerItem(String name, Item item) {

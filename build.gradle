@@ -1,6 +1,7 @@
 plugins {
 	id 'fabric-loom' version '1.1-SNAPSHOT'
 	id 'maven-publish'
+	id 'org.jetbrains.kotlin.jvm' version('1.8.0-RC')
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -11,7 +12,11 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-    // mavenCentral()  // <- uncomment if needed
+	mavenCentral()
+	maven {
+		name = 'JitPack'
+		url = 'https://jitpack.io'
+	}
 
     // Add repositories to retrieve artifacts from in here.
 	// You should only use this when depending on other mods because
@@ -27,8 +32,13 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation("net.fabricmc:fabric-language-kotlin:1.10.8+kotlin.1.9.0")
 
-		// uncomment if needed
+
+	include(modImplementation('com.github.Chocohead:Fabric-ASM:v2.3'))
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+	// uncomment if needed
 	//include implementation("net.dv8tion:JDA:${project.jda_version}") {
 	//	exclude(module : "opus-java")
 	//}
@@ -39,6 +49,14 @@ dependencies {
 	// Uncomment the following line to enable the deprecated Fabric API modules. 
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
+}
+
+kotlin {
+	jvmToolchain {
+		languageVersion.set(JavaLanguageVersion.of(17))
+	}
+
+	jvmToolchain(17)
 }
 
 processResources {
