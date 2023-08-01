@@ -1,5 +1,6 @@
 package net.leafenzo.mint.entity.sensor;
 
+import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.minecraft.entity.ai.brain.sensor.HoglinSpecificSensor;
 import net.minecraft.entity.ai.brain.sensor.Sensor;
@@ -15,5 +16,8 @@ public class ModSensorType<U extends Sensor<?>> {
 
    private static <U extends Sensor<?>> SensorType<U> register(String id, Supplier<U> factory) {
       return (SensorType) Registry.register(Registries.SENSOR_TYPE, new Identifier(id), new SensorType(factory));
+   }
+   public static void registerSensorTypes() {
+      ModInit.LOGGER.debug("Registering mod sensor types for " + Super.MOD_ID);
    }
 }

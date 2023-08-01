@@ -3,6 +3,7 @@ package net.leafenzo.mint;
 import net.fabricmc.api.ModInitializer;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.effect.ModEffects;
+import net.leafenzo.mint.entity.sensor.ModSensorType;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.potions.ModPotions;
 import net.leafenzo.mint.registries.ModFabricRegistries;
@@ -22,6 +23,7 @@ public class ModInit implements ModInitializer {
         ModItems.registerModItems();
         ModBlocks.registerModBlocks();
         ModFabricRegistries.registerFlammableBlocks();
+        ModSensorType.registerSensorTypes();
 
         ModEffects.registerModEffects();
         ModPotions.registerModPotions();
