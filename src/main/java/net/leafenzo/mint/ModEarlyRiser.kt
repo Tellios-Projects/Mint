@@ -5,7 +5,7 @@
 
 package net.leafenzo.mint
 
-import net.leafenzo.mint.util.ModDyeColors
+import net.leafenzo.mint.util.ModDyeColor
 import com.chocohead.mm.api.ClassTinkerers
 import com.chocohead.mm.api.EnumAdder
 import net.fabricmc.loader.api.FabricLoader
@@ -20,11 +20,11 @@ object ModEarlyRiser : Runnable {
 
         val adder =
                 ClassTinkerers.enumBuilder(dyeColor, Int::class.java, String::class.java, Int::class.java, "L$mapColor;", Int::class.java, Int::class.java)
-        addDyeColorEnum(adder, ModDyeColors.Values.MINT)
+        addDyeColorEnum(adder, ModDyeColor.Values.MINT)
         adder.build()
     }
 
-    private fun addDyeColorEnum(adder: EnumAdder, values: ModDyeColors.Values) {
+    private fun addDyeColorEnum(adder: EnumAdder, values: ModDyeColor.Values) {
         adder.addEnum(values.fieldName) { arrayOf(-1, values.name, values.color.value, MapColor.get(values.mapColorId),
                 values.signColor.value, values.fireworkColor.value) }
     }

@@ -6,6 +6,7 @@ import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
@@ -35,15 +36,18 @@ public class ModModelProvider extends FabricModelProvider {
     // Block Models
         blockStateModelGenerator.registerCrop(ModBlocks.MINT_CROP, MintCropBlock.AGE, IntStream.rangeClosed(0, MintCropBlock.MAX_AGE).toArray());
         blockStateModelGenerator.registerWoolAndCarpet(ModBlocks.MINT_WOOL, ModBlocks.MINT_CARPET);
-        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_STAINED_GLASS);
 
-        //blockStateModelGenerator.registerGlassPane(ModBlocks.MINT_STAINED_GLASS, ModBlocks.MINT_STAINED_GLASS_PANE); //TODO ADDME
+        blockStateModelGenerator.registerGlassPane(ModBlocks.MINT_STAINED_GLASS, ModBlocks.MINT_STAINED_GLASS_PANE);
+
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_CONCRETE);
         blockStateModelGenerator.registerRandomHorizontalRotations(TexturedModel.CUBE_ALL, ModBlocks.MINT_CONCRETE_POWDER);
 
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_TERRACOTTA);
         registerUpDefaultOrientable(blockStateModelGenerator, ModBlocks.MINT_GLAZED_TERRACOTTA, TexturedModel.CUBE_ALL);
         blockStateModelGenerator.registerCandle(ModBlocks.MINT_CANDLE, ModBlocks.MINT_CANDLE_CAKE);
+
+//        blockStateModelGenerator.registerBed(ModBlocks.MINT_BED, Blocks.OAK_PLANKS);
+//        blockStateModelGenerator.registerShulkerBox(ModBlocks.MINT_SHULKER_BOX);
 
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_SPRIG_BLOCK);
 

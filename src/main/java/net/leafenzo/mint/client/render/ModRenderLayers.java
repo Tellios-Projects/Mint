@@ -17,8 +17,8 @@ public class ModRenderLayers {
                 //ModBlocks.MINT_SHULKER_BOX
         );
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
-                ModBlocks.MINT_STAINED_GLASS
-                //,modBlocks.MINT_STAINED_GLASS_PANE
+                ModBlocks.MINT_STAINED_GLASS,
+                ModBlocks.MINT_STAINED_GLASS_PANE
         );
     }
 }
