@@ -46,6 +46,9 @@ public class ModModelProvider extends FabricModelProvider {
         registerUpDefaultOrientable(blockStateModelGenerator, ModBlocks.MINT_GLAZED_TERRACOTTA, TexturedModel.CUBE_ALL);
         blockStateModelGenerator.registerCandle(ModBlocks.MINT_CANDLE, ModBlocks.MINT_CANDLE_CAKE);
 
+//        blockStateModelGenerator.registerBuiltin(ModelIds.getMinecraftNamespacedBlock("banner"), Blocks.OAK_PLANKS)
+//                .includeWithItem(ModBlocks.MINT_BANNER)
+//                .includeWithoutItem(ModBlocks.MINT_WALL_BANNER);
 //        blockStateModelGenerator.registerBed(ModBlocks.MINT_BED, Blocks.OAK_PLANKS);
 //        blockStateModelGenerator.registerShulkerBox(ModBlocks.MINT_SHULKER_BOX);
 

@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "mint:mint_candle"
+    "minecraft:air"
   ]
 }

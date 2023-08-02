@@ -33,6 +33,10 @@ public class ModItemGroups {
                         entries.add(ModBlocks.MINT_STAINED_GLASS);
                         entries.add(ModBlocks.MINT_STAINED_GLASS_PANE);
 
+                        entries.add(ModItems.MINT_BED);
+                        entries.add(ModItems.MINT_BANNER);
+                        entries.add(ModItems.MINT_SHULKER_BOX);
+
                         entries.add(ModBlocks.MINT_CANDLE);
                         entries.add(ModBlocks.MINT_CANDLE_CAKE);
 
