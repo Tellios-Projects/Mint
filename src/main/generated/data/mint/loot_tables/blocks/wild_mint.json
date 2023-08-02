@@ -19,7 +19,7 @@
                   }
                 }
               ],
-              "name": "mint:wild_mint"
+              "name": "minecraft:air"
             },
             {
               "type": "minecraft:item",

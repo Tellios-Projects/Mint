@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:mint_sprig"
+        "recipe": "minecraft:air"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:mint_sprig"
+      "minecraft:air"
     ]
   },
   "sends_telemetry_event": false
