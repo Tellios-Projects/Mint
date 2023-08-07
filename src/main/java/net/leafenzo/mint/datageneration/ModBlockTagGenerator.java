@@ -37,9 +37,10 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
 //        //.add(ModBlocks.)
 //        ;
 //
-//        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
-//        //.add(ModBlocks.)
-//        ;
+        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+                .add(ModBlocks.MINT_BED)
+                .add(ModBlocks.MINT_BANNER)
+        ;
 //
 //        getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
 //        //.add(ModBlocks.)
@@ -57,6 +58,7 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
                 .add(ModBlocks.MINT_CONCRETE)
                 .add(ModBlocks.MINT_TERRACOTTA)
                 .add(ModBlocks.MINT_GLAZED_TERRACOTTA)
+                .add(ModBlocks.MINT_SHULKER_BOX)
         ;
 
 //        getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)

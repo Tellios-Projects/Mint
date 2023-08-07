@@ -76,7 +76,7 @@ public class ModBlocks {
     }
 
     private static ShulkerBoxBlock createShulkerBoxBlock(DyeColor color) {
-        return new ShulkerBoxBlock(color, FabricBlockSettings.copyOf(Blocks.STONE).mapColor(MapColor.LICHEN_GREEN));
+        return new ShulkerBoxBlock(color, FabricBlockSettings.copyOf(Blocks.SHULKER_BOX).mapColor(MapColor.LICHEN_GREEN));
     }
 
     public static Block registerBlockWithoutBlockItem(String name, Block block) {
@@ -101,7 +101,9 @@ public class ModBlocks {
         return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), blockItem);
     }
 
+
     public static void registerModBlocks() {
         ModInit.LOGGER.debug("Registering mod blocks for " + Super.MOD_ID);
     }
 }
+

@@ -47,7 +47,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerStainedGlassPaneDyeingRecipe(exporter, ModBlocks.MINT_STAINED_GLASS_PANE, ModItems.MINT_DYE);
         offerConcretePowderDyeingRecipe(exporter, ModBlocks.MINT_CONCRETE_POWDER, ModItems.MINT_DYE);
 
-        offerBannerRecipe(exporter, ModBlocks.MINT_BANNER, ModBlocks.MINT_WOOL);
+        //offerBannerRecipe(exporter, ModBlocks.MINT_BANNER, ModBlocks.MINT_WOOL);
 
         offerTerracottaDyeingRecipe(exporter, ModBlocks.MINT_TERRACOTTA, ModItems.MINT_DYE);
         CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModBlocks.MINT_TERRACOTTA), RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_GLAZED_TERRACOTTA, 0.1f, 200);
