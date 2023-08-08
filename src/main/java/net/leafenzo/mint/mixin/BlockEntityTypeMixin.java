@@ -20,17 +20,29 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BlockEntityType.class)
 public class BlockEntityTypeMixin {
     @Inject(method = "supports", at = @At("HEAD"), cancellable = true) //I'm not sure if this is even necessary tbh.
-    private void supports(BlockState state, CallbackInfoReturnable<Boolean> info) {
-        if (BlockEntityType.BED.equals(state) && (state.getBlock() instanceof BedBlock)) {
-            info.setReturnValue(true);
+    private void supports(BlockState state, CallbackInfoReturnable<Boolean> cir) {
+        final BlockEntityType<?> type = ((BlockEntityType<?>) (Object) this);
+        if (type == BlockEntityType.SHULKER_BOX) { //TODO FIXME
+            if (state.isOf(ModBlocks.MINT_SHULKER_BOX))
+                cir.setReturnValue(true);
+        } else if (type == BlockEntityType.BED) {
+            if (state.isOf(ModBlocks.MINT_BED))
+                cir.setReturnValue(true);
+        } else if (type == BlockEntityType.BANNER) {
+            if (state.isOf(ModBlocks.MINT_BANNER) || state.isOf(ModBlocks.MINT_WALL_BANNER))
+                cir.setReturnValue(true);
         }
-        if (BlockEntityType.SHULKER_BOX.equals(state) && (state.getBlock() instanceof ShulkerBoxBlock)) {
-            info.setReturnValue(true);
-        }
-        else if (BlockEntityType.BANNER.equals(state) && (state.getBlock() instanceof BannerBlock ||
-                state.getBlock() instanceof WallBannerBlock)) {
-            info.setReturnValue(true);
-        }
+
+//        if (BlockEntityType.BED.equals(state) && (state.getBlock() instanceof BedBlock)) {
+//            info.setReturnValue(true);
+//        }
+//        if (BlockEntityType.SHULKER_BOX.equals(state) && (state.getBlock() instanceof ShulkerBoxBlock)) {
+//            info.setReturnValue(true);
+//        }
+//        else if (BlockEntityType.BANNER.equals(state) && (state.getBlock() instanceof BannerBlock ||
+//                state.getBlock() instanceof WallBannerBlock)) {
+//            info.setReturnValue(true);
+//        }
     }
 }
 

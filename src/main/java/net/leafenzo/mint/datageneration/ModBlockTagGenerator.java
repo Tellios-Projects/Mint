@@ -61,6 +61,10 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
                 .add(ModBlocks.MINT_SHULKER_BOX)
         ;
 
+        getOrCreateTagBuilder(BlockTags.SHULKER_BOXES)
+                .add(ModBlocks.MINT_SHULKER_BOX)
+        ;
+
 //        getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
 //        //.add(ModBlocks.)
 //        ;

@@ -47,24 +47,32 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerStainedGlassPaneDyeingRecipe(exporter, ModBlocks.MINT_STAINED_GLASS_PANE, ModItems.MINT_DYE);
         offerConcretePowderDyeingRecipe(exporter, ModBlocks.MINT_CONCRETE_POWDER, ModItems.MINT_DYE);
 
-        //offerBannerRecipe(exporter, ModBlocks.MINT_BANNER, ModBlocks.MINT_WOOL);
+        offerBannerRecipe(exporter, ModBlocks.MINT_BANNER, ModBlocks.MINT_WOOL);
+
+
+
+
+
 
         offerTerracottaDyeingRecipe(exporter, ModBlocks.MINT_TERRACOTTA, ModItems.MINT_DYE);
         CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModBlocks.MINT_TERRACOTTA), RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_GLAZED_TERRACOTTA, 0.1f, 200);
 
-        offerShapelessRecipe(exporter, ModItems.MINT_COOKIE, Ingredient.ofItems(Items.WHEAT, Items.COCOA_BEANS, ModItems.MINT_SPRIG), RecipeCategory.FOOD, 4);
-//        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MINT_COOKIE, 4)
-//                .pattern(" M ")
-//                .pattern("WCW")
-//                .pattern("   ")
-//                .input('W', Items.WHEAT)
-//                .input('C', Items.COCOA_BEANS)
-//                .input('M', ModItems.MINT_SPRIG)
-//                .criterion(FabricRecipeProvider.hasItem(Items.COCOA_BEANS),
-//                        FabricRecipeProvider.conditionsFromItem(Items.COCOA_BEANS))
-//                .criterion(FabricRecipeProvider.hasItem(ModItems.MINT_SPRIG),
-//                        FabricRecipeProvider.conditionsFromItem(ModItems.MINT_SPRIG))
-//                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.MINT_COOKIE) + "_shaped"));
+
+        // offerShapelessRecipe(exporter, ModBlocks.MINT_SHULKER_BOX, );
+
+//
+//        ShapelessRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.MINT_SHULKER_BOX)
+//                        .input(Items.SHULKER_SHELL)
+//                        .input(Items.Sh)
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.MINT_COOKIE, 4)
+                .input(Items.WHEAT)
+                .input(Items.WHEAT)
+                .input(Items.COCOA_BEANS)
+                .input(ModItems.MINT_SPRIG)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.MINT_SPRIG),
+                        FabricRecipeProvider.conditionsFromItem(ModItems.MINT_SPRIG))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.MINT_COOKIE) + "_shapeless"));
     }
 }
 

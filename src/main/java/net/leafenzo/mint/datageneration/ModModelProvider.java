@@ -54,6 +54,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_SPRIG_BLOCK);
 
+        blockStateModelGenerator.registerShulkerBox(ModBlocks.MINT_SHULKER_BOX);
+
         blockStateModelGenerator.registerTintableCross(ModBlocks.WILD_MINT, BlockStateModelGenerator.TintType.NOT_TINTED);
 
         BlockStateModelGenerator.BlockTexturePool mintBricksTexturePool =
@@ -102,5 +104,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.MINT_COOKIE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MINT_DYE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MINT_TEA, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MINT_BANNER, Models.TEMPLATE_BANNER);
     }
 }

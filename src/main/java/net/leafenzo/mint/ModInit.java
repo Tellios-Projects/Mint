@@ -1,11 +1,13 @@
 package net.leafenzo.mint;
 
 import net.fabricmc.api.ModInitializer;
+import net.leafenzo.mint.block.DispenserBehavior;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.effect.ModEffects;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.potions.ModPotions;
 import net.leafenzo.mint.registries.ModFabricRegistries;
+import net.minecraft.block.DispenserBlock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,6 +27,8 @@ public class ModInit implements ModInitializer {
 
         ModEffects.registerModEffects();
         ModPotions.registerModPotions();
+
+        DispenserBehavior.RegisterDispenserBehaviors();
     }
 }
 

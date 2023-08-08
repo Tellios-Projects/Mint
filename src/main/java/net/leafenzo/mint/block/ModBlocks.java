@@ -47,12 +47,6 @@ public class ModBlocks {
     public static final Block MINT_BRICK_SLAB = registerBlock("mint_brick_slab", new SlabBlock(FabricBlockSettings.copyOf(MINT_BRICKS)), ModItemGroups.MINT);
     public static final Block MINT_BRICK_STAIRS = registerBlock("mint_brick_stairs", new StairsBlock(MINT_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(MINT_BRICKS)), ModItemGroups.MINT);
     //public static final Block MINT_BRICK_WALL = registerBlock("mint_brick_wall", new WallBlock(FabricBlockSettings.copyOf(MINT_BRICKS)), ModItemGroups.MINT);
-
-
-    //    public static final RegistryObject<Block> BEIGE_BED = BLOCKS.register("beige_bed", () -> new BedBlock(ExtraDyeColors.BEIGE, BlockBehaviour.Properties.of(Material.WOOL, (p152613) -> {
-    //        return p152613.getValue(BedBlock.PART) == BedPart.FOOT ? ExtraDyeColors.BEIGE.getMaterialColor() : MaterialColor.WOOL;
-    //    }).sound(SoundType.WOOD).strength(0.2F).noOcclusion()));
-
     //#65ff8e
 
     /**
@@ -63,6 +57,7 @@ public class ModBlocks {
         registerBlockItem(name,block,group);
         return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
     }
+
 
     private static BannerBlock createBannerBlock(DyeColor color) {
         return new BannerBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BANNER).mapColor(color.getMapColor()));
@@ -82,6 +77,11 @@ public class ModBlocks {
     public static Block registerBlockWithoutBlockItem(String name, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
     }
+
+    public static Block registerBlockWithoutBlockItemAndWithBlockEntity(String name, Block block) {
+        return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
+    }
+
 
     private static boolean never(BlockState blockState, BlockView blockView, BlockPos blockPos) {
         return false;
