@@ -20,6 +20,6 @@ public abstract class ShulkerBoxBlockMixin {
     private static void get(DyeColor color, CallbackInfoReturnable<Block> cir) {
         // thank you mojank, very cool
         if (color == ModDyeColor.MINT)
-            cir.setReturnValue(ModBlocks.MINT_SHULKER_BOX);
+            cir.setReturnValue(ModBlocks.MINT_SHULKER_BOX); // This won't work unless I somehow make the ModBlocks.MINT_SHULKER_BOX be registered earlier. which is hard and would cause problems.
     }
 }

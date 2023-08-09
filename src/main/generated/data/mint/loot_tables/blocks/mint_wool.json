@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:air"
+          "name": "mint:mint_wool"
         }
       ],
       "rolls": 1.0

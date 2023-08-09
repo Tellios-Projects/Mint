@@ -3,14 +3,16 @@
   "category": "misc",
   "group": "carpet",
   "key": {
-    "#": []
+    "#": {
+      "item": "mint:mint_wool"
+    }
   },
   "pattern": [
     "##"
   ],
   "result": {
     "count": 3,
-    "item": "minecraft:air"
+    "item": "mint:mint_carpet"
   },
   "show_notification": true
 }

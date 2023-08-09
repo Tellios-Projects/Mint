@@ -21,7 +21,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:air"
+          "name": "mint:mint_stained_glass_pane"
         }
       ],
       "rolls": 1.0

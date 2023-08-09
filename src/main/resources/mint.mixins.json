@@ -6,7 +6,7 @@
   "mixins": [
     "DyeColorMixin",
     "BlockEntityTypeMixin",
-    "ShulkerBoxBlockMixin"
+    "ShulkerBoxColoringRecipeMixin"
   ],
   "client": [
     "client.TexturedRenderLayersMixin"

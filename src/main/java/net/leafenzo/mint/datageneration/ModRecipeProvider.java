@@ -3,17 +3,23 @@ package net.leafenzo.mint.datageneration;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.ModShulkerBoxBlock;
 import net.leafenzo.mint.item.ModItems;
+import net.leafenzo.mint.recipe.ModRecipeSerializer;
+import net.leafenzo.mint.util.ModDyeColor;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Arrays;
 import java.util.function.Consumer;
 
 
@@ -34,6 +40,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         ShapelessRecipeJsonBuilder.create(recipeCategory, output, count).input(itemProvider);
     }
 
+//    public static void offerShulkerDyeingRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible input) {
+//        for (DyeColor color : DyeColor.values()) {
+//            ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModShulkerBoxBlock.get(color),1)
+//                    .input(input)
+//                    .input()
+//            ;
+//        }
+//    }
+
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
         //offerWaxingRecipes(exporter);
@@ -49,9 +64,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         offerBannerRecipe(exporter, ModBlocks.MINT_BANNER, ModBlocks.MINT_WOOL);
 
-
-
-
+        //TODO, inter dye mod compatibility
+        //ComplexRecipeJsonBuilder.create(ModRecipeSerializer.SHULKER_BOX_INCLUSIVE).offerTo(exporter, "shulker_box_coloring"); //Intentionally overwrites whatever is currently in "shulker_box_coloring"
 
 
         offerTerracottaDyeingRecipe(exporter, ModBlocks.MINT_TERRACOTTA, ModItems.MINT_DYE);

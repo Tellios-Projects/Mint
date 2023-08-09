@@ -3,7 +3,6 @@
   "item.mint.mint_dye": "Mint Dye",
   "item.mint.mint_cookie": "Mint Chocolate Chip Cookie",
   "item.mint.mint_tea":  "Spearmint Tea",
-
   "block.mint.mint_crop": "Mint",
   "block.mint.wild_mint": "Wild Mint",
   "block.mint.mint_wool":  "Mint Wool",
@@ -15,10 +14,15 @@
   "block.mint.mint_stained_glass": "Mint Stained Glass",
   "block.mint.mint_candle":  "Mint Candle",
   "block.mint.mint_candle_cake": "Mint Candle Cake",
-
-
+  "block.mint.mint_sprig_block": "Mint Sprig Block",
+  "block.mint.mint_stained_glass_pane": "Mint Stained Glass Pane",
+  "block.mint.mint_bed": "Mint Bed",
+  "block.mint.mint_banner": "Mint Banner",
+  "block.mint.mint_shulker_box": "Mint Shulker Box",
+  "block.mint.mint_bricks": "Mint Bricks",
+  "block.mint.mint_brick_slab": "Mint Brick Slab",
+  "block.mint.mint_brick_stairs": "Mint Brick Stairs",
   "itemgroup.mint": "Mint",
-
   "item.minecraft.potion.effect.menthol": "Potion of Mint Chill",
   "item.minecraft.splash_potion.effect.menthol": "Splash Potion of Mint Chill",
   "item.minecraft.lingering_potion.effect.menthol": "Lingering Potion of Mint Chill",

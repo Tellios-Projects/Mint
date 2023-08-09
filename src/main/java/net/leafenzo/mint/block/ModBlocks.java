@@ -58,22 +58,18 @@ public class ModBlocks {
         return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
     }
 
-
     private static BannerBlock createBannerBlock(DyeColor color) {
         return new BannerBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BANNER).mapColor(color.getMapColor()));
     }
     private static WallBannerBlock createWallBannerBlock(DyeColor color) {
         return new WallBannerBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_WALL_BANNER).mapColor(color.getMapColor()));
     }
-
     private static BedBlock createBedBlock(DyeColor color) {
         return new BedBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BED).mapColor(blockState -> blockState.get(BedBlock.PART) == BedPart.FOOT ? color.getMapColor() : MapColor.WHITE_GRAY));
     }
-
-    private static ShulkerBoxBlock createShulkerBoxBlock(DyeColor color) {
-        return new ShulkerBoxBlock(color, FabricBlockSettings.copyOf(Blocks.SHULKER_BOX).mapColor(MapColor.LICHEN_GREEN));
+    private static ModShulkerBoxBlock createShulkerBoxBlock(DyeColor color) {
+        return new ModShulkerBoxBlock(color, FabricBlockSettings.copyOf(Blocks.SHULKER_BOX).mapColor(MapColor.LICHEN_GREEN));
     }
-
     public static Block registerBlockWithoutBlockItem(String name, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
     }

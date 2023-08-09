@@ -41,7 +41,7 @@ public abstract class TexturedRenderLayersMixin {
                     new SpriteIdentifier(SHULKER_BOXES_ATLAS_TEXTURE,
                             new Identifier(Super.MOD_ID, "entity/shulker/shulker_" + value.getName())));
             BED_TEXTURES[value.getId()] = new SpriteIdentifier(BEDS_ATLAS_TEXTURE,
-                    new Identifier(Super.MOD_ID, "entity/bed/" + value.getName()));
+                    new Identifier(Super.MOD_ID, "entity/bed/bed_" + value.getName()));
         }
         COLORED_SHULKER_BOXES_TEXTURES = shulkerBoxTexturesBuilder.build();
     }
