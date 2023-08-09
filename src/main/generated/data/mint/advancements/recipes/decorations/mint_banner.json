@@ -1,24 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cocoa_beans": {
+    "has_mint_wool": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:cocoa_beans"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_mint_sprig": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "mint:mint_sprig"
+              "mint:mint_wool"
             ]
           }
         ]
@@ -27,21 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:mint_cookie_shaped"
+        "recipe": "mint:mint_banner"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_cocoa_beans",
-      "has_mint_sprig",
+      "has_mint_wool",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:mint_cookie_shaped"
+      "mint:mint_banner"
     ]
   },
   "sends_telemetry_event": false

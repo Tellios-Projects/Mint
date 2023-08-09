@@ -13,7 +13,7 @@ public class ModRenderLayers {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
                 ModBlocks.MINT_CROP,
                 ModBlocks.WILD_MINT
-                //ModBlocks.MINT_BED
+                //ModBlocks.MINT_BED    //These are instead found in the TexturedRenderLayersMixin
                 //ModBlocks.MINT_SHULKER_BOX
         );
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),

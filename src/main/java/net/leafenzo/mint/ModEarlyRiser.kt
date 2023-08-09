@@ -10,9 +10,14 @@ import com.chocohead.mm.api.ClassTinkerers
 import com.chocohead.mm.api.EnumAdder
 import net.fabricmc.loader.api.FabricLoader
 import net.minecraft.block.MapColor
+import org.spongepowered.asm.mixin.Debug
 
+//@Debug(export = true)
 @Suppress("unused")
 object ModEarlyRiser : Runnable {
+
+    //TODO Replace this with a ModDyeColor enum with mixins targeting and adding the types from that enum to every location where DyeColor is referenced
+
     override fun run() {
         val mr = FabricLoader.getInstance().mappingResolver
         val dyeColor = mr.mapClassName("intermediary", "net.minecraft.class_1767") //maybe the class got renamed?

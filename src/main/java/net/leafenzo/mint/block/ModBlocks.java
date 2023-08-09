@@ -37,22 +37,16 @@ public class ModBlocks {
     public static final Block MINT_SPRIG_BLOCK = registerBlock("mint_sprig_block", new Block(FabricBlockSettings.copyOf(Blocks.ACACIA_LEAVES).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
     public static final Block MINT_STAINED_GLASS = registerBlock("mint_stained_glass", new StainedGlassBlock(ModDyeColor.MINT, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
     public static final Block MINT_STAINED_GLASS_PANE = registerBlock("mint_stained_glass_pane", new StainedGlassPaneBlock(ModDyeColor.MINT, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS_PANE).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
-    //TODO fixme
-    //public static final Block MINT_BED = createBedBlock(ModDyeColors.MINT);
-    //public static final Block MINT_SHULKER_BOX = createShulkerBoxBlock(ModDyeColors.MINT);
+    public static final Block MINT_BED = registerBlockWithoutBlockItem("mint_bed", createBedBlock(ModDyeColor.MINT));
+    public static final Block MINT_SHULKER_BOX = registerBlockWithoutBlockItem("mint_shulker_box", createShulkerBoxBlock(ModDyeColor.MINT));
+    public static final Block MINT_BANNER = registerBlockWithoutBlockItem("mint_banner", createBannerBlock(ModDyeColor.MINT));
+    public static final Block MINT_WALL_BANNER = registerBlockWithoutBlockItem("mint_wall_banner", createWallBannerBlock(ModDyeColor.MINT));
     public static final Block MINT_CANDLE = registerBlock("mint_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
     public static final Block MINT_CANDLE_CAKE = registerBlock("mint_candle_cake", new CandleCakeBlock(MINT_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.MINT);
-
     public static final Block MINT_BRICKS = registerBlock("mint_bricks", new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
     public static final Block MINT_BRICK_SLAB = registerBlock("mint_brick_slab", new SlabBlock(FabricBlockSettings.copyOf(MINT_BRICKS)), ModItemGroups.MINT);
     public static final Block MINT_BRICK_STAIRS = registerBlock("mint_brick_stairs", new StairsBlock(MINT_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(MINT_BRICKS)), ModItemGroups.MINT);
     //public static final Block MINT_BRICK_WALL = registerBlock("mint_brick_wall", new WallBlock(FabricBlockSettings.copyOf(MINT_BRICKS)), ModItemGroups.MINT);
-
-
-    //    public static final RegistryObject<Block> BEIGE_BED = BLOCKS.register("beige_bed", () -> new BedBlock(ExtraDyeColors.BEIGE, BlockBehaviour.Properties.of(Material.WOOL, (p152613) -> {
-    //        return p152613.getValue(BedBlock.PART) == BedPart.FOOT ? ExtraDyeColors.BEIGE.getMaterialColor() : MaterialColor.WOOL;
-    //    }).sound(SoundType.WOOD).strength(0.2F).noOcclusion()));
-
     //#65ff8e
 
     /**
@@ -64,14 +58,18 @@ public class ModBlocks {
         return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
     }
 
+    private static BannerBlock createBannerBlock(DyeColor color) {
+        return new BannerBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BANNER).mapColor(color.getMapColor()));
+    }
+    private static WallBannerBlock createWallBannerBlock(DyeColor color) {
+        return new WallBannerBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_WALL_BANNER).mapColor(color.getMapColor()));
+    }
     private static BedBlock createBedBlock(DyeColor color) {
-        return new BedBlock(color, AbstractBlock.Settings.create().mapColor(state -> state.get(BedBlock.PART) == BedPart.FOOT ? color.getMapColor() : MapColor.WHITE_GRAY).sounds(BlockSoundGroup.WOOD).strength(0.2f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY));
+        return new BedBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BED).mapColor(blockState -> blockState.get(BedBlock.PART) == BedPart.FOOT ? color.getMapColor() : MapColor.WHITE_GRAY));
     }
-
-    private static ShulkerBoxBlock createShulkerBoxBlock(DyeColor color) {
-        return new ShulkerBoxBlock (color, FabricBlockSettings.copyOf(Blocks.SHULKER_BOX).mapColor(MapColor.LICHEN_GREEN));
+    private static ModShulkerBoxBlock createShulkerBoxBlock(DyeColor color) {
+        return new ModShulkerBoxBlock(color, FabricBlockSettings.copyOf(Blocks.SHULKER_BOX).mapColor(MapColor.LICHEN_GREEN));
     }
-
     public static Block registerBlockWithoutBlockItem(String name, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
     }
@@ -94,7 +92,9 @@ public class ModBlocks {
         return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), blockItem);
     }
 
+
     public static void registerModBlocks() {
         ModInit.LOGGER.debug("Registering mod blocks for " + Super.MOD_ID);
     }
 }
+

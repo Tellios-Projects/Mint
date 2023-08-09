@@ -3,17 +3,23 @@ package net.leafenzo.mint.datageneration;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.ModShulkerBoxBlock;
 import net.leafenzo.mint.item.ModItems;
+import net.leafenzo.mint.recipe.ModRecipeSerializer;
+import net.leafenzo.mint.util.ModDyeColor;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Arrays;
 import java.util.function.Consumer;
 
 
@@ -34,12 +40,21 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         ShapelessRecipeJsonBuilder.create(recipeCategory, output, count).input(itemProvider);
     }
 
+//    public static void offerShulkerDyeingRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible input) {
+//        for (DyeColor color : DyeColor.values()) {
+//            ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModShulkerBoxBlock.get(color),1)
+//                    .input(input)
+//                    .input()
+//            ;
+//        }
+//    }
+
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
         //offerWaxingRecipes(exporter);
         offerShapelessRecipe(exporter, ModItems.MINT_DYE, ModItems.MINT_SPRIG, RecipeCategory.MISC.getName(), 1);
         this.offerShapelessRecipe(exporter, ModItems.MINT_DYE, Ingredient.ofItems(Items.LIME_DYE, Items.LIGHT_BLUE_DYE), RecipeCategory.MISC, 2);
-        offerCarpetRecipe(exporter, ModBlocks.MINT_WOOL, ModBlocks.MINT_CARPET);
+        offerCarpetRecipe(exporter, ModBlocks.MINT_CARPET, ModBlocks.MINT_WOOL);
         this.offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.MINT_SPRIG, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_SPRIG_BLOCK);
 
         offerStainedGlassDyeingRecipe(exporter, ModBlocks.MINT_STAINED_GLASS, ModItems.MINT_DYE);
@@ -47,22 +62,31 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerStainedGlassPaneDyeingRecipe(exporter, ModBlocks.MINT_STAINED_GLASS_PANE, ModItems.MINT_DYE);
         offerConcretePowderDyeingRecipe(exporter, ModBlocks.MINT_CONCRETE_POWDER, ModItems.MINT_DYE);
 
+        offerBannerRecipe(exporter, ModBlocks.MINT_BANNER, ModBlocks.MINT_WOOL);
+
+        //TODO, inter dye mod compatibility
+        //ComplexRecipeJsonBuilder.create(ModRecipeSerializer.SHULKER_BOX_INCLUSIVE).offerTo(exporter, "shulker_box_coloring"); //Intentionally overwrites whatever is currently in "shulker_box_coloring"
+
+
         offerTerracottaDyeingRecipe(exporter, ModBlocks.MINT_TERRACOTTA, ModItems.MINT_DYE);
         CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModBlocks.MINT_TERRACOTTA), RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_GLAZED_TERRACOTTA, 0.1f, 200);
 
-        offerShapelessRecipe(exporter, ModItems.MINT_COOKIE, Ingredient.ofItems(Items.WHEAT, Items.COCOA_BEANS, ModItems.MINT_SPRIG), RecipeCategory.FOOD, 4);
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MINT_COOKIE, 4)
-                .pattern(" M ")
-                .pattern("WCW")
-                .pattern("   ")
-                .input('W', Items.WHEAT)
-                .input('C', Items.COCOA_BEANS)
-                .input('M', ModItems.MINT_SPRIG)
-                .criterion(FabricRecipeProvider.hasItem(Items.COCOA_BEANS),
-                        FabricRecipeProvider.conditionsFromItem(Items.COCOA_BEANS))
+
+        // offerShapelessRecipe(exporter, ModBlocks.MINT_SHULKER_BOX, );
+
+//
+//        ShapelessRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.MINT_SHULKER_BOX)
+//                        .input(Items.SHULKER_SHELL)
+//                        .input(Items.Sh)
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.MINT_COOKIE, 4)
+                .input(Items.WHEAT)
+                .input(Items.WHEAT)
+                .input(Items.COCOA_BEANS)
+                .input(ModItems.MINT_SPRIG)
                 .criterion(FabricRecipeProvider.hasItem(ModItems.MINT_SPRIG),
                         FabricRecipeProvider.conditionsFromItem(ModItems.MINT_SPRIG))
-                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.MINT_COOKIE) + "_shaped"));
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.MINT_COOKIE) + "_shapeless"));
     }
 }
 

@@ -1,8 +1,11 @@
 package net.leafenzo.mint;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.impl.client.rendering.BlockEntityRendererRegistryImpl;
 import net.leafenzo.mint.client.render.ModColorHandler;
 import net.leafenzo.mint.client.render.ModRenderLayers;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.client.render.block.entity.ShulkerBoxBlockEntityRenderer;
 
 public class ModClientInit implements ClientModInitializer {
     @Override
@@ -10,6 +13,6 @@ public class ModClientInit implements ClientModInitializer {
         ModRenderLayers.registerBlockCutouts();
         ModColorHandler.registerBlockColorProviders();
 
-//        HudRenderCallback.EVENT.register(new DenseCobwebHudOverlay());
+        //BlockEntityRendererRegistryImpl.register(BlockEntityType.SHULKER_BOX, ShulkerBoxBlockEntityRenderer::new);
     }
 }

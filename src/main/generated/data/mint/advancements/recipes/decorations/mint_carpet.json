@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_mint_carpet": {
+    "has_mint_wool": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:mint_carpet"
+              "mint:mint_wool"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mint:mint_wool"
+        "recipe": "mint:mint_carpet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_mint_carpet",
+      "has_mint_wool",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "mint:mint_wool"
+      "mint:mint_carpet"
     ]
   },
   "sends_telemetry_event": false

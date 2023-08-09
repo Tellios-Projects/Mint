@@ -3,7 +3,10 @@ package net.leafenzo.mint.item;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
+import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.util.ModDyeColor;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -35,10 +38,24 @@ public class ModItems {
     // ...is it something to do with <sheepEntity.getColor() != this.color> going off of .byId?
     public static final Item MINT_DYE = registerItem("mint_dye", new DyeItem(ModDyeColor.MINT, new FabricItemSettings()));
 
+    public static final Item MINT_BED = registerItem(new BedItem(ModBlocks.MINT_BED, new Item.Settings().maxCount(1)));
+    public static final Item MINT_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.MINT_SHULKER_BOX, new Item.Settings().maxCount(1)));
+    public static final Item MINT_BANNER = registerItem(new BannerItem(ModBlocks.MINT_BANNER, ModBlocks.MINT_WALL_BANNER, new Item.Settings().maxCount(16)));
+
 
     private static Item registerItem(String name, Item item) {
-        return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), item);
+        return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), (Item)item);
     }
+
+    private static Item registerItem(BlockItem item) {
+        return Registry.register(Registries.ITEM, Registries.BLOCK.getId(item.getBlock()), (Item)item);
+    }
+
+    private static Item registerItem(Block block, Item item) {
+        BlockItem blockItem = new BlockItem(block, new FabricItemSettings());
+        return Registry.register(Registries.ITEM, Registries.BLOCK.getId(block), (Item)item);
+    }
+
     public static void registerModItems() {
         ModInit.LOGGER.info("Registering Mod Items for " + Super.MOD_ID);
         //ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientItemGroup);

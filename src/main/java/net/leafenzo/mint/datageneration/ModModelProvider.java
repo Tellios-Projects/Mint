@@ -31,6 +31,11 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(block, ModelId));
     }
 
+//    public final void registerBed(BlockStateModelGenerator blockStateModelGenerator, Block bed, Block particleSource) {
+//        blockStateModelGenerator.blockStateCollector.accept(Models.TEMPLATE_BED.upload(ModelIds.getItemModelId(bed.asItem()), TextureMap.particle(particleSource), blockStateModelGenerator.modelCollector));
+//    }
+
+
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
     // Block Models
@@ -46,11 +51,15 @@ public class ModModelProvider extends FabricModelProvider {
         registerUpDefaultOrientable(blockStateModelGenerator, ModBlocks.MINT_GLAZED_TERRACOTTA, TexturedModel.CUBE_ALL);
         blockStateModelGenerator.registerCandle(ModBlocks.MINT_CANDLE, ModBlocks.MINT_CANDLE_CAKE);
 
-//        blockStateModelGenerator.registerBed(ModBlocks.MINT_BED, Blocks.OAK_PLANKS);
-//        blockStateModelGenerator.registerShulkerBox(ModBlocks.MINT_SHULKER_BOX);
+        blockStateModelGenerator.registerBuiltin(ModelIds.getMinecraftNamespacedBlock("banner"), Blocks.OAK_PLANKS)
+                .includeWithItem(ModBlocks.MINT_BANNER)
+                .includeWithoutItem(ModBlocks.MINT_WALL_BANNER);
 
+        blockStateModelGenerator.registerBuiltin(ModelIds.getMinecraftNamespacedBlock("bed"), Blocks.OAK_PLANKS)
+                .includeWithItem(Models.TEMPLATE_BED, ModBlocks.MINT_BED);
+
+        blockStateModelGenerator.registerShulkerBox(ModBlocks.MINT_SHULKER_BOX);
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_SPRIG_BLOCK);
-
         blockStateModelGenerator.registerTintableCross(ModBlocks.WILD_MINT, BlockStateModelGenerator.TintType.NOT_TINTED);
 
         BlockStateModelGenerator.BlockTexturePool mintBricksTexturePool =
@@ -99,5 +108,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.MINT_COOKIE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MINT_DYE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MINT_TEA, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MINT_BANNER, Models.TEMPLATE_BANNER);
+        //itemModelGenerator.register(ModItems.MINT_BED, Models.TEMPLATE_BED);
     }
 }
