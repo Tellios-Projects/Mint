@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 //@Debug(export = true)
 @Mixin(BlockEntityType.class)
 public class BlockEntityTypeMixin {
-    @Inject(method = "supports", at = @At("HEAD"), cancellable = true) //I'm not sure if this is even necessary tbh.
+    @Inject(method = "supports", at = @At("HEAD"), cancellable = true)
     private void supports(BlockState state, CallbackInfoReturnable<Boolean> cir) {
         final BlockEntityType<?> type = ((BlockEntityType<?>) (Object) this);
         if (type == BlockEntityType.SHULKER_BOX) { //TODO FIXME

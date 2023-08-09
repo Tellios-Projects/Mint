@@ -78,11 +78,6 @@ public class ModBlocks {
         return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
     }
 
-    public static Block registerBlockWithoutBlockItemAndWithBlockEntity(String name, Block block) {
-        return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
-    }
-
-
     private static boolean never(BlockState blockState, BlockView blockView, BlockPos blockPos) {
         return false;
     }
