@@ -1,6 +1,24 @@
-package net.leafenzo.mint.mixin;
+/*
+Copyright 2021 ReMod Studios
+Copyright 2023 Tellio's Projects
 
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+ */
+// https://github.com/ReMod-Studios/Voidlands-Java/blob/1f07d4a1b72a103636ee104401a3652714411289/LICENSE#L4
+
+package net.leafenzo.mint.mixin;
 import com.google.common.collect.Maps;
+import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.minecraft.block.Blocks;
@@ -25,7 +43,7 @@ import java.util.stream.Collectors;
 
 @Mixin(SheepEntity.class)
 public abstract class SheepEntityMixin extends AnimalEntity implements Shearable {
-   @Unique private static final Identifier MINT_SHEEP_LOOT_TABLE = new Identifier(ID_KEY ,"entities/sheep/mint");
+   @Unique private static final Identifier MINT_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/mint");
 
    @Shadow @Final private static Map<DyeColor, ItemConvertible> DROPS;
    @Shadow @Final private static TrackedData <Byte> COLOR;
