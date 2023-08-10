@@ -4,8 +4,9 @@
   "package": "net.leafenzo.mint.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "DyeColorMixin",
     "BlockEntityTypeMixin",
+    "DyeColorMixin",
+    "SheepEntityMixin",
     "ShulkerBoxColoringRecipeMixin"
   ],
   "client": [
