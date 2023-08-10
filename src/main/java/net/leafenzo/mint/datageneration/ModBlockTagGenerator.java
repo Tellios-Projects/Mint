@@ -40,7 +40,14 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.MINT_BED)
                 .add(ModBlocks.MINT_BANNER)
+                .add(ModBlocks.MINT_WALL_BANNER)
         ;
+
+        getOrCreateTagBuilder(BlockTags.BANNERS)
+                .add(ModBlocks.MINT_BANNER)
+                .add(ModBlocks.MINT_WALL_BANNER)
+        ;
+
 //
 //        getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
 //        //.add(ModBlocks.)

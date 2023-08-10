@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "mint:mint_bed",
     "mint:mint_banner",
     "mint:mint_wall_banner"
   ]
