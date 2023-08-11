@@ -1,19 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "stained_glass_pane",
+  "group": "bed",
   "key": {
     "#": {
-      "item": "mint:mint_dye"
+      "item": "mint:mint_wool"
+    },
+    "X": {
+      "tag": "minecraft:planks"
     }
   },
   "pattern": [
     "###",
-    "###"
+    "XXX"
   ],
   "result": {
-    "count": 16,
-    "item": "mint:mint_stained_glass_pane"
+    "item": "mint:mint_bed"
   },
   "show_notification": true
 }

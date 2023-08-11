@@ -1,24 +1,24 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_glass_pane": {
+    "has_gravel": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:glass_pane"
+              "minecraft:gravel"
             ]
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_mint_stained_glass": {
+    "has_sand": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:mint_stained_glass"
+              "minecraft:sand"
             ]
           }
         ]
@@ -27,21 +27,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:mint_stained_glass_pane_from_glass_pane"
+        "recipe": "mint:mint_concrete"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_glass_pane",
-      "has_mint_stained_glass",
+      "has_sand",
+      "has_gravel",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:mint_stained_glass_pane_from_glass_pane"
+      "mint:mint_concrete"
     ]
   },
   "sends_telemetry_event": false

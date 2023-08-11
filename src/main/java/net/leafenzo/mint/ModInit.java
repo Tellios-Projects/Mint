@@ -10,6 +10,7 @@ import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.potions.ModPotions;
 import net.leafenzo.mint.registries.ModFabricRegistries;
 import net.minecraft.block.DispenserBlock;
+import net.minecraft.registry.Registries;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

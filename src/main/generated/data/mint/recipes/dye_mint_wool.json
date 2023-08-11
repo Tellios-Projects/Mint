@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "wool",
+  "ingredients": [
+    {
+      "item": "mint:mint_dye"
+    },
+    []
+  ],
+  "result": {
+    "item": "mint:mint_wool"
+  }
+}

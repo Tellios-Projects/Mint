@@ -1,6 +1,5 @@
 /*
 Copyright 2021 ReMod Studios
-Copyright 2023 Tellio's Projects
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -43,6 +42,7 @@ import java.util.stream.Collectors;
 
 @Mixin(SheepEntity.class)
 public abstract class SheepEntityMixin extends AnimalEntity implements Shearable {
+   // For now new sheep loot tables must be manually copied and renamed for each new dye in data/mint/loot_tables/sheep/ (unless we figure out how to datagen with the EntityLootTableGenerator) -Leah
    @Unique private static final Identifier MINT_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/mint");
 
    @Shadow @Final private static Map<DyeColor, ItemConvertible> DROPS;

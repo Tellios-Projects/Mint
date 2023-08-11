@@ -23,116 +23,53 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
     public ModBlockTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, Registries.BLOCK.getKey(), registriesFuture);
     }
-
-
-   //BlockTags & ItemTags are vanilla
-
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-//        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
-//        //.add(ModBlocks.)
-//        ;
-//
-//        getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
-//        //.add(ModBlocks.)
-//        ;
-//
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
-                .add(ModBlocks.MINT_BED)
-                .add(ModBlocks.MINT_BANNER)
-                .add(ModBlocks.MINT_WALL_BANNER)
-        ;
-
-        getOrCreateTagBuilder(BlockTags.BANNERS)
-                .add(ModBlocks.MINT_BANNER)
-                .add(ModBlocks.MINT_WALL_BANNER)
-        ;
-
-//
-//        getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
-//        //.add(ModBlocks.)
-//        ;
-
-        getOrCreateTagBuilder(BlockTags.CANDLES)
-                .add(ModBlocks.MINT_CANDLE)
-        ;
-
-        getOrCreateTagBuilder(BlockTags.CANDLE_CAKES)
-                .add(ModBlocks.MINT_CANDLE_CAKE)
+                .add(ModBlocks.BED_BLOCKS)
+                .add(ModBlocks.BANNER_BLOCKS)
+                .add(ModBlocks.WALL_BANNER_BLOCKS)
         ;
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-                .add(ModBlocks.MINT_CONCRETE)
-                .add(ModBlocks.MINT_TERRACOTTA)
-                .add(ModBlocks.MINT_GLAZED_TERRACOTTA)
-                .add(ModBlocks.MINT_SHULKER_BOX)
+                .add(ModBlocks.TERRACOTTA_BLOCKS)
+                .add(ModBlocks.CONCRETE_BLOCKS)
+                .add(ModBlocks.GLAZED_TERRACOTTA_BLOCKS)
+                .add(ModBlocks.SHULKER_BOX_BLOCKS)
+        ;
+
+        getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
+              .add(ModBlocks.CONCRETE_POWDER_BLOCKS)
+        ;
+
+        getOrCreateTagBuilder(BlockTags.BANNERS)
+                .add(ModBlocks.BANNER_BLOCKS)
+                .add(ModBlocks.WALL_BANNER_BLOCKS)
+        ;
+
+        getOrCreateTagBuilder(BlockTags.CANDLES)
+                .add(ModBlocks.CANDLE_BLOCKS);
+        ;
+
+        getOrCreateTagBuilder(BlockTags.CANDLE_CAKES)
+                .add(ModBlocks.CANDLE_CAKE_BLOCKS);
         ;
 
         getOrCreateTagBuilder(BlockTags.SHULKER_BOXES)
-                .add(ModBlocks.MINT_SHULKER_BOX)
+                .add(ModBlocks.SHULKER_BOX_BLOCKS)
         ;
 
-//        getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
-//        //.add(ModBlocks.)
-//        ;
-//
         getOrCreateTagBuilder(BlockTags.LEAVES)
-            .add(ModBlocks.MINT_SPRIG_BLOCK)
+                .add(ModBlocks.MINT_SPRIG_BLOCK)
         ;
 
         getOrCreateTagBuilder(BlockTags.WOOL)
-                .add(ModBlocks.MINT_WOOL)
+                .add(ModBlocks.WOOL_BLOCKS)
         ;
 
         getOrCreateTagBuilder(BlockTags.WOOL_CARPETS)
-                .add(ModBlocks.MINT_CARPET)
+                .add(ModBlocks.CARPET_BLOCKS)
         ;
-
-        //getOrCreateTagBuilder(BlockTags.wa)
-
-//        getOrCreateTagBuilder(BlockTags.BEACON_BASE_BLOCKS)
-//        //.add(ModBlocks.)
-//        ;
-//
-//        getOrCreateTagBuilder(BlockTags.CRYSTAL_SOUND_BLOCKS)
-//        //.add(ModBlocks.)
-//        ;
-//
-//        getOrCreateTagBuilder(BlockTags.INFINIBURN_OVERWORLD)
-//        //.add(ModBlocks.)
-//        ;
-//
-//        getOrCreateTagBuilder(BlockTags.SOUL_FIRE_BASE_BLOCKS)
-//        //.add(ModBlocks.)
-//        ;
-//
-//        getOrCreateTagBuilder(BlockTags.SOUL_SPEED_BLOCKS)
-//        //.add(ModBlocks.)
-//        ;
-//
-//        getOrCreateTagBuilder(BlockTags.WITHER_IMMUNE)
-//        //.add(ModBlocks.)
-//        ;
-//
-//        getOrCreateTagBuilder(BlockTags.GUARDED_BY_PIGLINS)
-//        //.add(ModBlocks.)
-//        ;
-//
-//        getOrCreateTagBuilder(BlockTags.CLIMBABLE)
-//        //.add(ModBlocks.)
-//        ;
-//
-//        getOrCreateTagBuilder(BlockTags.SAND)
-//        //.add(ModBlocks.)
-//        ;
-//
-//        getOrCreateTagBuilder(BlockTags.DIRT)
-//        //.add(ModBlocks.)
-//        ;
-//
-//        getOrCreateTagBuilder(BlockTags.DEAD_BUSH_MAY_PLACE_ON)
-//        //.add(ModBlocks.)
-//        ;
     }
 }
 

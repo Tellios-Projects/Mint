@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Debug(export = true)
+//@Debug(export = true)
 @Mixin(ShulkerBoxColoringRecipe.class)
 public class ShulkerBoxColoringRecipeMixin {
     @Inject(method = "craft", at = @At("TAIL"), cancellable = true)

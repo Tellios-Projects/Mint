@@ -5,6 +5,7 @@
 
 package net.leafenzo.mint.mixin;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.ModShulkerBoxBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.*;
 
@@ -22,70 +23,31 @@ public class BlockEntityTypeMixin {
     @Inject(method = "supports", at = @At("HEAD"), cancellable = true)
     private void supports(BlockState state, CallbackInfoReturnable<Boolean> cir) {
         final BlockEntityType<?> type = ((BlockEntityType<?>) (Object) this);
-        if (type == BlockEntityType.SHULKER_BOX) { //TODO FIXME
-            if (state.isOf(ModBlocks.MINT_SHULKER_BOX))
-                cir.setReturnValue(true);
-        } else if (type == BlockEntityType.BED) {
-            if (state.isOf(ModBlocks.MINT_BED))
-                cir.setReturnValue(true);
-        } else if (type == BlockEntityType.BANNER) {
-            if (state.isOf(ModBlocks.MINT_BANNER) || state.isOf(ModBlocks.MINT_WALL_BANNER))
-                cir.setReturnValue(true);
+        if (type == BlockEntityType.BED &&
+                (state.getBlock() instanceof BedBlock)) {
+            cir.setReturnValue(true);
+        }
+        if (type == BlockEntityType.SHULKER_BOX &&
+                    (state.getBlock() instanceof ShulkerBoxBlock ||
+                state.getBlock() instanceof ModShulkerBoxBlock)) {
+            cir.setReturnValue(true);
+        }
+        else if (type == BlockEntityType.BANNER &&
+                    (state.getBlock() instanceof BannerBlock ||
+                state.getBlock() instanceof WallBannerBlock)) {
+            cir.setReturnValue(true);
         }
 
-//        if (BlockEntityType.BED.equals(state) && (state.getBlock() instanceof BedBlock)) {
-//            info.setReturnValue(true);
-//        }
-//        if (BlockEntityType.SHULKER_BOX.equals(state) && (state.getBlock() instanceof ShulkerBoxBlock)) {
-//            info.setReturnValue(true);
-//        }
-//        else if (BlockEntityType.BANNER.equals(state) && (state.getBlock() instanceof BannerBlock ||
-//                state.getBlock() instanceof WallBannerBlock)) {
-//            info.setReturnValue(true);
-//        }
-    }
-}
-
-//@Mixin(BlockEntityType.class)
-//public abstract class BlockEntityTypeMixin {
-//    @Shadow @Final public static BlockEntityType<ShulkerBoxBlockEntity> SHULKER_BOX;
-//    @Shadow @Final public static BlockEntityType<BedBlockEntity> BED;
-//    @Shadow @Final public static BlockEntityType<BannerBlockEntity> BANNER;
-//
-//    @SuppressWarnings("ConstantConditions")
-//    @Inject(method = "supports", at = @At("RETURN"), cancellable = true)
-//    public void supportCustomBlocks(BlockState state, CallbackInfoReturnable<Boolean> cir) {
-//        final BlockEntityType<?> type = ((BlockEntityType<?>) (Object) this);
-//        if (type == SHULKER_BOX) { //TODO FIXME
+//        if (type == BlockEntityType.SHULKER_BOX) {
 //            if (state.isOf(ModBlocks.MINT_SHULKER_BOX))
 //                cir.setReturnValue(true);
-//        } else if (type == BED) {
+//        } else if (type == BlockEntityType.BED) {
 //            if (state.isOf(ModBlocks.MINT_BED))
 //                cir.setReturnValue(true);
-//        } else if (type == BANNER) {
+//        } else if (type == BlockEntityType.BANNER) {
 //            if (state.isOf(ModBlocks.MINT_BANNER) || state.isOf(ModBlocks.MINT_WALL_BANNER))
 //                cir.setReturnValue(true);
 //        }
-//    }
-
-//    @Inject(method = "supports", at = @At("HEAD"), cancellable = true)
-//    private void supports(BlockState state, CallbackInfoReturnable<Boolean> info) {
-//        if (BlockEntityType.BED.equals(this) && (state.getBlock() instanceof BedBlock ||
-//                state.getBlock() instanceof BedBlock)) {
-//            info.setReturnValue(true);
-//        }
-//        else if (BlockEntityType.SHULKER_BOX.equals(this) && (state.getBlock() instanceof ShulkerBoxBlock ||
-//                state.getBlock() instanceof ShulkerBoxBlock)) {
-//            info.setReturnValue(true);
-//        }
-//        else if (BlockEntityType.BANNER.equals(this) && (state.getBlock() instanceof BannerBlock ||
-//                state.getBlock() instanceof BannerBlock)) {
-//            info.setReturnValue(true);
-//        }
-//        else if (BlockEntityType.BANNER.equals(this) && (state.getBlock() instanceof WallBannerBlock ||
-//                state.getBlock() instanceof WallBannerBlock)) {
-//            info.setReturnValue(true);
-//        }
-//    }
-//}
+    }
+}
 

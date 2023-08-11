@@ -13,6 +13,8 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
+
+    //MINT - Special
     public static final Item MINT_SPRIG = registerItem("mint_sprig", new MintSprigItem(new FabricItemSettings()
             .food(new FoodComponent.Builder()
                     .alwaysEdible()
@@ -34,14 +36,26 @@ public class ModItems {
                     .saturationModifier(4.0f)
                     .build())));
 
-    //TODO - figure out what's up with slapping the sheep with the same color over and over again?
-    // ...is it something to do with <sheepEntity.getColor() != this.color> going off of .byId?
+    // Main
     public static final Item MINT_DYE = registerItem("mint_dye", new DyeItem(ModDyeColor.MINT, new FabricItemSettings()));
-
     public static final Item MINT_BED = registerItem(new BedItem(ModBlocks.MINT_BED, new Item.Settings().maxCount(1)));
     public static final Item MINT_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.MINT_SHULKER_BOX, new Item.Settings().maxCount(1)));
     public static final Item MINT_BANNER = registerItem(new BannerItem(ModBlocks.MINT_BANNER, ModBlocks.MINT_WALL_BANNER, new Item.Settings().maxCount(16)));
+//    public static final Item PEACH_DYE = registerItem("peach_dye", new DyeItem(ModDyeColor.PEACH, new FabricItemSettings()));
+//    public static final Item PEACH_BED = registerItem(new BedItem(ModBlocks.PEACH_BED, new Item.Settings().maxCount(1)));
+//    public static final Item PEACH_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.PEACH_SHULKER_BOX, new Item.Settings().maxCount(1)));
+//    public static final Item PEACH_BANNER = registerItem(new BannerItem(ModBlocks.PEACH_BANNER, ModBlocks.PEACH_WALL_BANNER, new Item.Settings().maxCount(16)));
+//    public static final Item PERIWINKLE_DYE = registerItem("periwinkle_dye", new DyeItem(ModDyeColor.PERIWINKLE, new FabricItemSettings()));
+//    public static final Item PERIWINKLE_BED = registerItem(new BedItem(ModBlocks.PERIWINKLE_BED, new Item.Settings().maxCount(1)));
+//    public static final Item PERIWINKLE_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.PERIWINKLE_SHULKER_BOX, new Item.Settings().maxCount(1)));
+//    public static final Item PERIWINKLE_BANNER = registerItem(new BannerItem(ModBlocks.PERIWINKLE_BANNER, ModBlocks.PERIWINKLE_WALL_BANNER, new Item.Settings().maxCount(16)));
+//    public static final Item ARTICHOKE_DYE = registerItem("artichoke_dye", new DyeItem(ModDyeColor.ARTICHOKE, new FabricItemSettings()));
+//    public static final Item ARTICHOKE_BED = registerItem(new BedItem(ModBlocks.ARTICHOKE_BED, new Item.Settings().maxCount(1)));
+//    public static final Item ARTICHOKE_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.ARTICHOKE_SHULKER_BOX, new Item.Settings().maxCount(1)));
+//    public static final Item ARTICHOKE_BANNER = registerItem(new BannerItem(ModBlocks.ARTICHOKE_BANNER, ModBlocks.ARTICHOKE_WALL_BANNER, new Item.Settings().maxCount(16)));
 
+    // Arrays
+    public static final Item[] DYE_ITEMS = {MINT_DYE/*, PEACH_DYE, PERIWINKLE_DYE, ARTICHOKE_DYE*/ };
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), (Item)item);

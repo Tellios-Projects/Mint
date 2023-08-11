@@ -15,7 +15,7 @@ import net.minecraft.util.Identifier;
 
 public interface ModRecipeSerializer<T extends Recipe<?>> {
 
-    net.minecraft.recipe.RecipeSerializer<ShulkerBoxColoringRecipe> SHULKER_BOX_INCLUSIVE = register("crafting_special_shulkerboxcoloring_including_new_dyes", new SpecialRecipeSerializer(ShulkerBoxColoringRecipe::new));
+    net.minecraft.recipe.RecipeSerializer<WoolColoringRecipe> WOOL_COLORING = register("wool_coloring", new SpecialRecipeSerializer(WoolColoringRecipe::new));
     T read(Identifier id, JsonObject json);
     T read(Identifier id, PacketByteBuf buf);
     void write(PacketByteBuf buf, T recipe);

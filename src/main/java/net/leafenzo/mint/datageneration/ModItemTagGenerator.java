@@ -27,14 +27,10 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
     public ModItemTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, Registries.ITEM.getKey(), registriesFuture);
     }
-
-
-    //BlockTags & ItemTags are vanilla
-
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         getOrCreateTagBuilder(ItemTags.CANDLES)
-                .add(ModBlocks.MINT_CANDLE.asItem())
+                .add(ModBlocks.toItems(ModBlocks.CANDLE_BLOCKS))
         ;
     }
 }
