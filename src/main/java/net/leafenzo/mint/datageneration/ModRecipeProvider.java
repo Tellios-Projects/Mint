@@ -4,21 +4,19 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
-import net.leafenzo.mint.util.Util;
+import net.leafenzo.mint.recipe.ModRecipeSerializer;
 import net.minecraft.block.Block;
 import net.minecraft.data.server.recipe.*;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.function.Consumer;
 
 
@@ -36,7 +34,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
 
-    public static void offerCarpetRecipesIteratively(Consumer<RecipeJsonProvider> exporter, Block[] carpets, Block[] inputs) {
+    public static void offerCarpetRecipes(Consumer<RecipeJsonProvider> exporter, Block[] carpets, Block[] inputs) {
         if(carpets.length > inputs.length) { throw new RuntimeException();
 //            throw new RuntimeException("More carpets than wools");
         }
@@ -46,61 +44,60 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             offerCarpetRecipe(exporter, carpets[i], inputs[i]);
         }
     }
-    public static void offerTerracottaDyeingRecipesIteratively(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
+    public static void offerTerracottaDyeingRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
         if(outputs.length > inputs.length) { throw new RuntimeException(); }
         for(int i = 0; i < inputs.length; i++) {
             offerTerracottaDyeingRecipe(exporter, outputs[i], inputs[i]);
         }
     }
-    public static void offerConcretePowderDyeingRecipesIteratively(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
+    public static void offerConcretePowderDyeingRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
         if(outputs.length > inputs.length) { throw new RuntimeException(); }
         for(int i = 0; i < inputs.length; i++) {
             offerConcretePowderDyeingRecipe(exporter, outputs[i], inputs[i]);
         }
     }
-    public static void offerGlazedTerracottaSmeltingRecipesIteratively(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
+    public static void offerGlazedTerracottaSmeltingRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
         if(outputs.length > inputs.length) { throw new RuntimeException(); }
         for(int i = 0; i < inputs.length; i++) {
             CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(inputs[i]), RecipeCategory.BUILDING_BLOCKS, outputs[i], 0.1f, 200);
         }
     }
-    public static void offerBannerRecipesIteratively(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
+    public static void offerBannerRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
         if(outputs.length > inputs.length) { throw new RuntimeException(); }
         for(int i = 0; i < inputs.length; i++) {
             offerBannerRecipe(exporter, outputs[i], inputs[i]);
         }
     }
-    public static void offerCandleDyeingRecipesIteratively(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
+    public static void offerCandleDyeingRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
         if(outputs.length > inputs.length) { throw new RuntimeException(); }
         for(int i = 0; i < inputs.length; i++) {
             offerCandleDyeingRecipe(exporter, outputs[i], inputs[i]);
         }
     }
-    public static void offerBedRecipesIteratively(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
+    public static void offerBedRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
         if(outputs.length > inputs.length) { throw new RuntimeException(); }
         for(int i = 0; i < inputs.length; i++) {
             offerBedRecipe(exporter, outputs[i], inputs[i]);
         }
     }
-    public static void offerStainedGlassRecipesIteratively(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
+    public static void offerStainedGlassRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
         if(outputs.length > inputs.length) { throw new RuntimeException(); }
         for(int i = 0; i < inputs.length; i++) {
             offerStainedGlassDyeingRecipe(exporter, outputs[i], inputs[i]);
         }
     }
-    public static void offerStainedGlassPaneRecipesIteratively(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
+    public static void offerStainedGlassPaneRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
         if(outputs.length > inputs.length) { throw new RuntimeException(); }
         for(int i = 0; i < inputs.length; i++) {
             offerStainedGlassPaneDyeingRecipe(exporter, outputs[i], inputs[i]);
         }
     }
-    public static void offerStainedGlassPaneDyeingRecipesIteratively(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
+    public static void offerStainedGlassPaneDyeingRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
         if(outputs.length > inputs.length) { throw new RuntimeException(); }
         for(int i = 0; i < inputs.length; i++) {
             offerStainedGlassPaneRecipe(exporter, outputs[i], inputs[i]);
         }
     }
-
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
@@ -117,50 +114,48 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         this.offerShapelessRecipe(exporter, ModItems.MINT_DYE, Ingredient.ofItems(Items.LIME_DYE, Items.LIGHT_BLUE_DYE), RecipeCategory.MISC, 2);
         this.offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.MINT_SPRIG, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_SPRIG_BLOCK);
 
-
-
-        // Util
-  //      Array All_Dyes =  (ArrayList<ItemConvertible>)Arrays.stream(ModItems.DYE_ITEMS).toList(); //TODO fixme
-
         // Main
+        //ComplexRecipeJsonBuilder.create(ModRecipeSerializer.COLORING_RECIPES).offerTo(exporter, "coloring_recipes");
 //  WOOL_BLOCKS
-        offerDyeableRecipes(exporter, Arrays.stream(ModItems.DYE_ITEMS).toList(), Arrays.stream(ModBlocks.toItems((ModBlocks.WOOL_BLOCKS))).toList(), "wool"); //TODO fixme
+        ComplexRecipeJsonBuilder.create(ModRecipeSerializer.WOOL_COLORING_RECIPE).offerTo(exporter, "wool_coloring_recipe");
 
 //  CARPET_BLOCKS
-        offerCarpetRecipesIteratively(exporter, ModBlocks.CARPET_BLOCKS, ModBlocks.WOOL_BLOCKS);
-        offerDyeableRecipes(exporter, Arrays.stream(ModItems.DYE_ITEMS).toList(), Arrays.stream(ModBlocks.toItems((ModBlocks.CARPET_BLOCKS))).toList(), "carpet");
+        offerCarpetRecipes(exporter, ModBlocks.CARPET_BLOCKS, ModBlocks.WOOL_BLOCKS);
+        ComplexRecipeJsonBuilder.create(ModRecipeSerializer.WOOL_CARPET_COLORING_RECIPE).offerTo(exporter, "wool_carpet_coloring_recipe");
 
 //  TERRACOTTA_BLOCKS
-        offerTerracottaDyeingRecipesIteratively(exporter, ModBlocks.TERRACOTTA_BLOCKS, ModItems.DYE_ITEMS);
+        offerTerracottaDyeingRecipes(exporter, ModBlocks.TERRACOTTA_BLOCKS, ModItems.DYE_ITEMS);
+
+//  CONCRETE_POWDER_BLOCKS
+        offerConcretePowderDyeingRecipes(exporter, ModBlocks.CONCRETE_BLOCKS, ModItems.DYE_ITEMS);
+
+//  GLAZED_TERRACOTTA_BLOCKS
+        offerGlazedTerracottaSmeltingRecipes(exporter, ModBlocks.TERRACOTTA_BLOCKS, ModBlocks.GLAZED_TERRACOTTA_BLOCKS);
+
+//  STAINED_GLASS_BLOCKS
+        offerStainedGlassRecipes(exporter, ModBlocks.STAINED_GLASS_BLOCKS, ModItems.DYE_ITEMS);
+
+//  STAINED_GLASS_PANE_BLOCKS
+        offerStainedGlassPaneRecipes(exporter, ModBlocks.STAINED_GLASS_PANE_BLOCKS, ModBlocks.STAINED_GLASS_BLOCKS);
+        offerStainedGlassPaneDyeingRecipes(exporter, ModBlocks.STAINED_GLASS_PANE_BLOCKS, ModItems.DYE_ITEMS);
+
+//  SHULKER_BOX_BLOCKS
+        //Handled by the MIXIN to the serialized ShulkerBoxColoringRecipe
+
+//  BED_BLOCKS
+        offerBedRecipes(exporter, ModBlocks.BED_BLOCKS, ModBlocks.WOOL_BLOCKS);
+        ComplexRecipeJsonBuilder.create(ModRecipeSerializer.BED_COLORING_RECIPE).offerTo(exporter, "bed_coloring_recipe");
+
+//  CANDLE_BLOCKS
+        offerCandleDyeingRecipes(exporter, ModBlocks.CANDLE_BLOCKS, ModItems.DYE_ITEMS);
+
+//  BANNER_BLOCKS
+        offerBannerRecipes(exporter, ModBlocks.BANNER_BLOCKS, ModBlocks.WOOL_BLOCKS);
+    }
+}
+
+
 //        offerTerracottaDyeingRecipe(exporter, ModBlocks.MINT_TERRACOTTA, ModItems.MINT_DYE);
 //        offerTerracottaDyeingRecipe(exporter, ModBlocks.PEACH_TERRACOTTA, ModItems.PEACH_DYE);
 //        offerTerracottaDyeingRecipe(exporter, ModBlocks.PERIWINKLE_TERRACOTTA, ModItems.PERIWINKLE_DYE);
 //        offerTerracottaDyeingRecipe(exporter, ModBlocks.ARTICHOKE_TERRACOTTA, ModItems.ARTICHOKE_DYE);
-
-//  CONCRETE_POWDER_BLOCKS
-        offerConcretePowderDyeingRecipesIteratively(exporter, ModBlocks.CONCRETE_BLOCKS, ModItems.DYE_ITEMS);
-
-//  GLAZED_TERRACOTTA_BLOCKS
-        offerGlazedTerracottaSmeltingRecipesIteratively(exporter, ModBlocks.TERRACOTTA_BLOCKS, ModBlocks.GLAZED_TERRACOTTA_BLOCKS);
-
-//  STAINED_GLASS_BLOCKS
-        offerStainedGlassRecipesIteratively(exporter, ModBlocks.STAINED_GLASS_BLOCKS, ModItems.DYE_ITEMS);
-
-//  STAINED_GLASS_PANE_BLOCKS
-        offerStainedGlassPaneRecipesIteratively(exporter, ModBlocks.STAINED_GLASS_PANE_BLOCKS, ModBlocks.STAINED_GLASS_BLOCKS);
-        offerStainedGlassPaneDyeingRecipesIteratively(exporter, ModBlocks.STAINED_GLASS_PANE_BLOCKS, ModItems.DYE_ITEMS);
-
-//  BED_BLOCKS
-        offerBedRecipesIteratively(exporter, ModBlocks.BED_BLOCKS, ModBlocks.WOOL_BLOCKS);
-        //offerDyeableRecipes(exporter, (Collections.addAll(  Arrays.stream(ModItems.DYE_ITEMS).toList(), Util.VANILLA_DYES.stream().toList())).toList()
-
-//
-//                , Arrays.stream(ModBlocks.toItems((ModBlocks.BED_BLOCKS))).toList(), "bed");
-
-//  CANDLE_BLOCKS
-        offerCandleDyeingRecipesIteratively(exporter, ModBlocks.CANDLE_BLOCKS, ModItems.DYE_ITEMS);
-//  BANNER_BLOCKS
-        offerBannerRecipesIteratively(exporter, ModBlocks.BANNER_BLOCKS, ModBlocks.WOOL_BLOCKS);
-    }
-}
-

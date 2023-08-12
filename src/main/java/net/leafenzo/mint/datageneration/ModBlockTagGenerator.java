@@ -67,6 +67,10 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
                 .add(ModBlocks.WOOL_BLOCKS)
         ;
 
+        getOrCreateTagBuilder(BlockTags.BEDS)
+                .add(ModBlocks.BED_BLOCKS)
+        ;
+
         getOrCreateTagBuilder(BlockTags.WOOL_CARPETS)
                 .add(ModBlocks.CARPET_BLOCKS)
         ;

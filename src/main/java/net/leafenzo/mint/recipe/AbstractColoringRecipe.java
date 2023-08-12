@@ -1,14 +1,6 @@
 package net.leafenzo.mint.recipe;
 
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
-
-import net.leafenzo.mint.block.ModShulkerBoxBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.DyeItem;
 import net.minecraft.item.Item;
@@ -18,14 +10,26 @@ import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.registry.DynamicRegistryManager;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
-public class ModShulkerBoxColoringRecipe extends SpecialCraftingRecipe {
-    public ModShulkerBoxColoringRecipe(Identifier identifier, CraftingRecipeCategory craftingRecipeCategory) {
+
+public abstract class AbstractColoringRecipe
+extends SpecialCraftingRecipe {
+    public AbstractColoringRecipe(Identifier identifier, CraftingRecipeCategory craftingRecipeCategory) {
         super(identifier, craftingRecipeCategory);
+
     }
 
+    protected TagKey<Block> getDyablesTag() {
+        return BlockTags.WOOL;
+    }
+
+    @Override
     public boolean matches(RecipeInputInventory recipeInputInventory, World world) {
         int i = 0;
         int j = 0;
@@ -33,13 +37,13 @@ public class ModShulkerBoxColoringRecipe extends SpecialCraftingRecipe {
         for(int k = 0; k < recipeInputInventory.size(); ++k) {
             ItemStack itemStack = recipeInputInventory.getStack(k);
             if (!itemStack.isEmpty()) {
-                if (Block.getBlockFromItem(itemStack.getItem()) instanceof ShulkerBoxBlock) {
+                Block block = Block.getBlockFromItem(itemStack.getItem());
+                if (block != null && Registries.BLOCK.getOrCreateEntryList(getDyablesTag()).contains(Registries.BLOCK.getEntry(block))) {
                     ++i;
                 } else {
                     if (!(itemStack.getItem() instanceof DyeItem)) {
                         return false;
                     }
-
                     ++j;
                 }
 
@@ -52,39 +56,46 @@ public class ModShulkerBoxColoringRecipe extends SpecialCraftingRecipe {
         return i == 1 && j == 1;
     }
 
+    @Override
     public ItemStack craft(RecipeInputInventory recipeInputInventory, DynamicRegistryManager dynamicRegistryManager) {
-        ItemStack itemStack = ItemStack.EMPTY;
-        DyeItem dyeItem = (DyeItem)Items.WHITE_DYE;
+        //return Items.PUFFERFISH.getDefaultStack(); //debug ^w^
+        ItemStack itemStack = ItemStack.EMPTY; //fallback
+        DyeItem dyeItem = (DyeItem) Items.WHITE_DYE; //fallback
 
         for(int i = 0; i < recipeInputInventory.size(); ++i) {
             ItemStack itemStack2 = recipeInputInventory.getStack(i);
             if (!itemStack2.isEmpty()) {
                 Item item = itemStack2.getItem();
-                if (Block.getBlockFromItem(item) instanceof ModShulkerBoxBlock) {
+                Block block = Block.getBlockFromItem(item);
+                if (Registries.BLOCK.getOrCreateEntryList(getDyablesTag()).contains(Registries.BLOCK.getEntry(block))) {
                     itemStack = itemStack2;
                 }
-                else if (Block.getBlockFromItem(item) instanceof ShulkerBoxBlock) {
-                    itemStack = itemStack2;
-                } else if (item instanceof DyeItem) {
+                else if (item instanceof DyeItem) {
                     dyeItem = (DyeItem)item;
                 }
             }
         }
 
-        ItemStack itemStack3 = ModShulkerBoxBlock.getItemStack(dyeItem.getColor());
-
-        if (itemStack.hasNbt()) {
-            itemStack3.setNbt(itemStack.getNbt().copy());
+        ItemStack itemStack3 = ItemStack.EMPTY; //fallback
+        String dyeColorName = dyeItem.getColor().getName();
+        for(RegistryEntry<Block> entry : Registries.BLOCK.getOrCreateEntryList(getDyablesTag())) {
+            Block block2 = Registries.BLOCK.get(entry.getKey().get());
+            if(Registries.BLOCK.getId(block2).getPath().contains(dyeColorName + "_")) {
+                itemStack3 = block2.asItem().getDefaultStack();
+                if(itemStack.getItem() == itemStack3.getItem()) { return ItemStack.EMPTY; } //Check if its literally just making the same item as the dyeable input
+                return itemStack3;
+            }
         }
-
         return itemStack3;
     }
 
+    @Override
     public boolean fits(int width, int height) {
         return width * height >= 2;
     }
 
+    @Override
     public RecipeSerializer<?> getSerializer() {
-        return RecipeSerializer.SHULKER_BOX;
+        return null;
     }
 }

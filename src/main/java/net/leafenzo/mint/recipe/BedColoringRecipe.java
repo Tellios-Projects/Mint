@@ -7,17 +7,17 @@ import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
-public class WoolColoringRecipe
+public class BedColoringRecipe
 extends AbstractColoringRecipe {
-    public WoolColoringRecipe(Identifier identifier, CraftingRecipeCategory craftingRecipeCategory) {
+    public BedColoringRecipe(Identifier identifier, CraftingRecipeCategory craftingRecipeCategory) {
         super(identifier, craftingRecipeCategory);
     }
     @Override
     protected TagKey<Block> getDyablesTag() {
-        return BlockTags.WOOL;
+        return BlockTags.BEDS;
     }
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return ModRecipeSerializer.WOOL_COLORING_RECIPE;
+        return ModRecipeSerializer.BED_COLORING_RECIPE;
     }
 }

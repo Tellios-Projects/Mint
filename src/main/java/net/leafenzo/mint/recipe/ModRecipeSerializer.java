@@ -1,26 +1,21 @@
 package net.leafenzo.mint.recipe;
 
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
-
-import com.google.gson.JsonObject;
-import net.minecraft.network.PacketByteBuf;
+import net.leafenzo.mint.ModInit;
+import net.leafenzo.mint.Super;
 import net.minecraft.recipe.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 
 public interface ModRecipeSerializer<T extends Recipe<?>> {
-
-    net.minecraft.recipe.RecipeSerializer<WoolColoringRecipe> WOOL_COLORING = register("wool_coloring", new SpecialRecipeSerializer(WoolColoringRecipe::new));
-    T read(Identifier id, JsonObject json);
-    T read(Identifier id, PacketByteBuf buf);
-    void write(PacketByteBuf buf, T recipe);
+    net.minecraft.recipe.RecipeSerializer<AbstractColoringRecipe> WOOL_COLORING_RECIPE = register("wool_coloring_recipe", new SpecialRecipeSerializer(WoolColoringRecipe::new));
+    net.minecraft.recipe.RecipeSerializer<WoolCarpetColoringRecipe> WOOL_CARPET_COLORING_RECIPE = register("wool_carpet_coloring_recipe", new SpecialRecipeSerializer(WoolCarpetColoringRecipe::new));
+    net.minecraft.recipe.RecipeSerializer<BedColoringRecipe> BED_COLORING_RECIPE = register("bed_coloring_recipe", new SpecialRecipeSerializer(BedColoringRecipe::new));
 
     static <S extends net.minecraft.recipe.RecipeSerializer<T>, T extends Recipe<?>> S register(String id, S serializer) {
         return Registry.register(Registries.RECIPE_SERIALIZER, id, serializer);
+    }
+
+    public static void registerModRecipeSerializer() {
+        ModInit.LOGGER.debug("Registering the recipe serializer for " + Super.MOD_ID);
     }
 }
