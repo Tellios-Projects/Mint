@@ -1,6 +1,14 @@
 {
   "replace": false,
   "values": [
-    "mint:mint_shulker_box"
+    "mint:mint_shulker_box",
+    "mint:peach_shulker_box",
+    "mint:periwinkle_shulker_box",
+    "mint:artichoke_shulker_box",
+    "mint:fuchsia_shulker_box",
+    "mint:vermilion_shulker_box",
+    "mint:shamrock_shulker_box",
+    "mint:indigo_shulker_box",
+    "mint:banana_shulker_box"
   ]
 }

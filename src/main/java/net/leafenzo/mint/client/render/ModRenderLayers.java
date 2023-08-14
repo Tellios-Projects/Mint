@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
+import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
 
 public class ModRenderLayers {
@@ -13,12 +14,13 @@ public class ModRenderLayers {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
                 ModBlocks.MINT_CROP,
                 ModBlocks.WILD_MINT
-                //ModBlocks.MINT_BED    //These are instead found in the TexturedRenderLayersMixin
-                //ModBlocks.MINT_SHULKER_BOX
         );
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
-                ModBlocks.MINT_STAINED_GLASS,
-                ModBlocks.MINT_STAINED_GLASS_PANE
-        );
+
+        for(Block block : ModBlocks.STAINED_GLASS_BLOCKS) {
+            BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
+        }
+        for(Block block : ModBlocks.STAINED_GLASS_PANE_BLOCKS) {
+            BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
+        }
     }
 }

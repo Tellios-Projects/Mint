@@ -1,6 +1,14 @@
 {
   "replace": false,
   "values": [
-    "mint:mint_candle"
+    "mint:mint_candle",
+    "mint:peach_candle",
+    "mint:periwinkle_candle",
+    "mint:artichoke_candle",
+    "mint:fuchsia_candle",
+    "mint:vermilion_candle",
+    "mint:shamrock_candle",
+    "mint:indigo_candle",
+    "mint:banana_candle"
   ]
 }

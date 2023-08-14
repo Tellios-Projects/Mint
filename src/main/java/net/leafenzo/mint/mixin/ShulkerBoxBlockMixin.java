@@ -13,13 +13,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Debug(export = true)
+//@Debug(export = true)
 @Mixin(ShulkerBoxBlock.class)
 public abstract class ShulkerBoxBlockMixin {
-    @Inject(method = "get", at = @At("HEAD"), cancellable = true)
-    private static void get(DyeColor color, CallbackInfoReturnable<Block> cir) {
-        // thank you mojank, very cool
-        if (color == ModDyeColor.MINT)
-            cir.setReturnValue(ModBlocks.MINT_SHULKER_BOX); // This won't work unless I somehow make the ModBlocks.MINT_SHULKER_BOX be registered earlier. which is hard and would cause problems.
-    }
+    // UNUSED
+//    @Inject(method = "get", at = @At("HEAD"), cancellable = true)
+//    private static void get(DyeColor color, CallbackInfoReturnable<Block> cir) {
+//        // thank you mojank, very cool
+//        if (color == ModDyeColor.MINT)
+//            cir.setReturnValue(ModBlocks.MINT_SHULKER_BOX); // This won't work unless I somehow make the ModBlocks.MINT_SHULKER_BOX be registered earlier. which is hard and would cause problems.
+//    }
 }

@@ -17,5 +17,20 @@ object PlatformInterfaceImpl {
 
     @JvmStatic fun getMintDyeColor(): DyeColor =
             ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.MINT.fieldName)
-
+    @JvmStatic fun getPeachDyeColor(): DyeColor =
+            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.PEACH.fieldName)
+    @JvmStatic fun getPeriwinkleDyeColor(): DyeColor =
+            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.PERIWINKLE.fieldName)
+    @JvmStatic fun getArtichokeDyeColor(): DyeColor =
+            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.ARTICHOKE.fieldName)
+    @JvmStatic fun getFuchsiaDyeColor(): DyeColor =
+            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.FUCHSIA.fieldName)
+    @JvmStatic fun getVermilionDyeColor(): DyeColor =
+            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.VERMILION.fieldName)
+    @JvmStatic fun getShamrockDyeColor(): DyeColor =
+            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.SHAMROCK.fieldName)
+    @JvmStatic fun getIndigoDyeColor(): DyeColor =
+            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.INDIGO.fieldName)
+    @JvmStatic fun getBananaDyeColor(): DyeColor =
+            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.BANANA.fieldName)
 }

@@ -1,6 +1,14 @@
 {
   "replace": false,
   "values": [
-    "mint:mint_wool"
+    "mint:mint_wool",
+    "mint:peach_wool",
+    "mint:periwinkle_wool",
+    "mint:artichoke_wool",
+    "mint:fuchsia_wool",
+    "mint:vermilion_wool",
+    "mint:shamrock_wool",
+    "mint:indigo_wool",
+    "mint:banana_wool"
   ]
 }

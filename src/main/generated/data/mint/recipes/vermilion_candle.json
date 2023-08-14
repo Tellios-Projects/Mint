@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "dyed_candle",
+  "ingredients": [
+    {
+      "item": "minecraft:candle"
+    },
+    {
+      "item": "mint:vermilion_dye"
+    }
+  ],
+  "result": {
+    "item": "mint:vermilion_candle"
+  }
+}

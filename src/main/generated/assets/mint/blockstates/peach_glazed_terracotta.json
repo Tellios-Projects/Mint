@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "mint:block/peach_glazed_terracotta",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "mint:block/peach_glazed_terracotta",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "mint:block/peach_glazed_terracotta",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "mint:block/peach_glazed_terracotta",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "mint:block/peach_glazed_terracotta"
+    },
+    "facing=west": {
+      "model": "mint:block/peach_glazed_terracotta",
+      "x": 90,
+      "y": 270
+    }
+  }
+}
