@@ -10,6 +10,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
@@ -78,6 +79,29 @@ public class ModItems {
 
     // Arrays
     public static final Item[] DYE_ITEMS = { MINT_DYE, PEACH_DYE, PERIWINKLE_DYE, ARTICHOKE_DYE, FUCHSIA_DYE, VERMILION_DYE, SHAMROCK_DYE, INDIGO_DYE, BANANA_DYE };
+
+//    public static Item getDyeItemByColor(DyeColor color) {
+//        if (color.equals(ModDyeColor.MINT)) {
+//            return MINT_DYE;
+//        } else if (color.equals(ModDyeColor.PEACH)) {
+//            return PEACH_DYE;
+//        } else if (color.equals(ModDyeColor.PERIWINKLE)) {
+//            return PERIWINKLE_DYE;
+//        } else if (color.equals(ModDyeColor.ARTICHOKE)) {
+//            return ARTICHOKE_DYE;
+//        } else if (color.equals(ModDyeColor.FUCHSIA)) {
+//            return FUCHSIA_DYE;
+//        } else if (color.equals(ModDyeColor.VERMILION)) {
+//            return VERMILION_DYE;
+//        } else if (color.equals(ModDyeColor.SHAMROCK)) {
+//            return SHAMROCK_DYE;
+//        } else if (color.equals(ModDyeColor.INDIGO)) {
+//            return INDIGO_DYE;
+//        } else if (color.equals(ModDyeColor.BANANA)) {
+//            return BANANA_DYE;
+//        }
+//        return DyeItem.byColor(color); // now we know it's vanilla, so it's safe to pass through
+//    }
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), (Item)item);

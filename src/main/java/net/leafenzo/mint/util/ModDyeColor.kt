@@ -30,45 +30,45 @@ object ModDyeColor {
                 signColor = Color(r = 101, g = 255, b = 142)
                 )
                 val PEACH =
-                    Values("PEACH", "Peach", Color(r = 251, g = 146, b = 95), 61,
+                    Values("PEACH", "peach", Color(r = 251, g = 146, b = 95), 61,
                     fireworkColor = Color(r = 251, g = 146, b = 95),
                     signColor = Color(r = 251, g = 146, b = 95)
                 )
                 val PERIWINKLE =
-                    Values("PERIWINKLE", "Periwinkle", Color(r = 153, g = 134, b = 235), 6,
+                    Values("PERIWINKLE", "periwinkle", Color(r = 153, g = 134, b = 235), 6,
                     fireworkColor = Color(r = 153, g = 134, b = 235),
                     signColor = Color(r = 153, g = 134, b = 235)
                 )
                 val ARTICHOKE =
-                    Values("ARTICHOKE", "Artichoke", Color(r = 193, g = 216, b = 30), 42,
+                    Values("ARTICHOKE", "artichoke", Color(r = 193, g = 216, b = 30), 42,
                     fireworkColor = Color(r = 193, g = 216, b = 30), //potion color = Color(r = 212, g = 112, b = 176)
                     signColor = Color(r = 193, g = 216, b = 30)
                 )
                 val FUCHSIA =
-                    Values("FUCHSIA", "Fuchsia", Color(r = 220, g = 89, b = 152), 54,
+                    Values("FUCHSIA", "fuchsia", Color(r = 220, g = 89, b = 152), 54,
                     fireworkColor = Color(r = 220, g = 89, b = 152),
                     signColor = Color(r = 220, g = 89, b = 152)
                 )
                 val VERMILION =
-                    Values("VERMILION", "Vermilion", Color(r = 251, g = 101, b = 40), 53,
+                    Values("VERMILION", "vermilion", Color(r = 251, g = 101, b = 40), 53,
                     fireworkColor = Color(r = 251, g = 101, b = 40),
                     signColor = Color(r = 251, g = 101, b = 40)
                 )
 
                 val SHAMROCK =
-                    Values("SHAMROCK", "Shamrock", Color(r = 35, g = 229, b = 0), 34,
+                    Values("SHAMROCK", "shamrock", Color(r = 35, g = 229, b = 0), 34,
                     fireworkColor = Color(r = 35, g = 229, b = 0),
                     signColor = Color(r = 35, g = 229, b = 0)
                 )
 
                 val INDIGO =
-                    Values("INDIGO", "Indigo", Color(r = 117, g = 49, b = 218), 33,
+                    Values("INDIGO", "indigo", Color(r = 117, g = 49, b = 218), 33,
                     fireworkColor = Color(r = 117, g = 49, b = 218),
                     signColor = Color(r = 117, g = 49, b = 218)
                 )
 
                 val BANANA =
-                    Values("BANANA", "Banana", Color(r = 226, g = 193, b = 121), 3,
+                    Values("BANANA", "banana", Color(r = 226, g = 193, b = 121), 3,
                     fireworkColor = Color(r = 226, g = 193, b = 121),
                     signColor = Color(r = 226, g = 193, b = 121)
                 )

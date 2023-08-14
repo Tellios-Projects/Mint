@@ -26,6 +26,14 @@ object ModEarlyRiser : Runnable {
         val adder =
                 ClassTinkerers.enumBuilder(dyeColor, Int::class.java, String::class.java, Int::class.java, "L$mapColor;", Int::class.java, Int::class.java)
         addDyeColorEnum(adder, ModDyeColor.Values.MINT)
+        addDyeColorEnum(adder, ModDyeColor.Values.PEACH)
+        addDyeColorEnum(adder, ModDyeColor.Values.PERIWINKLE)
+        addDyeColorEnum(adder, ModDyeColor.Values.ARTICHOKE)
+        addDyeColorEnum(adder, ModDyeColor.Values.FUCHSIA)
+        addDyeColorEnum(adder, ModDyeColor.Values.VERMILION)
+        addDyeColorEnum(adder, ModDyeColor.Values.SHAMROCK)
+        addDyeColorEnum(adder, ModDyeColor.Values.INDIGO)
+        addDyeColorEnum(adder, ModDyeColor.Values.BANANA)
         adder.build()
     }
 
