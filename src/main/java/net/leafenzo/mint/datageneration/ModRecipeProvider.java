@@ -32,8 +32,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public static void offerShapelessRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible itemProvider, RecipeCategory recipeCategory, int count) {
         ShapelessRecipeJsonBuilder.create(recipeCategory, output, count).input(itemProvider);
     }
-
-
     public static void offerCarpetRecipes(Consumer<RecipeJsonProvider> exporter, Block[] carpets, Block[] inputs) {
         if(carpets.length > inputs.length) { throw new RuntimeException();
 //            throw new RuntimeException("More carpets than wools");
@@ -153,9 +151,3 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerBannerRecipes(exporter, ModBlocks.BANNER_BLOCKS, ModBlocks.WOOL_BLOCKS);
     }
 }
-
-
-//        offerTerracottaDyeingRecipe(exporter, ModBlocks.MINT_TERRACOTTA, ModItems.MINT_DYE);
-//        offerTerracottaDyeingRecipe(exporter, ModBlocks.PEACH_TERRACOTTA, ModItems.PEACH_DYE);
-//        offerTerracottaDyeingRecipe(exporter, ModBlocks.PERIWINKLE_TERRACOTTA, ModItems.PERIWINKLE_DYE);
-//        offerTerracottaDyeingRecipe(exporter, ModBlocks.ARTICHOKE_TERRACOTTA, ModItems.ARTICHOKE_DYE);
