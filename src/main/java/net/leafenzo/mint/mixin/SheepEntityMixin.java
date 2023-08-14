@@ -44,6 +44,14 @@ import java.util.stream.Collectors;
 public abstract class SheepEntityMixin extends AnimalEntity implements Shearable {
    // For now new sheep loot tables must be manually copied and renamed for each new dye in data/mint/loot_tables/sheep/ (unless we figure out how to datagen with the EntityLootTableGenerator) -Leah
    @Unique private static final Identifier MINT_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/mint");
+   @Unique private static final Identifier PEACH_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/peach");
+   @Unique private static final Identifier PERIWINKLE_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/periwinkle");
+   @Unique private static final Identifier ARTICHOKE_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/artichoke");
+   @Unique private static final Identifier FUCHSIA_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/fuchsia");
+   @Unique private static final Identifier VERMILION_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/vermilion");
+   @Unique private static final Identifier SHAMROCK_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/shamrock");
+   @Unique private static final Identifier INDIGO_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/indigo");
+   @Unique private static final Identifier BANANA_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/banana");
 
    @Shadow @Final private static Map<DyeColor, ItemConvertible> DROPS;
    @Shadow @Final private static TrackedData <Byte> COLOR;
@@ -99,7 +107,14 @@ public abstract class SheepEntityMixin extends AnimalEntity implements Shearable
    @Inject(method = "getLootTableId", at = @At("HEAD"), cancellable = true)
    public void getCustomLootTableIds(CallbackInfoReturnable <Identifier> cir) {
       DyeColor color = getColor();
-      if (color == ModDyeColor.MINT)
-         cir.setReturnValue(MINT_SHEEP_LOOT_TABLE);
+      if (color == ModDyeColor.MINT) cir.setReturnValue(MINT_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.PEACH) cir.setReturnValue(PEACH_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.PERIWINKLE) cir.setReturnValue(PERIWINKLE_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.ARTICHOKE) cir.setReturnValue(ARTICHOKE_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.FUCHSIA) cir.setReturnValue(FUCHSIA_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.VERMILION) cir.setReturnValue(VERMILION_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.SHAMROCK) cir.setReturnValue(SHAMROCK_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.INDIGO) cir.setReturnValue(INDIGO_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.BANANA) cir.setReturnValue(BANANA_SHEEP_LOOT_TABLE);
    }
 }
