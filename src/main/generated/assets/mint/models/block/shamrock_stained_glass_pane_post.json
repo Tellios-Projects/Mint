@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_post",
+  "textures": {
+    "edge": "mint:block/shamrock_stained_glass_pane_top",
+    "pane": "mint:block/shamrock_stained_glass"
+  }
+}

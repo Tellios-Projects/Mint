@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_candle",
+  "textures": {
+    "all": "mint:block/vermilion_candle",
+    "particle": "mint:block/vermilion_candle"
+  }
+}

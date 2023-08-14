@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "banner",
+  "key": {
+    "#": {
+      "item": "mint:periwinkle_wool"
+    },
+    "|": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    " | "
+  ],
+  "result": {
+    "item": "mint:periwinkle_banner"
+  },
+  "show_notification": true
+}

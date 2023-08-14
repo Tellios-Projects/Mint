@@ -1,6 +1,14 @@
 {
   "replace": false,
   "values": [
-    "mint:mint_concrete_powder"
+    "mint:mint_concrete_powder",
+    "mint:peach_concrete_powder",
+    "mint:periwinkle_concrete_powder",
+    "mint:artichoke_concrete_powder",
+    "mint:fuchsia_concrete_powder",
+    "mint:vermilion_concrete_powder",
+    "mint:shamrock_concrete_powder",
+    "mint:indigo_concrete_powder",
+    "mint:banana_concrete_powder"
   ]
 }

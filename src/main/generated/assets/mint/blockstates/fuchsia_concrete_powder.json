@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "mint:block/fuchsia_concrete_powder"
+      },
+      {
+        "model": "mint:block/fuchsia_concrete_powder",
+        "y": 90
+      },
+      {
+        "model": "mint:block/fuchsia_concrete_powder",
+        "y": 180
+      },
+      {
+        "model": "mint:block/fuchsia_concrete_powder",
+        "y": 270
+      }
+    ]
+  }
+}

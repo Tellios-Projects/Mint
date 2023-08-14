@@ -1,6 +1,14 @@
 {
   "replace": false,
   "values": [
-    "mint:mint_bed"
+    "mint:mint_bed",
+    "mint:peach_bed",
+    "mint:periwinkle_bed",
+    "mint:artichoke_bed",
+    "mint:fuchsia_bed",
+    "mint:vermilion_bed",
+    "mint:shamrock_bed",
+    "mint:indigo_bed",
+    "mint:banana_bed"
   ]
 }
