@@ -22,14 +22,23 @@ public class ModItemGroups {
     }
 
     public static void addItemsOfColorAfterItemsOfAnotherColor(DyeColor colorBefore, DyeColor colorAfter) {
-        Block[] vanillaColoredBlocks = net.leafenzo.mint.util.Util.ColoredBlocksOfColor(colorBefore);
-        Block[] coloredBlocks = net.leafenzo.mint.util.Util.ColoredBlocksOfColor(colorAfter);
+        Block[] coloredBlocksBefore = net.leafenzo.mint.util.Util.ColoredBlocksOfColor(colorBefore);
+        Block[] coloredBlocksAfter = net.leafenzo.mint.util.Util.ColoredBlocksOfColor(colorAfter);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS).register(content -> {
-            if(vanillaColoredBlocks.length != coloredBlocks.length) { throw new RuntimeException(); }
-            for (int i = 0; i < vanillaColoredBlocks.length; i++) {
-                content.addAfter(vanillaColoredBlocks[i], coloredBlocks[i]);
+            if(coloredBlocksBefore.length != coloredBlocksAfter.length) { throw new RuntimeException(); }
+            for (int i = 0; i < coloredBlocksBefore.length; i++) {
+                content.addAfter(coloredBlocksBefore[i], coloredBlocksAfter[i]);
             }
         });
+        Block[] functionalBlocksBefore = net.leafenzo.mint.util.Util.FunctionalBlocksOfColor(colorBefore);
+        Block[] functionalBlocksAfter = net.leafenzo.mint.util.Util.FunctionalBlocksOfColor(colorAfter);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(content -> {
+            if(functionalBlocksBefore.length != functionalBlocksAfter.length) { throw new RuntimeException(); }
+            for (int i = 0; i < functionalBlocksBefore.length; i++) {
+                content.addAfter(functionalBlocksBefore[i], functionalBlocksAfter[i]);
+            }
+        });
+
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(content -> {
                content.addAfter(DyeItem.byColor(colorBefore), DyeItem.byColor(colorAfter));
         });
@@ -95,6 +104,7 @@ public class ModItemGroups {
     public static ItemGroup MINT = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "mint"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.mint"))
                     .icon(() -> new ItemStack(ModItems.MINT_SPRIG)).entries((displayContext, entries) -> {
+                        entries.add(ModItems.MINT_DYE);
                         entries.add(ModBlocks.MINT_WOOL);
                         entries.add(ModBlocks.MINT_CARPET);
                         entries.add(ModBlocks.MINT_CONCRETE);
@@ -109,7 +119,6 @@ public class ModItemGroups {
                         entries.add(ModBlocks.MINT_CANDLE);
 
                         entries.add(ModItems.MINT_SPRIG);
-                        entries.add(ModItems.MINT_DYE);
                         entries.add(ModItems.MINT_COOKIE);
                         entries.add(ModBlocks.MINT_SPRIG_BLOCK);
                         entries.add(ModItems.MINT_TEA);

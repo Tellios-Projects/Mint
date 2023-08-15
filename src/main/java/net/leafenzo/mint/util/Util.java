@@ -63,7 +63,7 @@ public class Util {
         } else if (color.equals(ModDyeColor.BANANA)) {
             return BANANA_COLORED_BLOCKS;
         }
-        return MINT_COLORED_BLOCKS;
+        return null; //Error
     }
     public static final Block[] WHITE_VANILLA_COLORED_BLOCKS = { Blocks.WHITE_WOOL, Blocks.WHITE_CARPET, Blocks.WHITE_TERRACOTTA, Blocks.WHITE_CONCRETE, Blocks.WHITE_CONCRETE_POWDER, Blocks.WHITE_GLAZED_TERRACOTTA, Blocks.WHITE_STAINED_GLASS, Blocks.WHITE_STAINED_GLASS_PANE, Blocks.WHITE_SHULKER_BOX, Blocks.WHITE_BED, Blocks.WHITE_CANDLE, Blocks.WHITE_BANNER };
     public static final Block[] ORANGE_VANILLA_COLORED_BLOCKS = { Blocks.ORANGE_WOOL, Blocks.ORANGE_CARPET, Blocks.ORANGE_TERRACOTTA, Blocks.ORANGE_CONCRETE, Blocks.ORANGE_CONCRETE_POWDER, Blocks.ORANGE_GLAZED_TERRACOTTA, Blocks.ORANGE_STAINED_GLASS, Blocks.ORANGE_STAINED_GLASS_PANE, Blocks.ORANGE_SHULKER_BOX, Blocks.ORANGE_BED, Blocks.ORANGE_CANDLE, Blocks.ORANGE_BANNER };
@@ -92,35 +92,71 @@ public class Util {
     public static final Block[] INDIGO_COLORED_BLOCKS = { ModBlocks.INDIGO_WOOL, ModBlocks.INDIGO_CARPET, ModBlocks.INDIGO_TERRACOTTA, ModBlocks.INDIGO_CONCRETE, ModBlocks.INDIGO_CONCRETE_POWDER, ModBlocks.INDIGO_GLAZED_TERRACOTTA, ModBlocks.INDIGO_STAINED_GLASS, ModBlocks.INDIGO_STAINED_GLASS_PANE, ModBlocks.INDIGO_SHULKER_BOX, ModBlocks.INDIGO_BED, ModBlocks.INDIGO_CANDLE, ModBlocks.INDIGO_BANNER };
     public static final Block[] BANANA_COLORED_BLOCKS = { ModBlocks.BANANA_WOOL, ModBlocks.BANANA_CARPET, ModBlocks.BANANA_TERRACOTTA, ModBlocks.BANANA_CONCRETE, ModBlocks.BANANA_CONCRETE_POWDER, ModBlocks.BANANA_GLAZED_TERRACOTTA, ModBlocks.BANANA_STAINED_GLASS, ModBlocks.BANANA_STAINED_GLASS_PANE, ModBlocks.BANANA_SHULKER_BOX, ModBlocks.BANANA_BED, ModBlocks.BANANA_CANDLE, ModBlocks.BANANA_BANNER };
 
+    public static Block[] FunctionalBlocksOfColor(DyeColor color) {
+        switch (color) {
+            case WHITE: return WHITE_VANILLA_FUNCTIONAL_BLOCKS;
+            case ORANGE: return ORANGE_VANILLA_FUNCTIONAL_BLOCKS;
+            case MAGENTA: return MAGENTA_VANILLA_FUNCTIONAL_BLOCKS;
+            case LIGHT_BLUE: return LIGHT_BLUE_VANILLA_FUNCTIONAL_BLOCKS;
+            case YELLOW: return YELLOW_VANILLA_FUNCTIONAL_BLOCKS;
+            case LIME: return LIME_VANILLA_FUNCTIONAL_BLOCKS;
+            case PINK: return PINK_VANILLA_FUNCTIONAL_BLOCKS;
+            case GRAY: return GRAY_VANILLA_FUNCTIONAL_BLOCKS;
+            case LIGHT_GRAY: return LIGHT_GRAY_VANILLA_FUNCTIONAL_BLOCKS;
+            case CYAN: return CYAN_VANILLA_FUNCTIONAL_BLOCKS;
+            case PURPLE: return PURPLE_VANILLA_FUNCTIONAL_BLOCKS;
+            case BLUE: return BLUE_VANILLA_FUNCTIONAL_BLOCKS;
+            case BROWN: return BROWN_VANILLA_FUNCTIONAL_BLOCKS;
+            case GREEN: return GREEN_VANILLA_FUNCTIONAL_BLOCKS;
+            case RED: return RED_VANILLA_FUNCTIONAL_BLOCKS;
+        }
+        if (color.equals(ModDyeColor.MINT)) {
+            return MINT_FUNCTIONAL_BLOCKS;
+        } else if (color.equals(ModDyeColor.PEACH)) {
+            return PEACH_FUNCTIONAL_BLOCKS;
+        } else if (color.equals(ModDyeColor.PERIWINKLE)) {
+            return PERIWINKLE_FUNCTIONAL_BLOCKS;
+        } else if (color.equals(ModDyeColor.ARTICHOKE)) {
+            return ARTICHOKE_FUNCTIONAL_BLOCKS;
+        } else if (color.equals(ModDyeColor.FUCHSIA)) {
+            return FUCHSIA_FUNCTIONAL_BLOCKS;
+        } else if (color.equals(ModDyeColor.VERMILION)) {
+            return VERMILION_FUNCTIONAL_BLOCKS;
+        } else if (color.equals(ModDyeColor.SHAMROCK)) {
+            return SHAMROCK_FUNCTIONAL_BLOCKS;
+        } else if (color.equals(ModDyeColor.INDIGO)) {
+            return INDIGO_FUNCTIONAL_BLOCKS;
+        } else if (color.equals(ModDyeColor.BANANA)) {
+            return BANANA_FUNCTIONAL_BLOCKS;
+        }
+        return null; //Error
+    }
+    public static final Block[] WHITE_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.WHITE_SHULKER_BOX, Blocks.WHITE_BED, Blocks.WHITE_CANDLE, Blocks.WHITE_BANNER };
+    public static final Block[] ORANGE_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.ORANGE_SHULKER_BOX, Blocks.ORANGE_BED, Blocks.ORANGE_CANDLE, Blocks.ORANGE_BANNER };
+    public static final Block[] MAGENTA_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.MAGENTA_SHULKER_BOX, Blocks.MAGENTA_BED, Blocks.MAGENTA_CANDLE, Blocks.MAGENTA_BANNER };
+    public static final Block[] LIGHT_BLUE_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.LIGHT_BLUE_SHULKER_BOX, Blocks.LIGHT_BLUE_BED, Blocks.LIGHT_BLUE_CANDLE, Blocks.LIGHT_BLUE_BANNER };
+    public static final Block[] YELLOW_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.YELLOW_SHULKER_BOX, Blocks.YELLOW_BED, Blocks.YELLOW_CANDLE, Blocks.YELLOW_BANNER };
+    public static final Block[] LIME_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.LIME_SHULKER_BOX, Blocks.LIME_BED, Blocks.LIME_CANDLE, Blocks.LIME_BANNER };
+    public static final Block[] PINK_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.PINK_SHULKER_BOX, Blocks.PINK_BED, Blocks.PINK_CANDLE, Blocks.PINK_BANNER };
+    public static final Block[] GRAY_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.GRAY_SHULKER_BOX, Blocks.GRAY_BED, Blocks.GRAY_CANDLE, Blocks.GRAY_BANNER };
+    public static final Block[] LIGHT_GRAY_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.LIGHT_GRAY_SHULKER_BOX, Blocks.LIGHT_GRAY_BED, Blocks.LIGHT_GRAY_CANDLE, Blocks.LIGHT_GRAY_BANNER };
+    public static final Block[] CYAN_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.CYAN_SHULKER_BOX, Blocks.CYAN_BED, Blocks.CYAN_CANDLE, Blocks.CYAN_BANNER };
+    public static final Block[] PURPLE_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.PURPLE_SHULKER_BOX, Blocks.PURPLE_BED, Blocks.PURPLE_CANDLE, Blocks.PURPLE_BANNER };
+    public static final Block[] BLUE_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.BLUE_SHULKER_BOX, Blocks.BLUE_BED, Blocks.BLUE_CANDLE, Blocks.BLUE_BANNER };
+    public static final Block[] BROWN_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.BROWN_SHULKER_BOX, Blocks.BROWN_BED, Blocks.BROWN_CANDLE, Blocks.BROWN_BANNER };
+    public static final Block[] GREEN_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.GREEN_SHULKER_BOX, Blocks.GREEN_BED, Blocks.GREEN_CANDLE, Blocks.GREEN_BANNER };
+    public static final Block[] RED_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.RED_SHULKER_BOX, Blocks.RED_BED, Blocks.RED_CANDLE, Blocks.RED_BANNER };
+    public static final Block[] BLACK_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.BLACK_SHULKER_BOX, Blocks.BLACK_BED, Blocks.BLACK_CANDLE, Blocks.BLACK_BANNER };
 
-
-
-//    public static final List<DyeItem> getAllDyeItems() {
-//        //return Arrays.stream(DyeColor.values()).toList();
-//    }
-
-
-    // Util
-    //      Array ALL_DYES =  (ArrayList<ItemConvertible>)Arrays.stream(ModItems.DYE_ITEMS).toList(); //TODO fixme
-
-
-    //      Array ALL_WOOLS = vanilla wools + wools from this mod + wools from other mods??? somehow? (any block with the wool tag! :3)
-
-
-    //      Array ALL_CARPETS
-    //      Array ALL_BEDS
-
-
-//    public static final Block[] getAllWoolBlocks() {
-//
-//        //BlockTags.WOOL.values(); //TODO, figure out a safe way to load contents of a tag (appearently this must be done after datapacks are initialized)
-//        //Block[] c = Concat(VANILLA_WOOLS, ModBlocks.WOOL_BLOCKS);
-//
-//
-//
-//        Block[] wools = TagKey<Block>
-//        return null;
-//    }
+    public static final Block[] MINT_FUNCTIONAL_BLOCKS = { ModBlocks.MINT_SHULKER_BOX, ModBlocks.MINT_BED, ModBlocks.MINT_CANDLE, ModBlocks.MINT_BANNER };
+    public static final Block[] PEACH_FUNCTIONAL_BLOCKS = { ModBlocks.PEACH_SHULKER_BOX, ModBlocks.PEACH_BED, ModBlocks.PEACH_CANDLE, ModBlocks.PEACH_BANNER };
+    public static final Block[] PERIWINKLE_FUNCTIONAL_BLOCKS = { ModBlocks.PERIWINKLE_SHULKER_BOX, ModBlocks.PERIWINKLE_BED, ModBlocks.PERIWINKLE_CANDLE, ModBlocks.PERIWINKLE_BANNER };
+    public static final Block[] ARTICHOKE_FUNCTIONAL_BLOCKS = { ModBlocks.ARTICHOKE_SHULKER_BOX, ModBlocks.ARTICHOKE_BED, ModBlocks.ARTICHOKE_CANDLE, ModBlocks.ARTICHOKE_BANNER };
+    public static final Block[] FUCHSIA_FUNCTIONAL_BLOCKS = { ModBlocks.FUCHSIA_SHULKER_BOX, ModBlocks.FUCHSIA_BED, ModBlocks.FUCHSIA_CANDLE, ModBlocks.FUCHSIA_BANNER };
+    public static final Block[] VERMILION_FUNCTIONAL_BLOCKS = { ModBlocks.VERMILION_SHULKER_BOX, ModBlocks.VERMILION_BED, ModBlocks.VERMILION_CANDLE, ModBlocks.VERMILION_BANNER };
+    public static final Block[] SHAMROCK_FUNCTIONAL_BLOCKS = { ModBlocks.SHAMROCK_SHULKER_BOX, ModBlocks.SHAMROCK_BED, ModBlocks.SHAMROCK_CANDLE, ModBlocks.SHAMROCK_BANNER };
+    public static final Block[] INDIGO_FUNCTIONAL_BLOCKS = { ModBlocks.INDIGO_SHULKER_BOX, ModBlocks.INDIGO_BED, ModBlocks.INDIGO_CANDLE, ModBlocks.INDIGO_BANNER };
+    public static final Block[] BANANA_FUNCTIONAL_BLOCKS = { ModBlocks.BANANA_SHULKER_BOX, ModBlocks.BANANA_BED, ModBlocks.BANANA_CANDLE, ModBlocks.BANANA_BANNER };
 
     public static ItemConvertible[] Concat(ItemConvertible[] a, ItemConvertible[] b) {
         int al = a.length;
