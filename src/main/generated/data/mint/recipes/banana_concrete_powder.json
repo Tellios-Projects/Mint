@@ -4,7 +4,7 @@
   "group": "concrete_powder",
   "ingredients": [
     {
-      "item": "mint:mint_dye"
+      "item": "mint:banana_dye"
     },
     {
       "item": "minecraft:sand"
@@ -33,6 +33,6 @@
   ],
   "result": {
     "count": 8,
-    "item": "mint:mint_concrete"
+    "item": "mint:banana_concrete_powder"
   }
 }

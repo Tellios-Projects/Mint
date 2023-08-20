@@ -17,6 +17,7 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.Consumer;
 
 
@@ -57,6 +58,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public static void offerGlazedTerracottaSmeltingRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
         if(outputs.length > inputs.length) { throw new RuntimeException(); }
         for(int i = 0; i < inputs.length; i++) {
+            //(exporter, inputs, RecipeCategory.BUILDING_BLOCKS, outputs[i], 0.1f, 200);
             CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(inputs[i]), RecipeCategory.BUILDING_BLOCKS, outputs[i], 0.1f, 200);
         }
     }
@@ -113,7 +115,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         this.offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.MINT_SPRIG, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_SPRIG_BLOCK);
 
         // Main
-        //ComplexRecipeJsonBuilder.create(ModRecipeSerializer.COLORING_RECIPES).offerTo(exporter, "coloring_recipes");
 //  WOOL_BLOCKS
         ComplexRecipeJsonBuilder.create(ModRecipeSerializer.WOOL_COLORING_RECIPE).offerTo(exporter, "wool_coloring_recipe");
 
@@ -125,10 +126,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerTerracottaDyeingRecipes(exporter, ModBlocks.TERRACOTTA_BLOCKS, ModItems.DYE_ITEMS);
 
 //  CONCRETE_POWDER_BLOCKS
-        offerConcretePowderDyeingRecipes(exporter, ModBlocks.CONCRETE_BLOCKS, ModItems.DYE_ITEMS);
+        offerConcretePowderDyeingRecipes(exporter, ModBlocks.CONCRETE_POWDER_BLOCKS, ModItems.DYE_ITEMS);
 
 //  GLAZED_TERRACOTTA_BLOCKS
-        offerGlazedTerracottaSmeltingRecipes(exporter, ModBlocks.TERRACOTTA_BLOCKS, ModBlocks.GLAZED_TERRACOTTA_BLOCKS);
+        offerSmelting(exporter, );
+        offerGlazedTerracottaSmeltingRecipes(exporter, ModBlocks.GLAZED_TERRACOTTA_BLOCKS, ModBlocks.TERRACOTTA_BLOCKS);
 
 //  STAINED_GLASS_BLOCKS
         offerStainedGlassRecipes(exporter, ModBlocks.STAINED_GLASS_BLOCKS, ModItems.DYE_ITEMS);

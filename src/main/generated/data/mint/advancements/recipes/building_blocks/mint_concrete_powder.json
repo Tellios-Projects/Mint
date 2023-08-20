@@ -27,7 +27,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mint:indigo_concrete"
+        "recipe": "mint:mint_concrete_powder"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,7 +41,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mint:indigo_concrete"
+      "mint:mint_concrete_powder"
     ]
   },
   "sends_telemetry_event": false

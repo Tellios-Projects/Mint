@@ -27,7 +27,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mint:banana_concrete"
+        "recipe": "mint:periwinkle_concrete_powder"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,7 +41,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mint:banana_concrete"
+      "mint:periwinkle_concrete_powder"
     ]
   },
   "sends_telemetry_event": false

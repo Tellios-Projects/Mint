@@ -27,7 +27,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mint:shamrock_concrete"
+        "recipe": "mint:indigo_concrete_powder"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,7 +41,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mint:shamrock_concrete"
+      "mint:indigo_concrete_powder"
     ]
   },
   "sends_telemetry_event": false

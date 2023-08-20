@@ -27,7 +27,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mint:vermilion_concrete"
+        "recipe": "mint:banana_concrete_powder"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,7 +41,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mint:vermilion_concrete"
+      "mint:banana_concrete_powder"
     ]
   },
   "sends_telemetry_event": false

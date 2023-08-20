@@ -27,7 +27,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mint:fuchsia_concrete"
+        "recipe": "mint:fuchsia_concrete_powder"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,7 +41,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mint:fuchsia_concrete"
+      "mint:fuchsia_concrete_powder"
     ]
   },
   "sends_telemetry_event": false

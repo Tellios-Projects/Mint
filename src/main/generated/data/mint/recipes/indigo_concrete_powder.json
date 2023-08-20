@@ -4,7 +4,7 @@
   "group": "concrete_powder",
   "ingredients": [
     {
-      "item": "mint:vermilion_dye"
+      "item": "mint:indigo_dye"
     },
     {
       "item": "minecraft:sand"
@@ -33,6 +33,6 @@
   ],
   "result": {
     "count": 8,
-    "item": "mint:vermilion_concrete"
+    "item": "mint:indigo_concrete_powder"
   }
 }

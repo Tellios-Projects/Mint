@@ -27,7 +27,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mint:periwinkle_concrete"
+        "recipe": "mint:vermilion_concrete_powder"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,7 +41,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mint:periwinkle_concrete"
+      "mint:vermilion_concrete_powder"
     ]
   },
   "sends_telemetry_event": false
