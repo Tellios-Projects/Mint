@@ -29,6 +29,8 @@ import org.slf4j.LoggerFactory;
             ModItems.registerModItems();
             ModBlockEntityType.RegisterModBlockEntityTypes();
             ModFabricRegistries.registerFlammableBlocks();
+            ModFabricRegistries.registerCompostingChances();
+            ModFabricRegistries.registerVillagerInteractions();
             DispenserBehavior.RegisterDispenserBehaviors();
             ModRecipeSerializer.registerModRecipeSerializer();
             ModEffects.registerModEffects();

@@ -31,9 +31,6 @@ public class ModItems {
                     .saturationModifier(0.8f) //double that of a vanilla game cookie
                     .build())));
 
-    //            .withCompostingChance(, 0.65f)
-
-
     public static final Item MINT_TEA = registerItem("mint_tea", new MintTeaItem(new FabricItemSettings().maxCount(1)
             .food(new FoodComponent.Builder()
                     .alwaysEdible()
@@ -108,7 +105,6 @@ public class ModItems {
 //        }
 //        return DyeItem.byColor(color); // now we know it's vanilla, so it's safe to pass through
 //    }
-
 
     private static void withCompostingChance(Item item, float chance) {
         ModFabricRegistries.registerCompostableItem(item, chance);

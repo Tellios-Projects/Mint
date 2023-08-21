@@ -23,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
-@Debug(export = true)
+// @Debug(export = true)
 @Mixin(TexturedRenderLayers.class)
 public abstract class TexturedRenderLayersMixin {
     @Shadow @Final public static Identifier SHULKER_BOXES_ATLAS_TEXTURE;
