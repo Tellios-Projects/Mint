@@ -13,12 +13,12 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_peach_stained_glass": {
+    "has_peach_dye": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:peach_stained_glass"
+              "mint:peach_dye"
             ]
           }
         ]
@@ -35,7 +35,7 @@
   "requirements": [
     [
       "has_glass_pane",
-      "has_peach_stained_glass",
+      "has_peach_dye",
       "has_the_recipe"
     ]
   ],

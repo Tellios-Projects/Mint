@@ -13,12 +13,12 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_periwinkle_stained_glass": {
+    "has_periwinkle_dye": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:periwinkle_stained_glass"
+              "mint:periwinkle_dye"
             ]
           }
         ]
@@ -35,7 +35,7 @@
   "requirements": [
     [
       "has_glass_pane",
-      "has_periwinkle_stained_glass",
+      "has_periwinkle_dye",
       "has_the_recipe"
     ]
   ],

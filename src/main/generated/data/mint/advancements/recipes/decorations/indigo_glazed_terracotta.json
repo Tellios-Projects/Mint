@@ -1,24 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_glass_pane": {
+    "has_mint:indigo_terracotta": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:glass_pane"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_indigo_dye": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "mint:indigo_dye"
+              "mint:indigo_terracotta"
             ]
           }
         ]
@@ -27,21 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:indigo_stained_glass_pane_from_glass_pane"
+        "recipe": "mint:indigo_glazed_terracotta"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_glass_pane",
-      "has_indigo_dye",
+      "has_mint:indigo_terracotta",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:indigo_stained_glass_pane_from_glass_pane"
+      "mint:indigo_glazed_terracotta"
     ]
   },
   "sends_telemetry_event": false

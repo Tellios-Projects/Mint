@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_fuchsia_stained_glass": {
+    "has_fuchsia_dye": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:fuchsia_stained_glass"
+              "mint:fuchsia_dye"
             ]
           }
         ]
@@ -35,7 +35,7 @@
   "requirements": [
     [
       "has_glass_pane",
-      "has_fuchsia_stained_glass",
+      "has_fuchsia_dye",
       "has_the_recipe"
     ]
   ],

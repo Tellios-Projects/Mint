@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_artichoke_stained_glass": {
+    "has_artichoke_dye": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:artichoke_stained_glass"
+              "mint:artichoke_dye"
             ]
           }
         ]
@@ -35,7 +35,7 @@
   "requirements": [
     [
       "has_glass_pane",
-      "has_artichoke_stained_glass",
+      "has_artichoke_dye",
       "has_the_recipe"
     ]
   ],

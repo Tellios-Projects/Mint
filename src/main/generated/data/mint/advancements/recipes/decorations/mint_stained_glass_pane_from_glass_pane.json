@@ -13,12 +13,12 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_mint_stained_glass": {
+    "has_mint_dye": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:mint_stained_glass"
+              "mint:mint_dye"
             ]
           }
         ]
@@ -35,7 +35,7 @@
   "requirements": [
     [
       "has_glass_pane",
-      "has_mint_stained_glass",
+      "has_mint_dye",
       "has_the_recipe"
     ]
   ],

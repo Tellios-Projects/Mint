@@ -13,12 +13,12 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_shamrock_stained_glass": {
+    "has_shamrock_dye": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:shamrock_stained_glass"
+              "mint:shamrock_dye"
             ]
           }
         ]
@@ -35,7 +35,7 @@
   "requirements": [
     [
       "has_glass_pane",
-      "has_shamrock_stained_glass",
+      "has_shamrock_dye",
       "has_the_recipe"
     ]
   ],

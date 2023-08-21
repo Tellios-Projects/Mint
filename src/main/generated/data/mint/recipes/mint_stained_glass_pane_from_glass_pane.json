@@ -7,7 +7,7 @@
       "item": "minecraft:glass_pane"
     },
     "$": {
-      "item": "mint:mint_stained_glass"
+      "item": "mint:mint_dye"
     }
   },
   "pattern": [

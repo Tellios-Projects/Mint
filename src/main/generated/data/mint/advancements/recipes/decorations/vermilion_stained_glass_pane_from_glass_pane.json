@@ -19,12 +19,12 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_vermilion_stained_glass": {
+    "has_vermilion_dye": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:vermilion_stained_glass"
+              "mint:vermilion_dye"
             ]
           }
         ]
@@ -35,7 +35,7 @@
   "requirements": [
     [
       "has_glass_pane",
-      "has_vermilion_stained_glass",
+      "has_vermilion_dye",
       "has_the_recipe"
     ]
   ],

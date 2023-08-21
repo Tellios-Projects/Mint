@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "mint:banana_terracotta"
+  },
+  "result": "mint:banana_glazed_terracotta"
+}

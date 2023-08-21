@@ -10,14 +10,11 @@ import net.minecraft.data.server.recipe.*;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.tag.TagKey;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.function.Consumer;
 
 
@@ -58,8 +55,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public static void offerGlazedTerracottaSmeltingRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
         if(outputs.length > inputs.length) { throw new RuntimeException(); }
         for(int i = 0; i < inputs.length; i++) {
-            //(exporter, inputs, RecipeCategory.BUILDING_BLOCKS, outputs[i], 0.1f, 200);
-            CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(inputs[i]), RecipeCategory.BUILDING_BLOCKS, outputs[i], 0.1f, 200);
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(inputs[i].asItem()), RecipeCategory.DECORATIONS, outputs[i].asItem(), 0.1f, 200)
+                .criterion("has_" + Registries.ITEM.getId(inputs[i].asItem()), FabricRecipeProvider.conditionsFromItem(inputs[i].asItem()))
+                .offerTo(exporter);
         }
     }
     public static void offerBannerRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
@@ -80,7 +78,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             offerBedRecipe(exporter, outputs[i], inputs[i]);
         }
     }
-    public static void offerStainedGlassRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
+    public static void offerStainedGlassDyeingRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
         if(outputs.length > inputs.length) { throw new RuntimeException(); }
         for(int i = 0; i < inputs.length; i++) {
             offerStainedGlassDyeingRecipe(exporter, outputs[i], inputs[i]);
@@ -89,13 +87,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public static void offerStainedGlassPaneRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
         if(outputs.length > inputs.length) { throw new RuntimeException(); }
         for(int i = 0; i < inputs.length; i++) {
-            offerStainedGlassPaneDyeingRecipe(exporter, outputs[i], inputs[i]);
+            offerStainedGlassPaneRecipe(exporter, outputs[i], inputs[i]);
         }
     }
     public static void offerStainedGlassPaneDyeingRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible[] outputs, ItemConvertible[] inputs) {
         if(outputs.length > inputs.length) { throw new RuntimeException(); }
         for(int i = 0; i < inputs.length; i++) {
-            offerStainedGlassPaneRecipe(exporter, outputs[i], inputs[i]);
+            offerStainedGlassPaneDyeingRecipe(exporter, outputs[i], inputs[i]);
         }
     }
 
@@ -129,11 +127,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerConcretePowderDyeingRecipes(exporter, ModBlocks.CONCRETE_POWDER_BLOCKS, ModItems.DYE_ITEMS);
 
 //  GLAZED_TERRACOTTA_BLOCKS
-        offerSmelting(exporter, );
         offerGlazedTerracottaSmeltingRecipes(exporter, ModBlocks.GLAZED_TERRACOTTA_BLOCKS, ModBlocks.TERRACOTTA_BLOCKS);
 
 //  STAINED_GLASS_BLOCKS
-        offerStainedGlassRecipes(exporter, ModBlocks.STAINED_GLASS_BLOCKS, ModItems.DYE_ITEMS);
+        offerStainedGlassDyeingRecipes(exporter, ModBlocks.STAINED_GLASS_BLOCKS, ModItems.DYE_ITEMS);
 
 //  STAINED_GLASS_PANE_BLOCKS
         offerStainedGlassPaneRecipes(exporter, ModBlocks.STAINED_GLASS_PANE_BLOCKS, ModBlocks.STAINED_GLASS_BLOCKS);

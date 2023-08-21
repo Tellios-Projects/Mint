@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_banana_stained_glass": {
+    "has_banana_dye": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:banana_stained_glass"
+              "mint:banana_dye"
             ]
           }
         ]
@@ -35,7 +35,7 @@
   "requirements": [
     [
       "has_glass_pane",
-      "has_banana_stained_glass",
+      "has_banana_dye",
       "has_the_recipe"
     ]
   ],
