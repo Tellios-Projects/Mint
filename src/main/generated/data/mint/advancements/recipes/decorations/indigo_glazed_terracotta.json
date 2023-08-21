@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_mint:indigo_terracotta": {
+    "has_indigo_terracotta": {
       "conditions": {
         "items": [
           {
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_mint:indigo_terracotta",
+      "has_indigo_terracotta",
       "has_the_recipe"
     ]
   ],

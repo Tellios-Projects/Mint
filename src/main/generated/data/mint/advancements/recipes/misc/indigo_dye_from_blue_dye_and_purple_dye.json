@@ -1,12 +1,24 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_peach_terracotta": {
+    "has_blue_dye": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:peach_terracotta"
+              "minecraft:blue_dye"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_purple_dye": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:purple_dye"
             ]
           }
         ]
@@ -15,20 +27,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mint:peach_glazed_terracotta"
+        "recipe": "minecraft:indigo_dye_from_blue_dye_and_purple_dye"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_peach_terracotta",
+      "has_blue_dye",
+      "has_purple_dye",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "mint:peach_glazed_terracotta"
+      "minecraft:indigo_dye_from_blue_dye_and_purple_dye"
     ]
   },
   "sends_telemetry_event": false

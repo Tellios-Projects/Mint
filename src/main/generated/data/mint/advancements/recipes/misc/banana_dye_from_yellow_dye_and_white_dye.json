@@ -3,16 +3,28 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mint:vermilion_glazed_terracotta"
+        "recipe": "minecraft:banana_dye_from_yellow_dye_and_white_dye"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_vermilion_terracotta": {
+    "has_white_dye": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:vermilion_terracotta"
+              "minecraft:white_dye"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_yellow_dye": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:yellow_dye"
             ]
           }
         ]
@@ -22,13 +34,14 @@
   },
   "requirements": [
     [
-      "has_vermilion_terracotta",
+      "has_yellow_dye",
+      "has_white_dye",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "mint:vermilion_glazed_terracotta"
+      "minecraft:banana_dye_from_yellow_dye_and_white_dye"
     ]
   },
   "sends_telemetry_event": false

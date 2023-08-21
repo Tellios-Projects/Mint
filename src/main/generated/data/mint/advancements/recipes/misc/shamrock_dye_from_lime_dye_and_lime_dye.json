@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_peach_terracotta": {
+    "has_lime_dye": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:peach_terracotta"
+              "minecraft:lime_dye"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mint:peach_glazed_terracotta"
+        "recipe": "minecraft:shamrock_dye_from_lime_dye_and_lime_dye"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_peach_terracotta",
+      "has_lime_dye",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "mint:peach_glazed_terracotta"
+      "minecraft:shamrock_dye_from_lime_dye_and_lime_dye"
     ]
   },
   "sends_telemetry_event": false
