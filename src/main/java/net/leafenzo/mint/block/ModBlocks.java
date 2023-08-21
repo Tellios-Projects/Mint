@@ -452,10 +452,10 @@ public class ModBlocks {
         return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
     }
     public static Block createWoolBlock(DyeColor color) {
-        return new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL).mapColor(color.getMapColor()));
+        return new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL).mapColor(color.getMapColor()).burnable()); //Since it's copying white wool it should already BE burnable, but for some reason this is needed here too for lava to recognize it
     }
     public static CarpetBlock createCarpetBlock(DyeColor color) {
-        return new CarpetBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CARPET).mapColor(color.getMapColor()));
+        return new CarpetBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CARPET).mapColor(color.getMapColor()).burnable());
     }
     public static Block createTerracottaBlock(DyeColor color) {
         return new Block(FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).mapColor(color.getMapColor()));
@@ -482,13 +482,13 @@ public class ModBlocks {
         return new StainedGlassPaneBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_STAINED_GLASS_PANE).mapColor(color.getMapColor()));
     }
     private static BannerBlock createBannerBlock(DyeColor color) {
-        return new BannerBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BANNER).mapColor(color.getMapColor()));
+        return new BannerBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BANNER).mapColor(color.getMapColor()).burnable());
     }
     private static WallBannerBlock createWallBannerBlock(DyeColor color, BannerBlock banner) {
-        return new WallBannerBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_WALL_BANNER).mapColor(color.getMapColor()).dropsLike(banner));
+        return new WallBannerBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_WALL_BANNER).mapColor(color.getMapColor()).burnable().dropsLike(banner));
     }
     private static BedBlock createBedBlock(DyeColor color) {
-        return new BedBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BED).mapColor(blockState -> blockState.get(BedBlock.PART) == BedPart.FOOT ? color.getMapColor() : MapColor.WHITE_GRAY));
+        return new BedBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BED).mapColor(blockState -> blockState.get(BedBlock.PART) == BedPart.FOOT ? color.getMapColor() : MapColor.WHITE_GRAY).burnable());
     }
     private static ModShulkerBoxBlock createShulkerBoxBlock(DyeColor color) {
         return new ModShulkerBoxBlock(color, FabricBlockSettings.copyOf(Blocks.SHULKER_BOX).mapColor(color.getMapColor()));
