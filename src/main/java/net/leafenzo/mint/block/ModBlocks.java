@@ -7,7 +7,10 @@ import net.leafenzo.mint.Super;
 import net.leafenzo.mint.item.ModItemGroups;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.ShulkerBoxBlockEntity;
 import net.minecraft.block.enums.BedPart;
+import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
@@ -17,13 +20,12 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.text.Text;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
-import java.util.Arrays;
 import java.util.function.ToIntFunction;
 
 public class ModBlocks {
@@ -451,47 +453,154 @@ public class ModBlocks {
         registerBlockItem(name,block,group);
         return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
     }
+
     public static Block createWoolBlock(DyeColor color) {
-        return new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL).mapColor(color.getMapColor()).burnable()); //Since it's copying white wool it should already BE burnable, but for some reason this is needed here too for lava to recognize it
+        return new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)
+                .mapColor(color.getMapColor())
+                .instrument(Instrument.GUITAR)
+                .strength(0.8f)
+                .sounds(BlockSoundGroup.WOOL)
+                .burnable()
+        );
     }
     public static CarpetBlock createCarpetBlock(DyeColor color) {
-        return new CarpetBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CARPET).mapColor(color.getMapColor()).burnable());
+        return new CarpetBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CARPET)
+                .mapColor(color.getMapColor())
+                .strength(0.1f)
+                .sounds(BlockSoundGroup.WOOL)
+                .burnable()
+        );
     }
     public static Block createTerracottaBlock(DyeColor color) {
-        return new Block(FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).mapColor(color.getMapColor()));
+        return new Block(FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA)
+                .mapColor(color.getMapColor())
+                .instrument(Instrument.BASEDRUM)
+                .requiresTool()
+                .strength(1.25f, 4.2f)
+        );
     }
     public static Block createConcreteBlock(DyeColor color) {
-        return new Block(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).mapColor(color.getMapColor()));
+        return new Block(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE)
+                .mapColor(color.getMapColor())
+                .instrument(Instrument.BASEDRUM)
+                .requiresTool()
+                .strength(1.8f)
+        );
     }
     public static ConcretePowderBlock createConcretePowderBlock(DyeColor color, Block concrete) {
-        return new ConcretePowderBlock(concrete, FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE_POWDER).mapColor(color.getMapColor()));
+        return new ConcretePowderBlock(concrete, FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE_POWDER)
+                .mapColor(color.getMapColor())
+                .instrument(Instrument.SNARE)
+                .strength(0.5f)
+                .sounds(BlockSoundGroup.SAND)
+        );
     }
     public static CandleBlock createCandleBlock(DyeColor color) {
-        return new CandleBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CANDLE).mapColor(color.getMapColor()));
+        return new CandleBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CANDLE)
+                .mapColor(color.getMapColor())
+                .nonOpaque()
+                .strength(0.1f)
+                .sounds(BlockSoundGroup.CANDLE)
+                .luminance(CandleBlock.STATE_TO_LUMINANCE)
+                .pistonBehavior(PistonBehavior.DESTROY)
+        );
     }
     public static CandleCakeBlock createCandleCakeBlock(DyeColor color, Block candle) {
-        return new CandleCakeBlock(candle, FabricBlockSettings.copyOf(Blocks.WHITE_CANDLE_CAKE).mapColor(color.getMapColor()));
+        return new CandleCakeBlock(candle, FabricBlockSettings.copyOf(Blocks.WHITE_CANDLE_CAKE)
+                .mapColor(color.getMapColor())
+                .solid()
+                .strength(0.5f)
+                .sounds(BlockSoundGroup.WOOL)
+                .pistonBehavior(PistonBehavior.DESTROY)
+                .luminance(ModBlocks.createLightLevelFromBooleanProperty(3, Properties.LIT))
+        );
     }
     public static GlazedTerracottaBlock createGlazedTerracottaBlock(DyeColor color) {
-        return new GlazedTerracottaBlock(FabricBlockSettings.copyOf(Blocks.WHITE_GLAZED_TERRACOTTA).mapColor(color.getMapColor()));
+        return new GlazedTerracottaBlock(FabricBlockSettings.copyOf(Blocks.WHITE_GLAZED_TERRACOTTA)
+                .mapColor(color.getMapColor())
+                .instrument(Instrument.BASEDRUM)
+                .requiresTool()
+                .strength(1.4f)
+                .pistonBehavior(PistonBehavior.PUSH_ONLY)
+        );
     }
     public static StainedGlassBlock createStainedGlassBlock(DyeColor color) {
-        return new StainedGlassBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_STAINED_GLASS).mapColor(color.getMapColor()));
+        return new StainedGlassBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_STAINED_GLASS)
+                .mapColor(color.getMapColor())
+                .instrument(Instrument.HAT)
+                .strength(0.3f)
+                .sounds(BlockSoundGroup.GLASS)
+                .nonOpaque()
+                .allowsSpawning(ModBlocks::never)
+                .solidBlock(ModBlocks::never)
+                .suffocates(ModBlocks::never)
+                .blockVision(ModBlocks::never)
+        );
     }
     public static StainedGlassPaneBlock createStainedGlassPaneBlock(DyeColor color) {
-        return new StainedGlassPaneBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_STAINED_GLASS_PANE).mapColor(color.getMapColor()));
+        return new StainedGlassPaneBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_STAINED_GLASS_PANE)
+                .mapColor(color.getMapColor())
+                .instrument(Instrument.HAT)
+                .strength(0.3f)
+                .sounds(BlockSoundGroup.GLASS)
+                .nonOpaque()
+        );
     }
     private static BannerBlock createBannerBlock(DyeColor color) {
-        return new BannerBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BANNER).mapColor(color.getMapColor()).burnable());
+        return new BannerBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BANNER)
+                .mapColor(color.getMapColor())
+                .solid()
+                .instrument(Instrument.BASS)
+                .noCollision()
+                .strength(1.0f)
+                .sounds(BlockSoundGroup.WOOD)
+                .burnable()
+        );
     }
     private static WallBannerBlock createWallBannerBlock(DyeColor color, BannerBlock banner) {
-        return new WallBannerBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_WALL_BANNER).mapColor(color.getMapColor()).burnable().dropsLike(banner));
+        return new WallBannerBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_WALL_BANNER)
+                .mapColor(color.getMapColor())
+                .solid()
+                .instrument(Instrument.BASS)
+                .noCollision()
+                .strength(1.0f)
+                .sounds(BlockSoundGroup.WOOD)
+                .dropsLike(banner)
+                .burnable()
+        );
     }
     private static BedBlock createBedBlock(DyeColor color) {
-        return new BedBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BED).mapColor(blockState -> blockState.get(BedBlock.PART) == BedPart.FOOT ? color.getMapColor() : MapColor.WHITE_GRAY).burnable());
+        return new BedBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BED)
+                .mapColor(blockState -> blockState.get(BedBlock.PART) == BedPart.FOOT ? color.getMapColor() : MapColor.WHITE_GRAY)
+                .sounds(BlockSoundGroup.WOOD)
+                .strength(0.2f)
+                .nonOpaque()
+                .burnable()
+                .pistonBehavior(PistonBehavior.DESTROY)
+                .burnable()
+        );
     }
     private static ModShulkerBoxBlock createShulkerBoxBlock(DyeColor color) {
-        return new ModShulkerBoxBlock(color, FabricBlockSettings.copyOf(Blocks.SHULKER_BOX).mapColor(color.getMapColor()));
+        AbstractBlock.ContextPredicate contextPredicate = (state, world, pos) -> {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (!(blockEntity instanceof ShulkerBoxBlockEntity)) {
+                return true;
+            }
+            ShulkerBoxBlockEntity shulkerBoxBlockEntity = (ShulkerBoxBlockEntity)blockEntity;
+            return shulkerBoxBlockEntity.suffocates();
+        };
+        return new ModShulkerBoxBlock(color, FabricBlockSettings.copyOf(Blocks.SHULKER_BOX)
+                //Same settings as the vanilla shulker, I just have reason to not trust .copyOf
+                .mapColor(color.getMapColor())
+                .solid()
+                .strength(2.0f)
+                .dynamicBounds()
+                .nonOpaque()
+                .suffocates(contextPredicate)
+                .blockVision(contextPredicate)
+                .pistonBehavior(PistonBehavior.DESTROY)
+                .solidBlock(ModBlocks::always)
+        );
     }
     public static Block registerBlockWithoutBlockItem(String name, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
@@ -500,15 +609,13 @@ public class ModBlocks {
     private static boolean never(BlockState blockState, BlockView blockView, BlockPos blockPos) {
         return false;
     }
-
-    public static boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
+    private static boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
         return false;
     }
-
-    private static ToIntFunction<BlockState> createLightLevelFromProperty(int litLevel, BooleanProperty property) {
+    private static boolean always(BlockState state, BlockView world, BlockPos pos) { return true; }
+    private static ToIntFunction<BlockState> createLightLevelFromBooleanProperty(int litLevel, BooleanProperty property) {
         return state -> state.get(property) != false ? litLevel : 0;
     }
-
     public static Item[] toItems(Block[] blocks) {
         Item[] items = new Item[blocks.length];
         for(int i = 0; i < items.length; i++) {
@@ -516,7 +623,6 @@ public class ModBlocks {
         }
         return items;
     }
-
     private static Item registerBlockItem(String name, Block block, ItemGroup group) {
         BlockItem blockItem = new BlockItem(block, new FabricItemSettings());
         //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(blockItem)); // only for pre 1.20.1, around cuz I'd forget otherwise
