@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/template_glazed_terracotta",
   "textures": {
-    "all": "mint:block/indigo_glazed_terracotta"
+    "pattern": "mint:block/indigo_glazed_terracotta"
   }
 }

@@ -1,30 +1,19 @@
 {
   "variants": {
-    "facing=down": {
-      "model": "mint:block/shamrock_glazed_terracotta",
-      "x": 180
-    },
     "facing=east": {
       "model": "mint:block/shamrock_glazed_terracotta",
-      "x": 90,
-      "y": 90
+      "y": 270
     },
     "facing=north": {
       "model": "mint:block/shamrock_glazed_terracotta",
-      "x": 90
-    },
-    "facing=south": {
-      "model": "mint:block/shamrock_glazed_terracotta",
-      "x": 90,
       "y": 180
     },
-    "facing=up": {
+    "facing=south": {
       "model": "mint:block/shamrock_glazed_terracotta"
     },
     "facing=west": {
       "model": "mint:block/shamrock_glazed_terracotta",
-      "x": 90,
-      "y": 270
+      "y": 90
     }
   }
 }

@@ -28,18 +28,18 @@ import java.util.function.ToIntFunction;
 
 public class ModBlocks {
     // MINT - Main
-    public static final Block MINT_WOOL = registerBlock("mint_wool", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
-    public static final Block MINT_CARPET = registerBlock("mint_carpet", new CarpetBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CARPET).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
-    public static final Block MINT_TERRACOTTA = registerBlock("mint_terracotta", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
-    public static final Block MINT_CONCRETE = registerBlock("mint_concrete", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
-    public static final Block MINT_CONCRETE_POWDER = registerBlock("mint_concrete_powder", new ConcretePowderBlock(MINT_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE_POWDER).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
-    public static final Block MINT_GLAZED_TERRACOTTA = registerBlock("mint_glazed_terracotta", new ReversiblePillarBlock(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
-    public static final Block MINT_STAINED_GLASS = registerBlock("mint_stained_glass", new StainedGlassBlock(ModDyeColor.MINT, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
-    public static final Block MINT_STAINED_GLASS_PANE = registerBlock("mint_stained_glass_pane", new StainedGlassPaneBlock(ModDyeColor.MINT, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS_PANE).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
+    public static final Block MINT_WOOL = registerBlock("mint_wool", createWoolBlock(ModDyeColor.MINT), ModItemGroups.MINT);
+    public static final Block MINT_CARPET = registerBlock("mint_carpet", createCarpetBlock(ModDyeColor.MINT), ModItemGroups.MINT);
+    public static final Block MINT_TERRACOTTA = registerBlock("mint_terracotta", createTerracottaBlock(ModDyeColor.MINT), ModItemGroups.MINT);
+    public static final Block MINT_CONCRETE = registerBlock("mint_concrete", createConcreteBlock(ModDyeColor.MINT), ModItemGroups.MINT);
+    public static final Block MINT_CONCRETE_POWDER = registerBlock("mint_concrete_powder", createConcretePowderBlock(ModDyeColor.MINT, MINT_CONCRETE), ModItemGroups.MINT);
+    public static final Block MINT_GLAZED_TERRACOTTA = registerBlock("mint_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.MINT), ModItemGroups.MINT);
+    public static final Block MINT_STAINED_GLASS = registerBlock("mint_stained_glass", createStainedGlassBlock(ModDyeColor.MINT), ModItemGroups.MINT);
+    public static final Block MINT_STAINED_GLASS_PANE = registerBlock("mint_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.MINT), ModItemGroups.MINT);
     public static final Block MINT_SHULKER_BOX = registerBlockWithoutBlockItem("mint_shulker_box", createShulkerBoxBlock(ModDyeColor.MINT));
     public static final Block MINT_BED = registerBlockWithoutBlockItem("mint_bed", createBedBlock(ModDyeColor.MINT));
-    public static final Block MINT_CANDLE = registerBlock("mint_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
-    public static final Block MINT_CANDLE_CAKE = registerBlock("mint_candle_cake", new CandleCakeBlock(MINT_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.MINT);
+    public static final Block MINT_CANDLE = registerBlock("mint_candle", createCandleBlock(ModDyeColor.MINT), ModItemGroups.MINT);
+    public static final Block MINT_CANDLE_CAKE = registerBlock("mint_candle_cake", createCandleCakeBlock(ModDyeColor.MINT, MINT_CANDLE), ModItemGroups.MINT);
     public static final Block MINT_BANNER = registerBlockWithoutBlockItem("mint_banner", createBannerBlock(ModDyeColor.MINT));
     public static final Block MINT_WALL_BANNER = registerBlockWithoutBlockItem("mint_wall_banner", createWallBannerBlock(ModDyeColor.MINT, (BannerBlock)ModBlocks.MINT_BANNER));
     // MINT - Special
@@ -52,261 +52,142 @@ public class ModBlocks {
     //public static final Block MINT_BRICK_WALL = registerBlock("mint_brick_wall", new WallBlock(FabricBlockSettings.copyOf(MINT_BRICKS)), ModItemGroups.MINT);
 
     // PEACH - Main
-    public static final Block PEACH_WOOL = registerBlock("peach_wool", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PEACH);
-    public static final Block PEACH_CARPET = registerBlock("peach_carpet", new CarpetBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CARPET).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PEACH);
-    public static final Block PEACH_TERRACOTTA = registerBlock("peach_terracotta", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PEACH);
-    public static final Block PEACH_CONCRETE = registerBlock("peach_concrete", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PEACH);
-    public static final Block PEACH_CONCRETE_POWDER = registerBlock("peach_concrete_powder", new ConcretePowderBlock(PEACH_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE_POWDER).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PEACH);
-    public static final Block PEACH_GLAZED_TERRACOTTA = registerBlock("peach_glazed_terracotta", new ReversiblePillarBlock(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PEACH);
-    public static final Block PEACH_STAINED_GLASS = registerBlock("peach_stained_glass", new StainedGlassBlock(ModDyeColor.PEACH, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PEACH);
-    public static final Block PEACH_STAINED_GLASS_PANE = registerBlock("peach_stained_glass_pane", new StainedGlassPaneBlock(ModDyeColor.PEACH, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS_PANE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PEACH);
+    public static final Block PEACH_WOOL = registerBlock("peach_wool", createWoolBlock(ModDyeColor.PEACH), ModItemGroups.PEACH);
+    public static final Block PEACH_CARPET = registerBlock("peach_carpet", createCarpetBlock(ModDyeColor.PEACH), ModItemGroups.PEACH);
+    public static final Block PEACH_TERRACOTTA = registerBlock("peach_terracotta", createTerracottaBlock(ModDyeColor.PEACH), ModItemGroups.PEACH);
+    public static final Block PEACH_CONCRETE = registerBlock("peach_concrete", createConcreteBlock(ModDyeColor.PEACH), ModItemGroups.PEACH);
+    public static final Block PEACH_CONCRETE_POWDER = registerBlock("peach_concrete_powder", createConcretePowderBlock(ModDyeColor.PEACH, PEACH_CONCRETE), ModItemGroups.PEACH);
+    public static final Block PEACH_GLAZED_TERRACOTTA = registerBlock("peach_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.PEACH), ModItemGroups.PEACH);
+    public static final Block PEACH_STAINED_GLASS = registerBlock("peach_stained_glass", createStainedGlassBlock(ModDyeColor.PEACH), ModItemGroups.PEACH);
+    public static final Block PEACH_STAINED_GLASS_PANE = registerBlock("peach_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.PEACH), ModItemGroups.PEACH);
     public static final Block PEACH_SHULKER_BOX = registerBlockWithoutBlockItem("peach_shulker_box", createShulkerBoxBlock(ModDyeColor.PEACH));
     public static final Block PEACH_BED = registerBlockWithoutBlockItem("peach_bed", createBedBlock(ModDyeColor.PEACH));
-    public static final Block PEACH_CANDLE = registerBlock("peach_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PEACH);
-    public static final Block PEACH_CANDLE_CAKE = registerBlock("peach_candle_cake", new CandleCakeBlock(PEACH_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.PEACH);
+    public static final Block PEACH_CANDLE = registerBlock("peach_candle", createCandleBlock(ModDyeColor.PEACH), ModItemGroups.PEACH);
+    public static final Block PEACH_CANDLE_CAKE = registerBlock("peach_candle_cake", createCandleCakeBlock(ModDyeColor.PEACH, PEACH_CANDLE), ModItemGroups.PEACH);
     public static final Block PEACH_BANNER = registerBlockWithoutBlockItem("peach_banner", createBannerBlock(ModDyeColor.PEACH));
     public static final Block PEACH_WALL_BANNER = registerBlockWithoutBlockItem("peach_wall_banner", createWallBannerBlock(ModDyeColor.PEACH, (BannerBlock)ModBlocks.PEACH_BANNER));
     // PEACH - Special
 
     // PERIWINKLE - Main
-    public static final Block PERIWINKLE_WOOL = registerBlock("periwinkle_wool", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PERIWINKLE);
-    public static final Block PERIWINKLE_CARPET = registerBlock("periwinkle_carpet", new CarpetBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CARPET).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PERIWINKLE);
-    public static final Block PERIWINKLE_TERRACOTTA = registerBlock("periwinkle_terracotta", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PERIWINKLE);
-    public static final Block PERIWINKLE_CONCRETE = registerBlock("periwinkle_concrete", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PERIWINKLE);
-    public static final Block PERIWINKLE_CONCRETE_POWDER = registerBlock("periwinkle_concrete_powder", new ConcretePowderBlock(PERIWINKLE_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE_POWDER).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PERIWINKLE);
-    public static final Block PERIWINKLE_GLAZED_TERRACOTTA = registerBlock("periwinkle_glazed_terracotta", new ReversiblePillarBlock(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PERIWINKLE);
-    public static final Block PERIWINKLE_STAINED_GLASS = registerBlock("periwinkle_stained_glass", new StainedGlassBlock(ModDyeColor.PERIWINKLE, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PERIWINKLE);
-    public static final Block PERIWINKLE_STAINED_GLASS_PANE = registerBlock("periwinkle_stained_glass_pane", new StainedGlassPaneBlock(ModDyeColor.PERIWINKLE, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS_PANE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PERIWINKLE);
+    public static final Block PERIWINKLE_WOOL = registerBlock("periwinkle_wool", createWoolBlock(ModDyeColor.PERIWINKLE), ModItemGroups.PERIWINKLE);
+    public static final Block PERIWINKLE_CARPET = registerBlock("periwinkle_carpet", createCarpetBlock(ModDyeColor.PERIWINKLE), ModItemGroups.PERIWINKLE);
+    public static final Block PERIWINKLE_TERRACOTTA = registerBlock("periwinkle_terracotta", createTerracottaBlock(ModDyeColor.PERIWINKLE), ModItemGroups.PERIWINKLE);
+    public static final Block PERIWINKLE_CONCRETE = registerBlock("periwinkle_concrete", createConcreteBlock(ModDyeColor.PERIWINKLE), ModItemGroups.PERIWINKLE);
+    public static final Block PERIWINKLE_CONCRETE_POWDER = registerBlock("periwinkle_concrete_powder", createConcretePowderBlock(ModDyeColor.PERIWINKLE, PERIWINKLE_CONCRETE), ModItemGroups.PERIWINKLE);
+    public static final Block PERIWINKLE_GLAZED_TERRACOTTA = registerBlock("periwinkle_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.PERIWINKLE), ModItemGroups.PERIWINKLE);
+    public static final Block PERIWINKLE_STAINED_GLASS = registerBlock("periwinkle_stained_glass", createStainedGlassBlock(ModDyeColor.PERIWINKLE), ModItemGroups.PERIWINKLE);
+    public static final Block PERIWINKLE_STAINED_GLASS_PANE = registerBlock("periwinkle_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.PERIWINKLE), ModItemGroups.PERIWINKLE);
     public static final Block PERIWINKLE_SHULKER_BOX = registerBlockWithoutBlockItem("periwinkle_shulker_box", createShulkerBoxBlock(ModDyeColor.PERIWINKLE));
     public static final Block PERIWINKLE_BED = registerBlockWithoutBlockItem("periwinkle_bed", createBedBlock(ModDyeColor.PERIWINKLE));
-    public static final Block PERIWINKLE_CANDLE = registerBlock("periwinkle_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.PERIWINKLE);
-    public static final Block PERIWINKLE_CANDLE_CAKE = registerBlock("periwinkle_candle_cake", new CandleCakeBlock(PERIWINKLE_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.PERIWINKLE);
+    public static final Block PERIWINKLE_CANDLE = registerBlock("periwinkle_candle", createCandleBlock(ModDyeColor.PERIWINKLE), ModItemGroups.PERIWINKLE);
+    public static final Block PERIWINKLE_CANDLE_CAKE = registerBlock("periwinkle_candle_cake", createCandleCakeBlock(ModDyeColor.PERIWINKLE, PERIWINKLE_CANDLE), ModItemGroups.PERIWINKLE);
     public static final Block PERIWINKLE_BANNER = registerBlockWithoutBlockItem("periwinkle_banner", createBannerBlock(ModDyeColor.PERIWINKLE));
     public static final Block PERIWINKLE_WALL_BANNER = registerBlockWithoutBlockItem("periwinkle_wall_banner", createWallBannerBlock(ModDyeColor.PERIWINKLE, (BannerBlock)ModBlocks.PERIWINKLE_BANNER));
     // PERIWINKLE - Special
 
     // ARTICHOKE - Main
-    public static final Block ARTICHOKE_WOOL = registerBlock("artichoke_wool", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ARTICHOKE);
-    public static final Block ARTICHOKE_CARPET = registerBlock("artichoke_carpet", new CarpetBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CARPET).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ARTICHOKE);
-    public static final Block ARTICHOKE_TERRACOTTA = registerBlock("artichoke_terracotta", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ARTICHOKE);
-    public static final Block ARTICHOKE_CONCRETE = registerBlock("artichoke_concrete", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ARTICHOKE);
-    public static final Block ARTICHOKE_CONCRETE_POWDER = registerBlock("artichoke_concrete_powder", new ConcretePowderBlock(ARTICHOKE_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE_POWDER).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ARTICHOKE);
-    public static final Block ARTICHOKE_GLAZED_TERRACOTTA = registerBlock("artichoke_glazed_terracotta", new ReversiblePillarBlock(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ARTICHOKE);
-    public static final Block ARTICHOKE_STAINED_GLASS = registerBlock("artichoke_stained_glass", new StainedGlassBlock(ModDyeColor.ARTICHOKE, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ARTICHOKE);
-    public static final Block ARTICHOKE_STAINED_GLASS_PANE = registerBlock("artichoke_stained_glass_pane", new StainedGlassPaneBlock(ModDyeColor.ARTICHOKE, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS_PANE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ARTICHOKE);
+    public static final Block ARTICHOKE_WOOL = registerBlock("artichoke_wool", createWoolBlock(ModDyeColor.ARTICHOKE), ModItemGroups.ARTICHOKE);
+    public static final Block ARTICHOKE_CARPET = registerBlock("artichoke_carpet", createCarpetBlock(ModDyeColor.ARTICHOKE), ModItemGroups.ARTICHOKE);
+    public static final Block ARTICHOKE_TERRACOTTA = registerBlock("artichoke_terracotta", createTerracottaBlock(ModDyeColor.ARTICHOKE), ModItemGroups.ARTICHOKE);
+    public static final Block ARTICHOKE_CONCRETE = registerBlock("artichoke_concrete", createConcreteBlock(ModDyeColor.ARTICHOKE), ModItemGroups.ARTICHOKE);
+    public static final Block ARTICHOKE_CONCRETE_POWDER = registerBlock("artichoke_concrete_powder", createConcretePowderBlock(ModDyeColor.ARTICHOKE, ARTICHOKE_CONCRETE), ModItemGroups.ARTICHOKE);
+    public static final Block ARTICHOKE_GLAZED_TERRACOTTA = registerBlock("artichoke_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.ARTICHOKE), ModItemGroups.ARTICHOKE);
+    public static final Block ARTICHOKE_STAINED_GLASS = registerBlock("artichoke_stained_glass", createStainedGlassBlock(ModDyeColor.ARTICHOKE), ModItemGroups.ARTICHOKE);
+    public static final Block ARTICHOKE_STAINED_GLASS_PANE = registerBlock("artichoke_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.ARTICHOKE), ModItemGroups.ARTICHOKE);
     public static final Block ARTICHOKE_SHULKER_BOX = registerBlockWithoutBlockItem("artichoke_shulker_box", createShulkerBoxBlock(ModDyeColor.ARTICHOKE));
     public static final Block ARTICHOKE_BED = registerBlockWithoutBlockItem("artichoke_bed", createBedBlock(ModDyeColor.ARTICHOKE));
-    public static final Block ARTICHOKE_CANDLE = registerBlock("artichoke_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ARTICHOKE);
-    public static final Block ARTICHOKE_CANDLE_CAKE = registerBlock("artichoke_candle_cake", new CandleCakeBlock(ARTICHOKE_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.ARTICHOKE);
+    public static final Block ARTICHOKE_CANDLE = registerBlock("artichoke_candle", createCandleBlock(ModDyeColor.ARTICHOKE), ModItemGroups.ARTICHOKE);
+    public static final Block ARTICHOKE_CANDLE_CAKE = registerBlock("artichoke_candle_cake", createCandleCakeBlock(ModDyeColor.ARTICHOKE, ARTICHOKE_CANDLE), ModItemGroups.ARTICHOKE);
     public static final Block ARTICHOKE_BANNER = registerBlockWithoutBlockItem("artichoke_banner", createBannerBlock(ModDyeColor.ARTICHOKE));
     public static final Block ARTICHOKE_WALL_BANNER = registerBlockWithoutBlockItem("artichoke_wall_banner", createWallBannerBlock(ModDyeColor.ARTICHOKE, (BannerBlock)ModBlocks.ARTICHOKE_BANNER));
     // ARTICHOKE - Special
 
     // FUCHSIA - Main
-    public static final Block FUCHSIA_WOOL = registerBlock("fuchsia_wool", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.FUCHSIA);
-    public static final Block FUCHSIA_CARPET = registerBlock("fuchsia_carpet", new CarpetBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CARPET).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.FUCHSIA);
-    public static final Block FUCHSIA_TERRACOTTA = registerBlock("fuchsia_terracotta", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.FUCHSIA);
-    public static final Block FUCHSIA_CONCRETE = registerBlock("fuchsia_concrete", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.FUCHSIA);
-    public static final Block FUCHSIA_CONCRETE_POWDER = registerBlock("fuchsia_concrete_powder", new ConcretePowderBlock(FUCHSIA_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE_POWDER).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.FUCHSIA);
-    public static final Block FUCHSIA_GLAZED_TERRACOTTA = registerBlock("fuchsia_glazed_terracotta", new ReversiblePillarBlock(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.FUCHSIA);
-    public static final Block FUCHSIA_STAINED_GLASS = registerBlock("fuchsia_stained_glass", new StainedGlassBlock(ModDyeColor.FUCHSIA, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.FUCHSIA);
-    public static final Block FUCHSIA_STAINED_GLASS_PANE = registerBlock("fuchsia_stained_glass_pane", new StainedGlassPaneBlock(ModDyeColor.FUCHSIA, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS_PANE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.FUCHSIA);
+    public static final Block FUCHSIA_WOOL = registerBlock("fuchsia_wool", createWoolBlock(ModDyeColor.FUCHSIA), ModItemGroups.FUCHSIA);
+    public static final Block FUCHSIA_CARPET = registerBlock("fuchsia_carpet", createCarpetBlock(ModDyeColor.FUCHSIA), ModItemGroups.FUCHSIA);
+    public static final Block FUCHSIA_TERRACOTTA = registerBlock("fuchsia_terracotta", createTerracottaBlock(ModDyeColor.FUCHSIA), ModItemGroups.FUCHSIA);
+    public static final Block FUCHSIA_CONCRETE = registerBlock("fuchsia_concrete", createConcreteBlock(ModDyeColor.FUCHSIA), ModItemGroups.FUCHSIA);
+    public static final Block FUCHSIA_CONCRETE_POWDER = registerBlock("fuchsia_concrete_powder", createConcretePowderBlock(ModDyeColor.FUCHSIA, FUCHSIA_CONCRETE), ModItemGroups.FUCHSIA);
+    public static final Block FUCHSIA_GLAZED_TERRACOTTA = registerBlock("fuchsia_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.FUCHSIA), ModItemGroups.FUCHSIA);
+    public static final Block FUCHSIA_STAINED_GLASS = registerBlock("fuchsia_stained_glass", createStainedGlassBlock(ModDyeColor.FUCHSIA), ModItemGroups.FUCHSIA);
+    public static final Block FUCHSIA_STAINED_GLASS_PANE = registerBlock("fuchsia_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.FUCHSIA), ModItemGroups.FUCHSIA);
     public static final Block FUCHSIA_SHULKER_BOX = registerBlockWithoutBlockItem("fuchsia_shulker_box", createShulkerBoxBlock(ModDyeColor.FUCHSIA));
     public static final Block FUCHSIA_BED = registerBlockWithoutBlockItem("fuchsia_bed", createBedBlock(ModDyeColor.FUCHSIA));
-    public static final Block FUCHSIA_CANDLE = registerBlock("fuchsia_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.FUCHSIA);
-    public static final Block FUCHSIA_CANDLE_CAKE = registerBlock("fuchsia_candle_cake", new CandleCakeBlock(FUCHSIA_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.FUCHSIA);
+    public static final Block FUCHSIA_CANDLE = registerBlock("fuchsia_candle", createCandleBlock(ModDyeColor.FUCHSIA), ModItemGroups.FUCHSIA);
+    public static final Block FUCHSIA_CANDLE_CAKE = registerBlock("fuchsia_candle_cake", createCandleCakeBlock(ModDyeColor.FUCHSIA, FUCHSIA_CANDLE), ModItemGroups.FUCHSIA);
     public static final Block FUCHSIA_BANNER = registerBlockWithoutBlockItem("fuchsia_banner", createBannerBlock(ModDyeColor.FUCHSIA));
     public static final Block FUCHSIA_WALL_BANNER = registerBlockWithoutBlockItem("fuchsia_wall_banner", createWallBannerBlock(ModDyeColor.FUCHSIA, (BannerBlock)ModBlocks.FUCHSIA_BANNER));
     // FUCHSIA - Special
 
     // VERMILION - Main
-    public static final Block VERMILION_WOOL = registerBlock("vermilion_wool", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.VERMILION);
-    public static final Block VERMILION_CARPET = registerBlock("vermilion_carpet", new CarpetBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CARPET).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.VERMILION);
-    public static final Block VERMILION_TERRACOTTA = registerBlock("vermilion_terracotta", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.VERMILION);
-    public static final Block VERMILION_CONCRETE = registerBlock("vermilion_concrete", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.VERMILION);
-    public static final Block VERMILION_CONCRETE_POWDER = registerBlock("vermilion_concrete_powder", new ConcretePowderBlock(VERMILION_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE_POWDER).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.VERMILION);
-    public static final Block VERMILION_GLAZED_TERRACOTTA = registerBlock("vermilion_glazed_terracotta", new ReversiblePillarBlock(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.VERMILION);
-    public static final Block VERMILION_STAINED_GLASS = registerBlock("vermilion_stained_glass", new StainedGlassBlock(ModDyeColor.VERMILION, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.VERMILION);
-    public static final Block VERMILION_STAINED_GLASS_PANE = registerBlock("vermilion_stained_glass_pane", new StainedGlassPaneBlock(ModDyeColor.VERMILION, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS_PANE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.VERMILION);
+    public static final Block VERMILION_WOOL = registerBlock("vermilion_wool", createWoolBlock(ModDyeColor.VERMILION), ModItemGroups.VERMILION);
+    public static final Block VERMILION_CARPET = registerBlock("vermilion_carpet", createCarpetBlock(ModDyeColor.VERMILION), ModItemGroups.VERMILION);
+    public static final Block VERMILION_TERRACOTTA = registerBlock("vermilion_terracotta", createTerracottaBlock(ModDyeColor.VERMILION), ModItemGroups.VERMILION);
+    public static final Block VERMILION_CONCRETE = registerBlock("vermilion_concrete", createConcreteBlock(ModDyeColor.VERMILION), ModItemGroups.VERMILION);
+    public static final Block VERMILION_CONCRETE_POWDER = registerBlock("vermilion_concrete_powder",createConcretePowderBlock(ModDyeColor.VERMILION, VERMILION_CONCRETE), ModItemGroups.VERMILION);
+    public static final Block VERMILION_GLAZED_TERRACOTTA = registerBlock("vermilion_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.VERMILION), ModItemGroups.VERMILION);
+    public static final Block VERMILION_STAINED_GLASS = registerBlock("vermilion_stained_glass", createStainedGlassBlock(ModDyeColor.VERMILION), ModItemGroups.VERMILION);
+    public static final Block VERMILION_STAINED_GLASS_PANE = registerBlock("vermilion_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.VERMILION), ModItemGroups.VERMILION);
     public static final Block VERMILION_SHULKER_BOX = registerBlockWithoutBlockItem("vermilion_shulker_box", createShulkerBoxBlock(ModDyeColor.VERMILION));
     public static final Block VERMILION_BED = registerBlockWithoutBlockItem("vermilion_bed", createBedBlock(ModDyeColor.VERMILION));
-    public static final Block VERMILION_CANDLE = registerBlock("vermilion_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.VERMILION);
-    public static final Block VERMILION_CANDLE_CAKE = registerBlock("vermilion_candle_cake", new CandleCakeBlock(VERMILION_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.VERMILION);
+    public static final Block VERMILION_CANDLE = registerBlock("vermilion_candle", createCandleBlock(ModDyeColor.VERMILION), ModItemGroups.VERMILION);
+    public static final Block VERMILION_CANDLE_CAKE = registerBlock("vermilion_candle_cake", createCandleCakeBlock(ModDyeColor.VERMILION, VERMILION_CANDLE), ModItemGroups.VERMILION);
     public static final Block VERMILION_BANNER = registerBlockWithoutBlockItem("vermilion_banner", createBannerBlock(ModDyeColor.VERMILION));
     public static final Block VERMILION_WALL_BANNER = registerBlockWithoutBlockItem("vermilion_wall_banner", createWallBannerBlock(ModDyeColor.VERMILION, (BannerBlock)ModBlocks.VERMILION_BANNER));
     // VERMILION - Special
 
 
     // SHAMROCK - Main
-    public static final Block SHAMROCK_WOOL = registerBlock("shamrock_wool", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SHAMROCK);
-    public static final Block SHAMROCK_CARPET = registerBlock("shamrock_carpet", new CarpetBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CARPET).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SHAMROCK);
-    public static final Block SHAMROCK_TERRACOTTA = registerBlock("shamrock_terracotta", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SHAMROCK);
-    public static final Block SHAMROCK_CONCRETE = registerBlock("shamrock_concrete", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SHAMROCK);
-    public static final Block SHAMROCK_CONCRETE_POWDER = registerBlock("shamrock_concrete_powder", new ConcretePowderBlock(SHAMROCK_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE_POWDER).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SHAMROCK);
-    public static final Block SHAMROCK_GLAZED_TERRACOTTA = registerBlock("shamrock_glazed_terracotta", new ReversiblePillarBlock(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SHAMROCK);
-    public static final Block SHAMROCK_STAINED_GLASS = registerBlock("shamrock_stained_glass", new StainedGlassBlock(ModDyeColor.SHAMROCK, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SHAMROCK);
-    public static final Block SHAMROCK_STAINED_GLASS_PANE = registerBlock("shamrock_stained_glass_pane", new StainedGlassPaneBlock(ModDyeColor.SHAMROCK, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS_PANE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SHAMROCK);
+    public static final Block SHAMROCK_WOOL = registerBlock("shamrock_wool", createWoolBlock(ModDyeColor.SHAMROCK), ModItemGroups.SHAMROCK);
+    public static final Block SHAMROCK_CARPET = registerBlock("shamrock_carpet", createCarpetBlock(ModDyeColor.SHAMROCK), ModItemGroups.SHAMROCK);
+    public static final Block SHAMROCK_TERRACOTTA = registerBlock("shamrock_terracotta", createTerracottaBlock(ModDyeColor.SHAMROCK), ModItemGroups.SHAMROCK);
+    public static final Block SHAMROCK_CONCRETE = registerBlock("shamrock_concrete", createConcreteBlock(ModDyeColor.SHAMROCK), ModItemGroups.SHAMROCK);
+    public static final Block SHAMROCK_CONCRETE_POWDER = registerBlock("shamrock_concrete_powder", createConcretePowderBlock(ModDyeColor.SHAMROCK, SHAMROCK_CONCRETE), ModItemGroups.SHAMROCK);
+    public static final Block SHAMROCK_GLAZED_TERRACOTTA = registerBlock("shamrock_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.SHAMROCK), ModItemGroups.SHAMROCK);
+    public static final Block SHAMROCK_STAINED_GLASS = registerBlock("shamrock_stained_glass", createStainedGlassBlock(ModDyeColor.SHAMROCK), ModItemGroups.SHAMROCK);
+    public static final Block SHAMROCK_STAINED_GLASS_PANE = registerBlock("shamrock_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.SHAMROCK), ModItemGroups.SHAMROCK);
     public static final Block SHAMROCK_SHULKER_BOX = registerBlockWithoutBlockItem("shamrock_shulker_box", createShulkerBoxBlock(ModDyeColor.SHAMROCK));
     public static final Block SHAMROCK_BED = registerBlockWithoutBlockItem("shamrock_bed", createBedBlock(ModDyeColor.SHAMROCK));
-    public static final Block SHAMROCK_CANDLE = registerBlock("shamrock_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SHAMROCK);
-    public static final Block SHAMROCK_CANDLE_CAKE = registerBlock("shamrock_candle_cake", new CandleCakeBlock(SHAMROCK_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.SHAMROCK);
+    public static final Block SHAMROCK_CANDLE = registerBlock("shamrock_candle", createCandleBlock(ModDyeColor.SHAMROCK), ModItemGroups.SHAMROCK);
+    public static final Block SHAMROCK_CANDLE_CAKE = registerBlock("shamrock_candle_cake", createCandleCakeBlock(ModDyeColor.SHAMROCK, SHAMROCK_CANDLE), ModItemGroups.SHAMROCK);
     public static final Block SHAMROCK_BANNER = registerBlockWithoutBlockItem("shamrock_banner", createBannerBlock(ModDyeColor.SHAMROCK));
     public static final Block SHAMROCK_WALL_BANNER = registerBlockWithoutBlockItem("shamrock_wall_banner", createWallBannerBlock(ModDyeColor.SHAMROCK, (BannerBlock)ModBlocks.SHAMROCK_BANNER));
     // SHAMROCK - Special
 
     // INDIGO - Main
-    public static final Block INDIGO_WOOL = registerBlock("indigo_wool", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.INDIGO);
-    public static final Block INDIGO_CARPET = registerBlock("indigo_carpet", new CarpetBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CARPET).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.INDIGO);
-    public static final Block INDIGO_TERRACOTTA = registerBlock("indigo_terracotta", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.INDIGO);
-    public static final Block INDIGO_CONCRETE = registerBlock("indigo_concrete", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.INDIGO);
-    public static final Block INDIGO_CONCRETE_POWDER = registerBlock("indigo_concrete_powder", new ConcretePowderBlock(INDIGO_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE_POWDER).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.INDIGO);
-    public static final Block INDIGO_GLAZED_TERRACOTTA = registerBlock("indigo_glazed_terracotta", new ReversiblePillarBlock(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.INDIGO);
-    public static final Block INDIGO_STAINED_GLASS = registerBlock("indigo_stained_glass", new StainedGlassBlock(ModDyeColor.INDIGO, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.INDIGO);
-    public static final Block INDIGO_STAINED_GLASS_PANE = registerBlock("indigo_stained_glass_pane", new StainedGlassPaneBlock(ModDyeColor.INDIGO, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS_PANE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.INDIGO);
+    public static final Block INDIGO_WOOL = registerBlock("indigo_wool", createWoolBlock(ModDyeColor.INDIGO), ModItemGroups.INDIGO);
+    public static final Block INDIGO_CARPET = registerBlock("indigo_carpet", createCarpetBlock(ModDyeColor.INDIGO), ModItemGroups.INDIGO);
+    public static final Block INDIGO_TERRACOTTA = registerBlock("indigo_terracotta", createTerracottaBlock(ModDyeColor.INDIGO), ModItemGroups.INDIGO);
+    public static final Block INDIGO_CONCRETE = registerBlock("indigo_concrete", createConcreteBlock(ModDyeColor.INDIGO), ModItemGroups.INDIGO);
+    public static final Block INDIGO_CONCRETE_POWDER = registerBlock("indigo_concrete_powder", createConcretePowderBlock(ModDyeColor.INDIGO, INDIGO_CONCRETE), ModItemGroups.INDIGO);
+    public static final Block INDIGO_GLAZED_TERRACOTTA = registerBlock("indigo_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.INDIGO), ModItemGroups.INDIGO);
+    public static final Block INDIGO_STAINED_GLASS = registerBlock("indigo_stained_glass", createStainedGlassBlock(ModDyeColor.INDIGO), ModItemGroups.INDIGO);
+    public static final Block INDIGO_STAINED_GLASS_PANE = registerBlock("indigo_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.INDIGO), ModItemGroups.INDIGO);
     public static final Block INDIGO_SHULKER_BOX = registerBlockWithoutBlockItem("indigo_shulker_box", createShulkerBoxBlock(ModDyeColor.INDIGO));
     public static final Block INDIGO_BED = registerBlockWithoutBlockItem("indigo_bed", createBedBlock(ModDyeColor.INDIGO));
-    public static final Block INDIGO_CANDLE = registerBlock("indigo_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.INDIGO);
-    public static final Block INDIGO_CANDLE_CAKE = registerBlock("indigo_candle_cake", new CandleCakeBlock(INDIGO_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.INDIGO);
+    public static final Block INDIGO_CANDLE = registerBlock("indigo_candle", createCandleBlock(ModDyeColor.INDIGO), ModItemGroups.INDIGO);
+    public static final Block INDIGO_CANDLE_CAKE = registerBlock("indigo_candle_cake", createCandleCakeBlock( ModDyeColor.INDIGO, INDIGO_CANDLE), ModItemGroups.INDIGO);
     public static final Block INDIGO_BANNER = registerBlockWithoutBlockItem("indigo_banner", createBannerBlock(ModDyeColor.INDIGO));
     public static final Block INDIGO_WALL_BANNER = registerBlockWithoutBlockItem("indigo_wall_banner", createWallBannerBlock(ModDyeColor.INDIGO, (BannerBlock)ModBlocks.INDIGO_BANNER));
     // INDIGO - Special
 
 
     // BANANA - Main
-    public static final Block BANANA_WOOL = registerBlock("banana_wool", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BANANA);
-    public static final Block BANANA_CARPET = registerBlock("banana_carpet", new CarpetBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CARPET).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BANANA);
-    public static final Block BANANA_TERRACOTTA = registerBlock("banana_terracotta", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BANANA);
-    public static final Block BANANA_CONCRETE = registerBlock("banana_concrete", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BANANA);
-    public static final Block BANANA_CONCRETE_POWDER = registerBlock("banana_concrete_powder", new ConcretePowderBlock(BANANA_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE_POWDER).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BANANA);
-    public static final Block BANANA_GLAZED_TERRACOTTA = registerBlock("banana_glazed_terracotta", new ReversiblePillarBlock(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BANANA);
-    public static final Block BANANA_STAINED_GLASS = registerBlock("banana_stained_glass", new StainedGlassBlock(ModDyeColor.BANANA, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BANANA);
-    public static final Block BANANA_STAINED_GLASS_PANE = registerBlock("banana_stained_glass_pane", new StainedGlassPaneBlock(ModDyeColor.BANANA, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS_PANE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BANANA);
+    public static final Block BANANA_WOOL = registerBlock("banana_wool", createWoolBlock(ModDyeColor.BANANA), ModItemGroups.BANANA);
+    public static final Block BANANA_CARPET = registerBlock("banana_carpet", createCarpetBlock(ModDyeColor.BANANA), ModItemGroups.BANANA);
+    public static final Block BANANA_TERRACOTTA = registerBlock("banana_terracotta", createTerracottaBlock(ModDyeColor.BANANA), ModItemGroups.BANANA);
+    public static final Block BANANA_CONCRETE = registerBlock("banana_concrete", createConcreteBlock(ModDyeColor.BANANA), ModItemGroups.BANANA);
+    public static final Block BANANA_CONCRETE_POWDER = registerBlock("banana_concrete_powder", createConcretePowderBlock(ModDyeColor.BANANA, BANANA_CONCRETE), ModItemGroups.BANANA);
+    public static final Block BANANA_GLAZED_TERRACOTTA = registerBlock("banana_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.BANANA), ModItemGroups.BANANA);
+    public static final Block BANANA_STAINED_GLASS = registerBlock("banana_stained_glass", createStainedGlassBlock(ModDyeColor.BANANA), ModItemGroups.BANANA);
+    public static final Block BANANA_STAINED_GLASS_PANE = registerBlock("banana_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.BANANA), ModItemGroups.BANANA);
     public static final Block BANANA_SHULKER_BOX = registerBlockWithoutBlockItem("banana_shulker_box", createShulkerBoxBlock(ModDyeColor.BANANA));
     public static final Block BANANA_BED = registerBlockWithoutBlockItem("banana_bed", createBedBlock(ModDyeColor.BANANA));
-    public static final Block BANANA_CANDLE = registerBlock("banana_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BANANA);
-    public static final Block BANANA_CANDLE_CAKE = registerBlock("banana_candle_cake", new CandleCakeBlock(BANANA_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.BANANA);
+    public static final Block BANANA_CANDLE = registerBlock("banana_candle", createCandleBlock(ModDyeColor.BANANA), ModItemGroups.BANANA);
+    public static final Block BANANA_CANDLE_CAKE = registerBlock("banana_candle_cake", createCandleCakeBlock(ModDyeColor.BANANA, BANANA_CANDLE), ModItemGroups.BANANA);
     public static final Block BANANA_BANNER = registerBlockWithoutBlockItem("banana_banner", createBannerBlock(ModDyeColor.BANANA));
     public static final Block BANANA_WALL_BANNER = registerBlockWithoutBlockItem("banana_wall_banner", createWallBannerBlock(ModDyeColor.BANANA, (BannerBlock)ModBlocks.BANANA_BANNER));
     // BANANA - Special
-
-//    // ACORN - Main
-//    public static final Block ACORN_WOOL = registerBlock("peach_wool", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ACORN);
-//    public static final Block ACORN_CARPET = registerBlock("peach_carpet", new CarpetBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CARPET).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ACORN);
-//    public static final Block ACORN_TERRACOTTA = registerBlock("peach_terracotta", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ACORN);
-//    public static final Block ACORN_CONCRETE = registerBlock("peach_concrete", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ACORN);
-//    public static final Block ACORN_CONCRETE_POWDER = registerBlock("peach_concrete_powder", new ConcretePowderBlock(ACORN_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE_POWDER).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ACORN);
-//    public static final Block ACORN_GLAZED_TERRACOTTA = registerBlock("peach_glazed_terracotta", new ReversiblePillarBlock(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ACORN);
-//    public static final Block ACORN_STAINED_GLASS = registerBlock("peach_stained_glass", new StainedGlassBlock(ModDyeColor.ACORN, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ACORN);
-//    public static final Block ACORN_STAINED_GLASS_PANE = registerBlock("peach_stained_glass_pane", new StainedGlassPaneBlock(ModDyeColor.ACORN, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS_PANE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ACORN);
-//    public static final Block ACORN_SHULKER_BOX = registerBlockWithoutBlockItem("peach_shulker_box", createShulkerBoxBlock(ModDyeColor.ACORN));
-//    public static final Block ACORN_BED = registerBlockWithoutBlockItem("peach_bed", createBedBlock(ModDyeColor.ACORN));
-//    public static final Block ACORN_CANDLE = registerBlock("peach_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.ACORN);
-//    public static final Block ACORN_CANDLE_CAKE = registerBlock("peach_candle_cake", new CandleCakeBlock(ACORN_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.ACORN);
-//    public static final Block ACORN_BANNER = registerBlockWithoutBlockItem("peach_banner", createBannerBlock(ModDyeColor.ACORN));
-//    public static final Block ACORN_WALL_BANNER = registerBlockWithoutBlockItem("peach_wall_banner", createWallBannerBlock(ModDyeColor.ACORN, (BannerBlock)ModBlocks.ACORN_BANNER));
-//    // ACORN - Special
-//
-//    // CERULEAN - Main
-//    public static final Block CERULEAN_WOOL = registerBlock("peach_wool", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.CERULEAN);
-//    public static final Block CERULEAN_CARPET = registerBlock("peach_carpet", new CarpetBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CARPET).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.CERULEAN);
-//    public static final Block CERULEAN_TERRACOTTA = registerBlock("peach_terracotta", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.CERULEAN);
-//    public static final Block CERULEAN_CONCRETE = registerBlock("peach_concrete", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.CERULEAN);
-//    public static final Block CERULEAN_CONCRETE_POWDER = registerBlock("peach_concrete_powder", new ConcretePowderBlock(CERULEAN_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE_POWDER).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.CERULEAN);
-//    public static final Block CERULEAN_GLAZED_TERRACOTTA = registerBlock("peach_glazed_terracotta", new ReversiblePillarBlock(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.CERULEAN);
-//    public static final Block CERULEAN_STAINED_GLASS = registerBlock("peach_stained_glass", new StainedGlassBlock(ModDyeColor.CERULEAN, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.CERULEAN);
-//    public static final Block CERULEAN_STAINED_GLASS_PANE = registerBlock("peach_stained_glass_pane", new StainedGlassPaneBlock(ModDyeColor.CERULEAN, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS_PANE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.CERULEAN);
-//    public static final Block CERULEAN_SHULKER_BOX = registerBlockWithoutBlockItem("peach_shulker_box", createShulkerBoxBlock(ModDyeColor.CERULEAN));
-//    public static final Block CERULEAN_BED = registerBlockWithoutBlockItem("peach_bed", createBedBlock(ModDyeColor.CERULEAN));
-//    public static final Block CERULEAN_CANDLE = registerBlock("peach_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.CERULEAN);
-//    public static final Block CERULEAN_CANDLE_CAKE = registerBlock("peach_candle_cake", new CandleCakeBlock(CERULEAN_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.CERULEAN);
-//    public static final Block CERULEAN_BANNER = registerBlockWithoutBlockItem("peach_banner", createBannerBlock(ModDyeColor.CERULEAN));
-//    public static final Block CERULEAN_WALL_BANNER = registerBlockWithoutBlockItem("peach_wall_banner", createWallBannerBlock(ModDyeColor.CERULEAN, (BannerBlock)ModBlocks.CERULEAN_BANNER));
-//    // CERULEAN - Special
-//
-//    // TAUPE - Main
-//    public static final Block TAUPE_WOOL = registerBlock("peach_wool", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.TAUPE);
-//    public static final Block TAUPE_CARPET = registerBlock("peach_carpet", new CarpetBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CARPET).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.TAUPE);
-//    public static final Block TAUPE_TERRACOTTA = registerBlock("peach_terracotta", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.TAUPE);
-//    public static final Block TAUPE_CONCRETE = registerBlock("peach_concrete", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.TAUPE);
-//    public static final Block TAUPE_CONCRETE_POWDER = registerBlock("peach_concrete_powder", new ConcretePowderBlock(TAUPE_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE_POWDER).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.TAUPE);
-//    public static final Block TAUPE_GLAZED_TERRACOTTA = registerBlock("peach_glazed_terracotta", new ReversiblePillarBlock(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.TAUPE);
-//    public static final Block TAUPE_STAINED_GLASS = registerBlock("peach_stained_glass", new StainedGlassBlock(ModDyeColor.TAUPE, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.TAUPE);
-//    public static final Block TAUPE_STAINED_GLASS_PANE = registerBlock("peach_stained_glass_pane", new StainedGlassPaneBlock(ModDyeColor.TAUPE, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS_PANE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.TAUPE);
-//    public static final Block TAUPE_SHULKER_BOX = registerBlockWithoutBlockItem("peach_shulker_box", createShulkerBoxBlock(ModDyeColor.TAUPE));
-//    public static final Block TAUPE_BED = registerBlockWithoutBlockItem("peach_bed", createBedBlock(ModDyeColor.TAUPE));
-//    public static final Block TAUPE_CANDLE = registerBlock("peach_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.TAUPE);
-//    public static final Block TAUPE_CANDLE_CAKE = registerBlock("peach_candle_cake", new CandleCakeBlock(TAUPE_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.TAUPE);
-//    public static final Block TAUPE_BANNER = registerBlockWithoutBlockItem("peach_banner", createBannerBlock(ModDyeColor.TAUPE));
-//    public static final Block TAUPE_WALL_BANNER = registerBlockWithoutBlockItem("peach_wall_banner", createWallBannerBlock(ModDyeColor.TAUPE, (BannerBlock)ModBlocks.TAUPE_BANNER));
-//    // TAUPE - Special
-//
-//    // MAROON - Main
-//    public static final Block MAROON_WOOL = registerBlock("peach_wool", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.MAROON);
-//    public static final Block MAROON_CARPET = registerBlock("peach_carpet", new CarpetBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CARPET).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.MAROON);
-//    public static final Block MAROON_TERRACOTTA = registerBlock("peach_terracotta", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.MAROON);
-//    public static final Block MAROON_CONCRETE = registerBlock("peach_concrete", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.MAROON);
-//    public static final Block MAROON_CONCRETE_POWDER = registerBlock("peach_concrete_powder", new ConcretePowderBlock(MAROON_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE_POWDER).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.MAROON);
-//    public static final Block MAROON_GLAZED_TERRACOTTA = registerBlock("peach_glazed_terracotta", new ReversiblePillarBlock(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.MAROON);
-//    public static final Block MAROON_STAINED_GLASS = registerBlock("peach_stained_glass", new StainedGlassBlock(ModDyeColor.MAROON, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.MAROON);
-//    public static final Block MAROON_STAINED_GLASS_PANE = registerBlock("peach_stained_glass_pane", new StainedGlassPaneBlock(ModDyeColor.MAROON, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS_PANE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.MAROON);
-//    public static final Block MAROON_SHULKER_BOX = registerBlockWithoutBlockItem("peach_shulker_box", createShulkerBoxBlock(ModDyeColor.MAROON));
-//    public static final Block MAROON_BED = registerBlockWithoutBlockItem("peach_bed", createBedBlock(ModDyeColor.MAROON));
-//    public static final Block MAROON_CANDLE = registerBlock("peach_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.MAROON);
-//    public static final Block MAROON_CANDLE_CAKE = registerBlock("peach_candle_cake", new CandleCakeBlock(MAROON_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.MAROON);
-//    public static final Block MAROON_BANNER = registerBlockWithoutBlockItem("peach_banner", createBannerBlock(ModDyeColor.MAROON));
-//    public static final Block MAROON_WALL_BANNER = registerBlockWithoutBlockItem("peach_wall_banner", createWallBannerBlock(ModDyeColor.MAROON, (BannerBlock)ModBlocks.MAROON_BANNER));
-//    // MAROON - Special
-//
-//    // BLUEBERRY - Main
-//    public static final Block BLUEBERRY_WOOL = registerBlock("peach_wool", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BLUEBERRY);
-//    public static final Block BLUEBERRY_CARPET = registerBlock("peach_carpet", new CarpetBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CARPET).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BLUEBERRY);
-//    public static final Block BLUEBERRY_TERRACOTTA = registerBlock("peach_terracotta", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BLUEBERRY);
-//    public static final Block BLUEBERRY_CONCRETE = registerBlock("peach_concrete", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BLUEBERRY);
-//    public static final Block BLUEBERRY_CONCRETE_POWDER = registerBlock("peach_concrete_powder", new ConcretePowderBlock(BLUEBERRY_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE_POWDER).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BLUEBERRY);
-//    public static final Block BLUEBERRY_GLAZED_TERRACOTTA = registerBlock("peach_glazed_terracotta", new ReversiblePillarBlock(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BLUEBERRY);
-//    public static final Block BLUEBERRY_STAINED_GLASS = registerBlock("peach_stained_glass", new StainedGlassBlock(ModDyeColor.BLUEBERRY, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BLUEBERRY);
-//    public static final Block BLUEBERRY_STAINED_GLASS_PANE = registerBlock("peach_stained_glass_pane", new StainedGlassPaneBlock(ModDyeColor.BLUEBERRY, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS_PANE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BLUEBERRY);
-//    public static final Block BLUEBERRY_SHULKER_BOX = registerBlockWithoutBlockItem("peach_shulker_box", createShulkerBoxBlock(ModDyeColor.BLUEBERRY));
-//    public static final Block BLUEBERRY_BED = registerBlockWithoutBlockItem("peach_bed", createBedBlock(ModDyeColor.BLUEBERRY));
-//    public static final Block BLUEBERRY_CANDLE = registerBlock("peach_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.BLUEBERRY);
-//    public static final Block BLUEBERRY_CANDLE_CAKE = registerBlock("peach_candle_cake", new CandleCakeBlock(BLUEBERRY_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.BLUEBERRY);
-//    public static final Block BLUEBERRY_BANNER = registerBlockWithoutBlockItem("peach_banner", createBannerBlock(ModDyeColor.BLUEBERRY));
-//    public static final Block BLUEBERRY_WALL_BANNER = registerBlockWithoutBlockItem("peach_wall_banner", createWallBannerBlock(ModDyeColor.BLUEBERRY, (BannerBlock)ModBlocks.BLUEBERRY_BANNER));
-//    // BLUEBERRY - Special
-//
-//    // GRAPE - Main
-//    public static final Block GRAPE_WOOL = registerBlock("peach_wool", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.GRAPE);
-//    public static final Block GRAPE_CARPET = registerBlock("peach_carpet", new CarpetBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CARPET).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.GRAPE);
-//    public static final Block GRAPE_TERRACOTTA = registerBlock("peach_terracotta", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.GRAPE);
-//    public static final Block GRAPE_CONCRETE = registerBlock("peach_concrete", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.GRAPE);
-//    public static final Block GRAPE_CONCRETE_POWDER = registerBlock("peach_concrete_powder", new ConcretePowderBlock(GRAPE_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE_POWDER).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.GRAPE);
-//    public static final Block GRAPE_GLAZED_TERRACOTTA = registerBlock("peach_glazed_terracotta", new ReversiblePillarBlock(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.GRAPE);
-//    public static final Block GRAPE_STAINED_GLASS = registerBlock("peach_stained_glass", new StainedGlassBlock(ModDyeColor.GRAPE, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.GRAPE);
-//    public static final Block GRAPE_STAINED_GLASS_PANE = registerBlock("peach_stained_glass_pane", new StainedGlassPaneBlock(ModDyeColor.GRAPE, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS_PANE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.GRAPE);
-//    public static final Block GRAPE_SHULKER_BOX = registerBlockWithoutBlockItem("peach_shulker_box", createShulkerBoxBlock(ModDyeColor.GRAPE));
-//    public static final Block GRAPE_BED = registerBlockWithoutBlockItem("peach_bed", createBedBlock(ModDyeColor.GRAPE));
-//    public static final Block GRAPE_CANDLE = registerBlock("peach_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.GRAPE);
-//    public static final Block GRAPE_CANDLE_CAKE = registerBlock("peach_candle_cake", new CandleCakeBlock(GRAPE_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.GRAPE);
-//    public static final Block GRAPE_BANNER = registerBlockWithoutBlockItem("peach_banner", createBannerBlock(ModDyeColor.GRAPE));
-//    public static final Block GRAPE_WALL_BANNER = registerBlockWithoutBlockItem("peach_wall_banner", createWallBannerBlock(ModDyeColor.GRAPE, (BannerBlock)ModBlocks.GRAPE_BANNER));
-//    // GRAPE - Special
-//
-//    // SAP - Main
-//    public static final Block SAP_WOOL = registerBlock("peach_wool", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SAP);
-//    public static final Block SAP_CARPET = registerBlock("peach_carpet", new CarpetBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CARPET).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SAP);
-//    public static final Block SAP_TERRACOTTA = registerBlock("peach_terracotta", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SAP);
-//    public static final Block SAP_CONCRETE = registerBlock("peach_concrete", new Block(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SAP);
-//    public static final Block SAP_CONCRETE_POWDER = registerBlock("peach_concrete_powder", new ConcretePowderBlock(SAP_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE_POWDER).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SAP);
-//    public static final Block SAP_GLAZED_TERRACOTTA = registerBlock("peach_glazed_terracotta", new ReversiblePillarBlock(FabricBlockSettings.copyOf(Blocks.BLACK_GLAZED_TERRACOTTA).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SAP);
-//    public static final Block SAP_STAINED_GLASS = registerBlock("peach_stained_glass", new StainedGlassBlock(ModDyeColor.SAP, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SAP);
-//    public static final Block SAP_STAINED_GLASS_PANE = registerBlock("peach_stained_glass_pane", new StainedGlassPaneBlock(ModDyeColor.SAP, FabricBlockSettings.copyOf(Blocks.BLACK_STAINED_GLASS_PANE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SAP);
-//    public static final Block SAP_SHULKER_BOX = registerBlockWithoutBlockItem("peach_shulker_box", createShulkerBoxBlock(ModDyeColor.SAP));
-//    public static final Block SAP_BED = registerBlockWithoutBlockItem("peach_bed", createBedBlock(ModDyeColor.SAP));
-//    public static final Block SAP_CANDLE = registerBlock("peach_candle", new CandleBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CANDLE).mapColor(MapColor.RAW_IRON_PINK)), ModItemGroups.SAP);
-//    public static final Block SAP_CANDLE_CAKE = registerBlock("peach_candle_cake", new CandleCakeBlock(SAP_CANDLE, FabricBlockSettings.copyOf(Blocks.CANDLE_CAKE)), ModItemGroups.SAP);
-//    public static final Block SAP_BANNER = registerBlockWithoutBlockItem("peach_banner", createBannerBlock(ModDyeColor.SAP));
-//    public static final Block SAP_WALL_BANNER = registerBlockWithoutBlockItem("peach_wall_banner", createWallBannerBlock(ModDyeColor.SAP, (BannerBlock)ModBlocks.SAP_BANNER));
-//    // SAP - Special
     
     // Arrays
     public static final Block[] WOOL_BLOCKS = {
@@ -570,7 +451,36 @@ public class ModBlocks {
         registerBlockItem(name,block,group);
         return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
     }
-
+    public static Block createWoolBlock(DyeColor color) {
+        return new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL).mapColor(color.getMapColor()));
+    }
+    public static CarpetBlock createCarpetBlock(DyeColor color) {
+        return new CarpetBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CARPET).mapColor(color.getMapColor()));
+    }
+    public static Block createTerracottaBlock(DyeColor color) {
+        return new Block(FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).mapColor(color.getMapColor()));
+    }
+    public static Block createConcreteBlock(DyeColor color) {
+        return new Block(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).mapColor(color.getMapColor()));
+    }
+    public static ConcretePowderBlock createConcretePowderBlock(DyeColor color, Block concrete) {
+        return new ConcretePowderBlock(concrete, FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE_POWDER).mapColor(color.getMapColor()));
+    }
+    public static CandleBlock createCandleBlock(DyeColor color) {
+        return new CandleBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CANDLE).mapColor(color.getMapColor()));
+    }
+    public static CandleCakeBlock createCandleCakeBlock(DyeColor color, Block candle) {
+        return new CandleCakeBlock(candle, FabricBlockSettings.copyOf(Blocks.WHITE_CANDLE_CAKE).mapColor(color.getMapColor()));
+    }
+    public static GlazedTerracottaBlock createGlazedTerracottaBlock(DyeColor color) {
+        return new GlazedTerracottaBlock(FabricBlockSettings.copyOf(Blocks.WHITE_GLAZED_TERRACOTTA).mapColor(color.getMapColor()));
+    }
+    public static StainedGlassBlock createStainedGlassBlock(DyeColor color) {
+        return new StainedGlassBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_STAINED_GLASS).mapColor(color.getMapColor()));
+    }
+    public static StainedGlassPaneBlock createStainedGlassPaneBlock(DyeColor color) {
+        return new StainedGlassPaneBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_STAINED_GLASS_PANE).mapColor(color.getMapColor()));
+    }
     private static BannerBlock createBannerBlock(DyeColor color) {
         return new BannerBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BANNER).mapColor(color.getMapColor()));
     }
@@ -581,7 +491,7 @@ public class ModBlocks {
         return new BedBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BED).mapColor(blockState -> blockState.get(BedBlock.PART) == BedPart.FOOT ? color.getMapColor() : MapColor.WHITE_GRAY));
     }
     private static ModShulkerBoxBlock createShulkerBoxBlock(DyeColor color) {
-        return new ModShulkerBoxBlock(color, FabricBlockSettings.copyOf(Blocks.SHULKER_BOX).mapColor(MapColor.LICHEN_GREEN));
+        return new ModShulkerBoxBlock(color, FabricBlockSettings.copyOf(Blocks.SHULKER_BOX).mapColor(color.getMapColor()));
     }
     public static Block registerBlockWithoutBlockItem(String name, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);

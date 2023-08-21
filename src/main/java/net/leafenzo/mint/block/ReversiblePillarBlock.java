@@ -10,7 +10,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.Direction;
 
-public class ReversiblePillarBlock
+public class ReversiblePillarBlock //UNUSED
         extends Block {
     public static final DirectionProperty FACING = Properties.FACING;
     public ReversiblePillarBlock(AbstractBlock.Settings settings) {

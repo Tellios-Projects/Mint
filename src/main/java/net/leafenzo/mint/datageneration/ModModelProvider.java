@@ -76,7 +76,8 @@ public class ModModelProvider extends FabricModelProvider {
 
 //  GLAZED_TERRACOTTA_BLOCKS
         for (Block block : ModBlocks.GLAZED_TERRACOTTA_BLOCKS) {
-            registerUpDefaultOrientable(blockStateModelGenerator, block, TexturedModel.CUBE_ALL);
+            blockStateModelGenerator.registerSouthDefaultHorizontalFacing(TexturedModel.TEMPLATE_GLAZED_TERRACOTTA, block);
+            //registerUpDefaultOrientable(blockStateModelGenerator, block, TexturedModel.CUBE_ALL);
         }
 
 //  STAINED_GLASS_BLOCKS  //  STAINED_GLASS_PANE_BLOCKS
