@@ -1,11 +1,14 @@
 package net.leafenzo.mint;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.leafenzo.mint.block.DispenserBehavior;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.block.entity.ModBlockEntityType;
 import net.leafenzo.mint.datageneration.ModRecipeProvider;
 import net.leafenzo.mint.effect.ModEffects;
+import net.leafenzo.mint.entity.ModEntities;
 import net.leafenzo.mint.item.ModItemGroups;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.potions.ModPotions;
@@ -15,8 +18,9 @@ import net.minecraft.block.DispenserBlock;
 import net.minecraft.registry.Registries;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import software.bernie.geckolib.GeckoLib;
 
-    public class ModInit implements ModInitializer {
+public class ModInit implements ModInitializer {
         public static final String MOD_ID = Super.MOD_ID;
         public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
@@ -35,7 +39,9 @@ import org.slf4j.LoggerFactory;
             ModRecipeSerializer.registerModRecipeSerializer();
             ModEffects.registerModEffects();
             ModPotions.registerModPotions();
+            ModEntities.registerModEntities();
             ModItemGroups.registerModItemGroups();
+            GeckoLib.initialize();
         }
     }
 

@@ -12,11 +12,13 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.data.server.recipe.ComplexRecipeJsonBuilder;
 import net.minecraft.item.Item;
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class ModModelProvider extends FabricModelProvider {
@@ -54,6 +56,9 @@ public class ModModelProvider extends FabricModelProvider {
 
 
         //Main
+//  Spawn Eggs
+        Arrays.stream(ModItems.SPAWN_EGG_ITEMS).toList().forEach(item -> blockStateModelGenerator.registerParentedItemModel((Item)item, ModelIds.getMinecraftNamespacedItem("template_spawn_egg")));
+
 //  WOOL_BLOCKS     //  CARPET_BLOCKS
         for (int i = 0; i < ModBlocks.CARPET_BLOCKS.length; i++) {
             blockStateModelGenerator.registerWoolAndCarpet(ModBlocks.WOOL_BLOCKS[i], ModBlocks.CARPET_BLOCKS[i]);

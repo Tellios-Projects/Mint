@@ -15,6 +15,8 @@ import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 
+import java.util.Arrays;
+
 public class ModItemGroups {
     public static void registerModItemGroups() {
         ModInit.LOGGER.debug("Registering item groups for " + Super.MOD_ID);
@@ -88,6 +90,10 @@ public class ModItemGroups {
             content.addAfter(Items.MILK_BUCKET, ModItems.MINT_SPRIG, ModItems.MINT_TEA);
 //            content.addAfter(Items.GLOW_BERRIES, ModItems.MINT_SPRIG);
 //            content.addAfter(Items.MILK_BUCKET, ModItems.MINT_TEA);
+        });
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(content -> {
+            Arrays.stream(ModItems.SPAWN_EGG_ITEMS).toList().forEach(item -> content.add(item));
         });
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(content -> {

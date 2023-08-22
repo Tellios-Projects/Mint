@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.entity.ModEntities;
 import net.leafenzo.mint.registries.ModFabricRegistries;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.minecraft.block.Block;
@@ -37,6 +38,15 @@ public class ModItems {
                     //.hunger(0)
                     .saturationModifier(4.0f)
                     .build())));
+
+
+
+
+    //NAVY - Special
+    public static final Item BEETLE_SPAWN_EGG = registerItem("beetle_spawn_egg",
+            new SpawnEggItem(ModEntities.BEETLE, 803406, 0x39d976,
+                    new FabricItemSettings()));
+
 
     // Main
     public static final Item MINT_DYE = registerItem("mint_dye", new DyeItem(ModDyeColor.MINT, new FabricItemSettings()));
@@ -80,8 +90,7 @@ public class ModItems {
 
     // Arrays
     public static final Item[] DYE_ITEMS = { MINT_DYE, PEACH_DYE, PERIWINKLE_DYE, ARTICHOKE_DYE, FUCHSIA_DYE, VERMILION_DYE, SHAMROCK_DYE, INDIGO_DYE, BANANA_DYE };
-
-
+    public static final Item[] SPAWN_EGG_ITEMS = { BEETLE_SPAWN_EGG };
 
 //    public static Item getDyeItemByColor(DyeColor color) {
 //        if (color.equals(ModDyeColor.MINT)) {
@@ -106,9 +115,9 @@ public class ModItems {
 //        return DyeItem.byColor(color); // now we know it's vanilla, so it's safe to pass through
 //    }
 
-    private static void withCompostingChance(Item item, float chance) {
-        ModFabricRegistries.registerCompostableItem(item, chance);
-    }
+//    private static void withCompostingChance(Item item, float chance) {
+//        ModFabricRegistries.registerCompostableItem(item, chance);
+//    }
 
     private static Item registerItem(String name, Item item, float withCompostingChance) {
         return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), (Item)item);

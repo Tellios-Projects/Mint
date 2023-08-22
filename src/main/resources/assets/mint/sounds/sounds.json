@@ -1,0 +1,11 @@
+{
+  "block.metal_sticks.break": {
+    "subtitle": "subtitles.entity.generic.hurt",
+    "sounds": [
+      "squashed:block/metal_sticks_break_1",
+      "squashed:block/metal_sticks_break_2",
+      "squashed:block/metal_sticks_break_3",
+      "squashed:block/metal_sticks_break_4"
+    ]
+  }
+}

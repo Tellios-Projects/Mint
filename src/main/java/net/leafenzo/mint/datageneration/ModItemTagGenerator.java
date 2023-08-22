@@ -41,6 +41,11 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
                 .add(ModItems.DYE_ITEMS)
         ;
 
+        getOrCreateTagBuilder(ModTags.Items.MUSHROOMS)
+                .add(Items.BROWN_MUSHROOM)
+                .add(Items.RED_MUSHROOM)
+        ;
+
         getOrCreateTagBuilder(ItemTags.VILLAGER_PLANTABLE_SEEDS)
                 .add(ModItems.MINT_SPRIG)
         ;
