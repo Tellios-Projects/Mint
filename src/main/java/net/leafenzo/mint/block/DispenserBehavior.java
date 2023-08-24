@@ -16,6 +16,6 @@ public class DispenserBehavior {
         ModInit.LOGGER.debug("Registering dispenser behaviors for " + Super.MOD_ID);
 
         //Directly get the blockItem for each one instead of using "ShulkerBoxBlock.get(dyeColor)"
-        for(Block block : ModBlocks.SHULKER_BOX_BLOCKS) { DispenserBlock.registerBehavior(block.asItem(), new BlockPlacementDispenserBehavior()); }
+        for(Block block : ModBlocks.SHULKER_BOX_BLOCKS) { DispenserBlock.registerBehavior(block.asItem(), new BlockPlacementDispenserBehavior()); } //TODO Testmegone
     }
 }

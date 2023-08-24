@@ -26,45 +26,45 @@ public class Util {
     public static final Block[] VANILLA_CARPETS = { Blocks.BLACK_CARPET, Blocks.BLUE_CARPET, Blocks.BROWN_CARPET, Blocks.CYAN_CARPET, Blocks.GRAY_CARPET, Blocks.GREEN_CARPET, Blocks.LIGHT_BLUE_CARPET, Blocks.LIGHT_GRAY_CARPET, Blocks.LIME_CARPET, Blocks.MAGENTA_CARPET, Blocks.ORANGE_CARPET, Blocks.PINK_CARPET, Blocks.PURPLE_CARPET, Blocks.RED_CARPET, Blocks.YELLOW_CARPET, Blocks.WHITE_CARPET };
 
     // this is smelly isn't it... oh well.
-    public static Block[] ColoredBlocksOfColor(DyeColor color) {
-        switch (color) {
-            case WHITE: return WHITE_VANILLA_COLORED_BLOCKS;
-            case ORANGE: return ORANGE_VANILLA_COLORED_BLOCKS;
-            case MAGENTA: return MAGENTA_VANILLA_COLORED_BLOCKS;
-            case LIGHT_BLUE: return LIGHT_BLUE_VANILLA_COLORED_BLOCKS;
-            case YELLOW: return YELLOW_VANILLA_COLORED_BLOCKS;
-            case LIME: return LIME_VANILLA_COLORED_BLOCKS;
-            case PINK: return PINK_VANILLA_COLORED_BLOCKS;
-            case GRAY: return GRAY_VANILLA_COLORED_BLOCKS;
-            case LIGHT_GRAY: return LIGHT_GRAY_VANILLA_COLORED_BLOCKS;
-            case CYAN: return CYAN_VANILLA_COLORED_BLOCKS;
-            case PURPLE: return PURPLE_VANILLA_COLORED_BLOCKS;
-            case BLUE: return BLUE_VANILLA_COLORED_BLOCKS;
-            case BROWN: return BROWN_VANILLA_COLORED_BLOCKS;
-            case GREEN: return GREEN_VANILLA_COLORED_BLOCKS;
-            case RED: return RED_VANILLA_COLORED_BLOCKS;
-        }
-        if (color.equals(ModDyeColor.MINT)) {
-            return MINT_COLORED_BLOCKS;
-        } else if (color.equals(ModDyeColor.PEACH)) {
-            return PEACH_COLORED_BLOCKS;
-        } else if (color.equals(ModDyeColor.PERIWINKLE)) {
-            return PERIWINKLE_COLORED_BLOCKS;
-        } else if (color.equals(ModDyeColor.ARTICHOKE)) {
-            return ARTICHOKE_COLORED_BLOCKS;
-        } else if (color.equals(ModDyeColor.FUCHSIA)) {
-            return FUCHSIA_COLORED_BLOCKS;
-        } else if (color.equals(ModDyeColor.VERMILION)) {
-            return VERMILION_COLORED_BLOCKS;
-        } else if (color.equals(ModDyeColor.SHAMROCK)) {
-            return SHAMROCK_COLORED_BLOCKS;
-        } else if (color.equals(ModDyeColor.INDIGO)) {
-            return INDIGO_COLORED_BLOCKS;
-        } else if (color.equals(ModDyeColor.BANANA)) {
-            return BANANA_COLORED_BLOCKS;
-        }
-        return null; //Error
-    }
+//    public static Block[] ColoredBlocksOfColor(DyeColor color) {
+//        switch (color) {
+//            case WHITE: return WHITE_VANILLA_COLORED_BLOCKS;
+//            case ORANGE: return ORANGE_VANILLA_COLORED_BLOCKS;
+//            case MAGENTA: return MAGENTA_VANILLA_COLORED_BLOCKS;
+//            case LIGHT_BLUE: return LIGHT_BLUE_VANILLA_COLORED_BLOCKS;
+//            case YELLOW: return YELLOW_VANILLA_COLORED_BLOCKS;
+//            case LIME: return LIME_VANILLA_COLORED_BLOCKS;
+//            case PINK: return PINK_VANILLA_COLORED_BLOCKS;
+//            case GRAY: return GRAY_VANILLA_COLORED_BLOCKS;
+//            case LIGHT_GRAY: return LIGHT_GRAY_VANILLA_COLORED_BLOCKS;
+//            case CYAN: return CYAN_VANILLA_COLORED_BLOCKS;
+//            case PURPLE: return PURPLE_VANILLA_COLORED_BLOCKS;
+//            case BLUE: return BLUE_VANILLA_COLORED_BLOCKS;
+//            case BROWN: return BROWN_VANILLA_COLORED_BLOCKS;
+//            case GREEN: return GREEN_VANILLA_COLORED_BLOCKS;
+//            case RED: return RED_VANILLA_COLORED_BLOCKS;
+//        }
+//        if (color.equals(ModDyeColor.MINT)) {
+//            return MINT_COLORED_BLOCKS;
+//        } else if (color.equals(ModDyeColor.PEACH)) {
+//            return PEACH_COLORED_BLOCKS;
+//        } else if (color.equals(ModDyeColor.PERIWINKLE)) {
+//            return PERIWINKLE_COLORED_BLOCKS;
+//        } else if (color.equals(ModDyeColor.ARTICHOKE)) {
+//            return ARTICHOKE_COLORED_BLOCKS;
+//        } else if (color.equals(ModDyeColor.FUCHSIA)) {
+//            return FUCHSIA_COLORED_BLOCKS;
+//        } else if (color.equals(ModDyeColor.VERMILION)) {
+//            return VERMILION_COLORED_BLOCKS;
+//        } else if (color.equals(ModDyeColor.SHAMROCK)) {
+//            return SHAMROCK_COLORED_BLOCKS;
+//        } else if (color.equals(ModDyeColor.INDIGO)) {
+//            return INDIGO_COLORED_BLOCKS;
+//        } else if (color.equals(ModDyeColor.BANANA)) {
+//            return BANANA_COLORED_BLOCKS;
+//        }
+//        return null; //Error
+//    }
     public static final Block[] WHITE_VANILLA_COLORED_BLOCKS = { Blocks.WHITE_WOOL, Blocks.WHITE_CARPET, Blocks.WHITE_TERRACOTTA, Blocks.WHITE_CONCRETE, Blocks.WHITE_CONCRETE_POWDER, Blocks.WHITE_GLAZED_TERRACOTTA, Blocks.WHITE_STAINED_GLASS, Blocks.WHITE_STAINED_GLASS_PANE, Blocks.WHITE_SHULKER_BOX, Blocks.WHITE_BED, Blocks.WHITE_CANDLE, Blocks.WHITE_BANNER };
     public static final Block[] ORANGE_VANILLA_COLORED_BLOCKS = { Blocks.ORANGE_WOOL, Blocks.ORANGE_CARPET, Blocks.ORANGE_TERRACOTTA, Blocks.ORANGE_CONCRETE, Blocks.ORANGE_CONCRETE_POWDER, Blocks.ORANGE_GLAZED_TERRACOTTA, Blocks.ORANGE_STAINED_GLASS, Blocks.ORANGE_STAINED_GLASS_PANE, Blocks.ORANGE_SHULKER_BOX, Blocks.ORANGE_BED, Blocks.ORANGE_CANDLE, Blocks.ORANGE_BANNER };
     public static final Block[] MAGENTA_VANILLA_COLORED_BLOCKS = { Blocks.MAGENTA_WOOL, Blocks.MAGENTA_CARPET, Blocks.MAGENTA_TERRACOTTA, Blocks.MAGENTA_CONCRETE, Blocks.MAGENTA_CONCRETE_POWDER, Blocks.MAGENTA_GLAZED_TERRACOTTA, Blocks.MAGENTA_STAINED_GLASS, Blocks.MAGENTA_STAINED_GLASS_PANE, Blocks.MAGENTA_SHULKER_BOX, Blocks.MAGENTA_BED, Blocks.MAGENTA_CANDLE, Blocks.MAGENTA_BANNER };
@@ -92,45 +92,45 @@ public class Util {
     public static final Block[] INDIGO_COLORED_BLOCKS = { ModBlocks.INDIGO_WOOL, ModBlocks.INDIGO_CARPET, ModBlocks.INDIGO_TERRACOTTA, ModBlocks.INDIGO_CONCRETE, ModBlocks.INDIGO_CONCRETE_POWDER, ModBlocks.INDIGO_GLAZED_TERRACOTTA, ModBlocks.INDIGO_STAINED_GLASS, ModBlocks.INDIGO_STAINED_GLASS_PANE, ModBlocks.INDIGO_SHULKER_BOX, ModBlocks.INDIGO_BED, ModBlocks.INDIGO_CANDLE, ModBlocks.INDIGO_BANNER };
     public static final Block[] BANANA_COLORED_BLOCKS = { ModBlocks.BANANA_WOOL, ModBlocks.BANANA_CARPET, ModBlocks.BANANA_TERRACOTTA, ModBlocks.BANANA_CONCRETE, ModBlocks.BANANA_CONCRETE_POWDER, ModBlocks.BANANA_GLAZED_TERRACOTTA, ModBlocks.BANANA_STAINED_GLASS, ModBlocks.BANANA_STAINED_GLASS_PANE, ModBlocks.BANANA_SHULKER_BOX, ModBlocks.BANANA_BED, ModBlocks.BANANA_CANDLE, ModBlocks.BANANA_BANNER };
 
-    public static Block[] FunctionalBlocksOfColor(DyeColor color) {
-        switch (color) {
-            case WHITE: return WHITE_VANILLA_FUNCTIONAL_BLOCKS;
-            case ORANGE: return ORANGE_VANILLA_FUNCTIONAL_BLOCKS;
-            case MAGENTA: return MAGENTA_VANILLA_FUNCTIONAL_BLOCKS;
-            case LIGHT_BLUE: return LIGHT_BLUE_VANILLA_FUNCTIONAL_BLOCKS;
-            case YELLOW: return YELLOW_VANILLA_FUNCTIONAL_BLOCKS;
-            case LIME: return LIME_VANILLA_FUNCTIONAL_BLOCKS;
-            case PINK: return PINK_VANILLA_FUNCTIONAL_BLOCKS;
-            case GRAY: return GRAY_VANILLA_FUNCTIONAL_BLOCKS;
-            case LIGHT_GRAY: return LIGHT_GRAY_VANILLA_FUNCTIONAL_BLOCKS;
-            case CYAN: return CYAN_VANILLA_FUNCTIONAL_BLOCKS;
-            case PURPLE: return PURPLE_VANILLA_FUNCTIONAL_BLOCKS;
-            case BLUE: return BLUE_VANILLA_FUNCTIONAL_BLOCKS;
-            case BROWN: return BROWN_VANILLA_FUNCTIONAL_BLOCKS;
-            case GREEN: return GREEN_VANILLA_FUNCTIONAL_BLOCKS;
-            case RED: return RED_VANILLA_FUNCTIONAL_BLOCKS;
-        }
-        if (color.equals(ModDyeColor.MINT)) {
-            return MINT_FUNCTIONAL_BLOCKS;
-        } else if (color.equals(ModDyeColor.PEACH)) {
-            return PEACH_FUNCTIONAL_BLOCKS;
-        } else if (color.equals(ModDyeColor.PERIWINKLE)) {
-            return PERIWINKLE_FUNCTIONAL_BLOCKS;
-        } else if (color.equals(ModDyeColor.ARTICHOKE)) {
-            return ARTICHOKE_FUNCTIONAL_BLOCKS;
-        } else if (color.equals(ModDyeColor.FUCHSIA)) {
-            return FUCHSIA_FUNCTIONAL_BLOCKS;
-        } else if (color.equals(ModDyeColor.VERMILION)) {
-            return VERMILION_FUNCTIONAL_BLOCKS;
-        } else if (color.equals(ModDyeColor.SHAMROCK)) {
-            return SHAMROCK_FUNCTIONAL_BLOCKS;
-        } else if (color.equals(ModDyeColor.INDIGO)) {
-            return INDIGO_FUNCTIONAL_BLOCKS;
-        } else if (color.equals(ModDyeColor.BANANA)) {
-            return BANANA_FUNCTIONAL_BLOCKS;
-        }
-        return null; //Error
-    }
+//    public static Block[] FunctionalBlocksOfColor(DyeColor color) {
+//        switch (color) {
+//            case WHITE: return WHITE_VANILLA_FUNCTIONAL_BLOCKS;
+//            case ORANGE: return ORANGE_VANILLA_FUNCTIONAL_BLOCKS;
+//            case MAGENTA: return MAGENTA_VANILLA_FUNCTIONAL_BLOCKS;
+//            case LIGHT_BLUE: return LIGHT_BLUE_VANILLA_FUNCTIONAL_BLOCKS;
+//            case YELLOW: return YELLOW_VANILLA_FUNCTIONAL_BLOCKS;
+//            case LIME: return LIME_VANILLA_FUNCTIONAL_BLOCKS;
+//            case PINK: return PINK_VANILLA_FUNCTIONAL_BLOCKS;
+//            case GRAY: return GRAY_VANILLA_FUNCTIONAL_BLOCKS;
+//            case LIGHT_GRAY: return LIGHT_GRAY_VANILLA_FUNCTIONAL_BLOCKS;
+//            case CYAN: return CYAN_VANILLA_FUNCTIONAL_BLOCKS;
+//            case PURPLE: return PURPLE_VANILLA_FUNCTIONAL_BLOCKS;
+//            case BLUE: return BLUE_VANILLA_FUNCTIONAL_BLOCKS;
+//            case BROWN: return BROWN_VANILLA_FUNCTIONAL_BLOCKS;
+//            case GREEN: return GREEN_VANILLA_FUNCTIONAL_BLOCKS;
+//            case RED: return RED_VANILLA_FUNCTIONAL_BLOCKS;
+//        }
+//        if (color.equals(ModDyeColor.MINT)) {
+//            return MINT_FUNCTIONAL_BLOCKS;
+//        } else if (color.equals(ModDyeColor.PEACH)) {
+//            return PEACH_FUNCTIONAL_BLOCKS;
+//        } else if (color.equals(ModDyeColor.PERIWINKLE)) {
+//            return PERIWINKLE_FUNCTIONAL_BLOCKS;
+//        } else if (color.equals(ModDyeColor.ARTICHOKE)) {
+//            return ARTICHOKE_FUNCTIONAL_BLOCKS;
+//        } else if (color.equals(ModDyeColor.FUCHSIA)) {
+//            return FUCHSIA_FUNCTIONAL_BLOCKS;
+//        } else if (color.equals(ModDyeColor.VERMILION)) {
+//            return VERMILION_FUNCTIONAL_BLOCKS;
+//        } else if (color.equals(ModDyeColor.SHAMROCK)) {
+//            return SHAMROCK_FUNCTIONAL_BLOCKS;
+//        } else if (color.equals(ModDyeColor.INDIGO)) {
+//            return INDIGO_FUNCTIONAL_BLOCKS;
+//        } else if (color.equals(ModDyeColor.BANANA)) {
+//            return BANANA_FUNCTIONAL_BLOCKS;
+//        }
+//        return null; //Error
+//    }
     public static final Block[] WHITE_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.WHITE_SHULKER_BOX, Blocks.WHITE_BED, Blocks.WHITE_CANDLE, Blocks.WHITE_BANNER };
     public static final Block[] ORANGE_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.ORANGE_SHULKER_BOX, Blocks.ORANGE_BED, Blocks.ORANGE_CANDLE, Blocks.ORANGE_BANNER };
     public static final Block[] MAGENTA_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.MAGENTA_SHULKER_BOX, Blocks.MAGENTA_BED, Blocks.MAGENTA_CANDLE, Blocks.MAGENTA_BANNER };

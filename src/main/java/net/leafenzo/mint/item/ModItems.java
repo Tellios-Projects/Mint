@@ -1,11 +1,14 @@
 package net.leafenzo.mint.item;
 
+import io.wispforest.gelatin.Gelatin;
+import io.wispforest.gelatin.dye_entries.item.GelatinDyeItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.registries.ModFabricRegistries;
 import net.leafenzo.mint.util.ModDyeColor;
+import net.leafenzo.mint.util.ModDyeColorants;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
@@ -39,41 +42,42 @@ public class ModItems {
                     .build())));
 
     // Main
-    public static final Item MINT_DYE = registerItem("mint_dye", new DyeItem(ModDyeColor.MINT, new FabricItemSettings()));
+
+    public static final Item MINT_DYE = registerItem("mint_dye", new GelatinDyeItem(ModDyeColorants.MINT, new FabricItemSettings()));
     public static final Item MINT_BED = registerItem(new BedItem(ModBlocks.MINT_BED, new Item.Settings().maxCount(1)));
     public static final Item MINT_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.MINT_SHULKER_BOX, new Item.Settings().maxCount(1)));
     public static final Item MINT_BANNER = registerItem(new BannerItem(ModBlocks.MINT_BANNER, ModBlocks.MINT_WALL_BANNER, new Item.Settings().maxCount(16)));
-    public static final Item PEACH_DYE = registerItem("peach_dye", new DyeItem(ModDyeColor.PEACH, new FabricItemSettings()));
+    public static final Item PEACH_DYE = registerItem("peach_dye", new GelatinDyeItem(ModDyeColorants.PEACH, new FabricItemSettings()));
     public static final Item PEACH_BED = registerItem(new BedItem(ModBlocks.PEACH_BED, new Item.Settings().maxCount(1)));
     public static final Item PEACH_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.PEACH_SHULKER_BOX, new Item.Settings().maxCount(1)));
     public static final Item PEACH_BANNER = registerItem(new BannerItem(ModBlocks.PEACH_BANNER, ModBlocks.PEACH_WALL_BANNER, new Item.Settings().maxCount(16)));
-    public static final Item PERIWINKLE_DYE = registerItem("periwinkle_dye", new DyeItem(ModDyeColor.PERIWINKLE, new FabricItemSettings()));
+    public static final Item PERIWINKLE_DYE = registerItem("periwinkle_dye", new GelatinDyeItem(ModDyeColorants.PERIWINKLE, new FabricItemSettings()));
     public static final Item PERIWINKLE_BED = registerItem(new BedItem(ModBlocks.PERIWINKLE_BED, new Item.Settings().maxCount(1)));
     public static final Item PERIWINKLE_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.PERIWINKLE_SHULKER_BOX, new Item.Settings().maxCount(1)));
     public static final Item PERIWINKLE_BANNER = registerItem(new BannerItem(ModBlocks.PERIWINKLE_BANNER, ModBlocks.PERIWINKLE_WALL_BANNER, new Item.Settings().maxCount(16)));
-    public static final Item ARTICHOKE_DYE = registerItem("artichoke_dye", new DyeItem(ModDyeColor.ARTICHOKE, new FabricItemSettings()));
+    public static final Item ARTICHOKE_DYE = registerItem("artichoke_dye", new GelatinDyeItem(ModDyeColorants.ARTICHOKE, new FabricItemSettings()));
     public static final Item ARTICHOKE_BED = registerItem(new BedItem(ModBlocks.ARTICHOKE_BED, new Item.Settings().maxCount(1)));
     public static final Item ARTICHOKE_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.ARTICHOKE_SHULKER_BOX, new Item.Settings().maxCount(1)));
     public static final Item ARTICHOKE_BANNER = registerItem(new BannerItem(ModBlocks.ARTICHOKE_BANNER, ModBlocks.ARTICHOKE_WALL_BANNER, new Item.Settings().maxCount(16)));
 
-    public static final Item FUCHSIA_DYE = registerItem("fuchsia_dye", new DyeItem(ModDyeColor.FUCHSIA, new FabricItemSettings()));
+    public static final Item FUCHSIA_DYE = registerItem("fuchsia_dye", new GelatinDyeItem(ModDyeColorants.FUCHSIA, new FabricItemSettings()));
     public static final Item FUCHSIA_BED = registerItem(new BedItem(ModBlocks.FUCHSIA_BED, new Item.Settings().maxCount(1)));
     public static final Item FUCHSIA_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.FUCHSIA_SHULKER_BOX, new Item.Settings().maxCount(1)));
     public static final Item FUCHSIA_BANNER = registerItem(new BannerItem(ModBlocks.FUCHSIA_BANNER, ModBlocks.FUCHSIA_WALL_BANNER, new Item.Settings().maxCount(16)));
-    public static final Item VERMILION_DYE = registerItem("vermilion_dye", new DyeItem(ModDyeColor.VERMILION, new FabricItemSettings()));
+    public static final Item VERMILION_DYE = registerItem("vermilion_dye", new GelatinDyeItem(ModDyeColorants.VERMILION, new FabricItemSettings()));
     public static final Item VERMILION_BED = registerItem(new BedItem(ModBlocks.VERMILION_BED, new Item.Settings().maxCount(1)));
     public static final Item VERMILION_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.VERMILION_SHULKER_BOX, new Item.Settings().maxCount(1)));
     public static final Item VERMILION_BANNER = registerItem(new BannerItem(ModBlocks.VERMILION_BANNER, ModBlocks.VERMILION_WALL_BANNER, new Item.Settings().maxCount(16)));
-    public static final Item SHAMROCK_DYE = registerItem("shamrock_dye", new DyeItem(ModDyeColor.SHAMROCK, new FabricItemSettings()));
+    public static final Item SHAMROCK_DYE = registerItem("shamrock_dye", new GelatinDyeItem(ModDyeColorants.SHAMROCK, new FabricItemSettings()));
     public static final Item SHAMROCK_BED = registerItem(new BedItem(ModBlocks.SHAMROCK_BED, new Item.Settings().maxCount(1)));
     public static final Item SHAMROCK_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.SHAMROCK_SHULKER_BOX, new Item.Settings().maxCount(1)));
     public static final Item SHAMROCK_BANNER = registerItem(new BannerItem(ModBlocks.SHAMROCK_BANNER, ModBlocks.SHAMROCK_WALL_BANNER, new Item.Settings().maxCount(16)));
-    public static final Item INDIGO_DYE = registerItem("indigo_dye", new DyeItem(ModDyeColor.INDIGO, new FabricItemSettings()));
+    public static final Item INDIGO_DYE = registerItem("indigo_dye", new GelatinDyeItem(ModDyeColorants.INDIGO, new FabricItemSettings()));
     public static final Item INDIGO_BED = registerItem(new BedItem(ModBlocks.INDIGO_BED, new Item.Settings().maxCount(1)));
     public static final Item INDIGO_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.INDIGO_SHULKER_BOX, new Item.Settings().maxCount(1)));
     public static final Item INDIGO_BANNER = registerItem(new BannerItem(ModBlocks.INDIGO_BANNER, ModBlocks.INDIGO_WALL_BANNER, new Item.Settings().maxCount(16)));
 
-    public static final Item BANANA_DYE = registerItem("banana_dye", new DyeItem(ModDyeColor.BANANA, new FabricItemSettings()));
+    public static final Item BANANA_DYE = registerItem("banana_dye", new GelatinDyeItem(ModDyeColorants.BANANA, new FabricItemSettings()));
     public static final Item BANANA_BED = registerItem(new BedItem(ModBlocks.BANANA_BED, new Item.Settings().maxCount(1)));
     public static final Item BANANA_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.BANANA_SHULKER_BOX, new Item.Settings().maxCount(1)));
     public static final Item BANANA_BANNER = registerItem(new BannerItem(ModBlocks.BANANA_BANNER, ModBlocks.BANANA_WALL_BANNER, new Item.Settings().maxCount(16)));
@@ -83,27 +87,27 @@ public class ModItems {
 
 
 
-//    public static Item getDyeItemByColor(DyeColor color) {
-//        if (color.equals(ModDyeColor.MINT)) {
+//    public static Item getGelatinDyeItemByColor(DyeColor color) {
+//        if (color.equals(ModDyeColorants.MINT)) {
 //            return MINT_DYE;
-//        } else if (color.equals(ModDyeColor.PEACH)) {
+//        } else if (color.equals(ModDyeColorants.PEACH)) {
 //            return PEACH_DYE;
-//        } else if (color.equals(ModDyeColor.PERIWINKLE)) {
+//        } else if (color.equals(ModDyeColorants.PERIWINKLE)) {
 //            return PERIWINKLE_DYE;
-//        } else if (color.equals(ModDyeColor.ARTICHOKE)) {
+//        } else if (color.equals(ModDyeColorants.ARTICHOKE)) {
 //            return ARTICHOKE_DYE;
-//        } else if (color.equals(ModDyeColor.FUCHSIA)) {
+//        } else if (color.equals(ModDyeColorants.FUCHSIA)) {
 //            return FUCHSIA_DYE;
-//        } else if (color.equals(ModDyeColor.VERMILION)) {
+//        } else if (color.equals(ModDyeColorants.VERMILION)) {
 //            return VERMILION_DYE;
-//        } else if (color.equals(ModDyeColor.SHAMROCK)) {
+//        } else if (color.equals(ModDyeColorants.SHAMROCK)) {
 //            return SHAMROCK_DYE;
-//        } else if (color.equals(ModDyeColor.INDIGO)) {
+//        } else if (color.equals(ModDyeColorants.INDIGO)) {
 //            return INDIGO_DYE;
-//        } else if (color.equals(ModDyeColor.BANANA)) {
+//        } else if (color.equals(ModDyeColorants.BANANA)) {
 //            return BANANA_DYE;
 //        }
-//        return DyeItem.byColor(color); // now we know it's vanilla, so it's safe to pass through
+//        return GelatinDyeItem.byColor(color); // now we know it's vanilla, so it's safe to pass through
 //    }
 
     private static void withCompostingChance(Item item, float chance) {
