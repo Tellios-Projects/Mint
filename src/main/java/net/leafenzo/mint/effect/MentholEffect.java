@@ -11,8 +11,13 @@ public class MentholEffect extends StatusEffect {
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-       entity.setFrozenTicks(200); //will continually keep the player frozen as the potion is in effect
-       entity.damage(entity.getWorld().getDamageSources().freeze(), 0.25f * amplifier); //amplifier applies additional damage
+        if(amplifier <= 0) {
+            entity.setFrozenTicks(139); //will continually keep the player frozen as the potion is in effect
+        }
+        else if(amplifier >= 1) {
+            entity.setFrozenTicks(140);  //amplifier makes freezing deal damage, because min freeze damage ticks are 140
+        }
+       //entity.damage(entity.getWorld().getDamageSources().freeze(), 0.25f * amplifier);
     }
 
     @Override
