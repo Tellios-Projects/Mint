@@ -1,5 +1,5 @@
 {
-  "item.mint.mint_sprig": "Sprig of Mint",
+  "item.mint.mint_sprig": "Mint Sprig",
   "item.mint.mint_dye": "Mint Dye",
   "item.mint.mint_cookie": "Mint Chocolate Chip Cookie",
   "item.mint.mint_tea":  "Spearmint Tea",
@@ -26,5 +26,14 @@
   "item.minecraft.potion.effect.menthol": "Potion of Mint Chill",
   "item.minecraft.splash_potion.effect.menthol": "Splash Potion of Mint Chill",
   "item.minecraft.lingering_potion.effect.menthol": "Lingering Potion of Mint Chill",
+
+  "item.minecraft.potion.effect.long_menthol": "Potion of Mint Chill",
+  "item.minecraft.splash_potion.effect.long_menthol": "Splash Potion of Mint Chill",
+  "item.minecraft.lingering_potion.effect.long_menthol": "Lingering Potion of Mint Chill",
+
+  "item.minecraft.potion.effect.strong_menthol": "Potion of Mint Chill",
+  "item.minecraft.splash_potion.effect.strong_menthol": "Splash Potion of Mint Chill",
+  "item.minecraft.lingering_potion.effect.strong_menthol": "Lingering Potion of Mint Chill",
+
   "effect.mint.menthol": "Mint Chill"
 }
