@@ -44,6 +44,10 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(ItemTags.VILLAGER_PLANTABLE_SEEDS)
                 .add(ModItems.MINT_SPRIG)
         ;
+
+        getOrCreateTagBuilder(ItemTags.WOOL_CARPETS) // used for adding a carpet to llamas in LlamaEntity.isHorseArmor()
+                .add(ModBlocks.toItems(ModBlocks.CARPET_BLOCKS))
+        ;
     }
 }
 

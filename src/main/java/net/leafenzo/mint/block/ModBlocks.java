@@ -18,8 +18,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
@@ -33,7 +31,7 @@ import java.util.function.ToIntFunction;
 public class ModBlocks {
     // MINT - Main
     public static final Block MINT_WOOL = registerBlock("mint_wool", createWoolBlock(ModDyeColor.MINT), ModItemGroups.MINT);
-    public static final Block MINT_CARPET = registerBlock("mint_carpet", createCarpetBlock(ModDyeColor.MINT), ModItemGroups.MINT);
+    public static final Block MINT_CARPET = registerBlock("mint_carpet", createDyedCarpetBlock(ModDyeColor.MINT), ModItemGroups.MINT);
     public static final Block MINT_TERRACOTTA = registerBlock("mint_terracotta", createTerracottaBlock(ModDyeColor.MINT), ModItemGroups.MINT);
     public static final Block MINT_CONCRETE = registerBlock("mint_concrete", createConcreteBlock(ModDyeColor.MINT), ModItemGroups.MINT);
     public static final Block MINT_CONCRETE_POWDER = registerBlock("mint_concrete_powder", createConcretePowderBlock(ModDyeColor.MINT, MINT_CONCRETE), ModItemGroups.MINT);
@@ -57,7 +55,7 @@ public class ModBlocks {
 
     // PEACH - Main
     public static final Block PEACH_WOOL = registerBlock("peach_wool", createWoolBlock(ModDyeColor.PEACH), ModItemGroups.PEACH);
-    public static final Block PEACH_CARPET = registerBlock("peach_carpet", createCarpetBlock(ModDyeColor.PEACH), ModItemGroups.PEACH);
+    public static final Block PEACH_CARPET = registerBlock("peach_carpet", createDyedCarpetBlock(ModDyeColor.PEACH), ModItemGroups.PEACH);
     public static final Block PEACH_TERRACOTTA = registerBlock("peach_terracotta", createTerracottaBlock(ModDyeColor.PEACH), ModItemGroups.PEACH);
     public static final Block PEACH_CONCRETE = registerBlock("peach_concrete", createConcreteBlock(ModDyeColor.PEACH), ModItemGroups.PEACH);
     public static final Block PEACH_CONCRETE_POWDER = registerBlock("peach_concrete_powder", createConcretePowderBlock(ModDyeColor.PEACH, PEACH_CONCRETE), ModItemGroups.PEACH);
@@ -74,7 +72,7 @@ public class ModBlocks {
 
     // PERIWINKLE - Main
     public static final Block PERIWINKLE_WOOL = registerBlock("periwinkle_wool", createWoolBlock(ModDyeColor.PERIWINKLE), ModItemGroups.PERIWINKLE);
-    public static final Block PERIWINKLE_CARPET = registerBlock("periwinkle_carpet", createCarpetBlock(ModDyeColor.PERIWINKLE), ModItemGroups.PERIWINKLE);
+    public static final Block PERIWINKLE_CARPET = registerBlock("periwinkle_carpet", createDyedCarpetBlock(ModDyeColor.PERIWINKLE), ModItemGroups.PERIWINKLE);
     public static final Block PERIWINKLE_TERRACOTTA = registerBlock("periwinkle_terracotta", createTerracottaBlock(ModDyeColor.PERIWINKLE), ModItemGroups.PERIWINKLE);
     public static final Block PERIWINKLE_CONCRETE = registerBlock("periwinkle_concrete", createConcreteBlock(ModDyeColor.PERIWINKLE), ModItemGroups.PERIWINKLE);
     public static final Block PERIWINKLE_CONCRETE_POWDER = registerBlock("periwinkle_concrete_powder", createConcretePowderBlock(ModDyeColor.PERIWINKLE, PERIWINKLE_CONCRETE), ModItemGroups.PERIWINKLE);
@@ -91,7 +89,7 @@ public class ModBlocks {
 
     // ARTICHOKE - Main
     public static final Block ARTICHOKE_WOOL = registerBlock("artichoke_wool", createWoolBlock(ModDyeColor.ARTICHOKE), ModItemGroups.ARTICHOKE);
-    public static final Block ARTICHOKE_CARPET = registerBlock("artichoke_carpet", createCarpetBlock(ModDyeColor.ARTICHOKE), ModItemGroups.ARTICHOKE);
+    public static final Block ARTICHOKE_CARPET = registerBlock("artichoke_carpet", createDyedCarpetBlock(ModDyeColor.ARTICHOKE), ModItemGroups.ARTICHOKE);
     public static final Block ARTICHOKE_TERRACOTTA = registerBlock("artichoke_terracotta", createTerracottaBlock(ModDyeColor.ARTICHOKE), ModItemGroups.ARTICHOKE);
     public static final Block ARTICHOKE_CONCRETE = registerBlock("artichoke_concrete", createConcreteBlock(ModDyeColor.ARTICHOKE), ModItemGroups.ARTICHOKE);
     public static final Block ARTICHOKE_CONCRETE_POWDER = registerBlock("artichoke_concrete_powder", createConcretePowderBlock(ModDyeColor.ARTICHOKE, ARTICHOKE_CONCRETE), ModItemGroups.ARTICHOKE);
@@ -108,7 +106,7 @@ public class ModBlocks {
 
     // FUCHSIA - Main
     public static final Block FUCHSIA_WOOL = registerBlock("fuchsia_wool", createWoolBlock(ModDyeColor.FUCHSIA), ModItemGroups.FUCHSIA);
-    public static final Block FUCHSIA_CARPET = registerBlock("fuchsia_carpet", createCarpetBlock(ModDyeColor.FUCHSIA), ModItemGroups.FUCHSIA);
+    public static final Block FUCHSIA_CARPET = registerBlock("fuchsia_carpet", createDyedCarpetBlock(ModDyeColor.FUCHSIA), ModItemGroups.FUCHSIA);
     public static final Block FUCHSIA_TERRACOTTA = registerBlock("fuchsia_terracotta", createTerracottaBlock(ModDyeColor.FUCHSIA), ModItemGroups.FUCHSIA);
     public static final Block FUCHSIA_CONCRETE = registerBlock("fuchsia_concrete", createConcreteBlock(ModDyeColor.FUCHSIA), ModItemGroups.FUCHSIA);
     public static final Block FUCHSIA_CONCRETE_POWDER = registerBlock("fuchsia_concrete_powder", createConcretePowderBlock(ModDyeColor.FUCHSIA, FUCHSIA_CONCRETE), ModItemGroups.FUCHSIA);
@@ -125,7 +123,7 @@ public class ModBlocks {
 
     // VERMILION - Main
     public static final Block VERMILION_WOOL = registerBlock("vermilion_wool", createWoolBlock(ModDyeColor.VERMILION), ModItemGroups.VERMILION);
-    public static final Block VERMILION_CARPET = registerBlock("vermilion_carpet", createCarpetBlock(ModDyeColor.VERMILION), ModItemGroups.VERMILION);
+    public static final Block VERMILION_CARPET = registerBlock("vermilion_carpet", createDyedCarpetBlock(ModDyeColor.VERMILION), ModItemGroups.VERMILION);
     public static final Block VERMILION_TERRACOTTA = registerBlock("vermilion_terracotta", createTerracottaBlock(ModDyeColor.VERMILION), ModItemGroups.VERMILION);
     public static final Block VERMILION_CONCRETE = registerBlock("vermilion_concrete", createConcreteBlock(ModDyeColor.VERMILION), ModItemGroups.VERMILION);
     public static final Block VERMILION_CONCRETE_POWDER = registerBlock("vermilion_concrete_powder",createConcretePowderBlock(ModDyeColor.VERMILION, VERMILION_CONCRETE), ModItemGroups.VERMILION);
@@ -143,7 +141,7 @@ public class ModBlocks {
 
     // SHAMROCK - Main
     public static final Block SHAMROCK_WOOL = registerBlock("shamrock_wool", createWoolBlock(ModDyeColor.SHAMROCK), ModItemGroups.SHAMROCK);
-    public static final Block SHAMROCK_CARPET = registerBlock("shamrock_carpet", createCarpetBlock(ModDyeColor.SHAMROCK), ModItemGroups.SHAMROCK);
+    public static final Block SHAMROCK_CARPET = registerBlock("shamrock_carpet", createDyedCarpetBlock(ModDyeColor.SHAMROCK), ModItemGroups.SHAMROCK);
     public static final Block SHAMROCK_TERRACOTTA = registerBlock("shamrock_terracotta", createTerracottaBlock(ModDyeColor.SHAMROCK), ModItemGroups.SHAMROCK);
     public static final Block SHAMROCK_CONCRETE = registerBlock("shamrock_concrete", createConcreteBlock(ModDyeColor.SHAMROCK), ModItemGroups.SHAMROCK);
     public static final Block SHAMROCK_CONCRETE_POWDER = registerBlock("shamrock_concrete_powder", createConcretePowderBlock(ModDyeColor.SHAMROCK, SHAMROCK_CONCRETE), ModItemGroups.SHAMROCK);
@@ -160,7 +158,7 @@ public class ModBlocks {
 
     // INDIGO - Main
     public static final Block INDIGO_WOOL = registerBlock("indigo_wool", createWoolBlock(ModDyeColor.INDIGO), ModItemGroups.INDIGO);
-    public static final Block INDIGO_CARPET = registerBlock("indigo_carpet", createCarpetBlock(ModDyeColor.INDIGO), ModItemGroups.INDIGO);
+    public static final Block INDIGO_CARPET = registerBlock("indigo_carpet", createDyedCarpetBlock(ModDyeColor.INDIGO), ModItemGroups.INDIGO);
     public static final Block INDIGO_TERRACOTTA = registerBlock("indigo_terracotta", createTerracottaBlock(ModDyeColor.INDIGO), ModItemGroups.INDIGO);
     public static final Block INDIGO_CONCRETE = registerBlock("indigo_concrete", createConcreteBlock(ModDyeColor.INDIGO), ModItemGroups.INDIGO);
     public static final Block INDIGO_CONCRETE_POWDER = registerBlock("indigo_concrete_powder", createConcretePowderBlock(ModDyeColor.INDIGO, INDIGO_CONCRETE), ModItemGroups.INDIGO);
@@ -178,7 +176,7 @@ public class ModBlocks {
 
     // BANANA - Main
     public static final Block BANANA_WOOL = registerBlock("banana_wool", createWoolBlock(ModDyeColor.BANANA), ModItemGroups.BANANA);
-    public static final Block BANANA_CARPET = registerBlock("banana_carpet", createCarpetBlock(ModDyeColor.BANANA), ModItemGroups.BANANA);
+    public static final Block BANANA_CARPET = registerBlock("banana_carpet", createDyedCarpetBlock(ModDyeColor.BANANA), ModItemGroups.BANANA);
     public static final Block BANANA_TERRACOTTA = registerBlock("banana_terracotta", createTerracottaBlock(ModDyeColor.BANANA), ModItemGroups.BANANA);
     public static final Block BANANA_CONCRETE = registerBlock("banana_concrete", createConcreteBlock(ModDyeColor.BANANA), ModItemGroups.BANANA);
     public static final Block BANANA_CONCRETE_POWDER = registerBlock("banana_concrete_powder", createConcretePowderBlock(ModDyeColor.BANANA, BANANA_CONCRETE), ModItemGroups.BANANA);
@@ -465,8 +463,8 @@ public class ModBlocks {
                 .burnable()
         );
     }
-    public static CarpetBlock createCarpetBlock(DyeColor color) {
-        return new CarpetBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CARPET)
+    public static DyedCarpetBlock createDyedCarpetBlock(DyeColor color) {
+        return new DyedCarpetBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_CARPET)
                 .mapColor(color.getMapColor())
                 .strength(0.1f)
                 .sounds(BlockSoundGroup.WOOL)

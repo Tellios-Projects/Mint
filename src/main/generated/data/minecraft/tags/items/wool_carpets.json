@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "mint:mint_carpet",
+    "mint:peach_carpet",
+    "mint:periwinkle_carpet",
+    "mint:artichoke_carpet",
+    "mint:fuchsia_carpet",
+    "mint:vermilion_carpet",
+    "mint:shamrock_carpet",
+    "mint:indigo_carpet",
+    "mint:banana_carpet"
+  ]
+}

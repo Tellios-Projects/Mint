@@ -61,7 +61,7 @@ public abstract class SheepEntityMixin extends AnimalEntity implements Shearable
    }
 
    private SheepEntityMixin() {
-      super(EntityType.PIG, null);
+      super(EntityType.SHEEP, null);
       throw new AssertionError();
    }
 

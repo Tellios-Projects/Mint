@@ -7,6 +7,7 @@
     "BlockEntityTypeMixin",
     "DyeColorMixin",
     "SheepEntityMixin",
+    "LlamaDecorFeatureRendererMixin",
     "ShulkerBoxColoringRecipeMixin",
     "PointOfInterestTypesMixin"
   ],
