@@ -12,9 +12,15 @@ public class ModRenderLayers {
         ModInit.LOGGER.info("Registering Client Render Layers for " + Super.MOD_ID);
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
-                ModBlocks.MINT_CROP,
-                ModBlocks.WILD_MINT
+                ModBlocks.MINT_CROP
         );
+
+        for(Block block : ModBlocks.SMALL_FLOWERS) {
+            BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutoutMipped());
+        }
+        for(Block block : ModBlocks.FLOWER_POTS) {
+            BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutoutMipped());
+        }
 
         for(Block block : ModBlocks.STAINED_GLASS_BLOCKS) {
             BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());

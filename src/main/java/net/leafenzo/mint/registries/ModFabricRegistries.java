@@ -1,22 +1,14 @@
 package net.leafenzo.mint.registries;
 
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.fabricmc.fabric.api.registry.FabricBrewingRecipeRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.VillagerInteractionRegistries;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
-import net.leafenzo.mint.potions.ModPotions;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.Potions;
-import net.minecraft.recipe.BrewingRecipeRegistry;
-import net.minecraft.recipe.Ingredient;
-
-import java.util.logging.Logger;
 
 
 public class ModFabricRegistries {
@@ -25,9 +17,11 @@ public class ModFabricRegistries {
         for(Block block : ModBlocks.WOOL_BLOCKS) {
             registry.add(block, 60, 30);
         }
-        for(Block block : ModBlocks.CARPET_BLOCKS) {
+        for(Block block : ModBlocks.WOOL_CARPET_BLOCKS) {
             registry.add(block, 20, 60);
         }
+
+        registry.add(ModBlocks.PEACH_LOG, 5, 5);
     }
     public static void registerCompostingChances() {
         ModInit.LOGGER.debug("Registering composting chances for " + Super.MOD_ID);

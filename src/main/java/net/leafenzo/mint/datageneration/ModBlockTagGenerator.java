@@ -7,7 +7,6 @@ import net.minecraft.block.Block;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -25,59 +24,85 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
     }
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
-                .add(ModBlocks.BED_BLOCKS)
-                .add(ModBlocks.BANNER_BLOCKS)
-                .add(ModBlocks.WALL_BANNER_BLOCKS)
-        ;
-
-        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-                .add(ModBlocks.TERRACOTTA_BLOCKS)
-                .add(ModBlocks.CONCRETE_BLOCKS)
-                .add(ModBlocks.GLAZED_TERRACOTTA_BLOCKS)
-                .add(ModBlocks.SHULKER_BOX_BLOCKS)
-        ;
-
-        getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
-              .add(ModBlocks.CONCRETE_POWDER_BLOCKS)
-        ;
-
-        getOrCreateTagBuilder(BlockTags.BANNERS)
-                .add(ModBlocks.BANNER_BLOCKS)
-                .add(ModBlocks.WALL_BANNER_BLOCKS)
-        ;
-
-        getOrCreateTagBuilder(BlockTags.CANDLES)
-                .add(ModBlocks.CANDLE_BLOCKS);
-        ;
-
-        getOrCreateTagBuilder(BlockTags.CANDLE_CAKES)
-                .add(ModBlocks.CANDLE_CAKE_BLOCKS);
-        ;
-
-        getOrCreateTagBuilder(BlockTags.SHULKER_BOXES)
-                .add(ModBlocks.SHULKER_BOX_BLOCKS)
-        ;
-
+    // Special - MINT
         getOrCreateTagBuilder(BlockTags.LEAVES)
                 .add(ModBlocks.MINT_SPRIG_BLOCK)
         ;
 
-        getOrCreateTagBuilder(BlockTags.WOOL)
-                .add(ModBlocks.WOOL_BLOCKS)
-        ;
+    // Main
+//  WOOL_BLOCKS
+        for (Block block : ModBlocks.WOOL_BLOCKS) {
+            getOrCreateTagBuilder(BlockTags.WOOL).add(block);
+        }
 
-        getOrCreateTagBuilder(BlockTags.BEDS)
-                .add(ModBlocks.BED_BLOCKS)
-        ;
+//  CARPET_BLOCKS
+        for (Block block : ModBlocks.WOOL_CARPET_BLOCKS) {
+            getOrCreateTagBuilder(BlockTags.WOOL_CARPETS).add(block);
+        }
 
-        getOrCreateTagBuilder(BlockTags.FLOWERS)
-                .add(ModBlocks.WILD_MINT)
-        ;
+////  TERRACOTTA_BLOCKS
+        for (Block block : ModBlocks.TERRACOTTA_BLOCKS) {
+            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+        }
 
-        getOrCreateTagBuilder(BlockTags.WOOL_CARPETS)
-                .add(ModBlocks.CARPET_BLOCKS)
-        ;
+////  CONCRETE_POWDER_BLOCKS
+        for (Block block : ModBlocks.CONCRETE_POWDER_BLOCKS) {
+            getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).add(block);
+        }
+
+////  GLAZED_TERRACOTTA_BLOCKS
+        for (Block block : ModBlocks.GLAZED_TERRACOTTA_BLOCKS) {
+            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+        }
+
+////  STAINED_GLASS_BLOCKS
+//
+////  STAINED_GLASS_PANE_BLOCKS
+//
+////  SHULKER_BOX_BLOCKS
+        for (Block block : ModBlocks.SHULKER_BOX_BLOCKS) {
+            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+            getOrCreateTagBuilder(BlockTags.SHULKER_BOXES).add(block);
+        }
+
+////  BED_BLOCKS
+        for (Block block : ModBlocks.BED_BLOCKS) {
+            getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(block);
+            getOrCreateTagBuilder(BlockTags.BEDS).add(block);
+        }
+
+////  CANDLE_BLOCKS
+        for (Block block : ModBlocks.CANDLE_BLOCKS) {
+            getOrCreateTagBuilder(BlockTags.CANDLES).add(block);
+        }
+
+////  CANDLE_CAKE_BLOCKS
+        for (Block block : ModBlocks.CANDLE_CAKE_BLOCKS) {
+            getOrCreateTagBuilder(BlockTags.CANDLE_CAKES).add(block);
+        }
+
+////  BANNER_BLOCKS
+        for (Block block : ModBlocks.BANNER_BLOCKS) {
+            getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(block);
+            getOrCreateTagBuilder(BlockTags.BANNERS).add(block);
+        }
+
+////  WALL_BANNER_BLOCKS
+        for (Block block : ModBlocks.WALL_BANNER_BLOCKS) {
+            getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(block);
+            getOrCreateTagBuilder(BlockTags.BANNERS).add(block);
+        }
+
+////  FLOWERS
+        for (Block block : ModBlocks.SMALL_FLOWERS) {
+            getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS).add(block);
+        }
+
+////  FLOWER_POTS
+        for (Block block : ModBlocks.FLOWER_POTS) {
+            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+            getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(block);
+        }
     }
 }
 

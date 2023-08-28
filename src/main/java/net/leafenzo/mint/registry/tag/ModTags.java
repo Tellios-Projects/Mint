@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 public class ModTags {
     public static class Blocks {
 //        public static final TagKey<Blocks>  = createTa
-        private static TagKey<Block> getOrCreateTag(String name) {
+        public static TagKey<Block> getOrCreateTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, new Identifier(Super.MOD_ID, name));
         }
         private static TagKey<Block> getOrCreateCommonTag(String name) {
@@ -23,7 +23,7 @@ public class ModTags {
     }
     public static class Items {
         public static final TagKey<Item> DYES = getOrCreateCommonTag("dyes");
-        private static TagKey<Item> getOrCreateTag(String name) {
+        public static TagKey<Item> getOrCreateTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(Super.MOD_ID, name));
         }
         private static TagKey<Item>  getOrCreateCommonTag(String name) {

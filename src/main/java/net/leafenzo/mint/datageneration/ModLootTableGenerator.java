@@ -6,30 +6,18 @@ import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.CarrotsBlock;
-import net.minecraft.block.TallPlantBlock;
-import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.enchantment.Enchantments;
-import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
-import net.minecraft.loot.condition.LocationCheckLootCondition;
-import net.minecraft.loot.condition.RandomChanceLootCondition;
-import net.minecraft.loot.entry.AlternativeEntry;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
 import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
-import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
-import net.minecraft.predicate.BlockPredicate;
 import net.minecraft.predicate.StatePredicate;
-import net.minecraft.predicate.entity.LocationPredicate;
-import net.minecraft.util.math.BlockPos;
 
 public class ModLootTableGenerator extends FabricBlockLootTableProvider {
     public ModLootTableGenerator(FabricDataOutput dataOutput) {
@@ -56,7 +44,7 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
 //  WOOL_BLOCKS
         for(Block block : ModBlocks.WOOL_BLOCKS) { this.addDrop(block); }
 //  CARPET_BLOCKS
-        for(Block block : ModBlocks.CARPET_BLOCKS) { this.addDrop(block); }
+        for(Block block : ModBlocks.WOOL_CARPET_BLOCKS) { this.addDrop(block); }
 //  TERRACOTTA_BLOCKS
         for(Block block : ModBlocks.TERRACOTTA_BLOCKS) { this.addDrop(block); }
 //  CONCRETE_BLOCKS

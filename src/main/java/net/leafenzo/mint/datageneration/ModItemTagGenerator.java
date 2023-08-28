@@ -3,18 +3,15 @@ package net.leafenzo.mint.datageneration;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.registry.tag.ModTags;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.tag.ItemTags;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.leafenzo.mint.block.ModBlocks;
-import net.minecraft.block.Block;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -32,22 +29,32 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
     }
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        getOrCreateTagBuilder(ItemTags.CANDLES)
-                .add(ModBlocks.toItems(ModBlocks.CANDLE_BLOCKS))
-        ;
-
+    // Vanilla
         getOrCreateTagBuilder(ModTags.Items.DYES)
                 .add(Items.BLACK_DYE, Items.BLUE_DYE, Items.BROWN_DYE, Items.CYAN_DYE, Items.GRAY_DYE, Items.GREEN_DYE, Items.LIGHT_BLUE_DYE, Items.LIGHT_GRAY_DYE, Items.LIME_DYE, Items.MAGENTA_DYE, Items.ORANGE_DYE, Items.PINK_DYE, Items.PURPLE_DYE, Items.RED_DYE, Items.YELLOW_DYE, Items.WHITE_DYE)
-                .add(ModItems.DYE_ITEMS)
         ;
 
+    // Special - MINT
         getOrCreateTagBuilder(ItemTags.VILLAGER_PLANTABLE_SEEDS)
                 .add(ModItems.MINT_SPRIG)
         ;
 
-        getOrCreateTagBuilder(ItemTags.WOOL_CARPETS) // used for adding a carpet to llamas in LlamaEntity.isHorseArmor()
-                .add(ModBlocks.toItems(ModBlocks.CARPET_BLOCKS))
-        ;
+    // Main
+        for (Block block : ModBlocks.WOOL_CARPET_BLOCKS) {
+            getOrCreateTagBuilder(ItemTags.WOOL_CARPETS).add(block.asItem());  // used for adding a carpet to llamas in LlamaEntity.isHorseArmor()
+        }
+
+        for (Block block : ModBlocks.SMALL_FLOWERS) {
+            getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS).add(block.asItem());
+        }
+
+        for (Block block : ModBlocks.CANDLE_BLOCKS) {
+            getOrCreateTagBuilder(ItemTags.CANDLES).add(block.asItem());
+        }
+
+        for (Item item : ModItems.DYE_ITEMS) {
+            getOrCreateTagBuilder(ModTags.Items.DYES).add(item);
+        }
     }
 }
 

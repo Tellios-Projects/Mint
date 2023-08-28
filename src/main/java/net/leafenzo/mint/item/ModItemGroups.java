@@ -6,6 +6,7 @@ import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.util.ModDyeColor;
+import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
@@ -14,6 +15,9 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.NotNull;
+
+import static net.leafenzo.mint.util.ModUtil.formatMultipleIdsForErrorLog;
 
 public class ModItemGroups {
     public static void registerModItemGroups() {
@@ -21,21 +25,38 @@ public class ModItemGroups {
         modifyVanillaItemGroupEntries();
     }
 
+    // you can tell I was having a rough time huh :p
+    public static RuntimeException ColoredBlocksNotEqualError(DyeColor ca, DyeColor cb, Block[] a, Block[] b) {
+        String errorMessage = (ca.getName() + " has " + a.length + " blocks in the colored blocks category" + ", while " + cb.getName() + " has " + b.length + " (" + formatMultipleIdsForErrorLog(a) + " VS " + formatMultipleIdsForErrorLog(b) + ")");
+        ModInit.LOGGER.error(errorMessage);
+        return new RuntimeException(errorMessage);
+    }
+    public static RuntimeException FunctionalBlocksNotEqualError(DyeColor ca, DyeColor cb, Block[] a, Block[] b) {
+        String errorMessage = (ca.getName() + " has " + a.length + " blocks in the functional blocks category, while " + cb.getName() + " has " + b.length + " (" + formatMultipleIdsForErrorLog(a) + " VS " + formatMultipleIdsForErrorLog(b) + ")");
+        ModInit.LOGGER.error(errorMessage);
+        return new RuntimeException(errorMessage);
+    }
+
     public static void addItemsOfColorAfterItemsOfAnotherColor(DyeColor colorBefore, DyeColor colorAfter) {
-        Block[] coloredBlocksBefore = net.leafenzo.mint.util.Util.ColoredBlocksOfColor(colorBefore);
-        Block[] coloredBlocksAfter = net.leafenzo.mint.util.Util.ColoredBlocksOfColor(colorAfter);
+        @NotNull Block[] coloredBlocksBefore = ModUtil.ColoredBlocksOfColor(colorBefore);
+        @NotNull Block[] coloredBlocksAfter = ModUtil.ColoredBlocksOfColor(colorAfter);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS).register(content -> {
-            if(coloredBlocksBefore.length != coloredBlocksAfter.length) { throw new RuntimeException(); }
+            if(coloredBlocksBefore.length != coloredBlocksAfter.length) {
+                throw ColoredBlocksNotEqualError(colorBefore, colorAfter, coloredBlocksBefore, coloredBlocksAfter);
+            }
             for (int i = 0; i < coloredBlocksBefore.length; i++) {
-                content.addAfter(coloredBlocksBefore[i], coloredBlocksAfter[i]);
+                content.addAfter(coloredBlocksBefore[i].asItem(), coloredBlocksAfter[i].asItem());
             }
         });
-        Block[] functionalBlocksBefore = net.leafenzo.mint.util.Util.FunctionalBlocksOfColor(colorBefore);
-        Block[] functionalBlocksAfter = net.leafenzo.mint.util.Util.FunctionalBlocksOfColor(colorAfter);
+
+        @NotNull Block[] functionalBlocksBefore = ModUtil.FunctionalBlocksOfColor(colorBefore);
+        @NotNull Block[] functionalBlocksAfter = ModUtil.FunctionalBlocksOfColor(colorAfter);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(content -> {
-            if(functionalBlocksBefore.length != functionalBlocksAfter.length) { throw new RuntimeException(); }
+            if(functionalBlocksBefore.length != functionalBlocksAfter.length) {
+                throw FunctionalBlocksNotEqualError(colorBefore, colorAfter, coloredBlocksBefore, coloredBlocksAfter);
+            }
             for (int i = 0; i < functionalBlocksBefore.length; i++) {
-                content.addAfter(functionalBlocksBefore[i], functionalBlocksAfter[i]);
+                content.addAfter(functionalBlocksBefore[i].asItem(), functionalBlocksAfter[i].asItem());
             }
         });
 
@@ -46,7 +67,6 @@ public class ModItemGroups {
 
     //keep in the right places to make a big rainbow ^~^ in conjunction with our other dye mods as well
     public static void modifyVanillaItemGroupEntries() {
-
         //White
         //Light Gray
         //Gray
@@ -55,7 +75,7 @@ public class ModItemGroups {
          //Acorn
         //Red
         //Vermilion
-            addItemsOfColorAfterItemsOfAnotherColor(DyeColor.RED, ModDyeColor.VERMILION);
+        addItemsOfColorAfterItemsOfAnotherColor(DyeColor.RED, ModDyeColor.VERMILION);
         //Peach
         addItemsOfColorAfterItemsOfAnotherColor(ModDyeColor.VERMILION, ModDyeColor.PEACH);
         //Orange
