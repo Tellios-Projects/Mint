@@ -6,6 +6,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.DyeColor;
 
 import java.util.ArrayList;
@@ -87,11 +88,7 @@ public class ModUtil {
                 return BLACK_VANILLA_COLORED_BLOCKS;
         }
         // for colors added by this mod
-        for(Block block : ModBlocks.COLORED_BLOCKS) {
-            Block[] matches = ModBlocks.allMatchesOfColor(ModBlocks.COLORED_BLOCKS, color);
-            if(matches != null) { return matches; }
-        }
-        return null;
+        return ModBlocks.allMatchesOfColor(ModBlocks.COLORED_BLOCKS, color);
     }
     public static Block[] FunctionalBlocksOfColor(DyeColor color) {
         // for vanilla colors
@@ -130,11 +127,16 @@ public class ModUtil {
                 return BLACK_VANILLA_FUNCTIONAL_BLOCKS;
         }
         // for colors added by this mod
-        for(Block block : ModBlocks.FUNCTIONAL_BLOCKS) {
-            Block[] matches = ModBlocks.allMatchesOfColor(ModBlocks.FUNCTIONAL_BLOCKS, color);
-            if(matches != null) { return matches; }
+        return ModBlocks.allMatchesOfColor(ModBlocks.FUNCTIONAL_BLOCKS, color);
+    }
+
+    public static String formatMultipleIdsForErrorLog(Block[] blocks) {
+        String s = "{ ";
+        for (int i = 0; i < blocks.length; i++) {
+            s = s.concat(Registries.BLOCK.getId(blocks[i]).toString());
+            if(i != blocks.length - 1) { s = s.concat(", "); } // if not the last entry
         }
-        return null;
+        return s.concat(" }");
     }
 
     // this is smelly isn't it... oh well.

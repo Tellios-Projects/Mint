@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ModItems {
+    public static final ArrayList<Item> DYE_ITEMS = new ArrayList<Item>();
+    public static final HashMap<DyeColor, DyeItem> DYE_ITEM_FROM_COLOR = new HashMap<DyeColor, DyeItem>();
 
     //MINT - Special
     public static final Item MINT_SPRIG = registerItem("mint_sprig", new MintSprigItem(new FabricItemSettings()
@@ -43,50 +45,44 @@ public class ModItems {
                     .build())));
 
     // Main
-    public static final Item MINT_DYE = registerItem("mint_dye", new DyeItem(ModDyeColor.MINT, new FabricItemSettings()));
-    public static final Item MINT_BED = registerItem(new BedItem(ModBlocks.MINT_BED, new Item.Settings().maxCount(1)));
-    public static final Item MINT_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.MINT_SHULKER_BOX, new Item.Settings().maxCount(1)));
-    public static final Item MINT_BANNER = registerItem(new BannerItem(ModBlocks.MINT_BANNER, ModBlocks.MINT_WALL_BANNER, new Item.Settings().maxCount(16)));
-    public static final Item PEACH_DYE = registerItem("peach_dye", new DyeItem(ModDyeColor.PEACH, new FabricItemSettings()));
-    public static final Item PEACH_BED = registerItem(new BedItem(ModBlocks.PEACH_BED, new Item.Settings().maxCount(1)));
-    public static final Item PEACH_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.PEACH_SHULKER_BOX, new Item.Settings().maxCount(1)));
-    public static final Item PEACH_BANNER = registerItem(new BannerItem(ModBlocks.PEACH_BANNER, ModBlocks.PEACH_WALL_BANNER, new Item.Settings().maxCount(16)));
-    public static final Item PERIWINKLE_DYE = registerItem("periwinkle_dye", new DyeItem(ModDyeColor.PERIWINKLE, new FabricItemSettings()));
-    public static final Item PERIWINKLE_BED = registerItem(new BedItem(ModBlocks.PERIWINKLE_BED, new Item.Settings().maxCount(1)));
-    public static final Item PERIWINKLE_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.PERIWINKLE_SHULKER_BOX, new Item.Settings().maxCount(1)));
-    public static final Item PERIWINKLE_BANNER = registerItem(new BannerItem(ModBlocks.PERIWINKLE_BANNER, ModBlocks.PERIWINKLE_WALL_BANNER, new Item.Settings().maxCount(16)));
-    public static final Item ARTICHOKE_DYE = registerItem("artichoke_dye", new DyeItem(ModDyeColor.ARTICHOKE, new FabricItemSettings()));
-    public static final Item ARTICHOKE_BED = registerItem(new BedItem(ModBlocks.ARTICHOKE_BED, new Item.Settings().maxCount(1)));
-    public static final Item ARTICHOKE_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.ARTICHOKE_SHULKER_BOX, new Item.Settings().maxCount(1)));
-    public static final Item ARTICHOKE_BANNER = registerItem(new BannerItem(ModBlocks.ARTICHOKE_BANNER, ModBlocks.ARTICHOKE_WALL_BANNER, new Item.Settings().maxCount(16)));
+        public static final Item MINT_DYE = registerItem("mint_dye", createDyeItem(ModDyeColor.MINT));
+        public static final Item MINT_BED = registerItem(new BedItem(ModBlocks.MINT_BED, new Item.Settings().maxCount(1)));
+        public static final Item MINT_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.MINT_SHULKER_BOX, new Item.Settings().maxCount(1)));
+        public static final Item MINT_BANNER = registerItem(new BannerItem(ModBlocks.MINT_BANNER, ModBlocks.MINT_WALL_BANNER, new Item.Settings().maxCount(16)));
+        public static final Item PEACH_DYE = registerItem("peach_dye", createDyeItem(ModDyeColor.PEACH));
+        public static final Item PEACH_BED = registerItem(new BedItem(ModBlocks.PEACH_BED, new Item.Settings().maxCount(1)));
+        public static final Item PEACH_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.PEACH_SHULKER_BOX, new Item.Settings().maxCount(1)));
+        public static final Item PEACH_BANNER = registerItem(new BannerItem(ModBlocks.PEACH_BANNER, ModBlocks.PEACH_WALL_BANNER, new Item.Settings().maxCount(16)));
+        public static final Item PERIWINKLE_DYE = registerItem("periwinkle_dye", createDyeItem(ModDyeColor.PERIWINKLE));
+        public static final Item PERIWINKLE_BED = registerItem(new BedItem(ModBlocks.PERIWINKLE_BED, new Item.Settings().maxCount(1)));
+        public static final Item PERIWINKLE_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.PERIWINKLE_SHULKER_BOX, new Item.Settings().maxCount(1)));
+        public static final Item PERIWINKLE_BANNER = registerItem(new BannerItem(ModBlocks.PERIWINKLE_BANNER, ModBlocks.PERIWINKLE_WALL_BANNER, new Item.Settings().maxCount(16)));
+        public static final Item ARTICHOKE_DYE = registerItem("artichoke_dye", createDyeItem(ModDyeColor.ARTICHOKE));
+        public static final Item ARTICHOKE_BED = registerItem(new BedItem(ModBlocks.ARTICHOKE_BED, new Item.Settings().maxCount(1)));
+        public static final Item ARTICHOKE_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.ARTICHOKE_SHULKER_BOX, new Item.Settings().maxCount(1)));
+        public static final Item ARTICHOKE_BANNER = registerItem(new BannerItem(ModBlocks.ARTICHOKE_BANNER, ModBlocks.ARTICHOKE_WALL_BANNER, new Item.Settings().maxCount(16)));
 
-    public static final Item FUCHSIA_DYE = registerItem("fuchsia_dye", new DyeItem(ModDyeColor.FUCHSIA, new FabricItemSettings()));
-    public static final Item FUCHSIA_BED = registerItem(new BedItem(ModBlocks.FUCHSIA_BED, new Item.Settings().maxCount(1)));
-    public static final Item FUCHSIA_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.FUCHSIA_SHULKER_BOX, new Item.Settings().maxCount(1)));
-    public static final Item FUCHSIA_BANNER = registerItem(new BannerItem(ModBlocks.FUCHSIA_BANNER, ModBlocks.FUCHSIA_WALL_BANNER, new Item.Settings().maxCount(16)));
-    public static final Item VERMILION_DYE = registerItem("vermilion_dye", new DyeItem(ModDyeColor.VERMILION, new FabricItemSettings()));
-    public static final Item VERMILION_BED = registerItem(new BedItem(ModBlocks.VERMILION_BED, new Item.Settings().maxCount(1)));
-    public static final Item VERMILION_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.VERMILION_SHULKER_BOX, new Item.Settings().maxCount(1)));
-    public static final Item VERMILION_BANNER = registerItem(new BannerItem(ModBlocks.VERMILION_BANNER, ModBlocks.VERMILION_WALL_BANNER, new Item.Settings().maxCount(16)));
-    public static final Item SHAMROCK_DYE = registerItem("shamrock_dye", new DyeItem(ModDyeColor.SHAMROCK, new FabricItemSettings()));
-    public static final Item SHAMROCK_BED = registerItem(new BedItem(ModBlocks.SHAMROCK_BED, new Item.Settings().maxCount(1)));
-    public static final Item SHAMROCK_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.SHAMROCK_SHULKER_BOX, new Item.Settings().maxCount(1)));
-    public static final Item SHAMROCK_BANNER = registerItem(new BannerItem(ModBlocks.SHAMROCK_BANNER, ModBlocks.SHAMROCK_WALL_BANNER, new Item.Settings().maxCount(16)));
-    public static final Item INDIGO_DYE = registerItem("indigo_dye", new DyeItem(ModDyeColor.INDIGO, new FabricItemSettings()));
-    public static final Item INDIGO_BED = registerItem(new BedItem(ModBlocks.INDIGO_BED, new Item.Settings().maxCount(1)));
-    public static final Item INDIGO_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.INDIGO_SHULKER_BOX, new Item.Settings().maxCount(1)));
-    public static final Item INDIGO_BANNER = registerItem(new BannerItem(ModBlocks.INDIGO_BANNER, ModBlocks.INDIGO_WALL_BANNER, new Item.Settings().maxCount(16)));
+        public static final Item FUCHSIA_DYE = registerItem("fuchsia_dye", createDyeItem(ModDyeColor.FUCHSIA));
+        public static final Item FUCHSIA_BED = registerItem(new BedItem(ModBlocks.FUCHSIA_BED, new Item.Settings().maxCount(1)));
+        public static final Item FUCHSIA_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.FUCHSIA_SHULKER_BOX, new Item.Settings().maxCount(1)));
+        public static final Item FUCHSIA_BANNER = registerItem(new BannerItem(ModBlocks.FUCHSIA_BANNER, ModBlocks.FUCHSIA_WALL_BANNER, new Item.Settings().maxCount(16)));
+        public static final Item VERMILION_DYE = registerItem("vermilion_dye", createDyeItem(ModDyeColor.VERMILION));
+        public static final Item VERMILION_BED = registerItem(new BedItem(ModBlocks.VERMILION_BED, new Item.Settings().maxCount(1)));
+        public static final Item VERMILION_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.VERMILION_SHULKER_BOX, new Item.Settings().maxCount(1)));
+        public static final Item VERMILION_BANNER = registerItem(new BannerItem(ModBlocks.VERMILION_BANNER, ModBlocks.VERMILION_WALL_BANNER, new Item.Settings().maxCount(16)));
+        public static final Item SHAMROCK_DYE = registerItem("shamrock_dye", createDyeItem(ModDyeColor.SHAMROCK));
+        public static final Item SHAMROCK_BED = registerItem(new BedItem(ModBlocks.SHAMROCK_BED, new Item.Settings().maxCount(1)));
+        public static final Item SHAMROCK_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.SHAMROCK_SHULKER_BOX, new Item.Settings().maxCount(1)));
+        public static final Item SHAMROCK_BANNER = registerItem(new BannerItem(ModBlocks.SHAMROCK_BANNER, ModBlocks.SHAMROCK_WALL_BANNER, new Item.Settings().maxCount(16)));
+        public static final Item INDIGO_DYE = registerItem("indigo_dye", createDyeItem(ModDyeColor.INDIGO));
+        public static final Item INDIGO_BED = registerItem(new BedItem(ModBlocks.INDIGO_BED, new Item.Settings().maxCount(1)));
+        public static final Item INDIGO_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.INDIGO_SHULKER_BOX, new Item.Settings().maxCount(1)));
+        public static final Item INDIGO_BANNER = registerItem(new BannerItem(ModBlocks.INDIGO_BANNER, ModBlocks.INDIGO_WALL_BANNER, new Item.Settings().maxCount(16)));
 
-    public static final Item BANANA_DYE = registerItem("banana_dye", new DyeItem(ModDyeColor.BANANA, new FabricItemSettings()));
-    public static final Item BANANA_BED = registerItem(new BedItem(ModBlocks.BANANA_BED, new Item.Settings().maxCount(1)));
-    public static final Item BANANA_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.BANANA_SHULKER_BOX, new Item.Settings().maxCount(1)));
-    public static final Item BANANA_BANNER = registerItem(new BannerItem(ModBlocks.BANANA_BANNER, ModBlocks.BANANA_WALL_BANNER, new Item.Settings().maxCount(16)));
-
-    // Arrays
-    public static final ArrayList<Item> DYE_ITEMS = new ArrayList<Item>();
-    public static final HashMap<DyeColor, DyeItem> DYE_ITEM_FROM_COLOR = new HashMap<DyeColor, DyeItem>();
-
-
+        public static final Item BANANA_DYE = registerItem("banana_dye", createDyeItem(ModDyeColor.BANANA));
+        public static final Item BANANA_BED = registerItem(new BedItem(ModBlocks.BANANA_BED, new Item.Settings().maxCount(1)));
+        public static final Item BANANA_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.BANANA_SHULKER_BOX, new Item.Settings().maxCount(1)));
+        public static final Item BANANA_BANNER = registerItem(new BannerItem(ModBlocks.BANANA_BANNER, ModBlocks.BANANA_WALL_BANNER, new Item.Settings().maxCount(16)));
 
 //    public static Item getDyeItemByColor(DyeColor color) {
 //        if (color.equals(ModDyeColor.MINT)) {
@@ -131,7 +127,8 @@ public class ModItems {
     }
 
     public static Item[] toItemArray(ArrayList<Item> input) {
-        return new Item[input.size()];
+        Item[] array = new Item[input.size()];
+        return input.toArray(array);
     }
 
     private static Item registerItem(Block block, Item item) {

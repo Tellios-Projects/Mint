@@ -30,18 +30,18 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.function.ToIntFunction;
 
 public class ModBlocks {
+    //<editor-fold desc ="Hashmaps & Arrays">
     public static final HashMap<FlowerBlock, FlowerPotBlock> FLOWER_POT_FROM_FLOWER = new HashMap<FlowerBlock, FlowerPotBlock>();
     public static final HashMap<Block, DyeColor> DYECOLOR_FROM_BLOCK = new HashMap<Block, DyeColor>();
     public static final HashMap<Block, Block> WOOL_CARPET_FROM_WOOL = new HashMap<Block, Block>();
     public static final HashMap<Block, Block> CANDLE_CAKE_FROM_CANDLE = new HashMap<Block, Block>();
     public static final HashMap<Block, Block> STAINED_GLASS_PANE_FROM_STAINED_GLASS = new HashMap<Block, Block>();
     public static final HashMap<Block, Block> WALL_BANNER_FROM_BANNER = new HashMap<Block, Block>();
-
-    //    public static final TagKey<Block> WOOL_BLOCKS = ModTags.Blocks.getOrCreateTag("wool_blocks");
     public static final ArrayList<Block> WOOL_BLOCKS = new ArrayList<Block>();
     public static final ArrayList<Block> WOOL_CARPET_BLOCKS = new ArrayList<Block>();
     public static final ArrayList<Block> TERRACOTTA_BLOCKS = new ArrayList<Block>();
@@ -58,18 +58,15 @@ public class ModBlocks {
     public static final ArrayList<Block> WALL_BANNER_BLOCKS = new ArrayList<Block>();
     public static final ArrayList<Block> SMALL_FLOWERS = new ArrayList<Block>();
     public static final ArrayList<Block> FLOWER_POTS = new ArrayList<Block>();
-
     /**
      * This list is just used in ItemGroups
-     */
-    public static final ArrayList<Block> COLORED_BLOCKS = new ArrayList<Block>();
+     */ public static final ArrayList<Block> COLORED_BLOCKS = new ArrayList<Block>();
     /**
      * This list is just used in ItemGroups
-     */
-    public static final ArrayList<Block> FUNCTIONAL_BLOCKS = new ArrayList<Block>();
+     */ public static final ArrayList<Block> FUNCTIONAL_BLOCKS = new ArrayList<Block>();
+    //</editor-fold>
 
-
-    // MINT - Main
+    //<editor-fold desc ="MINT - Template">
     public static final Block MINT_WOOL = registerBlock("mint_wool", createWoolBlock(ModDyeColor.MINT), ModItemGroups.MINT);
     public static final Block MINT_CARPET = registerBlock("mint_carpet", createDyedCarpetBlock(ModDyeColor.MINT, MINT_WOOL), ModItemGroups.MINT);
     public static final Block MINT_TERRACOTTA = registerBlock("mint_terracotta", createTerracottaBlock(ModDyeColor.MINT), ModItemGroups.MINT);
@@ -84,7 +81,8 @@ public class ModBlocks {
     public static final Block MINT_CANDLE_CAKE = registerBlock("mint_candle_cake", createCandleCakeBlock(ModDyeColor.MINT, MINT_CANDLE), ModItemGroups.MINT);
     public static final Block MINT_BANNER = registerBlockWithoutBlockItem("mint_banner", createBannerBlock(ModDyeColor.MINT));
     public static final Block MINT_WALL_BANNER = registerBlockWithoutBlockItem("mint_wall_banner", createWallBannerBlock(ModDyeColor.MINT, (BannerBlock)ModBlocks.MINT_BANNER));
-    // MINT - Special
+    //</editor-fold>
+    //<editor-fold desc ="MINT - Special">
     public static final Block MINT_CROP = registerBlockWithoutBlockItem("mint_crop", new MintCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT).mapColor(MapColor.LICHEN_GREEN)));
     public static final Block WILD_MINT = registerBlock("wild_mint", createFlowerBlock(ModEffects.MENTHOL, 900), ModItemGroups.MINT);
     public static final Block POTTED_WILD_MINT = registerBlock("potted_wild_mint", createFlowerPotBlock((FlowerBlock) WILD_MINT), ModItemGroups.PEACH);
@@ -94,8 +92,8 @@ public class ModBlocks {
     public static final Block MINT_BRICK_SLAB = registerBlock("mint_brick_slab", new SlabBlock(FabricBlockSettings.copyOf(MINT_BRICKS)), ModItemGroups.MINT);
     public static final Block MINT_BRICK_STAIRS = registerBlock("mint_brick_stairs", new StairsBlock(MINT_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(MINT_BRICKS)), ModItemGroups.MINT);
     //public static final Block MINT_BRICK_WALL = registerBlock("mint_brick_wall", new WallBlock(FabricBlockSettings.copyOf(MINT_BRICKS)), ModItemGroups.MINT);
-
-    // PEACH - Main
+    //</editor-fold>
+    //<editor-fold desc ="PEACH - Template">
     public static final Block PEACH_WOOL = registerBlock("peach_wool", createWoolBlock(ModDyeColor.PEACH), ModItemGroups.PEACH);
     public static final Block PEACH_CARPET = registerBlock("peach_carpet", createDyedCarpetBlock(ModDyeColor.PEACH, PEACH_WOOL), ModItemGroups.PEACH);
     public static final Block PEACH_TERRACOTTA = registerBlock("peach_terracotta", createTerracottaBlock(ModDyeColor.PEACH), ModItemGroups.PEACH);
@@ -110,14 +108,15 @@ public class ModBlocks {
     public static final Block PEACH_CANDLE_CAKE = registerBlock("peach_candle_cake", createCandleCakeBlock(ModDyeColor.PEACH, PEACH_CANDLE), ModItemGroups.PEACH);
     public static final Block PEACH_BANNER = registerBlockWithoutBlockItem("peach_banner", createBannerBlock(ModDyeColor.PEACH));
     public static final Block PEACH_WALL_BANNER = registerBlockWithoutBlockItem("peach_wall_banner", createWallBannerBlock(ModDyeColor.PEACH, (BannerBlock)ModBlocks.PEACH_BANNER));
-    // PEACH - Special
+    //</editor-fold>
+    //<editor-fold desc ="PEACH - Special">
     public static final Block HYPERICUM = registerBlock("hypericum", createFlowerBlock(StatusEffects.HUNGER, 900), ModItemGroups.PEACH); //hunger cause hypericum berries cause digestion issues irl
     public static final Block POTTED_HYPERICUM = registerBlock("potted_hypericum", createFlowerPotBlock((FlowerBlock) HYPERICUM), ModItemGroups.PEACH);
         static { FLOWER_POT_FROM_FLOWER.put((FlowerBlock) HYPERICUM, (FlowerPotBlock) POTTED_HYPERICUM); }
     //public static final Block PEACH_TREE = registerBlock("peach_tree", PeachTreeBlock)
     public static final Block PEACH_LOG = registerBlock("peach_log", new Block(FabricBlockSettings.create().instrument(Instrument.BASS).strength(2.0f).sounds(BlockSoundGroup.WOOD).burnable().mapColor(MapColor.STONE_GRAY)), ModItemGroups.PEACH);
-
-    // PERIWINKLE - Main
+    //</editor-fold>
+    //<editor-fold desc ="PERIWINKLE - Template">
     public static final Block PERIWINKLE_WOOL = registerBlock("periwinkle_wool", createWoolBlock(ModDyeColor.PERIWINKLE), ModItemGroups.PERIWINKLE);
     public static final Block PERIWINKLE_CARPET = registerBlock("periwinkle_carpet", createDyedCarpetBlock(ModDyeColor.PERIWINKLE, PERIWINKLE_WOOL), ModItemGroups.PERIWINKLE);
     public static final Block PERIWINKLE_TERRACOTTA = registerBlock("periwinkle_terracotta", createTerracottaBlock(ModDyeColor.PERIWINKLE), ModItemGroups.PERIWINKLE);
@@ -132,9 +131,10 @@ public class ModBlocks {
     public static final Block PERIWINKLE_CANDLE_CAKE = registerBlock("periwinkle_candle_cake", createCandleCakeBlock(ModDyeColor.PERIWINKLE, PERIWINKLE_CANDLE), ModItemGroups.PERIWINKLE);
     public static final Block PERIWINKLE_BANNER = registerBlockWithoutBlockItem("periwinkle_banner", createBannerBlock(ModDyeColor.PERIWINKLE));
     public static final Block PERIWINKLE_WALL_BANNER = registerBlockWithoutBlockItem("periwinkle_wall_banner", createWallBannerBlock(ModDyeColor.PERIWINKLE, (BannerBlock)ModBlocks.PERIWINKLE_BANNER));
-    // PERIWINKLE - Special
-
-    // ARTICHOKE - Main
+    //</editor-fold>
+    //<editor-fold desc ="PERIWINKLE - Special">
+    //</editor-fold>
+    //<editor-fold desc ="ARTICHOKE - Template">
     public static final Block ARTICHOKE_WOOL = registerBlock("artichoke_wool", createWoolBlock(ModDyeColor.ARTICHOKE), ModItemGroups.ARTICHOKE);
     public static final Block ARTICHOKE_CARPET = registerBlock("artichoke_carpet", createDyedCarpetBlock(ModDyeColor.ARTICHOKE, ARTICHOKE_WOOL), ModItemGroups.ARTICHOKE);
     public static final Block ARTICHOKE_TERRACOTTA = registerBlock("artichoke_terracotta", createTerracottaBlock(ModDyeColor.ARTICHOKE), ModItemGroups.ARTICHOKE);
@@ -149,9 +149,11 @@ public class ModBlocks {
     public static final Block ARTICHOKE_CANDLE_CAKE = registerBlock("artichoke_candle_cake", createCandleCakeBlock(ModDyeColor.ARTICHOKE, ARTICHOKE_CANDLE), ModItemGroups.ARTICHOKE);
     public static final Block ARTICHOKE_BANNER = registerBlockWithoutBlockItem("artichoke_banner", createBannerBlock(ModDyeColor.ARTICHOKE));
     public static final Block ARTICHOKE_WALL_BANNER = registerBlockWithoutBlockItem("artichoke_wall_banner", createWallBannerBlock(ModDyeColor.ARTICHOKE, (BannerBlock)ModBlocks.ARTICHOKE_BANNER));
-    // ARTICHOKE - Special
+    //</editor-fold>
+    //<editor-fold desc ="ARTICHOKE - Special">
+    //</editor-fold>
 
-    // FUCHSIA - Main
+    //<editor-fold desc ="FUCHSIA - Template">
     public static final Block FUCHSIA_WOOL = registerBlock("fuchsia_wool", createWoolBlock(ModDyeColor.FUCHSIA), ModItemGroups.FUCHSIA);
     public static final Block FUCHSIA_CARPET = registerBlock("fuchsia_carpet", createDyedCarpetBlock(ModDyeColor.FUCHSIA, FUCHSIA_WOOL), ModItemGroups.FUCHSIA);
     public static final Block FUCHSIA_TERRACOTTA = registerBlock("fuchsia_terracotta", createTerracottaBlock(ModDyeColor.FUCHSIA), ModItemGroups.FUCHSIA);
@@ -166,9 +168,10 @@ public class ModBlocks {
     public static final Block FUCHSIA_CANDLE_CAKE = registerBlock("fuchsia_candle_cake", createCandleCakeBlock(ModDyeColor.FUCHSIA, FUCHSIA_CANDLE), ModItemGroups.FUCHSIA);
     public static final Block FUCHSIA_BANNER = registerBlockWithoutBlockItem("fuchsia_banner", createBannerBlock(ModDyeColor.FUCHSIA));
     public static final Block FUCHSIA_WALL_BANNER = registerBlockWithoutBlockItem("fuchsia_wall_banner", createWallBannerBlock(ModDyeColor.FUCHSIA, (BannerBlock)ModBlocks.FUCHSIA_BANNER));
-    // FUCHSIA - Special
-
-    // VERMILION - Main
+    //</editor-fold>
+    //<editor-fold desc ="FUCHSIA - Special">
+    //</editor-fold>
+    //<editor-fold desc ="VERMILION - Template">
     public static final Block VERMILION_WOOL = registerBlock("vermilion_wool", createWoolBlock(ModDyeColor.VERMILION), ModItemGroups.VERMILION);
     public static final Block VERMILION_CARPET = registerBlock("vermilion_carpet", createDyedCarpetBlock(ModDyeColor.VERMILION, VERMILION_WOOL), ModItemGroups.VERMILION);
     public static final Block VERMILION_TERRACOTTA = registerBlock("vermilion_terracotta", createTerracottaBlock(ModDyeColor.VERMILION), ModItemGroups.VERMILION);
@@ -183,10 +186,10 @@ public class ModBlocks {
     public static final Block VERMILION_CANDLE_CAKE = registerBlock("vermilion_candle_cake", createCandleCakeBlock(ModDyeColor.VERMILION, VERMILION_CANDLE), ModItemGroups.VERMILION);
     public static final Block VERMILION_BANNER = registerBlockWithoutBlockItem("vermilion_banner", createBannerBlock(ModDyeColor.VERMILION));
     public static final Block VERMILION_WALL_BANNER = registerBlockWithoutBlockItem("vermilion_wall_banner", createWallBannerBlock(ModDyeColor.VERMILION, (BannerBlock)ModBlocks.VERMILION_BANNER));
-    // VERMILION - Special
-
-
-    // SHAMROCK - Main
+    //</editor-fold>
+    //<editor-fold desc ="VERMILION - Special">
+    //</editor-fold>
+    //<editor-fold desc ="SHAMROCK - Template">
     public static final Block SHAMROCK_WOOL = registerBlock("shamrock_wool", createWoolBlock(ModDyeColor.SHAMROCK), ModItemGroups.SHAMROCK);
     public static final Block SHAMROCK_CARPET = registerBlock("shamrock_carpet", createDyedCarpetBlock(ModDyeColor.SHAMROCK, SHAMROCK_WOOL), ModItemGroups.SHAMROCK);
     public static final Block SHAMROCK_TERRACOTTA = registerBlock("shamrock_terracotta", createTerracottaBlock(ModDyeColor.SHAMROCK), ModItemGroups.SHAMROCK);
@@ -201,9 +204,10 @@ public class ModBlocks {
     public static final Block SHAMROCK_CANDLE_CAKE = registerBlock("shamrock_candle_cake", createCandleCakeBlock(ModDyeColor.SHAMROCK, SHAMROCK_CANDLE), ModItemGroups.SHAMROCK);
     public static final Block SHAMROCK_BANNER = registerBlockWithoutBlockItem("shamrock_banner", createBannerBlock(ModDyeColor.SHAMROCK));
     public static final Block SHAMROCK_WALL_BANNER = registerBlockWithoutBlockItem("shamrock_wall_banner", createWallBannerBlock(ModDyeColor.SHAMROCK, (BannerBlock)ModBlocks.SHAMROCK_BANNER));
-    // SHAMROCK - Special
-
-    // INDIGO - Main
+    //</editor-fold>
+    //<editor-fold desc ="SHAMROCK - Special">
+    //</editor-fold>
+    //<editor-fold desc ="INDIGO - Template">
     public static final Block INDIGO_WOOL = registerBlock("indigo_wool", createWoolBlock(ModDyeColor.INDIGO), ModItemGroups.INDIGO);
     public static final Block INDIGO_CARPET = registerBlock("indigo_carpet", createDyedCarpetBlock(ModDyeColor.INDIGO, INDIGO_WOOL), ModItemGroups.INDIGO);
     public static final Block INDIGO_TERRACOTTA = registerBlock("indigo_terracotta", createTerracottaBlock(ModDyeColor.INDIGO), ModItemGroups.INDIGO);
@@ -218,10 +222,11 @@ public class ModBlocks {
     public static final Block INDIGO_CANDLE_CAKE = registerBlock("indigo_candle_cake", createCandleCakeBlock( ModDyeColor.INDIGO, INDIGO_CANDLE), ModItemGroups.INDIGO);
     public static final Block INDIGO_BANNER = registerBlockWithoutBlockItem("indigo_banner", createBannerBlock(ModDyeColor.INDIGO));
     public static final Block INDIGO_WALL_BANNER = registerBlockWithoutBlockItem("indigo_wall_banner", createWallBannerBlock(ModDyeColor.INDIGO, (BannerBlock)ModBlocks.INDIGO_BANNER));
-    // INDIGO - Special
+    //</editor-fold>
+    //<editor-fold desc ="INDIGO - Special">
+    //</editor-fold>
 
-
-    // BANANA - Main
+    //<editor-fold desc ="BANANA - Template">
     public static final Block BANANA_WOOL = registerBlock("banana_wool", createWoolBlock(ModDyeColor.BANANA), ModItemGroups.BANANA);
     public static final Block BANANA_CARPET = registerBlock("banana_carpet", createDyedCarpetBlock(ModDyeColor.BANANA, BANANA_WOOL), ModItemGroups.BANANA);
     public static final Block BANANA_TERRACOTTA = registerBlock("banana_terracotta", createTerracottaBlock(ModDyeColor.BANANA), ModItemGroups.BANANA);
@@ -236,12 +241,11 @@ public class ModBlocks {
     public static final Block BANANA_CANDLE_CAKE = registerBlock("banana_candle_cake", createCandleCakeBlock(ModDyeColor.BANANA, BANANA_CANDLE), ModItemGroups.BANANA);
     public static final Block BANANA_BANNER = registerBlockWithoutBlockItem("banana_banner", createBannerBlock(ModDyeColor.BANANA));
     public static final Block BANANA_WALL_BANNER = registerBlockWithoutBlockItem("banana_wall_banner", createWallBannerBlock(ModDyeColor.BANANA, (BannerBlock)ModBlocks.BANANA_BANNER));
-    // BANANA - Special
-    
-    // Arrays
+    //</editor-fold>
+    //<editor-fold desc ="BANANA - Special">
+    //</editor-fold>
 
-
-
+    //<editor-fold desc ="Registration">
     /**
      * @param group unused in 1.20, only defined here in that version to make potential backporting easier.
      * @return
@@ -250,31 +254,16 @@ public class ModBlocks {
         registerBlockItem(name,block,group);
         return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
     }
-
-    public static FlowerBlock createFlowerBlock(StatusEffect suspiciousStewEffect, int effectDuration) {
-        FlowerBlock block = new FlowerBlock(suspiciousStewEffect, effectDuration,
-                FabricBlockSettings.copyOf(Blocks.DANDELION)
-                .mapColor(MapColor.DARK_GREEN)
-                .noCollision()
-                .breakInstantly()
-                .sounds(BlockSoundGroup.GRASS)
-                .offset(AbstractBlock.OffsetType.XZ)
-                .pistonBehavior(PistonBehavior.DESTROY)
-        );
-        SMALL_FLOWERS.add(block);
-        return block;
+    public static Block registerBlockWithoutBlockItem(String name, Block block) {
+        return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
     }
-    public static FlowerPotBlock createFlowerPotBlock(FlowerBlock flower) {
-        FlowerPotBlock block = new FlowerPotBlock(flower, FabricBlockSettings.create()
-                    .breakInstantly()
-                    .nonOpaque()
-                    .pistonBehavior(PistonBehavior.DESTROY)
-        );
-        FLOWER_POTS.add(block);
-        FLOWER_POT_FROM_FLOWER.put(flower, block);
-        return block;
+    private static Item registerBlockItem(String name, Block block, ItemGroup group) {
+        BlockItem blockItem = new BlockItem(block, new FabricItemSettings());
+        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(blockItem)); // only for pre 1.20.1, around cuz I'd forget otherwise
+        return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), blockItem);
     }
-
+    //</editor-fold>
+    //<editor-fold desc ="Common Block Creation Functions">
     public static Block createWoolBlock(DyeColor color) {
         Block block =  new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)
                 .mapColor(color.getMapColor())
@@ -333,37 +322,8 @@ public class ModBlocks {
                 .sounds(BlockSoundGroup.SAND)
         );
         CONCRETE_POWDER_BLOCKS.add(block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color); COLORED_BLOCKS.add(block);
-        COLORED_BLOCKS.add(block);
-        return block;
-    }
-    public static CandleBlock createCandleBlock(DyeColor color) {
-        CandleBlock block = new CandleBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CANDLE)
-                .mapColor(color.getMapColor())
-                .nonOpaque()
-                .strength(0.1f)
-                .sounds(BlockSoundGroup.CANDLE)
-                .luminance(CandleBlock.STATE_TO_LUMINANCE)
-                .pistonBehavior(PistonBehavior.DESTROY)
-        );
-        CANDLE_BLOCKS.add(block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color); COLORED_BLOCKS.add(block);
-        COLORED_BLOCKS.add(block);
-        FUNCTIONAL_BLOCKS.add(block);
-        return block;
-    }
-    public static CandleCakeBlock createCandleCakeBlock(DyeColor color, Block candle) {
-        CandleCakeBlock block = new CandleCakeBlock(candle, FabricBlockSettings.copyOf(Blocks.WHITE_CANDLE_CAKE)
-                .mapColor(color.getMapColor())
-                .solid()
-                .strength(0.5f)
-                .sounds(BlockSoundGroup.WOOL)
-                .pistonBehavior(PistonBehavior.DESTROY)
-                .luminance(ModBlocks.createLightLevelFromBooleanProperty(3, Properties.LIT))
-        );
-        CANDLE_CAKE_BLOCKS.add(block);
-        CANDLE_CAKE_FROM_CANDLE.put(candle, block);
         DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        COLORED_BLOCKS.add(block);
         return block;
     }
     public static GlazedTerracottaBlock createGlazedTerracottaBlock(DyeColor color) {
@@ -410,6 +370,78 @@ public class ModBlocks {
         COLORED_BLOCKS.add(block);
         return block;
     }
+    private static ModShulkerBoxBlock createShulkerBoxBlock(DyeColor color) {
+        AbstractBlock.ContextPredicate contextPredicate = (state, world, pos) -> {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (!(blockEntity instanceof ShulkerBoxBlockEntity)) {
+                return true;
+            }
+            ShulkerBoxBlockEntity shulkerBoxBlockEntity = (ShulkerBoxBlockEntity)blockEntity;
+            return shulkerBoxBlockEntity.suffocates();
+        };
+        ModShulkerBoxBlock block = new ModShulkerBoxBlock(color, FabricBlockSettings.copyOf(Blocks.SHULKER_BOX)
+                //Same settings as the vanilla shulker, I just have reason to not trust .copyOf
+                .mapColor(color.getMapColor())
+                .solid()
+                .strength(2.0f)
+                .dynamicBounds()
+                .nonOpaque()
+                .suffocates(contextPredicate)
+                .blockVision(contextPredicate)
+                .pistonBehavior(PistonBehavior.DESTROY)
+                .solidBlock(ModBlocks::always)
+        );
+        SHULKER_BOX_BLOCKS.add(block);
+        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        COLORED_BLOCKS.add(block);
+        FUNCTIONAL_BLOCKS.add(block);
+        return block;
+    }
+    private static BedBlock createBedBlock(DyeColor color) {
+        BedBlock block = new BedBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BED)
+                .mapColor(blockState -> blockState.get(BedBlock.PART) == BedPart.FOOT ? color.getMapColor() : MapColor.WHITE_GRAY)
+                .sounds(BlockSoundGroup.WOOD)
+                .strength(0.2f)
+                .nonOpaque()
+                .burnable()
+                .pistonBehavior(PistonBehavior.DESTROY)
+                .burnable()
+        );
+        BED_BLOCKS.add(block);
+        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        COLORED_BLOCKS.add(block);
+        FUNCTIONAL_BLOCKS.add(block);
+        return block;
+    }
+    public static CandleBlock createCandleBlock(DyeColor color) {
+        CandleBlock block = new CandleBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CANDLE)
+                .mapColor(color.getMapColor())
+                .nonOpaque()
+                .strength(0.1f)
+                .sounds(BlockSoundGroup.CANDLE)
+                .luminance(CandleBlock.STATE_TO_LUMINANCE)
+                .pistonBehavior(PistonBehavior.DESTROY)
+        );
+        CANDLE_BLOCKS.add(block);
+        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        COLORED_BLOCKS.add(block);
+        FUNCTIONAL_BLOCKS.add(block);
+        return block;
+    }
+    public static CandleCakeBlock createCandleCakeBlock(DyeColor color, Block candle) {
+        CandleCakeBlock block = new CandleCakeBlock(candle, FabricBlockSettings.copyOf(Blocks.WHITE_CANDLE_CAKE)
+                .mapColor(color.getMapColor())
+                .solid()
+                .strength(0.5f)
+                .sounds(BlockSoundGroup.WOOL)
+                .pistonBehavior(PistonBehavior.DESTROY)
+                .luminance(ModBlocks.createLightLevelFromBooleanProperty(3, Properties.LIT))
+        );
+        CANDLE_CAKE_BLOCKS.add(block);
+        CANDLE_CAKE_FROM_CANDLE.put(candle, block);
+        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        return block;
+    }
     private static BannerBlock createBannerBlock(DyeColor color) {
         BannerBlock block = new BannerBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BANNER)
                 .mapColor(color.getMapColor())
@@ -442,51 +474,66 @@ public class ModBlocks {
         DYECOLOR_FROM_BLOCK.put((Block) block, color);
         return block;
     }
-    private static BedBlock createBedBlock(DyeColor color) {
-        BedBlock block = new BedBlock(color, FabricBlockSettings.copyOf(Blocks.WHITE_BED)
-                .mapColor(blockState -> blockState.get(BedBlock.PART) == BedPart.FOOT ? color.getMapColor() : MapColor.WHITE_GRAY)
-                .sounds(BlockSoundGroup.WOOD)
-                .strength(0.2f)
-                .nonOpaque()
-                .burnable()
-                .pistonBehavior(PistonBehavior.DESTROY)
-                .burnable()
+    //</editor-fold>
+    //<editor-fold desc ="Special Block Creation Functions">
+    public static FlowerBlock createFlowerBlock(StatusEffect suspiciousStewEffect, int effectDuration) {
+        FlowerBlock block = new FlowerBlock(suspiciousStewEffect, effectDuration,
+                FabricBlockSettings.copyOf(Blocks.DANDELION)
+                        .mapColor(MapColor.DARK_GREEN)
+                        .noCollision()
+                        .breakInstantly()
+                        .sounds(BlockSoundGroup.GRASS)
+                        .offset(AbstractBlock.OffsetType.XZ)
+                        .pistonBehavior(PistonBehavior.DESTROY)
         );
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
-        COLORED_BLOCKS.add(block);
-        FUNCTIONAL_BLOCKS.add(block);
+        SMALL_FLOWERS.add(block);
         return block;
     }
-    private static ModShulkerBoxBlock createShulkerBoxBlock(DyeColor color) {
-        AbstractBlock.ContextPredicate contextPredicate = (state, world, pos) -> {
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (!(blockEntity instanceof ShulkerBoxBlockEntity)) {
-                return true;
-            }
-            ShulkerBoxBlockEntity shulkerBoxBlockEntity = (ShulkerBoxBlockEntity)blockEntity;
-            return shulkerBoxBlockEntity.suffocates();
-        };
-        ModShulkerBoxBlock block = new ModShulkerBoxBlock(color, FabricBlockSettings.copyOf(Blocks.SHULKER_BOX)
-                //Same settings as the vanilla shulker, I just have reason to not trust .copyOf
-                .mapColor(color.getMapColor())
-                .solid()
-                .strength(2.0f)
-                .dynamicBounds()
+    public static FlowerPotBlock createFlowerPotBlock(FlowerBlock flower) {
+        FlowerPotBlock block = new FlowerPotBlock(flower, FabricBlockSettings.create()
+                .breakInstantly()
                 .nonOpaque()
-                .suffocates(contextPredicate)
-                .blockVision(contextPredicate)
                 .pistonBehavior(PistonBehavior.DESTROY)
-                .solidBlock(ModBlocks::always)
         );
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
-        COLORED_BLOCKS.add(block);
-        FUNCTIONAL_BLOCKS.add(block);
+        FLOWER_POTS.add(block);
+        FLOWER_POT_FROM_FLOWER.put(flower, block);
         return block;
     }
-    public static Block registerBlockWithoutBlockItem(String name, Block block) {
-        return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
+    //</editor-fold>
+    //<editor-fold desc ="Util">
+    public static Item[] toItemArray(Block[] blocks) {
+        Item[] items = new Item[blocks.length];
+        for(int i = 0; i < items.length; i++) {
+            items[i] = blocks[i].asItem();
+        }
+        return items;
     }
-
+    public static Block[] toBlockArray(ArrayList<Block> al) {
+        Block[] array = new Block[al.size()];
+        return al.toArray(array);
+    }
+    public static Item[] toItemArray(ArrayList<Block> input) {
+        Item[] array = new Item[input.size()];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = input.get(i).asItem();
+        }
+        return array;
+    }
+    public static Block firstMatchOfColor(ArrayList<Block> blocks, DyeColor color) {
+        for(Block block : blocks) {
+            if(DYECOLOR_FROM_BLOCK.get(block) == color) { return block; }
+        }
+        return null;
+    }
+    public static Block[] allMatchesOfColor(ArrayList<Block> blocks, DyeColor color) {
+        ArrayList<Block> output = new ArrayList<Block>();
+        for(Block block : blocks) {
+            if(DYECOLOR_FROM_BLOCK.get(block) == color) { output.add(block); }
+        }
+        return ModBlocks.toBlockArray(output);
+    }
+    //</editor-fold>
+    //<editor-fold desc ="Attribute Util">
     private static boolean never(BlockState blockState, BlockView blockView, BlockPos blockPos) {
         return false;
     }
@@ -497,42 +544,7 @@ public class ModBlocks {
     private static ToIntFunction<BlockState> createLightLevelFromBooleanProperty(int litLevel, BooleanProperty property) {
         return state -> state.get(property) != false ? litLevel : 0;
     }
-    public static Item[] toItemArray(Block[] blocks) {
-        Item[] items = new Item[blocks.length];
-        for(int i = 0; i < items.length; i++) {
-            items[i] = blocks[i].asItem();
-        }
-        return items;
-    }
-
-    public static Block[] toBlockArray(ArrayList<Block> input) {
-        return new Block[input.size()];
-    }
-
-    public static Item[] toItemArray(ArrayList<Block> input) {
-        return new Item[input.size()];
-    }
-
-
-    public static Block firstMatchOfColor(ArrayList<Block> blocks, DyeColor color) {
-        for(Block block : blocks) {
-            if(DYECOLOR_FROM_BLOCK.get(block) == color) { return block; }
-        }
-        return null;
-    }
-    public static Block[] allMatchesOfColor(ArrayList<Block> blocks, DyeColor color) {
-        ArrayList<Block> output = new ArrayList<>();
-        for(Block block : blocks) {
-            if(DYECOLOR_FROM_BLOCK.get(block) == color) { output.add(block); }
-        }
-        return ModBlocks.toBlockArray(output);
-    }
-
-    private static Item registerBlockItem(String name, Block block, ItemGroup group) {
-        BlockItem blockItem = new BlockItem(block, new FabricItemSettings());
-        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(blockItem)); // only for pre 1.20.1, around cuz I'd forget otherwise
-        return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), blockItem);
-    }
+    //</editor-fold>
     public static void registerModBlocks() {
         ModInit.LOGGER.debug("Registering mod blocks for " + Super.MOD_ID);
     }

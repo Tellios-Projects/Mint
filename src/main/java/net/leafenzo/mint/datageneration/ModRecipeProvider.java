@@ -72,7 +72,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerTerracottaDyeingRecipe(exporter, output, dye);
             }
             else {
-                throw new RuntimeException(Registries.BLOCK.getId((Block)output).toString());
+                throw new RuntimeException(Registries.BLOCK.getId((Block)output).toString() + " failed to find associated DyeColor");
             }
         }
     }
@@ -106,16 +106,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             offerCandleDyeingRecipe(exporter, candle, dyeItem);
         }
     }
-    public static void offerBedRecipes(Consumer<RecipeJsonProvider> exporter) { //this looks needlessly overcomplicated
+    public static void offerBedRecipes(Consumer<RecipeJsonProvider> exporter) {
         for(ItemConvertible bed : ModBlocks.BED_BLOCKS) {
-            DyeColor a = ModBlocks.DYECOLOR_FROM_BLOCK.get(bed);
-            for(Block wool : ModBlocks.WOOL_BLOCKS) {
-                DyeColor b = ModBlocks.DYECOLOR_FROM_BLOCK.get(wool);
-                if(a == b) {
-                    offerBedRecipe(exporter, bed, wool);
-                    break; //it only expects one wool color per bed of color
-                }
-            }
+            DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(bed);
+            ItemConvertible wool = ModBlocks.firstMatchOfColor(ModBlocks.WOOL_BLOCKS, color);
+            offerBedRecipe(exporter, bed, wool);
         }
     }
     public static void offerStainedGlassPaneRecipes(Consumer<RecipeJsonProvider> exporter) {
@@ -175,29 +170,29 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerTerracottaDyeingRecipes(exporter);
 
 //  CONCRETE_POWDER_BLOCKS
-        //offerConcretePowderDyeingRecipes(exporter);
+        offerConcretePowderDyeingRecipes(exporter);
 
 //  GLAZED_TERRACOTTA_BLOCKS
-        //offerGlazedTerracottaSmeltingRecipes(exporter);
+        offerGlazedTerracottaSmeltingRecipes(exporter);
 
 //  STAINED_GLASS_BLOCKS
-        //offerStainedGlassDyeingRecipes(exporter);
+        offerStainedGlassDyeingRecipes(exporter);
 
 //  STAINED_GLASS_PANE_BLOCKS
-        //offerStainedGlassPaneDyeingRecipes(exporter);
-        //offerStainedGlassPaneRecipes(exporter);
+        offerStainedGlassPaneDyeingRecipes(exporter);
+        offerStainedGlassPaneRecipes(exporter);
 
 //  SHULKER_BOX_BLOCKS
         //Handled by the MIXIN to the serialized ShulkerBoxColoringRecipe
 
 //  BED_BLOCKS
-        //offerBedRecipes(exporter);
+        offerBedRecipes(exporter);
         ComplexRecipeJsonBuilder.create(ModRecipeSerializer.BED_COLORING_RECIPE).offerTo(exporter, "bed_coloring_recipe");
 
 //  CANDLE_BLOCKS
-        //offerCandleDyeingRecipes(exporter);
+        offerCandleDyeingRecipes(exporter);
 
 //  BANNER_BLOCKS
-        //offerBannerRecipes(exporter);
+        offerBannerRecipes(exporter);
     }
 }

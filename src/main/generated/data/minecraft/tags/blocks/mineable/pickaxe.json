@@ -10,15 +10,6 @@
     "mint:shamrock_terracotta",
     "mint:indigo_terracotta",
     "mint:banana_terracotta",
-    "mint:mint_concrete",
-    "mint:peach_concrete",
-    "mint:periwinkle_concrete",
-    "mint:artichoke_concrete",
-    "mint:fuchsia_concrete",
-    "mint:vermilion_concrete",
-    "mint:shamrock_concrete",
-    "mint:indigo_concrete",
-    "mint:banana_concrete",
     "mint:mint_glazed_terracotta",
     "mint:peach_glazed_terracotta",
     "mint:periwinkle_glazed_terracotta",
@@ -36,6 +27,8 @@
     "mint:vermilion_shulker_box",
     "mint:shamrock_shulker_box",
     "mint:indigo_shulker_box",
-    "mint:banana_shulker_box"
+    "mint:banana_shulker_box",
+    "mint:potted_wild_mint",
+    "mint:potted_hypericum"
   ]
 }
