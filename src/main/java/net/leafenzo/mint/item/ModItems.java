@@ -1,6 +1,7 @@
 package net.leafenzo.mint.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
@@ -13,6 +14,9 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ModItems {
 
@@ -79,7 +83,8 @@ public class ModItems {
     public static final Item BANANA_BANNER = registerItem(new BannerItem(ModBlocks.BANANA_BANNER, ModBlocks.BANANA_WALL_BANNER, new Item.Settings().maxCount(16)));
 
     // Arrays
-    public static final Item[] DYE_ITEMS = { MINT_DYE, PEACH_DYE, PERIWINKLE_DYE, ARTICHOKE_DYE, FUCHSIA_DYE, VERMILION_DYE, SHAMROCK_DYE, INDIGO_DYE, BANANA_DYE };
+    public static final ArrayList<Item> DYE_ITEMS = new ArrayList<Item>();
+    public static final HashMap<DyeColor, DyeItem> DYE_ITEM_FROM_COLOR = new HashMap<DyeColor, DyeItem>();
 
 
 
@@ -106,8 +111,12 @@ public class ModItems {
 //        return DyeItem.byColor(color); // now we know it's vanilla, so it's safe to pass through
 //    }
 
-    private static void withCompostingChance(Item item, float chance) {
-        ModFabricRegistries.registerCompostableItem(item, chance);
+
+    private static DyeItem createDyeItem(DyeColor color) {
+        DyeItem item = new DyeItem(color, new FabricItemSettings());
+        DYE_ITEMS.add(item);
+        DYE_ITEM_FROM_COLOR.put(color, item);
+        return item;
     }
 
     private static Item registerItem(String name, Item item, float withCompostingChance) {
@@ -119,6 +128,10 @@ public class ModItems {
     }
     private static Item registerItem(BlockItem item) {
         return Registry.register(Registries.ITEM, Registries.BLOCK.getId(item.getBlock()), (Item)item);
+    }
+
+    public static Item[] toItemArray(ArrayList<Item> input) {
+        return new Item[input.size()];
     }
 
     private static Item registerItem(Block block, Item item) {

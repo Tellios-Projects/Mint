@@ -6,6 +6,7 @@ import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.util.ModDyeColor;
+import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
@@ -20,18 +21,17 @@ public class ModItemGroups {
         ModInit.LOGGER.debug("Registering item groups for " + Super.MOD_ID);
         modifyVanillaItemGroupEntries();
     }
-
     public static void addItemsOfColorAfterItemsOfAnotherColor(DyeColor colorBefore, DyeColor colorAfter) {
-        Block[] coloredBlocksBefore = net.leafenzo.mint.util.Util.ColoredBlocksOfColor(colorBefore);
-        Block[] coloredBlocksAfter = net.leafenzo.mint.util.Util.ColoredBlocksOfColor(colorAfter);
+        Block[] coloredBlocksBefore = ModUtil.ColoredBlocksOfColor(colorBefore);
+        Block[] coloredBlocksAfter = ModUtil.ColoredBlocksOfColor(colorAfter);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS).register(content -> {
             if(coloredBlocksBefore.length != coloredBlocksAfter.length) { throw new RuntimeException(); }
             for (int i = 0; i < coloredBlocksBefore.length; i++) {
                 content.addAfter(coloredBlocksBefore[i], coloredBlocksAfter[i]);
             }
         });
-        Block[] functionalBlocksBefore = net.leafenzo.mint.util.Util.FunctionalBlocksOfColor(colorBefore);
-        Block[] functionalBlocksAfter = net.leafenzo.mint.util.Util.FunctionalBlocksOfColor(colorAfter);
+        Block[] functionalBlocksBefore = ModUtil.FunctionalBlocksOfColor(colorBefore);
+        Block[] functionalBlocksAfter = ModUtil.FunctionalBlocksOfColor(colorAfter);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(content -> {
             if(functionalBlocksBefore.length != functionalBlocksAfter.length) { throw new RuntimeException(); }
             for (int i = 0; i < functionalBlocksBefore.length; i++) {

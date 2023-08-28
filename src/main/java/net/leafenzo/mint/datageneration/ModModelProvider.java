@@ -2,15 +2,12 @@ package net.leafenzo.mint.datageneration;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
-import net.leafenzo.mint.recipe.ModRecipeSerializer;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
-import net.minecraft.data.server.recipe.ComplexRecipeJsonBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
@@ -45,18 +42,33 @@ public class ModModelProvider extends FabricModelProvider {
         // MINT - Special
         blockStateModelGenerator.registerCrop(ModBlocks.MINT_CROP, MintCropBlock.AGE, IntStream.rangeClosed(0, MintCropBlock.MAX_AGE).toArray());
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_SPRIG_BLOCK);
-        blockStateModelGenerator.registerTintableCross(ModBlocks.WILD_MINT, BlockStateModelGenerator.TintType.NOT_TINTED);
+
         BlockStateModelGenerator.BlockTexturePool mintBricksTexturePool =
                 blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_BRICKS);
         mintBricksTexturePool.slab(ModBlocks.MINT_BRICK_SLAB);
         mintBricksTexturePool.stairs(ModBlocks.MINT_BRICK_STAIRS);
         //mintBricksTexturePool.wall(ModBlocks.MINT_BRICK_WALL);
 
+        // PEACH - Special
+
+
 
         //Main
+//  FLOWER BLOCKS    //  FLOWER_POT_BLOCKS
+        for(Block block : ModBlocks.SMALL_FLOWERS) {
+            if(ModBlocks.FLOWER_POT_FROM_FLOWER.get(block) != null) {
+                blockStateModelGenerator.registerFlowerPotPlant(block, ModBlocks.FLOWER_POT_FROM_FLOWER.get(block), BlockStateModelGenerator.TintType.NOT_TINTED);
+            }
+            else {
+                blockStateModelGenerator.registerTintableCross(block, BlockStateModelGenerator.TintType.NOT_TINTED);
+            }
+        }
+
 //  WOOL_BLOCKS     //  CARPET_BLOCKS
-        for (int i = 0; i < ModBlocks.CARPET_BLOCKS.length; i++) {
-            blockStateModelGenerator.registerWoolAndCarpet(ModBlocks.WOOL_BLOCKS[i], ModBlocks.CARPET_BLOCKS[i]);
+        for(Block wool : ModBlocks.WOOL_BLOCKS) {
+            Block carpet = ModBlocks.WOOL_CARPET_FROM_WOOL.get(wool);
+            if(carpet != null) { blockStateModelGenerator.registerWoolAndCarpet(wool, carpet);  }
+            else { blockStateModelGenerator.registerCubeAllModelTexturePool(wool); }
         }
 
 //  TERRACOTTA_BLOCKS
@@ -81,8 +93,10 @@ public class ModModelProvider extends FabricModelProvider {
         }
 
 //  STAINED_GLASS_BLOCKS  //  STAINED_GLASS_PANE_BLOCKS
-        for (int i = 0; i < ModBlocks.STAINED_GLASS_PANE_BLOCKS.length; i++) {
-            blockStateModelGenerator.registerGlassPane(ModBlocks.STAINED_GLASS_BLOCKS[i], ModBlocks.STAINED_GLASS_PANE_BLOCKS[i]);
+        for(Block glass : ModBlocks.STAINED_GLASS_BLOCKS) {
+            Block pane = ModBlocks.STAINED_GLASS_PANE_FROM_STAINED_GLASS.get(glass);
+            if(pane != null) { blockStateModelGenerator.registerGlassPane(glass, pane);  }
+            else { blockStateModelGenerator.registerCubeAllModelTexturePool(glass); }
         }
 
 //  SHULKER_BOX_BLOCKS
@@ -97,15 +111,21 @@ public class ModModelProvider extends FabricModelProvider {
         }
 
 //  CANDLE_BLOCKS     //  CANDLE_CAKE_BLOCKS
-        for (int i = 0; i < ModBlocks.CANDLE_CAKE_BLOCKS.length; i++) {
-            blockStateModelGenerator.registerCandle(ModBlocks.CANDLE_BLOCKS[i], ModBlocks.CANDLE_CAKE_BLOCKS[i]);
+        for(Block candle : ModBlocks.CANDLE_BLOCKS) {
+            Block cake = ModBlocks.CANDLE_CAKE_FROM_CANDLE.get(candle);
+            if(cake != null) { blockStateModelGenerator.registerCandle(candle, cake); }
+            else { throw new RuntimeException(Registries.BLOCK.getId(candle).toString() + "does not have a candle cake"); }
         }
 
 //  BANNER_BLOCKS     // WALL_BANNER_BLOCKS
-        for (int i = 0; i < ModBlocks.WALL_BANNER_BLOCKS.length; i++) {
-            blockStateModelGenerator.registerBuiltin(Registries.BLOCK.getId(ModBlocks.BANNER_BLOCKS[i]), Blocks.OAK_PLANKS)
-                    .includeWithItem(ModBlocks.BANNER_BLOCKS[i])
-                    .includeWithoutItem(ModBlocks.WALL_BANNER_BLOCKS[i]);
+        for(Block banner : ModBlocks.BANNER_BLOCKS) {
+            Block wallBanner = ModBlocks.WALL_BANNER_FROM_BANNER.get(banner);
+            if(wallBanner != null) {
+                blockStateModelGenerator.registerBuiltin(Registries.BLOCK.getId(banner), Blocks.OAK_PLANKS)
+                        .includeWithItem(banner)
+                        .includeWithoutItem(wallBanner);
+            }
+            else { throw new RuntimeException(Registries.BLOCK.getId(banner).toString() + "does not have a wall banner"); }
         }
     }
 
