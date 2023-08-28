@@ -30,7 +30,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.function.ToIntFunction;
 
@@ -115,6 +114,8 @@ public class ModBlocks {
         static { FLOWER_POT_FROM_FLOWER.put((FlowerBlock) HYPERICUM, (FlowerPotBlock) POTTED_HYPERICUM); }
     //public static final Block PEACH_TREE = registerBlock("peach_tree", PeachTreeBlock)
     public static final Block PEACH_LOG = registerBlock("peach_log", new Block(FabricBlockSettings.create().instrument(Instrument.BASS).strength(2.0f).sounds(BlockSoundGroup.WOOD).burnable().mapColor(MapColor.STONE_GRAY)), ModItemGroups.PEACH);
+    public static final Block CORAL_ANEMONE = registerBlockWithoutBlockItem("coral_anemone", new CoralAnemoneBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.SLIME).mapColor(MapColor.RAW_IRON_PINK).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+
     //</editor-fold>
     //<editor-fold desc ="PERIWINKLE - Template">
     public static final Block PERIWINKLE_WOOL = registerBlock("periwinkle_wool", createWoolBlock(ModDyeColor.PERIWINKLE), ModItemGroups.PERIWINKLE);

@@ -1,13 +1,14 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "group": "mint_dye",
+  "group": "peach_slice",
   "ingredients": [
     {
-      "item": "mint:mint_sprig"
+      "item": "mint:peach"
     }
   ],
   "result": {
-    "item": "mint:mint_dye"
+    "count": 3,
+    "item": "mint:peach_slice"
   }
 }

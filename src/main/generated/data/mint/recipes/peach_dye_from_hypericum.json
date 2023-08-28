@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "group": "mint_dye",
+  "group": "peach_dye",
   "ingredients": [
     {
-      "item": "mint:mint_sprig"
+      "item": "mint:hypericum"
     }
   ],
   "result": {
-    "item": "mint:mint_dye"
+    "item": "mint:peach_dye"
   }
 }

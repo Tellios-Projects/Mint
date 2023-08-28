@@ -25,9 +25,7 @@ extends SpecialCraftingRecipe {
 
     }
 
-    protected TagKey<Block> getDyablesTag() {
-        return BlockTags.WOOL;
-    }
+    protected abstract TagKey<Block> getDyablesTag();
 
     @Override
     public boolean matches(RecipeInputInventory recipeInputInventory, World world) {

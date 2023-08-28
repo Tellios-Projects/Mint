@@ -50,7 +50,7 @@ public class ModModelProvider extends FabricModelProvider {
         //mintBricksTexturePool.wall(ModBlocks.MINT_BRICK_WALL);
 
         // PEACH - Special
-
+        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.PEACH_LOG);
 
 
         //Main
@@ -134,6 +134,17 @@ public class ModModelProvider extends FabricModelProvider {
         //itemModelGenerator.register(ModItems.MINT_SPRIG, Models.GENERATED); // this is a duplicate... somehow???????
         itemModelGenerator.register(ModItems.MINT_COOKIE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MINT_TEA, Models.GENERATED);
+
+        itemModelGenerator.register(ModItems.PEACH_PIT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PEACH, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PEACH_SLICE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.GOLDEN_PEACH, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PEACH_COBBLER, Models.GENERATED);
+        itemModelGenerator.register(ModItems.FRUIT_SALAD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.AMBROSIA, Models.GENERATED);
+        itemModelGenerator.register(ModItems.COOKED_ANEMONE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CORAL_ANEMONE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PEACH_BRANCH, Models.GENERATED);
 
 //  DYES
         for(Item item : ModItems.DYE_ITEMS) {

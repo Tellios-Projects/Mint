@@ -165,6 +165,19 @@ public class ModItemGroups {
                         entries.add(ModBlocks.PEACH_BANNER);
                         entries.add(ModBlocks.PEACH_SHULKER_BOX);
                         entries.add(ModBlocks.PEACH_CANDLE);
+
+                        entries.add(ModBlocks.HYPERICUM);
+                        entries.add(ModBlocks.PEACH_LOG);
+                        entries.add(ModItems.PEACH);
+                        entries.add(ModItems.PEACH_PIT);
+                        entries.add(ModItems.PEACH_SLICE);
+                        entries.add(ModItems.GOLDEN_PEACH);
+                        entries.add(ModItems.PEACH_COBBLER);
+                        entries.add(ModItems.FRUIT_SALAD);
+                        entries.add(ModItems.AMBROSIA);
+                        entries.add(ModItems.CORAL_ANEMONE);
+                        entries.add(ModItems.COOKED_ANEMONE);
+                        entries.add(ModItems.PEACH_BRANCH);
                     }).build());
 
     public static ItemGroup PERIWINKLE = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "periwinkle"),
