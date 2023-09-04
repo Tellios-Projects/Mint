@@ -6,6 +6,7 @@ import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.recipe.ModRecipeSerializer;
+import net.leafenzo.mint.registry.tag.ModTags;
 import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.ConcretePowderBlock;
@@ -160,7 +161,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .pattern("XXX")
                 .pattern("XOX")
                 .pattern("XXX")
-                .input('X', Items.GOLD_INGOT)
+                .input('X', ModTags.Items.GOLD_INGOTS)
                 .input('O', ModItems.PEACH)
                 .criterion(FabricRecipeProvider.hasItem(ModItems.PEACH), FabricRecipeProvider.conditionsFromItem(ModItems.PEACH))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.GOLDEN_PEACH)));
