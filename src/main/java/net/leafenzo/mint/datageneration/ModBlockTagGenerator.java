@@ -45,6 +45,11 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
             getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
         }
 
+////  CONCRETE_BLOCKS
+        for (Block block : ModBlocks.CONCRETE_BLOCKS) {
+            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+        }
+
 ////  CONCRETE_POWDER_BLOCKS
         for (Block block : ModBlocks.CONCRETE_POWDER_BLOCKS) {
             getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).add(block);

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "peach_dye",
+  "ingredients": [
+    {
+      "item": "mint:coral_anemone"
+    }
+  ],
+  "result": {
+    "item": "mint:peach_dye"
+  }
+}
