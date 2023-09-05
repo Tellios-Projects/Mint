@@ -122,7 +122,7 @@ public class ModItemGroups {
 
     //TODO, eventually comment out these item groups as they're only for debug purposes really
     public static ItemGroup MINT = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "mint"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.mint"))
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".mint"))
                     .icon(() -> new ItemStack(ModItems.MINT_SPRIG)).entries((displayContext, entries) -> {
                         entries.add(ModItems.MINT_DYE);
                         entries.add(ModBlocks.MINT_WOOL);
@@ -150,7 +150,7 @@ public class ModItemGroups {
                     }).build());
 
     public static ItemGroup PEACH = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "peach"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.peach"))
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".peach"))
                     .icon(() -> new ItemStack(ModItems.PEACH_DYE)).entries((displayContext, entries) -> {
                         entries.add(ModItems.PEACH_DYE);
                         entries.add(ModBlocks.PEACH_WOOL);
@@ -181,7 +181,7 @@ public class ModItemGroups {
                     }).build());
 
     public static ItemGroup PERIWINKLE = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "periwinkle"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.periwinkle"))
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".periwinkle"))
                     .icon(() -> new ItemStack(ModItems.PERIWINKLE_DYE)).entries((displayContext, entries) -> {
                         entries.add(ModItems.PERIWINKLE_DYE);
                         entries.add(ModBlocks.PERIWINKLE_WOOL);
@@ -199,7 +199,7 @@ public class ModItemGroups {
                     }).build());
 
     public static ItemGroup ARTICHOKE = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "artichoke"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.artichoke"))
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".artichoke"))
                     .icon(() -> new ItemStack(ModItems.ARTICHOKE_DYE)).entries((displayContext, entries) -> {
                         entries.add(ModItems.ARTICHOKE_DYE);
                         entries.add(ModBlocks.ARTICHOKE_WOOL);
@@ -217,7 +217,7 @@ public class ModItemGroups {
                     }).build());
 
     public static ItemGroup FUCHSIA = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "fuchsia"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.fuchsia"))
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".fuchsia"))
                     .icon(() -> new ItemStack(ModItems.FUCHSIA_DYE)).entries((displayContext, entries) -> {
                         entries.add(ModItems.FUCHSIA_DYE);
                         entries.add(ModBlocks.FUCHSIA_WOOL);
@@ -235,7 +235,7 @@ public class ModItemGroups {
                     }).build());
 
     public static ItemGroup VERMILION = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "vermilion"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.vermilion"))
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".vermilion"))
                     .icon(() -> new ItemStack(ModItems.VERMILION_DYE)).entries((displayContext, entries) -> {
                         entries.add(ModItems.VERMILION_DYE);
                         entries.add(ModBlocks.VERMILION_WOOL);
@@ -253,7 +253,7 @@ public class ModItemGroups {
                     }).build());
 
     public static ItemGroup SHAMROCK = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "shamrock"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.shamrock"))
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".shamrock"))
                     .icon(() -> new ItemStack(ModItems.SHAMROCK_DYE)).entries((displayContext, entries) -> {
                         entries.add(ModItems.SHAMROCK_DYE);
                         entries.add(ModBlocks.SHAMROCK_WOOL);
@@ -271,7 +271,7 @@ public class ModItemGroups {
                     }).build());
 
     public static ItemGroup INDIGO = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "indigo"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.indigo"))
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".indigo"))
                     .icon(() -> new ItemStack(ModItems.INDIGO_DYE)).entries((displayContext, entries) -> {
                         entries.add(ModItems.INDIGO_DYE);
                         entries.add(ModBlocks.INDIGO_WOOL);
@@ -289,7 +289,7 @@ public class ModItemGroups {
                     }).build());
 
     public static ItemGroup BANANA = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "banana"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.banana"))
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".banana"))
                     .icon(() -> new ItemStack(ModItems.BANANA_DYE)).entries((displayContext, entries) -> {
                         entries.add(ModItems.BANANA_DYE);
                         entries.add(ModBlocks.BANANA_WOOL);

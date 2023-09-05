@@ -191,7 +191,19 @@ public class ModUtil {
         return a;
     }
 
-    public static HashMap<Identifier, Registry<?>> REGISTRY_FROM_ID = new HashMap<Identifier, Registry<?>>();
+//    public static Set<Identifier> allItemGroupIdsInNamespace(String namespace) {
+//        Set<Identifier> set = Registries.ITEM_GROUP.getIds();
+//        Set<Identifier> a = new HashSet<>();
+//        for(Identifier id : set) {
+//            if(Objects.equals(id.getNamespace(), namespace)) {
+//                a.add(id);
+//            }
+//        }
+//        return a;
+//    }
+
+//    public static HashMap<Identifier, Registry<?>> REGISTRY_FROM_ID = new HashMap<Identifier, Registry<?>>();
+
     public static Set<Identifier> allPotionIdsInNamespace(String namespace) {
         Set<Identifier> set = Registries.POTION.getIds();
         Set<Identifier> a = new HashSet<>();
@@ -202,7 +214,31 @@ public class ModUtil {
         }
         return a;
     }
+    public static Set<Identifier> allStatusEffectIdsInNamespace(String namespace) {
+        Set<Identifier> set = Registries.STATUS_EFFECT.getIds();
+        Set<Identifier> a = new HashSet<>();
+        for(Identifier id : set) {
+            if(Objects.equals(id.getNamespace(), namespace)) {
+                a.add(id);
+            }
+        }
+        return a;
+    }
 
+
+
+
+
+//    public static Set<Identifier> allTranslatableInNamespace(String namespace) {
+//        Set<Identifier> set = Registries.POTION.getIds();
+//        Set<Identifier> a = new HashSet<>();
+//        for(Identifier id : set) {
+//            if(Objects.equals(id.getNamespace(), namespace)) {
+//                a.add(id);
+//            }
+//        }
+//        return a;
+//    }
 
 
     @Obsolete
@@ -216,6 +252,9 @@ public class ModUtil {
         }
         return a;
     }
+
+
+
     @Obsolete
     public static Set<Identifier> getAllRegistryIds() {
         Set<Identifier> set = new HashSet<Identifier>();

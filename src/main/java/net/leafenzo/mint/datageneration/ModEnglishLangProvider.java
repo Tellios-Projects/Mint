@@ -3,130 +3,108 @@ package net.leafenzo.mint.datageneration;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.leafenzo.mint.Super;
+import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItemGroups;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.util.ModUtil;
+import net.minecraft.block.Block;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import org.spongepowered.asm.mixin.Debug;
 
 import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static net.leafenzo.mint.util.ModUtil.toSentanceCase;
 
 public class ModEnglishLangProvider extends FabricLanguageProvider {
+    Set<String> usedTranslationKeys = new HashSet<String>(); // For duplicate handling
 
     public ModEnglishLangProvider(FabricDataOutput dataGenerator) {
         super(dataGenerator, "en_us");
     }
 
+    private void generatePotionTranslation(TranslationBuilder translationBuilder,  String subKey, String effectName) {
+        String potionKey = "item.minecraft.potion.effect." + subKey;
+        generateTranslation(translationBuilder, potionKey, "Potion of " + effectName);
+
+        String arrowKey = "item.minecraft.tipped_arrow.effect." + subKey;
+        generateTranslation(translationBuilder, arrowKey, "Arrow of " + effectName);
+    }
+
+    private void generateTranslation(TranslationBuilder translationBuilder, String key, String translation) {
+        if(usedTranslationKeys.contains(key)) {
+            //("Duplicate translation key " + key + "ignored"); //TODO, figure out how the heck do we print to debug from datagen?
+            return;
+        }
+        translationBuilder.add(key, translation);
+        usedTranslationKeys.add(key);
+    }
+    private void generateTranslation(TranslationBuilder translationBuilder, Block block, String translation) {
+        generateTranslation(translationBuilder, block.getTranslationKey(), translation);
+    }
+    private void generateTranslation(TranslationBuilder translationBuilder, Item item, String translation) {
+        generateTranslation(translationBuilder, item.getTranslationKey(), translation);
+    }
+
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
-//        try {
-//            Path existingFilePath = dataOutput.getModContainer().findPath("assets/" + Super.MOD_ID + "/lang/en_us.json").get();
-//            translationBuilder.add(existingFilePath);
-//        } catch (Exception e) {
-//            throw new RuntimeException("Failed to add existing language file!", e);
-//        }
 
-//        translationBuilder.add(ModItemGroups.MINT, "Simple Item Group");
+        //Manual
+        generatePotionTranslation(translationBuilder, "mint_chill", "Mint Chill");
+        generatePotionTranslation(translationBuilder, "long_mint_chill", "Mint Chill");
+        generatePotionTranslation(translationBuilder, "strong_mint_chill", "Mint Chill");
 
-        Set<String> allTranslationKeys = new HashSet<String>();
-//        for(Identifier id : ModUtil.getAllRegistryIds()) {
-//
-//        }
+        generateTranslation(translationBuilder, ModBlocks.MINT_SPRIG_BLOCK, "Pile of Mint");
 
-
+        //Automatic
         for(Identifier id : ModUtil.allBlockIdsInNamespace(Super.MOD_ID)) {
             String key = Registries.BLOCK.get(id).getTranslationKey();
-            if(allTranslationKeys.contains(key)) { continue; } //Skip over duplicate translation keys
-            allTranslationKeys.add(key);
+            if(usedTranslationKeys.contains(key)) { continue; } //Skip over duplicate translation keys
+            usedTranslationKeys.add(key);
             translationBuilder.add(key, toSentanceCase(id.getPath()));
         }
         for(Identifier id : ModUtil.allItemIdsInNamespace(Super.MOD_ID)) {
             String key = Registries.ITEM.get(id).getTranslationKey();
-            if(allTranslationKeys.contains(key)) { continue; } //Skip over duplicate translation keys
-            allTranslationKeys.add(key);
-            translationBuilder.add(Registries.ITEM.get(id), toSentanceCase(id.getPath()));
+            if(usedTranslationKeys.contains(key)) { continue; } //Skip over duplicate translation keys
+            usedTranslationKeys.add(key);
+            translationBuilder.add(key, toSentanceCase(id.getPath()));
         }
         for(Identifier id : ModUtil.allItemGroupIdsInNamespace(Super.MOD_ID)) {
-            String key = Registries.ITEM_GROUP.get(id).getDisplayName().toString();
-            if(allTranslationKeys.contains(key)) { continue; } //Skip over duplicate translation keys
-            allTranslationKeys.add(key);
-            translationBuilder.add(Registries.ITEM.get(id), toSentanceCase(id.getPath()));
+            String key = Registries.ITEM_GROUP.get(id).getDisplayName().getString();
+            if(usedTranslationKeys.contains(key)) { continue; } //Skip over duplicate translation keys
+            usedTranslationKeys.add(key);
+            translationBuilder.add(key, toSentanceCase(id.getPath()));
+        }
+        for(Identifier id : ModUtil.allStatusEffectIdsInNamespace(Super.MOD_ID)) {
+            String key = Registries.STATUS_EFFECT.get(id).getTranslationKey();
+            if(usedTranslationKeys.contains(key)) { continue; } //Skip over duplicate translation keys
+            usedTranslationKeys.add(key);
+            translationBuilder.add(key, toSentanceCase(id.getPath()));
         }
 
-
-
-//          for(Block block : ModBlocks.DYECOLOR_FROM_BLOCK.keySet()) {
-//              translationBuilder.add(block, toWordCase(Registries.BLOCK.getId(block).toString()));
-//          }
-
-
-//        for(Block block : ModBlocks.WOOL_BLOCKS) {
-//            DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(block);
-//            translationBuilder.add(block, toWordCase(color.getName()) + " Wool");
-//        }
+        // This is a mess, just do this part manually for now.
+        // Effects, Potions, and Tipped arrows
+//        for(Identifier id : ModUtil.allPotionIdsInNamespace(Super.MOD_ID)) {
+//            String key = Registries.POTION.get(id).finishTranslationKey("item.minecraft.potion.effect."); // what does this even do
+//            if(usedTranslationKeys.contains(key)) { continue; } //Skip over duplicate translation keys
+//            usedTranslationKeys.add(key);
 //
-//        for(Block block : ModBlocks.WOOL_CARPET_BLOCKS) {
-//            DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(block);
-//            translationBuilder.add(block, toWordCase(color.getName()) + " Carpet");
-//        }
+//            String effectName = Registries.POTION.get(id).getEffects().get(0).getEffectType().getName().toString());
 //
-//        for(Block block : ModBlocks.TERRACOTTA_BLOCKS) {
-//            DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(block);
-//            translationBuilder.add(block, toWordCase(color.getName()) + " Terracotta");
-//        }
+//            // Potion
+//            translationBuilder.add(key, "Potion of " + effectName);
 //
-//        for(Block block : ModBlocks.CONCRETE_POWDER_BLOCKS) {
-//            DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(block);
-//            translationBuilder.add(block, toWordCase(color.getName()) + " Concrete Powder");
-//        }
-//
-//        for(Block block : ModBlocks.CONCRETE_BLOCKS) {
-//            DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(block);
-//            translationBuilder.add(block, toWordCase(color.getName()) + " Concrete");
-//        }
-//
-//        for(Block block : ModBlocks.GLAZED_TERRACOTTA_BLOCKS) {
-//            DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(block);
-//            translationBuilder.add(block, toWordCase(color.getName()) + " Glazed Terracotta");
-//        }
-//
-//        for(Block block : ModBlocks.STAINED_GLASS_BLOCKS) {
-//            DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(block);
-//            translationBuilder.add(block, toWordCase(color.getName()) + " Stained Glass");
-//        }
-//
-//        for(Block block : ModBlocks.STAINED_GLASS_PANE_BLOCKS) {
-//            DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(block);
-//            translationBuilder.add(block, toWordCase(color.getName()) + " Stained Glass Pane");
-//        }
-//
-//        for(Block block : ModBlocks.SHULKER_BOX_BLOCKS) {
-//            DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(block);
-//            translationBuilder.add(block, toWordCase(color.getName()) + " Shulker Box");
-//        }
-//
-//        for(Block block : ModBlocks.BED_BLOCKS) {
-//            DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(block);
-//            translationBuilder.add(block, color.getName() + " Bed");
+//            // Tipped Arrow
+//            String arrowKey = "item.minecraft.tipped_arrow.effect.";
+//            arrowKey = arrowKey.concat(Pattern.compile("(?<=potion\\.)[^.]+").matcher(key).toString());
+//            translationBuilder.add(arrowKey, "Arrow of " + toSentanceCase(effectName));
 //        }
     }
-
-
-//    public static void TranslationsFromIds(Set<Identifier> original, Set<Identifier> altered) {
-//        if(altered.size() < original.size()) { throw new RuntimeException(); }
-//        Set<Identifier> toTranslate = new HashSet<>();
-//        for(Identifier id : altered) {
-//            if( ! original.contains(id)) {
-//                toTranslate.add(id);
-//            }
-//        }
-//        if((long) toTranslate.size() == 0) { throw new RuntimeException("bingus"); }
-//        for(Identifier a : toTranslate) {
-//            System.out.println("BINGUS - " + a.toString());
-//        }
-//    }
 }
