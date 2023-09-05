@@ -11,9 +11,8 @@ import org.slf4j.LoggerFactory;
 public class ModPreLaunch implements PreLaunchEntrypoint {
     public static final Logger LOGGER = LoggerFactory.getLogger(Super.MOD_ID);
 
-    //public static final Block MINT_SHULKER_BOX = null;
     @Override
     public void onPreLaunch() {
-        ModBlocks.registerModBlocks();
+        //ModBlocks.registerModBlocks();
     }
 }

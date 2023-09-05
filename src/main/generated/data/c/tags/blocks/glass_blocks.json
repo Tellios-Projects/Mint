@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "mint:mint_stained_glass",
+    "mint:peach_stained_glass",
+    "mint:periwinkle_stained_glass",
+    "mint:artichoke_stained_glass",
+    "mint:fuchsia_stained_glass",
+    "mint:vermilion_stained_glass",
+    "mint:shamrock_stained_glass",
+    "mint:indigo_stained_glass",
+    "mint:banana_stained_glass"
+  ]
+}

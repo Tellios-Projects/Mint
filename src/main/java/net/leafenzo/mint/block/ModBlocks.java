@@ -83,7 +83,7 @@ public class ModBlocks {
     //</editor-fold>
     //<editor-fold desc ="MINT - Special">
     public static final Block MINT_CROP = registerBlockWithoutBlockItem("mint_crop", new MintCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT).mapColor(MapColor.LICHEN_GREEN)));
-    public static final Block WILD_MINT = registerBlock("wild_mint", createFlowerBlock(ModEffects.MENTHOL, 900), ModItemGroups.MINT);
+    public static final Block WILD_MINT = registerBlock("wild_mint", createFlowerBlock(ModEffects.MINT_CHILL, 900), ModItemGroups.MINT);
     public static final Block POTTED_WILD_MINT = registerBlock("potted_wild_mint", createFlowerPotBlock((FlowerBlock) WILD_MINT), ModItemGroups.PEACH);
         static { FLOWER_POT_FROM_FLOWER.put((FlowerBlock) WILD_MINT, (FlowerPotBlock) POTTED_WILD_MINT); }
     public static final Block MINT_SPRIG_BLOCK = registerBlock("mint_sprig_block", new Block(FabricBlockSettings.copyOf(Blocks.ACACIA_LEAVES).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
