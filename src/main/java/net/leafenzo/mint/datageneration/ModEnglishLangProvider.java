@@ -34,6 +34,12 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
         String potionKey = "item.minecraft.potion.effect." + subKey;
         generateTranslation(translationBuilder, potionKey, "Potion of " + effectName);
 
+        String splashPotionKey = "item.minecraft.splash_potion.effect." + subKey;
+        generateTranslation(translationBuilder, splashPotionKey, "Splash Potion of " + effectName);
+
+        String lingeringPotionKey = "item.minecraft.lingering_potion.effect." + subKey;
+        generateTranslation(translationBuilder, lingeringPotionKey, "Lingering Potion of " + effectName);
+
         String arrowKey = "item.minecraft.tipped_arrow.effect." + subKey;
         generateTranslation(translationBuilder, arrowKey, "Arrow of " + effectName);
     }
