@@ -6,7 +6,6 @@ import net.leafenzo.mint.Super;
 import net.leafenzo.mint.effect.ModEffects;
 import net.leafenzo.mint.item.ModItems;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.Potions;
@@ -17,9 +16,9 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModPotions {
-    public static Potion MENTHOL = registerPotion("menthol", new Potion(new StatusEffectInstance(ModEffects.MENTHOL, 900, 0)));
-    public static Potion LONG_MENTHOL = registerPotion("long_menthol", new Potion(new StatusEffectInstance(ModEffects.MENTHOL, 1800, 0)));
-    public static Potion STRONG_MENTHOL = registerPotion("strong_menthol", new Potion(new StatusEffectInstance(ModEffects.MENTHOL, 900, 1)));
+    public static Potion MINT_CHILL = registerPotion("mint_chill", new Potion(new StatusEffectInstance(ModEffects.MINT_CHILL, 900, 0)));
+    public static Potion LONG_MINT_CHILL = registerPotion("long_mint_chill", new Potion(new StatusEffectInstance(ModEffects.MINT_CHILL, 1800, 0)));
+    public static Potion STRONG_MINT_CHILL = registerPotion("strong_mint_chill", new Potion(new StatusEffectInstance(ModEffects.MINT_CHILL, 900, 1)));
 
     private static Potion registerPotion(String name, Potion potion) {
         //BrewingRecipeRegistry.registerPotionType(potion);
@@ -29,9 +28,9 @@ public class ModPotions {
     public static void registerBrewingRecipeRegistries() {
         ModInit.LOGGER.info("Registering brewing recipe registries for " + Super.MOD_ID);
 
-        FabricBrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Ingredient.ofItems(ModItems.MINT_SPRIG), ModPotions.MENTHOL);
-        FabricBrewingRecipeRegistry.registerPotionRecipe(ModPotions.MENTHOL, Ingredient.ofItems(Items.REDSTONE), ModPotions.LONG_MENTHOL);
-        FabricBrewingRecipeRegistry.registerPotionRecipe(ModPotions.MENTHOL, Ingredient.ofItems(Items.GLOWSTONE_DUST), ModPotions.STRONG_MENTHOL);
+        FabricBrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Ingredient.ofItems(ModItems.MINT_SPRIG), ModPotions.MINT_CHILL);
+        FabricBrewingRecipeRegistry.registerPotionRecipe(ModPotions.MINT_CHILL, Ingredient.ofItems(Items.REDSTONE), ModPotions.LONG_MINT_CHILL);
+        FabricBrewingRecipeRegistry.registerPotionRecipe(ModPotions.MINT_CHILL, Ingredient.ofItems(Items.GLOWSTONE_DUST), ModPotions.STRONG_MINT_CHILL);
         BrewingRecipeRegistry.registerPotionType(Items.POTION);
     }
 

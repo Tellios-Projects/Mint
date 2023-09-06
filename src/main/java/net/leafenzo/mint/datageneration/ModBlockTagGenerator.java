@@ -3,6 +3,7 @@ package net.leafenzo.mint.datageneration;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.registry.tag.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
@@ -45,6 +46,11 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
             getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
         }
 
+////  CONCRETE_BLOCKS
+        for (Block block : ModBlocks.CONCRETE_BLOCKS) {
+            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+        }
+
 ////  CONCRETE_POWDER_BLOCKS
         for (Block block : ModBlocks.CONCRETE_POWDER_BLOCKS) {
             getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).add(block);
@@ -57,6 +63,11 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
 
 ////  STAINED_GLASS_BLOCKS
 //
+        for (Block block : ModBlocks.STAINED_GLASS_BLOCKS) {
+            getOrCreateTagBuilder(ModTags.Blocks.GLASS).add(block);
+            getOrCreateTagBuilder(ModTags.Blocks.GLASS_BLOCKS).add(block); //common tags just wanna be silly ig
+        }
+
 ////  STAINED_GLASS_PANE_BLOCKS
 //
 ////  SHULKER_BOX_BLOCKS

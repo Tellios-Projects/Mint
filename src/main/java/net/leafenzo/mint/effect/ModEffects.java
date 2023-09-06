@@ -13,7 +13,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModEffects {
-    public static StatusEffect MENTHOL = registerStatusEffect("menthol", new MentholEffect(StatusEffectCategory.HARMFUL, 0x00ff96));
+    public static StatusEffect MINT_CHILL = registerStatusEffect("mint_chill", new MintChillEffect(StatusEffectCategory.HARMFUL, 0x00ff96));
 //    public static StatusEffect MENTHOL = registerStatusEffect("menthol", new MentholEffect(StatusEffectCategory.HARMFUL, 104189145));
 
     private static StatusEffect registerStatusEffect(String name, StatusEffect effect) {

@@ -1,15 +1,21 @@
 package net.leafenzo.mint.util;
 
+import com.mojang.datafixers.types.Type;
 import net.leafenzo.mint.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.DyeColor;
+import net.minecraft.util.Identifier;
+import org.apache.http.annotation.Obsolete;
+import org.spongepowered.asm.mixin.Debug;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+import java.util.logging.Logger;
 
 public class ModUtil {
 //    public static final Item[] VANILLA_DYES = { Items.BLACK_DYE, Items.BLUE_DYE, Items.BROWN_DYE, Items.CYAN_DYE, Items.GRAY_DYE, Items.GREEN_DYE, Items.LIGHT_BLUE_DYE, Items.LIGHT_GRAY_DYE, Items.LIME_DYE, Items.MAGENTA_DYE, Items.ORANGE_DYE, Items.PINK_DYE, Items.PURPLE_DYE, Items.RED_DYE, Items.YELLOW_DYE, Items.WHITE_DYE };
@@ -137,6 +143,189 @@ public class ModUtil {
             if(i != blocks.length - 1) { s = s.concat(", "); } // if not the last entry
         }
         return s.concat(" }");
+    }
+
+    public static String toSentanceCase(String s) {
+        String words[] = s.split("[\\s|_]");
+        StringBuilder capitalizeWord = new StringBuilder();
+        for(String w : words){
+            String first = w.substring(0,1);
+            String afterfirst = w.substring(1);
+            capitalizeWord
+                    .append(first.toUpperCase())
+                    .append(afterfirst)
+                    .append(" ");
+        }
+        return capitalizeWord.toString().trim();
+    }
+
+
+    public static Set<Identifier> allBlockIdsInNamespace(String namespace) {
+        Set<Identifier> set = Registries.BLOCK.getIds();
+        Set<Identifier> a = new HashSet<>();
+        for(Identifier id : set) {
+            if(Objects.equals(id.getNamespace(), namespace)) {
+                a.add(id);
+            }
+        }
+        return a;
+    }
+    public static Set<Identifier> allItemIdsInNamespace(String namespace) {
+        Set<Identifier> set = Registries.ITEM.getIds();
+        Set<Identifier> a = new HashSet<>();
+        for(Identifier id : set) {
+            if(Objects.equals(id.getNamespace(), namespace)) {
+                a.add(id);
+            }
+        }
+        return a;
+    }
+    public static Set<Identifier> allItemGroupIdsInNamespace(String namespace) {
+        Set<Identifier> set = Registries.ITEM_GROUP.getIds();
+        Set<Identifier> a = new HashSet<>();
+        for(Identifier id : set) {
+            if(Objects.equals(id.getNamespace(), namespace)) {
+                a.add(id);
+            }
+        }
+        return a;
+    }
+
+//    public static Set<Identifier> allItemGroupIdsInNamespace(String namespace) {
+//        Set<Identifier> set = Registries.ITEM_GROUP.getIds();
+//        Set<Identifier> a = new HashSet<>();
+//        for(Identifier id : set) {
+//            if(Objects.equals(id.getNamespace(), namespace)) {
+//                a.add(id);
+//            }
+//        }
+//        return a;
+//    }
+
+//    public static HashMap<Identifier, Registry<?>> REGISTRY_FROM_ID = new HashMap<Identifier, Registry<?>>();
+
+    public static Set<Identifier> allPotionIdsInNamespace(String namespace) {
+        Set<Identifier> set = Registries.POTION.getIds();
+        Set<Identifier> a = new HashSet<>();
+        for(Identifier id : set) {
+            if(Objects.equals(id.getNamespace(), namespace)) {
+                a.add(id);
+            }
+        }
+        return a;
+    }
+    public static Set<Identifier> allStatusEffectIdsInNamespace(String namespace) {
+        Set<Identifier> set = Registries.STATUS_EFFECT.getIds();
+        Set<Identifier> a = new HashSet<>();
+        for(Identifier id : set) {
+            if(Objects.equals(id.getNamespace(), namespace)) {
+                a.add(id);
+            }
+        }
+        return a;
+    }
+
+
+
+
+
+//    public static Set<Identifier> allTranslatableInNamespace(String namespace) {
+//        Set<Identifier> set = Registries.POTION.getIds();
+//        Set<Identifier> a = new HashSet<>();
+//        for(Identifier id : set) {
+//            if(Objects.equals(id.getNamespace(), namespace)) {
+//                a.add(id);
+//            }
+//        }
+//        return a;
+//    }
+
+
+    @Obsolete
+    public static Set<Identifier> allIdsInNamespace(String namespace) {
+        Set<Identifier> set = ModUtil.getAllRegistryIds();
+        Set<Identifier> a = new HashSet<>();
+        for(Identifier id : set) {
+            if(Objects.equals(id.getNamespace(), namespace)) {
+                a.add(id);
+            }
+        }
+        return a;
+    }
+
+
+
+    @Obsolete
+    public static Set<Identifier> getAllRegistryIds() {
+        Set<Identifier> set = new HashSet<Identifier>();
+        set.addAll(Registries.COMMAND_ARGUMENT_TYPE.getIds());
+        set.addAll(Registries.ITEM.getIds());
+        set.addAll(Registries.BLOCK_ENTITY_TYPE.getIds());
+        set.addAll(Registries.CUSTOM_STAT.getIds());
+        set.addAll(Registries.FOLIAGE_PLACER_TYPE.getIds());
+        set.addAll(Registries.STAT_TYPE.getIds());
+        set.addAll(Registries.MATERIAL_RULE.getIds());
+        set.addAll(Registries.STRUCTURE_TYPE.getIds());
+        set.addAll(Registries.ATTRIBUTE.getIds());
+        set.addAll(Registries.POSITION_SOURCE_TYPE.getIds());
+        set.addAll(Registries.HEIGHT_PROVIDER_TYPE.getIds());
+        set.addAll(Registries.RULE_BLOCK_ENTITY_MODIFIER.getIds());
+        set.addAll(Registries.DENSITY_FUNCTION_TYPE.getIds());
+        set.addAll(Registries.POSITION_SOURCE_TYPE.getIds());
+        set.addAll(Registries.FLUID.getIds());
+        set.addAll(Registries.LOOT_CONDITION_TYPE.getIds());
+        set.addAll(Registries.STRUCTURE_POOL_ELEMENT.getIds());
+        set.addAll(Registries.ACTIVITY.getIds());
+        set.addAll(Registries.RECIPE_SERIALIZER.getIds());
+        set.addAll(Registries.FROG_VARIANT.getIds());
+        set.addAll(Registries.BANNER_PATTERN.getIds());
+        set.addAll(Registries.INSTRUMENT.getIds());
+        set.addAll(Registries.DECORATED_POT_PATTERN.getIds());
+        set.addAll(Registries.FEATURE_SIZE_TYPE.getIds());
+        set.addAll(Registries.POINT_OF_INTEREST_TYPE.getIds());
+        //mob_effect ?
+        set.addAll(Registries.LOOT_POOL_ENTRY_TYPE.getIds());
+        set.addAll(Registries.BLOCK_STATE_PROVIDER_TYPE.getIds());
+        set.addAll(Registries.CHUNK_GENERATOR.getIds());
+        set.addAll(Registries.FLOAT_PROVIDER_TYPE.getIds());
+        set.addAll(Registries.CHUNK_STATUS.getIds());
+        set.addAll(Registries.ENCHANTMENT.getIds());
+        set.addAll(Registries.LOOT_FUNCTION_TYPE.getIds());
+        set.addAll(Registries.STRUCTURE_PROCESSOR.getIds());
+        set.addAll(Registries.LOOT_SCORE_PROVIDER_TYPE.getIds());
+        set.addAll(Registries.TREE_DECORATOR_TYPE.getIds());
+        set.addAll(Registries.SCHEDULE.getIds());
+        set.addAll(Registries.MATERIAL_CONDITION.getIds());
+        set.addAll(Registries.ENTITY_TYPE.getIds());
+        set.addAll(Registries.VILLAGER_PROFESSION.getIds());
+        set.addAll(Registries.POTION.getIds());
+        set.addAll(Registries.RECIPE_TYPE.getIds());
+        set.addAll(Registries.INT_PROVIDER_TYPE.getIds());
+        set.addAll(Registries.FEATURE.getIds());
+        set.addAll(Registries.CAT_VARIANT.getIds());
+        set.addAll(Registries.POS_RULE_TEST.getIds());
+        set.addAll(Registries.STRUCTURE_PLACEMENT.getIds());
+        set.addAll(Registries.LOOT_NBT_PROVIDER_TYPE.getIds());
+        //menu?
+        set.addAll(Registries.TRUNK_PLACER_TYPE.getIds());
+        //creative mode tab?
+        set.addAll(Registries.PLACEMENT_MODIFIER_TYPE.getIds());
+        set.addAll(Registries.CARVER.getIds());
+        set.addAll(Registries.LOOT_NUMBER_PROVIDER_TYPE.getIds());
+        set.addAll(Registries.STRUCTURE_PIECE.getIds());
+        set.addAll(Registries.SOUND_EVENT.getIds());
+        set.addAll(Registries.PARTICLE_TYPE.getIds());
+        set.addAll(Registries.GAME_EVENT.getIds());
+        set.addAll(Registries.BIOME_SOURCE.getIds());
+        set.addAll(Registries.ROOT_PLACER_TYPE.getIds());
+        set.addAll(Registries.VILLAGER_TYPE.getIds());
+        set.addAll(Registries.PAINTING_VARIANT.getIds());
+        set.addAll(Registries.BLOCK_PREDICATE_TYPE.getIds());
+        set.addAll(Registries.BLOCK.getIds());
+        set.addAll(Registries.SENSOR_TYPE.getIds());
+        set.addAll(Registries.RULE_TEST.getIds());
+        set.addAll(Registries.MEMORY_MODULE_TYPE.getIds());
+        return set;
     }
 
     // this is smelly isn't it... oh well.
