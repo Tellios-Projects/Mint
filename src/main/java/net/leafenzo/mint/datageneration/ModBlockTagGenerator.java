@@ -30,7 +30,38 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
                 .add(ModBlocks.MINT_SPRIG_BLOCK)
         ;
 
+        getOrCreateTagBuilder(BlockTags.FLOWERS)
+                .add(ModBlocks.PERIWINKLE_PETALS)
+        ;
+
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(ModBlocks.MINT_BRICKS)
+                .add(ModBlocks.MINT_BRICK_SLAB)
+                .add(ModBlocks.MINT_BRICK_STAIRS)
+
+                .add(ModBlocks.LAVENDER_BRICKS)
+                .add(ModBlocks.LAVENDER_BRICK_SLAB)
+                .add(ModBlocks.LAVENDER_BRICK_STAIRS)
+                .add(ModBlocks.LAVENDER_BRICK_WALL)
+                .add(ModBlocks.MOSSY_LAVENDER_BRICKS)
+        ;
+
+        getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
+                .add(ModBlocks.LAVENDER_CLAY)
+        ;
+
     // Main
+// SLABS & STAIRS & WALLS
+        for (Block block : ModBlocks.SLABS) {
+            getOrCreateTagBuilder(BlockTags.SLABS).add(block);
+        }
+        for (Block block : ModBlocks.STAIRS) {
+            getOrCreateTagBuilder(BlockTags.STAIRS).add(block);
+        }
+        for (Block block : ModBlocks.WALLS) {
+            getOrCreateTagBuilder(BlockTags.WALLS).add(block);
+        }
+
 //  WOOL_BLOCKS
         for (Block block : ModBlocks.WOOL_BLOCKS) {
             getOrCreateTagBuilder(BlockTags.WOOL).add(block);
@@ -104,7 +135,7 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
             getOrCreateTagBuilder(BlockTags.BANNERS).add(block);
         }
 
-////  FLOWERS
+////  SMALL FLOWERS
         for (Block block : ModBlocks.SMALL_FLOWERS) {
             getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS).add(block);
         }

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "mint:lavender_bushel"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "mint:smoked_lavender"
+  }
+}

@@ -22,6 +22,9 @@ public class ModFabricRegistries {
         }
 
         registry.add(ModBlocks.PEACH_LOG, 5, 5);
+
+        registry.add(ModBlocks.LAVENDER_BUSHEL, 20, 60);
+        registry.add(ModBlocks.PERIWINKLE_PETALS, 100, 60);
     }
     public static void registerCompostingChances() {
         ModInit.LOGGER.debug("Registering composting chances for " + Super.MOD_ID);
@@ -29,6 +32,8 @@ public class ModFabricRegistries {
         CompostingChanceRegistry compostingChanceRegistry = CompostingChanceRegistry.INSTANCE;
         compostingChanceRegistry.add(ModItems.MINT_SPRIG, 0.65f); // same as wheat
         compostingChanceRegistry.add(ModItems.MINT_COOKIE, 0.85f); // same as cookie
+
+        // TODO Peach, Periwinkle, and Artichoke composting chances
     }
 
     public static void registerVillagerInteractions() {

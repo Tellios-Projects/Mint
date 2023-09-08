@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "mint:block/mossy_lavender_brick_slab"
+    },
+    "type=double": {
+      "model": "mint:block/mossy_lavender_bricks"
+    },
+    "type=top": {
+      "model": "mint:block/mossy_lavender_brick_slab_top"
+    }
+  }
+}

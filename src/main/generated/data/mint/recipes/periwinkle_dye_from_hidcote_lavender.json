@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "periwinkle_dye",
+  "ingredients": [
+    {
+      "item": "mint:hidcote_lavender"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "mint:periwinkle_dye"
+  }
+}

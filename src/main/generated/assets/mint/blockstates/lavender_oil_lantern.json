@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "mint:block/lavender_oil_lantern"
+    },
+    "hanging=true": {
+      "model": "mint:block/lavender_oil_lantern_hanging"
+    }
+  }
+}

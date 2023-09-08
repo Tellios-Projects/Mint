@@ -102,7 +102,20 @@ public class ModItems {
     public static final Item CORAL_ANEMONE = registerItem(new BlockItem(ModBlocks.CORAL_ANEMONE, new FabricItemSettings()));
     public static final Item PEACH_BRANCH = registerItem("peach_branch", new Item(new FabricItemSettings()));
     //public static final Item PEACH_BRANCH = registerItem(new BlockItem(ModBlocks.PEACH_TREE, new FabricItemSettings()));
+    //</editor-fold>
 
+    //<editor-fold desc ="PERIWINKLE - Special">
+    public static final Item FLOWERING_MELON = registerItem("flowering_melon", new FloweringMelonItem(new FabricItemSettings()));
+    public static final Item SMOKED_LAVENDER = registerItem("smoked_lavender", new Item(new FabricItemSettings()));
+    public static final Item LAVENDER_BREAD = registerItem("lavender_bread", new Item(new FabricItemSettings().food(new FoodComponent.Builder()
+            .hunger(6)
+            .saturationModifier(0.5f)
+            .build())));
+    public static final Item LAVENDER_SOAP = registerItem("lavender_soap", new LavenderSoapItem(new FabricItemSettings().maxCount(1).maxDamage(16))); //TODO make me have that custom behavior (ask eliza)
+    public static final Item LAVENDER_OIL = registerItem("lavender_oil", new Item(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE)));
+    //</editor-fold>
+
+    //<editor-fold desc ="ARTICHOKE - Special">
 
     //</editor-fold>
     //<editor-fold desc ="Templates">
@@ -174,7 +187,6 @@ public class ModItems {
         public static final Item SAP_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.SAP_SHULKER_BOX, new FabricItemSettings().maxCount(1)));
         public static final Item SAP_BANNER = registerItem(new BannerItem(ModBlocks.SAP_BANNER, ModBlocks.SAP_WALL_BANNER, new FabricItemSettings().maxCount(16)));
     //</editor-fold>
-
     //<editor-fold desc ="Registration">
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), (Item)item);

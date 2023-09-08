@@ -51,9 +51,31 @@ public class ModModelProvider extends FabricModelProvider {
 
         // PEACH - Special
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.PEACH_LOG);
+        //coral anemone
 
+        // PERIWINKLE - Special
+        BlockStateModelGenerator.BlockTexturePool lavenderBricksTexturePool =
+                blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.LAVENDER_BRICKS);
+        lavenderBricksTexturePool.slab(ModBlocks.LAVENDER_BRICK_SLAB);
+        lavenderBricksTexturePool.stairs(ModBlocks.LAVENDER_BRICK_STAIRS);
+        lavenderBricksTexturePool.wall(ModBlocks.LAVENDER_BRICK_WALL);
+
+        BlockStateModelGenerator.BlockTexturePool mossyLavenderBricksTexturePool =
+                blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MOSSY_LAVENDER_BRICKS);
+        mossyLavenderBricksTexturePool.slab(ModBlocks.MOSSY_LAVENDER_BRICK_SLAB);
+        mossyLavenderBricksTexturePool.stairs(ModBlocks.MOSSY_LAVENDER_BRICK_STAIRS);
+        mossyLavenderBricksTexturePool.wall(ModBlocks.MOSSY_LAVENDER_BRICK_WALL);
+
+        blockStateModelGenerator.registerRandomHorizontalRotations(TexturedModel.CUBE_ALL, ModBlocks.LAVENDER_CLAY);
+        blockStateModelGenerator.registerAxisRotated(ModBlocks.LAVENDER_BUSHEL, TexturedModel.CUBE_BOTTOM_TOP);
+        blockStateModelGenerator.registerFlowerbed(ModBlocks.PERIWINKLE_PETALS);
+        blockStateModelGenerator.registerLantern(ModBlocks.LAVENDER_OIL_LANTERN);
 
         //Main
+//  SLABS & STAIRS & WALLS
+
+
+
 //  FLOWER BLOCKS    //  FLOWER_POT_BLOCKS
         for(Block block : ModBlocks.SMALL_FLOWERS) {
             if(ModBlocks.FLOWER_POT_FROM_FLOWER.get(block) != null) {
@@ -145,6 +167,12 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.COOKED_ANEMONE, Models.GENERATED);
         itemModelGenerator.register(ModItems.CORAL_ANEMONE, Models.GENERATED);
         itemModelGenerator.register(ModItems.PEACH_BRANCH, Models.GENERATED);
+
+        itemModelGenerator.register(ModItems.FLOWERING_MELON, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SMOKED_LAVENDER, Models.GENERATED);
+        itemModelGenerator.register(ModItems.LAVENDER_BREAD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.LAVENDER_SOAP, Models.GENERATED);
+        itemModelGenerator.register(ModItems.LAVENDER_OIL, Models.GENERATED);
 
 //  DYES
         for(Item item : ModItems.DYE_ITEMS) {

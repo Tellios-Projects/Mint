@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "mint:block/mossy_lavender_bricks",
+    "side": "mint:block/mossy_lavender_bricks",
+    "top": "mint:block/mossy_lavender_bricks"
+  }
+}

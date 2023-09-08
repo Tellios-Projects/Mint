@@ -6,6 +6,8 @@ import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.data.client.TexturedModel;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.loot.LootPool;
@@ -33,10 +35,27 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         BlockStatePropertyLootCondition.Builder mintCropBuilder = BlockStatePropertyLootCondition.builder(ModBlocks.MINT_CROP).properties(StatePredicate.Builder.create().exactMatch(MintCropBlock.AGE, MintCropBlock.MAX_AGE));
         this.addDrop(ModBlocks.MINT_CROP, this.applyExplosionDecay(ModBlocks.MINT_CROP, LootTable.builder().pool(LootPool.builder().with(ItemEntry.builder(ModItems.MINT_SPRIG))).pool(LootPool.builder().conditionally(mintCropBuilder).with((LootPoolEntry.Builder<?>)((Object)ItemEntry.builder(ModItems.MINT_SPRIG).apply(ApplyBonusLootFunction.binomialWithBonusCount(Enchantments.FORTUNE, 0.5714286f, 3)))))));
         this.addDrop(ModBlocks.MINT_SPRIG_BLOCK);
+        this.addDrop(ModBlocks.MINT_BRICKS);
+        this.addDrop(ModBlocks.MINT_BRICK_SLAB);
+        this.addDrop(ModBlocks.MINT_BRICK_STAIRS);
 
         //  PEACH - Special
+        // TODO this stuff
+
 
         //  PERIWINKLE - Special
+        this.addDrop(ModBlocks.LAVENDER_BRICKS);
+        this.addDrop(ModBlocks.LAVENDER_BRICK_SLAB);
+        this.addDrop(ModBlocks.LAVENDER_BRICK_STAIRS);
+        this.addDrop(ModBlocks.LAVENDER_BRICK_WALL);
+        this.addDrop(ModBlocks.MOSSY_LAVENDER_BRICKS);
+        this.addDrop(ModBlocks.MOSSY_LAVENDER_BRICK_SLAB);
+        this.addDrop(ModBlocks.MOSSY_LAVENDER_BRICK_STAIRS);
+        this.addDrop(ModBlocks.MOSSY_LAVENDER_BRICK_WALL);
+        this.addDrop(ModBlocks.LAVENDER_CLAY);
+        this.addDrop(ModBlocks.LAVENDER_BUSHEL);
+        this.addDrop(ModBlocks.PERIWINKLE_PETALS, this.flowerbedDrops(ModBlocks.PERIWINKLE_PETALS));
+        this.addDrop(ModBlocks.LAVENDER_OIL_LANTERN, this::drops);
 
         //  ARTICHOKE - Special
 

@@ -31,6 +31,7 @@ import net.minecraft.world.BlockView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.Flow;
 import java.util.function.ToIntFunction;
 
 public class ModBlocks {
@@ -57,6 +58,10 @@ public class ModBlocks {
     public static final ArrayList<Block> WALL_BANNER_BLOCKS = new ArrayList<Block>();
     public static final ArrayList<Block> SMALL_FLOWERS = new ArrayList<Block>();
     public static final ArrayList<Block> FLOWER_POTS = new ArrayList<Block>();
+    public static final ArrayList<Block> SLABS = new ArrayList<Block>();
+    public static final ArrayList<Block> STAIRS = new ArrayList<Block>();
+    public static final ArrayList<Block> WALLS = new ArrayList<Block>();
+
     /**
      * This list is just used in ItemGroups
      */ public static final ArrayList<Block> COLORED_BLOCKS = new ArrayList<Block>();
@@ -85,12 +90,11 @@ public class ModBlocks {
     public static final Block MINT_CROP = registerBlockWithoutBlockItem("mint_crop", new MintCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT).mapColor(MapColor.LICHEN_GREEN)));
     public static final Block WILD_MINT = registerBlock("wild_mint", createFlowerBlock(ModEffects.MINT_CHILL, 900), ModItemGroups.MINT);
     public static final Block POTTED_WILD_MINT = registerBlock("potted_wild_mint", createFlowerPotBlock((FlowerBlock) WILD_MINT), ModItemGroups.PEACH);
-        static { FLOWER_POT_FROM_FLOWER.put((FlowerBlock) WILD_MINT, (FlowerPotBlock) POTTED_WILD_MINT); }
     public static final Block MINT_SPRIG_BLOCK = registerBlock("mint_sprig_block", new Block(FabricBlockSettings.copyOf(Blocks.ACACIA_LEAVES).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
     public static final Block MINT_BRICKS = registerBlock("mint_bricks", new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK).mapColor(MapColor.LICHEN_GREEN)), ModItemGroups.MINT);
-    public static final Block MINT_BRICK_SLAB = registerBlock("mint_brick_slab", new SlabBlock(FabricBlockSettings.copyOf(MINT_BRICKS)), ModItemGroups.MINT);
-    public static final Block MINT_BRICK_STAIRS = registerBlock("mint_brick_stairs", new StairsBlock(MINT_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(MINT_BRICKS)), ModItemGroups.MINT);
-    //public static final Block MINT_BRICK_WALL = registerBlock("mint_brick_wall", new WallBlock(FabricBlockSettings.copyOf(MINT_BRICKS)), ModItemGroups.MINT);
+    public static final Block MINT_BRICK_SLAB = registerBlock("mint_brick_slab", createSlabBlock(FabricBlockSettings.copyOf(MINT_BRICKS)), ModItemGroups.MINT);
+    public static final Block MINT_BRICK_STAIRS = registerBlock("mint_brick_stairs", createStairsBlock(MINT_BRICKS, FabricBlockSettings.copyOf(MINT_BRICKS)), ModItemGroups.MINT);
+    //public static final Block MINT_BRICK_WALL = registerBlock("mint_brick_wall", createWallBlock new WallBlock(FabricBlockSettings.copyOf(MINT_BRICKS)), ModItemGroups.MINT);
     //</editor-fold>
     //<editor-fold desc ="PEACH - Template">
     public static final Block PEACH_WOOL = registerBlock("peach_wool", createWoolBlock(ModDyeColor.PEACH), ModItemGroups.PEACH);
@@ -111,7 +115,6 @@ public class ModBlocks {
     //<editor-fold desc ="PEACH - Special">
     public static final Block HYPERICUM = registerBlock("hypericum", createFlowerBlock(StatusEffects.HUNGER, 900), ModItemGroups.PEACH); //hunger cause hypericum berries cause digestion issues irl
     public static final Block POTTED_HYPERICUM = registerBlock("potted_hypericum", createFlowerPotBlock((FlowerBlock) HYPERICUM), ModItemGroups.PEACH);
-        static { FLOWER_POT_FROM_FLOWER.put((FlowerBlock) HYPERICUM, (FlowerPotBlock) POTTED_HYPERICUM); }
     //public static final Block PEACH_TREE = registerBlock("peach_tree", PeachTreeBlock)
     public static final Block PEACH_LOG = registerBlock("peach_log", new Block(FabricBlockSettings.create().instrument(Instrument.BASS).strength(2.0f).sounds(BlockSoundGroup.WOOD).burnable().mapColor(MapColor.STONE_GRAY)), ModItemGroups.PEACH);
     public static final Block CORAL_ANEMONE = registerBlockWithoutBlockItem("coral_anemone", new CoralAnemoneBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.SLIME).mapColor(MapColor.RAW_IRON_PINK).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
@@ -134,6 +137,22 @@ public class ModBlocks {
     public static final Block PERIWINKLE_WALL_BANNER = registerBlockWithoutBlockItem("periwinkle_wall_banner", createWallBannerBlock(ModDyeColor.PERIWINKLE, (BannerBlock)ModBlocks.PERIWINKLE_BANNER));
     //</editor-fold>
     //<editor-fold desc ="PERIWINKLE - Special">
+    public static final Block LAVENDER_BRICKS = registerBlock("lavender_bricks", new Block(FabricBlockSettings.copyOf(Blocks.COBBLESTONE).mapColor(ModDyeColor.PERIWINKLE.getMapColor())), ModItemGroups.PERIWINKLE);
+    public static final Block LAVENDER_BRICK_SLAB = registerBlock("lavender_brick_slab", createSlabBlock(FabricBlockSettings.copyOf(LAVENDER_BRICKS)), ModItemGroups.PERIWINKLE);
+    public static final Block LAVENDER_BRICK_STAIRS = registerBlock("lavender_brick_stairs", createStairsBlock(LAVENDER_BRICKS, FabricBlockSettings.copyOf(LAVENDER_BRICKS)), ModItemGroups.PERIWINKLE);
+    public static final Block LAVENDER_BRICK_WALL = registerBlock("lavender_brick_wall", createWallBlock(FabricBlockSettings.copyOf(LAVENDER_BRICKS)), ModItemGroups.PERIWINKLE);
+    public static final Block MOSSY_LAVENDER_BRICKS = registerBlock("mossy_lavender_bricks", new Block(FabricBlockSettings.copyOf(Blocks.MOSSY_COBBLESTONE).mapColor(ModDyeColor.PERIWINKLE.getMapColor())), ModItemGroups.PERIWINKLE);
+    public static final Block MOSSY_LAVENDER_BRICK_SLAB = registerBlock("mossy_lavender_brick_slab", createSlabBlock(FabricBlockSettings.copyOf(MOSSY_LAVENDER_BRICKS)), ModItemGroups.PERIWINKLE);
+    public static final Block MOSSY_LAVENDER_BRICK_STAIRS = registerBlock("mossy_lavender_brick_stairs", createStairsBlock(MOSSY_LAVENDER_BRICKS, FabricBlockSettings.copyOf(MOSSY_LAVENDER_BRICKS)), ModItemGroups.PERIWINKLE);
+    public static final Block MOSSY_LAVENDER_BRICK_WALL = registerBlock("mossy_lavender_brick_wall", createWallBlock(FabricBlockSettings.copyOf(MOSSY_LAVENDER_BRICKS)), ModItemGroups.PERIWINKLE);
+
+    public static final Block LAVENDER_CLAY = registerBlock("lavender_clay", new Block(FabricBlockSettings.copyOf(Blocks.CLAY)), ModItemGroups.PERIWINKLE);
+    public static final Block LAVENDER_BUSHEL = registerBlock("lavender_bushel", new HayBlock(FabricBlockSettings.copyOf(Blocks.HAY_BLOCK)), ModItemGroups.PERIWINKLE);
+    public static final Block PERIWINKLE_PETALS = registerBlock("periwinkle_petals", new FlowerbedBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS).mapColor(MapColor.DARK_GREEN)), ModItemGroups.PERIWINKLE);
+    public static final Block HIDCOTE_LAVENDER = registerBlock("hidcote_lavender", createFlowerBlock(StatusEffects.BAD_OMEN, 999999), ModItemGroups.PERIWINKLE);
+    public static final Block POTTED_HIDCOTE_LAVENDER = registerBlock("potted_hidcote_lavender", createFlowerPotBlock((FlowerBlock)HIDCOTE_LAVENDER), ModItemGroups.PERIWINKLE);
+    public static final Block LAVENDER_OIL_LANTERN = registerBlock("lavender_oil_lantern", new LanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).solid().requiresTool().strength(3.5f).sounds(BlockSoundGroup.LANTERN).luminance(state -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), ModItemGroups.PERIWINKLE);
+
     //</editor-fold>
     //<editor-fold desc ="ARTICHOKE - Template">
     public static final Block ARTICHOKE_WOOL = registerBlock("artichoke_wool", createWoolBlock(ModDyeColor.ARTICHOKE), ModItemGroups.ARTICHOKE);
@@ -393,7 +412,7 @@ public class ModBlocks {
     //</editor-fold>
     //<editor-fold desc ="Common Block Creation Functions">
     public static Block createWoolBlock(DyeColor color) {
-        Block block =  new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)
+        Block block = new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)
                 .mapColor(color.getMapColor())
                 .instrument(Instrument.GUITAR)
                 .strength(0.8f)
@@ -627,6 +646,22 @@ public class ModBlocks {
         FLOWER_POT_FROM_FLOWER.put(flower, block);
         return block;
     }
+    public static Block createStairsBlock(Block sourceBlock, FabricBlockSettings settings) {
+        Block block = new StairsBlock(sourceBlock.getDefaultState(), settings);
+        STAIRS.add(block);
+        return block;
+    }
+    public static Block createSlabBlock(FabricBlockSettings settings) {
+        Block block = new SlabBlock(settings);
+        SLABS.add(block);
+        return block;
+    }
+    public static Block createWallBlock(FabricBlockSettings settings) {
+        Block block = new WallBlock(settings);
+        WALLS.add(block);
+        return block;
+    }
+
     //</editor-fold>
     //<editor-fold desc ="Util">
     public static Item[] toItemArray(Block[] blocks) {

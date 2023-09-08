@@ -16,6 +16,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.ShapedRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
@@ -166,6 +167,36 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(ModItems.PEACH), FabricRecipeProvider.conditionsFromItem(ModItems.PEACH))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.GOLDEN_PEACH)));
 
+        // PERIWINKLE - Special
+        offerShapelessRecipe(exporter, ModItems.PERIWINKLE_DYE, ModBlocks.PERIWINKLE_PETALS, "periwinkle_dye", 1);
+        offerShapelessRecipe(exporter, ModItems.PERIWINKLE_DYE, ModBlocks.HIDCOTE_LAVENDER, "periwinkle_dye", 1);
+
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.SMOKED_LAVENDER, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAVENDER_BUSHEL);
+        offerFoodCookingRecipe(exporter, "smoking", RecipeSerializer.SMOKING, 100, ModBlocks.HIDCOTE_LAVENDER, ModItems.SMOKED_LAVENDER, 0.1f);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.LAVENDER_BREAD)
+                .input(Items.BREAD)
+                .input(ModItems.SMOKED_LAVENDER)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.SMOKED_LAVENDER), FabricRecipeProvider.conditionsFromItem(ModItems.SMOKED_LAVENDER))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.LAVENDER_BREAD)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.FLOWERING_MELON)
+                .input(Items.GLISTERING_MELON_SLICE)
+                .input(ModBlocks.PERIWINKLE_PETALS)
+                .criterion(FabricRecipeProvider.hasItem(ModBlocks.PERIWINKLE_PETALS), FabricRecipeProvider.conditionsFromItem(ModBlocks.PERIWINKLE_PETALS))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.FLOWERING_MELON)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.LAVENDER_OIL)
+                .input(Items.GLASS_BOTTLE)
+                .input(ModItems.SMOKED_LAVENDER)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.SMOKED_LAVENDER), FabricRecipeProvider.conditionsFromItem(ModItems.SMOKED_LAVENDER))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.LAVENDER_OIL)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.LAVENDER_SOAP)
+                .input(Items.HONEYCOMB)
+                .input(ModItems.LAVENDER_OIL)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.SMOKED_LAVENDER), FabricRecipeProvider.conditionsFromItem(ModItems.SMOKED_LAVENDER))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.LAVENDER_SOAP)));
 
 
 
@@ -180,6 +211,17 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerDyeMixingRecipe(exporter, ModItems.SHAMROCK_DYE, Items.LIME_DYE, Items.LIME_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.INDIGO_DYE, Items.BLUE_DYE, Items.PURPLE_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.BANANA_DYE, Items.YELLOW_DYE, Items.WHITE_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.CERULEAN_DYE, Items.BLUE_DYE, Items.LIGHT_GRAY_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.ACORN_DYE, Items.BROWN_DYE, Items.GRAY_DYE, RecipeCategory.MISC, 2);
+        //offerDyeMixingRecipe(exporter, ModItems.MAUVE_DYE, ModItems.FUCHSIA_DYE, Items.GRAY_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.MAUVE_DYE, Items.MAGENTA_DYE, Items.BROWN_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.MAUVE_DYE, Items.PINK_DYE, Items.BROWN_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.MAUVE_DYE, Items.RED_DYE, Items.BROWN_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.MAROON_DYE, Items.RED_DYE, Items.BLUE_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.GRAPE_DYE, Items.PURPLE_DYE, Items.BLACK_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.NAVY_DYE, Items.BLUE_DYE, Items.BLACK_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.NAVY_DYE, Items.CYAN_DYE, Items.BLACK_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.SAP_DYE, Items.GREEN_DYE, Items.CYAN_DYE, RecipeCategory.MISC, 2);
 
         // Main
 //  WOOL_BLOCKS

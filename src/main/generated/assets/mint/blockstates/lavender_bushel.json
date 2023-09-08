@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "mint:block/lavender_bushel",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "mint:block/lavender_bushel"
+    },
+    "axis=z": {
+      "model": "mint:block/lavender_bushel",
+      "x": 90
+    }
+  }
+}

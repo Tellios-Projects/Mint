@@ -198,6 +198,25 @@ public class ModItemGroups {
                         entries.add(ModBlocks.PERIWINKLE_BANNER);
                         entries.add(ModBlocks.PERIWINKLE_SHULKER_BOX);
                         entries.add(ModBlocks.PERIWINKLE_CANDLE);
+
+                        entries.add(ModBlocks.LAVENDER_BRICKS);
+                        entries.add(ModBlocks.LAVENDER_BRICK_STAIRS);
+                        entries.add(ModBlocks.LAVENDER_BRICK_SLAB);
+                        entries.add(ModBlocks.LAVENDER_BRICK_WALL);
+                        entries.add(ModBlocks.MOSSY_LAVENDER_BRICKS);
+                        entries.add(ModBlocks.MOSSY_LAVENDER_BRICK_SLAB);
+                        entries.add(ModBlocks.MOSSY_LAVENDER_BRICK_STAIRS);
+                        entries.add(ModBlocks.MOSSY_LAVENDER_BRICK_WALL);
+                        entries.add(ModBlocks.LAVENDER_CLAY);
+                        entries.add(ModBlocks.LAVENDER_BUSHEL);
+                        entries.add(ModBlocks.PERIWINKLE_PETALS);
+                        entries.add(ModBlocks.HIDCOTE_LAVENDER);
+                        entries.add(ModBlocks.LAVENDER_OIL_LANTERN);
+                        entries.add(ModItems.FLOWERING_MELON);
+                        entries.add(ModItems.SMOKED_LAVENDER);
+                        entries.add(ModItems.LAVENDER_BREAD);
+                        entries.add(ModItems.LAVENDER_SOAP);
+                        entries.add(ModItems.LAVENDER_OIL);
                     }).build());
 
     public static ItemGroup ARTICHOKE = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "artichoke"),

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "mint:block/lavender_bricks",
+    "side": "mint:block/lavender_bricks",
+    "top": "mint:block/lavender_bricks"
+  }
+}
