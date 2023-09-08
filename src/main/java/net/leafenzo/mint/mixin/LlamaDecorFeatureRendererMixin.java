@@ -55,6 +55,13 @@ public abstract class LlamaDecorFeatureRendererMixin extends FeatureRenderer<Lla
         LLAMA_DECOR.put(ModDyeColor.SHAMROCK, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/shamrock.png"));
         LLAMA_DECOR.put(ModDyeColor.INDIGO, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/indigo.png"));
         LLAMA_DECOR.put(ModDyeColor.BANANA, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/banana.png"));
+        LLAMA_DECOR.put(ModDyeColor.CERULEAN, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/cerulean.png"));
+        LLAMA_DECOR.put(ModDyeColor.ACORN, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/acorn.png"));
+        LLAMA_DECOR.put(ModDyeColor.MAUVE, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/mauve.png"));
+        LLAMA_DECOR.put(ModDyeColor.MAROON, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/maroon.png"));
+        LLAMA_DECOR.put(ModDyeColor.GRAPE, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/grape.png"));
+        LLAMA_DECOR.put(ModDyeColor.NAVY, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/navy.png"));
+        LLAMA_DECOR.put(ModDyeColor.SAP, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/sap.png"));
     }}
 //    @Unique private static Identifier getLlamaDecorByColor(DyeColor color) {
 //        return LLAMA_DECOR.get(color);

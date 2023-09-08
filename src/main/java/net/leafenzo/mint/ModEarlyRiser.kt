@@ -34,6 +34,13 @@ object ModEarlyRiser : Runnable {
         addDyeColorEnum(adder, ModDyeColor.Values.SHAMROCK)
         addDyeColorEnum(adder, ModDyeColor.Values.INDIGO)
         addDyeColorEnum(adder, ModDyeColor.Values.BANANA)
+        addDyeColorEnum(adder, ModDyeColor.Values.CERULEAN)
+        addDyeColorEnum(adder, ModDyeColor.Values.ACORN)
+        addDyeColorEnum(adder, ModDyeColor.Values.MAUVE)
+        addDyeColorEnum(adder, ModDyeColor.Values.MAROON)
+        addDyeColorEnum(adder, ModDyeColor.Values.GRAPE)
+        addDyeColorEnum(adder, ModDyeColor.Values.NAVY)
+        addDyeColorEnum(adder, ModDyeColor.Values.SAP)
         adder.build()
     }
 

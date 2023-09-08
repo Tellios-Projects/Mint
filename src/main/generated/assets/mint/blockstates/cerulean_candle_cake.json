@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "mint:block/cerulean_candle_cake"
+    },
+    "lit=true": {
+      "model": "mint:block/cerulean_candle_cake_lit"
+    }
+  }
+}

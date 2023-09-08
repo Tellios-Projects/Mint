@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "mint:block/mauve_candle_cake"
+    },
+    "lit=true": {
+      "model": "mint:block/mauve_candle_cake_lit"
+    }
+  }
+}

@@ -52,6 +52,13 @@ public abstract class SheepEntityMixin extends AnimalEntity implements Shearable
    @Unique private static final Identifier SHAMROCK_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/shamrock");
    @Unique private static final Identifier INDIGO_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/indigo");
    @Unique private static final Identifier BANANA_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/banana");
+   @Unique private static final Identifier CERULEAN_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/cerulean");
+   @Unique private static final Identifier ACORN_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/acorn");
+   @Unique private static final Identifier MAUVE_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/mauve");
+   @Unique private static final Identifier MAROON_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/maroon");
+   @Unique private static final Identifier GRAPE_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/grape");
+   @Unique private static final Identifier NAVY_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/navy");
+   @Unique private static final Identifier SAP_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/sap");
 
    @Shadow @Final private static Map<DyeColor, ItemConvertible> DROPS;
    @Shadow @Final private static TrackedData <Byte> COLOR;
@@ -116,5 +123,12 @@ public abstract class SheepEntityMixin extends AnimalEntity implements Shearable
       else if (color == ModDyeColor.SHAMROCK) cir.setReturnValue(SHAMROCK_SHEEP_LOOT_TABLE);
       else if (color == ModDyeColor.INDIGO) cir.setReturnValue(INDIGO_SHEEP_LOOT_TABLE);
       else if (color == ModDyeColor.BANANA) cir.setReturnValue(BANANA_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.CERULEAN) cir.setReturnValue(CERULEAN_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.ACORN) cir.setReturnValue(ACORN_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.MAUVE) cir.setReturnValue(MAUVE_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.MAROON) cir.setReturnValue(MAROON_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.GRAPE) cir.setReturnValue(GRAPE_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.NAVY) cir.setReturnValue(NAVY_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.SAP) cir.setReturnValue(SAP_SHEEP_LOOT_TABLE);
    }
 }

@@ -67,6 +67,8 @@ public class ModItemGroups {
 
     //keep in the right places to make a big rainbow ^~^ in conjunction with our other dye mods as well
     public static void modifyVanillaItemGroupEntries() {
+        // Sort by Hue, then Light to Dark
+
         //White
         //Light Gray
         //Gray
@@ -74,10 +76,10 @@ public class ModItemGroups {
         //Brown
          //Acorn
         //Red
-        //Vermilion
-        addItemsOfColorAfterItemsOfAnotherColor(DyeColor.RED, ModDyeColor.VERMILION);
         //Peach
-        addItemsOfColorAfterItemsOfAnotherColor(ModDyeColor.VERMILION, ModDyeColor.PEACH);
+        addItemsOfColorAfterItemsOfAnotherColor(DyeColor.RED, ModDyeColor.PEACH);
+        //Vermilion
+        addItemsOfColorAfterItemsOfAnotherColor(ModDyeColor.PEACH, ModDyeColor.VERMILION);
         //Orange
         //Yellow
         //Banana
@@ -304,5 +306,131 @@ public class ModItemGroups {
                         entries.add(ModBlocks.BANANA_BANNER);
                         entries.add(ModBlocks.BANANA_SHULKER_BOX);
                         entries.add(ModBlocks.BANANA_CANDLE);
+                    }).build());
+
+    public static ItemGroup CERULEAN = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "cerulean"),
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".cerulean"))
+                    .icon(() -> new ItemStack(ModItems.CERULEAN_DYE)).entries((displayContext, entries) -> {
+                        entries.add(ModItems.CERULEAN_DYE);
+                        entries.add(ModBlocks.CERULEAN_WOOL);
+                        entries.add(ModBlocks.CERULEAN_CARPET);
+                        entries.add(ModBlocks.CERULEAN_CONCRETE);
+                        entries.add(ModBlocks.CERULEAN_CONCRETE_POWDER);
+                        entries.add(ModBlocks.CERULEAN_TERRACOTTA);
+                        entries.add(ModBlocks.CERULEAN_GLAZED_TERRACOTTA);
+                        entries.add(ModBlocks.CERULEAN_STAINED_GLASS);
+                        entries.add(ModBlocks.CERULEAN_STAINED_GLASS_PANE);
+                        entries.add(ModBlocks.CERULEAN_BED);
+                        entries.add(ModBlocks.CERULEAN_BANNER);
+                        entries.add(ModBlocks.CERULEAN_SHULKER_BOX);
+                        entries.add(ModBlocks.CERULEAN_CANDLE);
+                    }).build());
+
+    public static ItemGroup ACORN = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "acorn"),
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".acorn"))
+                    .icon(() -> new ItemStack(ModItems.ACORN_DYE)).entries((displayContext, entries) -> {
+                        entries.add(ModItems.ACORN_DYE);
+                        entries.add(ModBlocks.ACORN_WOOL);
+                        entries.add(ModBlocks.ACORN_CARPET);
+                        entries.add(ModBlocks.ACORN_CONCRETE);
+                        entries.add(ModBlocks.ACORN_CONCRETE_POWDER);
+                        entries.add(ModBlocks.ACORN_TERRACOTTA);
+                        entries.add(ModBlocks.ACORN_GLAZED_TERRACOTTA);
+                        entries.add(ModBlocks.ACORN_STAINED_GLASS);
+                        entries.add(ModBlocks.ACORN_STAINED_GLASS_PANE);
+                        entries.add(ModBlocks.ACORN_BED);
+                        entries.add(ModBlocks.ACORN_BANNER);
+                        entries.add(ModBlocks.ACORN_SHULKER_BOX);
+                        entries.add(ModBlocks.ACORN_CANDLE);
+                    }).build());
+
+    public static ItemGroup MAUVE = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "mauve"),
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".mauve"))
+                    .icon(() -> new ItemStack(ModItems.MAUVE_DYE)).entries((displayContext, entries) -> {
+                        entries.add(ModItems.MAUVE_DYE);
+                        entries.add(ModBlocks.MAUVE_WOOL);
+                        entries.add(ModBlocks.MAUVE_CARPET);
+                        entries.add(ModBlocks.MAUVE_CONCRETE);
+                        entries.add(ModBlocks.MAUVE_CONCRETE_POWDER);
+                        entries.add(ModBlocks.MAUVE_TERRACOTTA);
+                        entries.add(ModBlocks.MAUVE_GLAZED_TERRACOTTA);
+                        entries.add(ModBlocks.MAUVE_STAINED_GLASS);
+                        entries.add(ModBlocks.MAUVE_STAINED_GLASS_PANE);
+                        entries.add(ModBlocks.MAUVE_BED);
+                        entries.add(ModBlocks.MAUVE_BANNER);
+                        entries.add(ModBlocks.MAUVE_SHULKER_BOX);
+                        entries.add(ModBlocks.MAUVE_CANDLE);
+                    }).build());
+
+    public static ItemGroup MAROON = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "maroon"),
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".maroon"))
+                    .icon(() -> new ItemStack(ModItems.MAROON_DYE)).entries((displayContext, entries) -> {
+                        entries.add(ModItems.MAROON_DYE);
+                        entries.add(ModBlocks.MAROON_WOOL);
+                        entries.add(ModBlocks.MAROON_CARPET);
+                        entries.add(ModBlocks.MAROON_CONCRETE);
+                        entries.add(ModBlocks.MAROON_CONCRETE_POWDER);
+                        entries.add(ModBlocks.MAROON_TERRACOTTA);
+                        entries.add(ModBlocks.MAROON_GLAZED_TERRACOTTA);
+                        entries.add(ModBlocks.MAROON_STAINED_GLASS);
+                        entries.add(ModBlocks.MAROON_STAINED_GLASS_PANE);
+                        entries.add(ModBlocks.MAROON_BED);
+                        entries.add(ModBlocks.MAROON_BANNER);
+                        entries.add(ModBlocks.MAROON_SHULKER_BOX);
+                        entries.add(ModBlocks.MAROON_CANDLE);
+                    }).build());
+
+    public static ItemGroup GRAPE = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "grape"),
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".grape"))
+                    .icon(() -> new ItemStack(ModItems.GRAPE_DYE)).entries((displayContext, entries) -> {
+                        entries.add(ModItems.GRAPE_DYE);
+                        entries.add(ModBlocks.GRAPE_WOOL);
+                        entries.add(ModBlocks.GRAPE_CARPET);
+                        entries.add(ModBlocks.GRAPE_CONCRETE);
+                        entries.add(ModBlocks.GRAPE_CONCRETE_POWDER);
+                        entries.add(ModBlocks.GRAPE_TERRACOTTA);
+                        entries.add(ModBlocks.GRAPE_GLAZED_TERRACOTTA);
+                        entries.add(ModBlocks.GRAPE_STAINED_GLASS);
+                        entries.add(ModBlocks.GRAPE_STAINED_GLASS_PANE);
+                        entries.add(ModBlocks.GRAPE_BED);
+                        entries.add(ModBlocks.GRAPE_BANNER);
+                        entries.add(ModBlocks.GRAPE_SHULKER_BOX);
+                        entries.add(ModBlocks.GRAPE_CANDLE);
+                    }).build());
+
+    public static ItemGroup NAVY = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "navy"),
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".navy"))
+                    .icon(() -> new ItemStack(ModItems.NAVY_DYE)).entries((displayContext, entries) -> {
+                        entries.add(ModItems.NAVY_DYE);
+                        entries.add(ModBlocks.NAVY_WOOL);
+                        entries.add(ModBlocks.NAVY_CARPET);
+                        entries.add(ModBlocks.NAVY_CONCRETE);
+                        entries.add(ModBlocks.NAVY_CONCRETE_POWDER);
+                        entries.add(ModBlocks.NAVY_TERRACOTTA);
+                        entries.add(ModBlocks.NAVY_GLAZED_TERRACOTTA);
+                        entries.add(ModBlocks.NAVY_STAINED_GLASS);
+                        entries.add(ModBlocks.NAVY_STAINED_GLASS_PANE);
+                        entries.add(ModBlocks.NAVY_BED);
+                        entries.add(ModBlocks.NAVY_BANNER);
+                        entries.add(ModBlocks.NAVY_SHULKER_BOX);
+                        entries.add(ModBlocks.NAVY_CANDLE);
+                    }).build());
+
+    public static ItemGroup SAP = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "sap"),
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".sap"))
+                    .icon(() -> new ItemStack(ModItems.SAP_DYE)).entries((displayContext, entries) -> {
+                        entries.add(ModItems.SAP_DYE);
+                        entries.add(ModBlocks.SAP_WOOL);
+                        entries.add(ModBlocks.SAP_CARPET);
+                        entries.add(ModBlocks.SAP_CONCRETE);
+                        entries.add(ModBlocks.SAP_CONCRETE_POWDER);
+                        entries.add(ModBlocks.SAP_TERRACOTTA);
+                        entries.add(ModBlocks.SAP_GLAZED_TERRACOTTA);
+                        entries.add(ModBlocks.SAP_STAINED_GLASS);
+                        entries.add(ModBlocks.SAP_STAINED_GLASS_PANE);
+                        entries.add(ModBlocks.SAP_BED);
+                        entries.add(ModBlocks.SAP_BANNER);
+                        entries.add(ModBlocks.SAP_SHULKER_BOX);
+                        entries.add(ModBlocks.SAP_CANDLE);
                     }).build());
 }

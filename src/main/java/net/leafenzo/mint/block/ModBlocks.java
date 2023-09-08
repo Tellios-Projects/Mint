@@ -245,6 +245,133 @@ public class ModBlocks {
     //</editor-fold>
     //<editor-fold desc ="BANANA - Special">
     //</editor-fold>
+    //<editor-fold desc ="CERULEAN - Template">
+    public static final Block CERULEAN_WOOL = registerBlock("cerulean_wool", createWoolBlock(ModDyeColor.CERULEAN), ModItemGroups.CERULEAN);
+    public static final Block CERULEAN_CARPET = registerBlock("cerulean_carpet", createDyedCarpetBlock(ModDyeColor.CERULEAN, CERULEAN_WOOL), ModItemGroups.CERULEAN);
+    public static final Block CERULEAN_TERRACOTTA = registerBlock("cerulean_terracotta", createTerracottaBlock(ModDyeColor.CERULEAN), ModItemGroups.CERULEAN);
+    public static final Block CERULEAN_CONCRETE = registerBlock("cerulean_concrete", createConcreteBlock(ModDyeColor.CERULEAN), ModItemGroups.CERULEAN);
+    public static final Block CERULEAN_CONCRETE_POWDER = registerBlock("cerulean_concrete_powder", createConcretePowderBlock(ModDyeColor.CERULEAN, CERULEAN_CONCRETE), ModItemGroups.CERULEAN);
+    public static final Block CERULEAN_GLAZED_TERRACOTTA = registerBlock("cerulean_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.CERULEAN), ModItemGroups.CERULEAN);
+    public static final Block CERULEAN_STAINED_GLASS = registerBlock("cerulean_stained_glass", createStainedGlassBlock(ModDyeColor.CERULEAN), ModItemGroups.CERULEAN);
+    public static final Block CERULEAN_STAINED_GLASS_PANE = registerBlock("cerulean_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.CERULEAN, CERULEAN_STAINED_GLASS), ModItemGroups.CERULEAN);
+    public static final Block CERULEAN_SHULKER_BOX = registerBlockWithoutBlockItem("cerulean_shulker_box", createShulkerBoxBlock(ModDyeColor.CERULEAN));
+    public static final Block CERULEAN_BED = registerBlockWithoutBlockItem("cerulean_bed", createBedBlock(ModDyeColor.CERULEAN));
+    public static final Block CERULEAN_CANDLE = registerBlock("cerulean_candle", createCandleBlock(ModDyeColor.CERULEAN), ModItemGroups.CERULEAN);
+    public static final Block CERULEAN_CANDLE_CAKE = registerBlock("cerulean_candle_cake", createCandleCakeBlock(ModDyeColor.CERULEAN, CERULEAN_CANDLE), ModItemGroups.CERULEAN);
+    public static final Block CERULEAN_BANNER = registerBlockWithoutBlockItem("cerulean_banner", createBannerBlock(ModDyeColor.CERULEAN));
+    public static final Block CERULEAN_WALL_BANNER = registerBlockWithoutBlockItem("cerulean_wall_banner", createWallBannerBlock(ModDyeColor.CERULEAN, (BannerBlock)ModBlocks.CERULEAN_BANNER));
+    //</editor-fold>
+    //<editor-fold desc ="CERULEAN - Special">
+    //</editor-fold>
+    //<editor-fold desc ="ACORN - Template">
+    public static final Block ACORN_WOOL = registerBlock("acorn_wool", createWoolBlock(ModDyeColor.ACORN), ModItemGroups.ACORN);
+    public static final Block ACORN_CARPET = registerBlock("acorn_carpet", createDyedCarpetBlock(ModDyeColor.ACORN, ACORN_WOOL), ModItemGroups.ACORN);
+    public static final Block ACORN_TERRACOTTA = registerBlock("acorn_terracotta", createTerracottaBlock(ModDyeColor.ACORN), ModItemGroups.ACORN);
+    public static final Block ACORN_CONCRETE = registerBlock("acorn_concrete", createConcreteBlock(ModDyeColor.ACORN), ModItemGroups.ACORN);
+    public static final Block ACORN_CONCRETE_POWDER = registerBlock("acorn_concrete_powder", createConcretePowderBlock(ModDyeColor.ACORN, ACORN_CONCRETE), ModItemGroups.ACORN);
+    public static final Block ACORN_GLAZED_TERRACOTTA = registerBlock("acorn_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.ACORN), ModItemGroups.ACORN);
+    public static final Block ACORN_STAINED_GLASS = registerBlock("acorn_stained_glass", createStainedGlassBlock(ModDyeColor.ACORN), ModItemGroups.ACORN);
+    public static final Block ACORN_STAINED_GLASS_PANE = registerBlock("acorn_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.ACORN, ACORN_STAINED_GLASS), ModItemGroups.ACORN);
+    public static final Block ACORN_SHULKER_BOX = registerBlockWithoutBlockItem("acorn_shulker_box", createShulkerBoxBlock(ModDyeColor.ACORN));
+    public static final Block ACORN_BED = registerBlockWithoutBlockItem("acorn_bed", createBedBlock(ModDyeColor.ACORN));
+    public static final Block ACORN_CANDLE = registerBlock("acorn_candle", createCandleBlock(ModDyeColor.ACORN), ModItemGroups.ACORN);
+    public static final Block ACORN_CANDLE_CAKE = registerBlock("acorn_candle_cake", createCandleCakeBlock(ModDyeColor.ACORN, ACORN_CANDLE), ModItemGroups.ACORN);
+    public static final Block ACORN_BANNER = registerBlockWithoutBlockItem("acorn_banner", createBannerBlock(ModDyeColor.ACORN));
+    public static final Block ACORN_WALL_BANNER = registerBlockWithoutBlockItem("acorn_wall_banner", createWallBannerBlock(ModDyeColor.ACORN, (BannerBlock)ModBlocks.ACORN_BANNER));
+    //</editor-fold>
+    //<editor-fold desc ="ACORN - Special">
+    //</editor-fold>
+    //<editor-fold desc ="MAUVE - Template">
+    public static final Block MAUVE_WOOL = registerBlock("mauve_wool", createWoolBlock(ModDyeColor.MAUVE), ModItemGroups.MAUVE);
+    public static final Block MAUVE_CARPET = registerBlock("mauve_carpet", createDyedCarpetBlock(ModDyeColor.MAUVE, MAUVE_WOOL), ModItemGroups.MAUVE);
+    public static final Block MAUVE_TERRACOTTA = registerBlock("mauve_terracotta", createTerracottaBlock(ModDyeColor.MAUVE), ModItemGroups.MAUVE);
+    public static final Block MAUVE_CONCRETE = registerBlock("mauve_concrete", createConcreteBlock(ModDyeColor.MAUVE), ModItemGroups.MAUVE);
+    public static final Block MAUVE_CONCRETE_POWDER = registerBlock("mauve_concrete_powder", createConcretePowderBlock(ModDyeColor.MAUVE, MAUVE_CONCRETE), ModItemGroups.MAUVE);
+    public static final Block MAUVE_GLAZED_TERRACOTTA = registerBlock("mauve_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.MAUVE), ModItemGroups.MAUVE);
+    public static final Block MAUVE_STAINED_GLASS = registerBlock("mauve_stained_glass", createStainedGlassBlock(ModDyeColor.MAUVE), ModItemGroups.MAUVE);
+    public static final Block MAUVE_STAINED_GLASS_PANE = registerBlock("mauve_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.MAUVE, MAUVE_STAINED_GLASS), ModItemGroups.MAUVE);
+    public static final Block MAUVE_SHULKER_BOX = registerBlockWithoutBlockItem("mauve_shulker_box", createShulkerBoxBlock(ModDyeColor.MAUVE));
+    public static final Block MAUVE_BED = registerBlockWithoutBlockItem("mauve_bed", createBedBlock(ModDyeColor.MAUVE));
+    public static final Block MAUVE_CANDLE = registerBlock("mauve_candle", createCandleBlock(ModDyeColor.MAUVE), ModItemGroups.MAUVE);
+    public static final Block MAUVE_CANDLE_CAKE = registerBlock("mauve_candle_cake", createCandleCakeBlock(ModDyeColor.MAUVE, MAUVE_CANDLE), ModItemGroups.MAUVE);
+    public static final Block MAUVE_BANNER = registerBlockWithoutBlockItem("mauve_banner", createBannerBlock(ModDyeColor.MAUVE));
+    public static final Block MAUVE_WALL_BANNER = registerBlockWithoutBlockItem("mauve_wall_banner", createWallBannerBlock(ModDyeColor.MAUVE, (BannerBlock)ModBlocks.MAUVE_BANNER));
+    //</editor-fold>
+    //<editor-fold desc ="MAUVE - Special">
+    //</editor-fold>
+
+    //<editor-fold desc ="MAROON - Template">
+    public static final Block MAROON_WOOL = registerBlock("maroon_wool", createWoolBlock(ModDyeColor.MAROON), ModItemGroups.MAROON);
+    public static final Block MAROON_CARPET = registerBlock("maroon_carpet", createDyedCarpetBlock(ModDyeColor.MAROON, MAROON_WOOL), ModItemGroups.MAROON);
+    public static final Block MAROON_TERRACOTTA = registerBlock("maroon_terracotta", createTerracottaBlock(ModDyeColor.MAROON), ModItemGroups.MAROON);
+    public static final Block MAROON_CONCRETE = registerBlock("maroon_concrete", createConcreteBlock(ModDyeColor.MAROON), ModItemGroups.MAROON);
+    public static final Block MAROON_CONCRETE_POWDER = registerBlock("maroon_concrete_powder", createConcretePowderBlock(ModDyeColor.MAROON, MAROON_CONCRETE), ModItemGroups.MAROON);
+    public static final Block MAROON_GLAZED_TERRACOTTA = registerBlock("maroon_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.MAROON), ModItemGroups.MAROON);
+    public static final Block MAROON_STAINED_GLASS = registerBlock("maroon_stained_glass", createStainedGlassBlock(ModDyeColor.MAROON), ModItemGroups.MAROON);
+    public static final Block MAROON_STAINED_GLASS_PANE = registerBlock("maroon_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.MAROON, MAROON_STAINED_GLASS), ModItemGroups.MAROON);
+    public static final Block MAROON_SHULKER_BOX = registerBlockWithoutBlockItem("maroon_shulker_box", createShulkerBoxBlock(ModDyeColor.MAROON));
+    public static final Block MAROON_BED = registerBlockWithoutBlockItem("maroon_bed", createBedBlock(ModDyeColor.MAROON));
+    public static final Block MAROON_CANDLE = registerBlock("maroon_candle", createCandleBlock(ModDyeColor.MAROON), ModItemGroups.MAROON);
+    public static final Block MAROON_CANDLE_CAKE = registerBlock("maroon_candle_cake", createCandleCakeBlock(ModDyeColor.MAROON, MAROON_CANDLE), ModItemGroups.MAROON);
+    public static final Block MAROON_BANNER = registerBlockWithoutBlockItem("maroon_banner", createBannerBlock(ModDyeColor.MAROON));
+    public static final Block MAROON_WALL_BANNER = registerBlockWithoutBlockItem("maroon_wall_banner", createWallBannerBlock(ModDyeColor.MAROON, (BannerBlock)ModBlocks.MAROON_BANNER));
+    //</editor-fold>
+    //<editor-fold desc ="MAROON - Special">
+    //</editor-fold>
+    //<editor-fold desc ="GRAPE - Template">
+    public static final Block GRAPE_WOOL = registerBlock("grape_wool", createWoolBlock(ModDyeColor.GRAPE), ModItemGroups.GRAPE);
+    public static final Block GRAPE_CARPET = registerBlock("grape_carpet", createDyedCarpetBlock(ModDyeColor.GRAPE, GRAPE_WOOL), ModItemGroups.GRAPE);
+    public static final Block GRAPE_TERRACOTTA = registerBlock("grape_terracotta", createTerracottaBlock(ModDyeColor.GRAPE), ModItemGroups.GRAPE);
+    public static final Block GRAPE_CONCRETE = registerBlock("grape_concrete", createConcreteBlock(ModDyeColor.GRAPE), ModItemGroups.GRAPE);
+    public static final Block GRAPE_CONCRETE_POWDER = registerBlock("grape_concrete_powder", createConcretePowderBlock(ModDyeColor.GRAPE, GRAPE_CONCRETE), ModItemGroups.GRAPE);
+    public static final Block GRAPE_GLAZED_TERRACOTTA = registerBlock("grape_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.GRAPE), ModItemGroups.GRAPE);
+    public static final Block GRAPE_STAINED_GLASS = registerBlock("grape_stained_glass", createStainedGlassBlock(ModDyeColor.GRAPE), ModItemGroups.GRAPE);
+    public static final Block GRAPE_STAINED_GLASS_PANE = registerBlock("grape_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.GRAPE, GRAPE_STAINED_GLASS), ModItemGroups.GRAPE);
+    public static final Block GRAPE_SHULKER_BOX = registerBlockWithoutBlockItem("grape_shulker_box", createShulkerBoxBlock(ModDyeColor.GRAPE));
+    public static final Block GRAPE_BED = registerBlockWithoutBlockItem("grape_bed", createBedBlock(ModDyeColor.GRAPE));
+    public static final Block GRAPE_CANDLE = registerBlock("grape_candle", createCandleBlock(ModDyeColor.GRAPE), ModItemGroups.GRAPE);
+    public static final Block GRAPE_CANDLE_CAKE = registerBlock("grape_candle_cake", createCandleCakeBlock(ModDyeColor.GRAPE, GRAPE_CANDLE), ModItemGroups.GRAPE);
+    public static final Block GRAPE_BANNER = registerBlockWithoutBlockItem("grape_banner", createBannerBlock(ModDyeColor.GRAPE));
+    public static final Block GRAPE_WALL_BANNER = registerBlockWithoutBlockItem("grape_wall_banner", createWallBannerBlock(ModDyeColor.GRAPE, (BannerBlock)ModBlocks.GRAPE_BANNER));
+    //</editor-fold>
+    //<editor-fold desc ="GRAPE - Special">
+    //</editor-fold>
+    //<editor-fold desc ="NAVY - Template">
+    public static final Block NAVY_WOOL = registerBlock("navy_wool", createWoolBlock(ModDyeColor.NAVY), ModItemGroups.NAVY);
+    public static final Block NAVY_CARPET = registerBlock("navy_carpet", createDyedCarpetBlock(ModDyeColor.NAVY, NAVY_WOOL), ModItemGroups.NAVY);
+    public static final Block NAVY_TERRACOTTA = registerBlock("navy_terracotta", createTerracottaBlock(ModDyeColor.NAVY), ModItemGroups.NAVY);
+    public static final Block NAVY_CONCRETE = registerBlock("navy_concrete", createConcreteBlock(ModDyeColor.NAVY), ModItemGroups.NAVY);
+    public static final Block NAVY_CONCRETE_POWDER = registerBlock("navy_concrete_powder", createConcretePowderBlock(ModDyeColor.NAVY, NAVY_CONCRETE), ModItemGroups.NAVY);
+    public static final Block NAVY_GLAZED_TERRACOTTA = registerBlock("navy_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.NAVY), ModItemGroups.NAVY);
+    public static final Block NAVY_STAINED_GLASS = registerBlock("navy_stained_glass", createStainedGlassBlock(ModDyeColor.NAVY), ModItemGroups.NAVY);
+    public static final Block NAVY_STAINED_GLASS_PANE = registerBlock("navy_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.NAVY, NAVY_STAINED_GLASS), ModItemGroups.NAVY);
+    public static final Block NAVY_SHULKER_BOX = registerBlockWithoutBlockItem("navy_shulker_box", createShulkerBoxBlock(ModDyeColor.NAVY));
+    public static final Block NAVY_BED = registerBlockWithoutBlockItem("navy_bed", createBedBlock(ModDyeColor.NAVY));
+    public static final Block NAVY_CANDLE = registerBlock("navy_candle", createCandleBlock(ModDyeColor.NAVY), ModItemGroups.NAVY);
+    public static final Block NAVY_CANDLE_CAKE = registerBlock("navy_candle_cake", createCandleCakeBlock(ModDyeColor.NAVY, NAVY_CANDLE), ModItemGroups.NAVY);
+    public static final Block NAVY_BANNER = registerBlockWithoutBlockItem("navy_banner", createBannerBlock(ModDyeColor.NAVY));
+    public static final Block NAVY_WALL_BANNER = registerBlockWithoutBlockItem("navy_wall_banner", createWallBannerBlock(ModDyeColor.NAVY, (BannerBlock)ModBlocks.NAVY_BANNER));
+    //</editor-fold>
+    //<editor-fold desc ="NAVY - Special">
+    //</editor-fold>
+    //<editor-fold desc ="SAP - Template">
+    public static final Block SAP_WOOL = registerBlock("sap_wool", createWoolBlock(ModDyeColor.SAP), ModItemGroups.SAP);
+    public static final Block SAP_CARPET = registerBlock("sap_carpet", createDyedCarpetBlock(ModDyeColor.SAP, SAP_WOOL), ModItemGroups.SAP);
+    public static final Block SAP_TERRACOTTA = registerBlock("sap_terracotta", createTerracottaBlock(ModDyeColor.SAP), ModItemGroups.SAP);
+    public static final Block SAP_CONCRETE = registerBlock("sap_concrete", createConcreteBlock(ModDyeColor.SAP), ModItemGroups.SAP);
+    public static final Block SAP_CONCRETE_POWDER = registerBlock("sap_concrete_powder", createConcretePowderBlock(ModDyeColor.SAP, SAP_CONCRETE), ModItemGroups.SAP);
+    public static final Block SAP_GLAZED_TERRACOTTA = registerBlock("sap_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.SAP), ModItemGroups.SAP);
+    public static final Block SAP_STAINED_GLASS = registerBlock("sap_stained_glass", createStainedGlassBlock(ModDyeColor.SAP), ModItemGroups.SAP);
+    public static final Block SAP_STAINED_GLASS_PANE = registerBlock("sap_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.SAP, SAP_STAINED_GLASS), ModItemGroups.SAP);
+    public static final Block SAP_SHULKER_BOX = registerBlockWithoutBlockItem("sap_shulker_box", createShulkerBoxBlock(ModDyeColor.SAP));
+    public static final Block SAP_BED = registerBlockWithoutBlockItem("sap_bed", createBedBlock(ModDyeColor.SAP));
+    public static final Block SAP_CANDLE = registerBlock("sap_candle", createCandleBlock(ModDyeColor.SAP), ModItemGroups.SAP);
+    public static final Block SAP_CANDLE_CAKE = registerBlock("sap_candle_cake", createCandleCakeBlock(ModDyeColor.SAP, SAP_CANDLE), ModItemGroups.SAP);
+    public static final Block SAP_BANNER = registerBlockWithoutBlockItem("sap_banner", createBannerBlock(ModDyeColor.SAP));
+    public static final Block SAP_WALL_BANNER = registerBlockWithoutBlockItem("sap_wall_banner", createWallBannerBlock(ModDyeColor.SAP, (BannerBlock)ModBlocks.SAP_BANNER));
+    //</editor-fold>
+    //<editor-fold desc ="SAP - Special">
+    //</editor-fold>
 
     //<editor-fold desc ="Registration">
     /**

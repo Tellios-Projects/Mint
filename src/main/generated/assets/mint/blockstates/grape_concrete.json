@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "mint:block/grape_concrete"
+    }
+  }
+}

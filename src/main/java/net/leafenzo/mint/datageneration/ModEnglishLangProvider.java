@@ -29,21 +29,6 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
     public ModEnglishLangProvider(FabricDataOutput dataGenerator) {
         super(dataGenerator, "en_us");
     }
-
-    private void generatePotionTranslation(TranslationBuilder translationBuilder,  String subKey, String effectName) {
-        String potionKey = "item.minecraft.potion.effect." + subKey;
-        generateTranslation(translationBuilder, potionKey, "Potion of " + effectName);
-
-        String splashPotionKey = "item.minecraft.splash_potion.effect." + subKey;
-        generateTranslation(translationBuilder, splashPotionKey, "Splash Potion of " + effectName);
-
-        String lingeringPotionKey = "item.minecraft.lingering_potion.effect." + subKey;
-        generateTranslation(translationBuilder, lingeringPotionKey, "Lingering Potion of " + effectName);
-
-        String arrowKey = "item.minecraft.tipped_arrow.effect." + subKey;
-        generateTranslation(translationBuilder, arrowKey, "Arrow of " + effectName);
-    }
-
     private void generateTranslation(TranslationBuilder translationBuilder, String key, String translation) {
         if(usedTranslationKeys.contains(key)) {
             //("Duplicate translation key " + key + "ignored"); //TODO, figure out how the heck do we print to debug from datagen?
@@ -58,7 +43,19 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
     private void generateTranslation(TranslationBuilder translationBuilder, Item item, String translation) {
         generateTranslation(translationBuilder, item.getTranslationKey(), translation);
     }
+    private void generatePotionTranslation(TranslationBuilder translationBuilder,  String subKey, String effectName) {
+        String potionKey = "item.minecraft.potion.effect." + subKey;
+        generateTranslation(translationBuilder, potionKey, "Potion of " + effectName);
 
+        String splashPotionKey = "item.minecraft.splash_potion.effect." + subKey;
+        generateTranslation(translationBuilder, splashPotionKey, "Splash Potion of " + effectName);
+
+        String lingeringPotionKey = "item.minecraft.lingering_potion.effect." + subKey;
+        generateTranslation(translationBuilder, lingeringPotionKey, "Lingering Potion of " + effectName);
+
+        String arrowKey = "item.minecraft.tipped_arrow.effect." + subKey;
+        generateTranslation(translationBuilder, arrowKey, "Arrow of " + effectName);
+    }
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
 

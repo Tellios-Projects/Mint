@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "mint:cerulean_terracotta"
+  },
+  "result": "mint:cerulean_glazed_terracotta"
+}
