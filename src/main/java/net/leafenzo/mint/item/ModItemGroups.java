@@ -37,23 +37,23 @@ public class ModItemGroups {
         return new RuntimeException(errorMessage);
     }
 
-    public static void addItemsOfColorAfterItemsOfAnotherColor(DyeColor colorBefore, DyeColor colorAfter) {
-        @NotNull Block[] coloredBlocksBefore = ModUtil.ColoredBlocksOfColor(colorBefore);
-        @NotNull Block[] coloredBlocksAfter = ModUtil.ColoredBlocksOfColor(colorAfter);
+    public static void addColoredItemsAfter(DyeColor reference, DyeColor toAdd) {
+        @NotNull Block[] coloredBlocksReference = ModUtil.ColoredBlocksOfColor(reference);
+        @NotNull Block[] coloredBlocksToAdd = ModUtil.ColoredBlocksOfColor(toAdd);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS).register(content -> {
-            if(coloredBlocksBefore.length != coloredBlocksAfter.length) {
-                throw ColoredBlocksNotEqualError(colorBefore, colorAfter, coloredBlocksBefore, coloredBlocksAfter);
+            if(coloredBlocksReference.length != coloredBlocksToAdd .length) {
+                throw ColoredBlocksNotEqualError(reference, toAdd, coloredBlocksReference, coloredBlocksToAdd );
             }
-            for (int i = 0; i < coloredBlocksBefore.length; i++) {
-                content.addAfter(coloredBlocksBefore[i].asItem(), coloredBlocksAfter[i].asItem());
+            for (int i = 0; i < coloredBlocksReference.length; i++) {
+                content.addAfter(coloredBlocksReference[i].asItem(), coloredBlocksToAdd [i].asItem());
             }
         });
 
-        @NotNull Block[] functionalBlocksBefore = ModUtil.FunctionalBlocksOfColor(colorBefore);
-        @NotNull Block[] functionalBlocksAfter = ModUtil.FunctionalBlocksOfColor(colorAfter);
+        @NotNull Block[] functionalBlocksBefore = ModUtil.FunctionalBlocksOfColor(reference);
+        @NotNull Block[] functionalBlocksAfter = ModUtil.FunctionalBlocksOfColor(toAdd);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(content -> {
             if(functionalBlocksBefore.length != functionalBlocksAfter.length) {
-                throw FunctionalBlocksNotEqualError(colorBefore, colorAfter, coloredBlocksBefore, coloredBlocksAfter);
+                throw FunctionalBlocksNotEqualError(reference, toAdd, coloredBlocksReference, coloredBlocksToAdd );
             }
             for (int i = 0; i < functionalBlocksBefore.length; i++) {
                 content.addAfter(functionalBlocksBefore[i].asItem(), functionalBlocksAfter[i].asItem());
@@ -61,49 +61,94 @@ public class ModItemGroups {
         });
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(content -> {
-               content.addAfter(DyeItem.byColor(colorBefore), DyeItem.byColor(colorAfter));
+               content.addAfter(DyeItem.byColor(reference), DyeItem.byColor(toAdd));
+        });
+    }
+    public static void addColoredItemsBefore(DyeColor reference, DyeColor toAdd) {
+        @NotNull Block[] coloredBlocksReference = ModUtil.ColoredBlocksOfColor(reference);
+        @NotNull Block[] coloredBlocksToAdd = ModUtil.ColoredBlocksOfColor(toAdd);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS).register(content -> {
+            if(coloredBlocksReference.length != coloredBlocksToAdd.length) {
+                throw ColoredBlocksNotEqualError(reference, toAdd, coloredBlocksReference, coloredBlocksToAdd);
+            }
+            for (int i = 0; i < coloredBlocksReference.length; i++) {
+                content.addBefore(coloredBlocksReference[i].asItem(), coloredBlocksToAdd[i].asItem());
+            }
+        });
+
+        @NotNull Block[] functionalBlocksBefore = ModUtil.FunctionalBlocksOfColor(reference);
+        @NotNull Block[] functionalBlocksAfter = ModUtil.FunctionalBlocksOfColor(toAdd);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(content -> {
+            if(functionalBlocksBefore.length != functionalBlocksAfter.length) {
+                throw FunctionalBlocksNotEqualError(reference, toAdd, coloredBlocksReference, coloredBlocksToAdd);
+            }
+            for (int i = 0; i < functionalBlocksBefore.length; i++) {
+                content.addBefore(functionalBlocksBefore[i].asItem(), functionalBlocksAfter[i].asItem());
+            }
+        });
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(content -> {
+            content.addBefore(DyeItem.byColor(reference), DyeItem.byColor(toAdd));
         });
     }
 
     //keep in the right places to make a big rainbow ^~^ in conjunction with our other dye mods as well
     public static void modifyVanillaItemGroupEntries() {
         // Sort by Hue, then Light to Dark
+        //TODO - make sure they only ever are set to come before or after vanilla dyes
 
         //White
         //Light Gray
         //Gray
+
         //Black
+        addColoredItemsAfter(DyeColor.BLACK, ModDyeColor.ACORN);
+
+
         //Brown
-         //Acorn
+        addColoredItemsAfter(DyeColor.BROWN, ModDyeColor.MAROON);
+
+
         //Red
-        //Peach
-        addItemsOfColorAfterItemsOfAnotherColor(DyeColor.RED, ModDyeColor.PEACH);
-        //Vermilion
-        addItemsOfColorAfterItemsOfAnotherColor(ModDyeColor.PEACH, ModDyeColor.VERMILION);
+        addColoredItemsAfter(DyeColor.RED, ModDyeColor.PEACH);
+
+        addColoredItemsBefore(DyeColor.ORANGE, ModDyeColor.VERMILION);
         //Orange
+
+
+
         //Yellow
-        //Banana
-        addItemsOfColorAfterItemsOfAnotherColor(DyeColor.YELLOW, ModDyeColor.BANANA);
-        //Artichoke
-        addItemsOfColorAfterItemsOfAnotherColor(ModDyeColor.BANANA, ModDyeColor.ARTICHOKE);
+        addColoredItemsAfter(DyeColor.YELLOW, ModDyeColor.BANANA);
+
+        addColoredItemsBefore(DyeColor.LIME, ModDyeColor.ARTICHOKE);
         //Lime
+
+        addColoredItemsBefore(DyeColor.GREEN, ModDyeColor.SAP);
         //Green
-        //Sap
-        //Shamrock
-         addItemsOfColorAfterItemsOfAnotherColor(DyeColor.GREEN, ModDyeColor.SHAMROCK); //TODO addItemsOfColorAfterItemsOfAnotherColor(ModDyeColor.SAP, ModDyeColor.SHAMROCK);
-        //Mint
-        addItemsOfColorAfterItemsOfAnotherColor(ModDyeColor.SHAMROCK, ModDyeColor.MINT);
-        //Light Blue
+        addColoredItemsAfter(DyeColor.GREEN, ModDyeColor.SHAMROCK);
+
+        addColoredItemsBefore(DyeColor.CYAN, ModDyeColor.MINT);
         //Cyan
+
+
+        addColoredItemsBefore(DyeColor.LIGHT_BLUE, ModDyeColor.CERULEAN);
+        //Light Blue
+
+
+        addColoredItemsBefore(DyeColor.BLUE, ModDyeColor.NAVY);
         //Blue
-        //Periwinkle
-        addItemsOfColorAfterItemsOfAnotherColor(DyeColor.BLUE, ModDyeColor.PERIWINKLE);
-        //Indigo
-        addItemsOfColorAfterItemsOfAnotherColor(ModDyeColor.PERIWINKLE, ModDyeColor.INDIGO);
+        addColoredItemsAfter(DyeColor.BLUE, ModDyeColor.PERIWINKLE);
+
+        addColoredItemsBefore(DyeColor.PURPLE, ModDyeColor.GRAPE);
         //Purple
+        addColoredItemsAfter(DyeColor.PURPLE, ModDyeColor.INDIGO);
+
+
         //Magenta
-        //Fuchsia
-        addItemsOfColorAfterItemsOfAnotherColor(DyeColor.MAGENTA, ModDyeColor.FUCHSIA);
+        addColoredItemsAfter(DyeColor.MAGENTA, ModDyeColor.MAUVE);
+
+        addColoredItemsBefore(DyeColor.PINK, ModDyeColor.FUCHSIA);
+        //Pink
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(content -> {
             content.addAfter(Items.COOKIE, ModItems.MINT_COOKIE);
