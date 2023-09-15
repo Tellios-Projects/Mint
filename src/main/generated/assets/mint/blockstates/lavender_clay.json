@@ -1,21 +1,7 @@
 {
   "variants": {
-    "": [
-      {
-        "model": "mint:block/lavender_clay"
-      },
-      {
-        "model": "mint:block/lavender_clay",
-        "y": 90
-      },
-      {
-        "model": "mint:block/lavender_clay",
-        "y": 180
-      },
-      {
-        "model": "mint:block/lavender_clay",
-        "y": 270
-      }
-    ]
+    "": {
+      "model": "mint:block/lavender_clay"
+    }
   }
 }

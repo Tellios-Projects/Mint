@@ -280,6 +280,13 @@ public class ModItemGroups {
                         entries.add(ModBlocks.ARTICHOKE_BANNER);
                         entries.add(ModBlocks.ARTICHOKE_SHULKER_BOX);
                         entries.add(ModBlocks.ARTICHOKE_CANDLE);
+
+                        entries.add(ModBlocks.WAXCAP_MUSHROOM);
+                        entries.add(ModBlocks.WAXCAP_WAX);
+                        entries.add(ModBlocks.WAXCAP_WAX_BLOCK);
+                        entries.add(ModBlocks.WAXCAP_STEM_BLOCK);
+                        entries.add(ModBlocks.WAXCAP_CAP_BLOCK);
+                        entries.add(ModBlocks.THISTLE_FLOWER);
                     }).build());
 
     public static ItemGroup FUCHSIA = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "fuchsia"),

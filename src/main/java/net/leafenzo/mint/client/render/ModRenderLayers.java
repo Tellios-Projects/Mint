@@ -13,11 +13,17 @@ public class ModRenderLayers {
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
                 ModBlocks.MINT_CROP,
+
                 ModBlocks.PERIWINKLE_PETALS,
-                ModBlocks.LAVENDER_OIL_LANTERN
+                ModBlocks.LAVENDER_OIL_LANTERN,
+
+                ModBlocks.WAXCAP_WAX
         );
 
         for(Block block : ModBlocks.SMALL_FLOWERS) {
+            BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutoutMipped());
+        }
+        for(Block block : ModBlocks.MUSHROOM_PLANTS) {
             BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutoutMipped());
         }
         for(Block block : ModBlocks.FLOWER_POTS) {

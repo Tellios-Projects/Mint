@@ -16,8 +16,6 @@ public class ModTags {
 //        public static final TagKey<Blocks>  = createTa
         public static final TagKey<Block> GLASS = getOrCreateCommonTag("glass");
         public static final TagKey<Block> GLASS_BLOCKS = getOrCreateCommonTag("glass_blocks");  //common tags just gotta be silly ig
-
-
         public static TagKey<Block> getOrCreateTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, new Identifier(Super.MOD_ID, name));
         }
@@ -28,6 +26,7 @@ public class ModTags {
     public static class Items {
         public static final TagKey<Item> DYES = getOrCreateCommonTag("dyes");
         public static final TagKey<Item> GOLD_INGOTS = getOrCreateCommonTag("gold_ingots");
+        public static final TagKey<Item> MUSHROOMS = getOrCreateCommonTag("mushrooms");
         public static TagKey<Item> getOrCreateTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(Super.MOD_ID, name));
         }

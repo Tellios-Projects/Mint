@@ -1,5 +1,6 @@
 package net.leafenzo.mint.datageneration;
 
+import com.ibm.icu.text.Normalizer2;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.leafenzo.mint.block.MintCropBlock;
@@ -8,6 +9,7 @@ import net.leafenzo.mint.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
+import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
@@ -37,11 +39,18 @@ public class ModModelProvider extends FabricModelProvider {
 //        blockStateModelGenerator.blockStateCollector.accept(Models.TEMPLATE_BED.upload(ModelIds.getItemModelId(bed.asItem()), TextureMap.particle(particleSource), blockStateModelGenerator.modelCollector));
 //    }
 
+    public final void registerFlowerPot(BlockStateModelGenerator blockStateModelGenerator, Block plantBlock, Block flowerPotBlock, BlockStateModelGenerator.TintType tintType) {
+        TextureMap textureMap = TextureMap.plant(plantBlock);
+        Identifier identifier = tintType.getFlowerPotCrossModel().upload(flowerPotBlock, textureMap, blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(flowerPotBlock, identifier));
+    }
+
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         // MINT - Special
         blockStateModelGenerator.registerCrop(ModBlocks.MINT_CROP, MintCropBlock.AGE, IntStream.rangeClosed(0, MintCropBlock.MAX_AGE).toArray());
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_SPRIG_BLOCK);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.WILD_MINT, ModBlocks.POTTED_WILD_MINT, BlockStateModelGenerator.TintType.NOT_TINTED);
 
         BlockStateModelGenerator.BlockTexturePool mintBricksTexturePool =
                 blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_BRICKS);
@@ -51,6 +60,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         // PEACH - Special
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.PEACH_LOG);
+
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.HYPERICUM, ModBlocks.POTTED_HYPERICUM, BlockStateModelGenerator.TintType.NOT_TINTED);
         //coral anemone
 
         // PERIWINKLE - Special
@@ -66,25 +77,36 @@ public class ModModelProvider extends FabricModelProvider {
         mossyLavenderBricksTexturePool.stairs(ModBlocks.MOSSY_LAVENDER_BRICK_STAIRS);
         mossyLavenderBricksTexturePool.wall(ModBlocks.MOSSY_LAVENDER_BRICK_WALL);
 
-        blockStateModelGenerator.registerRandomHorizontalRotations(TexturedModel.CUBE_ALL, ModBlocks.LAVENDER_CLAY);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.LAVENDER_CLAY);
         blockStateModelGenerator.registerAxisRotated(ModBlocks.LAVENDER_BUSHEL, TexturedModel.CUBE_BOTTOM_TOP);
         blockStateModelGenerator.registerFlowerbed(ModBlocks.PERIWINKLE_PETALS);
         blockStateModelGenerator.registerLantern(ModBlocks.LAVENDER_OIL_LANTERN);
 
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.HIDCOTE_LAVENDER, ModBlocks.POTTED_HIDCOTE_LAVENDER, BlockStateModelGenerator.TintType.NOT_TINTED);
+
+        // ARTICHOKE - Special
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.WAXCAP_MUSHROOM, ModBlocks.POTTED_WAXCAP_MUSHROOM, BlockStateModelGenerator.TintType.NOT_TINTED);
+
+        blockStateModelGenerator.registerItemModel(ModBlocks.WAXCAP_WAX.asItem()); // So it uses the right item texture
+        blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.WAXCAP_WAX, BlockStateModelGenerator.TintType.NOT_TINTED);
+
+        blockStateModelGenerator.registerItemModel(ModBlocks.THISTLE_FLOWER.asItem()); // for some reason this needs to be split up like this to make it's blockItem grab from an item texture without duplicate model errors
+        blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.THISTLE_FLOWER, BlockStateModelGenerator.TintType.NOT_TINTED);
+        registerFlowerPot(blockStateModelGenerator, ModBlocks.THISTLE_FLOWER, ModBlocks.POTTED_THISTLE_FLOWER, BlockStateModelGenerator.TintType.NOT_TINTED);
+
+        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.WAXCAP_WAX_BLOCK);
+        blockStateModelGenerator.registerAxisRotated(ModBlocks.WAXCAP_STEM_BLOCK, TexturedModel.CUBE_ALL);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.WAXCAP_CAP_BLOCK);
+
         //Main
 //  SLABS & STAIRS & WALLS
+        //not standardized yet
 
-
-
-//  FLOWER BLOCKS    //  FLOWER_POT_BLOCKS
-        for(Block block : ModBlocks.SMALL_FLOWERS) {
-            if(ModBlocks.FLOWER_POT_FROM_FLOWER.get(block) != null) {
-                blockStateModelGenerator.registerFlowerPotPlant(block, ModBlocks.FLOWER_POT_FROM_FLOWER.get(block), BlockStateModelGenerator.TintType.NOT_TINTED);
-            }
-            else {
-                blockStateModelGenerator.registerTintableCross(block, BlockStateModelGenerator.TintType.NOT_TINTED);
-            }
-        }
+//  FLOWER_POT_BLOCKS & FLOWERS
+//        for (Block block : ModBlocks.FLOWER_POT_FROM_BLOCK.keySet()) {
+//            registerFlowerPotPlant(blockStateModelGenerator, block, ModBlocks.FLOWER_POT_FROM_BLOCK.get(block), BlockStateModelGenerator.TintType.NOT_TINTED);
+////            blockStateModelGenerator.registerFlowerPotPlant(block, ModBlocks.FLOWER_POT_FROM_BLOCK.get(block), BlockStateModelGenerator.TintType.NOT_TINTED);
+//        }
 
 //  WOOL_BLOCKS     //  CARPET_BLOCKS
         for(Block wool : ModBlocks.WOOL_BLOCKS) {
@@ -153,7 +175,6 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        //itemModelGenerator.register(ModItems.MINT_SPRIG, Models.GENERATED); // this is a duplicate... somehow???????
         itemModelGenerator.register(ModItems.MINT_COOKIE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MINT_TEA, Models.GENERATED);
 
@@ -173,6 +194,11 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.LAVENDER_BREAD, Models.GENERATED);
         itemModelGenerator.register(ModItems.LAVENDER_SOAP, Models.GENERATED);
         itemModelGenerator.register(ModItems.LAVENDER_OIL, Models.GENERATED);
+
+        //itemModelGenerator.register(ModItems.THISTLE_FLOWER, Models.GENERATED);
+
+//        itemModelGenerator.register(ModBlocks.THISTLE_FLOWER.asItem(), Models.GENERATED);
+//        itemModelGenerator.register(ModBlocks.WAXCAP_WAX.asItem(), Models.GENERATED);
 
 //  DYES
         for(Item item : ModItems.DYE_ITEMS) {

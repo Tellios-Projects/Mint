@@ -117,6 +117,8 @@ public class ModItems {
 
     //<editor-fold desc ="ARTICHOKE - Special">
 
+    //TODO ADDME
+
     //</editor-fold>
     //<editor-fold desc ="Templates">
         public static final Item MINT_DYE = registerItem("mint_dye", createDyeItem(ModDyeColor.MINT));

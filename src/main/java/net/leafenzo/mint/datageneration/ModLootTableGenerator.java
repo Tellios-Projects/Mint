@@ -42,6 +42,9 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         //  PEACH - Special
         // TODO this stuff
 
+        this.addDrop(ModBlocks.HYPERICUM);
+        this.addPottedPlantDrops(ModBlocks.POTTED_HYPERICUM);
+
 
         //  PERIWINKLE - Special
         this.addDrop(ModBlocks.LAVENDER_BRICKS);
@@ -56,10 +59,17 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(ModBlocks.LAVENDER_BUSHEL);
         this.addDrop(ModBlocks.PERIWINKLE_PETALS, this.flowerbedDrops(ModBlocks.PERIWINKLE_PETALS));
         this.addDrop(ModBlocks.LAVENDER_OIL_LANTERN, this::drops);
+        this.addDrop(ModBlocks.HIDCOTE_LAVENDER);
 
         //  ARTICHOKE - Special
+        this.addDrop(ModBlocks.WAXCAP_MUSHROOM);
 
         //  Main
+// POTTED_PLANTS
+        for(Block block : ModBlocks.FLOWER_POT_FROM_BLOCK.keySet()) {
+            this.addPottedPlantDrops(ModBlocks.FLOWER_POT_FROM_BLOCK.get(block));
+        }
+
 //  WOOL_BLOCKS
         for(Block block : ModBlocks.WOOL_BLOCKS) { this.addDrop(block); }
 //  CARPET_BLOCKS

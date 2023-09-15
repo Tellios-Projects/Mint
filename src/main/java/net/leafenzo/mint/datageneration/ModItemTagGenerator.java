@@ -58,6 +58,10 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
         for (Item item : ModItems.DYE_ITEMS) {
             getOrCreateTagBuilder(ModTags.Items.DYES).add(item);
         }
+
+        for (Block block : ModBlocks.MUSHROOM_PLANTS) {
+            getOrCreateTagBuilder(ModTags.Items.MUSHROOMS).add(block.asItem());
+        }
     }
 }
 
