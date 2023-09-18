@@ -9,12 +9,10 @@ import net.leafenzo.mint.recipe.ModRecipeSerializer;
 import net.leafenzo.mint.registry.tag.ModTags;
 import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.ConcretePowderBlock;
 import net.minecraft.data.server.recipe.*;
-import net.minecraft.item.DyeItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.ShapedRecipe;
@@ -137,8 +135,31 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         }
     }
 
+    public static void offerWaxingRecipes(Consumer<RecipeJsonProvider> exporter) {
+        HoneycombItem.UNWAXED_TO_WAXED_BLOCKS.get().forEach((input, output)
+                -> ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output)
+                .input((ItemConvertible)input)
+                .input(ModTags.Items.WAX)
+                .group(RecipeProvider.getItemPath(output))
+                .criterion(RecipeProvider.hasItem(input), RecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter, RecipeProvider.convertBetween(output, Items.HONEYCOMB)));
+    }
+    //TODO
+    //potential compatibility errors:
+    //i overwrite all vanilla honeycomb recipes to use a c:wax input tag, if someone else where to overwrite these after me, waxcap wax could no longer be used to craft things
+
+    public static String groupName(ItemConvertible item) {
+        return Registries.ITEM.getId(item.asItem()).toString();
+    }
+
+    private static final String breakfastGroup = Super.MOD_ID + ":" + "breakfast";
+
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
+        //TODO fix all recipe book unlock criterion
+
+        offerWaxingRecipes(exporter);
+
         // MINT - Special
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.MINT_COOKIE, 4)
                 .input(Items.WHEAT)
@@ -198,7 +219,34 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(ModItems.SMOKED_LAVENDER), FabricRecipeProvider.conditionsFromItem(ModItems.SMOKED_LAVENDER))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.LAVENDER_SOAP)));
 
+        // ARTICHOKE - Special
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Blocks.TORCH, 4)
+                .input(Character.valueOf('#'), Items.STICK)
+                .input(Character.valueOf('X'), ModItems.WAXCAP_WAX)
+                .pattern("X")
+                .pattern("#")
+                .criterion(FabricRecipeProvider.hasItem(ModItems.WAXCAP_WAX), FabricRecipeProvider.conditionsFromItem(ModItems.WAXCAP_WAX))
+                .group("minecraft:torch") // might not really work but yknow might as well try
+                .offerTo(exporter);
 
+        offerShapelessRecipe(exporter, ModItems.ARTICHOKE, ModBlocks.THISTLE_FLOWER, groupName(ModItems.ARTICHOKE), 1);
+        offerShapelessRecipe(exporter, ModItems.ARTICHOKE_HEART, ModItems.ARTICHOKE, groupName(ModItems.ARTICHOKE_HEART), 1);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.ARTICHOKE_LAMB)
+                .input(ModItems.ARTICHOKE_HEART)
+                .input(Items.SWEET_BERRIES)
+                .input(Items.COOKED_MUTTON)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.ARTICHOKE_HEART), FabricRecipeProvider.conditionsFromItem(ModItems.ARTICHOKE_HEART))
+                .group(breakfastGroup)
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.ARTICHOKE_LAMB)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BREAKFAST_PORKCHOP)
+                .input(ModItems.ARTICHOKE_HEART)
+                .input(Items.COOKED_PORKCHOP)
+                .input(Items.EGG)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.ARTICHOKE_HEART), FabricRecipeProvider.conditionsFromItem(ModItems.ARTICHOKE_HEART))
+                .group(breakfastGroup)
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.BREAKFAST_PORKCHOP)));
 
 
 //Dyes from combining vanilla dyes

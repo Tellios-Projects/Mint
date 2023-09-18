@@ -1,14 +1,11 @@
 package net.leafenzo.mint.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
-import net.leafenzo.mint.registries.ModFabricRegistries;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
@@ -116,6 +113,25 @@ public class ModItems {
     //</editor-fold>
 
     //<editor-fold desc ="ARTICHOKE - Special">
+    public static final Item WAXCAP_WAX = registerItem("waxcap_wax", new WaxcapWaxItem(ModBlocks.HANGING_WAXCAP_WAX, new FabricItemSettings()));
+    public static final Item ARTICHOKE = registerItem("artichoke", new ArtichokeItem(ModBlocks.ARTICHOKE_CROP, new FabricItemSettings().food(new FoodComponent.Builder()
+            .alwaysEdible()
+            .hunger(3)
+            .saturationModifier(0.6f)
+            .build())));
+    public static final Item ARTICHOKE_HEART = registerItem("artichoke_heart", new Item(new FabricItemSettings().food(new FoodComponent.Builder()
+            .hunger(3)
+            .saturationModifier(0.6f)
+            .build())));
+    public static final Item BREAKFAST_PORKCHOP = registerItem("breakfast_porkchop", new Item(new FabricItemSettings().food(new FoodComponent.Builder()
+            .hunger(11)
+            .saturationModifier(0.8f)
+            .build())));
+    public static final Item ARTICHOKE_LAMB = registerItem("artichoke_lamb", new Item(new FabricItemSettings().food(new FoodComponent.Builder()
+            .hunger(11)
+            .saturationModifier(0.8f)
+            .build())));
+
 
     //TODO ADDME
 

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "mint:artichoke",
+  "ingredients": [
+    {
+      "item": "mint:thistle_flower"
+    }
+  ],
+  "result": {
+    "item": "mint:artichoke"
+  }
+}

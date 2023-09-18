@@ -141,14 +141,14 @@ public class ModBlocks {
     public static final Block PERIWINKLE_WALL_BANNER = registerBlockWithoutBlockItem("periwinkle_wall_banner", createWallBannerBlock(ModDyeColor.PERIWINKLE, (BannerBlock)ModBlocks.PERIWINKLE_BANNER));
     //</editor-fold>
     //<editor-fold desc ="PERIWINKLE - Special">
-    public static final Block LAVENDER_BRICKS = registerBlock("lavender_bricks", new Block(FabricBlockSettings.copyOf(Blocks.COBBLESTONE).mapColor(ModDyeColor.PERIWINKLE.getMapColor())), ModItemGroups.PERIWINKLE);
-    public static final Block LAVENDER_BRICK_SLAB = registerBlock("lavender_brick_slab", createSlabBlock(FabricBlockSettings.copyOf(LAVENDER_BRICKS)), ModItemGroups.PERIWINKLE);
-    public static final Block LAVENDER_BRICK_STAIRS = registerBlock("lavender_brick_stairs", createStairsBlock(LAVENDER_BRICKS, FabricBlockSettings.copyOf(LAVENDER_BRICKS)), ModItemGroups.PERIWINKLE);
-    public static final Block LAVENDER_BRICK_WALL = registerBlock("lavender_brick_wall", createWallBlock(FabricBlockSettings.copyOf(LAVENDER_BRICKS)), ModItemGroups.PERIWINKLE);
-    public static final Block MOSSY_LAVENDER_BRICKS = registerBlock("mossy_lavender_bricks", new Block(FabricBlockSettings.copyOf(Blocks.MOSSY_COBBLESTONE).mapColor(ModDyeColor.PERIWINKLE.getMapColor())), ModItemGroups.PERIWINKLE);
-    public static final Block MOSSY_LAVENDER_BRICK_SLAB = registerBlock("mossy_lavender_brick_slab", createSlabBlock(FabricBlockSettings.copyOf(MOSSY_LAVENDER_BRICKS)), ModItemGroups.PERIWINKLE);
-    public static final Block MOSSY_LAVENDER_BRICK_STAIRS = registerBlock("mossy_lavender_brick_stairs", createStairsBlock(MOSSY_LAVENDER_BRICKS, FabricBlockSettings.copyOf(MOSSY_LAVENDER_BRICKS)), ModItemGroups.PERIWINKLE);
-    public static final Block MOSSY_LAVENDER_BRICK_WALL = registerBlock("mossy_lavender_brick_wall", createWallBlock(FabricBlockSettings.copyOf(MOSSY_LAVENDER_BRICKS)), ModItemGroups.PERIWINKLE);
+    public static final Block LAVENDER_BRICKS = registerBlock("lavender_bricks", new Block(FabricBlockSettings.copyOf(Blocks.COBBLESTONE).mapColor(ModDyeColor.PERIWINKLE.getMapColor()).requiresTool()), ModItemGroups.PERIWINKLE);
+    public static final Block LAVENDER_BRICK_SLAB = registerBlock("lavender_brick_slab", createSlabBlock(FabricBlockSettings.copyOf(LAVENDER_BRICKS).requiresTool()), ModItemGroups.PERIWINKLE);
+    public static final Block LAVENDER_BRICK_STAIRS = registerBlock("lavender_brick_stairs", createStairsBlock(LAVENDER_BRICKS, FabricBlockSettings.copyOf(LAVENDER_BRICKS).requiresTool()), ModItemGroups.PERIWINKLE);
+    public static final Block LAVENDER_BRICK_WALL = registerBlock("lavender_brick_wall", createWallBlock(FabricBlockSettings.copyOf(LAVENDER_BRICKS).requiresTool()), ModItemGroups.PERIWINKLE);
+    public static final Block MOSSY_LAVENDER_BRICKS = registerBlock("mossy_lavender_bricks", new Block(FabricBlockSettings.copyOf(Blocks.MOSSY_COBBLESTONE).mapColor(ModDyeColor.PERIWINKLE.getMapColor()).requiresTool()), ModItemGroups.PERIWINKLE);
+    public static final Block MOSSY_LAVENDER_BRICK_SLAB = registerBlock("mossy_lavender_brick_slab", createSlabBlock(FabricBlockSettings.copyOf(MOSSY_LAVENDER_BRICKS).requiresTool()), ModItemGroups.PERIWINKLE);
+    public static final Block MOSSY_LAVENDER_BRICK_STAIRS = registerBlock("mossy_lavender_brick_stairs", createStairsBlock(MOSSY_LAVENDER_BRICKS, FabricBlockSettings.copyOf(MOSSY_LAVENDER_BRICKS).requiresTool()), ModItemGroups.PERIWINKLE);
+    public static final Block MOSSY_LAVENDER_BRICK_WALL = registerBlock("mossy_lavender_brick_wall", createWallBlock(FabricBlockSettings.copyOf(MOSSY_LAVENDER_BRICKS).requiresTool()), ModItemGroups.PERIWINKLE);
 
     public static final Block LAVENDER_CLAY = registerBlock("lavender_clay", new Block(FabricBlockSettings.copyOf(Blocks.CLAY)), ModItemGroups.PERIWINKLE);
     public static final Block LAVENDER_BUSHEL = registerBlock("lavender_bushel", new HayBlock(FabricBlockSettings.copyOf(Blocks.HAY_BLOCK)), ModItemGroups.PERIWINKLE);
@@ -180,10 +180,13 @@ public class ModBlocks {
     public static final Block POTTED_THISTLE_FLOWER = registerBlock("potted_thistle_flower", createFlowerPotBlock(THISTLE_FLOWER), ModItemGroups.ARTICHOKE);
     public static final Block WAXCAP_MUSHROOM = registerBlock("waxcap_mushroom", createMushroomPlantBlock(MapColor.DARK_GREEN, ModConfiguredFeatures.HUGE_WAXCAP_MUSHROOM), ModItemGroups.ARTICHOKE);
     public static final Block POTTED_WAXCAP_MUSHROOM = registerBlock("potted_waxcap_mushroom", createFlowerPotBlock(WAXCAP_MUSHROOM), ModItemGroups.ARTICHOKE);
-    public static final Block WAXCAP_WAX = registerBlock("waxcap_wax", new HangingRootsBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).replaceable().noCollision().breakInstantly().sounds(BlockSoundGroup.SLIME).offset(AbstractBlock.OffsetType.XZ).pistonBehavior(PistonBehavior.DESTROY)), ModItemGroups.ARTICHOKE);
+    public static final Block HANGING_WAXCAP_WAX = registerBlockWithoutBlockItem("hanging_waxcap_wax", new HangingRootsBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).noCollision().breakInstantly().sounds(BlockSoundGroup.SLIME).offset(AbstractBlock.OffsetType.XZ).pistonBehavior(PistonBehavior.DESTROY)));
     public static final Block WAXCAP_WAX_BLOCK = registerBlock("waxcap_wax_block", new Block(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.NETHER_WOOD).strength(0.5f).burnable()), ModItemGroups.ARTICHOKE);
-    public static final Block WAXCAP_STEM_BLOCK = registerBlock("waxcap_stem_block", new PillarBlock(FabricBlockSettings.create().mapColor(MapColor.SPRUCE_BROWN).instrument(Instrument.BASS).strength(0.2f).sounds(BlockSoundGroup.WOOD).burnable()), ModItemGroups.ARTICHOKE);
-    public static final Block WAXCAP_CAP_BLOCK = registerBlock("waxcap_cap_block", new Block(FabricBlockSettings.create().mapColor(MapColor.PALE_GREEN).instrument(Instrument.BASS).strength(0.2f).sounds(BlockSoundGroup.WOOD).burnable()), ModItemGroups.ARTICHOKE);
+    public static final Block WAXCAP_GILLS = registerBlock("waxcap_gills", new SlabBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.SLIME).breakInstantly().burnable()), ModItemGroups.ARTICHOKE);
+    public static final Block WAXCAP_STEM_BLOCK = registerBlock("waxcap_stem_block", new MushroomBlock(FabricBlockSettings.create().mapColor(MapColor.SPRUCE_BROWN).instrument(Instrument.BASS).strength(0.2f).sounds(BlockSoundGroup.WOOD).burnable()), ModItemGroups.ARTICHOKE);
+    public static final Block WAXCAP_CAP_BLOCK = registerBlock("waxcap_cap_block", new MushroomBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_GREEN).instrument(Instrument.BASS).strength(0.2f).sounds(BlockSoundGroup.WOOD).burnable()), ModItemGroups.ARTICHOKE);
+    public static final Block ARTICHOKE_CROP = registerBlockWithoutBlockItem("artichoke_crop", new ArtichokeCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT).mapColor(MapColor.DARK_GREEN)));
+
 
 
     //<editor-fold desc ="FUCHSIA - Template">

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "mint:artichoke_heart",
+  "ingredients": [
+    {
+      "item": "mint:artichoke"
+    }
+  ],
+  "result": {
+    "item": "mint:artichoke_heart"
+  }
+}

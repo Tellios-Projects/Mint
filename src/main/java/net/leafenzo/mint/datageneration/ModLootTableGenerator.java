@@ -2,12 +2,11 @@ package net.leafenzo.mint.datageneration;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.leafenzo.mint.block.ArtichokeCropBlock;
 import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.data.client.TexturedModel;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.loot.LootPool;
@@ -62,7 +61,16 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(ModBlocks.HIDCOTE_LAVENDER);
 
         //  ARTICHOKE - Special
-        this.addDrop(ModBlocks.WAXCAP_MUSHROOM);
+        this.addDrop(ModBlocks.WAXCAP_MUSHROOM, (Block block) -> this.drops(ModItems.WAXCAP_WAX));
+        this.addDrop(ModBlocks.THISTLE_FLOWER);
+        this.addDrop(ModBlocks.HANGING_WAXCAP_WAX);
+        this.addDrop(ModBlocks.WAXCAP_WAX_BLOCK);
+        this.addDrop(ModBlocks.HANGING_WAXCAP_WAX, (Block block) -> this.drops(ModItems.WAXCAP_WAX));
+        this.addDrop(ModBlocks.WAXCAP_GILLS, (Block block) -> this.drops((Block)block, ModItems.WAXCAP_WAX, UniformLootNumberProvider.create(4.0f, 6.0f)));
+        BlockStatePropertyLootCondition.Builder artichokeCropBuilder = BlockStatePropertyLootCondition.builder(ModBlocks.ARTICHOKE_CROP).properties(StatePredicate.Builder.create().exactMatch(ArtichokeCropBlock.AGE, ArtichokeCropBlock.MAX_AGE));
+        this.addDrop(ModBlocks.ARTICHOKE_CROP, this.applyExplosionDecay(ModBlocks.ARTICHOKE_CROP, LootTable.builder().pool(LootPool.builder().with(ItemEntry.builder(ModItems.ARTICHOKE))).pool(LootPool.builder().conditionally(artichokeCropBuilder).with((LootPoolEntry.Builder<?>)((Object)ItemEntry.builder(ModItems.ARTICHOKE).apply(ApplyBonusLootFunction.binomialWithBonusCount(Enchantments.FORTUNE, 0.5714286f, 3)))))));
+
+
 
         //  Main
 // POTTED_PLANTS

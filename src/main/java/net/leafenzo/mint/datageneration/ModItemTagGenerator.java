@@ -36,6 +36,10 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(ModTags.Items.GOLD_INGOTS)
                 .add(Items.GOLD_INGOT);
         ;
+        getOrCreateTagBuilder(ModTags.Items.WAX)
+                .add(Items.HONEYCOMB)
+                .add(ModBlocks.HANGING_WAXCAP_WAX.asItem())
+        ;
 
     // Special - MINT
         getOrCreateTagBuilder(ItemTags.VILLAGER_PLANTABLE_SEEDS)

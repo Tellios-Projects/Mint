@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "mint:waxcap_stem_block",
+    "mint:waxcap_cap_block",
     "mint:mint_bed",
     "mint:peach_bed",
     "mint:periwinkle_bed",

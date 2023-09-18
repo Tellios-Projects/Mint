@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "mint:breakfast",
+  "ingredients": [
+    {
+      "item": "mint:artichoke_heart"
+    },
+    {
+      "item": "minecraft:cooked_porkchop"
+    },
+    {
+      "item": "minecraft:egg"
+    }
+  ],
+  "result": {
+    "item": "mint:breakfast_porkchop"
+  }
+}

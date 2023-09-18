@@ -25,6 +25,13 @@ public class ModFabricRegistries {
 
         registry.add(ModBlocks.LAVENDER_BUSHEL, 20, 60);
         registry.add(ModBlocks.PERIWINKLE_PETALS, 100, 60);
+
+        // Extremely flammable because of their oily wax
+        registry.add(ModBlocks.HANGING_WAXCAP_WAX, 20, 60);
+        registry.add(ModBlocks.WAXCAP_WAX_BLOCK, 3, 60);
+        registry.add(ModBlocks.WAXCAP_GILLS, 3, 60);
+        registry.add(ModBlocks.WAXCAP_STEM_BLOCK, 3, 60);
+        registry.add(ModBlocks.WAXCAP_CAP_BLOCK, 3, 60);
     }
     public static void registerCompostingChances() {
         ModInit.LOGGER.debug("Registering composting chances for " + Super.MOD_ID);
@@ -41,6 +48,9 @@ public class ModFabricRegistries {
 
         VillagerInteractionRegistries.registerCollectable(ModItems.MINT_SPRIG);
         VillagerInteractionRegistries.registerCompostable(ModItems.MINT_SPRIG);
+
+        VillagerInteractionRegistries.registerCollectable(ModItems.ARTICHOKE);
+        VillagerInteractionRegistries.registerCompostable(ModItems.ARTICHOKE);
     }
 
     public static void registerCompostableItem(Item item, float chance) {

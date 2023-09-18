@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "mint:block/artichoke_crop_stage3"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "mint:block/waxcap_gills"
+    },
+    "type=double": {
+      "model": "mint:block/waxcap_wax_block"
+    },
+    "type=top": {
+      "model": "mint:block/waxcap_gills_top"
+    }
+  }
+}

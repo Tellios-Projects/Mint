@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "mint:block/waxcap_wax"
+    "cross": "mint:block/hanging_waxcap_wax"
   }
 }

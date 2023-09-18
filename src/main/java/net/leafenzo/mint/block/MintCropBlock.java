@@ -23,7 +23,7 @@ public class MintCropBlock extends CropBlock {
 
     @Override
     public int getMaxAge() {
-        return this.MAX_AGE;
+        return MAX_AGE;
     }
 
     @Override

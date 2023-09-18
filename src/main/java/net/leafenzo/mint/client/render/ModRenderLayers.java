@@ -17,7 +17,8 @@ public class ModRenderLayers {
                 ModBlocks.PERIWINKLE_PETALS,
                 ModBlocks.LAVENDER_OIL_LANTERN,
 
-                ModBlocks.WAXCAP_WAX
+                ModBlocks.HANGING_WAXCAP_WAX,
+                ModBlocks.ARTICHOKE_CROP
         );
 
         for(Block block : ModBlocks.SMALL_FLOWERS) {

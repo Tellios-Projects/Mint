@@ -1,7 +1,50 @@
 {
   "type": "minecraft:tree",
   "config": {
-    "decorators": [],
+    "decorators": [
+      {
+        "type": "mint:mushroom_block_direction_decorator",
+        "block_provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "mint:waxcap_cap_block",
+            "Properties": {
+              "down": "true",
+              "east": "true",
+              "north": "true",
+              "south": "true",
+              "up": "true",
+              "west": "true"
+            }
+          }
+        }
+      },
+      {
+        "type": "mint:huge_waxcap_mushroom_decorator",
+        "block_provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "mint:hanging_waxcap_wax",
+            "Properties": {
+              "waterlogged": "false"
+            }
+          }
+        },
+        "block_provider2": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "mint:waxcap_gills",
+            "Properties": {
+              "type": "top",
+              "waterlogged": "false"
+            }
+          }
+        },
+        "probability": 0.55,
+        "probability2": 1.0,
+        "probability3": 1.0
+      }
+    ],
     "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
@@ -16,7 +59,15 @@
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "mint:waxcap_cap_block"
+        "Name": "mint:waxcap_cap_block",
+        "Properties": {
+          "down": "true",
+          "east": "true",
+          "north": "true",
+          "south": "true",
+          "up": "true",
+          "west": "true"
+        }
       }
     },
     "force_dirt": false,
@@ -26,11 +77,11 @@
       "limit": 1,
       "lower_size": 0,
       "min_clipped_height": 5,
-      "upper_size": 1
+      "upper_size": 2
     },
     "trunk_placer": {
       "type": "minecraft:straight_trunk_placer",
-      "base_height": 4,
+      "base_height": 3,
       "height_rand_a": 1,
       "height_rand_b": 2
     },
@@ -39,7 +90,12 @@
       "state": {
         "Name": "mint:waxcap_stem_block",
         "Properties": {
-          "axis": "y"
+          "down": "false",
+          "east": "true",
+          "north": "true",
+          "south": "true",
+          "up": "false",
+          "west": "true"
         }
       }
     }

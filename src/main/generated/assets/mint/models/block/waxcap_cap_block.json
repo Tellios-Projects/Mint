@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/template_single_face",
   "textures": {
-    "all": "mint:block/waxcap_cap_block"
+    "texture": "mint:block/waxcap_cap_block"
   }
 }

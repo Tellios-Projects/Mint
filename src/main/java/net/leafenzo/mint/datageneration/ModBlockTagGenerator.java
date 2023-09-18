@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.registry.tag.ModTags;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
@@ -25,6 +26,11 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
     }
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
+    // common tags or Tags containing vanilla blocks
+//        getOrCreateTagBuilder(ModTags.Blocks.MUSHROOM_BLOCKS)
+//                .add(Blocks.RED_MUSHROOM_BLOCK)
+//                .add(Blocks.BROWN_MUSHROOM_BLOCK)
+
     // Special - MINT
         getOrCreateTagBuilder(BlockTags.LEAVES)
                 .add(ModBlocks.MINT_SPRIG_BLOCK)
@@ -48,7 +54,16 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
 
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(ModBlocks.LAVENDER_CLAY)
+
+                .add(ModBlocks.WAXCAP_WAX_BLOCK)
+                .add(ModBlocks.WAXCAP_GILLS)
         ;
+
+        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+                .add(ModBlocks.WAXCAP_STEM_BLOCK)
+                .add(ModBlocks.WAXCAP_CAP_BLOCK)
+        ;
+
 
     // Main
 // SLABS & STAIRS & WALLS

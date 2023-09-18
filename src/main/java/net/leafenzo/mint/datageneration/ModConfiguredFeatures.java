@@ -6,20 +6,19 @@ package net.leafenzo.mint.datageneration;
 
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
-import net.minecraft.block.Block;
+import net.leafenzo.mint.world.gen.HugeWaxcapMushroomDecorator;
+import net.leafenzo.mint.world.gen.MushroomBlockDirectionDecorator;
+import net.minecraft.block.MushroomBlock;
+import net.minecraft.block.SlabBlock;
+import net.minecraft.block.enums.SlabType;
 import net.minecraft.registry.*;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.math.intprovider.IntProvider;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.*;
-import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
+import net.minecraft.world.gen.trunk.ForkingTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 import java.util.List;
@@ -28,23 +27,43 @@ import java.util.OptionalInt;
 public class ModConfiguredFeatures {
     public static final RegistryKey <ConfiguredFeature <?, ?>> HUGE_WAXCAP_MUSHROOM = registerKey("huge_waxcap_mushroom");
 
+//    public static final Feature <HugeMushroomFeatureConfig> HUGE_WAXCAP_MUSHROOM_FEATURE = Registry.register(Registries.FEATURE,
+//            new Identifier(Super.MOD_ID, "huge_waxcap_mushroom_feature"),
+//            new HugeWaxcapMushroomFeature(HugeMushroomFeatureConfig.CODEC)
+//    );
+
+
     public static void bootstrap(Registerable <ConfiguredFeature <?, ?>> context) {
 //        var placedFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
 //        RegistryEntryLookup<Block> holderGetter = context.getRegistryLookup(RegistryKeys.BLOCK);
 
-
-//        register(context, HUGE_WAXCAP_MUSHROOM, Feature.TREE, TreeConfiguredFeatures.oak.decorators(List.of(beehiveTreeDecorator)).build());
-//        register(context, )
-//
-//        register(context, HUGE_WAXCAP_MUSHROOM, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(ModBlocks.WAXCAP_STEM_BLOCK),
-//                new BeehiveTreeDecorator(0.001f),
-//                new StraightTrunkPlacer(4, 1, 2),
-//                //new OliveTrunkPlacer(4, 1, 2, UniformIntProvider.create(4, 6), .85F, UniformIntProvider.create(4, 5), Registries.BLOCK.getOrCreateEntryList(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
-//                BlockStateProvider.of(ModBlocks.WAXCAP_CAP_BLOCK),
-//                //new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 60),
-//
+//        register(context, HUGE_WAXCAP_MUSHROOM, Feature.HUGE_BROWN_MUSHROOM, new TreeFeatureConfig.Builder(BlockStateProvider.of(ModBlocks.WAXCAP_STEM_BLOCK.getDefaultState().with(MushroomBlock.UP, false).with(MushroomBlock.DOWN, false)),
+//                new StraightTrunkPlacer(3, 1, 2),
+//                BlockStateProvider.of(ModBlocks.WAXCAP_CAP_BLOCK.getDefaultState().with(MushroomBlock.UP, true).with(MushroomBlock.DOWN, false)),
+//                new AcaciaFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0)),
 //                new TwoLayersFeatureSize(1, 0, 1, OptionalInt.of(5))
-//        ).ignoreVines().build());
+//        ).ignoreVines()
+//                .decorators(List.of(new HugeWaxcapMushroomDecorator(0.66f, new ModSimpleBlockStateProvider(ModBlocks.WAXCAP_WAX.getDefaultState())))).build());
+
+        //      ConfiguredFeatures.register(featureRegisterable, ACACIA, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.ACACIA_LOG), new ForkingTrunkPlacer(5, 2, 2), BlockStateProvider.of(Blocks.ACACIA_LEAVES), new AcaciaFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0)), new TwoLayersFeatureSize(1, 0, 2)).ignoreVines().build());
+
+
+                register(context, HUGE_WAXCAP_MUSHROOM, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(ModBlocks.WAXCAP_STEM_BLOCK.getDefaultState().with(MushroomBlock.UP, false).with(MushroomBlock.DOWN, false)),
+                new StraightTrunkPlacer(3, 1, 2),
+//                new ForkingTrunkPlacer(12, 5, 5),
+                BlockStateProvider.of(ModBlocks.WAXCAP_CAP_BLOCK),
+                new AcaciaFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0)),
+                new TwoLayersFeatureSize(1, 0, 2, OptionalInt.of(5)))
+                .ignoreVines()
+                .decorators(List.of(
+                        new MushroomBlockDirectionDecorator(BlockStateProvider.of(ModBlocks.WAXCAP_CAP_BLOCK)),
+                        new HugeWaxcapMushroomDecorator(
+                                0.55f,
+                                1.0f,
+                                1.0f,
+                                BlockStateProvider.of(ModBlocks.HANGING_WAXCAP_WAX.getDefaultState()),
+                                BlockStateProvider.of(ModBlocks.WAXCAP_GILLS.getDefaultState().with(SlabBlock.TYPE, SlabType.TOP))
+                ))).build());
     }
 
     private static <FC extends FeatureConfig, F extends Feature <FC>> void register(Registerable <ConfiguredFeature <?, ?>> context, RegistryKey <ConfiguredFeature <?, ?>> key, F feature, FC configuration) {

@@ -13,6 +13,7 @@ import net.leafenzo.mint.potions.ModPotions;
 import net.leafenzo.mint.recipe.ModRecipeSerializer;
 import net.leafenzo.mint.registries.ModFabricRegistries;
 import net.leafenzo.mint.util.ModUtil;
+import net.leafenzo.mint.util.ModWorldGen;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
@@ -42,16 +43,18 @@ public class ModInit implements ModInitializer {
             ModRecipeSerializer.registerModRecipeSerializer();
             ModEffects.registerModEffects();
             ModPotions.registerModPotions();
+            ModWorldGen.registerWorldGen();
             ModItemGroups.registerModItemGroups();
 
-            for(Identifier id : ModUtil.allBlockIdsInNamespace(Super.MOD_ID)) {
-                System.out.println("BLOCK BINGUS - " + Registries.BLOCK.get(id).getTranslationKey());
-                //translationBuilder.add(id, toSentanceCase(id.getPath()));
-            }
-            for(Identifier id : ModUtil.allItemIdsInNamespace(Super.MOD_ID)) {
-                System.out.println("ITEM BINGUS - " + Registries.ITEM.get(id).getTranslationKey());
-                //translationBuilder.add(id, toSentanceCase(id.getPath()));
-            }
+
+//            for(Identifier id : ModUtil.allBlockIdsInNamespace(Super.MOD_ID)) {
+//                System.out.println("BLOCK BINGUS - " + Registries.BLOCK.get(id).getTranslationKey());
+//                //translationBuilder.add(id, toSentanceCase(id.getPath()));
+//            }
+//            for(Identifier id : ModUtil.allItemIdsInNamespace(Super.MOD_ID)) {
+//                System.out.println("ITEM BINGUS - " + Registries.ITEM.get(id).getTranslationKey());
+//                //translationBuilder.add(id, toSentanceCase(id.getPath()));
+//            }
 
 //            Set<Identifier> altered = ModUtil.getAllRegistryIds();
 //            ModEnglishLangProvider.TranslationsFromIds(original, altered);

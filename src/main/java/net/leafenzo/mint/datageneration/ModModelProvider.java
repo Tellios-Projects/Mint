@@ -1,15 +1,14 @@
 package net.leafenzo.mint.datageneration;
 
-import com.ibm.icu.text.Normalizer2;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.leafenzo.mint.block.ArtichokeCropBlock;
 import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
-import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
@@ -87,16 +86,21 @@ public class ModModelProvider extends FabricModelProvider {
         // ARTICHOKE - Special
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.WAXCAP_MUSHROOM, ModBlocks.POTTED_WAXCAP_MUSHROOM, BlockStateModelGenerator.TintType.NOT_TINTED);
 
-        blockStateModelGenerator.registerItemModel(ModBlocks.WAXCAP_WAX.asItem()); // So it uses the right item texture
-        blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.WAXCAP_WAX, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerItemModel(ModBlocks.HANGING_WAXCAP_WAX.asItem()); // So it uses the right item texture
+        blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.HANGING_WAXCAP_WAX, BlockStateModelGenerator.TintType.NOT_TINTED);
 
         blockStateModelGenerator.registerItemModel(ModBlocks.THISTLE_FLOWER.asItem()); // for some reason this needs to be split up like this to make it's blockItem grab from an item texture without duplicate model errors
         blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.THISTLE_FLOWER, BlockStateModelGenerator.TintType.NOT_TINTED);
         registerFlowerPot(blockStateModelGenerator, ModBlocks.THISTLE_FLOWER, ModBlocks.POTTED_THISTLE_FLOWER, BlockStateModelGenerator.TintType.NOT_TINTED);
 
-        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.WAXCAP_WAX_BLOCK);
-        blockStateModelGenerator.registerAxisRotated(ModBlocks.WAXCAP_STEM_BLOCK, TexturedModel.CUBE_ALL);
-        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.WAXCAP_CAP_BLOCK);
+        BlockStateModelGenerator.BlockTexturePool waxcapWaxTexturePool =
+            blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.WAXCAP_WAX_BLOCK);
+            waxcapWaxTexturePool.slab(ModBlocks.WAXCAP_GILLS);
+
+        blockStateModelGenerator.registerMushroomBlock(ModBlocks.WAXCAP_CAP_BLOCK);
+        blockStateModelGenerator.registerMushroomBlock(ModBlocks.WAXCAP_STEM_BLOCK);
+        blockStateModelGenerator.registerCrop(ModBlocks.ARTICHOKE_CROP, ArtichokeCropBlock.AGE, IntStream.rangeClosed(0, ArtichokeCropBlock.MAX_AGE).toArray());
+
 
         //Main
 //  SLABS & STAIRS & WALLS
@@ -196,6 +200,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.LAVENDER_OIL, Models.GENERATED);
 
         //itemModelGenerator.register(ModItems.THISTLE_FLOWER, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ARTICHOKE_HEART, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ARTICHOKE_LAMB, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BREAKFAST_PORKCHOP, Models.GENERATED);
+
 
 //        itemModelGenerator.register(ModBlocks.THISTLE_FLOWER.asItem(), Models.GENERATED);
 //        itemModelGenerator.register(ModBlocks.WAXCAP_WAX.asItem(), Models.GENERATED);
