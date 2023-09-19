@@ -1,13 +1,50 @@
 {
   "variants": {
-    "type=bottom": {
+    "diagonal=false,facing=down": {
+      "model": "mint:block/waxcap_gills",
+      "x": 90
+    },
+    "diagonal=false,facing=east": {
+      "model": "mint:block/waxcap_gills",
+      "y": 90
+    },
+    "diagonal=false,facing=north": {
       "model": "mint:block/waxcap_gills"
     },
-    "type=double": {
-      "model": "mint:block/waxcap_wax_block"
+    "diagonal=false,facing=south": {
+      "model": "mint:block/waxcap_gills",
+      "y": 180
     },
-    "type=top": {
-      "model": "mint:block/waxcap_gills_top"
+    "diagonal=false,facing=up": {
+      "model": "mint:block/waxcap_gills",
+      "x": 270
+    },
+    "diagonal=false,facing=west": {
+      "model": "mint:block/waxcap_gills",
+      "y": 270
+    },
+    "diagonal=true,facing=down": {
+      "model": "mint:block/waxcap_gills_diagonal",
+      "x": 90
+    },
+    "diagonal=true,facing=east": {
+      "model": "mint:block/waxcap_gills_diagonal",
+      "y": 90
+    },
+    "diagonal=true,facing=north": {
+      "model": "mint:block/waxcap_gills_diagonal"
+    },
+    "diagonal=true,facing=south": {
+      "model": "mint:block/waxcap_gills_diagonal",
+      "y": 180
+    },
+    "diagonal=true,facing=up": {
+      "model": "mint:block/waxcap_gills_diagonal",
+      "x": 270
+    },
+    "diagonal=true,facing=west": {
+      "model": "mint:block/waxcap_gills_diagonal",
+      "y": 270
     }
   }
 }

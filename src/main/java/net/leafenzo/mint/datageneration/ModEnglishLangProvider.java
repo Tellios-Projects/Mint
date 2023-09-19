@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.effect.ModEffects;
 import net.leafenzo.mint.item.ModItemGroups;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.util.ModUtil;
@@ -58,13 +59,21 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
     }
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
-
         //Manual
+        generateTranslation(translationBuilder, ModEffects.MINT_CHILL.getTranslationKey(), "Mint Chill");
         generatePotionTranslation(translationBuilder, "mint_chill", "Mint Chill");
         generatePotionTranslation(translationBuilder, "long_mint_chill", "Mint Chill");
         generatePotionTranslation(translationBuilder, "strong_mint_chill", "Mint Chill");
 
+        generateTranslation(translationBuilder, ModEffects.THORNS.getTranslationKey(), "Thorns");
+        generatePotionTranslation(translationBuilder, "thorns", "Thorns");
+        generatePotionTranslation(translationBuilder, "long_thorns", "Thorns");
+        generatePotionTranslation(translationBuilder, "strong_thorns", "Thorns");
+
         generateTranslation(translationBuilder, ModBlocks.MINT_SPRIG_BLOCK, "Pile of Mint");
+
+        generateTranslation(translationBuilder, ModBlocks.WAXCAP_GILLS, "Waxcap Gill Block");
+        generateTranslation(translationBuilder, ModBlocks.WAXCAP_GILL_SLAB, "Waxcap Gills");
 
         //Automatic
         for(Identifier id : ModUtil.allBlockIdsInNamespace(Super.MOD_ID)) {

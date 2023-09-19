@@ -28,7 +28,7 @@ implements SignChangingItem {
         BlockState blockState = world.getBlockState(blockPos);
 
         if(HoneycombItem.getWaxedState(blockState).isEmpty()) {
-            return super.useOnBlock(context); //TODO Fix double use error against unwaxxed copper blocks
+            return super.useOnBlock(context);
         }
         else { HoneycombItem.getWaxedState(blockState).map(state -> {
                 PlayerEntity playerEntity = context.getPlayer();

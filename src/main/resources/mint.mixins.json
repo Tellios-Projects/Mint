@@ -10,7 +10,8 @@
     "SheepEntityMixin",
     "LlamaDecorFeatureRendererMixin",
     "ShulkerBoxColoringRecipeMixin",
-    "PointOfInterestTypesMixin"
+    "PointOfInterestTypesMixin",
+    "EntityMixin"
   ],
   "client": [
     "client.TexturedRenderLayersMixin"

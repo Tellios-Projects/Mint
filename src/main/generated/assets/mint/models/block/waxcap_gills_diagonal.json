@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "mint:block/waxcap_gills"
+    "all": "mint:block/waxcap_gills_diagonal"
   }
 }

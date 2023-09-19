@@ -3,17 +3,18 @@ package net.leafenzo.mint.world.gen;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import kotlin.reflect.jvm.internal.impl.util.ModuleVisibilityHelper;
-import net.leafenzo.mint.registry.tag.ModTags;
+import net.leafenzo.mint.block.DiagonalBlock;
 import net.leafenzo.mint.util.ModWorldGen;
 import net.minecraft.block.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
+import org.joml.Vector2i;
 
-import java.util.ArrayList;
+import java.util.Optional;
 
 public class HugeWaxcapMushroomDecorator extends TreeDecorator {
     public static final Codec<HugeWaxcapMushroomDecorator> CODEC = RecordCodecBuilder.create((instance) ->
@@ -45,6 +46,7 @@ public class HugeWaxcapMushroomDecorator extends TreeDecorator {
         return ModWorldGen.HUGE_WAXCAP_MUSHROOM_DECORATOR;
     }
 
+
     public void generate(Generator context) {
         Random randomSource = context.getRandom();
 
@@ -54,8 +56,37 @@ public class HugeWaxcapMushroomDecorator extends TreeDecorator {
             if (context.getWorld().testBlockState(blockPos2, state -> state.getBlock() instanceof MushroomBlock) && !context.getLogPositions().contains(blockPos2)) { //Only replaces mushroom blocks, not including the stem
                 //Decide whether to put gunk up in here
                 if (randomSource.nextFloat() < probability2) {
-                    BlockStateProvider replacement = randomSource.nextFloat() < probability3 ? blockProvider2 : blockProvider;
-                    context.replace(blockPos2, replacement.get(randomSource, blockPos2));
+                    //context.replace(blockPos2, blockProvider.get(randomSource, blockPos2));
+
+                    Optional<BlockPos> closestStem = BlockPos.findClosest(blockPos2, 3, 1, pos -> context.getLogPositions().contains(pos));
+                    if(closestStem.isPresent()) {
+                        int x1 = closestStem.get().getX();
+                        int z1 = closestStem.get().getZ();
+                        int x2 = blockPos2.getX();
+                        int z2 = blockPos2.getZ();
+
+                        Vector2i magnitude = new Vector2i(x2 - x1, z2 - z1);
+
+                        boolean isExactlyDiagonal = Math.abs(magnitude.x) == Math.abs(magnitude.y);
+
+                        if(isExactlyDiagonal) {
+                            //magnitude.add(1, -1); // to count this position correctly when getting facing
+                        }
+
+                        Direction facing;
+                        if(isExactlyDiagonal) {
+                            if     (magnitude.x > 0 && magnitude.y > 0)     { facing = Direction.EAST; }
+                            else if(magnitude.x < 0 && magnitude.y > 0)     { facing = Direction.SOUTH; }
+                            else if(magnitude.x < 0 && magnitude.y < 0)     { facing = Direction.WEST; }
+                            else /*if(magnitude.x > 0 && magnitude.y < 0)*/ { facing = Direction.NORTH; }
+                        }
+                        else { facing = Direction.getFacing(magnitude.x, 0, magnitude.y); }
+
+                        context.replace(blockPos2, blockProvider2.get(randomSource, blockPos2).withIfExists(DiagonalBlock.FACING, facing).withIfExists(DiagonalBlock.DIAGONAL, isExactlyDiagonal));
+                    }
+                    else {
+                        context.replace(blockPos2, blockProvider2.get(randomSource, blockPos2));
+                    }
                 }
                 //Or just air
                 else {
@@ -63,6 +94,8 @@ public class HugeWaxcapMushroomDecorator extends TreeDecorator {
                 }
             }
         });
+
+
 
         //Including the bottom rim of the cap
         context.getLeavesPositions().forEach((blockPos) -> {

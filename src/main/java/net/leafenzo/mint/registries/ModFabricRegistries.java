@@ -29,8 +29,8 @@ public class ModFabricRegistries {
         // Extremely flammable because of their oily wax
         registry.add(ModBlocks.HANGING_WAXCAP_WAX, 20, 60);
         registry.add(ModBlocks.WAXCAP_WAX_BLOCK, 3, 60);
-        registry.add(ModBlocks.WAXCAP_GILLS, 3, 60);
-        registry.add(ModBlocks.WAXCAP_STEM_BLOCK, 3, 60);
+        registry.add(ModBlocks.WAXCAP_GILL_SLAB, 3, 60);
+        //registry.add(ModBlocks.WAXCAP_STEM_BLOCK, 3, 60);
         registry.add(ModBlocks.WAXCAP_CAP_BLOCK, 3, 60);
     }
     public static void registerCompostingChances() {

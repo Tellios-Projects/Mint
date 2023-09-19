@@ -24,21 +24,31 @@
                   }
                 }
               ],
-              "name": "mint:waxcap_gills"
+              "name": "mint:waxcap_cap_block"
             },
             {
               "type": "minecraft:item",
               "functions": [
                 {
                   "add": false,
-                  "count": 4.0,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 2.0,
+                    "min": -6.0
+                  },
                   "function": "minecraft:set_count"
+                },
+                {
+                  "function": "minecraft:limit_count",
+                  "limit": {
+                    "min": 0.0
+                  }
                 },
                 {
                   "function": "minecraft:explosion_decay"
                 }
               ],
-              "name": "mint:waxcap_wax"
+              "name": "mint:waxcap_mushroom"
             }
           ]
         }

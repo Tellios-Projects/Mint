@@ -4,10 +4,10 @@
   "group": "shamrock_dye",
   "ingredients": [
     {
-      "item": "minecraft:lime_dye"
+      "item": "minecraft:blue_dye"
     },
     {
-      "item": "minecraft:lime_dye"
+      "item": "minecraft:yellow_dye"
     }
   ],
   "result": {

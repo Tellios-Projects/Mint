@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "mint:waxcap_wax",
+  "ingredients": [
+    {
+      "item": "mint:waxcap_mushroom"
+    }
+  ],
+  "result": {
+    "item": "mint:waxcap_wax"
+  }
+}

@@ -24,14 +24,18 @@
                   }
                 }
               ],
-              "name": "mint:waxcap_gills"
+              "name": "mint:waxcap_gill_slab"
             },
             {
               "type": "minecraft:item",
               "functions": [
                 {
                   "add": false,
-                  "count": 4.0,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 3.0,
+                    "min": 1.0
+                  },
                   "function": "minecraft:set_count"
                 },
                 {

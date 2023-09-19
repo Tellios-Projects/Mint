@@ -1,5 +1,6 @@
 package net.leafenzo.mint.data.client;
 
+import net.leafenzo.mint.Super;
 import net.minecraft.data.client.Model;
 import net.minecraft.data.client.TextureKey;
 import net.minecraft.util.Identifier;

@@ -1,5 +1,10 @@
 package net.leafenzo.mint.data.client;
 
+import net.minecraft.block.Block;
+import net.minecraft.data.client.TextureKey;
+import net.minecraft.data.client.TextureMap;
+import net.minecraft.data.client.TexturedModel;
+
 public class ModTexturedModel {
 
 //    public static final TexturedModel.Factory LOG_PILE = TexturedModel.makeFactory(ModTexturedModel::logPile, ModModels.CUBE_DIRECTIONAL_DOWN_ROTATED);
@@ -13,5 +18,12 @@ public class ModTexturedModel {
 //                .put(TextureKey.UP, TextureMap.getSubId(block, "_top"))
 //                .put(TextureKey.DOWN, TextureMap.getSubId(block, "_top"))
 //                ;
+//    }
+
+    //public static final TexturedModel.Factory CUBE_STRAIGHT_DIAGONAL = TexturedModel.makeFactory(ModTexturedModel::cubeStraightDiagonal, ModModels.)
+//    public static TextureMap cubeStraightDiagonal(Block block) {
+//        return new TextureMap()
+//                .put(TextureKey.PARTICLE, TextureMap.getSubId(block, "_straight"))
+//                .
 //    }
 }

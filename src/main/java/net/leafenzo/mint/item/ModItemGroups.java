@@ -281,11 +281,13 @@ public class ModItemGroups {
                         entries.add(ModBlocks.ARTICHOKE_SHULKER_BOX);
                         entries.add(ModBlocks.ARTICHOKE_CANDLE);
 
-                        entries.add(ModBlocks.WAXCAP_MUSHROOM);
-                        entries.add(ModItems.WAXCAP_WAX);
                         entries.add(ModBlocks.WAXCAP_WAX_BLOCK);
                         entries.add(ModBlocks.WAXCAP_STEM_BLOCK);
                         entries.add(ModBlocks.WAXCAP_CAP_BLOCK);
+                        entries.add(ModBlocks.WAXCAP_GILL_SLAB);
+                        entries.add(ModBlocks.WAXCAP_MUSHROOM);
+                        entries.add(ModItems.WAXCAP_WAX);
+
                         entries.add(ModBlocks.THISTLE_FLOWER);
                         entries.add(ModItems.ARTICHOKE);
                         entries.add(ModItems.ARTICHOKE_HEART);

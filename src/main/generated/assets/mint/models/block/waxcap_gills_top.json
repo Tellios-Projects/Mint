@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "mint:block/waxcap_wax_block",
-    "side": "mint:block/waxcap_wax_block",
-    "top": "mint:block/waxcap_wax_block"
-  }
-}

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_lime_dye": {
+    "has_blue_dye": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:lime_dye"
+              "minecraft:blue_dye"
             ]
           }
         ]
@@ -15,20 +15,33 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:shamrock_dye_from_lime_dye_and_lime_dye"
+        "recipe": "minecraft:shamrock_dye_from_blue_dye_and_yellow_dye"
       },
       "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_yellow_dye": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:yellow_dye"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
-      "has_lime_dye",
+      "has_blue_dye",
+      "has_yellow_dye",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:shamrock_dye_from_lime_dye_and_lime_dye"
+      "minecraft:shamrock_dye_from_blue_dye_and_yellow_dye"
     ]
   },
   "sends_telemetry_event": false

@@ -6,8 +6,10 @@ import net.leafenzo.mint.block.ArtichokeCropBlock;
 import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
+import net.leafenzo.mint.state.property.ModProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.enums.SlabType;
 import net.minecraft.data.client.*;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -42,6 +44,70 @@ public class ModModelProvider extends FabricModelProvider {
         TextureMap textureMap = TextureMap.plant(plantBlock);
         Identifier identifier = tintType.getFlowerPotCrossModel().upload(flowerPotBlock, textureMap, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(flowerPotBlock, identifier));
+    }
+
+    /**
+     * @param blockStateModelGenerator
+     * @param block Block class must have Properties.FACING and ModProperties.DIAGONAL
+     */
+    public final void registerDiagonalBlock(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+        Identifier straightId = Models.CUBE_ALL.upload(block, TextureMap.all(block), blockStateModelGenerator.modelCollector);
+        Identifier diagonalId = Models.CUBE_ALL.upload(block, "_diagonal", TextureMap.all(TextureMap.getSubId(block, "_diagonal")), blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
+                .coordinate(BlockStateModelGenerator.createBooleanModelMap(ModProperties.DIAGONAL, diagonalId, straightId))
+                .coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates()));
+    }
+
+    /**
+     * @param blockStateModelGenerator
+     * @param block Block class must have Properties.FACING and ModProperties.DIAGONAL
+     */
+    public final void registerDiagonalSlab(BlockStateModelGenerator blockStateModelGenerator, Block block, Block fullblock) {
+        Identifier straightId = Models.CUBE_ALL.upload(block, "_double", TextureMap.all(fullblock), blockStateModelGenerator.modelCollector);
+        Identifier diagonalId = Models.CUBE_ALL.upload(block, "diagonal_double", TextureMap.all(TextureMap.getSubId(fullblock, "_diagonal")), blockStateModelGenerator.modelCollector);
+
+        Identifier slabId = Models.SLAB.upload(block, TextureMap.all(fullblock), blockStateModelGenerator.modelCollector);
+        Identifier slabTopId = Models.SLAB_TOP.upload(block, "_top", TextureMap.all(fullblock), blockStateModelGenerator.modelCollector);
+
+        Identifier diagonalSlabId = Models.SLAB.upload(block, "_diagonal", TextureMap.all(TextureMap.getSubId(fullblock, "_diagonal")), blockStateModelGenerator.modelCollector);
+        Identifier diagonalSlabTopId = Models.SLAB_TOP.upload(block, "_diagonal_top", TextureMap.all(TextureMap.getSubId(fullblock, "_diagonal")), blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
+                .coordinate(BlockStateVariantMap.create(Properties.SLAB_TYPE, ModProperties.DIAGONAL)
+                        .register(SlabType.BOTTOM, false, BlockStateVariant.create().put(VariantSettings.MODEL, slabId))
+                        .register(SlabType.TOP, false, BlockStateVariant.create().put(VariantSettings.MODEL, slabTopId))
+                        .register(SlabType.DOUBLE, false, BlockStateVariant.create().put(VariantSettings.MODEL, straightId))
+
+                        .register(SlabType.BOTTOM, true, BlockStateVariant.create().put(VariantSettings.MODEL, diagonalSlabId))
+                        .register(SlabType.TOP, true, BlockStateVariant.create().put(VariantSettings.MODEL, diagonalSlabTopId))
+                        .register(SlabType.DOUBLE, true, BlockStateVariant.create().put(VariantSettings.MODEL, diagonalId))
+                )
+                .coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates())
+        );
+        // return VariantsBlockStateSupplier.create(trapdoorBlock)
+        // .coordinate(BlockStateVariantMap.create(Properties.HORIZONTAL_FACING, Properties.BLOCK_HALF, Properties.OPEN)
+        // .register(Direction.NORTH, BlockHalf.BOTTOM, (Boolean)false, BlockStateVariant.create().put(VariantSettings.MODEL, bottomModelId))
+        // .register(Direction.SOUTH, BlockHalf.BOTTOM, (Boolean)false, BlockStateVariant.create().put(VariantSettings.MODEL, bottomModelId))
+        // .register(Direction.EAST, BlockHalf.BOTTOM, (Boolean)false, BlockStateVariant.create().put(VariantSettings.MODEL, bottomModelId))
+        // .register(Direction.WEST, BlockHalf.BOTTOM, (Boolean)false, BlockStateVariant.create().put(VariantSettings.MODEL, bottomModelId))
+        // .register(Direction.NORTH, BlockHalf.TOP, (Boolean)false, BlockStateVariant.create().put(VariantSettings.MODEL, topModelId))
+        // .register(Direction.SOUTH, BlockHalf.TOP, (Boolean)false, BlockStateVariant.create().put(VariantSettings.MODEL, topModelId))
+        // .register(Direction.EAST, BlockHalf.TOP, (Boolean)false, BlockStateVariant.create().put(VariantSettings.MODEL, topModelId))
+        // .register(Direction.WEST, BlockHalf.TOP, (Boolean)false, BlockStateVariant.create().put(VariantSettings.MODEL, topModelId))
+        // .register(Direction.NORTH, BlockHalf.BOTTOM, (Boolean)true, BlockStateVariant.create().put(VariantSettings.MODEL, openModelId))
+        // .register(Direction.SOUTH, BlockHalf.BOTTOM, (Boolean)true, BlockStateVariant.create().put(VariantSettings.MODEL, openModelId).put(VariantSettings.Y, VariantSettings.Rotation.R180))
+        // .register(Direction.EAST, BlockHalf.BOTTOM, (Boolean)true, BlockStateVariant.create().put(VariantSettings.MODEL, openModelId).put(VariantSettings.Y, VariantSettings.Rotation.R90))
+        // .register(Direction.WEST, BlockHalf.BOTTOM, (Boolean)true, BlockStateVariant.create().put(VariantSettings.MODEL, openModelId).put(VariantSettings.Y, VariantSettings.Rotation.R270))
+        // .register(Direction.NORTH, BlockHalf.TOP, (Boolean)true, BlockStateVariant.create().put(VariantSettings.MODEL, openModelId))
+        // .register(Direction.SOUTH, BlockHalf.TOP, (Boolean)true, BlockStateVariant.create().put(VariantSettings.MODEL, openModelId).put(VariantSettings.Y, VariantSettings.Rotation.R180))
+        // .register(Direction.EAST, BlockHalf.TOP, (Boolean)true, BlockStateVariant.create().put(VariantSettings.MODEL, openModelId).put(VariantSettings.Y, VariantSettings.Rotation.R90))
+        // .register(Direction.WEST, BlockHalf.TOP, (Boolean)true, BlockStateVariant.create().put(VariantSettings.MODEL, openModelId).put(VariantSettings.Y, VariantSettings.Rotation.R270)));
+
+
+//        return VariantsBlockStateSupplier.create(doorBlock)
+//        .coordinate(BlockStateModelGenerator.fillDoorVariantMap(BlockStateModelGenerator
+//        .fillDoorVariantMap(BlockStateVariantMap.create(Properties.HORIZONTAL_FACING, Properties.DOUBLE_BLOCK_HALF, Properties.DOOR_HINGE, Properties.OPEN),
+//        DoubleBlockHalf.LOWER, bottomLeftHingeClosedModelId, bottomLeftHingeOpenModelId, bottomRightHingeClosedModelId, bottomRightHingeOpenModelId),
+//        DoubleBlockHalf.UPPER, topLeftHingeClosedModelId, topLeftHingeOpenModelId, topRightHingeClosedModelId, topRightHingeOpenModelId));
     }
 
     @Override
@@ -93,9 +159,10 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.THISTLE_FLOWER, BlockStateModelGenerator.TintType.NOT_TINTED);
         registerFlowerPot(blockStateModelGenerator, ModBlocks.THISTLE_FLOWER, ModBlocks.POTTED_THISTLE_FLOWER, BlockStateModelGenerator.TintType.NOT_TINTED);
 
-        BlockStateModelGenerator.BlockTexturePool waxcapWaxTexturePool =
-            blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.WAXCAP_WAX_BLOCK);
-            waxcapWaxTexturePool.slab(ModBlocks.WAXCAP_GILLS);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.WAXCAP_WAX_BLOCK);
+
+        registerDiagonalBlock(blockStateModelGenerator, ModBlocks.WAXCAP_GILLS);
+        registerDiagonalSlab(blockStateModelGenerator, ModBlocks.WAXCAP_GILL_SLAB, ModBlocks.WAXCAP_GILLS);
 
         blockStateModelGenerator.registerMushroomBlock(ModBlocks.WAXCAP_CAP_BLOCK);
         blockStateModelGenerator.registerMushroomBlock(ModBlocks.WAXCAP_STEM_BLOCK);

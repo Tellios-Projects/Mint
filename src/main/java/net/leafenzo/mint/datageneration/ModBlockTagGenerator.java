@@ -5,7 +5,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.registry.tag.ModTags;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
@@ -56,6 +55,7 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
                 .add(ModBlocks.LAVENDER_CLAY)
 
                 .add(ModBlocks.WAXCAP_WAX_BLOCK)
+                .add(ModBlocks.WAXCAP_GILL_SLAB)
                 .add(ModBlocks.WAXCAP_GILLS)
         ;
 

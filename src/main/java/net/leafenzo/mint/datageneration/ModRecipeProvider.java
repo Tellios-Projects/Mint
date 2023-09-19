@@ -220,6 +220,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.LAVENDER_SOAP)));
 
         // ARTICHOKE - Special
+        offerShapelessRecipe(exporter, ModItems.WAXCAP_WAX, ModBlocks.WAXCAP_MUSHROOM, groupName(ModItems.WAXCAP_WAX), 1);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.CANDLE)
+                .input(Character.valueOf('S'), Items.STRING)
+                .input(Character.valueOf('H'), ModItems.WAXCAP_WAX)
+                .pattern("S")
+                .pattern("H")
+                .criterion("has_string", FabricRecipeProvider.conditionsFromItem(Items.STRING)).criterion("has_waxcap_wax", FabricRecipeProvider.conditionsFromItem(ModItems.WAXCAP_WAX))
+                .offerTo(exporter);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Blocks.TORCH, 4)
                 .input(Character.valueOf('#'), Items.STICK)
                 .input(Character.valueOf('X'), ModItems.WAXCAP_WAX)
@@ -256,7 +265,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerDyeMixingRecipe(exporter, ModItems.ARTICHOKE_DYE, Items.LIME_DYE, Items.YELLOW_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.FUCHSIA_DYE, Items.MAGENTA_DYE, Items.RED_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.VERMILION_DYE, Items.ORANGE_DYE, Items.RED_DYE, RecipeCategory.MISC, 2);
-        offerDyeMixingRecipe(exporter, ModItems.SHAMROCK_DYE, Items.LIME_DYE, Items.LIME_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.SHAMROCK_DYE, Items.BLUE_DYE, Items.YELLOW_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.INDIGO_DYE, Items.BLUE_DYE, Items.PURPLE_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.BANANA_DYE, Items.YELLOW_DYE, Items.WHITE_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.CERULEAN_DYE, Items.BLUE_DYE, Items.LIGHT_GRAY_DYE, RecipeCategory.MISC, 2);

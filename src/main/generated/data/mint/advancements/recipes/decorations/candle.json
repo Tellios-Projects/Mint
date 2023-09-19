@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_string": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:string"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:candle"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_waxcap_wax": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mint:waxcap_wax"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_string",
+      "has_waxcap_wax",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:candle"
+    ]
+  },
+  "sends_telemetry_event": false
+}
