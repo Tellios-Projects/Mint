@@ -179,6 +179,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ModItems.PEACH_SLICE, ModItems.PEACH, "peach_slice", 6);
         offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PEACH_LOG, ModItems.PEACH_BRANCH);
 
+        // TODO remainder ignoring shaped recipe
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.GOLDEN_PEACH)
                 .pattern("XXX")
                 .pattern("XOX")

@@ -18,7 +18,7 @@ public class ArtichokeCropBlock extends CropBlock {
 
     @Override
     protected ItemConvertible getSeedsItem() {
-        return ModItems.ARTICHOKE_HEART;
+        return ModItems.ARTICHOKE;
     }
 
     @Override

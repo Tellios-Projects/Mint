@@ -32,8 +32,7 @@ public class ModConfiguredFeatures {
 //    );
 
 
-    //TODO make huge waxcaps spawn in old growth spruce forests
-
+    //TODO make little waxcaps spawn in old growth pine and spruce forests
     public static void bootstrap(Registerable <ConfiguredFeature <?, ?>> context) {
 //        var placedFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
 //        RegistryEntryLookup<Block> holderGetter = context.getRegistryLookup(RegistryKeys.BLOCK);
@@ -50,7 +49,7 @@ public class ModConfiguredFeatures {
 
 
                 register(context, HUGE_WAXCAP_MUSHROOM, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(ModBlocks.WAXCAP_STEM_BLOCK.getDefaultState().with(MushroomBlock.UP, false).with(MushroomBlock.DOWN, false)),
-                new StraightTrunkPlacer(5, 2, 3),
+                new StraightTrunkPlacer(4, 1, 2),
 //                new StraightTrunkPlacer(9, 1, 2),
 //                new ForkingTrunkPlacer(5, 5, 7),
                 BlockStateProvider.of(ModBlocks.WAXCAP_CAP_BLOCK),
