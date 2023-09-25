@@ -2,6 +2,7 @@ package net.leafenzo.mint.datageneration;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ArtichokeCropBlock;
 import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
@@ -16,6 +17,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
+import org.apache.commons.compress.compressors.lz77support.LZ77Compressor;
 
 import java.util.stream.IntStream;
 
@@ -57,7 +59,6 @@ public class ModModelProvider extends FabricModelProvider {
                 .coordinate(BlockStateModelGenerator.createBooleanModelMap(ModProperties.DIAGONAL, diagonalId, straightId))
                 .coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates()));
     }
-
     /**
      * @param blockStateModelGenerator
      * @param block Block class must have Properties.FACING and ModProperties.DIAGONAL
@@ -124,10 +125,14 @@ public class ModModelProvider extends FabricModelProvider {
         //mintBricksTexturePool.wall(ModBlocks.MINT_BRICK_WALL);
 
         // PEACH - Special
+        blockStateModelGenerator.registerItemModel(ModBlocks.CORAL_ANEMONE.asItem()); // So it uses the right item texture
+        registerWithModelId(blockStateModelGenerator, ModBlocks.CORAL_ANEMONE, new Identifier(Super.MOD_ID, "block/coral_anemone"));
+
+//        blockStateModelGenerator.registerBuiltin(new Identifier(Super.MOD_ID, "block/anemone"), ModBlocks.CORAL_ANEMONE);
+
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.PEACH_LOG);
 
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.HYPERICUM, ModBlocks.POTTED_HYPERICUM, BlockStateModelGenerator.TintType.NOT_TINTED);
-        //coral anemone
 
         // PERIWINKLE - Special
         BlockStateModelGenerator.BlockTexturePool lavenderBricksTexturePool =
@@ -257,7 +262,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.FRUIT_SALAD, Models.GENERATED);
         itemModelGenerator.register(ModItems.AMBROSIA, Models.GENERATED);
         itemModelGenerator.register(ModItems.COOKED_ANEMONE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.CORAL_ANEMONE, Models.GENERATED);
         itemModelGenerator.register(ModItems.PEACH_BRANCH, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.FLOWERING_MELON, Models.GENERATED);

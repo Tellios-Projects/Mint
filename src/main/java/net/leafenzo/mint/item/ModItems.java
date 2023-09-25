@@ -96,7 +96,11 @@ public class ModItems {
                     .hunger(7)
                     .saturationModifier(0.6f)
                     .build())));
-    public static final Item CORAL_ANEMONE = registerItem(new BlockItem(ModBlocks.CORAL_ANEMONE, new FabricItemSettings()));  // TODO add my model
+    public static final Item RAW_ANEMONE = registerItem("raw_anemone", new Item(new FabricItemSettings()
+            .food(new FoodComponent.Builder()
+                    .hunger(2)
+                    .saturationModifier(0.6f)
+                    .build())));
     public static final Item PEACH_BRANCH = registerItem("peach_branch", new Item(new FabricItemSettings()));
     //public static final Item PEACH_BRANCH = registerItem(new BlockItem(ModBlocks.PEACH_TREE, new FabricItemSettings()));
     //</editor-fold>

@@ -3,6 +3,7 @@ package net.leafenzo.mint.datageneration;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.leafenzo.mint.block.ArtichokeCropBlock;
+import net.leafenzo.mint.block.CoralAnemoneBlock;
 import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
@@ -41,6 +42,8 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
 
         //  PEACH - Special
         // TODO this stuff
+        this.addDrop(ModBlocks.CORAL_ANEMONE);
+
 
         this.addDrop(ModBlocks.HYPERICUM);
         this.addPottedPlantDrops(ModBlocks.POTTED_HYPERICUM);

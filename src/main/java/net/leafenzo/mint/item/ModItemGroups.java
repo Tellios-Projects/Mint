@@ -222,7 +222,7 @@ public class ModItemGroups {
                         entries.add(ModItems.PEACH_COBBLER);
                         entries.add(ModItems.FRUIT_SALAD);
                         entries.add(ModItems.AMBROSIA);
-                        entries.add(ModItems.CORAL_ANEMONE);
+                        entries.add(ModBlocks.CORAL_ANEMONE);
                         entries.add(ModItems.COOKED_ANEMONE);
                         entries.add(ModItems.PEACH_BRANCH);
                     }).build());

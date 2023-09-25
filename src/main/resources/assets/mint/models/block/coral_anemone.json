@@ -1,0 +1,50 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/block",
+	"textures": {
+		"1": "mint:block/coral_anemone",
+		"particle": "#1"
+	},
+	"elements": [
+		{
+			"from": [8.06066, -0.025, 4.5],
+			"to": [8.06066, 7.975, 11.5],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8.06066, 4, 8]},
+			"shade": false,
+			"faces": {
+				"north": {"uv": [-6.1, 0.032, -7.1, 7.843], "texture": "#missing", "cullface": "down"},
+				"east": {"uv": [9.107, 0.082, 15.818, 7.893], "texture": "#1"},
+				"south": {"uv": [0.175, 0.082, -5.98914, 7.843], "texture": "#missing"},
+				"west": {"uv": [9.14286, 0.157, 15.918, 7.843], "texture": "#1"},
+				"up": {"uv": [-6.1, 0.032, -7.1, 6.968], "texture": "#missing"},
+				"down": {"uv": [-6.1, 0.032, -7.1, 6.968], "texture": "#missing"}
+			}
+		},
+		{
+			"from": [4.56066, -0.025, 8],
+			"to": [11.56066, 7.975, 8],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8.06066, 4, 8]},
+			"shade": false,
+			"faces": {
+				"north": {"uv": [9.082, 0.107, 15.918, 7.843], "texture": "#1"},
+				"east": {"uv": [-6.1, 0.032, -7.1, 7.968], "texture": "#missing"},
+				"south": {"uv": [9.17486, 0.082, 15.918, 7.843], "texture": "#1"},
+				"west": {"uv": [0.075, 0.032, -7.1, 7.843], "texture": "#missing"},
+				"up": {"uv": [-6.1, 0.032, -7.1, 6.968], "rotation": 270, "texture": "#missing"},
+				"down": {"uv": [-6.1, 0.032, -7.1, 6.968], "rotation": 90, "texture": "#missing"}
+			}
+		},
+		{
+			"from": [5, 0, 5],
+			"to": [11, 3, 11],
+			"faces": {
+				"north": {"uv": [0, 6, 6, 9], "texture": "#1"},
+				"east": {"uv": [0, 6, 6, 9], "texture": "#1"},
+				"south": {"uv": [0, 6, 6, 9], "texture": "#1"},
+				"west": {"uv": [0, 6, 6, 9], "texture": "#1"},
+				"up": {"uv": [0, 0, 6, 6], "texture": "#1"},
+				"down": {"uv": [0, 9, 6, 15], "texture": "#1"}
+			}
+		}
+	]
+}

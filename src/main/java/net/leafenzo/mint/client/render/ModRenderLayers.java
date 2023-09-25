@@ -14,6 +14,8 @@ public class ModRenderLayers {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
                 ModBlocks.MINT_CROP,
 
+                ModBlocks.CORAL_ANEMONE,
+
                 ModBlocks.PERIWINKLE_PETALS,
                 ModBlocks.LAVENDER_OIL_LANTERN,
 
