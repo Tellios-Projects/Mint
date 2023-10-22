@@ -8,6 +8,7 @@ import net.leafenzo.mint.datageneration.ModConfiguredFeatures;
 import net.leafenzo.mint.effect.ModEffects;
 import net.leafenzo.mint.item.ModItemGroups;
 import net.leafenzo.mint.util.ModDyeColor;
+import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.ShulkerBoxBlockEntity;
@@ -25,12 +26,14 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
+import org.apache.http.annotation.Obsolete;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -65,6 +68,10 @@ public class ModBlocks {
     public static final ArrayList<Block> SLABS = new ArrayList<Block>();
     public static final ArrayList<Block> STAIRS = new ArrayList<Block>();
     public static final ArrayList<Block> WALLS = new ArrayList<Block>();
+
+    public static final ArrayList<Block> CORRUGATED_IRON_BLOCKS = new ArrayList<Block>();
+    public static final ArrayList<Block> NEON_TUBE_BLOCKS = new ArrayList<Block>();
+    //public static final ArrayList<Block>  = new ArrayList<Block>();
 
     /**
      * This list is just used in ItemGroups
@@ -177,7 +184,6 @@ public class ModBlocks {
     public static final Block ARTICHOKE_WALL_BANNER = registerBlockWithoutBlockItem("artichoke_wall_banner", createWallBannerBlock(ModDyeColor.ARTICHOKE, (BannerBlock)ModBlocks.ARTICHOKE_BANNER));
     //</editor-fold>
     //<editor-fold desc ="ARTICHOKE - Special">
-    //</editor-fold>
     public static final Block THISTLE_FLOWER = registerBlock("thistle_flower", createFlowerBlock(ModEffects.THORNS, 600), ModItemGroups.ARTICHOKE);
     public static final Block POTTED_THISTLE_FLOWER = registerBlock("potted_thistle_flower", createFlowerPotBlock(THISTLE_FLOWER), ModItemGroups.ARTICHOKE);
     public static final Block WAXCAP_MUSHROOM = registerBlock("waxcap_mushroom", createMushroomPlantBlock(MapColor.DARK_GREEN, ModConfiguredFeatures.HUGE_WAXCAP_MUSHROOM), ModItemGroups.ARTICHOKE);
@@ -190,8 +196,7 @@ public class ModBlocks {
     public static final Block WAXCAP_STEM_BLOCK = registerBlock("waxcap_stem_block", new MushroomBlock(FabricBlockSettings.create().mapColor(MapColor.SPRUCE_BROWN).instrument(Instrument.BASS).strength(0.2f).sounds(BlockSoundGroup.WOOD)), ModItemGroups.ARTICHOKE);
     public static final Block WAXCAP_CAP_BLOCK = registerBlock("waxcap_cap_block", new MushroomBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_GREEN).instrument(Instrument.BASS).strength(0.2f).sounds(BlockSoundGroup.WOOD).burnable()), ModItemGroups.ARTICHOKE);
     public static final Block ARTICHOKE_CROP = registerBlockWithoutBlockItem("artichoke_crop", new ArtichokeCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT).mapColor(MapColor.DARK_GREEN)));
-
-
+    //</editor-fold>
 
     //<editor-fold desc ="FUCHSIA - Template">
     public static final Block FUCHSIA_WOOL = registerBlock("fuchsia_wool", createWoolBlock(ModDyeColor.FUCHSIA), ModItemGroups.FUCHSIA);
@@ -412,18 +417,47 @@ public class ModBlocks {
     //<editor-fold desc ="SAP - Special">
     //</editor-fold>
 
+    //<editor-fold desc ="OUR DECOR - Template">
+    static {
+        //With using ModDyeColor it should only loop through the dyes we add
+        for (DyeColor color : ModUtil.concat(ModDyeColor.VALUES, ModUtil.VANILLA_DYE_COLORS)) {
+            registerBlock(color.getName() + "_corrugated_iron", createCorrugatedIronBlock(color)); //TODO Testme
+        }
+
+        for (DyeColor color : ModUtil.concat(ModDyeColor.VALUES, ModUtil.VANILLA_DYE_COLORS)) {
+            registerBlock(color.getName() + "_neon_tube", createNeonTubeBlock(color));
+        }
+    }
+
+    //</editor-fold>
+
     //<editor-fold desc ="Registration">
-    /**
-     * @param group unused in 1.20, only defined here in that version to make potential backporting easier.
-     * @return
-     */
-    public static Block registerBlock(String name, Block block, ItemGroup group) {
-        registerBlockItem(name,block,group);
+    public static Block registerBlock(String name, Block block) {
+        registerBlockItem(name,block);
         return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
     }
     public static Block registerBlockWithoutBlockItem(String name, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
     }
+    private static Item registerBlockItem(String name, Block block) {
+        BlockItem blockItem = new BlockItem(block, new FabricItemSettings());
+        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(blockItem)); // only for pre 1.20.1, around cuz I'd forget otherwise
+        return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), blockItem);
+    }
+
+    /**
+     * @param group unused 1.20+, only defined here in that version to make backporting easier.
+     */
+    @Obsolete
+    public static Block registerBlock(String name, Block block, ItemGroup group) {
+        registerBlockItem(name,block,group);
+        return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
+    }
+
+    /**
+     * @param group unused 1.20+, only defined here in that version to make backporting easier.
+     */
+    @Obsolete
     private static Item registerBlockItem(String name, Block block, ItemGroup group) {
         BlockItem blockItem = new BlockItem(block, new FabricItemSettings());
         //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(blockItem)); // only for pre 1.20.1, around cuz I'd forget otherwise
@@ -643,6 +677,32 @@ public class ModBlocks {
     }
     //</editor-fold>
     //<editor-fold desc ="Special Block Creation Functions">
+    public static PillarBlock createCorrugatedIronBlock(DyeColor color) { //TODO add blocktag datagen for this one
+        PillarBlock block = new PillarBlock(
+                FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)
+                        .mapColor(color.getMapColor())
+                        .sounds(BlockSoundGroup.COPPER)
+                        .strength(3) // less than iron block
+                        .requiresTool()
+        );
+        CORRUGATED_IRON_BLOCKS.add(block);
+        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        return block;
+    }
+
+    public static NeonTubeBlock createNeonTubeBlock(DyeColor color) {
+        NeonTubeBlock block = new NeonTubeBlock(
+                FabricBlockSettings.copyOf(Blocks.GLASS)
+                        .mapColor(color.getMapColor())
+                        .sounds(BlockSoundGroup.GLASS)
+                        .luminance(createLightLevelFromBooleanProperty(15, Properties.LIT))
+                        .requiresTool()
+        );
+        NEON_TUBE_BLOCKS.add(block);
+        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        return block;
+    }
+
     public static FlowerBlock createFlowerBlock(StatusEffect suspiciousStewEffect, int effectDuration) {
         FlowerBlock block = new FlowerBlock(suspiciousStewEffect, effectDuration,
                 FabricBlockSettings.copyOf(Blocks.DANDELION)
@@ -740,6 +800,8 @@ public class ModBlocks {
     private static ToIntFunction<BlockState> createLightLevelFromBooleanProperty(int litLevel, BooleanProperty property) {
         return state -> state.get(property) != false ? litLevel : 0;
     }
+
+
     //</editor-fold>
     public static void registerModBlocks() {
         ModInit.LOGGER.debug("Registering mod blocks for " + Super.MOD_ID);

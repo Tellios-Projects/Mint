@@ -1,27 +1,22 @@
 package net.leafenzo.mint.util;
 
-import com.mojang.datafixers.types.Type;
 import net.leafenzo.mint.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import org.apache.http.annotation.Obsolete;
-import org.spongepowered.asm.mixin.Debug;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.logging.Logger;
+import java.util.*;
 
 public class ModUtil {
 //    public static final Item[] VANILLA_DYES = { Items.BLACK_DYE, Items.BLUE_DYE, Items.BROWN_DYE, Items.CYAN_DYE, Items.GRAY_DYE, Items.GREEN_DYE, Items.LIGHT_BLUE_DYE, Items.LIGHT_GRAY_DYE, Items.LIME_DYE, Items.MAGENTA_DYE, Items.ORANGE_DYE, Items.PINK_DYE, Items.PURPLE_DYE, Items.RED_DYE, Items.YELLOW_DYE, Items.WHITE_DYE };
 //    public static final Block[] VANILLA_WOOLS = { Blocks.BLACK_WOOL, Blocks.BLUE_WOOL, Blocks.BROWN_WOOL, Blocks.CYAN_WOOL, Blocks.GRAY_WOOL, Blocks.GREEN_WOOL, Blocks.LIGHT_BLUE_WOOL, Blocks.LIGHT_GRAY_WOOL, Blocks.LIME_WOOL, Blocks.MAGENTA_WOOL, Blocks.ORANGE_WOOL, Blocks.PINK_WOOL, Blocks.PURPLE_WOOL, Blocks.RED_WOOL, Blocks.YELLOW_WOOL, Blocks.WHITE_WOOL };
 //    public static final Block[] VANILLA_BEDS = { Blocks.BLACK_BED, Blocks.BLUE_BED, Blocks.BROWN_BED, Blocks.CYAN_BED, Blocks.GRAY_BED, Blocks.GREEN_BED, Blocks.LIGHT_BLUE_BED, Blocks.LIGHT_GRAY_BED, Blocks.LIME_BED, Blocks.MAGENTA_BED, Blocks.ORANGE_BED, Blocks.PINK_BED, Blocks.PURPLE_BED, Blocks.RED_BED, Blocks.YELLOW_BED, Blocks.WHITE_BED };
 //    public static final Block[] VANILLA_CARPETS = { Blocks.BLACK_CARPET, Blocks.BLUE_CARPET, Blocks.BROWN_CARPET, Blocks.CYAN_CARPET, Blocks.GRAY_CARPET, Blocks.GREEN_CARPET, Blocks.LIGHT_BLUE_CARPET, Blocks.LIGHT_GRAY_CARPET, Blocks.LIME_CARPET, Blocks.MAGENTA_CARPET, Blocks.ORANGE_CARPET, Blocks.PINK_CARPET, Blocks.PURPLE_CARPET, Blocks.RED_CARPET, Blocks.YELLOW_CARPET, Blocks.WHITE_CARPET };
+
+    public static final DyeColor[] VANILLA_DYE_COLORS = { DyeColor.WHITE, DyeColor.ORANGE, DyeColor.MAGENTA, DyeColor.LIGHT_BLUE, DyeColor.YELLOW, DyeColor.LIME, DyeColor.PINK, DyeColor.GRAY, DyeColor.LIGHT_GRAY, DyeColor.CYAN, DyeColor.PURPLE, DyeColor.BLUE, DyeColor.BROWN, DyeColor.GREEN, DyeColor.RED, DyeColor.BLACK };
 
     public static final Block[] WHITE_VANILLA_COLORED_BLOCKS = { Blocks.WHITE_WOOL, Blocks.WHITE_CARPET, Blocks.WHITE_TERRACOTTA, Blocks.WHITE_CONCRETE, Blocks.WHITE_CONCRETE_POWDER, Blocks.WHITE_GLAZED_TERRACOTTA, Blocks.WHITE_STAINED_GLASS, Blocks.WHITE_STAINED_GLASS_PANE, Blocks.WHITE_SHULKER_BOX, Blocks.WHITE_BED, Blocks.WHITE_CANDLE, Blocks.WHITE_BANNER };
     public static final Block[] ORANGE_VANILLA_COLORED_BLOCKS = { Blocks.ORANGE_WOOL, Blocks.ORANGE_CARPET, Blocks.ORANGE_TERRACOTTA, Blocks.ORANGE_CONCRETE, Blocks.ORANGE_CONCRETE_POWDER, Blocks.ORANGE_GLAZED_TERRACOTTA, Blocks.ORANGE_STAINED_GLASS, Blocks.ORANGE_STAINED_GLASS_PANE, Blocks.ORANGE_SHULKER_BOX, Blocks.ORANGE_BED, Blocks.ORANGE_CANDLE, Blocks.ORANGE_BANNER };
@@ -134,6 +129,12 @@ public class ModUtil {
         }
         // for colors added by this mod
         return ModBlocks.allMatchesOfColor(ModBlocks.FUNCTIONAL_BLOCKS, color);
+    }
+
+    public static <T> T[] concat(T[] array1, T[] array2) {
+        T[] result = Arrays.copyOf(array1, array1.length + array2.length);
+        System.arraycopy(array2, 0, result, array1.length, array2.length);
+        return result;
     }
 
     public static String formatMultipleIdsForErrorLog(Block[] blocks) {

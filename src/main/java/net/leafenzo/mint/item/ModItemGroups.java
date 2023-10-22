@@ -4,11 +4,13 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
+import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -17,9 +19,14 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collection;
+import java.util.HashMap;
+
 import static net.leafenzo.mint.util.ModUtil.formatMultipleIdsForErrorLog;
 
 public class ModItemGroups {
+    public static final HashMap<ItemGroup, DyeColor> ITEM_GROUP_FOR_DYE_COLOR = new HashMap<ItemGroup, DyeColor>();
+
     public static void registerModItemGroups() {
         ModInit.LOGGER.debug("Registering item groups for " + Super.MOD_ID);
         modifyVanillaItemGroupEntries();
@@ -165,6 +172,16 @@ public class ModItemGroups {
             content.addAfter(Blocks.DARK_PRISMARINE_SLAB, ModBlocks.MINT_BRICKS, ModBlocks.MINT_BRICK_STAIRS, ModBlocks.MINT_BRICK_SLAB);
         });
     }
+
+//    public static Collection<ItemStack>
+//
+//    public static void modifyModItemGroups() {
+//
+//        ItemGroupEvents.modifyEntriesEvent(MINT).register(content -> {
+//            content.addAll();
+//        });
+//
+//    }
 
 
     //TODO, eventually comment out these item groups as they're only for debug purposes really
@@ -509,5 +526,13 @@ public class ModItemGroups {
                         entries.add(ModBlocks.SAP_BANNER);
                         entries.add(ModBlocks.SAP_SHULKER_BOX);
                         entries.add(ModBlocks.SAP_CANDLE);
+                    }).build());
+
+
+    public static ItemGroup ADDITIONS = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "additions"),
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".additions"))
+                    .icon(() -> new ItemStack(ModBlocks.CORRUGATED_IRON_BLOCKS.get(0).asItem())).entries((displayContext, entries) -> {
+                        for(Block block : ModBlocks.CORRUGATED_IRON_BLOCKS) { entries.add(block.asItem()); }
+                        for(Block block : ModBlocks.NEON_TUBE_BLOCKS) { entries.add(block.asItem()); }
                     }).build());
 }

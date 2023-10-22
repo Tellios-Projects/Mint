@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_top",
+  "textures": {
+    "side": "mint:block/maroon_neon_tube_side",
+    "top": "mint:block/maroon_neon_tube_top"
+  }
+}

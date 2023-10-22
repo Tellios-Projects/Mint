@@ -17,7 +17,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
-import org.apache.commons.compress.compressors.lz77support.LZ77Compressor;
 
 import java.util.stream.IntStream;
 
@@ -59,6 +58,30 @@ public class ModModelProvider extends FabricModelProvider {
                 .coordinate(BlockStateModelGenerator.createBooleanModelMap(ModProperties.DIAGONAL, diagonalId, straightId))
                 .coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates()));
     }
+
+
+    public final void registerNeonTubeBlock(BlockStateModelGenerator blockStateModelGenerator, Block block, TexturedModel modelFactory) {
+        TextureMap textureMap = modelFactory.getTextures();
+
+        Identifier unlitId = new Identifier(Super.MOD_ID, "block/neon_tube_block_unlit");
+
+        //TextureMap.sideEnd()
+        //TextureMap.sideAndTop(TextureMap.getSubId(Blocks.SMOOTH_STONE_SLAB, "_side"), textureMap.getTexture(TextureKey.TOP));
+
+        Identifier litId = modelFactory.upload(block, blockStateModelGenerator.modelCollector);
+
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
+                .coordinate(BlockStateModelGenerator.createBooleanModelMap(Properties.LIT, litId, unlitId))
+                .coordinate(BlockStateModelGenerator.createAxisRotatedVariantMap()));
+    }
+
+//        Identifier identifier = Models.TEMPLATE_SINGLE_FACE.upload(block, TextureMap.texture(block), this.modelCollector);
+//        Identifier identifier2 = ModelIds.getMinecraftNamespacedBlock("mushroom_block_inside");
+//        this.blockStateCollector.accept(MultipartBlockStateSupplier.create(block).with((When)When.create().set(Properties.NORTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier)).with((When)When.create().set(Properties.EAST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.Y, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, true)).with((When)When.create().set(Properties.SOUTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.Y, VariantSettings.Rotation.R180).put(VariantSettings.UVLOCK, true)).with((When)When.create().set(Properties.WEST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.Y, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, true)).with((When)When.create().set(Properties.UP, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.X, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, true)).with((When)When.create().set(Properties.DOWN, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, true)).with((When)When.create().set(Properties.NORTH, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2)).with((When)When.create().set(Properties.EAST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.Y, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, false)).with((When)When.create().set(Properties.SOUTH, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.Y, VariantSettings.Rotation.R180).put(VariantSettings.UVLOCK, false)).with((When)When.create().set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.Y, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, false)).with((When)When.create().set(Properties.UP, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.X, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, false)).with((When)When.create().set(Properties.DOWN, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, false)));
+//        this.registerParentedItemModel(block, TexturedModel.CUBE_ALL.upload(block, "_inventory", this.modelCollector));
+//    }
+
+
     /**
      * @param blockStateModelGenerator
      * @param block Block class must have Properties.FACING and ModProperties.DIAGONAL
@@ -247,7 +270,20 @@ public class ModModelProvider extends FabricModelProvider {
             }
             else { throw new RuntimeException(Registries.BLOCK.getId(banner).toString() + "does not have a wall banner"); }
         }
+
+
+        for(Block block : ModBlocks.CORRUGATED_IRON_BLOCKS) {
+            blockStateModelGenerator.registerAxisRotated(block, TexturedModel.CUBE_ALL);
+        }
+
+        for(Block block : ModBlocks.NEON_TUBE_BLOCKS) {
+            registerNeonTubeBlock(blockStateModelGenerator, block, TexturedModel.CUBE_TOP);
+            //blockStateModelGenerator.registerAxisRotated(block, TexturedModel.CUBE_TOP);
+        }
+
+        //for(Block block : ModBlocks.NEO)
     }
+
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
