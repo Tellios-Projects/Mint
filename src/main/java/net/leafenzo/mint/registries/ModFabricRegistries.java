@@ -2,6 +2,7 @@ package net.leafenzo.mint.registries;
 
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.registry.VillagerInteractionRegistries;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
@@ -9,6 +10,7 @@ import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
 
 
 public class ModFabricRegistries {
@@ -32,6 +34,12 @@ public class ModFabricRegistries {
         registry.add(ModBlocks.WAXCAP_GILL_SLAB, 3, 60);
         //registry.add(ModBlocks.WAXCAP_STEM_BLOCK, 3, 60);
         registry.add(ModBlocks.WAXCAP_CAP_BLOCK, 3, 60);
+
+
+        //Decor Additions
+        for(Block block : ModBlocks.PAPER_FRAME_BLOCKS) {
+            registry.add(block, 40, 80);
+        }
     }
     public static void registerCompostingChances() {
         ModInit.LOGGER.debug("Registering composting chances for " + Super.MOD_ID);
@@ -51,6 +59,21 @@ public class ModFabricRegistries {
 
         VillagerInteractionRegistries.registerCollectable(ModItems.ARTICHOKE);
         VillagerInteractionRegistries.registerCompostable(ModItems.ARTICHOKE);
+    }
+
+    public static void registerFuels() {
+        ModInit.LOGGER.debug("Registering Smeling Fuels for " + Super.MOD_ID);
+        FuelRegistry registry = FuelRegistry.INSTANCE;
+
+        for(ItemConvertible item : ModBlocks.BANNER_BLOCKS) {
+            registry.add(item, 300);
+        }
+        for(ItemConvertible item : ModBlocks.WOOL_BLOCKS) {
+            registry.add(item, 100);
+        }
+        for(ItemConvertible item : ModBlocks.WOOL_CARPET_BLOCKS) {
+            registry.add(item, 67);
+        }
     }
 
     public static void registerCompostableItem(Item item, float chance) {

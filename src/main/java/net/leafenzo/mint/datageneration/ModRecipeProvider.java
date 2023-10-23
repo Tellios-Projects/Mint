@@ -7,25 +7,21 @@ import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.recipe.ModRecipeSerializer;
 import net.leafenzo.mint.registry.tag.ModTags;
+import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.ConcretePowderBlock;
 import net.minecraft.data.server.recipe.*;
 import net.minecraft.item.*;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.ShapedRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Util;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.function.Consumer;
 
 
@@ -67,7 +63,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         }
     }
     public static void offerTerracottaDyeingRecipes(Consumer<RecipeJsonProvider> exporter) {
-        for(ItemConvertible output : ModBlocks.TERRACOTTA_BLOCKS) {
+        for(ItemConvertible output : ModBlocks.DYED_TERRACOTTA_BLOCKS) {
             DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(output);
             Item dye = ModItems.DYE_ITEM_FROM_COLOR.get(color);
             if (dye != null) {
@@ -85,7 +81,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         }
     }
     public static void offerGlazedTerracottaSmeltingRecipes(Consumer<RecipeJsonProvider> exporter) {
-        for(ItemConvertible input : ModBlocks.TERRACOTTA_BLOCKS) {
+        for(ItemConvertible input : ModBlocks.DYED_TERRACOTTA_BLOCKS) {
             DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(input);
             ItemConvertible output = ModBlocks.firstMatchOfColor(ModBlocks.GLAZED_TERRACOTTA_BLOCKS, color);
 
@@ -147,6 +143,50 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     //TODO
     //potential compatibility errors:
     //i overwrite all vanilla honeycomb recipes to use a c:wax input tag, if someone else where to overwrite these after me, waxcap wax could no longer be used to craft things
+
+    // Decor Additions
+    public static void offerNeonTubeRecipe(Consumer<RecipeJsonProvider> exporter, DyeColor color) {
+        Block neonTube = ModBlocks.NEON_TUBE_BLOCK_FROM_DYECOLOR.get(color);
+
+        String namespace;
+        if(Arrays.stream(ModUtil.VANILLA_DYE_COLORS).toList().contains(color)) {
+            namespace = "minecraft";
+        }
+        else { namespace = "mint"; }
+
+        Block stainedGlass = Registries.BLOCK.get(new Identifier(namespace, color.getName() + "_stained_glass"));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, neonTube, 8)
+                .input(Character.valueOf('G'), stainedGlass)
+                .input(Character.valueOf('Q'), Items.QUARTZ)
+                .input(Character.valueOf('L'), Blocks.REDSTONE_LAMP)
+                .pattern("GQG")
+                .pattern("GLG")
+                .pattern("GQG")
+                .criterion("has_redstone_lamp", FabricRecipeProvider.conditionsFromItem(Blocks.REDSTONE_LAMP))
+                .criterion("has_quartz", FabricRecipeProvider.conditionsFromItem(Items.QUARTZ))
+                .offerTo(exporter);
+    }
+
+    public static void offerMucktuffDyeingRecipes(Consumer<RecipeJsonProvider> exporter) {
+        for(ItemConvertible output : ModBlocks.DYED_MUCKTUFF_BLOCKS) {
+            DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(output);
+            Item dye = ModItems.DYE_ITEM_FROM_COLOR.get(color);
+            if (dye != null) {
+                ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, 8)
+                        .input(Character.valueOf('#'), ModBlocks.MUCKTUFF)
+                        .input(Character.valueOf('X'), dye)
+                        .pattern("###")
+                        .pattern("#X#")
+                        .pattern("###")
+                        .group("dyed_mucktuff").criterion("has_mucktuff", FabricRecipeProvider.conditionsFromItem(ModBlocks.MUCKTUFF)).offerTo(exporter);
+            }
+            else {
+                throw new RuntimeException(Registries.BLOCK.getId((Block)output).toString() + " failed to find associated DyeColor");
+            }
+        }
+    }
+    //
 
     public static String groupName(ItemConvertible item) {
         return Registries.ITEM.getId(item.asItem()).toString();
@@ -286,6 +326,35 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerDyeMixingRecipe(exporter, ModItems.NAVY_DYE, Items.BLUE_DYE, Items.BLACK_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.NAVY_DYE, Items.CYAN_DYE, Items.BLACK_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.SAP_DYE, Items.GREEN_DYE, Items.CYAN_DYE, RecipeCategory.MISC, 2);
+
+
+
+        // Decor Additions
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.NEON_EXCITER)
+                .input(Character.valueOf('Q'), Items.QUARTZ)
+                .input(Character.valueOf('I'), ModTags.Items.IRON_INGOTS)
+                .input(Character.valueOf('O'), Blocks.OBSERVER)
+                .input(Character.valueOf('R'), Items.REDSTONE)
+                .pattern(" Q ")
+                .pattern("IOI")
+                .pattern(" R ")
+                .criterion("has_observer", FabricRecipeProvider.conditionsFromItem(Items.OBSERVER))
+                .offerTo(exporter);
+
+        for(DyeColor color : ModUtil.concat(ModDyeColor.VALUES, ModUtil.VANILLA_DYE_COLORS)) {
+            offerNeonTubeRecipe(exporter, color);
+        }
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MUCKTUFF)
+                        .input(Character.valueOf('T'), Blocks.TUFF)
+                        .input(Character.valueOf('M'), Blocks.MUD)
+                        .pattern("TM")
+                        .pattern("MT")
+                        .criterion("has_mud", FabricRecipeProvider.conditionsFromItem(Blocks.MUD))
+                        .offerTo(exporter);
+
+        offerMucktuffDyeingRecipes(exporter);
+
 
         // Main
 //  WOOL_BLOCKS

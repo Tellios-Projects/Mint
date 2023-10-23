@@ -532,7 +532,9 @@ public class ModItemGroups {
     public static ItemGroup ADDITIONS = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "additions"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".additions"))
                     .icon(() -> new ItemStack(ModBlocks.CORRUGATED_IRON_BLOCKS.get(0).asItem())).entries((displayContext, entries) -> {
+                        entries.add(ModBlocks.NEON_EXCITER.asItem());
                         for(Block block : ModBlocks.CORRUGATED_IRON_BLOCKS) { entries.add(block.asItem()); }
                         for(Block block : ModBlocks.NEON_TUBE_BLOCKS) { entries.add(block.asItem()); }
+                        for(Block block : ModBlocks.MUCKTUFF_BLOCKS) { entries.add(block.asItem()); }
                     }).build());
 }

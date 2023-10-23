@@ -4,7 +4,9 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.util.Color;
 import net.leafenzo.mint.util.ModDyeColor;
+import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -18,8 +20,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ModItems {
+    public static final HashMap<DyeColor, DyeItem> DYE_ITEM_FROM_COLOR = new HashMap<DyeColor, DyeItem>(); static {
+        DYE_ITEM_FROM_COLOR.put(DyeColor.WHITE, (DyeItem) Items.WHITE_DYE);
+        DYE_ITEM_FROM_COLOR.put(DyeColor.ORANGE, (DyeItem) Items.ORANGE_DYE);
+        DYE_ITEM_FROM_COLOR.put(DyeColor.MAGENTA, (DyeItem) Items.MAGENTA_DYE);
+        DYE_ITEM_FROM_COLOR.put(DyeColor.LIGHT_BLUE, (DyeItem) Items.LIGHT_BLUE_DYE);
+        DYE_ITEM_FROM_COLOR.put(DyeColor.YELLOW, (DyeItem) Items.YELLOW_DYE);
+        DYE_ITEM_FROM_COLOR.put(DyeColor.LIME, (DyeItem) Items.LIME_DYE);
+        DYE_ITEM_FROM_COLOR.put(DyeColor.PINK, (DyeItem) Items.PINK_DYE);
+        DYE_ITEM_FROM_COLOR.put(DyeColor.GRAY, (DyeItem) Items.GRAY_DYE);
+        DYE_ITEM_FROM_COLOR.put(DyeColor.LIGHT_GRAY, (DyeItem) Items.LIGHT_GRAY_DYE);
+        DYE_ITEM_FROM_COLOR.put(DyeColor.CYAN, (DyeItem) Items.CYAN_DYE);
+        DYE_ITEM_FROM_COLOR.put(DyeColor.PURPLE, (DyeItem) Items.PURPLE_DYE);
+        DYE_ITEM_FROM_COLOR.put(DyeColor.BLUE, (DyeItem) Items.BLUE_DYE);
+        DYE_ITEM_FROM_COLOR.put(DyeColor.BROWN, (DyeItem) Items.BROWN_DYE);
+        DYE_ITEM_FROM_COLOR.put(DyeColor.GREEN, (DyeItem) Items.GREEN_DYE);
+        DYE_ITEM_FROM_COLOR.put(DyeColor.RED, (DyeItem) Items.RED_DYE);
+        DYE_ITEM_FROM_COLOR.put(DyeColor.BLACK, (DyeItem) Items.BLACK_DYE);
+    }
     public static final ArrayList<Item> DYE_ITEMS = new ArrayList<Item>();
-    public static final HashMap<DyeColor, DyeItem> DYE_ITEM_FROM_COLOR = new HashMap<DyeColor, DyeItem>();
+    public static final ArrayList<Item> DYED_PAPER_ITEMS = new ArrayList<Item>();
 
     //<editor-fold desc ="MINT - Special">
     public static final Item MINT_SPRIG = registerItem("mint_sprig", new MintSprigItem(new FabricItemSettings()
@@ -138,6 +158,23 @@ public class ModItems {
 
 
     //TODO ADDME
+
+
+
+
+    //<editor-fold desc ="Decor Additions">
+    static {
+        for (DyeColor color : ModUtil.concat(ModDyeColor.VALUES, ModUtil.VANILLA_DYE_COLORS)) {
+            if(color == DyeColor.WHITE) {
+                registerItem("paper_covering", new Item(new FabricItemSettings()));
+            }
+            else {
+                registerItem(color.getName() + "_paper_covering", new Item(new FabricItemSettings()));
+            }
+        }
+    }
+    //</editor-fold>
+
 
     //</editor-fold>
     //<editor-fold desc ="Templates">

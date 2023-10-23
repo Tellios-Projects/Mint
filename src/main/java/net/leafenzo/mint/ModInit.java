@@ -39,6 +39,7 @@ public class ModInit implements ModInitializer {
             ModFabricRegistries.registerFlammableBlocks();
             ModFabricRegistries.registerCompostingChances();
             ModFabricRegistries.registerVillagerInteractions();
+            ModFabricRegistries.registerFuels();
             DispenserBehavior.RegisterDispenserBehaviors();
             ModRecipeSerializer.registerModRecipeSerializer();
             ModEffects.registerModEffects();

@@ -52,6 +52,11 @@ public class ModUtil {
     public static final Block[] RED_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.RED_SHULKER_BOX, Blocks.RED_BED, Blocks.RED_CANDLE, Blocks.RED_BANNER };
     public static final Block[] BLACK_VANILLA_FUNCTIONAL_BLOCKS = { Blocks.BLACK_SHULKER_BOX, Blocks.BLACK_BED, Blocks.BLACK_CANDLE, Blocks.BLACK_BANNER };
 
+//    public static Block FirstBlockOfColor(Block block, Block[] blocks) {
+//        DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK;
+//
+//    }
+
     public static Block[] ColoredBlocksOfColor(DyeColor color) {
         // for vanilla colors
         switch (color) {

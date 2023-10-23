@@ -1,0 +1,8 @@
+{
+  "parent": "mint:block/two_end_orientable",
+  "textures": {
+    "front": "mint:block/neon_exciter_front",
+    "side": "mint:block/neon_exciter_side",
+    "back": "mint:block/neon_exciter_back"
+  }
+}

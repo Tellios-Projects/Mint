@@ -1,0 +1,50 @@
+{
+  "variants": {
+    "facing=down,powered=false": {
+      "model": "mint:block/neon_exciter",
+      "x": 90
+    },
+    "facing=down,powered=true": {
+      "model": "mint:block/neon_exciter_on",
+      "x": 90
+    },
+    "facing=east,powered=false": {
+      "model": "mint:block/neon_exciter",
+      "y": 90
+    },
+    "facing=east,powered=true": {
+      "model": "mint:block/neon_exciter_on",
+      "y": 90
+    },
+    "facing=north,powered=false": {
+      "model": "mint:block/neon_exciter"
+    },
+    "facing=north,powered=true": {
+      "model": "mint:block/neon_exciter_on"
+    },
+    "facing=south,powered=false": {
+      "model": "mint:block/neon_exciter",
+      "y": 180
+    },
+    "facing=south,powered=true": {
+      "model": "mint:block/neon_exciter_on",
+      "y": 180
+    },
+    "facing=up,powered=false": {
+      "model": "mint:block/neon_exciter",
+      "x": 270
+    },
+    "facing=up,powered=true": {
+      "model": "mint:block/neon_exciter_on",
+      "x": 270
+    },
+    "facing=west,powered=false": {
+      "model": "mint:block/neon_exciter",
+      "y": 270
+    },
+    "facing=west,powered=true": {
+      "model": "mint:block/neon_exciter_on",
+      "y": 270
+    }
+  }
+}

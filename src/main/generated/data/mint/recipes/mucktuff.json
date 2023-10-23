@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "M": {
+      "item": "minecraft:mud"
+    },
+    "T": {
+      "item": "minecraft:tuff"
+    }
+  },
+  "pattern": [
+    "TM",
+    "MT"
+  ],
+  "result": {
+    "item": "mint:mucktuff"
+  },
+  "show_notification": true
+}

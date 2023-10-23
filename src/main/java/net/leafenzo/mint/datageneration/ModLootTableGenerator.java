@@ -3,7 +3,6 @@ package net.leafenzo.mint.datageneration;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.leafenzo.mint.block.ArtichokeCropBlock;
-import net.leafenzo.mint.block.CoralAnemoneBlock;
 import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
@@ -78,6 +77,10 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(ModBlocks.ARTICHOKE_CROP, this.applyExplosionDecay(ModBlocks.ARTICHOKE_CROP, LootTable.builder().pool(LootPool.builder().with(ItemEntry.builder(ModItems.ARTICHOKE))).pool(LootPool.builder().conditionally(artichokeCropBuilder).with((LootPoolEntry.Builder<?>)((Object)ItemEntry.builder(ModItems.ARTICHOKE).apply(ApplyBonusLootFunction.binomialWithBonusCount(Enchantments.FORTUNE, 0.5714286f, 3)))))));
 
 
+        // Decor Additions
+        this.addDrop(ModBlocks.NEON_EXCITER);
+        for(Block block : ModBlocks.NEON_TUBE_BLOCKS) { this.addDrop(block); }
+        for(Block block : ModBlocks.MUCKTUFF_BLOCKS) { this.addDrop(block); }
 
         //  Main
 // POTTED_PLANTS
@@ -90,7 +93,7 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
 //  CARPET_BLOCKS
         for(Block block : ModBlocks.WOOL_CARPET_BLOCKS) { this.addDrop(block); }
 //  TERRACOTTA_BLOCKS
-        for(Block block : ModBlocks.TERRACOTTA_BLOCKS) { this.addDrop(block); }
+        for(Block block : ModBlocks.DYED_TERRACOTTA_BLOCKS) { this.addDrop(block); }
 //  CONCRETE_BLOCKS
         for(Block block : ModBlocks.CONCRETE_BLOCKS) { this.addDrop(block); }
 //  CONCRETE_POWDER_BLOCKS

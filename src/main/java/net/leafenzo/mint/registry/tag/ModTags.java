@@ -27,6 +27,7 @@ public class ModTags {
     public static class Items {
         public static final TagKey<Item> DYES = getOrCreateCommonTag("dyes");
         public static final TagKey<Item> GOLD_INGOTS = getOrCreateCommonTag("gold_ingots");
+        public static final TagKey<Item> IRON_INGOTS = getOrCreateCommonTag("iron_ingots");
         public static final TagKey<Item> MUSHROOMS = getOrCreateCommonTag("mushrooms");
         public static final TagKey<Item> WAX = getOrCreateCommonTag("wax");
         public static TagKey<Item> getOrCreateTag(String name) {

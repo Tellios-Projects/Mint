@@ -1,6 +1,4 @@
 package net.leafenzo.mint.datageneration;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.leafenzo.mint.Super;
@@ -13,7 +11,6 @@ import net.leafenzo.mint.state.property.ModProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.enums.SlabType;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.data.client.*;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -21,8 +18,6 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.stream.IntStream;
 
 public class ModModelProvider extends FabricModelProvider {
@@ -63,6 +58,26 @@ public class ModModelProvider extends FabricModelProvider {
                 .coordinate(BlockStateModelGenerator.createBooleanModelMap(ModProperties.DIAGONAL, diagonalId, straightId))
                 .coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates()));
     }
+
+    public final void registerNeonExciterBlock(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+
+//        TexturedModel.Factory modelFactory = TexturedModel.makeFactory(TextureMap::sideFrontBack, ModModels.TWO_END_ORIENTABLE);
+//        Identifier identifier1 = modelFactory.upload(block, blockStateModelGenerator.modelCollector);
+
+
+        Identifier identifier = new Identifier(Super.MOD_ID, "block/neon_exciter");
+        Identifier identifier2 = new Identifier(Super.MOD_ID, "block/neon_exciter_on");
+
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
+                .coordinate(BlockStateModelGenerator.createBooleanModelMap(Properties.POWERED, identifier2, identifier))
+                .coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates())
+        );
+
+//        Identifier identifier = ModelIds.getBlockModelId(Blocks.OBSERVER);
+//        Identifier identifier2 = ModelIds.getBlockSubModelId(Blocks.OBSERVER, "_on");
+//        this.blockStateCollector.accept(VariantsBlockStateSupplier.create(Blocks.OBSERVER).coordinate(BlockStateModelGenerator.createBooleanModelMap(Properties.POWERED, identifier2, identifier)).coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates()));
+    }
+
 
     boolean hasRegisteredNeonTubeBlockBefore = false; // A lil jank, but it does the trick. Besides its just datagen anyway.
     public final void registerNeonTubeBlock(BlockStateModelGenerator blockStateModelGenerator, Block block) {
@@ -193,7 +208,7 @@ public class ModModelProvider extends FabricModelProvider {
         }
 
 //  TERRACOTTA_BLOCKS
-        for (Block block : ModBlocks.TERRACOTTA_BLOCKS) {
+        for (Block block : ModBlocks.DYED_TERRACOTTA_BLOCKS) {
             blockStateModelGenerator.registerCubeAllModelTexturePool(block);
         }
 
@@ -250,6 +265,10 @@ public class ModModelProvider extends FabricModelProvider {
         }
 
 
+
+        //Decor Blocks
+        registerNeonExciterBlock(blockStateModelGenerator, ModBlocks.NEON_EXCITER);
+
         for(Block block : ModBlocks.CORRUGATED_IRON_BLOCKS) {
             blockStateModelGenerator.registerAxisRotated(block, TexturedModel.CUBE_ALL);
         }
@@ -257,6 +276,10 @@ public class ModModelProvider extends FabricModelProvider {
         for(Block block : ModBlocks.NEON_TUBE_BLOCKS) {
             registerNeonTubeBlock(blockStateModelGenerator, block);
             //blockStateModelGenerator.registerAxisRotated(block, TexturedModel.CUBE_TOP);
+        }
+
+        for(Block block : ModBlocks.MUCKTUFF_BLOCKS) {
+            blockStateModelGenerator.registerCubeAllModelTexturePool(block);
         }
 
         //for(Block block : ModBlocks.NEO)
@@ -292,6 +315,12 @@ public class ModModelProvider extends FabricModelProvider {
 
 //        itemModelGenerator.register(ModBlocks.THISTLE_FLOWER.asItem(), Models.GENERATED);
 //        itemModelGenerator.register(ModBlocks.WAXCAP_WAX.asItem(), Models.GENERATED);
+
+
+        //Decor Additions
+        for(Item item : ModItems.DYED_PAPER_ITEMS) {
+            itemModelGenerator.register(item, Models.GENERATED);
+        }
 
 //  DYES
         for(Item item : ModItems.DYE_ITEMS) {
