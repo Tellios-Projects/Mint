@@ -1,7 +1,7 @@
 {
   "variants": {
     "axis=x,lit=false": {
-      "model": "mint:block/neon_tube_block_unlit",
+      "model": "mint:block/neon_tube_off",
       "x": 90,
       "y": 90
     },
@@ -11,13 +11,13 @@
       "y": 90
     },
     "axis=y,lit=false": {
-      "model": "mint:block/neon_tube_block_unlit"
+      "model": "mint:block/neon_tube_off"
     },
     "axis=y,lit=true": {
       "model": "mint:block/brown_neon_tube"
     },
     "axis=z,lit=false": {
-      "model": "mint:block/neon_tube_block_unlit",
+      "model": "mint:block/neon_tube_off",
       "x": 90
     },
     "axis=z,lit=true": {

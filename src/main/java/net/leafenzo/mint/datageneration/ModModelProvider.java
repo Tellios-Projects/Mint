@@ -1,16 +1,19 @@
 package net.leafenzo.mint.datageneration;
-
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ArtichokeCropBlock;
 import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.data.client.TexturedModelSupplier;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.state.property.ModProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.enums.SlabType;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.data.client.*;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -18,6 +21,8 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 public class ModModelProvider extends FabricModelProvider {
@@ -59,28 +64,26 @@ public class ModModelProvider extends FabricModelProvider {
                 .coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates()));
     }
 
+    boolean hasRegisteredNeonTubeBlockBefore = false; // A lil jank, but it does the trick. Besides its just datagen anyway.
+    public final void registerNeonTubeBlock(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+        Identifier unlitId = new Identifier(Super.MOD_ID, "block/neon_tube_off");
 
-    public final void registerNeonTubeBlock(BlockStateModelGenerator blockStateModelGenerator, Block block, TexturedModel modelFactory) {
-        TextureMap textureMap = modelFactory.getTextures();
+        if(!hasRegisteredNeonTubeBlockBefore) { //only create the universal unlit model when ran for the first time
+            TexturedModelSupplier modelSupplier = new TexturedModelSupplier(ModelIds.getMinecraftNamespacedBlock("cube_top"))
+                    .addTexture("side", new Identifier(Super.MOD_ID, "block/neon_tube_off_side"))
+                    .addTexture("top", new Identifier(Super.MOD_ID, "block/neon_tube_off_top"))
+                    ;
+            blockStateModelGenerator.modelCollector.accept(unlitId, modelSupplier);
+        }
 
-        Identifier unlitId = new Identifier(Super.MOD_ID, "block/neon_tube_block_unlit");
-
-        //TextureMap.sideEnd()
-        //TextureMap.sideAndTop(TextureMap.getSubId(Blocks.SMOOTH_STONE_SLAB, "_side"), textureMap.getTexture(TextureKey.TOP));
-
-        Identifier litId = modelFactory.upload(block, blockStateModelGenerator.modelCollector);
+        Identifier litId = TexturedModel.CUBE_TOP.upload(block, blockStateModelGenerator.modelCollector);
 
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
                 .coordinate(BlockStateModelGenerator.createBooleanModelMap(Properties.LIT, litId, unlitId))
                 .coordinate(BlockStateModelGenerator.createAxisRotatedVariantMap()));
+
+        hasRegisteredNeonTubeBlockBefore = true;
     }
-
-//        Identifier identifier = Models.TEMPLATE_SINGLE_FACE.upload(block, TextureMap.texture(block), this.modelCollector);
-//        Identifier identifier2 = ModelIds.getMinecraftNamespacedBlock("mushroom_block_inside");
-//        this.blockStateCollector.accept(MultipartBlockStateSupplier.create(block).with((When)When.create().set(Properties.NORTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier)).with((When)When.create().set(Properties.EAST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.Y, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, true)).with((When)When.create().set(Properties.SOUTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.Y, VariantSettings.Rotation.R180).put(VariantSettings.UVLOCK, true)).with((When)When.create().set(Properties.WEST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.Y, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, true)).with((When)When.create().set(Properties.UP, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.X, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, true)).with((When)When.create().set(Properties.DOWN, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier).put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, true)).with((When)When.create().set(Properties.NORTH, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2)).with((When)When.create().set(Properties.EAST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.Y, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, false)).with((When)When.create().set(Properties.SOUTH, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.Y, VariantSettings.Rotation.R180).put(VariantSettings.UVLOCK, false)).with((When)When.create().set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.Y, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, false)).with((When)When.create().set(Properties.UP, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.X, VariantSettings.Rotation.R270).put(VariantSettings.UVLOCK, false)).with((When)When.create().set(Properties.DOWN, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2).put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.UVLOCK, false)));
-//        this.registerParentedItemModel(block, TexturedModel.CUBE_ALL.upload(block, "_inventory", this.modelCollector));
-//    }
-
 
     /**
      * @param blockStateModelGenerator
@@ -107,31 +110,6 @@ public class ModModelProvider extends FabricModelProvider {
                 )
                 .coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates())
         );
-        // return VariantsBlockStateSupplier.create(trapdoorBlock)
-        // .coordinate(BlockStateVariantMap.create(Properties.HORIZONTAL_FACING, Properties.BLOCK_HALF, Properties.OPEN)
-        // .register(Direction.NORTH, BlockHalf.BOTTOM, (Boolean)false, BlockStateVariant.create().put(VariantSettings.MODEL, bottomModelId))
-        // .register(Direction.SOUTH, BlockHalf.BOTTOM, (Boolean)false, BlockStateVariant.create().put(VariantSettings.MODEL, bottomModelId))
-        // .register(Direction.EAST, BlockHalf.BOTTOM, (Boolean)false, BlockStateVariant.create().put(VariantSettings.MODEL, bottomModelId))
-        // .register(Direction.WEST, BlockHalf.BOTTOM, (Boolean)false, BlockStateVariant.create().put(VariantSettings.MODEL, bottomModelId))
-        // .register(Direction.NORTH, BlockHalf.TOP, (Boolean)false, BlockStateVariant.create().put(VariantSettings.MODEL, topModelId))
-        // .register(Direction.SOUTH, BlockHalf.TOP, (Boolean)false, BlockStateVariant.create().put(VariantSettings.MODEL, topModelId))
-        // .register(Direction.EAST, BlockHalf.TOP, (Boolean)false, BlockStateVariant.create().put(VariantSettings.MODEL, topModelId))
-        // .register(Direction.WEST, BlockHalf.TOP, (Boolean)false, BlockStateVariant.create().put(VariantSettings.MODEL, topModelId))
-        // .register(Direction.NORTH, BlockHalf.BOTTOM, (Boolean)true, BlockStateVariant.create().put(VariantSettings.MODEL, openModelId))
-        // .register(Direction.SOUTH, BlockHalf.BOTTOM, (Boolean)true, BlockStateVariant.create().put(VariantSettings.MODEL, openModelId).put(VariantSettings.Y, VariantSettings.Rotation.R180))
-        // .register(Direction.EAST, BlockHalf.BOTTOM, (Boolean)true, BlockStateVariant.create().put(VariantSettings.MODEL, openModelId).put(VariantSettings.Y, VariantSettings.Rotation.R90))
-        // .register(Direction.WEST, BlockHalf.BOTTOM, (Boolean)true, BlockStateVariant.create().put(VariantSettings.MODEL, openModelId).put(VariantSettings.Y, VariantSettings.Rotation.R270))
-        // .register(Direction.NORTH, BlockHalf.TOP, (Boolean)true, BlockStateVariant.create().put(VariantSettings.MODEL, openModelId))
-        // .register(Direction.SOUTH, BlockHalf.TOP, (Boolean)true, BlockStateVariant.create().put(VariantSettings.MODEL, openModelId).put(VariantSettings.Y, VariantSettings.Rotation.R180))
-        // .register(Direction.EAST, BlockHalf.TOP, (Boolean)true, BlockStateVariant.create().put(VariantSettings.MODEL, openModelId).put(VariantSettings.Y, VariantSettings.Rotation.R90))
-        // .register(Direction.WEST, BlockHalf.TOP, (Boolean)true, BlockStateVariant.create().put(VariantSettings.MODEL, openModelId).put(VariantSettings.Y, VariantSettings.Rotation.R270)));
-
-
-//        return VariantsBlockStateSupplier.create(doorBlock)
-//        .coordinate(BlockStateModelGenerator.fillDoorVariantMap(BlockStateModelGenerator
-//        .fillDoorVariantMap(BlockStateVariantMap.create(Properties.HORIZONTAL_FACING, Properties.DOUBLE_BLOCK_HALF, Properties.DOOR_HINGE, Properties.OPEN),
-//        DoubleBlockHalf.LOWER, bottomLeftHingeClosedModelId, bottomLeftHingeOpenModelId, bottomRightHingeClosedModelId, bottomRightHingeOpenModelId),
-//        DoubleBlockHalf.UPPER, topLeftHingeClosedModelId, topLeftHingeOpenModelId, topRightHingeClosedModelId, topRightHingeOpenModelId));
     }
 
     @Override
@@ -277,7 +255,7 @@ public class ModModelProvider extends FabricModelProvider {
         }
 
         for(Block block : ModBlocks.NEON_TUBE_BLOCKS) {
-            registerNeonTubeBlock(blockStateModelGenerator, block, TexturedModel.CUBE_TOP);
+            registerNeonTubeBlock(blockStateModelGenerator, block);
             //blockStateModelGenerator.registerAxisRotated(block, TexturedModel.CUBE_TOP);
         }
 

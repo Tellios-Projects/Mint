@@ -35,7 +35,7 @@ public class NeonTubeBlock extends PillarBlock {
     public NeonTubeBlock(AbstractBlock.Settings settings) {
         super(settings);
         this.setDefaultState((BlockState)this.getDefaultState().with(POWER, 0));
-        this.setDefaultState((BlockState)this.getDefaultState().with(LIT, false));
+        this.setDefaultState((BlockState)this.getDefaultState().with(LIT, true));
     }
 
     //public int getRedstonePower(BlockView world, BlockPos pos, Direction direction)
