@@ -7,6 +7,7 @@
     "BlockStateProviderMixin",
     "BlockEntityTypeMixin",
     "DyeColorMixin",
+    "PassiveEntityMixin",
     "SheepEntityMixin",
     "LlamaDecorFeatureRendererMixin",
     "ShulkerBoxColoringRecipeMixin",
