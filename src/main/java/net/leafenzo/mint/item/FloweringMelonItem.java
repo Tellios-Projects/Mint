@@ -13,6 +13,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 public class FloweringMelonItem extends Item {
@@ -24,11 +25,20 @@ public class FloweringMelonItem extends Item {
         if(entity instanceof PassiveEntity passiveEntity && passiveEntity.isBaby() && !((IStuntable) passiveEntity).isStunted()) {
             ((IStuntable) passiveEntity).setStunted(true);
             World world = entity.getWorld();
+            Random random = entity.getRandom();
+
             if (!user.isSilent() || entity.isSilent()) {
-                world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ENTITY_STRIDER_EAT, SoundCategory.NEUTRAL, 1.0f, 1.0f);
+                world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.NEUTRAL, 1.0f, 0.4f);
+                world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ENTITY_STRIDER_EAT, SoundCategory.NEUTRAL, 1.2f, 0.7f);
             }
-            world.addImportantParticle(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, entity.getX(), entity.getY(), entity.getZ(), 0.0, -0.2, 0.0);
-            //NetworkUtil.doEntityParticle(user.world, ParticleTypes.WARPED_SPORE, entity, 15, 0.2F);
+            
+            for (int i = 0; i < 8; i++) {
+                double xPos = random.nextGaussian() * 0.4;
+                double ySpeed = -0.5;
+                double zPos = random.nextGaussian() * 0.4;
+                world.addParticle(ParticleTypes.CRIT, entity.getParticleX(1.0) + xPos, entity.getRandomBodyY() + 0.5, entity.getParticleZ(1.0) + zPos, 0, ySpeed, 0);
+            }
+
             if (!((PlayerEntity) user).getAbilities().creativeMode) {
                 stack.decrement(1);
             }
