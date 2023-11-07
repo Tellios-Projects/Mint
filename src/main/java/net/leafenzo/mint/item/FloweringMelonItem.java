@@ -27,11 +27,11 @@ public class FloweringMelonItem extends Item {
             World world = entity.getWorld();
             Random random = entity.getRandom();
 
-            if (!user.isSilent() || entity.isSilent()) {
+            if (!user.isSilent() || !entity.isSilent()) {
                 world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.NEUTRAL, 1.0f, 0.4f);
                 world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ENTITY_STRIDER_EAT, SoundCategory.NEUTRAL, 1.2f, 0.7f);
             }
-            
+
             for (int i = 0; i < 8; i++) {
                 double xPos = random.nextGaussian() * 0.4;
                 double ySpeed = -0.5;
