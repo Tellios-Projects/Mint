@@ -194,7 +194,7 @@ public class ModBlocks {
     public static final Block POTTED_WAXCAP_MUSHROOM = registerBlock("potted_waxcap_mushroom", createFlowerPotBlock(WAXCAP_MUSHROOM), ModItemGroups.ARTICHOKE);
     //TODO : IF - Add particles dripping from waxcap wax if we ever add a particle system for other reasons
     public static final Block HANGING_WAXCAP_WAX = registerBlockWithoutBlockItem("hanging_waxcap_wax", new HangingRootsBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).noCollision().breakInstantly().sounds(BlockSoundGroup.SLIME).offset(AbstractBlock.OffsetType.XZ).pistonBehavior(PistonBehavior.DESTROY)));
-    public static final Block WAXCAP_WAX_BLOCK = registerBlock("waxcap_wax_block", new Block(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.NETHER_WOOD).strength(0.5f).burnable().slipperiness()), ModItemGroups.ARTICHOKE);
+    public static final Block WAXCAP_WAX_BLOCK = registerBlock("waxcap_wax_block", new Block(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.NETHER_WOOD).strength(0.5f).burnable()), ModItemGroups.ARTICHOKE);
     public static final Block WAXCAP_GILL_SLAB = registerBlock("waxcap_gill_slab", new DiagonalSlabBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.SLIME).strength(0.5f).burnable().luminance(state -> 5)), ModItemGroups.ARTICHOKE);
         static {ModBlocks.SLABS.add(WAXCAP_GILL_SLAB); }
     public static final Block WAXCAP_GILLS = registerBlock("waxcap_gills", new DiagonalBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.SLIME).breakInstantly().burnable().luminance(state -> 5)), ModItemGroups.ARTICHOKE);
