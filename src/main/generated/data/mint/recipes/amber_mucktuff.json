@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "dyed_mucktuff",
+  "key": {
+    "#": {
+      "item": "mint:mucktuff"
+    },
+    "X": {
+      "item": "mint:amber_dye"
+    }
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "item": "mint:amber_mucktuff"
+  },
+  "show_notification": true
+}

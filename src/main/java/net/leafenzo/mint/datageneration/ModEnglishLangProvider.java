@@ -17,6 +17,7 @@ import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Debug;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -57,6 +58,17 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
         String arrowKey = "item.minecraft.tipped_arrow.effect." + subKey;
         generateTranslation(translationBuilder, arrowKey, "Arrow of " + effectName);
     }
+
+    /**
+     * Can be necessary to run before automatic translation building to avoid wall banner nonsense
+     * @param translationBuilder
+     * @param BannerBlocks
+     */
+    private void generateBannerTranslations(TranslationBuilder translationBuilder, ArrayList<Block> BannerBlocks) {
+        for(Block block : BannerBlocks) {
+            generateTranslation(translationBuilder, block.getTranslationKey(), toSentanceCase(Registries.BLOCK.getId(block).getPath()));
+        }
+    }
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
         //Manual
@@ -75,6 +87,7 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
         generateTranslation(translationBuilder, ModBlocks.WAXCAP_GILLS, "Waxcap Gill Block");
         generateTranslation(translationBuilder, ModBlocks.WAXCAP_GILL_SLAB, "Waxcap Gills");
 
+        generateBannerTranslations(translationBuilder, ModBlocks.BANNER_BLOCKS); // Necessary (albeit hacky) so we don't get Wall Banner nonsense
         //Automatic
         for(Identifier id : ModUtil.allBlockIdsInNamespace(Super.MOD_ID)) {
             String key = Registries.BLOCK.get(id).getTranslationKey();

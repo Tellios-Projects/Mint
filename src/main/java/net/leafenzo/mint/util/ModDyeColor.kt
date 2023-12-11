@@ -5,6 +5,7 @@
 package net.leafenzo.mint.util;
 import net.leafenzo.mint.PlatformInterfaceImpl
 import net.leafenzo.mint.PlatformInterfaceImpl.getAcornDyeColor
+import net.leafenzo.mint.PlatformInterfaceImpl.getAmberDyeColor
 import net.leafenzo.mint.PlatformInterfaceImpl.getArtichokeDyeColor
 import net.leafenzo.mint.PlatformInterfaceImpl.getBananaDyeColor
 import net.leafenzo.mint.PlatformInterfaceImpl.getCeruleanDyeColor
@@ -14,11 +15,14 @@ import net.leafenzo.mint.PlatformInterfaceImpl.getIndigoDyeColor
 import net.leafenzo.mint.PlatformInterfaceImpl.getMaroonDyeColor
 import net.leafenzo.mint.PlatformInterfaceImpl.getMauveDyeColor
 import net.leafenzo.mint.PlatformInterfaceImpl.getMintDyeColor
+import net.leafenzo.mint.PlatformInterfaceImpl.getMoldDyeColor
 import net.leafenzo.mint.PlatformInterfaceImpl.getNavyDyeColor
 import net.leafenzo.mint.PlatformInterfaceImpl.getPeachDyeColor
 import net.leafenzo.mint.PlatformInterfaceImpl.getPeriwinkleDyeColor
+import net.leafenzo.mint.PlatformInterfaceImpl.getSageDyeColor
 import net.leafenzo.mint.PlatformInterfaceImpl.getSapDyeColor
 import net.leafenzo.mint.PlatformInterfaceImpl.getShamrockDyeColor
+import net.leafenzo.mint.PlatformInterfaceImpl.getVelvetDyeColor
 import net.leafenzo.mint.PlatformInterfaceImpl.getVermilionDyeColor
 import org.jetbrains.annotations.ApiStatus;
 
@@ -115,6 +119,26 @@ object ModDyeColor {
                     signColor = Color(r = 25, g = 60, b = 35)
                 )
 
+                val AMBER =
+                Values("AMBER", "amber", Color(r = 204, g = 141, b = 19), 41,
+                    fireworkColor = Color(r = 204, g = 141, b = 19),
+                    signColor = Color(r = 204, g = 141, b = 19)
+                )
+                val SAGE =
+                Values("SAGE", "sage", Color(r = 97, g = 122, b = 84), 62,
+                    fireworkColor = Color(r = 97, g = 122, b = 84),
+                    signColor = Color(r = 97, g = 122, b = 84)
+                )
+                val VELVET =
+                Values("VELVET", "velvet", Color(r = 159, g = 15, b = 70), 43,
+                    fireworkColor = Color(r = 159, g = 15, b = 70),
+                    signColor = Color(r = 159, g = 15, b = 70)
+                )
+                val MOLD =
+                Values("MOLD", "mold", Color(r = 106, g = 95, b = 36), 50,
+                    fireworkColor = Color(r = 106, g = 95, b = 36),
+                    signColor = Color(r = 106, g = 95, b = 36)
+                )
         }
     }
     // if you're wondering "why bother", shulker boxes require a dye color to render with the correct color
@@ -150,6 +174,14 @@ object ModDyeColor {
     val NAVY = getNavyDyeColor()
     @JvmField
     val SAP = getSapDyeColor()
+    @JvmField
+    val AMBER = getAmberDyeColor()
+    @JvmField
+    val SAGE = getSageDyeColor()
+    @JvmField
+    val VELVET = getVelvetDyeColor()
+    @JvmField
+    val MOLD = getMoldDyeColor()
 
     @JvmField
     val VALUES = arrayOf(
@@ -169,5 +201,9 @@ object ModDyeColor {
             GRAPE,
             NAVY,
             SAP,
+            AMBER,
+            SAGE,
+            VELVET,
+            MOLD
     )
 }

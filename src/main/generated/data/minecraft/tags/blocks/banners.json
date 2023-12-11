@@ -17,6 +17,10 @@
     "mint:grape_banner",
     "mint:navy_banner",
     "mint:sap_banner",
+    "mint:amber_banner",
+    "mint:sage_banner",
+    "mint:velvet_banner",
+    "mint:mold_banner",
     "mint:mint_wall_banner",
     "mint:peach_wall_banner",
     "mint:periwinkle_wall_banner",
@@ -32,6 +36,10 @@
     "mint:maroon_wall_banner",
     "mint:grape_wall_banner",
     "mint:navy_wall_banner",
-    "mint:sap_wall_banner"
+    "mint:sap_wall_banner",
+    "mint:amber_wall_banner",
+    "mint:sage_wall_banner",
+    "mint:velvet_wall_banner",
+    "mint:mold_wall_banner"
   ]
 }

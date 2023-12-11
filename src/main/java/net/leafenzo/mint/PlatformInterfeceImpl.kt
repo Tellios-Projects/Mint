@@ -47,4 +47,12 @@ object PlatformInterfaceImpl {
             ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.NAVY.fieldName)
     @JvmStatic fun getSapDyeColor(): DyeColor =
             ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.SAP.fieldName)
+    @JvmStatic fun getAmberDyeColor(): DyeColor =
+            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.AMBER.fieldName)
+    @JvmStatic fun getSageDyeColor(): DyeColor =
+            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.SAGE.fieldName)
+    @JvmStatic fun getVelvetDyeColor(): DyeColor =
+            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.VELVET.fieldName)
+    @JvmStatic fun getMoldDyeColor(): DyeColor =
+            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.MOLD.fieldName)
 }

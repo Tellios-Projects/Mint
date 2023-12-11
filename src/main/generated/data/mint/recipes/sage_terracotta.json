@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "stained_terracotta",
+  "key": {
+    "#": {
+      "item": "minecraft:terracotta"
+    },
+    "X": {
+      "item": "mint:sage_dye"
+    }
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "item": "mint:sage_terracotta"
+  },
+  "show_notification": true
+}

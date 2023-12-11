@@ -16,6 +16,10 @@
     "mint:maroon_candle",
     "mint:grape_candle",
     "mint:navy_candle",
-    "mint:sap_candle"
+    "mint:sap_candle",
+    "mint:amber_candle",
+    "mint:sage_candle",
+    "mint:velvet_candle",
+    "mint:mold_candle"
   ]
 }

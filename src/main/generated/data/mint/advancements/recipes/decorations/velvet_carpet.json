@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mint:velvet_carpet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_velvet_wool": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mint:velvet_wool"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_velvet_wool",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mint:velvet_carpet"
+    ]
+  },
+  "sends_telemetry_event": false
+}

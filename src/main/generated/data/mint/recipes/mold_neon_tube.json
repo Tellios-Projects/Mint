@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "G": {
+      "item": "mint:mold_stained_glass"
+    },
+    "L": {
+      "item": "minecraft:redstone_lamp"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    "GQG",
+    "GLG",
+    "GQG"
+  ],
+  "result": {
+    "count": 8,
+    "item": "mint:mold_neon_tube"
+  },
+  "show_notification": true
+}

@@ -422,6 +422,82 @@ public class ModBlocks {
     //<editor-fold desc ="SAP - Special">
     //</editor-fold>
 
+    //<editor-fold desc ="AMBER - Template">
+    public static final Block AMBER_WOOL = registerBlock("amber_wool", createWoolBlock(ModDyeColor.AMBER), ModItemGroups.AMBER);
+    public static final Block AMBER_CARPET = registerBlock("amber_carpet", createDyedCarpetBlock(ModDyeColor.AMBER, AMBER_WOOL), ModItemGroups.AMBER);
+    public static final Block AMBER_TERRACOTTA = registerBlock("amber_terracotta", createTerracottaBlock(ModDyeColor.AMBER), ModItemGroups.AMBER);
+    public static final Block AMBER_CONCRETE = registerBlock("amber_concrete", createConcreteBlock(ModDyeColor.AMBER), ModItemGroups.AMBER);
+    public static final Block AMBER_CONCRETE_POWDER = registerBlock("amber_concrete_powder", createConcretePowderBlock(ModDyeColor.AMBER, AMBER_CONCRETE), ModItemGroups.AMBER);
+    public static final Block AMBER_GLAZED_TERRACOTTA = registerBlock("amber_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.AMBER), ModItemGroups.AMBER);
+    public static final Block AMBER_STAINED_GLASS = registerBlock("amber_stained_glass", createStainedGlassBlock(ModDyeColor.AMBER), ModItemGroups.AMBER);
+    public static final Block AMBER_STAINED_GLASS_PANE = registerBlock("amber_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.AMBER, AMBER_STAINED_GLASS), ModItemGroups.AMBER);
+    public static final Block AMBER_SHULKER_BOX = registerBlockWithoutBlockItem("amber_shulker_box", createShulkerBoxBlock(ModDyeColor.AMBER));
+    public static final Block AMBER_BED = registerBlockWithoutBlockItem("amber_bed", createBedBlock(ModDyeColor.AMBER));
+    public static final Block AMBER_CANDLE = registerBlock("amber_candle", createCandleBlock(ModDyeColor.AMBER), ModItemGroups.AMBER);
+    public static final Block AMBER_CANDLE_CAKE = registerBlock("amber_candle_cake", createCandleCakeBlock(ModDyeColor.AMBER, AMBER_CANDLE), ModItemGroups.AMBER);
+    public static final Block AMBER_BANNER = registerBlockWithoutBlockItem("amber_banner", createBannerBlock(ModDyeColor.AMBER));
+    public static final Block AMBER_WALL_BANNER = registerBlockWithoutBlockItem("amber_wall_banner", createWallBannerBlock(ModDyeColor.AMBER, (BannerBlock)ModBlocks.AMBER_BANNER));
+    //</editor-fold>
+    //<editor-fold desc ="AMBER - Special">
+    //</editor-fold>
+
+    //<editor-fold desc ="SAGE - Template">
+    public static final Block SAGE_WOOL = registerBlock("sage_wool", createWoolBlock(ModDyeColor.SAGE), ModItemGroups.SAGE);
+    public static final Block SAGE_CARPET = registerBlock("sage_carpet", createDyedCarpetBlock(ModDyeColor.SAGE, SAGE_WOOL), ModItemGroups.SAGE);
+    public static final Block SAGE_TERRACOTTA = registerBlock("sage_terracotta", createTerracottaBlock(ModDyeColor.SAGE), ModItemGroups.SAGE);
+    public static final Block SAGE_CONCRETE = registerBlock("sage_concrete", createConcreteBlock(ModDyeColor.SAGE), ModItemGroups.SAGE);
+    public static final Block SAGE_CONCRETE_POWDER = registerBlock("sage_concrete_powder", createConcretePowderBlock(ModDyeColor.SAGE, SAGE_CONCRETE), ModItemGroups.SAGE);
+    public static final Block SAGE_GLAZED_TERRACOTTA = registerBlock("sage_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.SAGE), ModItemGroups.SAGE);
+    public static final Block SAGE_STAINED_GLASS = registerBlock("sage_stained_glass", createStainedGlassBlock(ModDyeColor.SAGE), ModItemGroups.SAGE);
+    public static final Block SAGE_STAINED_GLASS_PANE = registerBlock("sage_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.SAGE, SAGE_STAINED_GLASS), ModItemGroups.SAGE);
+    public static final Block SAGE_SHULKER_BOX = registerBlockWithoutBlockItem("sage_shulker_box", createShulkerBoxBlock(ModDyeColor.SAGE));
+    public static final Block SAGE_BED = registerBlockWithoutBlockItem("sage_bed", createBedBlock(ModDyeColor.SAGE));
+    public static final Block SAGE_CANDLE = registerBlock("sage_candle", createCandleBlock(ModDyeColor.SAGE), ModItemGroups.SAGE);
+    public static final Block SAGE_CANDLE_CAKE = registerBlock("sage_candle_cake", createCandleCakeBlock(ModDyeColor.SAGE, SAGE_CANDLE), ModItemGroups.SAGE);
+    public static final Block SAGE_BANNER = registerBlockWithoutBlockItem("sage_banner", createBannerBlock(ModDyeColor.SAGE));
+    public static final Block SAGE_WALL_BANNER = registerBlockWithoutBlockItem("sage_wall_banner", createWallBannerBlock(ModDyeColor.SAGE, (BannerBlock)ModBlocks.SAGE_BANNER));
+    //</editor-fold>
+    //<editor-fold desc ="SAGE - Special">
+    //</editor-fold>
+
+    //<editor-fold desc ="VELVET - Template">
+    public static final Block VELVET_WOOL = registerBlock("velvet_wool", createWoolBlock(ModDyeColor.VELVET), ModItemGroups.VELVET);
+    public static final Block VELVET_CARPET = registerBlock("velvet_carpet", createDyedCarpetBlock(ModDyeColor.VELVET, VELVET_WOOL), ModItemGroups.VELVET);
+    public static final Block VELVET_TERRACOTTA = registerBlock("velvet_terracotta", createTerracottaBlock(ModDyeColor.VELVET), ModItemGroups.VELVET);
+    public static final Block VELVET_CONCRETE = registerBlock("velvet_concrete", createConcreteBlock(ModDyeColor.VELVET), ModItemGroups.VELVET);
+    public static final Block VELVET_CONCRETE_POWDER = registerBlock("velvet_concrete_powder", createConcretePowderBlock(ModDyeColor.VELVET, VELVET_CONCRETE), ModItemGroups.VELVET);
+    public static final Block VELVET_GLAZED_TERRACOTTA = registerBlock("velvet_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.VELVET), ModItemGroups.VELVET);
+    public static final Block VELVET_STAINED_GLASS = registerBlock("velvet_stained_glass", createStainedGlassBlock(ModDyeColor.VELVET), ModItemGroups.VELVET);
+    public static final Block VELVET_STAINED_GLASS_PANE = registerBlock("velvet_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.VELVET, VELVET_STAINED_GLASS), ModItemGroups.VELVET);
+    public static final Block VELVET_SHULKER_BOX = registerBlockWithoutBlockItem("velvet_shulker_box", createShulkerBoxBlock(ModDyeColor.VELVET));
+    public static final Block VELVET_BED = registerBlockWithoutBlockItem("velvet_bed", createBedBlock(ModDyeColor.VELVET));
+    public static final Block VELVET_CANDLE = registerBlock("velvet_candle", createCandleBlock(ModDyeColor.VELVET), ModItemGroups.VELVET);
+    public static final Block VELVET_CANDLE_CAKE = registerBlock("velvet_candle_cake", createCandleCakeBlock(ModDyeColor.VELVET, VELVET_CANDLE), ModItemGroups.VELVET);
+    public static final Block VELVET_BANNER = registerBlockWithoutBlockItem("velvet_banner", createBannerBlock(ModDyeColor.VELVET));
+    public static final Block VELVET_WALL_BANNER = registerBlockWithoutBlockItem("velvet_wall_banner", createWallBannerBlock(ModDyeColor.VELVET, (BannerBlock)ModBlocks.VELVET_BANNER));
+    //</editor-fold>
+    //<editor-fold desc ="VELVET - Special">
+    //</editor-fold>
+
+    //<editor-fold desc ="MOLD - Template">
+    public static final Block MOLD_WOOL = registerBlock("mold_wool", createWoolBlock(ModDyeColor.MOLD), ModItemGroups.MOLD);
+    public static final Block MOLD_CARPET = registerBlock("mold_carpet", createDyedCarpetBlock(ModDyeColor.MOLD, MOLD_WOOL), ModItemGroups.MOLD);
+    public static final Block MOLD_TERRACOTTA = registerBlock("mold_terracotta", createTerracottaBlock(ModDyeColor.MOLD), ModItemGroups.MOLD);
+    public static final Block MOLD_CONCRETE = registerBlock("mold_concrete", createConcreteBlock(ModDyeColor.MOLD), ModItemGroups.MOLD);
+    public static final Block MOLD_CONCRETE_POWDER = registerBlock("mold_concrete_powder", createConcretePowderBlock(ModDyeColor.MOLD, MOLD_CONCRETE), ModItemGroups.MOLD);
+    public static final Block MOLD_GLAZED_TERRACOTTA = registerBlock("mold_glazed_terracotta", createGlazedTerracottaBlock(ModDyeColor.MOLD), ModItemGroups.MOLD);
+    public static final Block MOLD_STAINED_GLASS = registerBlock("mold_stained_glass", createStainedGlassBlock(ModDyeColor.MOLD), ModItemGroups.MOLD);
+    public static final Block MOLD_STAINED_GLASS_PANE = registerBlock("mold_stained_glass_pane", createStainedGlassPaneBlock(ModDyeColor.MOLD, MOLD_STAINED_GLASS), ModItemGroups.MOLD);
+    public static final Block MOLD_SHULKER_BOX = registerBlockWithoutBlockItem("mold_shulker_box", createShulkerBoxBlock(ModDyeColor.MOLD));
+    public static final Block MOLD_BED = registerBlockWithoutBlockItem("mold_bed", createBedBlock(ModDyeColor.MOLD));
+    public static final Block MOLD_CANDLE = registerBlock("mold_candle", createCandleBlock(ModDyeColor.MOLD), ModItemGroups.MOLD);
+    public static final Block MOLD_CANDLE_CAKE = registerBlock("mold_candle_cake", createCandleCakeBlock(ModDyeColor.MOLD, MOLD_CANDLE), ModItemGroups.MOLD);
+    public static final Block MOLD_BANNER = registerBlockWithoutBlockItem("mold_banner", createBannerBlock(ModDyeColor.MOLD));
+    public static final Block MOLD_WALL_BANNER = registerBlockWithoutBlockItem("mold_wall_banner", createWallBannerBlock(ModDyeColor.MOLD, (BannerBlock)ModBlocks.MOLD_BANNER));
+    //</editor-fold>
+    //<editor-fold desc ="MOLD - Special">
+    //</editor-fold>
+
     //<editor-fold desc ="Decor Additions">
     public static final Block NEON_EXCITER = registerBlock("neon_exciter", createNeonExciterBlock());
 

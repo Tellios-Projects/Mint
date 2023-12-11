@@ -32,6 +32,10 @@
     "mint:maroon_dye",
     "mint:grape_dye",
     "mint:navy_dye",
-    "mint:sap_dye"
+    "mint:sap_dye",
+    "mint:amber_dye",
+    "mint:sage_dye",
+    "mint:velvet_dye",
+    "mint:mold_dye"
   ]
 }

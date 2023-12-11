@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mint:velvet_candle"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_velvet_dye": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mint:velvet_dye"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_velvet_dye",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mint:velvet_candle"
+    ]
+  },
+  "sends_telemetry_event": false
+}

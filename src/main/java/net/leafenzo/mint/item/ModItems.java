@@ -245,6 +245,23 @@ public class ModItems {
         public static final Item SAP_BED = registerItem(new BedItem(ModBlocks.SAP_BED, new FabricItemSettings().maxCount(1)));
         public static final Item SAP_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.SAP_SHULKER_BOX, new FabricItemSettings().maxCount(1)));
         public static final Item SAP_BANNER = registerItem(new BannerItem(ModBlocks.SAP_BANNER, ModBlocks.SAP_WALL_BANNER, new FabricItemSettings().maxCount(16)));
+        
+        public static final Item AMBER_DYE = registerItem("amber_dye", createDyeItem(ModDyeColor.AMBER));
+        public static final Item AMBER_BED = registerItem(new BedItem(ModBlocks.AMBER_BED, new FabricItemSettings().maxCount(1)));
+        public static final Item AMBER_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.AMBER_SHULKER_BOX, new FabricItemSettings().maxCount(1)));
+        public static final Item AMBER_BANNER = registerItem(new BannerItem(ModBlocks.AMBER_BANNER, ModBlocks.AMBER_WALL_BANNER, new FabricItemSettings().maxCount(16)));
+        public static final Item SAGE_DYE = registerItem("sage_dye", createDyeItem(ModDyeColor.SAGE));
+        public static final Item SAGE_BED = registerItem(new BedItem(ModBlocks.SAGE_BED, new FabricItemSettings().maxCount(1)));
+        public static final Item SAGE_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.SAGE_SHULKER_BOX, new FabricItemSettings().maxCount(1)));
+        public static final Item SAGE_BANNER = registerItem(new BannerItem(ModBlocks.SAGE_BANNER, ModBlocks.SAGE_WALL_BANNER, new FabricItemSettings().maxCount(16)));
+        public static final Item VELVET_DYE = registerItem("velvet_dye", createDyeItem(ModDyeColor.VELVET));
+        public static final Item VELVET_BED = registerItem(new BedItem(ModBlocks.VELVET_BED, new FabricItemSettings().maxCount(1)));
+        public static final Item VELVET_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.VELVET_SHULKER_BOX, new FabricItemSettings().maxCount(1)));
+        public static final Item VELVET_BANNER = registerItem(new BannerItem(ModBlocks.VELVET_BANNER, ModBlocks.VELVET_WALL_BANNER, new FabricItemSettings().maxCount(16)));
+        public static final Item MOLD_DYE = registerItem("mold_dye", createDyeItem(ModDyeColor.MOLD));
+        public static final Item MOLD_BED = registerItem(new BedItem(ModBlocks.MOLD_BED, new FabricItemSettings().maxCount(1)));
+        public static final Item MOLD_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.MOLD_SHULKER_BOX, new FabricItemSettings().maxCount(1)));
+        public static final Item MOLD_BANNER = registerItem(new BannerItem(ModBlocks.MOLD_BANNER, ModBlocks.MOLD_WALL_BANNER, new FabricItemSettings().maxCount(16)));
     //</editor-fold>
     //<editor-fold desc ="Registration">
     private static Item registerItem(String name, Item item) {
