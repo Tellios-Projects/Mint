@@ -48,7 +48,20 @@ public class ModFabricRegistries {
         compostingChanceRegistry.add(ModItems.MINT_SPRIG, 0.65f); // same as wheat
         compostingChanceRegistry.add(ModItems.MINT_COOKIE, 0.85f); // same as cookie
 
-        // TODO Peach, Periwinkle, and Artichoke composting chances
+        compostingChanceRegistry.add(ModItems.PEACH, 0.65f);
+        compostingChanceRegistry.add(ModItems.PEACH_PIT, 0.5f);
+        compostingChanceRegistry.add(ModItems.PEACH_SLICE, 0.3f);
+
+        compostingChanceRegistry.add(ModBlocks.PERIWINKLE_PETALS, 0.5f);
+        compostingChanceRegistry.add(ModItems.LAVENDER_BREAD, 0.85f);
+
+        compostingChanceRegistry.add(ModBlocks.WAXCAP_STEM_BLOCK, 0.65f);
+        compostingChanceRegistry.add(ModBlocks.WAXCAP_CAP_BLOCK, 0.85f);
+        compostingChanceRegistry.add(ModBlocks.WAXCAP_GILLS, 0.85f);
+        compostingChanceRegistry.add(ModBlocks.WAXCAP_GILL_SLAB, 0.85f);
+        compostingChanceRegistry.add(ModBlocks.WAXCAP_MUSHROOM, 0.65f);
+        compostingChanceRegistry.add(ModItems.ARTICHOKE, 0.65f);
+        compostingChanceRegistry.add(ModItems.ARTICHOKE_HEART, 0.65f);
     }
 
     public static void registerVillagerInteractions() {
@@ -62,7 +75,7 @@ public class ModFabricRegistries {
     }
 
     public static void registerFuels() {
-        ModInit.LOGGER.debug("Registering Smeling Fuels for " + Super.MOD_ID);
+        ModInit.LOGGER.debug("Registering Smelting Fuels for " + Super.MOD_ID);
         FuelRegistry registry = FuelRegistry.INSTANCE;
 
         for(ItemConvertible item : ModBlocks.BANNER_BLOCKS) {
