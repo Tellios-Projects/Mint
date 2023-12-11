@@ -269,16 +269,16 @@ public class ModModelProvider extends FabricModelProvider {
         //Decor Blocks
         registerNeonExciterBlock(blockStateModelGenerator, ModBlocks.NEON_EXCITER);
 
-        for(Block block : ModBlocks.CORRUGATED_IRON_BLOCKS) {
+        for(Block block : ModBlocks.ALL_CORRUGATED_IRON_BLOCKS) {
             blockStateModelGenerator.registerAxisRotated(block, TexturedModel.CUBE_ALL);
         }
 
-        for(Block block : ModBlocks.NEON_TUBE_BLOCKS) {
+        for(Block block : ModBlocks.NEON_TUBE_BLOCK_FROM_DYECOLOR.values()) {
             registerNeonTubeBlock(blockStateModelGenerator, block);
             //blockStateModelGenerator.registerAxisRotated(block, TexturedModel.CUBE_TOP);
         }
 
-        for(Block block : ModBlocks.MUCKTUFF_BLOCKS) {
+        for(Block block : ModBlocks.ALL_MUCKTUFF_BLOCKS) {
             blockStateModelGenerator.registerCubeAllModelTexturePool(block);
         }
 

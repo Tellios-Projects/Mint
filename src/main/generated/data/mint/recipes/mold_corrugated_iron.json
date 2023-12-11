@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "dyed_corrugated_iron",
+  "key": {
+    "#": {
+      "item": "mint:corrugated_iron"
+    },
+    "X": {
+      "item": "mint:mold_dye"
+    }
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "item": "mint:mold_corrugated_iron"
+  },
+  "show_notification": true
+}

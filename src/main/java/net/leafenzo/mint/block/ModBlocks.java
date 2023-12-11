@@ -71,11 +71,10 @@ public class ModBlocks {
 
 
     //Decor Additions
-    public static final ArrayList<Block> CORRUGATED_IRON_BLOCKS = new ArrayList<Block>();
-    public static final ArrayList<Block> NEON_TUBE_BLOCKS = new ArrayList<Block>();
+    //TODO, corrugated iron soundgroup?
+    public static final ArrayList<Block> ALL_CORRUGATED_IRON_BLOCKS = new ArrayList<Block>();
     public static final HashMap<DyeColor, Block> NEON_TUBE_BLOCK_FROM_DYECOLOR = new HashMap<DyeColor, Block>();
-    public static final ArrayList<Block> MUCKTUFF_BLOCKS = new ArrayList<Block>();
-    public static final ArrayList<Block> DYED_MUCKTUFF_BLOCKS = new ArrayList<Block>();
+    public static final ArrayList<Block> ALL_MUCKTUFF_BLOCKS = new ArrayList<Block>();
     public static final ArrayList<Block> PAPER_FRAME_BLOCKS = new ArrayList<Block>();
 
     /**
@@ -508,6 +507,7 @@ public class ModBlocks {
     public static final Block QUAD_PAPER_FRAME = registerBlock("quad_paper_frame", createPaperFrameBlock());
 
     public static final Block MUCKTUFF = registerBlock("mucktuff", createMucktuffBlock());
+    public static final Block CORRUGATED_IRON = registerBlock("corrugated_iron", createMucktuffBlock());
 
     static {
         //With using ModDyeColor it should only loop through the dyes we add, and the vanilla dye colors is only using predefined expected ones- not grabbing from the dye color enum that may have been mixined into
@@ -772,16 +772,22 @@ public class ModBlocks {
     }
     //</editor-fold>
     //<editor-fold desc ="Special Block Creation Functions">
-    public static PillarBlock createCorrugatedIronBlock(DyeColor color) { //TODO add blocktag datagen for this one
+    public static PillarBlock createCorrugatedIronBlock(@Nullable DyeColor color) { //TODO add blocktag datagen for this one
+        MapColor mapColor = MapColor.IRON_GRAY;
+        if(color != null) {
+            mapColor = color.getMapColor();
+        }
         PillarBlock block = new PillarBlock(
                 FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)
-                        .mapColor(color.getMapColor())
+                        .mapColor(mapColor)
                         .sounds(BlockSoundGroup.COPPER)
                         .strength(3) // less than iron block
                         .requiresTool()
         );
-        CORRUGATED_IRON_BLOCKS.add(block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        ALL_CORRUGATED_IRON_BLOCKS.add((Block) block);
+        if(color != null) {
+            DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        }
         return block;
     }
 
@@ -807,7 +813,6 @@ public class ModBlocks {
                         .luminance(createLightLevelFromBooleanProperty(15, Properties.LIT))
                         .requiresTool()
         );
-        NEON_TUBE_BLOCKS.add(block);
         NEON_TUBE_BLOCK_FROM_DYECOLOR.put(color, (Block)block);
         DYECOLOR_FROM_BLOCK.put((Block)block, color);
         return block;
@@ -816,15 +821,13 @@ public class ModBlocks {
         Block block = new Block(mucktuffBlockSettings()
                         .mapColor(color.getMapColor())
         );
-
-        MUCKTUFF_BLOCKS.add(block);
-        DYED_MUCKTUFF_BLOCKS.add(block);
+        ALL_MUCKTUFF_BLOCKS.add(block);
         DYECOLOR_FROM_BLOCK.put((Block) block, color);
         return block;
     }
     public static Block createMucktuffBlock() {
         Block block = new Block(mucktuffBlockSettings());
-        MUCKTUFF_BLOCKS.add(block);
+        ALL_MUCKTUFF_BLOCKS.add(block);
         return block;
     }
     private static final FabricBlockSettings mucktuffBlockSettings() {

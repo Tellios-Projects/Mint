@@ -166,13 +166,17 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
 
 
         //Decor Additions
-        for (Block block : ModBlocks.NEON_TUBE_BLOCKS) {
+        for (Block block : ModBlocks.NEON_TUBE_BLOCK_FROM_DYECOLOR.values()) {
             getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
         }
 
-        for (Block block : ModBlocks.MUCKTUFF_BLOCKS) {
+        for (Block block : ModBlocks.ALL_MUCKTUFF_BLOCKS) {
             getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
             getOrCreateTagBuilder(BlockTags.MOSS_REPLACEABLE).add(block);
+        }
+
+        for (Block block : ModBlocks.ALL_CORRUGATED_IRON_BLOCKS) {
+            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
         }
 
     }

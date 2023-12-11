@@ -168,22 +168,47 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
     }
 
+    public static void offerCorrugatedIronDyingRecipes(Consumer<RecipeJsonProvider> exporter) {
+        for(Block output : ModBlocks.ALL_CORRUGATED_IRON_BLOCKS) {
+            if(ModBlocks.DYECOLOR_FROM_BLOCK.get(output) == null) { continue; }
+
+            DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(output);
+            ItemConvertible dyeItem = ModItems.DYE_ITEM_FROM_COLOR.get(color);
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, 8)
+                    .input(Character.valueOf('#'), ModBlocks.CORRUGATED_IRON)
+                    .input(Character.valueOf('X'), dyeItem)
+                    .pattern("###")
+                    .pattern("#X#")
+                    .pattern("###")
+                    .group("dyed_corrugated_iron").criterion("has_corrugated_iron", FabricRecipeProvider.conditionsFromItem(ModBlocks.CORRUGATED_IRON))
+                    .offerTo(exporter);
+        }
+    }
+    public static void offerCorrugatedIronRecipe(Consumer<RecipeJsonProvider> exporter, Block output) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, 8)
+                .input(Character.valueOf('I'), Items.IRON_INGOT)
+                .input(Character.valueOf('N'), Items.IRON_NUGGET)
+                .pattern("III")
+                .pattern("NNN")
+                .pattern("III")
+                .criterion("has_iron_ingot", FabricRecipeProvider.conditionsFromItem(Items.IRON_INGOT))
+                .offerTo(exporter);
+    }
+
     public static void offerMucktuffDyeingRecipes(Consumer<RecipeJsonProvider> exporter) {
-        for(ItemConvertible output : ModBlocks.DYED_MUCKTUFF_BLOCKS) {
+        for(ItemConvertible output : ModBlocks.ALL_MUCKTUFF_BLOCKS) {
+            if(ModBlocks.DYECOLOR_FROM_BLOCK.get(output) == null) { continue; }
+
             DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(output);
             Item dye = ModItems.DYE_ITEM_FROM_COLOR.get(color);
-            if (dye != null) {
-                ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, 8)
-                        .input(Character.valueOf('#'), ModBlocks.MUCKTUFF)
-                        .input(Character.valueOf('X'), dye)
-                        .pattern("###")
-                        .pattern("#X#")
-                        .pattern("###")
-                        .group("dyed_mucktuff").criterion("has_mucktuff", FabricRecipeProvider.conditionsFromItem(ModBlocks.MUCKTUFF)).offerTo(exporter);
-            }
-            else {
-                throw new RuntimeException(Registries.BLOCK.getId((Block)output).toString() + " failed to find associated DyeColor");
-            }
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, 8)
+                    .input(Character.valueOf('#'), ModBlocks.MUCKTUFF)
+                    .input(Character.valueOf('X'), dye)
+                    .pattern("###")
+                    .pattern("#X#")
+                    .pattern("###")
+                    .group("dyed_mucktuff").criterion("has_mucktuff", FabricRecipeProvider.conditionsFromItem(ModBlocks.MUCKTUFF))
+                    .offerTo(exporter);
         }
     }
     //
@@ -354,7 +379,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(exporter);
 
         offerMucktuffDyeingRecipes(exporter);
-
+        offerCorrugatedIronRecipe(exporter, ModBlocks.CORRUGATED_IRON);
+        offerCorrugatedIronDyingRecipes(exporter);
 
         // Main
 //  WOOL_BLOCKS

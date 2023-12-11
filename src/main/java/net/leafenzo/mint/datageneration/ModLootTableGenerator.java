@@ -79,8 +79,9 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
 
         // Decor Additions
         this.addDrop(ModBlocks.NEON_EXCITER);
-        for(Block block : ModBlocks.NEON_TUBE_BLOCKS) { this.addDrop(block); }
-        for(Block block : ModBlocks.MUCKTUFF_BLOCKS) { this.addDrop(block); }
+        for(Block block : ModBlocks.NEON_TUBE_BLOCK_FROM_DYECOLOR.values()) { this.addDrop(block); }
+        for(Block block : ModBlocks.ALL_MUCKTUFF_BLOCKS) { this.addDrop(block); }
+        for(Block block : ModBlocks.ALL_CORRUGATED_IRON_BLOCKS) { this.addDrop(block); }
 
         //  Main
 // POTTED_PLANTS

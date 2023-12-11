@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "N": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "pattern": [
+    "III",
+    "NNN",
+    "III"
+  ],
+  "result": {
+    "count": 8,
+    "item": "mint:corrugated_iron"
+  },
+  "show_notification": true
+}

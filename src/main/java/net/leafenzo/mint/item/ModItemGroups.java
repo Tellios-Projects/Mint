@@ -4,13 +4,11 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
-import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -19,7 +17,6 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collection;
 import java.util.HashMap;
 
 import static net.leafenzo.mint.util.ModUtil.formatMultipleIdsForErrorLog;
@@ -605,10 +602,10 @@ public class ModItemGroups {
 
     public static ItemGroup ADDITIONS = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "additions"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".additions"))
-                    .icon(() -> new ItemStack(ModBlocks.CORRUGATED_IRON_BLOCKS.get(0).asItem())).entries((displayContext, entries) -> {
+                    .icon(() -> new ItemStack(ModBlocks.ALL_CORRUGATED_IRON_BLOCKS.get(0).asItem())).entries((displayContext, entries) -> {
                         entries.add(ModBlocks.NEON_EXCITER.asItem());
-                        for(Block block : ModBlocks.CORRUGATED_IRON_BLOCKS) { entries.add(block.asItem()); }
-                        for(Block block : ModBlocks.NEON_TUBE_BLOCKS) { entries.add(block.asItem()); }
-                        for(Block block : ModBlocks.MUCKTUFF_BLOCKS) { entries.add(block.asItem()); }
+                        for(Block block : ModBlocks.ALL_CORRUGATED_IRON_BLOCKS) { entries.add(block.asItem()); }
+                        for(Block block : ModBlocks.NEON_TUBE_BLOCK_FROM_DYECOLOR.values()) { entries.add(block.asItem()); }
+                        for(Block block : ModBlocks.ALL_MUCKTUFF_BLOCKS) { entries.add(block.asItem()); }
                     }).build());
 }
