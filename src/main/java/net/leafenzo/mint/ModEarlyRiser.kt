@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.Debug
 @Suppress("unused")
 object ModEarlyRiser : Runnable {
 
-    //TODO Replace this with a ModDyeColor enum with mixins targeting and adding the types from that enum to every location where DyeColor is referenced
+    //Someday consider replacing this with a ModDyeColor enum with mixins targeting and adding the types from that enum to every location where DyeColor is referenced
 
     override fun run() {
         val mr = FabricLoader.getInstance().mappingResolver

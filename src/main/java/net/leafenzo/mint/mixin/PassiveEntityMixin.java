@@ -33,7 +33,7 @@ public abstract class PassiveEntityMixin extends PathAwareEntity implements IStu
     @Unique private boolean isStunted = false;
 
     protected PassiveEntityMixin(EntityType<? extends PathAwareEntity> entityType, World world) {
-        super(entityType, world); ///TODO uhhhh testme. I worry for where the datatracker actually IS
+        super(entityType, world); ///TODO uhhhh testme. I worry for where the datatracker actually IS // dawg. past me. i don't know wtf you meant by this.
     }
 
     @Inject(at = @At("HEAD"), method = "isBaby", cancellable = true)

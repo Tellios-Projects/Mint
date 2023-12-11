@@ -96,10 +96,10 @@ public class ModItemGroups {
         });
     }
 
-    //keep in the right places to make a big rainbow ^~^ in conjunction with our other dye mods as well
+    //keep in the right places to make a big rainbow ^~^
     public static void modifyVanillaItemGroupEntries() {
         // Sort by Hue, then Light to Dark
-        //TODO - make sure they only ever are set to come before or after vanilla dyes
+        // make sure they only ever are set to come before or after vanilla dyes!
 
         //White
         //Light Gray
@@ -164,13 +164,13 @@ public class ModItemGroups {
 //            content.addAfter(Items.MILK_BUCKET, ModItems.MINT_TEA);
         });
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(content -> {
-            content.addAfter(Items.LARGE_FERN, ModBlocks.WILD_MINT, ModBlocks.MINT_SPRIG_BLOCK); //TODO, figure out if mint sprig block should be squashed exclusive
-        });
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(content -> {
-            content.addAfter(Blocks.DARK_PRISMARINE_SLAB, ModBlocks.MINT_BRICKS, ModBlocks.MINT_BRICK_STAIRS, ModBlocks.MINT_BRICK_SLAB);
-        });
+//        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(content -> {
+//            content.addAfter(Items.LARGE_FERN, ModBlocks.WILD_MINT, ModBlocks.MINT_SPRIG_BLOCK);
+//        });
+//
+//        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(content -> {
+//            content.addAfter(Blocks.DARK_PRISMARINE_SLAB, ModBlocks.MINT_BRICKS, ModBlocks.MINT_BRICK_STAIRS, ModBlocks.MINT_BRICK_SLAB);
+//        });
     }
 
 //    public static Collection<ItemStack>
@@ -184,7 +184,7 @@ public class ModItemGroups {
 //    }
 
 
-    //TODO, eventually comment out these item groups as they're only for debug purposes really
+    //TODO, comment out or combine these item groups before release, as they're really only for debug purposes
     public static ItemGroup MINT = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "mint"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".mint"))
                     .icon(() -> new ItemStack(ModItems.MINT_SPRIG)).entries((displayContext, entries) -> {

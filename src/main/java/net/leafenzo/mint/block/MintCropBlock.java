@@ -35,6 +35,4 @@ public class MintCropBlock extends CropBlock {
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(AGE);
     }
-
-    //TODO Add Weed Behavior
 }

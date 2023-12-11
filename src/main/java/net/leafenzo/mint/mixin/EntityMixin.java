@@ -16,9 +16,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Debug(export = true)
+//@Debug(export = true)
 @Mixin(Entity.class)
-@Environment(value= EnvType.CLIENT)
+//@Environment(value= EnvType.CLIENT)
 public abstract class EntityMixin {
 //    @Shadow public abstract String toString();
 
@@ -28,6 +28,7 @@ public abstract class EntityMixin {
 //    @Override
 //    void onUserDamaged(LivingEntity target, Entity attacker);
 
+    // TODO fix me! so that it can apply from entity->player, as it is not for some reason.
     @Inject(method = "applyDamageEffects", at = @At(value = "TAIL"), cancellable = true)
     public void applyDamageEffects(LivingEntity attacker, Entity target, CallbackInfo ci) {
         if (target instanceof LivingEntity) {

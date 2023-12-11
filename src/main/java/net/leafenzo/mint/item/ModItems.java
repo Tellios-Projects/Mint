@@ -132,7 +132,7 @@ public class ModItems {
             .hunger(6)
             .saturationModifier(0.5f)
             .build())));
-    public static final Item LAVENDER_SOAP = registerItem("lavender_soap", new LavenderSoapItem(new FabricItemSettings().maxCount(1).maxDamage(16))); //TODO make me have that custom behavior (ask eliza)
+    public static final Item LAVENDER_SOAP = registerItem("lavender_soap", new LavenderSoapItem(new FabricItemSettings().maxCount(1).maxDamage(16)));
     public static final Item LAVENDER_OIL = registerItem("lavender_oil", new Item(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE)));
     //</editor-fold>
 
@@ -155,11 +155,6 @@ public class ModItems {
             .hunger(11)
             .saturationModifier(0.8f)
             .build())));
-
-
-    //TODO ADDME
-
-
 
 
     //<editor-fold desc ="Decor Additions">

@@ -24,6 +24,9 @@ public class LavenderSoapItem extends Item {
             //Play sfx (hay bale walk at high volume?)
             //Increase animals age / happiness
 
+
+            //TODO make me make animals grow up faster
+
             if (!((PlayerEntity)user).getAbilities().creativeMode) {
                 stack.damage(1, user, playerx -> playerx.sendToolBreakStatus(hand));
             }
