@@ -37,36 +37,16 @@ public class ModConfiguredFeatures {
 //        var placedFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
 //        RegistryEntryLookup<Block> holderGetter = context.getRegistryLookup(RegistryKeys.BLOCK);
 
-//        register(context, HUGE_WAXCAP_MUSHROOM, Feature.HUGE_BROWN_MUSHROOM, new TreeFeatureConfig.Builder(BlockStateProvider.of(ModBlocks.WAXCAP_STEM_BLOCK.getDefaultState().with(MushroomBlock.UP, false).with(MushroomBlock.DOWN, false)),
-//                new StraightTrunkPlacer(3, 1, 2),
-//                BlockStateProvider.of(ModBlocks.WAXCAP_CAP_BLOCK.getDefaultState().with(MushroomBlock.UP, true).with(MushroomBlock.DOWN, false)),
-//                new AcaciaFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0)),
-//                new TwoLayersFeatureSize(1, 0, 1, OptionalInt.of(5))
-//        ).ignoreVines()
-//                .decorators(List.of(new HugeWaxcapMushroomDecorator(0.66f, new ModSimpleBlockStateProvider(ModBlocks.WAXCAP_WAX.getDefaultState())))).build());
 
-        //      ConfiguredFeatures.register(featureRegisterable, ACACIA, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.ACACIA_LOG), new ForkingTrunkPlacer(5, 2, 2), BlockStateProvider.of(Blocks.ACACIA_LEAVES), new AcaciaFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0)), new TwoLayersFeatureSize(1, 0, 2)).ignoreVines().build());
-
-
-                register(context, HUGE_WAXCAP_MUSHROOM, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(ModBlocks.WAXCAP_STEM_BLOCK.getDefaultState().with(MushroomBlock.UP, false).with(MushroomBlock.DOWN, false)),
-                new StraightTrunkPlacer(4, 1, 2),
-//                new StraightTrunkPlacer(9, 1, 2),
-//                new ForkingTrunkPlacer(5, 5, 7),
-                BlockStateProvider.of(ModBlocks.WAXCAP_CAP_BLOCK),
-//                new AcaciaFoliagePlacer(ConstantIntProvider.create(6), ConstantIntProvider.create(3)),
-                new AcaciaFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0)),
-//                new JungleFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0), 3),
-                new TwoLayersFeatureSize(1, 0, 1, OptionalInt.of(5)))
-                .ignoreVines()
-                .decorators(List.of(
-                        new MushroomBlockDirectionDecorator(BlockStateProvider.of(ModBlocks.WAXCAP_CAP_BLOCK)),
-                        new HugeWaxcapMushroomDecorator(
-                                0.55f,
-                                1.0f,
-                                1.0f,
-                                BlockStateProvider.of(ModBlocks.HANGING_WAXCAP_WAX.getDefaultState()),
-                                BlockStateProvider.of(ModBlocks.WAXCAP_GILL_SLAB.getDefaultState().with(SlabBlock.TYPE, SlabType.TOP)))
-                )).build());
+        register(context, HUGE_WAXCAP_MUSHROOM, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(ModBlocks.WAXCAP_STEM_BLOCK.getDefaultState().with(MushroomBlock.UP, false).with(MushroomBlock.DOWN, false)), new StraightTrunkPlacer(4, 1, 2), BlockStateProvider.of(ModBlocks.WAXCAP_CAP_BLOCK), new AcaciaFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0)), new TwoLayersFeatureSize(1, 0, 1, OptionalInt.of(5))).ignoreVines().decorators(List.of(
+                new MushroomBlockDirectionDecorator(BlockStateProvider.of(ModBlocks.WAXCAP_CAP_BLOCK)),
+                new HugeWaxcapMushroomDecorator(
+                        0.55f,
+                        1.0f,
+                        1.0f,
+                        BlockStateProvider.of(ModBlocks.HANGING_WAXCAP_WAX.getDefaultState()),
+                        BlockStateProvider.of(ModBlocks.WAXCAP_GILL_SLAB.getDefaultState().with(SlabBlock.TYPE, SlabType.TOP)))
+        )).build());
     }
 
     private static <FC extends FeatureConfig, F extends Feature <FC>> void register(Registerable <ConfiguredFeature <?, ?>> context, RegistryKey <ConfiguredFeature <?, ?>> key, F feature, FC configuration) {
