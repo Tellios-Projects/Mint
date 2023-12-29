@@ -3,6 +3,7 @@
 
 package net.leafenzo.mint.effect;
 
+import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.enchantment.ThornsEnchantment;
@@ -31,18 +32,23 @@ public class ThornsEffect extends StatusEffect {
 
     public static void apply(Entity user, LivingEntity attacker) {
         Random random = attacker.getRandom();
-        int level = ((LivingEntity) user).getStatusEffect(ModEffects.THORNS).getAmplifier() + 2;
-        if(!shouldDamageAttacker(level+3, random)) { //The level is treated as if it were increased to balance it against thorns armor (which has 12 levels that a player can hold at once)
-            return;
-        }
-        int rand = (1 + random.nextInt(4));
-        attacker.damage(attacker.getDamageSources().thorns(user), rand * level);
+        int amplifier = ((LivingEntity) user).getStatusEffect(ModEffects.THORNS).getAmplifier();
+        int damage;
+
+        if(!shouldDamageAttacker(amplifier, random)) { return; }
+
+        if (amplifier == 0) { damage = 0; }
+        else if (amplifier == 1) { damage = random.nextBetween(1, 5); }
+        else if (amplifier == 2) { damage = random.nextBetween(1, 8); }
+        else { damage = random.nextBetween(1, 5 + ((amplifier-1)*3)); }
+
+        attacker.damage(attacker.getDamageSources().thorns(user), damage);
     }
 
-    public static boolean shouldDamageAttacker(int level, Random random) {
-        if (level <= 0) {
-            return false;
-        }
-        return random.nextFloat() < 0.15f * (float)level;
+    private static boolean shouldDamageAttacker(int amplifier, Random random) {
+        if (amplifier == 0)      { return true; }
+        else if (amplifier == 1) { return random.nextFloat() < 0.5f; }
+        else if (amplifier == 2) { return random.nextFloat() < 0.8f; }
+        return true;
     }
 }

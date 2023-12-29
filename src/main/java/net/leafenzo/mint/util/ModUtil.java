@@ -6,6 +6,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.random.Random;
 import org.apache.http.annotation.Obsolete;
 
 import java.util.*;
@@ -231,9 +232,10 @@ public class ModUtil {
         return a;
     }
 
-
-
-
+    public static int randomBetweenWithChanceToFail(Random random, int min, int max, float chance) {
+        if(chance < random.nextFloat()) { return 0; }
+        return random.nextBetween(min, max);
+    }
 
 //    public static Set<Identifier> allTranslatableInNamespace(String namespace) {
 //        Set<Identifier> set = Registries.POTION.getIds();
