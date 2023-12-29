@@ -29,14 +29,20 @@ public class ThornsEffect extends StatusEffect {
         super(category, color);
     }
 
-    //TODO fix entity to player damage
-    public static void apply(Entity attacker, LivingEntity target) {
-        Random random = target.getRandom();
-        int level = Objects.requireNonNull(target.getStatusEffect(ModEffects.THORNS)).getAmplifier() + 3;
-        if(!ThornsEnchantment.shouldDamageAttacker(level+3, random)) { //The level is treated as its increased here because thorns armor has up to 12 levels that a player can hold at once
+    public static void apply(Entity user, LivingEntity attacker) {
+        Random random = attacker.getRandom();
+        int level = ((LivingEntity) user).getStatusEffect(ModEffects.THORNS).getAmplifier() + 2;
+        if(!shouldDamageAttacker(level+3, random)) { //The level is treated as if it were increased to balance it against thorns armor (which has 12 levels that a player can hold at once)
             return;
         }
-        int rand = (1 + random.nextInt(2));
-        attacker.damage(attacker.getDamageSources().thorns(attacker), rand * level);
+        int rand = (1 + random.nextInt(4));
+        attacker.damage(attacker.getDamageSources().thorns(user), rand * level);
+    }
+
+    public static boolean shouldDamageAttacker(int level, Random random) {
+        if (level <= 0) {
+            return false;
+        }
+        return random.nextFloat() < 0.15f * (float)level;
     }
 }

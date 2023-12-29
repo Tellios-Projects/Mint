@@ -772,7 +772,7 @@ public class ModBlocks {
     }
     //</editor-fold>
     //<editor-fold desc ="Special Block Creation Functions">
-    public static PillarBlock createCorrugatedIronBlock(@Nullable DyeColor color) { //TODO add blocktag datagen for this one
+    public static PillarBlock createCorrugatedIronBlock(@Nullable DyeColor color) {
         MapColor mapColor = MapColor.IRON_GRAY;
         if(color != null) {
             mapColor = color.getMapColor();

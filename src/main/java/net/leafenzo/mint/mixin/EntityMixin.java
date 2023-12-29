@@ -20,21 +20,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Entity.class)
 //@Environment(value= EnvType.CLIENT)
 public abstract class EntityMixin {
-//    @Shadow public abstract String toString();
 
-//    @Override
-//    void applyDamageEffects(LivingEntity attacker, Entity target, CallbackInfo ci);
-//
-//    @Override
-//    void onUserDamaged(LivingEntity target, Entity attacker);
-
-    // TODO fix me! so that it can apply from entity->player, as it is not for some reason.
     @Inject(method = "applyDamageEffects", at = @At(value = "TAIL"), cancellable = true)
-    public void applyDamageEffects(LivingEntity attacker, Entity target, CallbackInfo ci) {
-        if (target instanceof LivingEntity) {
-            StatusEffectInstance thorns = ((LivingEntity) target).getActiveStatusEffects().get(ModEffects.THORNS);
+    public void applyDamageEffects(LivingEntity attacker, Entity user, CallbackInfo ci) {
+        if (user instanceof LivingEntity) {
+            StatusEffectInstance thorns = ((LivingEntity) user).getActiveStatusEffects().get(ModEffects.THORNS);
             if (thorns != null) {
-                ThornsEffect.apply(attacker, (LivingEntity) target);
+                ThornsEffect.apply(user, (LivingEntity) attacker);
             }
         }
     }

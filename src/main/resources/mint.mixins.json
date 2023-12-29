@@ -12,7 +12,8 @@
     "LlamaDecorFeatureRendererMixin",
     "ShulkerBoxColoringRecipeMixin",
     "PointOfInterestTypesMixin",
-    "EntityMixin"
+    "EntityMixin",
+    "PlayerEntityMixin"
   ],
   "client": [
     "client.TexturedRenderLayersMixin"
