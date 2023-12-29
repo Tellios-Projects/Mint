@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 //import net.leafenzo.mint.world.feature.HugeWaxcapMushroomFoliagePlacer;
+import net.leafenzo.mint.datageneration.ModPlacedFeatures;
 import net.leafenzo.mint.mixin.BlockStateProviderMixin;
 import net.leafenzo.mint.world.gen.HugeWaxcapMushroomDecorator;
 import net.leafenzo.mint.world.feature.ModSimpleBlockStateProvider;
@@ -42,5 +43,6 @@ public class ModWorldGen {
 
     public static void registerWorldGen() {
         ModInit.LOGGER.debug("Registering mod world gen for " + Super.MOD_ID);
+        ModPlacedFeatures.registerModifications(); // feels a bit wrong calling this here. It should work fine it just feels smelly to me.
     }
 }
