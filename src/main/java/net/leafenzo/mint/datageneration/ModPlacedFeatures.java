@@ -38,8 +38,8 @@ public class ModPlacedFeatures {
         registerKey(context,
                 PATCH_HIDCOTE_LAVENDER_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PATCH_HIDCOTE_LAVENDER),
-                CountPlacementModifier.of(1), //TODO Makeme
-                RarityFilterPlacementModifier.of(1),
+                CountPlacementModifier.of(60), //TODO Makeme
+                RarityFilterPlacementModifier.of(2),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 BiomePlacementModifier.of()
@@ -58,15 +58,15 @@ public class ModPlacedFeatures {
     public static void registerModifications() {
         //TODO Wild Mint will spawn sparsely in cold places next to rivers
         //TODO Hidcote Lavender will rarely spawn in large patches in fields or meadows
-        //TODO Periwinkle will spawn in large patches in dark forests
+        //TODO Periwinkle will spawn in large patches in dark forests. Has random rotations little holes (random but small chance of 3/4 or 2/4)
         //TODO Thistle Flowers will rarely spawn alone in jungles or sparse jungles
-        //TODO Hypericum will spawn alone in savannah, savannah plateaus, anywhere grassy where it is very warm
+        //TODO Hypericum will spawn alone on top of grass in (#c:climate_dry || #c:climate_temperate) && #c:climate_hot
         //TODO small waxcap mushrooms will spawn sparsely when shallow underground, or in Old Growth spruce forests, and more commonly in swamps (but in practice less commonly, given the less chances without podzol and shadows)
 
         BiomeModifications.create(new Identifier(Super.MOD_ID, "vegetation")).add(ModificationPhase.ADDITIONS, BiomeSelectors.foundInOverworld(), context -> {
 //            context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_WILD_MINT_PLACED);
 //            context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_THISTLE_FLOWER_PLACED);
-//            context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_HIDCOTE_LAVENDER_PLACED);
+            context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_HIDCOTE_LAVENDER_PLACED);
         });
     }
 

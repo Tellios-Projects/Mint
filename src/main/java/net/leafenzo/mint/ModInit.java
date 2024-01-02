@@ -15,7 +15,7 @@ import net.leafenzo.mint.recipe.ModRecipeSerializer;
 import net.leafenzo.mint.registries.ModFabricRegistries;
 import net.leafenzo.mint.util.ModUtil;
 import net.leafenzo.mint.util.ModWorldGen;
-import net.leafenzo.mint.world.ModWorldGenModifications;
+//import net.leafenzo.mint.world.ModWorldGenModifications;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
