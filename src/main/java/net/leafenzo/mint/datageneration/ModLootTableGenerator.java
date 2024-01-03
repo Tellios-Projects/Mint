@@ -43,7 +43,6 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         // TODO this stuff
         this.addDrop(ModBlocks.CORAL_ANEMONE);
 
-
         this.addDrop(ModBlocks.HYPERICUM);
         this.addPottedPlantDrops(ModBlocks.POTTED_HYPERICUM);
 

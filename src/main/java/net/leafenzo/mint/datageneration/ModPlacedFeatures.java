@@ -119,16 +119,9 @@ public class ModPlacedFeatures {
 //        return builder.build();
 //    }
     public static void registerModifications() {
-        //TODO Hypericum will spawn alone on top of grass in (#c:climate_dry || #c:climate_temperate) && #c:climate_hot
-        //TODO Coral Anemone will rarely spawn alone in #c:ocean && !#c:aquatic_icy
-        //TODO Hidcote Lavender will rarely spawn in large patches in fields or meadows
-        //TODO Periwinkle will spawn in large patches in dark forests. Has random rotations little holes (random but small chance of 3/4 or 2/4)
-        //TODO Thistle Flowers will rarely spawn alone in jungles or sparse jungles
-        //TODO small waxcap mushrooms will spawn sparsely when shallow underground, or in Old Growth spruce forests, and more commonly in swamps (but in practice less commonly, given the less chances without podzol and shadows)
-
         BiomeModifications.create(new Identifier(Super.MOD_ID, "overworld_vegetation"))
                 .add(ModificationPhase.ADDITIONS,
-                        BiomeSelectors.includeByKey(BiomeKeys.MEADOW).or(BiomeSelectors.includeByKey(BiomeKeys.OLD_GROWTH_BIRCH_FOREST)),
+                        BiomeSelectors.includeByKey(BiomeKeys.MEADOW).or(BiomeSelectors.includeByKey(BiomeKeys.OLD_GROWTH_BIRCH_FOREST).or(BiomeSelectors.includeByKey(BiomeKeys.BIRCH_FOREST))),
                         context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_WILD_MINT_PLACED); }
                 )
 
@@ -164,26 +157,7 @@ public class ModPlacedFeatures {
                         context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_WAXCAP_MUSHROOM_OLD_GROWTH_PLACED); }
                 )
         ;
-
-//        BiomeModifications.create(new Identifier(Super.MOD_ID, "plains_vegetation"))
-//                .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(BiomeKeys.PLAINS), context -> {
-//                    context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_HIDCOTE_LAVENDER_PLACED);
-//                });
     }
-
-//    private static List<PlacementModifier> mushroomModifiers(int chance, @Nullable PlacementModifier modifier) {
-//        ImmutableList.Builder builder = ImmutableList.builder();
-//        if (modifier != null) {
-//            builder.add(modifier);
-//        }
-//        if (chance != 0) {
-//            builder.add(RarityFilterPlacementModifier.of(chance));
-//        }
-//        builder.add(SquarePlacementModifier.of());
-//        builder.add(PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP);
-//        builder.add(BiomePlacementModifier.of());
-//        return builder.build();
-//    }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(Super.MOD_ID, name));
