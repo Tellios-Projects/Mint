@@ -1,6 +1,5 @@
 package net.leafenzo.mint.datageneration;
 
-import com.google.common.collect.ImmutableList;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
@@ -16,7 +15,6 @@ import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.*;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -29,6 +27,7 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> PATCH_HIDCOTE_LAVENDER_PLACED = registerKey("patch_hidcote_lavender_placed");
     public static final RegistryKey<PlacedFeature> PATCH_PERIWINKLE_PLACED = registerKey("patch_periwinkle_placed");
 
+    public static final RegistryKey<PlacedFeature> PATCH_THISTLE_FLOWER_SPARSE_JUNGLE_PLACED = registerKey("patch_thistle_flower_sparse_jungle_placed");
     public static final RegistryKey<PlacedFeature> PATCH_THISTLE_FLOWER_PLACED = registerKey("patch_thistle_flower_placed");
 //    public static final RegistryKey<PlacedFeature> HUGE_WAXCAP_MUSHROOM_PLACED = registerKey("huge_waxcap_mushroom_placed"); // Don't add me unless needed
     public static final RegistryKey<PlacedFeature> PATCH_WAXCAP_MUSHROOM_OLD_GROWTH_PLACED = registerKey("patch_waxcap_mushroom_old_growth_placed");
@@ -86,10 +85,19 @@ public class ModPlacedFeatures {
 //        PlacedFeatures.register(featureRegisterable, FLOWER_CHERRY, registryEntry25, NoiseThresholdCountPlacementModifier.of(-0.8, 5, 10), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
 
         registerKey(context,
-                PATCH_THISTLE_FLOWER_PLACED,
+                PATCH_THISTLE_FLOWER_SPARSE_JUNGLE_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PATCH_THISTLE_FLOWER),
                 RarityFilterPlacementModifier.of(10),
-                CountPlacementModifier.of(1),
+                CountPlacementModifier.of(3),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                BiomePlacementModifier.of()
+        );
+        registerKey(context,
+                PATCH_THISTLE_FLOWER_PLACED,
+                configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PATCH_THISTLE_FLOWER),
+                RarityFilterPlacementModifier.of(50),
+                CountPlacementModifier.of(3),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 BiomePlacementModifier.of()
@@ -144,12 +152,16 @@ public class ModPlacedFeatures {
                         context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_PERIWINKLE_PLACED); }
                 )
                 .add(ModificationPhase.ADDITIONS,
-                        BiomeSelectors.includeByKey(BiomeKeys.PLAINS).or(BiomeSelectors.includeByKey(BiomeKeys.FLOWER_FOREST)),
+                        BiomeSelectors.includeByKey(BiomeKeys.PLAINS).or(BiomeSelectors.includeByKey(BiomeKeys.FLOWER_FOREST).or(BiomeSelectors.includeByKey(BiomeKeys.SUNFLOWER_PLAINS))),
                         context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_HIDCOTE_LAVENDER_PLACED); }
                 )
 
                 .add(ModificationPhase.ADDITIONS,
-                        BiomeSelectors.includeByKey(BiomeKeys.SPARSE_JUNGLE), //TODO Nature's Spirit compat for the proper Mediterranean climates
+                        BiomeSelectors.includeByKey(BiomeKeys.SPARSE_JUNGLE),
+                        context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_THISTLE_FLOWER_SPARSE_JUNGLE_PLACED); }
+                )
+                .add(ModificationPhase.ADDITIONS,
+                        BiomeSelectors.tag(BiomeTags.IS_SAVANNA), //TODO Nature's Spirit compat for the proper Mediterranean climates
                         context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_THISTLE_FLOWER_PLACED); }
                 )
                 .add(ModificationPhase.ADDITIONS,
