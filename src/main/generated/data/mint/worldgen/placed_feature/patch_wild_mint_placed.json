@@ -1,15 +1,13 @@
 {
-  "feature": "mint:patch_hidcote_lavender",
+  "feature": "mint:patch_wild_mint",
   "placement": [
     {
       "type": "minecraft:rarity_filter",
-      "chance": 100
+      "chance": 35
     },
     {
-      "type": "minecraft:noise_threshold_count",
-      "above_noise": 7,
-      "below_noise": 3,
-      "noise_level": -0.8
+      "type": "minecraft:count",
+      "count": 2
     },
     {
       "type": "minecraft:in_square"

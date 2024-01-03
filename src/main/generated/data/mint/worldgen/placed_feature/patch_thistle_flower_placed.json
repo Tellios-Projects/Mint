@@ -1,15 +1,13 @@
 {
-  "feature": "mint:patch_hidcote_lavender",
+  "feature": "mint:patch_thistle_flower",
   "placement": [
     {
       "type": "minecraft:rarity_filter",
-      "chance": 100
+      "chance": 10
     },
     {
-      "type": "minecraft:noise_threshold_count",
-      "above_noise": 7,
-      "below_noise": 3,
-      "noise_level": -0.8
+      "type": "minecraft:count",
+      "count": 1
     },
     {
       "type": "minecraft:in_square"

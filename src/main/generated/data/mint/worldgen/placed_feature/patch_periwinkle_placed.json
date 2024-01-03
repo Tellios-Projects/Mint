@@ -1,14 +1,14 @@
 {
-  "feature": "mint:patch_hidcote_lavender",
+  "feature": "mint:patch_periwinkle",
   "placement": [
     {
       "type": "minecraft:rarity_filter",
-      "chance": 100
+      "chance": 60
     },
     {
       "type": "minecraft:noise_threshold_count",
-      "above_noise": 7,
-      "below_noise": 3,
+      "above_noise": 60,
+      "below_noise": 0,
       "noise_level": -0.8
     },
     {
