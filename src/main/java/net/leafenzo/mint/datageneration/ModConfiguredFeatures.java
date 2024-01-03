@@ -46,7 +46,7 @@ public class ModConfiguredFeatures {
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_THISTLE_FLOWER = registerKey("patch_thistle_flower");
     public static final RegistryKey <ConfiguredFeature <?, ?>> HUGE_WAXCAP_MUSHROOM = registerKey("huge_waxcap_mushroom");
-//    public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_WAXCAP_MUSHROOM = registerKey("patch_waxcap_mushroom");
+    public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_WAXCAP_MUSHROOM = registerKey("patch_waxcap_mushroom");
 
     public static void bootstrap(Registerable <ConfiguredFeature <?, ?>> context) {
 //        var placedFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
@@ -64,7 +64,6 @@ public class ModConfiguredFeatures {
 
         register(context, PATCH_HIDCOTE_LAVENDER, Feature.FLOWER,
                 new RandomPatchFeatureConfig(32, 1, 0, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.HIDCOTE_LAVENDER))))
-                //new VegetationPatchFeatureConfig(BlockTags.REPLACEABLE, 5, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.HIDCOTE_LAVENDER))))
         );
         DataPool.Builder<BlockState> builder = DataPool.builder();
         for (Direction direction : Direction.Type.HORIZONTAL) {
@@ -75,14 +74,6 @@ public class ModConfiguredFeatures {
         register(context, PATCH_PERIWINKLE, Feature.FLOWER,
                 new RandomPatchFeatureConfig(32, 1, 0, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(builder))))
         );
-//        DataPool.Builder<BlockState> builder = DataPool.builder();
-//        for (int i = 1; i <= 4; ++i) {
-//            for (Direction direction : Direction.Type.HORIZONTAL) {
-//                builder.add((BlockState)((BlockState) Blocks.PINK_PETALS.getDefaultState().with(FlowerbedBlock.FLOWER_AMOUNT, i)).with(FlowerbedBlock.FACING, direction), 1);
-//            }
-//        }
-//        ConfiguredFeatures.register(featureRegisterable, FLOWER_CHERRY, Feature.FLOWER, new RandomPatchFeatureConfig(96, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(builder)))));
-
         register(context, PATCH_THISTLE_FLOWER, Feature.FLOWER,
                 new RandomPatchFeatureConfig(8, 3, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.THISTLE_FLOWER))))
         );
@@ -96,9 +87,9 @@ public class ModConfiguredFeatures {
                         BlockStateProvider.of(ModBlocks.WAXCAP_GILL_SLAB.getDefaultState().with(SlabBlock.TYPE, SlabType.TOP)))
                 )
         ).build());
-//        register(context, PATCH_WAXCAP_MUSHROOM, Feature.RANDOM_PATCH,
-//                new RandomPatchFeatureConfig(16, 16, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.WAXCAP_MUSHROOM))))
-//        );
+        register(context, PATCH_WAXCAP_MUSHROOM, Feature.RANDOM_PATCH,
+                new RandomPatchFeatureConfig(16, 16, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.WAXCAP_MUSHROOM))))
+        );
 //        ConfiguredFeatures.register(featureRegisterable, PATCH_BROWN_MUSHROOM, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.BROWN_MUSHROOM))));
     }
 

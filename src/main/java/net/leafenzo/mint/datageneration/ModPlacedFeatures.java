@@ -31,7 +31,7 @@ public class ModPlacedFeatures {
 
     public static final RegistryKey<PlacedFeature> PATCH_THISTLE_FLOWER_PLACED = registerKey("patch_thistle_flower_placed");
 //    public static final RegistryKey<PlacedFeature> HUGE_WAXCAP_MUSHROOM_PLACED = registerKey("huge_waxcap_mushroom_placed"); // Don't add me unless needed
-//    public static final RegistryKey<PlacedFeature> PATCH_WAXCAP_MUSHROOM_OLD_GROWTH_PLACED = registerKey("patch_waxcap_mushroom_old_growth_placed");
+    public static final RegistryKey<PlacedFeature> PATCH_WAXCAP_MUSHROOM_OLD_GROWTH_PLACED = registerKey("patch_waxcap_mushroom_old_growth_placed");
 
     public static void bootstrap(Registerable <PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -94,14 +94,14 @@ public class ModPlacedFeatures {
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 BiomePlacementModifier.of()
         );
-//        registerKey(context,
-//                PATCH_WAXCAP_MUSHROOM_OLD_GROWTH_PLACED,
-//                configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PATCH_WAXCAP_MUSHROOM),
-//                RarityFilterPlacementModifier.of(4),
-//                SquarePlacementModifier.of(),
-//                PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
-//                BiomePlacementModifier.of()
-//        );
+        registerKey(context,
+                PATCH_WAXCAP_MUSHROOM_OLD_GROWTH_PLACED,
+                configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PATCH_WAXCAP_MUSHROOM),
+                RarityFilterPlacementModifier.of(2),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                BiomePlacementModifier.of()
+        );
 //        PlacedFeatures.register(featureRegisterable, BROWN_MUSHROOM_OLD_GROWTH, registryEntry18, VegetationPlacedFeatures.mushroomModifiers(4, CountPlacementModifier.of(3)));
     }
 
@@ -159,10 +159,10 @@ public class ModPlacedFeatures {
                         BiomeSelectors.includeByKey(BiomeKeys.SPARSE_JUNGLE), //TODO Nature's Spirit compat for the proper Mediterranean climates
                         context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_THISTLE_FLOWER_PLACED); }
                 )
-//                .add(ModificationPhase.ADDITIONS,
-//                        BiomeSelectors.includeByKey(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA).or(BiomeSelectors.includeByKey(BiomeKeys.OLD_GROWTH_PINE_TAIGA)), //TODO Nature's Spirit compat for Redwood Forest
-//                        context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_WAXCAP_MUSHROOM_OLD_GROWTH_PLACED); }
-//                )
+                .add(ModificationPhase.ADDITIONS,
+                        BiomeSelectors.includeByKey(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA).or(BiomeSelectors.includeByKey(BiomeKeys.OLD_GROWTH_PINE_TAIGA)), //TODO Nature's Spirit compat for Redwood Forest
+                        context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_WAXCAP_MUSHROOM_OLD_GROWTH_PLACED); }
+                )
         ;
 
 //        BiomeModifications.create(new Identifier(Super.MOD_ID, "plains_vegetation"))
