@@ -165,7 +165,7 @@ public class ModBlocks {
     public static final Block LAVENDER_CLAY = registerBlock("lavender_clay", new Block(FabricBlockSettings.copyOf(Blocks.CLAY)), ModItemGroups.PERIWINKLE);
     public static final Block LAVENDER_BUSHEL = registerBlock("lavender_bushel", new HayBlock(FabricBlockSettings.copyOf(Blocks.HAY_BLOCK)), ModItemGroups.PERIWINKLE);
     public static final Block PERIWINKLE_PETALS = registerBlock("periwinkle_petals", new FlowerbedBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS).mapColor(MapColor.DARK_GREEN)), ModItemGroups.PERIWINKLE);
-    public static final Block HIDCOTE_LAVENDER = registerBlock("hidcote_lavender", createFlowerBlock(StatusEffects.BAD_OMEN, 999999), ModItemGroups.PERIWINKLE);
+    public static final Block HIDCOTE_LAVENDER = registerBlock("hidcote_lavender", createSpreadableFlowerBlock(StatusEffects.BAD_OMEN, 600, ModConfiguredFeatures.PATCH_HIDCOTE_LAVENDER), ModItemGroups.PERIWINKLE);
     public static final Block POTTED_HIDCOTE_LAVENDER = registerBlock("potted_hidcote_lavender", createFlowerPotBlock(HIDCOTE_LAVENDER), ModItemGroups.PERIWINKLE);
     public static final Block LAVENDER_OIL_LANTERN = registerBlock("lavender_oil_lantern", new LanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).solid().requiresTool().strength(3.5f).sounds(BlockSoundGroup.LANTERN).luminance(state -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), ModItemGroups.PERIWINKLE);
 
@@ -850,16 +850,23 @@ public class ModBlocks {
         return block;
     }
 
+
+    private static FabricBlockSettings createFlowerBlockSettings() {
+        return FabricBlockSettings.copyOf(Blocks.DANDELION)
+                .mapColor(MapColor.DARK_GREEN)
+                .noCollision()
+                .breakInstantly()
+                .sounds(BlockSoundGroup.GRASS)
+                .offset(AbstractBlock.OffsetType.XZ)
+                .pistonBehavior(PistonBehavior.DESTROY);
+    }
+    public static SpreadableFlowerBlock createSpreadableFlowerBlock(StatusEffect suspiciousStewEffect, int effectDuration, RegistryKey<ConfiguredFeature<?, ?>> featureKey) {
+        SpreadableFlowerBlock block = new SpreadableFlowerBlock(suspiciousStewEffect, effectDuration, createFlowerBlockSettings(), featureKey);
+        SMALL_FLOWERS.add(block);
+        return block;
+    }
     public static FlowerBlock createFlowerBlock(StatusEffect suspiciousStewEffect, int effectDuration) {
-        FlowerBlock block = new FlowerBlock(suspiciousStewEffect, effectDuration,
-                FabricBlockSettings.copyOf(Blocks.DANDELION)
-                        .mapColor(MapColor.DARK_GREEN)
-                        .noCollision()
-                        .breakInstantly()
-                        .sounds(BlockSoundGroup.GRASS)
-                        .offset(AbstractBlock.OffsetType.XZ)
-                        .pistonBehavior(PistonBehavior.DESTROY)
-        );
+        FlowerBlock block = new FlowerBlock(suspiciousStewEffect, effectDuration, createFlowerBlockSettings());
         SMALL_FLOWERS.add(block);
         return block;
     }
