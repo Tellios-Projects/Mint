@@ -11,9 +11,12 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
 import net.minecraft.world.gen.placementmodifier.*;
 
 import java.util.List;
@@ -31,6 +34,8 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> PATCH_THISTLE_FLOWER_PLACED = registerKey("patch_thistle_flower_placed");
 //    public static final RegistryKey<PlacedFeature> HUGE_WAXCAP_MUSHROOM_PLACED = registerKey("huge_waxcap_mushroom_placed"); // Don't add me unless needed
     public static final RegistryKey<PlacedFeature> PATCH_WAXCAP_MUSHROOM_OLD_GROWTH_PLACED = registerKey("patch_waxcap_mushroom_old_growth_placed");
+
+    public static final RegistryKey<PlacedFeature> ORE_MUCKTUFF_PLACED = registerKey("ore_mucktuff_placed");
 
     public static void bootstrap(Registerable <PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -111,21 +116,22 @@ public class ModPlacedFeatures {
                 BiomePlacementModifier.of()
         );
 //        PlacedFeatures.register(featureRegisterable, BROWN_MUSHROOM_OLD_GROWTH, registryEntry18, VegetationPlacedFeatures.mushroomModifiers(4, CountPlacementModifier.of(3)));
+
+        registerKey(context,
+                ORE_MUCKTUFF_PLACED,
+                configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.ORE_MUCKTUFF),
+                RarityFilterPlacementModifier.of(1),
+                CountPlacementModifier.of(2),
+                SquarePlacementModifier.of(),
+                //PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
+                HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(-8)),
+                BiomePlacementModifier.of()
+        );
+
+//                PlacedFeatures.register(featureRegisterable, ORE_DIRT, registryEntry7,
+//                OrePlacedFeatures.modifiersWithCount(7, HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.fixed(160))));
     }
 
-    //    private static List<PlacementModifier> mushroomModifiers(int chance, @Nullable PlacementModifier modifier) {
-//        ImmutableList.Builder builder = ImmutableList.builder();
-//        if (modifier != null) {
-//            builder.add(modifier);
-//        }
-//        if (chance != 0) {
-//            builder.add(RarityFilterPlacementModifier.of(chance));
-//        }
-//        builder.add(SquarePlacementModifier.of());
-//        builder.add(PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP);
-//        builder.add(BiomePlacementModifier.of());
-//        return builder.build();
-//    }
     public static void registerModifications() {
         BiomeModifications.create(new Identifier(Super.MOD_ID, "overworld_vegetation"))
                 .add(ModificationPhase.ADDITIONS,
@@ -168,8 +174,14 @@ public class ModPlacedFeatures {
                         BiomeSelectors.includeByKey(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA).or(BiomeSelectors.includeByKey(BiomeKeys.OLD_GROWTH_PINE_TAIGA)), //TODO Nature's Spirit compat for Redwood Forest
                         context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_WAXCAP_MUSHROOM_OLD_GROWTH_PLACED); }
                 )
+
+                .add(ModificationPhase.ADDITIONS,
+                        BiomeSelectors.tag(ConventionalBiomeTags.OCEAN).or(BiomeSelectors.tag(ConventionalBiomeTags.SWAMP).or(BiomeSelectors.tag(ConventionalBiomeTags.JUNGLE))), //TODO Nature's Spirit compat for other swamps
+                        context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.UNDERGROUND_ORES, ORE_MUCKTUFF_PLACED); }
+                )
         ;
     }
+    //TODO add underground mucktuff patch generation beneath Oceans, Jungles, Bamboo Jungles, Swamps, and Mangrove Swamps
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(Super.MOD_ID, name));

@@ -14,6 +14,8 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.registry.*;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.state.property.Properties;
+import net.minecraft.structure.rule.BlockStateMatchRuleTest;
+import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.BlockPos;
@@ -47,6 +49,8 @@ public class ModConfiguredFeatures {
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_THISTLE_FLOWER = registerKey("patch_thistle_flower");
     public static final RegistryKey <ConfiguredFeature <?, ?>> HUGE_WAXCAP_MUSHROOM = registerKey("huge_waxcap_mushroom");
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_WAXCAP_MUSHROOM = registerKey("patch_waxcap_mushroom");
+
+    public static final RegistryKey <ConfiguredFeature <?, ?>> ORE_MUCKTUFF = registerKey("ore_mucktuff");
 
     public static void bootstrap(Registerable <ConfiguredFeature <?, ?>> context) {
 //        var placedFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
@@ -91,8 +95,15 @@ public class ModConfiguredFeatures {
                 new RandomPatchFeatureConfig(16, 16, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.WAXCAP_MUSHROOM))))
         );
 //        ConfiguredFeatures.register(featureRegisterable, PATCH_BROWN_MUSHROOM, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.BROWN_MUSHROOM))));
-    }
 
+        register(context, ORE_MUCKTUFF, Feature.ORE,
+                new OreFeatureConfig(
+                        new TagMatchRuleTest(BlockTags.BASE_STONE_OVERWORLD),
+                        ModBlocks.MUCKTUFF.getDefaultState(),
+                        64
+                )
+        );
+    }
     private static <FC extends FeatureConfig, F extends Feature <FC>> void register(Registerable <ConfiguredFeature <?, ?>> context, RegistryKey <ConfiguredFeature <?, ?>> key, F feature, FC configuration) {
         context.register(key, new ConfiguredFeature <>(feature, configuration));
     }

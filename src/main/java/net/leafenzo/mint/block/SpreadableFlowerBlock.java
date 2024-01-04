@@ -38,14 +38,8 @@ implements Fertilizable {
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
         Optional<RegistryEntry.Reference<ConfiguredFeature<?, ?>>> optional = world.getRegistryManager().get(RegistryKeys.CONFIGURED_FEATURE).getEntry(this.featureKey);
         if (optional.isEmpty()) { return; }
-
         //world.removeBlock(pos, false);
         ((ConfiguredFeature)((RegistryEntry)optional.get()).value()).generate(world, world.getChunkManager().getChunkGenerator(), random, pos);
         world.setBlockState(pos, state, Block.NOTIFY_ALL);
-
-//        world.getRegistryManager().getOptional(RegistryKeys.CONFIGURED_FEATURE)
-//                .flatMap(registry -> registry.getEntry(fertilizedFeature)
-//                .ifPresent(reference -> ((ConfiguredFeature)reference.value()).generate(world, world.getChunkManager()
-//                        .getChunkGenerator(), random, pos.up()));
     }
 }
