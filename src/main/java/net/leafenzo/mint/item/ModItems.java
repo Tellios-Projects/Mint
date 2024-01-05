@@ -132,7 +132,7 @@ public class ModItems {
             .hunger(6)
             .saturationModifier(0.5f)
             .build())));
-    public static final Item LAVENDER_SOAP = registerItem("lavender_soap", new LavenderSoapItem(new FabricItemSettings().maxCount(1).maxDamage(16)));
+    public static final Item LAVENDER_SOAP = registerItem("lavender_soap", new LavenderSoapItem(new FabricItemSettings().maxDamage(16)));
     public static final Item LAVENDER_OIL = registerItem("lavender_oil", new Item(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE)));
     //</editor-fold>
 
