@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mint:mint_sprig"
+    "mint:mint_sprig",
+    "mint:artichoke"
   ]
 }

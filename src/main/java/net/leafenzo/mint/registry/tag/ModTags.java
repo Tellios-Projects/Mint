@@ -13,7 +13,6 @@ import net.minecraft.util.Identifier;
 
 public class ModTags {
     public static class Blocks {
-//        public static final TagKey<Blocks>  = createTa
         public static final TagKey<Block> GLASS = getOrCreateCommonTag("glass");
         public static final TagKey<Block> GLASS_BLOCKS = getOrCreateCommonTag("glass_blocks");  //common tags just gotta be silly ig
 //        public static final TagKey<Block> MUSHROOM_BLOCKS = getOrCreateTag("mushroom_blocks");

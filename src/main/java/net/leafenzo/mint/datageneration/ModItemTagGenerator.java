@@ -44,10 +44,14 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
                 .add(ModBlocks.HANGING_WAXCAP_WAX.asItem())
         ;
 
-    // Special - MINT
+        // Special
         getOrCreateTagBuilder(ItemTags.VILLAGER_PLANTABLE_SEEDS)
+                //TODO make sure that everything we want plantable by villagers are right here
                 .add(ModItems.MINT_SPRIG)
+                .add(ModItems.ARTICHOKE)
+//                .add(ModItems.PEACH_PIT) // Addme when twoblocktall crop block peaches work and are implemented
         ;
+
 
     // Main
         for (Block block : ModBlocks.WOOL_CARPET_BLOCKS) {

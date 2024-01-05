@@ -6,6 +6,7 @@ package net.leafenzo.mint.datageneration;
 
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.world.feature.ModSimpleBlockStateProvider;
 import net.leafenzo.mint.world.gen.HugeWaxcapMushroomDecorator;
 import net.leafenzo.mint.world.gen.MushroomBlockDirectionDecorator;
 import net.minecraft.block.*;
@@ -15,6 +16,7 @@ import net.minecraft.registry.*;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.state.property.Properties;
 import net.minecraft.structure.rule.BlockStateMatchRuleTest;
+import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
@@ -29,6 +31,7 @@ import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.*;
 import net.minecraft.world.gen.placementmodifier.BlockFilterPlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+import net.minecraft.world.gen.stateprovider.NoiseThresholdBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
@@ -96,10 +99,17 @@ public class ModConfiguredFeatures {
         );
 //        ConfiguredFeatures.register(featureRegisterable, PATCH_BROWN_MUSHROOM, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.BROWN_MUSHROOM))));
 
+//        DataPool.Builder<BlockState> builder2 = DataPool.builder();
+//            builder2.add((BlockState)((BlockState) ModBlocks.MUCKTUFF.getDefaultState()), 1);
+//            builder2.add((BlockState)((BlockState) ModBlocks.ALL_MUCKTUFF_BLOCKS.get(2).getDefaultState()), 1);
         register(context, ORE_MUCKTUFF, Feature.ORE,
                 new OreFeatureConfig(
-                        new TagMatchRuleTest(BlockTags.BASE_STONE_OVERWORLD),
+                        (RuleTest) new TagMatchRuleTest(BlockTags.BASE_STONE_OVERWORLD),
                         ModBlocks.MUCKTUFF.getDefaultState(),
+//                        new ModSimpleBlockStateProvider(new WeightedBlockStateProvider(builder))
+//                        BlockStateProvider.of(new WeightedBlockStateProvider(builder)),
+//                      PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(builder))),
+//                        PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(builder))),
                         64
                 )
         );
