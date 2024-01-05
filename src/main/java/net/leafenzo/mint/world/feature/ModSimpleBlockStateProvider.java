@@ -11,8 +11,8 @@ public class ModSimpleBlockStateProvider extends BlockStateProvider {
     public static final Codec <ModSimpleBlockStateProvider> CODEC;
 
     static {
-        CODEC = BlockState.CODEC.fieldOf("state").xmap(ModSimpleBlockStateProvider::new, (hibiscusSimpleBlockStateProvider) -> {
-            return hibiscusSimpleBlockStateProvider.state;
+        CODEC = BlockState.CODEC.fieldOf("state").xmap(ModSimpleBlockStateProvider::new, (modSimpleBlockStateProvider) -> {
+            return modSimpleBlockStateProvider.state;
         }).codec();
     }
 

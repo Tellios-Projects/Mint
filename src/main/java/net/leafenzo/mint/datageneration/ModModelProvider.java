@@ -18,6 +18,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class ModModelProvider extends FabricModelProvider {
@@ -40,6 +41,14 @@ public class ModModelProvider extends FabricModelProvider {
 //    public final void registerBed(BlockStateModelGenerator blockStateModelGenerator, Block bed, Block particleSource) {
 //        blockStateModelGenerator.blockStateCollector.accept(Models.TEMPLATE_BED.upload(ModelIds.getItemModelId(bed.asItem()), TextureMap.particle(particleSource), blockStateModelGenerator.modelCollector));
 //    }
+
+    public final void registerCoralAnemoneBlock(BlockStateModelGenerator blockStateModelGenerator) {
+        Block block = ModBlocks.CORAL_ANEMONE;
+        Identifier identifier1 = new Identifier(Super.MOD_ID, "block/coral_anemone");
+        Identifier identifier2 = new Identifier(Super.MOD_ID, "block/coral_anemone_waterlogged");
+        blockStateModelGenerator.registerItemModel(block.asItem()); // So it uses the right item texture
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block).coordinate(BlockStateModelGenerator.createBooleanModelMap(Properties.WATERLOGGED, identifier2, identifier1)));
+    }
 
     public final void registerFlowerPot(BlockStateModelGenerator blockStateModelGenerator, Block plantBlock, Block flowerPotBlock, BlockStateModelGenerator.TintType tintType) {
         TextureMap textureMap = TextureMap.plant(plantBlock);
@@ -141,13 +150,8 @@ public class ModModelProvider extends FabricModelProvider {
         //mintBricksTexturePool.wall(ModBlocks.MINT_BRICK_WALL);
 
         // PEACH - Special
-        blockStateModelGenerator.registerItemModel(ModBlocks.CORAL_ANEMONE.asItem()); // So it uses the right item texture
-        registerWithModelId(blockStateModelGenerator, ModBlocks.CORAL_ANEMONE, new Identifier(Super.MOD_ID, "block/coral_anemone"));
-
-//        blockStateModelGenerator.registerBuiltin(new Identifier(Super.MOD_ID, "block/anemone"), ModBlocks.CORAL_ANEMONE);
-
+        this.registerCoralAnemoneBlock(blockStateModelGenerator);
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.PEACH_LOG);
-
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.HYPERICUM, ModBlocks.POTTED_HYPERICUM, BlockStateModelGenerator.TintType.NOT_TINTED);
 
         // PERIWINKLE - Special

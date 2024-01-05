@@ -132,8 +132,7 @@ public class ModBlocks {
     public static final Block POTTED_HYPERICUM = registerBlock("potted_hypericum", createFlowerPotBlock((FlowerBlock) HYPERICUM), ModItemGroups.PEACH);
     //public static final Block PEACH_TREE = registerBlock("peach_tree", PeachTreeBlock)
     public static final Block PEACH_LOG = registerBlock("peach_log", new Block(FabricBlockSettings.create().instrument(Instrument.BASS).strength(2.0f).sounds(BlockSoundGroup.WOOD).burnable().mapColor(MapColor.STONE_GRAY)), ModItemGroups.PEACH);
-    public static final Block CORAL_ANEMONE = registerBlock("coral_anemone", new CoralAnemoneBlock(FabricBlockSettings.create().breakInstantly().sounds(BlockSoundGroup.SLIME).mapColor(MapColor.RAW_IRON_PINK).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)), ModItemGroups.PEACH);
-        //TODO add a new model and animation for the anemone's tendrils slowly waving when underwater.
+    public static final Block CORAL_ANEMONE = registerBlock("coral_anemone", new CoralAnemoneBlock(FabricBlockSettings.create().breakInstantly().sounds(BlockSoundGroup.SLIME).mapColor(MapColor.RAW_IRON_PINK).nonOpaque().pistonBehavior(PistonBehavior.DESTROY).luminance(createLightLevelFromBooleanProperty(6, Properties.WATERLOGGED))), ModItemGroups.PEACH);
 
     //</editor-fold>
     //<editor-fold desc ="PERIWINKLE - Template">

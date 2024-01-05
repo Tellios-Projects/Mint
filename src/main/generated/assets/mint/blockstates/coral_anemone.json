@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "waterlogged=false": {
       "model": "mint:block/coral_anemone"
+    },
+    "waterlogged=true": {
+      "model": "mint:block/coral_anemone_waterlogged"
     }
   }
 }
