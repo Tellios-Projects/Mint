@@ -1,24 +1,30 @@
 package net.leafenzo.mint.datageneration;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ArtichokeCropBlock;
 import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.TwoTallCropBlock;
 import net.leafenzo.mint.data.client.TexturedModelSupplier;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.state.property.ModProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.block.enums.SlabType;
 import net.minecraft.data.client.*;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
+import net.minecraft.state.property.Property;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class ModModelProvider extends FabricModelProvider {
@@ -136,6 +142,25 @@ public class ModModelProvider extends FabricModelProvider {
         );
     }
 
+    /**
+     * See also:
+     * BlockStateModelGenerator.registerTripwireHook
+     * BlockStateModelGenerator.registerDoubleBlock
+     * BlockStateModelGenerator.registerCrop
+     */
+    public final void registerTwoTallCrop(BlockStateModelGenerator blockStateModelGenerator, Block crop, Property<Integer> ageProperty/*, int[] upperAgeTextureIndices, int[] lowerAgeTextureIndices*/) {
+        //This creates some extra unused models. This causes no issues whatsoever, so I've decided not to fix it.
+        for(int i = 0; i < ageProperty.getValues().size(); i++) {
+            blockStateModelGenerator.createSubModel(crop, "_stage" + i + "_top", Models.CROSS, TextureMap::cross);
+            blockStateModelGenerator.createSubModel(crop, "_stage" + i + "_bottom", Models.CROSS, TextureMap::cross);
+        }
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(crop)
+                .coordinate(BlockStateVariantMap.create(Properties.DOUBLE_BLOCK_HALF, ageProperty).register(
+                        (a, b) -> BlockStateVariant.create().put(VariantSettings.MODEL, TextureMap.getSubId(crop, "_stage" + b + (a == DoubleBlockHalf.LOWER ? "_bottom" : "_top")))))
+        );
+    }
+
+
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         // MINT - Special
@@ -151,6 +176,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         // PEACH - Special
         this.registerCoralAnemoneBlock(blockStateModelGenerator);
+        blockStateModelGenerator.registerItemModel(ModBlocks.PEACH_TREE.asItem());
+        this.registerTwoTallCrop(blockStateModelGenerator, ModBlocks.PEACH_TREE, TwoTallCropBlock.AGE);
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.PEACH_LOG);
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.HYPERICUM, ModBlocks.POTTED_HYPERICUM, BlockStateModelGenerator.TintType.NOT_TINTED);
 
@@ -295,7 +322,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.MINT_COOKIE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MINT_TEA, Models.GENERATED);
 
-        itemModelGenerator.register(ModItems.PEACH_PIT, Models.GENERATED);
+//        itemModelGenerator.register(ModItems.PEACH_PIT, Models.GENERATED);
         itemModelGenerator.register(ModItems.PEACH, Models.GENERATED);
         itemModelGenerator.register(ModItems.PEACH_SLICE, Models.GENERATED);
         itemModelGenerator.register(ModItems.GOLDEN_PEACH, Models.GENERATED);

@@ -7,6 +7,7 @@ import net.leafenzo.mint.Super;
 import net.leafenzo.mint.datageneration.ModConfiguredFeatures;
 import net.leafenzo.mint.effect.ModEffects;
 import net.leafenzo.mint.item.ModItemGroups;
+import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.*;
@@ -128,9 +129,9 @@ public class ModBlocks {
     public static final Block PEACH_WALL_BANNER = registerBlockWithoutBlockItem("peach_wall_banner", createWallBannerBlock(ModDyeColor.PEACH, (BannerBlock)ModBlocks.PEACH_BANNER));
     //</editor-fold>
     //<editor-fold desc ="PEACH - Special">
-    public static final Block HYPERICUM = registerBlock("hypericum", createFlowerBlock(StatusEffects.HUNGER, 900), ModItemGroups.PEACH); //hunger cause hypericum berries cause digestion issues irl
+    public static final Block HYPERICUM = registerBlock("hypericum", createFlowerBlock(StatusEffects.HUNGER, 900), ModItemGroups.PEACH); //causes hunger because hypericum berries cause digestion issues irl
     public static final Block POTTED_HYPERICUM = registerBlock("potted_hypericum", createFlowerPotBlock((FlowerBlock) HYPERICUM), ModItemGroups.PEACH);
-    //public static final Block PEACH_TREE = registerBlock("peach_tree", PeachTreeBlock)
+    public static final Block PEACH_TREE = registerBlockWithoutBlockItem("peach_tree", new PeachTreeBlock(FabricBlockSettings.create().noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).burnable().pistonBehavior(PistonBehavior.DESTROY)));
     public static final Block PEACH_LOG = registerBlock("peach_log", new Block(FabricBlockSettings.create().instrument(Instrument.BASS).strength(2.0f).sounds(BlockSoundGroup.WOOD).burnable().mapColor(MapColor.STONE_GRAY)), ModItemGroups.PEACH);
     public static final Block CORAL_ANEMONE = registerBlock("coral_anemone", new CoralAnemoneBlock(FabricBlockSettings.create().breakInstantly().sounds(BlockSoundGroup.SLIME).mapColor(MapColor.RAW_IRON_PINK).nonOpaque().pistonBehavior(PistonBehavior.DESTROY).luminance(createLightLevelFromBooleanProperty(6, Properties.WATERLOGGED))), ModItemGroups.PEACH);
 
@@ -829,7 +830,7 @@ public class ModBlocks {
         ALL_MUCKTUFF_BLOCKS.add(block);
         return block;
     }
-    private static final FabricBlockSettings mucktuffBlockSettings() {
+    private static FabricBlockSettings mucktuffBlockSettings() {
         return FabricBlockSettings.copyOf(Blocks.TUFF)
                 .mapColor(MapColor.STONE_GRAY)
                 .sounds(BlockSoundGroup.TUFF)

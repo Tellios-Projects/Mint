@@ -181,7 +181,6 @@ public class ModPlacedFeatures {
                 )
         ;
     }
-    //TODO add underground mucktuff patch generation beneath Oceans, Jungles, Bamboo Jungles, Swamps, and Mangrove Swamps
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(Super.MOD_ID, name));

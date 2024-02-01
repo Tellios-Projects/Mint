@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "mint:block/peach_tree_stage0_top"
+  }
+}

@@ -1,11 +1,12 @@
 package net.leafenzo.mint.block;
 
-import net.leafenzo.mint.item.ModItems;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
@@ -16,35 +17,99 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.*;
+import org.jetbrains.annotations.Nullable;
 
 public class TwoTallCropBlock extends CropBlock {
-    public TwoTallCropBlock(Settings settings, int max_age) {
+    public static final int MAX_AGE = 7;
+    public static final IntProperty AGE = IntProperty.of("age", 0, MAX_AGE);
+    public static final EnumProperty<DoubleBlockHalf> HALF = Properties.DOUBLE_BLOCK_HALF;
+
+    public TwoTallCropBlock(Settings settings) {
         super(settings);
-        this.MAX_AGE = max_age;
         this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(HALF, DoubleBlockHalf.LOWER));
     }
-
-    private static final VoxelShape[] AGE_TO_SHAPE = new VoxelShape[]{
+    private static final VoxelShape[] AGE_TO_SHAPE_UPPER = new VoxelShape[]{
+            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
             Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
             Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
             Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
             Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
             Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
+    };
+    private static final VoxelShape[] AGE_TO_SHAPE_LOWER = new VoxelShape[]{
+            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
             Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 16.0, 16.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 16.0, 16.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 16.0, 16.0),
             Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 16.0, 16.0),
             Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
     };
-
-    public final int MAX_AGE;
-    public static final IntProperty AGE = IntProperty.of("age", 0, CropBlock.MAX_AGE);
-    public static final EnumProperty<DoubleBlockHalf> HALF = Properties.DOUBLE_BLOCK_HALF;
-
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return AGE_TO_SHAPE[Math.max(this.getAge(state), AGE_TO_SHAPE.length)]; //clamp to the last value in the array, as we will never need a larger hitbox for a single block of it
+        return state.get(HALF) == DoubleBlockHalf.UPPER ? AGE_TO_SHAPE_UPPER[this.getAge(state)] : AGE_TO_SHAPE_LOWER[this.getAge(state)];
+    }
+    public int getAgeToGrowUpperHalf() {
+        return 3;
+    }
+    public int getMaxAge() {
+        return MAX_AGE;
+    }
+    @Override
+    protected ItemConvertible getSeedsItem() {
+        return null;
     }
 
+    @Override
+    protected IntProperty getAgeProperty() {
+        return AGE;
+    }
+    @Override
+    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        // return if we are the upper half, the lower half is responsible for growing us
+        if(state.get(Properties.DOUBLE_BLOCK_HALF) == DoubleBlockHalf.UPPER) { return; }
+
+        // return and do not grow if the growing conditions are not met
+        if(world.getBaseLightLevel(pos, 0) < 9 || random.nextInt((int) (25.0f / (CropBlock.getAvailableMoisture(this, world, pos))) + 1) != 0) { return; }
+
+        // when we are young, growing is guaranteed if conditions are alright
+        int i;
+        if((i = this.getAge(state)) < this.getAgeToGrowUpperHalf()) {
+            world.setBlockState(pos, this.withAge(i + 1), Block.NOTIFY_LISTENERS);
+        }
+        // if we are old enough, try to grow both halves-
+        if(this.getAge(state) >= this.getAgeToGrowUpperHalf() && (i = this.getAge(state)) < this.getMaxAge()) {
+            BlockState upperState = world.getBlockState(pos.up());
+                // -but only grow either if there is a top half at all
+            if(upperState.isOf(this) && upperState.get(HALF) == DoubleBlockHalf.UPPER) {
+                if(upperState.isOf(this) && upperState.get(HALF) == DoubleBlockHalf.UPPER) {
+                    world.setBlockState(pos.up(), upperState.with(AGE,i + 1), Block.NOTIFY_LISTENERS);
+                }
+                world.setBlockState(pos, this.withAge(i + 1), Block.NOTIFY_LISTENERS);
+            }
+        }
+
+        // lastly, try to place the top half
+        if(i + 1 == this.getAgeToGrowUpperHalf()) {
+            if(this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).canPlaceAt(world, pos.up()) && world.getBlockState(pos.up()).isAir()) {
+                world.setBlockState(pos.up(), this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).with(AGE, i + 1), Block.NOTIFY_LISTENERS);
+            }
+        }
+    }
+
+
+    // TODO Make it so that you can bonemeal the lower block if the upper block still can grow
+    @Override
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        if (state.get(HALF) == DoubleBlockHalf.UPPER) {
+            BlockState blockState = world.getBlockState(pos.down());
+            return blockState.isOf(this) && blockState.get(HALF) == DoubleBlockHalf.LOWER;
+        }
+        return super.canPlaceAt(state, world, pos);
+    }
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         DoubleBlockHalf doubleBlockHalf = state.get(HALF);
@@ -56,27 +121,33 @@ public class TwoTallCropBlock extends CropBlock {
         }
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
-//
-//    @Override
-//    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-//        if (world.getBaseLightLevel(pos, 0) >= 9) {
-//            int currentAge = this.getAge(state);
-//            if (currentAge < this.getMaxAge()) {
-//                float f = getAvailableMoisture(this, world, pos);
-//                if (random.nextInt((int)(25.0F / f) + 1) == 0) {
-//                    if(currentAge == FIRST_STAGE_MAX_AGE) {
-//                        if(world.getBlockState(pos.up(1)).isOf(Blocks.AIR)) {
-//                            world.setBlockState(pos.up(1), this.withAge(currentAge + 1), 2);
-//                        }
-//                    } else {
-//                        world.setBlockState(pos, this.withAge(currentAge + 1), 2);
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
-//    @Override
+    @Override
+    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        if (!world.isClient) {
+            if (player.isCreative()) {
+                this.onBreakInCreative(world, pos, state, player);
+            } else {
+                this.dropStacks(state, world, pos, null, player, player.getMainHandStack());
+            }
+        }
+        super.onBreak(world, pos, state, player);
+    }
+    @Override
+    public void afterBreak(World world, PlayerEntity player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack tool) {
+        super.afterBreak(world, player, pos, Blocks.AIR.getDefaultState(), blockEntity, tool);
+    }
+    protected static void onBreakInCreative(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        BlockPos blockPos;
+        BlockState blockState;
+        DoubleBlockHalf doubleBlockHalf = state.get(HALF);
+        if (doubleBlockHalf == DoubleBlockHalf.UPPER && (blockState = world.getBlockState(blockPos = pos.down())).isOf(state.getBlock()) && blockState.get(HALF) == DoubleBlockHalf.LOWER) {
+            BlockState blockState2 = blockState.getFluidState().isOf(Fluids.WATER) ? Blocks.WATER.getDefaultState() : Blocks.AIR.getDefaultState();
+            world.setBlockState(blockPos, blockState2, Block.NOTIFY_ALL | Block.SKIP_DROPS);
+            world.syncWorldEvent(player, WorldEvents.BLOCK_BROKEN, blockPos, Block.getRawIdFromState(blockState));
+        }
+    }
+
+    //    @Override
 //    public void applyGrowth(World world, BlockPos pos, BlockState state) {
 //        int nextAge = this.getAge(state) + this.getGrowthAmount(world);
 //        int maxAge = this.getMaxAge();
@@ -90,7 +161,7 @@ public class TwoTallCropBlock extends CropBlock {
 //            world.setBlockState(pos, this.withAge(nextAge - 1), 2);
 //        }
 //    }
-//
+
 //    @Override
 //    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
 //        if (!world.isClient && player.isCreative()) {
@@ -122,17 +193,8 @@ public class TwoTallCropBlock extends CropBlock {
 //    }
 
     @Override
-    protected ItemConvertible getSeedsItem() {
-        return null;
-    }
-
-    @Override
-    protected IntProperty getAgeProperty() {
-        return AGE;
-    }
-
-    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(AGE);
+        builder.add(HALF);
     }
 }

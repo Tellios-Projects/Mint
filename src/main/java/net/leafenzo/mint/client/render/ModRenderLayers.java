@@ -15,6 +15,7 @@ public class ModRenderLayers {
                 ModBlocks.MINT_CROP,
 
                 ModBlocks.CORAL_ANEMONE,
+                ModBlocks.PEACH_TREE,
 
                 ModBlocks.PERIWINKLE_PETALS,
                 ModBlocks.LAVENDER_OIL_LANTERN,

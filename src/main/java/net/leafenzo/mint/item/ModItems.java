@@ -64,7 +64,7 @@ public class ModItems {
                     .build())));
     //</editor-fold>
     //<editor-fold desc ="PEACH - Special">
-    public static final Item PEACH_PIT = registerItem("peach_pit", new Item(new FabricItemSettings()));
+    public static final Item PEACH_PIT = registerItem("peach_pit", new AliasedBlockItem(ModBlocks.PEACH_TREE, new FabricItemSettings()));
     public static final Item PEACH = registerItem("peach", new Item(new FabricItemSettings()
             .recipeRemainder(PEACH_PIT)
             .food(new FoodComponent.Builder()
