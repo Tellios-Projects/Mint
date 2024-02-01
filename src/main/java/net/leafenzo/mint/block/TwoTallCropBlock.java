@@ -77,11 +77,18 @@ public class TwoTallCropBlock extends CropBlock {
 
         // when we are young, growing is guaranteed if conditions are alright
         int i;
-        if((i = this.getAge(state)) < this.getAgeToGrowUpperHalf()) {
+        if((i = this.getAge(state)) < this.getAgeToGrowUpperHalf()-1) {
             world.setBlockState(pos, this.withAge(i + 1), Block.NOTIFY_LISTENERS);
         }
+        // try to grow and place the upper block, but we cannot grow if the upper block would be obscured
+        else if ((i = this.getAge(state)) == this.getAgeToGrowUpperHalf()-1) {
+            if(this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).canPlaceAt(world, pos.up()) && world.getBlockState(pos.up()).isAir()) {
+                world.setBlockState(pos, this.withAge(i + 1), Block.NOTIFY_LISTENERS);
+                world.setBlockState(pos.up(), this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).with(AGE, i + 1), Block.NOTIFY_LISTENERS);
+            }
+        }
         // if we are old enough, try to grow both halves-
-        if(this.getAge(state) >= this.getAgeToGrowUpperHalf() && (i = this.getAge(state)) < this.getMaxAge()) {
+        else if(this.getAge(state) >= this.getAgeToGrowUpperHalf() && (i = this.getAge(state)) < this.getMaxAge()) {
             BlockState upperState = world.getBlockState(pos.up());
                 // -but only grow either if there is a top half at all
             if(upperState.isOf(this) && upperState.get(HALF) == DoubleBlockHalf.UPPER) {
@@ -92,16 +99,17 @@ public class TwoTallCropBlock extends CropBlock {
             }
         }
 
-        // lastly, try to place the top half
-        if(i + 1 == this.getAgeToGrowUpperHalf()) {
-            if(this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).canPlaceAt(world, pos.up()) && world.getBlockState(pos.up()).isAir()) {
-                world.setBlockState(pos.up(), this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).with(AGE, i + 1), Block.NOTIFY_LISTENERS);
-            }
-        }
+//        // lastly, try to place the top half
+//        if(this.getAge(state) == this.getAgeToGrowUpperHalf()) {
+//            if(this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).canPlaceAt(world, pos.up()) && world.getBlockState(pos.up()).isAir()) {
+//                world.setBlockState(pos.up(), this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).with(AGE, this.getAge(state)), Block.NOTIFY_LISTENERS);
+//            }
+//        }
     }
 
-
-    // TODO Make it so that you can bonemeal the lower block if the upper block still can grow
+    // TODO Make it so that you can bonemeal the lower block (but only if the upper block still can grow)
+    // TODO Make me villager plantable and harvestable
+    // TODO Make me plantable even if there is a block one above me, and make me so I'm only destroyed on my neighbor breaking if that neighbor is actually part of me.
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         if (state.get(HALF) == DoubleBlockHalf.UPPER) {
