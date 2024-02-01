@@ -7,6 +7,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
@@ -23,30 +24,29 @@ public class TwoTallCropBlock extends CropBlock {
     public static final int MAX_AGE = 7;
     public static final IntProperty AGE = IntProperty.of("age", 0, MAX_AGE);
     public static final EnumProperty<DoubleBlockHalf> HALF = Properties.DOUBLE_BLOCK_HALF;
-
     public TwoTallCropBlock(Settings settings) {
         super(settings);
         this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(HALF, DoubleBlockHalf.LOWER));
     }
     private static final VoxelShape[] AGE_TO_SHAPE_UPPER = new VoxelShape[]{
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
+            Block.createCuboidShape(0.0, 0.0, 0.0, 11.0, 2.0, 11.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 11.0, 2.0, 11.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 11.0, 2.0, 11.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 11.0, 4.0, 11.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 11.0, 6.0, 11.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 11.0, 8.0, 11.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 11.0, 10.0, 11.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 11.0, 14.0, 11.0)
     };
     private static final VoxelShape[] AGE_TO_SHAPE_LOWER = new VoxelShape[]{
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 16.0, 16.0),
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 16.0, 16.0),
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 16.0, 16.0),
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 16.0, 16.0),
-            Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
+            Block.createCuboidShape(0.0, 0.0, 0.0, 11.0, 4.0, 11.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 11.0, 8.0, 11.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 11.0, 14.0, 11.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 11.0, 16.0, 11.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 11.0, 16.0, 11.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 11.0, 16.0, 11.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 11.0, 16.0, 11.0),
+            Block.createCuboidShape(0.0, 0.0, 0.0, 11.0, 16.0, 11.0)
     };
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -62,10 +62,13 @@ public class TwoTallCropBlock extends CropBlock {
     protected ItemConvertible getSeedsItem() {
         return null;
     }
-
     @Override
     protected IntProperty getAgeProperty() {
         return AGE;
+    }
+    @Override
+    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
+        return floor.isIn(BlockTags.DIRT);
     }
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
@@ -73,7 +76,7 @@ public class TwoTallCropBlock extends CropBlock {
         if(state.get(Properties.DOUBLE_BLOCK_HALF) == DoubleBlockHalf.UPPER) { return; }
 
         // return and do not grow if the growing conditions are not met
-        if(world.getBaseLightLevel(pos, 0) < 9 || random.nextInt((int) (25.0f / (CropBlock.getAvailableMoisture(this, world, pos))) + 1) != 0) { return; }
+        if(world.getBaseLightLevel(pos, 0) < 9 /*|| random.nextInt((int) (25.0f / (CropBlock.getAvailableMoisture(this, world, pos))) + 1) != 0*/) { return; }
 
         // when we are young, growing is guaranteed if conditions are alright
         int i;
@@ -98,17 +101,9 @@ public class TwoTallCropBlock extends CropBlock {
                 world.setBlockState(pos, this.withAge(i + 1), Block.NOTIFY_LISTENERS);
             }
         }
-
-//        // lastly, try to place the top half
-//        if(this.getAge(state) == this.getAgeToGrowUpperHalf()) {
-//            if(this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).canPlaceAt(world, pos.up()) && world.getBlockState(pos.up()).isAir()) {
-//                world.setBlockState(pos.up(), this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).with(AGE, this.getAge(state)), Block.NOTIFY_LISTENERS);
-//            }
-//        }
     }
 
     // TODO Make it so that you can bonemeal the lower block (but only if the upper block still can grow)
-    // TODO Make me villager plantable and harvestable
     // TODO Make me plantable even if there is a block one above me, and make me so I'm only destroyed on my neighbor breaking if that neighbor is actually part of me.
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
@@ -120,11 +115,15 @@ public class TwoTallCropBlock extends CropBlock {
     }
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        DoubleBlockHalf doubleBlockHalf = state.get(HALF);
-        if (!(direction.getAxis() != Direction.Axis.Y || doubleBlockHalf == DoubleBlockHalf.LOWER != (direction == Direction.UP) || neighborState.isOf(this) && neighborState.get(HALF) != doubleBlockHalf)) {
+        DoubleBlockHalf half = state.get(HALF);
+        if (    !(
+                direction.getAxis() != Direction.Axis.Y // ignore if updating neighbor is not either above or below i
+                || direction == Direction.UP != (half == DoubleBlockHalf.LOWER && neighborState.isAir() && state.get(AGE) >= this.getAgeToGrowUpperHalf()) // ignore if its updating above the upper block, or if it's updating above the lower block while it's not grown enough to have an upper half
+                || neighborState.isOf(this) && neighborState.get(HALF) != half)
+        ) {
             return Blocks.AIR.getDefaultState();
         }
-        if (doubleBlockHalf == DoubleBlockHalf.LOWER && direction == Direction.DOWN && !state.canPlaceAt(world, pos)) {
+        if (half == DoubleBlockHalf.LOWER && direction == Direction.DOWN && !state.canPlaceAt(world, pos)) { //break the lower segment if the block below is broken
             return Blocks.AIR.getDefaultState();
         }
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
