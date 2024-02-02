@@ -5,8 +5,11 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.leafenzo.mint.block.ArtichokeCropBlock;
 import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.PeachTreeBlock;
 import net.leafenzo.mint.item.ModItems;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.loot.LootPool;
@@ -40,12 +43,12 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(ModBlocks.MINT_BRICK_STAIRS);
 
         //  PEACH - Special
-        // TODO this stuff
-        this.addDrop(ModBlocks.CORAL_ANEMONE);
-
         this.addDrop(ModBlocks.HYPERICUM);
         this.addPottedPlantDrops(ModBlocks.POTTED_HYPERICUM);
-
+        BlockStatePropertyLootCondition.Builder peachTreeBuilder = BlockStatePropertyLootCondition.builder(ModBlocks.PEACH_TREE).properties(StatePredicate.Builder.create().exactMatch(PeachTreeBlock.HALF, DoubleBlockHalf.UPPER));
+        this.addDrop(ModBlocks.PEACH_TREE, this.applyExplosionDecay(ModBlocks.PEACH_TREE, LootTable.builder().pool(LootPool.builder().conditionally(peachTreeBuilder).with((LootPoolEntry.Builder<?>)((Object)ItemEntry.builder(ModItems.PEACH_BRANCH).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f))))))));
+        this.addDrop(ModBlocks.PEACH_LOG);
+        this.addDrop(ModBlocks.CORAL_ANEMONE);
 
         //  PERIWINKLE - Special
         this.addDrop(ModBlocks.LAVENDER_BRICKS);
