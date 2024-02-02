@@ -5,6 +5,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.enums.DoubleBlockHalf;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.mob.RavagerEntity;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.state.property.EnumProperty;
@@ -13,6 +15,9 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.GameRules;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 
 public class PeachTreeBlock extends TwoTallCropBlock {
     public static final int MAX_AGE = 7;
@@ -56,5 +61,9 @@ public class PeachTreeBlock extends TwoTallCropBlock {
     @Override
     protected ItemConvertible getSeedsItem() {
         return ModItems.PEACH_PIT;
+    }
+    @Override
+    protected float getChanceToGrow(BlockState state) {
+        return this.getAge(state) < 4 ? 0.5f : 1.0f;
     }
 }
