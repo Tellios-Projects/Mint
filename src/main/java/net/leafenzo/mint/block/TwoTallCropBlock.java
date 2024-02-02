@@ -8,18 +8,24 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.*;
+import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 public class TwoTallCropBlock extends CropBlock {
@@ -57,6 +63,7 @@ public class TwoTallCropBlock extends CropBlock {
     public int getAgeToGrowUpperHalf() {
         return 3;
     }
+    public int getAgeToHarvestTo() { return 4; }
     public int getMaxAge() {
         return MAX_AGE;
     }
@@ -72,21 +79,64 @@ public class TwoTallCropBlock extends CropBlock {
     public int getAge(BlockState state) {
         return state.get(this.getAgeProperty());
     }
+    public int getHarvestAmount(BlockState state, Random random) {
+        int age = this.getAge(state);
+        return age < this.getMaxAge() ? 0 : 1 + random.nextInt(2);
+    }
+    public ItemConvertible getDroppedHarvestItem() { return null; }
+    public boolean trySetAge(BlockState state, World world, BlockPos pos, int age) {
+        int prevAge = this.getAge(state);
+        if(age < prevAge) {
+            BlockState b = this.tryGetOtherHalf(state, world, pos);
+            if (b == null) { world.setBlockState(pos, state.with(AGE, age), Block.NOTIFY_LISTENERS); }
+            else {
+                BlockPos pos2 = (state.get(HALF) == DoubleBlockHalf.UPPER) ? pos.down() : pos.up();
+                if (age < this.getAgeToGrowUpperHalf()) {
+                    world.setBlockState(pos2, Blocks.AIR.getDefaultState(), Block.NOTIFY_LISTENERS);
+                    world.setBlockState(pos, state.with(AGE, age), Block.NOTIFY_LISTENERS);
+                } else {
+                    world.setBlockState(pos, state.with(AGE, age), Block.NOTIFY_LISTENERS);
+                    world.setBlockState(pos2, b.with(AGE, age), Block.NOTIFY_LISTENERS);
+                }
+            }
+        }
+        else if(age > prevAge) {
+            BlockState b = this.tryGetOtherHalf(state, world, pos);
+            if (b != null) { // if there is two halves already
+                BlockPos pos2 = (state.get(HALF) == DoubleBlockHalf.UPPER) ? pos.down() : pos.up();
+                world.setBlockState(pos, state.with(AGE, age), Block.NOTIFY_LISTENERS);
+                world.setBlockState(pos2, b.with(AGE, age), Block.NOTIFY_LISTENERS);
+            }
+            else if(state.get(HALF) == DoubleBlockHalf.LOWER && age >= this.getAgeToGrowUpperHalf()) { // if we need to grow an upper half
+                if(this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).canPlaceAt(world, pos.up()) && world.getBlockState(pos.up()).isAir()) {
+                    world.setBlockState(pos, state.with(AGE, age), Block.NOTIFY_LISTENERS);
+                    world.setBlockState(pos.up(), this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).with(AGE, age), Block.NOTIFY_LISTENERS);
+                }
+                else {
+                    return false; //growth has failed
+                }
+            }
+            else { // if there's only the one half
+                world.setBlockState(pos, state.with(AGE, age), Block.NOTIFY_LISTENERS);
+            }
+        }
+        // else, do nothing when the new age is the same as the prevAge
+
+        return true; // return true if we haven't failed
+    }
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
         return floor.isIn(BlockTags.DIRT);
     }
     protected float getChanceToGrow(BlockState state) {
-        return 0.0f;
+        return 1.0f;
     }
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        // return if we are the upper half, the lower half is responsible for growing us
+        // return if we are the upper half, random ticks only trigger for the lower half, or else this plant would grow at double the speed one would expect.
         if(state.get(Properties.DOUBLE_BLOCK_HALF) == DoubleBlockHalf.UPPER) { return; }
-
         // return and do not grow if the growing conditions are not met
         if(world.getBaseLightLevel(pos, 0) < 9 /*|| random.nextInt((int) (25.0f / (CropBlock.getAvailableMoisture(this, world, pos))) + 1) != 0*/) { return; }
-        
         if(this.getChanceToGrow(state) < random.nextFloat()) { return; }
 
         //grow
@@ -94,27 +144,8 @@ public class TwoTallCropBlock extends CropBlock {
     }
     public void tryGrow(BlockState state, ServerWorld world, BlockPos pos) {
         int currAge = this.getAge(state);
-        // when we are young, growing is guaranteed if conditions are alright
-        if(currAge < this.getAgeToGrowUpperHalf()-1) {
-            world.setBlockState(pos, this.withAge(currAge + 1), Block.NOTIFY_LISTENERS);
-        }
-        // try to grow and place the upper block, but we cannot grow if the upper block would be obscured
-        else if (currAge == this.getAgeToGrowUpperHalf()-1) {
-            if(this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).canPlaceAt(world, pos.up()) && world.getBlockState(pos.up()).isAir()) {
-                world.setBlockState(pos, this.withAge(currAge + 1), Block.NOTIFY_LISTENERS);
-                world.setBlockState(pos.up(), this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).with(AGE, currAge + 1), Block.NOTIFY_LISTENERS);
-            }
-        }
-        // if we are old enough, try to grow both halves-
-        else if(currAge >= this.getAgeToGrowUpperHalf() && currAge < this.getMaxAge()) {
-            BlockState upperState = world.getBlockState(pos.up());
-            // -but only grow either if there is a top half at all
-            if(upperState.isOf(this) && upperState.get(HALF) == DoubleBlockHalf.UPPER) {
-                if(upperState.isOf(this) && upperState.get(HALF) == DoubleBlockHalf.UPPER) {
-                    world.setBlockState(pos.up(), upperState.with(AGE,currAge + 1), Block.NOTIFY_LISTENERS);
-                }
-                world.setBlockState(pos, this.withAge(currAge + 1), Block.NOTIFY_LISTENERS);
-            }
+        if(currAge + 1 <= this.getMaxAge()) {
+            this.trySetAge(state, world, pos, currAge + 1);
         }
     }
     @Override
@@ -174,8 +205,7 @@ public class TwoTallCropBlock extends CropBlock {
     }
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        //Don't break on ravager collision. Just haven't tested that and I don't want to worry about it
-        super.onEntityCollision(state, world, pos, entity);
+        //Don't break on ravager collision. Just because I haven't tested that and I don't really want to worry about it
     }
     @Override
     public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
@@ -191,7 +221,6 @@ public class TwoTallCropBlock extends CropBlock {
     }
     @Override
     public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
-//        return this.getAge(state) != this.getAgeToGrowUpperHalf() - 1 || this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).canPlaceAt(world, pos.up()) && world.getBlockState(pos.up()).isAir(); // Unnecessary here, case covered instead by isFertilizable
         return true;
     }
     @Override
@@ -207,12 +236,29 @@ public class TwoTallCropBlock extends CropBlock {
     @Override
     public void applyGrowth(World world, BlockPos pos, BlockState state) {
         int i = this.getGrowthAmount(world);
-        if(i + this.getAge(state) > this.getMaxAge()) {
-            i = this.getMaxAge() - this.getAge(state);
+        int currAge = this.getAge(state);
+        if(currAge + i >= this.getMaxAge()) {
+            i = this.getMaxAge() - currAge;
         }
-        for (int j = 0; j < i; j++) { // Yeah this is pretty stinky I know, but it works for now.
-            this.tryGrow(state, (ServerWorld) world, pos);
+        boolean success = this.trySetAge(state, world, pos, currAge + i);
+        if( (!success) && currAge < getAgeToGrowUpperHalf()) {this.trySetAge(state, world, pos, this.getAgeToGrowUpperHalf()-1); }
+    }
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if(this.getDroppedHarvestItem() == null) { return ActionResult.PASS; }
+        if (player.getStackInHand(hand).isOf(Items.BONE_MEAL)) { return ActionResult.PASS; }
+
+        int j = this.getHarvestAmount(state, world.getRandom());
+        if(j > 0) {
+            boolean growSucceeded = this.trySetAge(state, world, pos, this.getAgeToHarvestTo());
+            if(growSucceeded) {
+                Block.dropStack(world, pos, new ItemStack(this.getDroppedHarvestItem(), j));
+                world.playSound(null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0f, 0.8f + world.random.nextFloat() * 0.4f);
+                world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, state.with(AGE, this.getAgeToHarvestTo())));
+                return ActionResult.success(world.isClient);
+            }
         }
+        return super.onUse(state, world, pos, player, hand, hit);
     }
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

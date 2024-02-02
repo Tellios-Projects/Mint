@@ -13,6 +13,7 @@ import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.GameRules;
@@ -65,5 +66,14 @@ public class PeachTreeBlock extends TwoTallCropBlock {
     @Override
     protected float getChanceToGrow(BlockState state) {
         return this.getAge(state) < 4 ? 0.5f : 1.0f;
+    }
+    @Override
+    public int getAgeToHarvestTo() { return 4; }
+    @Override
+    public ItemConvertible getDroppedHarvestItem() { return ModItems.PEACH; }
+    @Override
+    public int getHarvestAmount(BlockState state, Random random) {
+        int age = this.getAge(state);
+        return age < this.getMaxAge() ? 0 : 1 + random.nextInt(2);
     }
 }
