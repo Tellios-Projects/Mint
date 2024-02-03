@@ -6,6 +6,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileUtil;
@@ -51,8 +52,11 @@ public class LavenderSoapItem extends Item {
                 world.playSound(null, entity.getBlockPos(), SoundEvents.ITEM_BRUSH_BRUSHING_SAND, SoundCategory.PLAYERS, 3.0f, 1.0f);
             }
 
-            //TODO Increase animals age / happiness
-
+            //Help grow up
+            if(passiveEntity.isBaby()) {
+            int age = (int)((float)(-passiveEntity.getBreedingAge()) / 20 * 0.33f); // thirds the time it will take them to grow up (but can't be spammed due to happiness cooldown, I think.)
+            passiveEntity.growUp(age, true);
+            }
 
             //Damage soap
             if (!((PlayerEntity)user).getAbilities().creativeMode) {
