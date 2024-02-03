@@ -32,6 +32,8 @@ public class NeonTubeBlock extends PillarBlock {
     public static final IntProperty POWER = Properties.POWER;
     private boolean givesPower = true;
 
+    //TODO Makeme an alternative to redstone wire
+
     public NeonTubeBlock(AbstractBlock.Settings settings) {
         super(settings);
         this.setDefaultState((BlockState)this.getDefaultState().with(POWER, 0));

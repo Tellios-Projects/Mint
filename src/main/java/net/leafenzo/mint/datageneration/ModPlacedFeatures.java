@@ -120,7 +120,7 @@ public class ModPlacedFeatures {
         registerKey(context,
                 ORE_MUCKTUFF_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.ORE_MUCKTUFF),
-                RarityFilterPlacementModifier.of(1),
+                RarityFilterPlacementModifier.of(35),
                 CountPlacementModifier.of(2),
                 SquarePlacementModifier.of(),
                 //PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,

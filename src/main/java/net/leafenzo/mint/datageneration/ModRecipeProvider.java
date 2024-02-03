@@ -370,9 +370,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion("has_observer", FabricRecipeProvider.conditionsFromItem(Items.OBSERVER))
                 .offerTo(exporter);
 
-        for(DyeColor color : ModUtil.concat(ModDyeColor.VALUES, ModUtil.VANILLA_DYE_COLORS)) {
-            offerNeonTubeRecipe(exporter, color);
-        }
+        //TODO uncomment me when this is actually working
+//        for(DyeColor color : ModUtil.concat(ModDyeColor.VALUES, ModUtil.VANILLA_DYE_COLORS)) {
+//            offerNeonTubeRecipe(exporter, color);
+//        }
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MUCKTUFF)
                         .input(Character.valueOf('T'), Blocks.TUFF)

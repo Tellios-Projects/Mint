@@ -21,6 +21,8 @@ public class NeonExciterBlock extends FacingBlock {
     public static final BooleanProperty POWERED = Properties.POWERED;
     public static final IntProperty POWER = Properties.POWER;
 
+    //TODO make me interface redstone wire with NeonTubes
+
     protected NeonExciterBlock(Settings settings) {
         super(settings);
         this.setDefaultState((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.SOUTH)).with(POWER, 0).with(POWERED, false));
