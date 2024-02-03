@@ -59,12 +59,35 @@ public abstract class SheepEntityMixin extends AnimalEntity implements Shearable
    @Unique private static final Identifier GRAPE_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/grape");
    @Unique private static final Identifier NAVY_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/navy");
    @Unique private static final Identifier SAP_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/sap");
+   @Unique private static final Identifier AMBER_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/amber");
+   @Unique private static final Identifier SAGE_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/sage");
+   @Unique private static final Identifier VELVET_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/velvet");
+   @Unique private static final Identifier MOLD_SHEEP_LOOT_TABLE = new Identifier(Super.MOD_ID,"entities/sheep/mold");
 
    @Shadow @Final private static Map<DyeColor, ItemConvertible> DROPS;
    @Shadow @Final private static TrackedData <Byte> COLOR;
 
    static {
       DROPS.put(ModDyeColor.MINT, ModBlocks.MINT_WOOL);
+      DROPS.put(ModDyeColor.PEACH, ModBlocks.PEACH_WOOL);
+      DROPS.put(ModDyeColor.PERIWINKLE, ModBlocks.PERIWINKLE_WOOL);
+      DROPS.put(ModDyeColor.ARTICHOKE, ModBlocks.ARTICHOKE_WOOL);
+      DROPS.put(ModDyeColor.FUCHSIA, ModBlocks.FUCHSIA_WOOL);
+      DROPS.put(ModDyeColor.VERMILION, ModBlocks.VERMILION_WOOL);
+      DROPS.put(ModDyeColor.SHAMROCK, ModBlocks.SHAMROCK_WOOL);
+      DROPS.put(ModDyeColor.INDIGO, ModBlocks.INDIGO_WOOL);
+      DROPS.put(ModDyeColor.BANANA, ModBlocks.BANANA_WOOL);
+      DROPS.put(ModDyeColor.CERULEAN, ModBlocks.CERULEAN_WOOL);
+      DROPS.put(ModDyeColor.ACORN, ModBlocks.ACORN_WOOL);
+      DROPS.put(ModDyeColor.MAUVE, ModBlocks.MAUVE_WOOL);
+      DROPS.put(ModDyeColor.MAROON, ModBlocks.MAROON_WOOL);
+      DROPS.put(ModDyeColor.GRAPE, ModBlocks.GRAPE_WOOL);
+      DROPS.put(ModDyeColor.NAVY, ModBlocks.NAVY_WOOL);
+      DROPS.put(ModDyeColor.SAP, ModBlocks.SAP_WOOL);
+      DROPS.put(ModDyeColor.AMBER, ModBlocks.AMBER_WOOL);
+      DROPS.put(ModDyeColor.SAGE, ModBlocks.SAGE_WOOL);
+      DROPS.put(ModDyeColor.VELVET, ModBlocks.VELVET_WOOL);
+      DROPS.put(ModDyeColor.MOLD, ModBlocks.MOLD_WOOL);
    }
 
    private SheepEntityMixin() {
@@ -130,5 +153,9 @@ public abstract class SheepEntityMixin extends AnimalEntity implements Shearable
       else if (color == ModDyeColor.GRAPE) cir.setReturnValue(GRAPE_SHEEP_LOOT_TABLE);
       else if (color == ModDyeColor.NAVY) cir.setReturnValue(NAVY_SHEEP_LOOT_TABLE);
       else if (color == ModDyeColor.SAP) cir.setReturnValue(SAP_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.AMBER) cir.setReturnValue(AMBER_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.SAGE) cir.setReturnValue(SAGE_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.VELVET) cir.setReturnValue(VELVET_SHEEP_LOOT_TABLE);
+      else if (color == ModDyeColor.MOLD) cir.setReturnValue(MOLD_SHEEP_LOOT_TABLE);
    }
 }
