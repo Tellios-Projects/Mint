@@ -67,14 +67,14 @@ object ModDyeColor {
                     signColor = Color(r = 255, g = 91, b = 30)
                 )
                 val SHAMROCK =
-                    Values("SHAMROCK", "shamrock", Color(r = 35, g = 229, b = 0), 34,
-                    fireworkColor = Color(r = 35, g = 229, b = 0),
-                    signColor = Color(r = 35, g = 229, b = 0)
+                    Values("SHAMROCK", "shamrock", Color(r = 30, g = 188, b = 0), 34,
+                    fireworkColor = Color(r = 30, g = 188, b = 0),
+                    signColor = Color(r = 30, g = 188, b = 0)
                 )
                 val INDIGO =
-                    Values("INDIGO", "indigo", Color(r = 117, g = 49, b = 218), 33,
-                    fireworkColor = Color(r = 117, g = 49, b = 218),
-                    signColor = Color(r = 117, g = 49, b = 218)
+                    Values("INDIGO", "indigo", Color(r = 95, g = 63, b = 169), 33,
+                    fireworkColor = Color(r = 95, g = 63, b = 169),
+                    signColor = Color(r = 95, g = 63, b = 169)
                 )
 
                 val BANANA =
