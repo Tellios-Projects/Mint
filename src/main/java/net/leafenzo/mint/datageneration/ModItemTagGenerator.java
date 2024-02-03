@@ -49,7 +49,7 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
                 //TODO make sure that everything we want plantable by villagers are right here
                 .add(ModItems.MINT_SPRIG)
                 .add(ModItems.ARTICHOKE)
-//                .add(ModItems.PEACH_PIT) // Addme when twoblocktall crop block peaches work and are implemented
+//                .add(ModItems.PEACH_PIT) // Villagers wouldn't be able to harvest these anyway, so don't add
         ;
 
 

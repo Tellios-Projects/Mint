@@ -140,9 +140,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(RecipeProvider.hasItem(input), RecipeProvider.conditionsFromItem(input))
                 .offerTo(exporter, RecipeProvider.convertBetween(output, Items.HONEYCOMB)));
     }
-    //TODO
-    //potential compatibility errors:
-    //i overwrite all vanilla honeycomb recipes to use a c:wax input tag, if someone else where to overwrite these after me, waxcap wax could no longer be used to craft things
+    //TODO deal with potential compatibility errors
+    // due to overwriting all vanilla honeycomb recipes to use a c:wax input tag, if someone else where to overwrite these after me, waxcap wax could no longer be used to craft things
 
     // Decor Additions
     public static void offerNeonTubeRecipe(Consumer<RecipeJsonProvider> exporter, DyeColor color) {
