@@ -3,18 +3,26 @@
   "id": "mint",
   "version": "${version}",
 
-  "name": "El & L's Dyes",
-  "description": "Twenty new dyes! Among other things :3",
+  "name": "El & L's Dye Mod",
+  "description": "Adds 20 unique dyes, alongside decorative blocks, crops, and gameplay features",
   "authors": [
-    "Leah (@leafenzio), Eliza (@tellioaridoitsu), Eka (Eko-byte), Enri (@enriarts_), Zucchini (@zucchinibyday)"
+    "Leah (@leafenzio)",
+    "Eliza (@tellioaridoitsu)"
+  ],
+  "contributors": [
+    "Eka (Eko-byte)",
+    "Enri (@enriarts_)",
+    "Hecco (@Hecco)",
+    "Zucchini (@zucchinibyday)"
   ],
   "contact": {
-    "homepage": "TODO ADDME - website link",
-    "sources": "https://github.com/Tellios-Projects/Mint"
+    "homepage": "https://modrinth.com/project/el-and-ls-dye-mod",
+    "sources": "https://github.com/Tellios-Projects/Mint",
+    "issues": "https://github.com/Tellios-Projects/Mint/issues"
   },
 
   "license": "MIT",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/mint/icon.png",
 
   "environment": "*",
   "entrypoints": {
