@@ -128,7 +128,10 @@ public class TwoTallCropBlock extends CropBlock {
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
         return floor.isIn(BlockTags.DIRT);
     }
-    protected float getChanceToGrow(BlockState state) {
+    public float getChanceToGrow(BlockState state) {
+        return 1.0f;
+    }
+    public float getChanceToFertilize(World world, BlockPos pos, BlockState state) {
         return 1.0f;
     }
     @Override
@@ -178,6 +181,8 @@ public class TwoTallCropBlock extends CropBlock {
             if (player.isCreative()) {
                 this.onBreakInCreative(world, pos, state, player);
             } else {
+                int j = this.getHarvestAmount(state, world.getRandom());
+                dropFruit(j, world, pos);
                 this.dropStacks(state, world, pos, null, player, player.getMainHandStack());
             }
         }
@@ -187,14 +192,14 @@ public class TwoTallCropBlock extends CropBlock {
     public void afterBreak(World world, PlayerEntity player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack tool) {
         super.afterBreak(world, player, pos, Blocks.AIR.getDefaultState(), blockEntity, tool);
     }
-    protected static void onBreakInCreative(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        BlockPos blockPos;
-        BlockState blockState;
-        DoubleBlockHalf doubleBlockHalf = state.get(HALF);
-        if (doubleBlockHalf == DoubleBlockHalf.UPPER && (blockState = world.getBlockState(blockPos = pos.down())).isOf(state.getBlock()) && blockState.get(HALF) == DoubleBlockHalf.LOWER) {
-            BlockState blockState2 = blockState.getFluidState().isOf(Fluids.WATER) ? Blocks.WATER.getDefaultState() : Blocks.AIR.getDefaultState();
-            world.setBlockState(blockPos, blockState2, Block.NOTIFY_ALL | Block.SKIP_DROPS);
-            world.syncWorldEvent(player, WorldEvents.BLOCK_BROKEN, blockPos, Block.getRawIdFromState(blockState));
+    protected void onBreakInCreative(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        DoubleBlockHalf half = state.get(HALF);
+        BlockState blockState2 = tryGetOtherHalf(state, world, pos);
+        if(blockState2 != null) {
+            BlockPos pos2 = half == DoubleBlockHalf.UPPER ? pos.down() : pos.up();
+            BlockState replacement = blockState2.getFluidState().isOf(Fluids.WATER) ? Blocks.WATER.getDefaultState() : Blocks.AIR.getDefaultState();
+            world.setBlockState(pos2, replacement, Block.NOTIFY_ALL | Block.SKIP_DROPS);
+            world.syncWorldEvent(player, WorldEvents.BLOCK_BROKEN, pos2, Block.getRawIdFromState(state));
         }
     }
     public @Nullable BlockState tryGetOtherHalf(BlockState state, World world, BlockPos pos) {
@@ -235,6 +240,9 @@ public class TwoTallCropBlock extends CropBlock {
     }
     @Override
     public void applyGrowth(World world, BlockPos pos, BlockState state) {
+        float e = this.getChanceToFertilize(world, pos, state);
+        if(e < 1 && e < world.random.nextFloat()) { return; }
+
         int i = this.getGrowthAmount(world);
         int currAge = this.getAge(state);
         if(currAge + i >= this.getMaxAge()) {
@@ -252,7 +260,7 @@ public class TwoTallCropBlock extends CropBlock {
         if(j > 0) {
             boolean growSucceeded = this.trySetAge(state, world, pos, this.getAgeToHarvestTo());
             if(growSucceeded) {
-                Block.dropStack(world, pos, new ItemStack(this.getDroppedHarvestItem(), j));
+                dropFruit(j, world, pos);
                 world.playSound(null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0f, 0.8f + world.random.nextFloat() * 0.4f);
                 world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, state.with(AGE, this.getAgeToHarvestTo())));
                 return ActionResult.success(world.isClient);
@@ -260,6 +268,10 @@ public class TwoTallCropBlock extends CropBlock {
         }
         return super.onUse(state, world, pos, player, hand, hit);
     }
+    private void dropFruit(int amount, World world, BlockPos pos) {
+        Block.dropStack(world, pos, new ItemStack(this.getDroppedHarvestItem(), amount));
+    }
+
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(AGE);

@@ -248,14 +248,22 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerFoodCookingRecipe(exporter, "campfire_cooking", RecipeSerializer.CAMPFIRE_COOKING, 600, ModBlocks.CORAL_ANEMONE, ModItems.COOKED_ANEMONE, 0.35f);
         offerFoodCookingRecipe(exporter, "smelting", RecipeSerializer.SMELTING, 200, ModBlocks.CORAL_ANEMONE, ModItems.PEACH_DYE, 0.35f);
 
-
         // TODO remainder ignoring shaped recipe
+//        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.GOLDEN_PEACH)
+//                .pattern("XXX")
+//                .pattern("XOX")
+//                .pattern("XXX")
+//                .input('X', ModTags.Items.GOLD_INGOTS)
+//                .input('O', ModItems.PEACH)
+//                .criterion(FabricRecipeProvider.hasItem(ModItems.PEACH), FabricRecipeProvider.conditionsFromItem(ModItems.PEACH))
+//                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.GOLDEN_PEACH)));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.GOLDEN_PEACH)
                 .pattern("XXX")
-                .pattern("XOX")
-                .pattern("XXX")
+                .pattern("SSX")
+                .pattern("SSX")
                 .input('X', ModTags.Items.GOLD_INGOTS)
-                .input('O', ModItems.PEACH)
+                .input('S', ModItems.PEACH_SLICE)
                 .criterion(FabricRecipeProvider.hasItem(ModItems.PEACH), FabricRecipeProvider.conditionsFromItem(ModItems.PEACH))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.GOLDEN_PEACH)));
 

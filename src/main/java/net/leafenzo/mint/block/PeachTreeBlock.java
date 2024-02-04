@@ -64,7 +64,7 @@ public class PeachTreeBlock extends TwoTallCropBlock {
         return ModItems.PEACH_PIT;
     }
     @Override
-    protected float getChanceToGrow(BlockState state) {
+    public float getChanceToGrow(BlockState state) {
         return this.getAge(state) < 4 ? 0.5f : 1.0f;
     }
     @Override
@@ -73,7 +73,10 @@ public class PeachTreeBlock extends TwoTallCropBlock {
     public ItemConvertible getDroppedHarvestItem() { return ModItems.PEACH; }
     @Override
     public int getHarvestAmount(BlockState state, Random random) {
-        int age = this.getAge(state);
-        return age < this.getMaxAge() ? 0 : 1 + random.nextInt(1);
+        return this.getAge(state) < this.getMaxAge() ? 0 : 1 + random.nextInt(1);
+    }
+    @Override
+    public float getChanceToFertilize(World world, BlockPos pos, BlockState state) {
+        return this.getAge(state) >= 4 ? 0.5f : 1.0f;
     }
 }
