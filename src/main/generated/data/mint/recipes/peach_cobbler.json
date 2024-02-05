@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "minecraft:egg"
+    },
+    "P": {
+      "item": "mint:peach_slice"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "pattern": [
+    "PPP",
+    "SES",
+    "WWW"
+  ],
+  "result": {
+    "item": "mint:peach_cobbler"
+  },
+  "show_notification": true
+}

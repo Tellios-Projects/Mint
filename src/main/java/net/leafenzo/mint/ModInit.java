@@ -11,6 +11,7 @@ import net.leafenzo.mint.particle.ModParticleTypes;
 import net.leafenzo.mint.potions.ModPotions;
 import net.leafenzo.mint.recipe.ModRecipeSerializer;
 import net.leafenzo.mint.registries.ModFabricRegistries;
+import net.leafenzo.mint.registries.ModVillagerTrades;
 import net.leafenzo.mint.util.ModWorldGen;
 //import net.leafenzo.mint.world.ModWorldGenModifications;
 import org.slf4j.Logger;
@@ -32,6 +33,7 @@ public class ModInit implements ModInitializer {
             ModFabricRegistries.registerFlammableBlocks();
             ModFabricRegistries.registerCompostingChances();
             ModFabricRegistries.registerVillagerInteractions();
+            ModVillagerTrades.registerVillagerTrades();
             ModFabricRegistries.registerFuels();
             DispenserBehavior.RegisterDispenserBehaviors();
             ModRecipeSerializer.registerModRecipeSerializer();

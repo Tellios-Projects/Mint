@@ -1,12 +1,36 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_smoked_lavender": {
+    "has_egg": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:smoked_lavender"
+              "minecraft:egg"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_peach_slice": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mint:peach_slice"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sugar": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:sugar"
             ]
           }
         ]
@@ -15,7 +39,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mint:lavender_bread"
+        "recipe": "minecraft:peach_cobbler"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -34,14 +58,16 @@
   },
   "requirements": [
     [
-      "has_smoked_lavender",
+      "has_peach_slice",
+      "has_sugar",
+      "has_egg",
       "has_wheat",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "mint:lavender_bread"
+      "minecraft:peach_cobbler"
     ]
   },
   "sends_telemetry_event": false

@@ -221,10 +221,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
         //TODO fix all recipe book unlock criterion
-
         offerWaxingRecipes(exporter);
 
         // MINT - Special
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.MINT_TEA, 1)
+                .input(Items.POTION)
+                .input(ModItems.MINT_SPRIG)    //TODO switch to winter medley once this is ready
+                .criterion(FabricRecipeProvider.hasItem(ModItems.MINT_SPRIG), FabricRecipeProvider.conditionsFromItem(ModItems.MINT_SPRIG))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.MINT_TEA) + "_shapeless"));
+
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.MINT_COOKIE, 4)
                 .input(Items.WHEAT)
                 .input(Items.WHEAT)
@@ -233,6 +238,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(ModItems.MINT_SPRIG),
                         FabricRecipeProvider.conditionsFromItem(ModItems.MINT_SPRIG))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.MINT_COOKIE) + "_shapeless"));
+
         offerShapelessRecipe(exporter, ModItems.MINT_DYE, ModItems.MINT_SPRIG, "mint_dye", 1);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.MINT_SPRIG, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_SPRIG_BLOCK);
 
@@ -243,10 +249,45 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ModItems.PEACH_SLICE, ModItems.PEACH, "peach_slice", 6);
         offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PEACH_LOG, ModItems.PEACH_BRANCH);
 
-
         offerFoodCookingRecipe(exporter, "smoking", RecipeSerializer.SMOKING, 100, ModBlocks.CORAL_ANEMONE, ModItems.COOKED_ANEMONE, 0.35f);
         offerFoodCookingRecipe(exporter, "campfire_cooking", RecipeSerializer.CAMPFIRE_COOKING, 600, ModBlocks.CORAL_ANEMONE, ModItems.COOKED_ANEMONE, 0.35f);
         offerFoodCookingRecipe(exporter, "smelting", RecipeSerializer.SMELTING, 200, ModBlocks.CORAL_ANEMONE, ModItems.PEACH_DYE, 0.35f);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.AMBROSIA)
+                .input(Items.GOLDEN_APPLE)
+                .input(Items.GLISTERING_MELON_SLICE)
+                .input(ModItems.GOLDEN_PEACH)
+                .input(Items.BOWL)
+                .criterion(FabricRecipeProvider.hasItem(Items.GOLDEN_APPLE), FabricRecipeProvider.conditionsFromItem(Items.GOLDEN_APPLE))
+                .criterion(FabricRecipeProvider.hasItem(Items.GLISTERING_MELON_SLICE), FabricRecipeProvider.conditionsFromItem(Items.GLISTERING_MELON_SLICE))
+                .criterion(FabricRecipeProvider.hasItem(ModItems.GOLDEN_PEACH), FabricRecipeProvider.conditionsFromItem(ModItems.GOLDEN_PEACH))
+                .criterion(FabricRecipeProvider.hasItem(Items.BOWL), FabricRecipeProvider.conditionsFromItem(Items.BOWL))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.AMBROSIA)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.FRUIT_SALAD)
+                 .input(Items.APPLE)
+                 .input(Items.MELON_SLICE)
+                 .input(ModItems.PEACH_SLICE)
+                 .input(Items.BOWL)
+                .criterion(FabricRecipeProvider.hasItem(Items.APPLE), FabricRecipeProvider.conditionsFromItem(Items.APPLE))
+                .criterion(FabricRecipeProvider.hasItem(Items.MELON_SLICE), FabricRecipeProvider.conditionsFromItem(Items.MELON_SLICE))
+                .criterion(FabricRecipeProvider.hasItem(ModItems.PEACH_SLICE), FabricRecipeProvider.conditionsFromItem(ModItems.PEACH_SLICE))
+                .criterion(FabricRecipeProvider.hasItem(Items.BOWL), FabricRecipeProvider.conditionsFromItem(Items.BOWL))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.FRUIT_SALAD)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.PEACH_COBBLER)
+                .pattern("PPP")
+                .pattern("SES")
+                .pattern("WWW")
+                .input('P', ModItems.PEACH_SLICE)
+                .input('S', Items.SUGAR)
+                .input('E', Items.EGG)
+                .input('W', Items.WHEAT)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.PEACH_SLICE), FabricRecipeProvider.conditionsFromItem(ModItems.PEACH_SLICE))
+                .criterion(FabricRecipeProvider.hasItem(Items.SUGAR), FabricRecipeProvider.conditionsFromItem(Items.SUGAR))
+                .criterion(FabricRecipeProvider.hasItem(Items.EGG), FabricRecipeProvider.conditionsFromItem(Items.EGG))
+                .criterion(FabricRecipeProvider.hasItem(Items.WHEAT), FabricRecipeProvider.conditionsFromItem(Items.WHEAT))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.PEACH_COBBLER)));
 
         // TODO remainder ignoring shaped recipe
 //        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.GOLDEN_PEACH)
@@ -257,14 +298,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 //                .input('O', ModItems.PEACH)
 //                .criterion(FabricRecipeProvider.hasItem(ModItems.PEACH), FabricRecipeProvider.conditionsFromItem(ModItems.PEACH))
 //                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.GOLDEN_PEACH)));
-
+        // Silly backup recipe
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.GOLDEN_PEACH)
                 .pattern("XXX")
                 .pattern("SSX")
                 .pattern("SSX")
                 .input('X', ModTags.Items.GOLD_INGOTS)
                 .input('S', ModItems.PEACH_SLICE)
-                .criterion(FabricRecipeProvider.hasItem(ModItems.PEACH), FabricRecipeProvider.conditionsFromItem(ModItems.PEACH))
+                .criterion(FabricRecipeProvider.hasItem(ModItems.PEACH_SLICE), FabricRecipeProvider.conditionsFromItem(ModItems.PEACH_SLICE))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.GOLDEN_PEACH)));
 
         // PERIWINKLE - Special
@@ -274,11 +315,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.SMOKED_LAVENDER, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAVENDER_BUSHEL);
         offerFoodCookingRecipe(exporter, "smoking", RecipeSerializer.SMOKING, 100, ModBlocks.HIDCOTE_LAVENDER, ModItems.SMOKED_LAVENDER, 0.1f);
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.LAVENDER_BREAD)
-                .input(Items.BREAD)
-                .input(ModItems.SMOKED_LAVENDER)
-                .criterion(FabricRecipeProvider.hasItem(ModItems.SMOKED_LAVENDER), FabricRecipeProvider.conditionsFromItem(ModItems.SMOKED_LAVENDER))
-                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.LAVENDER_BREAD)));
+//        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.LAVENDER_BREAD)
+//                .input(Items.BREAD)
+//                .input(ModItems.SMOKED_LAVENDER)
+//                .criterion(FabricRecipeProvider.hasItem(ModItems.SMOKED_LAVENDER), FabricRecipeProvider.conditionsFromItem(ModItems.SMOKED_LAVENDER))
+//                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.LAVENDER_BREAD)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.LAVENDER_BREAD)
+                .input(Character.valueOf('L'), ModItems.SMOKED_LAVENDER)
+                .input(Character.valueOf('W'), Items.WHEAT)
+                .pattern("LWL")
+                .criterion("has_smoked_lavender", FabricRecipeProvider.conditionsFromItem(ModItems.SMOKED_LAVENDER))
+                .criterion("has_wheat", FabricRecipeProvider.conditionsFromItem(Items.WHEAT))
+                .offerTo(exporter);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.FLOWERING_MELON)
                 .input(Items.GLISTERING_MELON_SLICE)

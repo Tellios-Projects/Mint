@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_smoked_lavender": {
+    "has_mint_sprig": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:smoked_lavender"
+              "mint:mint_sprig"
             ]
           }
         ]
@@ -15,33 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mint:lavender_bread"
+        "recipe": "minecraft:mint_tea_shapeless"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_wheat": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "minecraft:wheat"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
-      "has_smoked_lavender",
-      "has_wheat",
+      "has_mint_sprig",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "mint:lavender_bread"
+      "minecraft:mint_tea_shapeless"
     ]
   },
   "sends_telemetry_event": false
