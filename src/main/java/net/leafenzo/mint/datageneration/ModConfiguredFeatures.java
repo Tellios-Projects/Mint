@@ -6,6 +6,7 @@ package net.leafenzo.mint.datageneration;
 
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.PeachTreeBlock;
 import net.leafenzo.mint.world.feature.ModSimpleBlockStateProvider;
 import net.leafenzo.mint.world.gen.HugeWaxcapMushroomDecorator;
 import net.leafenzo.mint.world.gen.MushroomBlockDirectionDecorator;
@@ -44,6 +45,7 @@ public class ModConfiguredFeatures {
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_WILD_MINT = registerKey("patch_wild_mint");
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_HYPERICUM = registerKey("patch_hypericum");
+    public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_PEACH_TREE = registerKey("patch_peach_tree");
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_CORAL_ANEMONE = registerKey("patch_coral_anemone");
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_HIDCOTE_LAVENDER = registerKey("patch_hidcote_lavender");
@@ -62,8 +64,16 @@ public class ModConfiguredFeatures {
         register(context, PATCH_WILD_MINT, Feature.FLOWER,
                 new RandomPatchFeatureConfig(16, 8, 5, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.WILD_MINT))))
         );
+
         register(context, PATCH_HYPERICUM, Feature.FLOWER,
                 new RandomPatchFeatureConfig(8, 3, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.HYPERICUM))))
+        );
+        DataPool.Builder<BlockState> peachTreeBuilder = DataPool.builder();
+            peachTreeBuilder.add((BlockState)((BlockState) ModBlocks.PEACH_TREE.getDefaultState().with(PeachTreeBlock.AGE, 2)), 1);
+            peachTreeBuilder.add((BlockState)((BlockState) ModBlocks.PEACH_TREE.getDefaultState().with(PeachTreeBlock.AGE, 1)), 1);
+            peachTreeBuilder.add((BlockState)((BlockState) ModBlocks.PEACH_TREE.getDefaultState().with(PeachTreeBlock.AGE, 0)), 1);
+        register(context, PATCH_PEACH_TREE, Feature.FLOWER,
+                new RandomPatchFeatureConfig(16, 8, 5, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(peachTreeBuilder))))
         );
         register(context, PATCH_CORAL_ANEMONE, Feature.SIMPLE_BLOCK,
                new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.CORAL_ANEMONE.getDefaultState().with(Properties.WATERLOGGED, true)))
@@ -72,14 +82,14 @@ public class ModConfiguredFeatures {
         register(context, PATCH_HIDCOTE_LAVENDER, Feature.FLOWER,
                 new RandomPatchFeatureConfig(32, 1, 0, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.HIDCOTE_LAVENDER))))
         );
-        DataPool.Builder<BlockState> builder = DataPool.builder();
+        DataPool.Builder<BlockState> periwinkleBuilder = DataPool.builder();
         for (Direction direction : Direction.Type.HORIZONTAL) {
-                builder.add((BlockState)((BlockState) ModBlocks.PERIWINKLE_PETALS.getDefaultState().with(FlowerbedBlock.FLOWER_AMOUNT, 4)).with(FlowerbedBlock.FACING, direction), 5);
-                builder.add((BlockState)((BlockState) ModBlocks.PERIWINKLE_PETALS.getDefaultState().with(FlowerbedBlock.FLOWER_AMOUNT, 3)).with(FlowerbedBlock.FACING, direction), 2);
-//                builder.add((BlockState)((BlockState) ModBlocks.PERIWINKLE_PETALS.getDefaultState().with(FlowerbedBlock.FLOWER_AMOUNT, 2)).with(FlowerbedBlock.FACING, direction), 1);
+                periwinkleBuilder.add((BlockState)((BlockState) ModBlocks.PERIWINKLE_PETALS.getDefaultState().with(FlowerbedBlock.FLOWER_AMOUNT, 4)).with(FlowerbedBlock.FACING, direction), 5);
+                periwinkleBuilder.add((BlockState)((BlockState) ModBlocks.PERIWINKLE_PETALS.getDefaultState().with(FlowerbedBlock.FLOWER_AMOUNT, 3)).with(FlowerbedBlock.FACING, direction), 2);
+//                periwinkleBuilder.add((BlockState)((BlockState) ModBlocks.PERIWINKLE_PETALS.getDefaultState().with(FlowerbedBlock.FLOWER_AMOUNT, 2)).with(FlowerbedBlock.FACING, direction), 1);
         }
         register(context, PATCH_PERIWINKLE, Feature.FLOWER,
-                new RandomPatchFeatureConfig(32, 1, 0, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(builder))))
+                new RandomPatchFeatureConfig(32, 1, 0, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(periwinkleBuilder))))
         );
         register(context, PATCH_THISTLE_FLOWER, Feature.FLOWER,
                 new RandomPatchFeatureConfig(8, 3, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.THISTLE_FLOWER))))

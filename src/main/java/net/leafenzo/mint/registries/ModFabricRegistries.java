@@ -23,6 +23,8 @@ public class ModFabricRegistries {
             registry.add(block, 20, 60);
         }
 
+        //TODO make sure everything that should be in here is here and .Burnable()
+
         registry.add(ModBlocks.PEACH_LOG, 5, 5);
 
         registry.add(ModBlocks.LAVENDER_BUSHEL, 20, 60);

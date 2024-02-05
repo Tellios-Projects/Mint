@@ -25,6 +25,7 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> PATCH_WILD_MINT_PLACED = registerKey("patch_wild_mint_placed");
 
     public static final RegistryKey<PlacedFeature> PATCH_HYPERICUM_PLACED = registerKey("patch_hypericum_placed");
+    public static final RegistryKey<PlacedFeature> PATCH_PEACH_TREE_PLACED = registerKey("patch_peach_tree_placed");
     public static final RegistryKey<PlacedFeature> PATCH_CORAL_ANEMONE_PLACED = registerKey("patch_coral_anemone_placed");
 
     public static final RegistryKey<PlacedFeature> PATCH_HIDCOTE_LAVENDER_PLACED = registerKey("patch_hidcote_lavender_placed");
@@ -59,6 +60,17 @@ public class ModPlacedFeatures {
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 BiomePlacementModifier.of()
         );
+
+        registerKey(context,
+                PATCH_PEACH_TREE_PLACED,
+                configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PATCH_PEACH_TREE),
+                RarityFilterPlacementModifier.of(1),
+                CountPlacementModifier.of(2),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                BiomePlacementModifier.of()
+        );
+
         registerKey(context,
                 PATCH_CORAL_ANEMONE_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PATCH_CORAL_ANEMONE),
@@ -147,6 +159,10 @@ public class ModPlacedFeatures {
                 .add(ModificationPhase.ADDITIONS,
                         BiomeSelectors.tag(BiomeTags.IS_SAVANNA).or(BiomeSelectors.tag(BiomeTags.IS_BADLANDS)),
                         context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_HYPERICUM_PLACED); }
+                )
+                .add(ModificationPhase.ADDITIONS,
+                        BiomeSelectors.includeByKey(BiomeKeys.SPARSE_JUNGLE).or(BiomeSelectors.includeByKey(BiomeKeys.BAMBOO_JUNGLE)),
+                        context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_PEACH_TREE_PLACED); }
                 )
                 .add(ModificationPhase.ADDITIONS,
                         BiomeSelectors.tag((ConventionalBiomeTags.AQUATIC_ICY)).negate().and(BiomeSelectors.tag(ConventionalBiomeTags.SHALLOW_OCEAN)), //Not Aquatic Icy, and is Shallow Ocean
