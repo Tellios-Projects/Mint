@@ -74,47 +74,6 @@ public class ModModelProvider extends FabricModelProvider {
                 .coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates()));
     }
 
-    public final void registerNeonExciterBlock(BlockStateModelGenerator blockStateModelGenerator, Block block) {
-
-//        TexturedModel.Factory modelFactory = TexturedModel.makeFactory(TextureMap::sideFrontBack, ModModels.TWO_END_ORIENTABLE);
-//        Identifier identifier1 = modelFactory.upload(block, blockStateModelGenerator.modelCollector);
-
-
-        Identifier identifier = new Identifier(Super.MOD_ID, "block/neon_exciter");
-        Identifier identifier2 = new Identifier(Super.MOD_ID, "block/neon_exciter_on");
-
-        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
-                .coordinate(BlockStateModelGenerator.createBooleanModelMap(Properties.POWERED, identifier2, identifier))
-                .coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates())
-        );
-
-//        Identifier identifier = ModelIds.getBlockModelId(Blocks.OBSERVER);
-//        Identifier identifier2 = ModelIds.getBlockSubModelId(Blocks.OBSERVER, "_on");
-//        this.blockStateCollector.accept(VariantsBlockStateSupplier.create(Blocks.OBSERVER).coordinate(BlockStateModelGenerator.createBooleanModelMap(Properties.POWERED, identifier2, identifier)).coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates()));
-    }
-
-
-    boolean hasRegisteredNeonTubeBlockBefore = false; // A lil jank, but it does the trick. Besides its just datagen anyway.
-    public final void registerNeonTubeBlock(BlockStateModelGenerator blockStateModelGenerator, Block block) {
-        Identifier unlitId = new Identifier(Super.MOD_ID, "block/neon_tube_off");
-
-        if(!hasRegisteredNeonTubeBlockBefore) { //only create the universal unlit model when ran for the first time
-            TexturedModelSupplier modelSupplier = new TexturedModelSupplier(ModelIds.getMinecraftNamespacedBlock("cube_top"))
-                    .addTexture("side", new Identifier(Super.MOD_ID, "block/neon_tube_off_side"))
-                    .addTexture("top", new Identifier(Super.MOD_ID, "block/neon_tube_off_top"))
-                    ;
-            blockStateModelGenerator.modelCollector.accept(unlitId, modelSupplier);
-        }
-
-        Identifier litId = TexturedModel.CUBE_TOP.upload(block, blockStateModelGenerator.modelCollector);
-
-        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block)
-                .coordinate(BlockStateModelGenerator.createBooleanModelMap(Properties.LIT, litId, unlitId))
-                .coordinate(BlockStateModelGenerator.createAxisRotatedVariantMap()));
-
-        hasRegisteredNeonTubeBlockBefore = true;
-    }
-
     /**
      * @param blockStateModelGenerator
      * @param block Block class must have Properties.FACING and ModProperties.DIAGONAL
@@ -299,23 +258,14 @@ public class ModModelProvider extends FabricModelProvider {
 
 
 
-        //Decor Blocks
-        registerNeonExciterBlock(blockStateModelGenerator, ModBlocks.NEON_EXCITER);
-
+        //Decor Additions
         for(Block block : ModBlocks.ALL_CORRUGATED_IRON_BLOCKS) {
             blockStateModelGenerator.registerAxisRotated(block, TexturedModel.CUBE_ALL);
-        }
-
-        for(Block block : ModBlocks.NEON_TUBE_BLOCK_FROM_DYECOLOR.values()) {
-            registerNeonTubeBlock(blockStateModelGenerator, block);
-            //blockStateModelGenerator.registerAxisRotated(block, TexturedModel.CUBE_TOP);
         }
 
         for(Block block : ModBlocks.ALL_MUCKTUFF_BLOCKS) {
             blockStateModelGenerator.registerCubeAllModelTexturePool(block);
         }
-
-        //for(Block block : ModBlocks.NEO)
     }
 
 

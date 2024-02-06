@@ -155,29 +155,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     // due to overwriting all vanilla honeycomb recipes to use a c:wax input tag, if someone else where to overwrite these after me, waxcap wax could no longer be used to craft things
 
     // Decor Additions
-    public static void offerNeonTubeRecipe(Consumer<RecipeJsonProvider> exporter, DyeColor color) {
-        Block neonTube = ModBlocks.NEON_TUBE_BLOCK_FROM_DYECOLOR.get(color);
-
-        String namespace;
-        if(Arrays.stream(ModUtil.VANILLA_DYE_COLORS).toList().contains(color)) {
-            namespace = "minecraft";
-        }
-        else { namespace = "mint"; }
-
-        Block stainedGlass = Registries.BLOCK.get(new Identifier(namespace, color.getName() + "_stained_glass"));
-
-        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, neonTube, 8)
-                .input(Character.valueOf('G'), stainedGlass)
-                .input(Character.valueOf('Q'), Items.QUARTZ)
-                .input(Character.valueOf('L'), Blocks.REDSTONE_LAMP)
-                .pattern("GQG")
-                .pattern("GLG")
-                .pattern("GQG")
-                .criterion("has_redstone_lamp", FabricRecipeProvider.conditionsFromItem(Blocks.REDSTONE_LAMP))
-                .criterion("has_quartz", FabricRecipeProvider.conditionsFromItem(Items.QUARTZ))
-                .offerTo(exporter);
-    }
-
     public static void offerCorrugatedIronDyingRecipes(Consumer<RecipeJsonProvider> exporter) {
         for(Block output : ModBlocks.ALL_CORRUGATED_IRON_BLOCKS) {
             if(ModBlocks.DYECOLOR_FROM_BLOCK.get(output) == null) { continue; }
@@ -480,22 +457,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 //        offerDyeMixingRecipe(exporter, ModItems.VELVET_DYE, Items.GREEN_DYE, Items.LIGHT_GRAY_DYE, RecipeCategory.MISC, 2);
 
         // Decor Additions
-        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.NEON_EXCITER)
-                .input(Character.valueOf('Q'), Items.QUARTZ)
-                .input(Character.valueOf('I'), ModTags.Items.IRON_INGOTS)
-                .input(Character.valueOf('O'), Blocks.OBSERVER)
-                .input(Character.valueOf('R'), Items.REDSTONE)
-                .pattern(" Q ")
-                .pattern("IOI")
-                .pattern(" R ")
-                .criterion("has_observer", FabricRecipeProvider.conditionsFromItem(Items.OBSERVER))
-                .offerTo(exporter);
-
-        //TODO uncomment me when this is actually working
-//        for(DyeColor color : ModUtil.concat(ModDyeColor.VALUES, ModUtil.VANILLA_DYE_COLORS)) {
-//            offerNeonTubeRecipe(exporter, color);
-//        }
-
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MUCKTUFF, 4)
                         .input(Character.valueOf('T'), Blocks.TUFF)
                         .input(Character.valueOf('M'), Blocks.MUD)

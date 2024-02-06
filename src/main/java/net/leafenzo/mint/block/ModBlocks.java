@@ -73,13 +73,10 @@ public class ModBlocks {
     public static final ArrayList<Block> WALLS = new ArrayList<Block>();
     //TODO, switch to using tagkeys maybe? as vanilla does that instead of plain array lists, and it might be more performant. Along with allowing us to get the registration ID easier.
 
-
     //Decor Additions
     //TODO, corrugated iron soundgroup?
     public static final ArrayList<Block> ALL_CORRUGATED_IRON_BLOCKS = new ArrayList<Block>();
-    public static final HashMap<DyeColor, Block> NEON_TUBE_BLOCK_FROM_DYECOLOR = new HashMap<DyeColor, Block>();
     public static final ArrayList<Block> ALL_MUCKTUFF_BLOCKS = new ArrayList<Block>();
-    public static final ArrayList<Block> PAPER_FRAME_BLOCKS = new ArrayList<Block>();
 
     /**
      * This list is just used in ItemGroups
@@ -501,14 +498,6 @@ public class ModBlocks {
     //</editor-fold>
 
     //<editor-fold desc ="Decor Additions">
-    public static final Block NEON_EXCITER = registerBlock("neon_exciter", createNeonExciterBlock());
-
-    public static final Block PLAIN_PAPER_FRAME = registerBlock("plain_paper_frame", createPaperFrameBlock());
-    public static final Block FRAMED_PAPER_FRAME = registerBlock("framed_paper_frame", createPaperFrameBlock());
-    public static final Block HORIZONTAL_PAPER_FRAME = registerBlock("horizontal_paper_frame", createPaperFrameBlock());
-    public static final Block VERTICAL_PAPER_FRAME = registerBlock("vertical_paper_frame", createPaperFrameBlock());
-    public static final Block QUAD_PAPER_FRAME = registerBlock("quad_paper_frame", createPaperFrameBlock());
-
     public static final Block MUCKTUFF = registerBlock("mucktuff", createMucktuffBlock());
     public static final Block CORRUGATED_IRON = registerBlock("corrugated_iron", createCorrugatedIronBlock(null));
 
@@ -516,10 +505,6 @@ public class ModBlocks {
         //With using ModDyeColor it should only loop through the dyes we add, and the vanilla dye colors is only using predefined expected ones- not grabbing from the dye color enum that may have been mixined into
         for (DyeColor color : ModUtil.concat(ModDyeColor.VALUES, ModUtil.VANILLA_DYE_COLORS)) {
             registerBlock(color.getName() + "_corrugated_iron", createCorrugatedIronBlock(color));
-        }
-
-        for (DyeColor color : ModUtil.concat(ModDyeColor.VALUES, ModUtil.VANILLA_DYE_COLORS)) {
-            registerBlock(color.getName() + "_neon_tube", createNeonTubeBlock(color));
         }
 
         for (DyeColor color : ModUtil.concat(ModDyeColor.VALUES, ModUtil.VANILLA_DYE_COLORS)) {
@@ -808,18 +793,6 @@ public class ModBlocks {
         return block;
     }
 
-    public static NeonTubeBlock createNeonTubeBlock(DyeColor color) {
-        NeonTubeBlock block = new NeonTubeBlock(
-                FabricBlockSettings.copyOf(Blocks.GLASS)
-                        .mapColor(color.getMapColor())
-                        .sounds(BlockSoundGroup.GLASS)
-                        .luminance(createLightLevelFromBooleanProperty(15, Properties.LIT))
-                        .requiresTool()
-        );
-        NEON_TUBE_BLOCK_FROM_DYECOLOR.put(color, (Block)block);
-        DYECOLOR_FROM_BLOCK.put((Block)block, color);
-        return block;
-    }
     public static Block createDyedMucktuffBlock(DyeColor color) {
         Block block = new Block(mucktuffBlockSettings()
                         .mapColor(color.getMapColor())
@@ -838,19 +811,6 @@ public class ModBlocks {
                 .mapColor(MapColor.STONE_GRAY)
                 .sounds(BlockSoundGroup.TUFF)
                 .requiresTool();
-    }
-
-    public static PaperFrameBlock createPaperFrameBlock() {
-        PaperFrameBlock block = new PaperFrameBlock(
-                FabricBlockSettings.create()
-                        .mapColor(MapColor.CLEAR)
-                        .sounds(BlockSoundGroup.BAMBOO)
-                        .strength(0.5f)
-                        .burnable()
-                        .nonOpaque()
-        );
-        PAPER_FRAME_BLOCKS.add(block);
-        return block;
     }
 
 

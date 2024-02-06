@@ -36,12 +36,6 @@ public class ModFabricRegistries {
         registry.add(ModBlocks.WAXCAP_GILL_SLAB, 3, 60);
         //registry.add(ModBlocks.WAXCAP_STEM_BLOCK, 3, 60);
         registry.add(ModBlocks.WAXCAP_CAP_BLOCK, 3, 60);
-
-
-        //Decor Additions
-        for(Block block : ModBlocks.PAPER_FRAME_BLOCKS) {
-            registry.add(block, 40, 80);
-        }
     }
     public static void registerCompostingChances() {
         ModInit.LOGGER.debug("Registering composting chances for " + Super.MOD_ID);

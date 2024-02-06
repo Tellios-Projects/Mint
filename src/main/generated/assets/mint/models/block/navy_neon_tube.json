@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_top",
-  "textures": {
-    "side": "mint:block/navy_neon_tube_side",
-    "top": "mint:block/navy_neon_tube_top"
-  }
-}

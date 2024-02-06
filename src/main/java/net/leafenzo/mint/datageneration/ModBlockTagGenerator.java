@@ -49,9 +49,6 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
                 .add(ModBlocks.LAVENDER_BRICK_STAIRS)
                 .add(ModBlocks.LAVENDER_BRICK_WALL)
                 .add(ModBlocks.MOSSY_LAVENDER_BRICKS)
-
-                //Decor Additions
-                .add(ModBlocks.NEON_EXCITER)
         ;
 
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
@@ -166,10 +163,6 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
 
 
         //Decor Additions
-        for (Block block : ModBlocks.NEON_TUBE_BLOCK_FROM_DYECOLOR.values()) {
-            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
-        }
-
         for (Block block : ModBlocks.ALL_MUCKTUFF_BLOCKS) {
             getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
             getOrCreateTagBuilder(BlockTags.MOSS_REPLACEABLE).add(block);
