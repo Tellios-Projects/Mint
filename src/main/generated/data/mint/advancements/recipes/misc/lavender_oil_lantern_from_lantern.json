@@ -1,12 +1,24 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_hidcote_lavender": {
+    "has_lantern": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:hidcote_lavender"
+              "minecraft:lantern"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_lavender_oil": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mint:lavender_oil"
             ]
           }
         ]
@@ -15,20 +27,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:lavender_bushel"
+        "recipe": "minecraft:lavender_oil_lantern_from_lantern"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_hidcote_lavender",
+      "has_lantern",
+      "has_lavender_oil",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:lavender_bushel"
+      "minecraft:lavender_oil_lantern_from_lantern"
     ]
   },
   "sends_telemetry_event": false

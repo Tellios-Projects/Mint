@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "mint:lavender_bricks"
+    },
+    {
+      "item": "mint:periwinkle_petals"
+    }
+  ],
+  "result": {
+    "item": "mint:mossy_lavender_bricks"
+  }
+}

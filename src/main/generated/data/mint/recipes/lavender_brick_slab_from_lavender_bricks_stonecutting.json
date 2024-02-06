@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "mint:lavender_bricks"
+  },
+  "result": "mint:lavender_brick_slab"
+}

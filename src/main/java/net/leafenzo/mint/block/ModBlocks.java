@@ -166,7 +166,7 @@ public class ModBlocks {
     public static final Block MOSSY_LAVENDER_BRICK_WALL = registerBlock("mossy_lavender_brick_wall", createWallBlock(FabricBlockSettings.copyOf(MOSSY_LAVENDER_BRICKS).requiresTool())/*, ModItemGroups.PERIWINKLE*/);
 
     public static final Block LAVENDER_CLAY = registerBlock("lavender_clay", new Block(FabricBlockSettings.copyOf(Blocks.CLAY))/*, ModItemGroups.PERIWINKLE*/);
-    public static final Block LAVENDER_BUSHEL = registerBlock("lavender_bushel", new HayBlock(FabricBlockSettings.copyOf(Blocks.HAY_BLOCK))/*, ModItemGroups.PERIWINKLE*/);
+    public static final Block LAVENDER_BUSHEL = registerBlock("lavender_bushel", new LavenderBushelBlock(FabricBlockSettings.copyOf(Blocks.HAY_BLOCK))/*, ModItemGroups.PERIWINKLE*/);
     public static final Block PERIWINKLE_PETALS = registerBlock("periwinkle_petals", new FlowerbedBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS).mapColor(MapColor.DARK_GREEN))/*, ModItemGroups.PERIWINKLE*/);
     public static final Block HIDCOTE_LAVENDER = registerBlock("hidcote_lavender", createSpreadableFlowerBlock(StatusEffects.BAD_OMEN, 600, ModConfiguredFeatures.PATCH_HIDCOTE_LAVENDER)/*, ModItemGroups.PERIWINKLE*/);
     public static final Block POTTED_HIDCOTE_LAVENDER = registerBlock("potted_hidcote_lavender", createFlowerPotBlock(HIDCOTE_LAVENDER)/*, ModItemGroups.PERIWINKLE*/);

@@ -1,14 +1,15 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "group": "peach_slice",
   "ingredients": [
     {
-      "item": "mint:peach"
+      "item": "minecraft:lantern"
+    },
+    {
+      "item": "mint:lavender_oil"
     }
   ],
   "result": {
-    "count": 4,
-    "item": "mint:peach_slice"
+    "item": "mint:lavender_oil_lantern"
   }
 }

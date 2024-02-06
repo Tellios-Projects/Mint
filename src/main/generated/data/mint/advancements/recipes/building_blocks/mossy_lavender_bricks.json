@@ -1,12 +1,24 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_hidcote_lavender": {
+    "has_lavender_bricks": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:hidcote_lavender"
+              "mint:lavender_bricks"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_periwinkle_petals": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mint:periwinkle_petals"
             ]
           }
         ]
@@ -15,20 +27,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:lavender_bushel"
+        "recipe": "minecraft:mossy_lavender_bricks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_hidcote_lavender",
+      "has_lavender_bricks",
+      "has_periwinkle_petals",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:lavender_bushel"
+      "minecraft:mossy_lavender_bricks"
     ]
   },
   "sends_telemetry_event": false

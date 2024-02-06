@@ -195,7 +195,9 @@ public class ModModelProvider extends FabricModelProvider {
         mossyLavenderBricksTexturePool.wall(ModBlocks.MOSSY_LAVENDER_BRICK_WALL);
 
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.LAVENDER_CLAY);
-        blockStateModelGenerator.registerAxisRotated(ModBlocks.LAVENDER_BUSHEL, TexturedModel.CUBE_BOTTOM_TOP);
+//        blockStateModelGenerator.registerAxisRotated(ModBlocks.LAVENDER_BUSHEL, TexturedModel.CUBE_BOTTOM_TOP);
+        this.registerUpDefaultOrientable(blockStateModelGenerator, ModBlocks.LAVENDER_BUSHEL, TexturedModel.CUBE_BOTTOM_TOP);
+
         blockStateModelGenerator.registerFlowerbed(ModBlocks.PERIWINKLE_PETALS);
         blockStateModelGenerator.registerLantern(ModBlocks.LAVENDER_OIL_LANTERN);
 

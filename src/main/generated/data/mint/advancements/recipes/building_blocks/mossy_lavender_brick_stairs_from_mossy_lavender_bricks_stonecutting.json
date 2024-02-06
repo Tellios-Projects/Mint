@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_lavender_bushel": {
+    "has_mossy_lavender_bricks": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:lavender_bushel"
+              "mint:mossy_lavender_bricks"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:smoked_lavender"
+        "recipe": "minecraft:mossy_lavender_brick_stairs_from_mossy_lavender_bricks_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_lavender_bushel",
+      "has_mossy_lavender_bricks",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:smoked_lavender"
+      "minecraft:mossy_lavender_brick_stairs_from_mossy_lavender_bricks_stonecutting"
     ]
   },
   "sends_telemetry_event": false

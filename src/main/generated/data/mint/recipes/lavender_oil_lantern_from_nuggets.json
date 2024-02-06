@@ -1,18 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
+  "category": "misc",
   "key": {
     "#": {
-      "item": "mint:hidcote_lavender"
+      "item": "minecraft:iron_nugget"
+    },
+    "O": {
+      "item": "mint:lavender_oil"
     }
   },
   "pattern": [
     "###",
-    "###",
+    "#O#",
     "###"
   ],
   "result": {
-    "item": "mint:lavender_bushel"
+    "item": "mint:lavender_oil_lantern"
   },
   "show_notification": true
 }

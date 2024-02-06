@@ -1,14 +1,13 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "group": "peach_slice",
   "ingredients": [
     {
-      "item": "mint:peach"
+      "item": "mint:lavender_bushel"
     }
   ],
   "result": {
-    "count": 4,
-    "item": "mint:peach_slice"
+    "count": 9,
+    "item": "mint:hidcote_lavender"
   }
 }

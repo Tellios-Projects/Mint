@@ -2,20 +2,17 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "M": {
-      "item": "minecraft:mud"
-    },
-    "T": {
-      "item": "minecraft:tuff"
+    "#": {
+      "item": "mint:mossy_lavender_bricks"
     }
   },
   "pattern": [
-    "TM",
-    "MT"
+    "###",
+    "###"
   ],
   "result": {
-    "count": 4,
-    "item": "mint:mucktuff"
+    "count": 6,
+    "item": "mint:mossy_lavender_brick_wall"
   },
   "show_notification": true
 }

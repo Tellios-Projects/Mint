@@ -1,16 +1,30 @@
 {
   "variants": {
-    "axis=x": {
+    "facing=down": {
+      "model": "mint:block/lavender_bushel",
+      "x": 180
+    },
+    "facing=east": {
       "model": "mint:block/lavender_bushel",
       "x": 90,
       "y": 90
     },
-    "axis=y": {
-      "model": "mint:block/lavender_bushel"
-    },
-    "axis=z": {
+    "facing=north": {
       "model": "mint:block/lavender_bushel",
       "x": 90
+    },
+    "facing=south": {
+      "model": "mint:block/lavender_bushel",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "mint:block/lavender_bushel"
+    },
+    "facing=west": {
+      "model": "mint:block/lavender_bushel",
+      "x": 90,
+      "y": 270
     }
   }
 }

@@ -2,20 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "M": {
-      "item": "minecraft:mud"
-    },
-    "T": {
-      "item": "minecraft:tuff"
+    "#": {
+      "item": "mint:lavender_bricks"
     }
   },
   "pattern": [
-    "TM",
-    "MT"
+    "###"
   ],
   "result": {
-    "count": 4,
-    "item": "mint:mucktuff"
+    "count": 6,
+    "item": "mint:lavender_brick_slab"
   },
   "show_notification": true
 }

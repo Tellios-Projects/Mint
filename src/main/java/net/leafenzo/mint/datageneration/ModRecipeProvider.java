@@ -17,6 +17,7 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
@@ -31,7 +32,17 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         ShapelessRecipeJsonBuilder.create(reverseCategory, baseItem, 9).input(compactItem).group(reverseGroup).criterion(RecipeProvider.hasItem(compactItem), RecipeProvider.conditionsFromItem(compactItem)).offerTo(exporter, new Identifier(reverseId+"_from_"+compactingId));
         ShapedRecipeJsonBuilder.create(compactingCategory, compactItem).input(Character.valueOf('#'), baseItem).pattern("###").pattern("###").pattern("###").group(compactingGroup).criterion(RecipeProvider.hasItem(baseItem), RecipeProvider.conditionsFromItem(baseItem)).offerTo(exporter, new Identifier(compactingId+"_from_"+reverseId));
     }
-
+    public static void offerStairsRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input) {
+        createStairsRecipe(output, Ingredient.ofItems(input))
+                .criterion(FabricRecipeProvider.hasItem(input), FabricRecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(output)));
+    }
+    public static void offerSlabRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input) {
+        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, output, input);
+    }
+    public static void offerWallRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input) {
+        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, output, input);
+    }
 
     public static void offerDyeMixingRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2, RecipeCategory recipeCategory, int count) {
         Identifier outputId = Registries.ITEM.getId(output.asItem());
@@ -246,7 +257,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ModItems.PEACH_DYE, ModBlocks.HYPERICUM, "peach_dye", 1);
         offerShapelessRecipe(exporter, ModItems.PEACH_DYE, ModItems.PEACH_PIT, "peach_dye", 1);
         offerShapelessRecipe(exporter, ModItems.PEACH_DYE, ModBlocks.CORAL_ANEMONE, "peach_dye", 1);
-        offerShapelessRecipe(exporter, ModItems.PEACH_SLICE, ModItems.PEACH, "peach_slice", 6);
+        offerShapelessRecipe(exporter, ModItems.PEACH_SLICE, ModItems.PEACH, "peach_slice", 4);
         offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PEACH_LOG, ModItems.PEACH_BRANCH);
 
         offerFoodCookingRecipe(exporter, "smoking", RecipeSerializer.SMOKING, 100, ModBlocks.CORAL_ANEMONE, ModItems.COOKED_ANEMONE, 0.35f);
@@ -308,23 +319,73 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(ModItems.PEACH_SLICE), FabricRecipeProvider.conditionsFromItem(ModItems.PEACH_SLICE))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.GOLDEN_PEACH)));
 
-        // PERIWINKLE - Special
+        //<editor-fold desc ="PERIWINKLE - Special">
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAVENDER_CLAY, 2)
+                .pattern(" C ")
+                .pattern("COC")
+                .pattern(" C ")
+                .input('C', Items.CLAY_BALL)
+                .input('O', ModItems.LAVENDER_OIL)
+                .criterion(FabricRecipeProvider.hasItem(Items.CLAY_BALL), FabricRecipeProvider.conditionsFromItem(Items.CLAY_BALL))
+                .criterion(FabricRecipeProvider.hasItem(ModItems.LAVENDER_OIL), FabricRecipeProvider.conditionsFromItem(ModItems.LAVENDER_OIL))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.LAVENDER_CLAY)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAVENDER_BRICKS, 4)
+                .pattern("##")
+                .pattern("##")
+                .input('#', ModBlocks.LAVENDER_CLAY)
+                .criterion(FabricRecipeProvider.hasItem(ModBlocks.LAVENDER_CLAY), FabricRecipeProvider.conditionsFromItem(ModBlocks.LAVENDER_CLAY))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.LAVENDER_BRICKS)));
+
+        offerStairsRecipe(exporter, ModBlocks.LAVENDER_BRICK_STAIRS, ModBlocks.LAVENDER_BRICKS);
+        offerSlabRecipe(exporter, ModBlocks.LAVENDER_BRICK_SLAB, ModBlocks.LAVENDER_BRICKS);
+        offerWallRecipe(exporter, ModBlocks.LAVENDER_BRICK_WALL, ModBlocks.LAVENDER_BRICKS);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAVENDER_BRICK_STAIRS, ModBlocks.LAVENDER_BRICKS);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAVENDER_BRICK_SLAB, ModBlocks.LAVENDER_BRICKS, 2);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAVENDER_BRICK_WALL, ModBlocks.LAVENDER_BRICKS);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_LAVENDER_BRICKS)
+                .input(ModBlocks.LAVENDER_BRICKS)
+                .input(ModBlocks.PERIWINKLE_PETALS)
+                .criterion(FabricRecipeProvider.hasItem(ModBlocks.LAVENDER_BRICKS), FabricRecipeProvider.conditionsFromItem(ModBlocks.LAVENDER_BRICKS))
+                .criterion(FabricRecipeProvider.hasItem(ModBlocks.PERIWINKLE_PETALS), FabricRecipeProvider.conditionsFromItem(ModBlocks.PERIWINKLE_PETALS))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.MOSSY_LAVENDER_BRICKS)));
+
+        offerStairsRecipe(exporter, ModBlocks.MOSSY_LAVENDER_BRICK_STAIRS, ModBlocks.MOSSY_LAVENDER_BRICKS);
+        offerSlabRecipe(exporter, ModBlocks.MOSSY_LAVENDER_BRICK_SLAB, ModBlocks.MOSSY_LAVENDER_BRICKS);
+        offerWallRecipe(exporter, ModBlocks.MOSSY_LAVENDER_BRICK_WALL, ModBlocks.MOSSY_LAVENDER_BRICKS);
+
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_LAVENDER_BRICK_STAIRS, ModBlocks.MOSSY_LAVENDER_BRICKS);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_LAVENDER_BRICK_SLAB, ModBlocks.MOSSY_LAVENDER_BRICKS, 2);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_LAVENDER_BRICK_WALL, ModBlocks.MOSSY_LAVENDER_BRICKS);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.LAVENDER_OIL_LANTERN)
+                .input(Blocks.LANTERN)
+                .input(ModItems.LAVENDER_OIL)
+                .criterion(FabricRecipeProvider.hasItem(Blocks.LANTERN), FabricRecipeProvider.conditionsFromItem(Blocks.LANTERN))
+                .criterion(FabricRecipeProvider.hasItem(ModItems.LAVENDER_OIL), FabricRecipeProvider.conditionsFromItem(ModItems.LAVENDER_OIL))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.LAVENDER_OIL_LANTERN) + "_from_lantern"));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.LAVENDER_OIL_LANTERN)
+                .pattern("###")
+                .pattern("#O#")
+                .pattern("###")
+                .input('#', Items.IRON_NUGGET)
+                .input('O', ModItems.LAVENDER_OIL)
+                .criterion(FabricRecipeProvider.hasItem(Blocks.LANTERN), FabricRecipeProvider.conditionsFromItem(Blocks.LANTERN))
+                .criterion(FabricRecipeProvider.hasItem(ModItems.LAVENDER_OIL), FabricRecipeProvider.conditionsFromItem(ModItems.LAVENDER_OIL))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.LAVENDER_OIL_LANTERN) + "_from_nuggets"));
+
         offerShapelessRecipe(exporter, ModItems.PERIWINKLE_DYE, ModBlocks.PERIWINKLE_PETALS, "periwinkle_dye", 1);
         offerShapelessRecipe(exporter, ModItems.PERIWINKLE_DYE, ModBlocks.HIDCOTE_LAVENDER, "periwinkle_dye", 1);
 
-        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.SMOKED_LAVENDER, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAVENDER_BUSHEL);
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModBlocks.HIDCOTE_LAVENDER, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAVENDER_BUSHEL);
         offerFoodCookingRecipe(exporter, "smoking", RecipeSerializer.SMOKING, 100, ModBlocks.HIDCOTE_LAVENDER, ModItems.SMOKED_LAVENDER, 0.1f);
 
-//        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.LAVENDER_BREAD)
-//                .input(Items.BREAD)
-//                .input(ModItems.SMOKED_LAVENDER)
-//                .criterion(FabricRecipeProvider.hasItem(ModItems.SMOKED_LAVENDER), FabricRecipeProvider.conditionsFromItem(ModItems.SMOKED_LAVENDER))
-//                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.LAVENDER_BREAD)));
-
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.LAVENDER_BREAD)
+                .pattern("LWL")
                 .input(Character.valueOf('L'), ModItems.SMOKED_LAVENDER)
                 .input(Character.valueOf('W'), Items.WHEAT)
-                .pattern("LWL")
                 .criterion("has_smoked_lavender", FabricRecipeProvider.conditionsFromItem(ModItems.SMOKED_LAVENDER))
                 .criterion("has_wheat", FabricRecipeProvider.conditionsFromItem(Items.WHEAT))
                 .offerTo(exporter);
@@ -346,9 +407,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input(ModItems.LAVENDER_OIL)
                 .criterion(FabricRecipeProvider.hasItem(ModItems.SMOKED_LAVENDER), FabricRecipeProvider.conditionsFromItem(ModItems.SMOKED_LAVENDER))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.LAVENDER_SOAP)));
+        //</editor-fold>
 
-        // ARTICHOKE - Special
+
+        //<editor-fold desc ="ARTICHOKE - Special">
         offerShapelessRecipe(exporter, ModItems.WAXCAP_WAX, ModBlocks.WAXCAP_MUSHROOM, groupName(ModItems.WAXCAP_WAX), 1);
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC,  ModItems.WAXCAP_WAX, RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXCAP_WAX_BLOCK);
+        offerFoodCookingRecipe(exporter, "smelting", RecipeSerializer.SMELTING, 200, ModBlocks.WAXCAP_MUSHROOM, ModItems.ARTICHOKE_DYE, 0.35f);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.CANDLE)
                 .input(Character.valueOf('S'), Items.STRING)
                 .input(Character.valueOf('H'), ModItems.WAXCAP_WAX)
@@ -384,7 +450,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(ModItems.ARTICHOKE_HEART), FabricRecipeProvider.conditionsFromItem(ModItems.ARTICHOKE_HEART))
                 .group(breakfastGroup)
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.BREAKFAST_PORKCHOP)));
-
+        //</editor-fold>
 
 //Dyes from combining vanilla dyes
         offerDyeMixingRecipe(exporter, ModItems.MINT_DYE, Items.LIME_DYE, Items.LIGHT_BLUE_DYE, RecipeCategory.MISC, 2);
@@ -413,8 +479,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 //        offerDyeMixingRecipe(exporter, ModItems.SAP_DYE, Items.GREEN_DYE, Items.LIGHT_GRAY_DYE, RecipeCategory.MISC, 2);
 //        offerDyeMixingRecipe(exporter, ModItems.VELVET_DYE, Items.GREEN_DYE, Items.LIGHT_GRAY_DYE, RecipeCategory.MISC, 2);
 
-
-
         // Decor Additions
         ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.NEON_EXCITER)
                 .input(Character.valueOf('Q'), Items.QUARTZ)
@@ -432,15 +496,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 //            offerNeonTubeRecipe(exporter, color);
 //        }
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MUCKTUFF)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MUCKTUFF, 4)
                         .input(Character.valueOf('T'), Blocks.TUFF)
                         .input(Character.valueOf('M'), Blocks.MUD)
                         .pattern("TM")
                         .pattern("MT")
                         .criterion("has_mud", FabricRecipeProvider.conditionsFromItem(Blocks.MUD))
                         .offerTo(exporter);
-
         offerMucktuffDyeingRecipes(exporter);
+
         offerCorrugatedIronRecipe(exporter, ModBlocks.CORRUGATED_IRON);
         offerCorrugatedIronDyingRecipes(exporter);
 

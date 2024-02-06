@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "mint:mossy_lavender_bricks"
+  },
+  "result": "mint:mossy_lavender_brick_slab"
+}

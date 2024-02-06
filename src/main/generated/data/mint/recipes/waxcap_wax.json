@@ -3,11 +3,11 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "mint:lavender_bushel"
+      "item": "mint:waxcap_wax_block"
     }
   ],
   "result": {
     "count": 9,
-    "item": "mint:smoked_lavender"
+    "item": "mint:waxcap_wax"
   }
 }

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_hidcote_lavender": {
+    "has_mossy_lavender_bricks": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:hidcote_lavender"
+              "mint:mossy_lavender_bricks"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:lavender_bushel"
+        "recipe": "mint:mossy_lavender_brick_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_hidcote_lavender",
+      "has_mossy_lavender_bricks",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:lavender_bushel"
+      "mint:mossy_lavender_brick_slab"
     ]
   },
   "sends_telemetry_event": false

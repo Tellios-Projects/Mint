@@ -2,20 +2,17 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "M": {
-      "item": "minecraft:mud"
-    },
-    "T": {
-      "item": "minecraft:tuff"
+    "#": {
+      "item": "mint:waxcap_wax"
     }
   },
   "pattern": [
-    "TM",
-    "MT"
+    "###",
+    "###",
+    "###"
   ],
   "result": {
-    "count": 4,
-    "item": "mint:mucktuff"
+    "item": "mint:waxcap_wax_block"
   },
   "show_notification": true
 }
