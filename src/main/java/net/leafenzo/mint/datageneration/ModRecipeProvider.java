@@ -430,6 +430,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         //</editor-fold>
 
 //Dyes from combining vanilla dyes
+        // These work for sheep mixing too... somehow
+        // Sheep bred with sheep of a non-vanilla dyeColor default to a 50/50 chance to get the color of either parent
         offerDyeMixingRecipe(exporter, ModItems.MINT_DYE, Items.LIME_DYE, Items.LIGHT_BLUE_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.PEACH_DYE, Items.PINK_DYE, Items.ORANGE_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.PERIWINKLE_DYE, Items.PURPLE_DYE, Items.LIGHT_BLUE_DYE, RecipeCategory.MISC, 2);
@@ -441,7 +443,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerDyeMixingRecipe(exporter, ModItems.BANANA_DYE, Items.YELLOW_DYE, Items.WHITE_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.CERULEAN_DYE, Items.BLUE_DYE, Items.LIGHT_GRAY_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.ACORN_DYE, Items.BROWN_DYE, Items.GRAY_DYE, RecipeCategory.MISC, 2);
-        //offerDyeMixingRecipe(exporter, ModItems.MAUVE_DYE, ModItems.FUCHSIA_DYE, Items.GRAY_DYE, RecipeCategory.MISC, 2);
+        //offerDyeMixingRecipe(exporter, ModItems.MAUVE_DYE, ModItems.FUCHSIA_DYE, Items.GRAY_DYE, RecipeCategory.MISC, 2); // nuh uh bad doesn't work for sheep
         offerDyeMixingRecipe(exporter, ModItems.MAUVE_DYE, Items.MAGENTA_DYE, Items.BROWN_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.MAUVE_DYE, Items.PINK_DYE, Items.BROWN_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.MAUVE_DYE, Items.RED_DYE, Items.BROWN_DYE, RecipeCategory.MISC, 2);
@@ -450,11 +452,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerDyeMixingRecipe(exporter, ModItems.NAVY_DYE, Items.BLUE_DYE, Items.BLACK_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.NAVY_DYE, Items.CYAN_DYE, Items.BLACK_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.SAP_DYE, Items.GREEN_DYE, Items.CYAN_DYE, RecipeCategory.MISC, 2);
-//        offerDyeMixingRecipe(exporter, ModItems.MOLD_DYE, ModItems.ARTICHOKE, Items.BLACK_DYE, RecipeCategory.MISC, 2);
-//        offerDyeMixingRecipe(exporter, ModItems.MOLD_DYE, Items.GREEN_DYE, Items.BROWN_DYE, RecipeCategory.MISC, 2);
-//        offerDyeMixingRecipe(exporter, ModItems.AMBER_DYE, Items.ORANGE_DYE, Items.YELLOW_DYE, RecipeCategory.MISC, 2);
-//        offerDyeMixingRecipe(exporter, ModItems.SAP_DYE, Items.GREEN_DYE, Items.LIGHT_GRAY_DYE, RecipeCategory.MISC, 2);
-//        offerDyeMixingRecipe(exporter, ModItems.VELVET_DYE, Items.GREEN_DYE, Items.LIGHT_GRAY_DYE, RecipeCategory.MISC, 2);
+//        offerDyeMixingRecipe(exporter, ModItems.MOLD_DYE, ModItems.ARTICHOKE, Items.BLACK_DYE, RecipeCategory.MISC, 2); // aaawwe, no fiddle
+        offerDyeMixingRecipe(exporter, ModItems.MOLD_DYE, Items.GREEN_DYE, Items.BROWN_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.AMBER_DYE, Items.ORANGE_DYE, Items.YELLOW_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.SAGE_DYE, Items.GREEN_DYE, Items.LIGHT_GRAY_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.VELVET_DYE, Items.PURPLE_DYE, Items.RED_DYE, RecipeCategory.MISC, 2);
 
         // Decor Additions
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MUCKTUFF, 4)

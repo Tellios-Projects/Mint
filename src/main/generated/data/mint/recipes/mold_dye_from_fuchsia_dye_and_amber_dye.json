@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "mold_dye",
+  "ingredients": [
+    {
+      "item": "mint:fuchsia_dye"
+    },
+    {
+      "item": "mint:amber_dye"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "mint:mold_dye"
+  }
+}
