@@ -90,6 +90,7 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
 ////  TERRACOTTA_BLOCKS
         for (Block block : ModBlocks.DYED_TERRACOTTA_BLOCKS) {
             getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+            getOrCreateTagBuilder(BlockTags.DEAD_BUSH_MAY_PLACE_ON).add(block);
         }
 
 ////  CONCRETE_BLOCKS

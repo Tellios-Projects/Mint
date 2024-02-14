@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "mint:mint_terracotta",
+    "mint:peach_terracotta",
+    "mint:periwinkle_terracotta",
+    "mint:artichoke_terracotta",
+    "mint:fuchsia_terracotta",
+    "mint:vermilion_terracotta",
+    "mint:shamrock_terracotta",
+    "mint:indigo_terracotta",
+    "mint:banana_terracotta",
+    "mint:cerulean_terracotta",
+    "mint:acorn_terracotta",
+    "mint:mauve_terracotta",
+    "mint:maroon_terracotta",
+    "mint:grape_terracotta",
+    "mint:navy_terracotta",
+    "mint:sap_terracotta",
+    "mint:amber_terracotta",
+    "mint:sage_terracotta",
+    "mint:velvet_terracotta",
+    "mint:mold_terracotta"
+  ]
+}
