@@ -21,7 +21,7 @@ public class HangingWaxcapWaxBlock extends HangingRootsBlock {
             return;
         }
         float f = random.nextFloat();
-        if (f > 0.12f) {
+        if (f > 0.04f) {
             return;
         }
         HangingWaxcapWaxBlock.createParticle(world, pos, state);
