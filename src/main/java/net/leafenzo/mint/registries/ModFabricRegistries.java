@@ -8,12 +8,27 @@ import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
+import net.leafenzo.mint.registration.WoodSet;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 
 
 public class ModFabricRegistries {
+    public static void registerFlammable(Block block, int burn, int spread) {
+        FlammableBlockRegistry flammableBlockRegistry = FlammableBlockRegistry.getDefaultInstance();
+        flammableBlockRegistry.add(block, burn, spread);
+    }
+    public static void registerFuel(ItemConvertible item, int value) {
+        FuelRegistry fuelRegistry = FuelRegistry.INSTANCE;
+        fuelRegistry.add(item, value);
+    }
+    public static void registerCompostable(ItemConvertible item, float chance) {
+        CompostingChanceRegistry compostingChanceRegistry = CompostingChanceRegistry.INSTANCE;
+        compostingChanceRegistry.add(item, chance);
+        VillagerInteractionRegistries.registerCompostable(item);
+    }
+
     public static void registerFlammableBlocks() {
         FlammableBlockRegistry registry = FlammableBlockRegistry.getDefaultInstance();
         for(Block block : ModBlocks.WOOL_BLOCKS) {
@@ -23,7 +38,7 @@ public class ModFabricRegistries {
             registry.add(block, 20, 60);
         }
 
-        //TODO make sure everything that should be in here is here and .Burnable()
+        //TODO make sure everything that should be in here is here and .Burnable() too if need be
 
         registry.add(ModBlocks.PEACH_LOG, 5, 5);
 
@@ -38,7 +53,7 @@ public class ModFabricRegistries {
         registry.add(ModBlocks.WAXCAP_CAP_BLOCK, 3, 60);
     }
     public static void registerCompostingChances() {
-        ModInit.LOGGER.debug("Registering composting chances for " + Super.MOD_ID);
+//        ModInit.LOGGER.debug("Registering composting chances for " + Super.MOD_ID); //This log is commented out because this is not the only place our mod registers this
 
         CompostingChanceRegistry compostingChanceRegistry = CompostingChanceRegistry.INSTANCE;
         compostingChanceRegistry.add(ModItems.MINT_SPRIG, 0.65f); // same as wheat
@@ -71,7 +86,7 @@ public class ModFabricRegistries {
     }
 
     public static void registerFuels() {
-        ModInit.LOGGER.debug("Registering Smelting Fuels for " + Super.MOD_ID);
+//        ModInit.LOGGER.debug("Registering Smelting Fuels for " + Super.MOD_ID); //This log is commented out because this is not the only place our mod registers this
         FuelRegistry registry = FuelRegistry.INSTANCE;
 
         for(ItemConvertible item : ModBlocks.BANNER_BLOCKS) {
@@ -83,11 +98,5 @@ public class ModFabricRegistries {
         for(ItemConvertible item : ModBlocks.WOOL_CARPET_BLOCKS) {
             registry.add(item, 67);
         }
-    }
-
-    public static void registerCompostableItem(Item item, float chance) {
-        CompostingChanceRegistry compostingChanceRegistry = CompostingChanceRegistry.INSTANCE;
-        compostingChanceRegistry.add(item, chance);
-        VillagerInteractionRegistries.registerCompostable(item);
     }
 }

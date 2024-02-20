@@ -4,16 +4,18 @@
   "package": "net.leafenzo.mint.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "BlockStateProviderMixin",
     "BlockEntityTypeMixin",
+    "BlockStateProviderMixin",
+    "BoatDispenserBehaviorMixin",
+    "BoatEntityMixin",
     "DyeColorMixin",
-    "PassiveEntityMixin",
-    "SheepEntityMixin",
-    "LlamaDecorFeatureRendererMixin",
-    "ShulkerBoxColoringRecipeMixin",
-    "PointOfInterestTypesMixin",
     "EntityMixin",
-    "PlayerEntityMixin"
+    "LlamaDecorFeatureRendererMixin",
+    "PassiveEntityMixin",
+    "PlayerEntityMixin",
+    "PointOfInterestTypesMixin",
+    "SheepEntityMixin",
+    "ShulkerBoxColoringRecipeMixin"
   ],
   "client": [
     "client.TexturedRenderLayersMixin"

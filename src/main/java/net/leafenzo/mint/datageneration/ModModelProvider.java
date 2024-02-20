@@ -120,6 +120,9 @@ public class ModModelProvider extends FabricModelProvider {
     }
 
 
+//    public final void registerWoodSet(BlockStateModelGenerator blockStateModelGenerator,)
+
+
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         // MINT - Special

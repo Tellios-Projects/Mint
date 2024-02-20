@@ -5,6 +5,7 @@ import net.leafenzo.mint.block.DispenserBehavior;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.block.entity.ModBlockEntityType;
 import net.leafenzo.mint.effect.ModEffects;
+import net.leafenzo.mint.entity.ModEntityTypes;
 import net.leafenzo.mint.item.ModItemGroups;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.particle.ModParticleTypes;
@@ -29,6 +30,7 @@ public class ModInit implements ModInitializer {
             ModBlocks.registerModBlocks();
             ModItems.registerModItems();
             ModBlockEntityType.RegisterModBlockEntityTypes();
+            ModEntityTypes.registerEntityTypes();
             ModParticleTypes.registerModParticleTypes();
             ModFabricRegistries.registerFlammableBlocks();
             ModFabricRegistries.registerCompostingChances();

@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ModItems {
+    // No idea why I did this instead of using DyeItem.getColor(), there may be a reason but I sure didn't note it.
     public static final HashMap<DyeColor, DyeItem> DYE_ITEM_FROM_COLOR = new HashMap<DyeColor, DyeItem>(); static {
         DYE_ITEM_FROM_COLOR.put(DyeColor.WHITE, (DyeItem) Items.WHITE_DYE);
         DYE_ITEM_FROM_COLOR.put(DyeColor.ORANGE, (DyeItem) Items.ORANGE_DYE);
@@ -62,6 +63,24 @@ public class ModItems {
                     //.hunger(0)
                     .saturationModifier(4.0f)
                     .build())));
+
+    public static final Item WINTERGREEN_SAP = registerItem("wintergreen_sap", new Item(new FabricItemSettings()));
+    //TODO smelting recipe from wintergreen leaves to get these
+    //TODO mint dye recipe from this
+    //TODO mint bricks recipe using this
+
+    public static final Item WINTERGREEN_BERRIES = registerItem("wintergreen_berries", new MintSprigItem(new FabricItemSettings()
+            .food(new FoodComponent.Builder()
+                    .alwaysEdible()
+                    .hunger(1)
+                    .saturationModifier(0.3f)
+                    .build())));
+    //TODO drop these from wintergreen leaves occasionally
+
+    public static final Item WINTER_MEDLEY = registerItem("winter_medley", new Item(new FabricItemSettings()));
+    //TODO made from mint sprigs and wintergreen berries
+    //TODO mint chill potion recipe using this instead of just a mint sprig
+
     //</editor-fold>
     //<editor-fold desc ="PEACH - Special">
     public static final Item PEACH_PIT = registerItem("peach_pit", new AliasedBlockItem(ModBlocks.PEACH_TREE, new FabricItemSettings()));
@@ -259,17 +278,20 @@ public class ModItems {
         public static final Item MOLD_BANNER = registerItem(new BannerItem(ModBlocks.MOLD_BANNER, ModBlocks.MOLD_WALL_BANNER, new FabricItemSettings().maxCount(16)));
     //</editor-fold>
     //<editor-fold desc ="Registration">
-    private static Item registerItem(String name, Item item) {
+    public static Item registerItem(Identifier id, Item item) {
+        return Registry.register(Registries.ITEM, id, (Item)item);
+    }
+    public static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), (Item)item);
     }
-    private static Item registerItem(BlockItem item) {
+    public static Item registerItem(BlockItem item) {
         return Registry.register(Registries.ITEM, Registries.BLOCK.getId(item.getBlock()), (Item)item);
     }
     public static Item[] toItemArray(ArrayList<Item> input) {
         Item[] array = new Item[input.size()];
         return input.toArray(array);
     }
-    private static Item registerItem(Block block, Item item) {
+    public static Item registerItem(Block block, Item item) {
         BlockItem blockItem = new BlockItem(block, new FabricItemSettings());
         return Registry.register(Registries.ITEM, Registries.BLOCK.getId(block), (Item)item);
     }

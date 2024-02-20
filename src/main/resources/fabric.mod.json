@@ -43,6 +43,7 @@
       "value": "net.leafenzo.mint.ModEarlyRiser"
     }]
   },
+  "accessWidener": "mint.accesswidener",
   "mixins": [
     "mint.mixins.json"
   ],

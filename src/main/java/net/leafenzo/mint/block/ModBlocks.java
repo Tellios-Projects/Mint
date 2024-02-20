@@ -4,8 +4,10 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
+import net.leafenzo.mint.block.sapling.WintergreenSaplingGenerator;
 import net.leafenzo.mint.datageneration.ModConfiguredFeatures;
 import net.leafenzo.mint.effect.ModEffects;
+import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.*;
@@ -14,6 +16,7 @@ import net.minecraft.block.entity.ShulkerBoxBlockEntity;
 import net.minecraft.block.enums.BedPart;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffects;
@@ -33,6 +36,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import org.apache.http.annotation.Obsolete;
 import org.jetbrains.annotations.Nullable;
+import net.leafenzo.mint.entity.ModBoatEntity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -66,6 +70,10 @@ public class ModBlocks {
     public static final ArrayList<Block> SLABS = new ArrayList<Block>();
     public static final ArrayList<Block> STAIRS = new ArrayList<Block>();
     public static final ArrayList<Block> WALLS = new ArrayList<Block>();
+    public static final ArrayList<Block> RENDER_LAYER_CUTOUT_MIPPED = new ArrayList<Block>();
+    public static final ArrayList<Block> RENDER_LAYER_TRANSLUCENT = new ArrayList<Block>();
+    public static final ArrayList<Block> LEAVES = new ArrayList<Block>();
+    public static final ArrayList<WoodSet> WOODSETS = new ArrayList<WoodSet>();
     //TODO, switch to using tagkeys maybe? as vanilla does that instead of plain array lists, and it might be more performant. Along with allowing us to get the registration ID easier.
 
     //Decor Additions
@@ -99,12 +107,25 @@ public class ModBlocks {
     //</editor-fold>
     //<editor-fold desc ="MINT - Special">
     public static final Block MINT_CROP = registerBlockWithoutBlockItem("mint_crop", new MintCropBlock(FabricBlockSettings.create().mapColor(MapColor.LICHEN_GREEN).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).pistonBehavior(PistonBehavior.DESTROY)));
+        static { RENDER_LAYER_CUTOUT_MIPPED.add(MINT_CROP); }
+
     public static final Block WILD_MINT = registerBlock("wild_mint", createFlowerBlock(ModEffects.MINT_CHILL, 900)/*, ModItemGroups.MINT*/);
     public static final Block POTTED_WILD_MINT = registerBlock("potted_wild_mint", createFlowerPotBlock((FlowerBlock) WILD_MINT)/*, ModItemGroups.MINT*/);
     public static final Block MINT_SPRIG_BLOCK = registerBlock("mint_sprig_block", new Block(FabricBlockSettings.copyOf(Blocks.ACACIA_LEAVES).mapColor(MapColor.LICHEN_GREEN))/*, ModItemGroups.MINT*/);
     public static final Block MINT_BRICKS = registerBlock("mint_bricks", new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK).mapColor(MapColor.LICHEN_GREEN))/*, ModItemGroups.MINT*/);
     public static final Block MINT_BRICK_SLAB = registerBlock("mint_brick_slab", createSlabBlock(FabricBlockSettings.copyOf(MINT_BRICKS))/*, ModItemGroups.MINT*/);
     public static final Block MINT_BRICK_STAIRS = registerBlock("mint_brick_stairs", createStairsBlock(MINT_BRICKS, FabricBlockSettings.copyOf(MINT_BRICKS))/*, ModItemGroups.MINT*/);
+
+    public static WoodSet WINTERGREEN_WOODSET = new WoodSet(
+            new Identifier(Super.MOD_ID, "wintergreen"),
+            MapColor.LICHEN_GREEN,
+            MapColor.TEAL,
+            ModBoatEntity.ModBoat.WINTERGREEN,
+            WoodSet.WoodPreset.DEFAULT,
+            false,
+            new WintergreenSaplingGenerator()
+    );
+
     //public static final Block MINT_BRICK_WALL = registerBlock("mint_brick_wall", createWallBlock new WallBlock(FabricBlockSettings.copyOf(MINT_BRICKS/*)), ModItemGroups.MINT*/);
     //</editor-fold>
     //<editor-fold desc ="PEACH - Template">
@@ -127,8 +148,10 @@ public class ModBlocks {
     public static final Block HYPERICUM = registerBlock("hypericum", createFlowerBlock(StatusEffects.HUNGER, 900)/*, ModItemGroups.PEACH*/); //causes hunger because hypericum berries cause digestion issues irl
     public static final Block POTTED_HYPERICUM = registerBlock("potted_hypericum", createFlowerPotBlock((FlowerBlock) HYPERICUM)/*, ModItemGroups.PEACH*/);
     public static final Block PEACH_TREE = registerBlockWithoutBlockItem("peach_tree", new PeachTreeBlock(FabricBlockSettings.create().noCollision().strength(0.2f).sounds(BlockSoundGroup.GRASS).burnable().pistonBehavior(PistonBehavior.DESTROY).ticksRandomly().offset(AbstractBlock.OffsetType.XZ).nonOpaque().solidBlock(ModBlocks::never)));
+        static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_TREE); }
     public static final Block PEACH_LOG = registerBlock("peach_log", new Block(FabricBlockSettings.create().instrument(Instrument.BASS).strength(2.0f).sounds(BlockSoundGroup.WOOD).burnable().mapColor(MapColor.STONE_GRAY))/*, ModItemGroups.PEACH*/);
     public static final Block CORAL_ANEMONE = registerBlock("coral_anemone", new CoralAnemoneBlock(FabricBlockSettings.create().breakInstantly().sounds(BlockSoundGroup.SLIME).mapColor(MapColor.RAW_IRON_PINK).nonOpaque().pistonBehavior(PistonBehavior.DESTROY).luminance(createLightLevelFromBooleanProperty(6, Properties.WATERLOGGED)))/*, ModItemGroups.PEACH*/);
+        static { RENDER_LAYER_CUTOUT_MIPPED.add(CORAL_ANEMONE); }
 
     //</editor-fold>
     //<editor-fold desc ="PERIWINKLE - Template">
@@ -160,10 +183,11 @@ public class ModBlocks {
     public static final Block LAVENDER_CLAY = registerBlock("lavender_clay", new Block(FabricBlockSettings.copyOf(Blocks.CLAY))/*, ModItemGroups.PERIWINKLE*/);
     public static final Block LAVENDER_BUSHEL = registerBlock("lavender_bushel", new LavenderBushelBlock(FabricBlockSettings.copyOf(Blocks.HAY_BLOCK))/*, ModItemGroups.PERIWINKLE*/);
     public static final Block PERIWINKLE_PETALS = registerBlock("periwinkle_petals", new FlowerbedBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS).mapColor(MapColor.DARK_GREEN))/*, ModItemGroups.PERIWINKLE*/);
+        static { RENDER_LAYER_CUTOUT_MIPPED.add(PERIWINKLE_PETALS); }
     public static final Block HIDCOTE_LAVENDER = registerBlock("hidcote_lavender", createSpreadableFlowerBlock(StatusEffects.BAD_OMEN, 600, ModConfiguredFeatures.PATCH_HIDCOTE_LAVENDER)/*, ModItemGroups.PERIWINKLE*/);
     public static final Block POTTED_HIDCOTE_LAVENDER = registerBlock("potted_hidcote_lavender", createFlowerPotBlock(HIDCOTE_LAVENDER)/*, ModItemGroups.PERIWINKLE*/);
     public static final Block LAVENDER_OIL_LANTERN = registerBlock("lavender_oil_lantern", new LanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).solid().requiresTool().strength(3.5f).sounds(BlockSoundGroup.LANTERN).luminance(state -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY))/*, ModItemGroups.PERIWINKLE*/);
-
+        static { RENDER_LAYER_CUTOUT_MIPPED.add(LAVENDER_OIL_LANTERN); }
     //</editor-fold>
     //<editor-fold desc ="ARTICHOKE - Template">
     public static final Block ARTICHOKE_WOOL = registerBlock("artichoke_wool", createWoolBlock(ModDyeColor.ARTICHOKE)/*, ModItemGroups.ARTICHOKE*/);
@@ -186,8 +210,8 @@ public class ModBlocks {
     public static final Block POTTED_THISTLE_FLOWER = registerBlock("potted_thistle_flower", createFlowerPotBlock(THISTLE_FLOWER)/*, ModItemGroups.ARTICHOKE*/);
     public static final Block WAXCAP_MUSHROOM = registerBlock("waxcap_mushroom", createMushroomPlantBlock(MapColor.DARK_GREEN, ModConfiguredFeatures.HUGE_WAXCAP_MUSHROOM)/*, ModItemGroups.ARTICHOKE*/);
     public static final Block POTTED_WAXCAP_MUSHROOM = registerBlock("potted_waxcap_mushroom", createFlowerPotBlock(WAXCAP_MUSHROOM)/*, ModItemGroups.ARTICHOKE*/);
-    //TODO : IF - Add particles dripping from waxcap wax if we ever add a particle system for other reasons
     public static final Block HANGING_WAXCAP_WAX = registerBlockWithoutBlockItem("hanging_waxcap_wax", new HangingWaxcapWaxBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).noCollision().breakInstantly().sounds(BlockSoundGroup.SLIME).offset(AbstractBlock.OffsetType.XZ).pistonBehavior(PistonBehavior.DESTROY)));
+        static { RENDER_LAYER_CUTOUT_MIPPED.add(HANGING_WAXCAP_WAX); }
     public static final Block WAXCAP_WAX_BLOCK = registerBlock("waxcap_wax_block", new Block(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.NETHER_WOOD).strength(0.5f).burnable())/*, ModItemGroups.ARTICHOKE*/);
     public static final Block WAXCAP_GILL_SLAB = registerBlock("waxcap_gill_slab", new DiagonalSlabBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.SLIME).strength(0.5f).burnable().luminance(state -> 5))/*, ModItemGroups.ARTICHOKE*/);
         static {ModBlocks.SLABS.add(WAXCAP_GILL_SLAB); }
@@ -195,6 +219,7 @@ public class ModBlocks {
     public static final Block WAXCAP_STEM_BLOCK = registerBlock("waxcap_stem_block", new MushroomBlock(FabricBlockSettings.create().mapColor(MapColor.SPRUCE_BROWN).instrument(Instrument.BASS).strength(0.2f).sounds(BlockSoundGroup.WOOD))/*, ModItemGroups.ARTICHOKE*/);
     public static final Block WAXCAP_CAP_BLOCK = registerBlock("waxcap_cap_block", new MushroomBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_GREEN).instrument(Instrument.BASS).strength(0.2f).sounds(BlockSoundGroup.WOOD).burnable())/*, ModItemGroups.ARTICHOKE*/);
     public static final Block ARTICHOKE_CROP = registerBlockWithoutBlockItem("artichoke_crop", new ArtichokeCropBlock(FabricBlockSettings.create().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).pistonBehavior(PistonBehavior.DESTROY).mapColor(MapColor.DARK_GREEN)));
+        static { RENDER_LAYER_CUTOUT_MIPPED.add(ARTICHOKE_CROP); }
     //</editor-fold>
 
     //<editor-fold desc ="FUCHSIA - Template">
@@ -633,6 +658,7 @@ public class ModBlocks {
         STAINED_GLASS_BLOCKS.add(block);
         DYECOLOR_FROM_BLOCK.put((Block) block, color);
         COLORED_BLOCKS.add(block);
+        RENDER_LAYER_TRANSLUCENT.add(block);
         return block;
     }
     public static StainedGlassPaneBlock createStainedGlassPaneBlock(DyeColor color, Block glass) {
@@ -647,6 +673,7 @@ public class ModBlocks {
         STAINED_GLASS_PANE_FROM_STAINED_GLASS.put(glass, block);
         DYECOLOR_FROM_BLOCK.put((Block) block, color);
         COLORED_BLOCKS.add(block);
+        RENDER_LAYER_TRANSLUCENT.add(block);
         return block;
     }
     private static ModShulkerBoxBlock createShulkerBoxBlock(DyeColor color) {
@@ -776,18 +803,6 @@ public class ModBlocks {
 
 
     // Decor Additions
-    public static NeonExciterBlock createNeonExciterBlock() {
-        NeonExciterBlock block = new NeonExciterBlock(
-                FabricBlockSettings.copyOf(Blocks.OBSERVER)
-                        .mapColor(MapColor.STONE_GRAY)
-                        .instrument(Instrument.BASEDRUM)
-                        .strength(3.0f)
-                        .requiresTool()
-                        .solidBlock(ModBlocks::never)
-        );
-        return block;
-    }
-
     public static Block createDyedMucktuffBlock(DyeColor color) {
         Block block = new Block(mucktuffBlockSettings()
                         .mapColor(color.getMapColor())
@@ -821,11 +836,13 @@ public class ModBlocks {
     public static SpreadableFlowerBlock createSpreadableFlowerBlock(StatusEffect suspiciousStewEffect, int effectDuration, RegistryKey<ConfiguredFeature<?, ?>> featureKey) {
         SpreadableFlowerBlock block = new SpreadableFlowerBlock(suspiciousStewEffect, effectDuration, createFlowerBlockSettings(), featureKey);
         SMALL_FLOWERS.add(block);
+        RENDER_LAYER_CUTOUT_MIPPED.add(block);
         return block;
     }
     public static FlowerBlock createFlowerBlock(StatusEffect suspiciousStewEffect, int effectDuration) {
         FlowerBlock block = new FlowerBlock(suspiciousStewEffect, effectDuration, createFlowerBlockSettings());
         SMALL_FLOWERS.add(block);
+        RENDER_LAYER_CUTOUT_MIPPED.add(block);
         return block;
     }
     public static FlowerPotBlock createFlowerPotBlock(Block pottedBlock) {
@@ -836,6 +853,7 @@ public class ModBlocks {
         );
         FLOWER_POTS.add(block);
         FLOWER_POT_FROM_BLOCK.put(pottedBlock, block);
+        RENDER_LAYER_CUTOUT_MIPPED.add(block);
         return block;
     }
     public static MushroomPlantBlock createMushroomPlantBlock(MapColor mapColor, @Nullable RegistryKey<ConfiguredFeature<?, ?>> largeMushroomFeature) { //TODO testme to see if null feature value here actually even works
@@ -849,6 +867,7 @@ public class ModBlocks {
                 largeMushroomFeature
         );
         MUSHROOM_PLANTS.add(block);
+        RENDER_LAYER_CUTOUT_MIPPED.add(block);
         return block;
     }
     public static Block createStairsBlock(Block sourceBlock, FabricBlockSettings settings) {

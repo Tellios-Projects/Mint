@@ -4,6 +4,10 @@
 */
 package net.leafenzo.mint.client.render;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+
+@Environment(EnvType.CLIENT)
 public class ModColorHandler {
     public static void registerBlockColorProviders() {
 //        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> pos != null && world != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), //0.5 and 1.0 are the defaults for grass color (Source: BlockColors line 49)
