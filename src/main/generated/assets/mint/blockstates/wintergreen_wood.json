@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "mint:block/wintergreen_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "mint:block/wintergreen_wood"
+    },
+    "axis=z": {
+      "model": "mint:block/wintergreen_wood",
+      "x": 90
+    }
+  }
+}

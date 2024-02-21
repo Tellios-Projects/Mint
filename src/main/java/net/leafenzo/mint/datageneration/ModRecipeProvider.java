@@ -6,6 +6,7 @@ import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.recipe.ModRecipeSerializer;
+import net.leafenzo.mint.registration.ModRegistryHelper;
 import net.leafenzo.mint.registry.tag.ModTags;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
@@ -25,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
-
+import static net.leafenzo.mint.registration.ModRegistryHelper.*;
 public class ModRecipeProvider extends FabricRecipeProvider {
     public ModRecipeProvider(FabricDataOutput output) { super(output); }
     public static void offerReversibleCompactingRecipes(Consumer<RecipeJsonProvider> exporter, RecipeCategory reverseCategory, ItemConvertible baseItem, RecipeCategory compactingCategory, ItemConvertible compactItem, String compactingId, @Nullable String compactingGroup, String reverseId, @Nullable String reverseGroup) {
@@ -76,7 +77,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public static void offerTerracottaDyeingRecipes(Consumer<RecipeJsonProvider> exporter) {
         for(ItemConvertible output : ModBlocks.DYED_TERRACOTTA_BLOCKS) {
             DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(output);
-            Item dye = ModItems.DYE_ITEM_FROM_COLOR.get(color);
+            Item dye = ItemRegistry.DYE_ITEM_FROM_COLOR.get(color);
             if (dye != null) {
                 offerTerracottaDyeingRecipe(exporter, output, dye);
             }
@@ -87,7 +88,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
     public static void offerConcretePowderDyeingRecipes(Consumer<RecipeJsonProvider> exporter) {
         for(ItemConvertible output : ModBlocks.CONCRETE_POWDER_BLOCKS) {
-            ItemConvertible dye = ModItems.DYE_ITEM_FROM_COLOR.get(ModBlocks.DYECOLOR_FROM_BLOCK.get(output));
+            ItemConvertible dye = ItemRegistry.DYE_ITEM_FROM_COLOR.get(ModBlocks.DYECOLOR_FROM_BLOCK.get(output));
             offerConcretePowderDyeingRecipe(exporter, output, dye);
         }
     }
@@ -111,7 +112,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
     public static void offerCandleDyeingRecipes(Consumer<RecipeJsonProvider> exporter) {
         for(ItemConvertible candle : ModBlocks.CANDLE_BLOCKS) {
-            ItemConvertible dyeItem = ModItems.DYE_ITEM_FROM_COLOR.get(ModBlocks.DYECOLOR_FROM_BLOCK.get(candle));
+            ItemConvertible dyeItem = ItemRegistry.DYE_ITEM_FROM_COLOR.get(ModBlocks.DYECOLOR_FROM_BLOCK.get(candle));
             offerCandleDyeingRecipe(exporter, candle, dyeItem);
         }
     }
@@ -130,14 +131,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public static void offerStainedGlassPaneDyeingRecipes(Consumer<RecipeJsonProvider> exporter) {
         for(ItemConvertible pane : ModBlocks.STAINED_GLASS_PANE_BLOCKS) {
             DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(pane);
-            DyeItem dye = ModItems.DYE_ITEM_FROM_COLOR.get(color);
+            DyeItem dye = ItemRegistry.DYE_ITEM_FROM_COLOR.get(color);
             offerStainedGlassPaneDyeingRecipe(exporter, pane, dye);
         }
     }
     public static void offerStainedGlassDyeingRecipes(Consumer<RecipeJsonProvider> exporter) {
         for(ItemConvertible glass : ModBlocks.STAINED_GLASS_BLOCKS) {
             DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(glass);
-            DyeItem dye = ModItems.DYE_ITEM_FROM_COLOR.get(color);
+            DyeItem dye = ItemRegistry.DYE_ITEM_FROM_COLOR.get(color);
             offerStainedGlassDyeingRecipe(exporter, glass, dye);
         }
     }
@@ -160,7 +161,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             if(ModBlocks.DYECOLOR_FROM_BLOCK.get(output) == null) { continue; }
 
             DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(output);
-            ItemConvertible dyeItem = ModItems.DYE_ITEM_FROM_COLOR.get(color);
+            ItemConvertible dyeItem = ItemRegistry.DYE_ITEM_FROM_COLOR.get(color);
             ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, 8)
                     .input(Character.valueOf('#'), ModBlocks.CORRUGATED_IRON)
                     .input(Character.valueOf('X'), dyeItem)
@@ -187,7 +188,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             if(ModBlocks.DYECOLOR_FROM_BLOCK.get(output) == null) { continue; }
 
             DyeColor color = ModBlocks.DYECOLOR_FROM_BLOCK.get(output);
-            Item dye = ModItems.DYE_ITEM_FROM_COLOR.get(color);
+            Item dye = ItemRegistry.DYE_ITEM_FROM_COLOR.get(color);
             ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, 8)
                     .input(Character.valueOf('#'), ModBlocks.MUCKTUFF)
                     .input(Character.valueOf('X'), dye)

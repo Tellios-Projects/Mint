@@ -3,8 +3,9 @@ package net.leafenzo.mint.datageneration;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.registry.tag.ModTags;
-import net.minecraft.block.Block;
+import net.minecraft.block.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
@@ -76,6 +77,51 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
         for (Block block : ModBlocks.WALLS) {
             getOrCreateTagBuilder(BlockTags.WALLS).add(block);
         }
+        for (Block block : ModBlocks.WOODEN_FENCES) {
+            getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(block);
+        }
+        for (Block block : ModBlocks.FENCE_GATES) {
+            getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(block);
+        }
+        for (Block block : ModBlocks.SIGNS) {
+            if(block instanceof SignBlock) {
+                getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(block);
+            }
+            else if(block instanceof WallSignBlock) {
+                getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(block);
+            }
+            else if(block instanceof HangingSignBlock) {
+                getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS).add(block);
+            }
+            else if(block instanceof WallHangingSignBlock) {
+                getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS).add(block);
+            }
+        }
+        for (Block block : ModBlocks.WOODEN_DOORS) {
+            getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(block);
+        }
+        for (Block block : ModBlocks.WOODEN_TRAPDOORS) {
+            getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(block);
+        }
+        for (Block block : ModBlocks.WOODEN_STAIRS) {
+            getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(block);
+        }
+        for (Block block : ModBlocks.WOODEN_SLABS) {
+            getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(block);
+        }
+        for (Block block : ModBlocks.WOODEN_PRESSURE_PLATES) {
+            getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add(block);
+        }
+        for (Block block : ModBlocks.WOODEN_BUTTONS) {
+            getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(block);
+        }
+        for (Block block : ModBlocks.LOGS_THAT_BURN) {
+            getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).add(block);
+        }
+        for (Block block : ModBlocks.PLANKS) {
+            getOrCreateTagBuilder(BlockTags.PLANKS).add(block);
+        }
+
 
 //  WOOL_BLOCKS
         for (Block block : ModBlocks.WOOL_BLOCKS) {

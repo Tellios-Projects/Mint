@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "mint:mint_wool",
+    "mint:peach_wool",
+    "mint:periwinkle_wool",
+    "mint:artichoke_wool",
+    "mint:fuchsia_wool",
+    "mint:vermilion_wool",
+    "mint:shamrock_wool",
+    "mint:indigo_wool",
+    "mint:banana_wool",
+    "mint:cerulean_wool",
+    "mint:acorn_wool",
+    "mint:mauve_wool",
+    "mint:maroon_wool",
+    "mint:grape_wool",
+    "mint:navy_wool",
+    "mint:sap_wool",
+    "mint:amber_wool",
+    "mint:sage_wool",
+    "mint:velvet_wool",
+    "mint:mold_wool"
+  ]
+}

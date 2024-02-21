@@ -15,6 +15,7 @@ import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
 
+import static net.leafenzo.mint.registration.ModRegistryHelper.*;
 public class ModItemTagGenerator extends FabricTagProvider<Item> {
     /**
      * Constructs a new {@link FabricTagProvider} with the default computed path.
@@ -58,6 +59,75 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
             getOrCreateTagBuilder(ItemTags.WOOL_CARPETS).add(block.asItem());  // used for adding a carpet to llamas in LlamaEntity.isHorseArmor()
         }
 
+        for (Block block : ModBlocks.WOOL_BLOCKS) {
+            getOrCreateTagBuilder(ItemTags.WOOL).add(block.asItem());
+        }
+
+        for (Block block : ModBlocks.LEAVES) {
+            getOrCreateTagBuilder(ItemTags.LEAVES).add(block.asItem());
+        }
+
+        for (Block block : ModBlocks.LOGS_THAT_BURN) {
+//            getOrCreateTagBuilder(ItemTags.LOGS).add(block.asItem());
+            getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).add(block.asItem());
+        }
+
+        for (Block block : ModBlocks.PLANKS) {
+            getOrCreateTagBuilder(ItemTags.PLANKS).add(block.asItem());
+        }
+
+        for (Block block : ModBlocks.WOODEN_BUTTONS) {
+//            getOrCreateTagBuilder(ItemTags.BUTTONS).add(block.asItem());
+            getOrCreateTagBuilder(ItemTags.WOODEN_BUTTONS).add(block.asItem());
+        }
+
+        for (Block block : ModBlocks.WOODEN_DOORS) {
+//            getOrCreateTagBuilder(ItemTags.DOORS).add(block.asItem());
+            getOrCreateTagBuilder(ItemTags.WOODEN_DOORS).add(block.asItem());
+        }
+
+        for (Block block : ModBlocks.WOODEN_STAIRS) {
+//            getOrCreateTagBuilder(ItemTags.STAIRS).add(block.asItem());
+            getOrCreateTagBuilder(ItemTags.WOODEN_STAIRS).add(block.asItem());
+        }
+
+        for (Block block : ModBlocks.WOODEN_SLABS) {
+//            getOrCreateTagBuilder(ItemTags.SLABS).add(block.asItem());
+            getOrCreateTagBuilder(ItemTags.WOODEN_SLABS).add(block.asItem());
+        }
+
+        for (Block block : ModBlocks.WOODEN_FENCES) {
+//            getOrCreateTagBuilder(ItemTags.FENCES).add(block.asItem());
+            getOrCreateTagBuilder(ItemTags.WOODEN_FENCES).add(block.asItem());
+        }
+
+        for (Block block : ModBlocks.FENCE_GATES) {
+            getOrCreateTagBuilder(ItemTags.FENCE_GATES).add(block.asItem());
+        }
+
+        for (Block block : ModBlocks.WOODEN_PRESSURE_PLATES) {
+            getOrCreateTagBuilder(ItemTags.WOODEN_PRESSURE_PLATES).add(block.asItem());
+        }
+
+        for (Block block : ModBlocks.WOODEN_TRAPDOORS) {
+//            getOrCreateTagBuilder(ItemTags.TRAPDOORS).add(block.asItem());
+            getOrCreateTagBuilder(ItemTags.WOODEN_TRAPDOORS).add(block.asItem());
+        }
+
+        for (Block block : ModBlocks.SAPLINGS) {
+            getOrCreateTagBuilder(ItemTags.SAPLINGS).add(block.asItem());
+        }
+
+        for (Block block : ModBlocks.STAIRS) {
+            getOrCreateTagBuilder(ItemTags.STAIRS).add(block.asItem());
+        }
+        for (Block block : ModBlocks.SLABS) {
+            getOrCreateTagBuilder(ItemTags.SLABS).add(block.asItem());
+        }
+        for (Block block : ModBlocks.WALLS) {
+            getOrCreateTagBuilder(ItemTags.WALLS).add(block.asItem());
+        }
+
         for (Block block : ModBlocks.SMALL_FLOWERS) {
             getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS).add(block.asItem());
         }
@@ -66,12 +136,26 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
             getOrCreateTagBuilder(ItemTags.CANDLES).add(block.asItem());
         }
 
-        for (Item item : ModItems.DYE_ITEMS) {
+        for (Item item : ItemRegistry.DYE_ITEMS) {
             getOrCreateTagBuilder(ModTags.Items.DYES).add(item);
         }
 
         for (Block block : ModBlocks.MUSHROOM_PLANTS) {
             getOrCreateTagBuilder(ModTags.Items.MUSHROOMS).add(block.asItem());
+        }
+
+        for (Item item : ItemRegistry.SIGN_ITEMS) {
+            getOrCreateTagBuilder(ItemTags.SIGNS).add(item);
+        }
+        for (Item item : ItemRegistry.HANGING_SIGN_ITEMS) {
+            getOrCreateTagBuilder(ItemTags.HANGING_SIGNS).add(item);
+        }
+
+        for (Item item : ItemRegistry.BOAT_ITEMS) {
+            getOrCreateTagBuilder(ItemTags.BOATS).add(item);
+        }
+        for (Item item : ItemRegistry.CHEST_BOAT_ITEMS) {
+            getOrCreateTagBuilder(ItemTags.CHEST_BOATS).add(item);
         }
     }
 }

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "mint:block/wintergreen_slab"
+    },
+    "type=double": {
+      "model": "mint:block/wintergreen_planks"
+    },
+    "type=top": {
+      "model": "mint:block/wintergreen_slab_top"
+    }
+  }
+}

@@ -19,29 +19,9 @@ import net.minecraft.util.Identifier;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ModItems {
-    // No idea why I did this instead of using DyeItem.getColor(), there may be a reason but I sure didn't note it.
-    public static final HashMap<DyeColor, DyeItem> DYE_ITEM_FROM_COLOR = new HashMap<DyeColor, DyeItem>(); static {
-        DYE_ITEM_FROM_COLOR.put(DyeColor.WHITE, (DyeItem) Items.WHITE_DYE);
-        DYE_ITEM_FROM_COLOR.put(DyeColor.ORANGE, (DyeItem) Items.ORANGE_DYE);
-        DYE_ITEM_FROM_COLOR.put(DyeColor.MAGENTA, (DyeItem) Items.MAGENTA_DYE);
-        DYE_ITEM_FROM_COLOR.put(DyeColor.LIGHT_BLUE, (DyeItem) Items.LIGHT_BLUE_DYE);
-        DYE_ITEM_FROM_COLOR.put(DyeColor.YELLOW, (DyeItem) Items.YELLOW_DYE);
-        DYE_ITEM_FROM_COLOR.put(DyeColor.LIME, (DyeItem) Items.LIME_DYE);
-        DYE_ITEM_FROM_COLOR.put(DyeColor.PINK, (DyeItem) Items.PINK_DYE);
-        DYE_ITEM_FROM_COLOR.put(DyeColor.GRAY, (DyeItem) Items.GRAY_DYE);
-        DYE_ITEM_FROM_COLOR.put(DyeColor.LIGHT_GRAY, (DyeItem) Items.LIGHT_GRAY_DYE);
-        DYE_ITEM_FROM_COLOR.put(DyeColor.CYAN, (DyeItem) Items.CYAN_DYE);
-        DYE_ITEM_FROM_COLOR.put(DyeColor.PURPLE, (DyeItem) Items.PURPLE_DYE);
-        DYE_ITEM_FROM_COLOR.put(DyeColor.BLUE, (DyeItem) Items.BLUE_DYE);
-        DYE_ITEM_FROM_COLOR.put(DyeColor.BROWN, (DyeItem) Items.BROWN_DYE);
-        DYE_ITEM_FROM_COLOR.put(DyeColor.GREEN, (DyeItem) Items.GREEN_DYE);
-        DYE_ITEM_FROM_COLOR.put(DyeColor.RED, (DyeItem) Items.RED_DYE);
-        DYE_ITEM_FROM_COLOR.put(DyeColor.BLACK, (DyeItem) Items.BLACK_DYE);
-    }
-    public static final ArrayList<Item> DYE_ITEMS = new ArrayList<Item>();
-    public static final ArrayList<Item> DYED_PAPER_ITEMS = new ArrayList<Item>();
+import static net.leafenzo.mint.registration.ModRegistryHelper.ItemRegistry.*;
 
+public class ModItems {
     //<editor-fold desc ="MINT - Special">
     public static final Item MINT_SPRIG = registerItem("mint_sprig", new MintSprigItem(new FabricItemSettings()
             .food(new FoodComponent.Builder()
@@ -277,25 +257,7 @@ public class ModItems {
         public static final Item MOLD_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.MOLD_SHULKER_BOX, new FabricItemSettings().maxCount(1)));
         public static final Item MOLD_BANNER = registerItem(new BannerItem(ModBlocks.MOLD_BANNER, ModBlocks.MOLD_WALL_BANNER, new FabricItemSettings().maxCount(16)));
     //</editor-fold>
-    //<editor-fold desc ="Registration">
-    public static Item registerItem(Identifier id, Item item) {
-        return Registry.register(Registries.ITEM, id, (Item)item);
-    }
-    public static Item registerItem(String name, Item item) {
-        return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), (Item)item);
-    }
-    public static Item registerItem(BlockItem item) {
-        return Registry.register(Registries.ITEM, Registries.BLOCK.getId(item.getBlock()), (Item)item);
-    }
-    public static Item[] toItemArray(ArrayList<Item> input) {
-        Item[] array = new Item[input.size()];
-        return input.toArray(array);
-    }
-    public static Item registerItem(Block block, Item item) {
-        BlockItem blockItem = new BlockItem(block, new FabricItemSettings());
-        return Registry.register(Registries.ITEM, Registries.BLOCK.getId(block), (Item)item);
-    }
-    //</editor-fold>
+
     //<editor-fold desc ="Item Creation Functions">
     private static DyeItem createDyeItem(DyeColor color) {
         DyeItem item = new DyeItem(color, new FabricItemSettings());

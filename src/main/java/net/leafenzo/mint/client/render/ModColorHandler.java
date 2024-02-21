@@ -6,23 +6,26 @@ package net.leafenzo.mint.client.render;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.util.ModUtil;
+import net.minecraft.block.Block;
+import net.minecraft.client.color.world.BiomeColors;
+import net.minecraft.client.color.world.FoliageColors;
+import net.minecraft.item.BlockItem;
 
 @Environment(EnvType.CLIENT)
 public class ModColorHandler {
     public static void registerBlockColorProviders() {
-//        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> pos != null && world != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), //0.5 and 1.0 are the defaults for grass color (Source: BlockColors line 49)
-//                ModBlocks.VINE_BLOCK
-//        );
+        for(Block block : ModBlocks.HAS_FOLIAGE_COLOR_PROVIDER) {
+            ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> pos != null && world != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), block);  //0.5 and 1.0 are the defaults for grass color (Source: BlockColors line 49)
+        }
 
 //        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> pos != null && world != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(0.5, 1.0), //0.5 and 1.0 are the defaults for grass color (Source: BlockColors line 49)
-//                ModBlocks.GRASS_CLIPPINGS_BLOCK,
-//                ModBlocks.FERN_BLOCK
 //        );
 
-//        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ColorProviderRegistry.BLOCK.get(((BlockItem) stack.getItem()).getBlock()).getColor(((BlockItem) stack.getItem()).getBlock().getDefaultState(), null, null, tintIndex),
-//                ModBlocks.GRASS_CLIPPINGS_BLOCK,
-//                ModBlocks.FERN_BLOCK,
-//                ModBlocks.VINE_BLOCK
-//        );
+        for(Block block : ModBlocks.HAS_FOLIAGE_COLOR_PROVIDER) { //Make sure this is done for each one!
+            ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ColorProviderRegistry.BLOCK.get(((BlockItem) stack.getItem()).getBlock()).getColor(((BlockItem) stack.getItem()).getBlock().getDefaultState(), null, null, tintIndex), block);
+        }
     }
 }

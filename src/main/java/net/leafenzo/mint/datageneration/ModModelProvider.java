@@ -1,5 +1,4 @@
 package net.leafenzo.mint.datageneration;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.leafenzo.mint.Super;
@@ -7,8 +6,8 @@ import net.leafenzo.mint.block.ArtichokeCropBlock;
 import net.leafenzo.mint.block.MintCropBlock;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.block.TwoTallCropBlock;
-import net.leafenzo.mint.data.client.TexturedModelSupplier;
 import net.leafenzo.mint.item.ModItems;
+import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.state.property.ModProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -16,17 +15,15 @@ import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.block.enums.SlabType;
 import net.minecraft.data.client.*;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
 import net.minecraft.state.property.Property;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.stream.IntStream;
 
+import static net.leafenzo.mint.registration.ModRegistryHelper.*;
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
         super(output);
@@ -118,9 +115,88 @@ public class ModModelProvider extends FabricModelProvider {
                         (a, b) -> BlockStateVariant.create().put(VariantSettings.MODEL, TextureMap.getSubId(crop, "_stage" + b + (a == DoubleBlockHalf.LOWER ? "_bottom" : "_top")))))
         );
     }
+    public final void createWoodSign(BlockStateModelGenerator blockStateModelGenerator, Block signBlock, Block wallSignBlock) {
+        TextureMap textureMapping = TextureMap.texture(signBlock);
+        Identifier resourceLocation = Models.PARTICLE.upload(signBlock, textureMapping, blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(signBlock, resourceLocation));
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(wallSignBlock, resourceLocation));
+        blockStateModelGenerator.registerItemModel(signBlock.asItem());
+        blockStateModelGenerator.excludeFromSimpleItemModelGeneration(wallSignBlock);
+    }
+    public final void createHangingSign(BlockStateModelGenerator blockStateModelGenerator, Block strippedLog, Block hangingSign, Block wallHangingSign) {
+        TextureMap textureMap = TextureMap.particle(strippedLog);
+        Identifier identifier = Models.PARTICLE.upload(hangingSign, textureMap, blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(hangingSign, identifier));
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(wallHangingSign, identifier));
+        blockStateModelGenerator.registerItemModel(hangingSign.asItem());
+        blockStateModelGenerator.excludeFromSimpleItemModelGeneration(wallHangingSign);
+    }
+    public final void registerBlocksInWoodSet(BlockStateModelGenerator blockStateModelGenerator, WoodSet woodSet) {
+        Block log = woodSet.getLog();
+        Block wood = woodSet.getWood();
+        
+        if(log != null && wood != null) { blockStateModelGenerator.registerLog(log).log(log).wood(wood);  }
+        else if(log != null) { blockStateModelGenerator.registerLog(log).log(log); }
+        
+        Block strippedLog = woodSet.getStrippedLog();
+        Block strippedWood = woodSet.getStrippedWood();
+        if(strippedLog != null && strippedWood != null) { blockStateModelGenerator.registerLog(strippedLog).log(strippedLog).wood(strippedWood);  }
+        else if(strippedLog != null) { blockStateModelGenerator.registerLog(strippedLog).log(strippedLog); }
+        
+        Block leaves = woodSet.getLeaves();
+        if(leaves != null) { blockStateModelGenerator.registerSingleton(leaves, TexturedModel.LEAVES); }
 
+        Block sapling = woodSet.getSapling();
+        Block pottedSapling = woodSet.getPottedSapling();
+        if(sapling != null && pottedSapling != null) { blockStateModelGenerator.registerFlowerPotPlant(sapling, pottedSapling, BlockStateModelGenerator.TintType.NOT_TINTED); }
+        else if(sapling != null) { blockStateModelGenerator.registerTintableCross(sapling, BlockStateModelGenerator.TintType.NOT_TINTED); }
 
-//    public final void registerWoodSet(BlockStateModelGenerator blockStateModelGenerator,)
+        Block planks = woodSet.getPlanks();
+        Block stairs = woodSet.getStairs();
+        Block slab = woodSet.getSlab();
+        Block fence = woodSet.getFence();
+        Block fenceGate = woodSet.getFenceGate();
+        Block pressurePlate = woodSet.getPressurePlate();
+        Block button = woodSet.getButton();
+        if(planks != null) {
+            BlockStateModelGenerator.BlockTexturePool planksTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(planks);
+            if(stairs != null) { planksTexturePool.stairs(stairs); }
+            if(slab != null) { planksTexturePool.slab(slab); }
+            if(fence != null) { planksTexturePool.fence(fence); }
+            if(fenceGate != null) { planksTexturePool.fenceGate(fenceGate); }
+            if(pressurePlate != null) { planksTexturePool.pressurePlate(pressurePlate); }
+            if(button != null) { planksTexturePool.button(button); }
+        }
+
+        Block mosaic = woodSet.getMosaic();
+        Block mosaicStairs = woodSet.getMosaicStairs();
+        Block mosaicSlab = woodSet.getMosaicSlab();
+        if(mosaic != null) {
+            BlockStateModelGenerator.BlockTexturePool mosaicTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(mosaic);
+            if(mosaicStairs != null) { mosaicTexturePool.stairs(mosaicStairs); }
+            if(mosaicSlab != null) { mosaicTexturePool.slab(mosaicSlab); }
+        }
+
+        Block door = woodSet.getDoor();
+        if(door != null) { blockStateModelGenerator.registerDoor(door); }
+
+        Block trapDoor = woodSet.getTrapDoor();
+        if(trapDoor != null) { blockStateModelGenerator.registerTrapdoor(trapDoor); }
+
+        Block sign = woodSet.getSign();
+        Block wallSign = woodSet.getWallSign();
+        if(sign != null && wallSign != null) { createWoodSign(blockStateModelGenerator, sign, wallSign); }
+
+        Block hangingSign = woodSet.getHangingSign();
+        Block hangingWallSign = woodSet.getHangingWallSign();
+        if(hangingSign != null && hangingWallSign != null && strippedLog != null) { createHangingSign(blockStateModelGenerator, strippedLog, hangingSign, hangingWallSign); }
+
+        Item boatItem = woodSet.getBoatItem();
+        if(boatItem != null) { blockStateModelGenerator.registerItemModel(boatItem);  }
+
+        Item chestBoatItem = woodSet.getChestBoatItem();
+        if(chestBoatItem != null) { blockStateModelGenerator.registerItemModel(chestBoatItem);  }
+    }
 
 
     @Override
@@ -184,8 +260,12 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerMushroomBlock(ModBlocks.WAXCAP_STEM_BLOCK);
         blockStateModelGenerator.registerCrop(ModBlocks.ARTICHOKE_CROP, ArtichokeCropBlock.AGE, IntStream.rangeClosed(0, ArtichokeCropBlock.MAX_AGE).toArray());
 
-
         //Main
+// WOODSETS
+        for (WoodSet woodSet : ModBlocks.WOODSETS) {
+            registerBlocksInWoodSet(blockStateModelGenerator, woodSet);
+        }
+
 //  SLABS & STAIRS & WALLS
         //not standardized yet
 
@@ -259,8 +339,6 @@ public class ModModelProvider extends FabricModelProvider {
             else { throw new RuntimeException(Registries.BLOCK.getId(banner).toString() + "does not have a wall banner"); }
         }
 
-
-
         //Decor Additions
         for(Block block : ModBlocks.ALL_CORRUGATED_IRON_BLOCKS) {
             blockStateModelGenerator.registerAxisRotated(block, TexturedModel.CUBE_ALL);
@@ -270,7 +348,6 @@ public class ModModelProvider extends FabricModelProvider {
             blockStateModelGenerator.registerCubeAllModelTexturePool(block);
         }
     }
-
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
@@ -297,19 +374,16 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ARTICHOKE_HEART, Models.GENERATED);
         itemModelGenerator.register(ModItems.ARTICHOKE_LAMB, Models.GENERATED);
         itemModelGenerator.register(ModItems.BREAKFAST_PORKCHOP, Models.GENERATED);
-
-
 //        itemModelGenerator.register(ModBlocks.THISTLE_FLOWER.asItem(), Models.GENERATED);
 //        itemModelGenerator.register(ModBlocks.WAXCAP_WAX.asItem(), Models.GENERATED);
 
-
-        //Decor Additions
-        for(Item item : ModItems.DYED_PAPER_ITEMS) {
-            itemModelGenerator.register(item, Models.GENERATED);
-        }
+// Decor Additions
+//        for(Item item : DYED_PAPER_ITEMS) {
+//            itemModelGenerator.register(item, Models.GENERATED);
+//        }
 
 //  DYES
-        for(Item item : ModItems.DYE_ITEMS) {
+        for(Item item : ItemRegistry.DYE_ITEMS) {
             itemModelGenerator.register(item, Models.GENERATED);
         }
 
@@ -317,7 +391,6 @@ public class ModModelProvider extends FabricModelProvider {
         for(Block block : ModBlocks.BANNER_BLOCKS) {
             itemModelGenerator.register(block.asItem(), Models.TEMPLATE_BANNER);
         }
-
         //itemModelGenerator.register(ModItems.MINT_BED, Models.TEMPLATE_BED);
     }
 }

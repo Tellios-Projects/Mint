@@ -1,6 +1,5 @@
 package net.leafenzo.mint.block;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
@@ -16,15 +15,10 @@ import net.minecraft.block.entity.ShulkerBoxBlockEntity;
 import net.minecraft.block.enums.BedPart;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.BooleanProperty;
@@ -34,13 +28,14 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
-import org.apache.http.annotation.Obsolete;
 import org.jetbrains.annotations.Nullable;
 import net.leafenzo.mint.entity.ModBoatEntity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.function.ToIntFunction;
+
+import static net.leafenzo.mint.registration.ModRegistryHelper.BlockRegistry.*;
 
 public class ModBlocks {
     //<editor-fold desc ="Hashmaps & Arrays">
@@ -70,11 +65,24 @@ public class ModBlocks {
     public static final ArrayList<Block> SLABS = new ArrayList<Block>();
     public static final ArrayList<Block> STAIRS = new ArrayList<Block>();
     public static final ArrayList<Block> WALLS = new ArrayList<Block>();
+    public static final ArrayList<Block> WOODEN_SLABS = new ArrayList<Block>();
+    public static final ArrayList<Block> WOODEN_STAIRS = new ArrayList<Block>();
+    public static final ArrayList<Block> WOODEN_FENCES = new ArrayList<Block>();
+    public static final ArrayList<Block> FENCE_GATES = new ArrayList<Block>();
+    public static final ArrayList<Block> PLANKS = new ArrayList<Block>();
+    public static final ArrayList<Block> LOGS = new ArrayList<Block>();
+    public static final ArrayList<Block> LOGS_THAT_BURN = new ArrayList<Block>();
+    public static final ArrayList<Block> WOODEN_DOORS = new ArrayList<Block>();
+    public static final ArrayList<Block> WOODEN_TRAPDOORS = new ArrayList<Block>();
+    public static final ArrayList<Block> WOODEN_PRESSURE_PLATES = new ArrayList<Block>();
+    public static final ArrayList<Block> WOODEN_BUTTONS = new ArrayList<Block>();
+    public static final ArrayList<Block> SIGNS = new ArrayList<Block>();
     public static final ArrayList<Block> RENDER_LAYER_CUTOUT_MIPPED = new ArrayList<Block>();
     public static final ArrayList<Block> RENDER_LAYER_TRANSLUCENT = new ArrayList<Block>();
+    public static final ArrayList<Block> HAS_FOLIAGE_COLOR_PROVIDER = new ArrayList<Block>();
     public static final ArrayList<Block> LEAVES = new ArrayList<Block>();
+    public static final ArrayList<Block> SAPLINGS = new ArrayList<Block>();
     public static final ArrayList<WoodSet> WOODSETS = new ArrayList<WoodSet>();
-    //TODO, switch to using tagkeys maybe? as vanilla does that instead of plain array lists, and it might be more performant. Along with allowing us to get the registration ID easier.
 
     //Decor Additions
     //TODO, corrugated iron soundgroup?
@@ -88,7 +96,6 @@ public class ModBlocks {
      * This list is just used in ItemGroups
      */ public static final ArrayList<Block> FUNCTIONAL_BLOCKS = new ArrayList<Block>();
     //</editor-fold>
-
     //<editor-fold desc ="MINT - Template">
     public static final Block MINT_WOOL = registerBlock("mint_wool", createWoolBlock(ModDyeColor.MINT)/*, ModItemGroups.MINT*/);
     public static final Block MINT_CARPET = registerBlock("mint_carpet", createDyedCarpetBlock(ModDyeColor.MINT, MINT_WOOL)/*, ModItemGroups.MINT*/);
@@ -118,8 +125,9 @@ public class ModBlocks {
 
     public static WoodSet WINTERGREEN_WOODSET = new WoodSet(
             new Identifier(Super.MOD_ID, "wintergreen"),
-            MapColor.LICHEN_GREEN,
             MapColor.TEAL,
+            MapColor.BRIGHT_TEAL,
+            MapColor.LIGHT_BLUE,
             ModBoatEntity.ModBoat.WINTERGREEN,
             WoodSet.WoodPreset.DEFAULT,
             false,
@@ -214,7 +222,7 @@ public class ModBlocks {
         static { RENDER_LAYER_CUTOUT_MIPPED.add(HANGING_WAXCAP_WAX); }
     public static final Block WAXCAP_WAX_BLOCK = registerBlock("waxcap_wax_block", new Block(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.NETHER_WOOD).strength(0.5f).burnable())/*, ModItemGroups.ARTICHOKE*/);
     public static final Block WAXCAP_GILL_SLAB = registerBlock("waxcap_gill_slab", new DiagonalSlabBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.SLIME).strength(0.5f).burnable().luminance(state -> 5))/*, ModItemGroups.ARTICHOKE*/);
-        static {ModBlocks.SLABS.add(WAXCAP_GILL_SLAB); }
+        static { SLABS.add(WAXCAP_GILL_SLAB); }
     public static final Block WAXCAP_GILLS = registerBlock("waxcap_gills", new DiagonalBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.SLIME).breakInstantly().burnable().luminance(state -> 5))/*, ModItemGroups.ARTICHOKE*/);
     public static final Block WAXCAP_STEM_BLOCK = registerBlock("waxcap_stem_block", new MushroomBlock(FabricBlockSettings.create().mapColor(MapColor.SPRUCE_BROWN).instrument(Instrument.BASS).strength(0.2f).sounds(BlockSoundGroup.WOOD))/*, ModItemGroups.ARTICHOKE*/);
     public static final Block WAXCAP_CAP_BLOCK = registerBlock("waxcap_cap_block", new MushroomBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_GREEN).instrument(Instrument.BASS).strength(0.2f).sounds(BlockSoundGroup.WOOD).burnable())/*, ModItemGroups.ARTICHOKE*/);
@@ -531,42 +539,10 @@ public class ModBlocks {
             registerBlock(color.getName() + "_mucktuff", createDyedMucktuffBlock(color));
         }
     }
-
     //</editor-fold>
 
-    //<editor-fold desc ="Registration">
-    public static Block registerBlock(String name, Block block) {
-        registerBlockItem(name,block);
-        return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
-    }
-    public static Block registerBlockWithoutBlockItem(String name, Block block) {
-        return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
-    }
-    private static Item registerBlockItem(String name, Block block) {
-        BlockItem blockItem = new BlockItem(block, new FabricItemSettings());
-        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(blockItem)); // only for pre 1.20.1, around cuz I'd forget otherwise
-        return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), blockItem);
-    }
 
-    /**
-     * @param group unused 1.20+, only defined here in that version to make backporting easier.
-     */
-    @Obsolete
-    public static Block registerBlock(String name, Block block, ItemGroup group) {
-        registerBlockItem(name,block,group);
-        return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);
-    }
 
-    /**
-     * @param group unused 1.20+, only defined here in that version to make backporting easier.
-     */
-    @Obsolete
-    private static Item registerBlockItem(String name, Block block, ItemGroup group) {
-        BlockItem blockItem = new BlockItem(block, new FabricItemSettings());
-        //ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(blockItem)); // only for pre 1.20.1, around cuz I'd forget otherwise
-        return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), blockItem);
-    }
-    //</editor-fold>
     //<editor-fold desc ="Common Block Creation Functions">
     public static Block createWoolBlock(DyeColor color) {
         Block block = new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)

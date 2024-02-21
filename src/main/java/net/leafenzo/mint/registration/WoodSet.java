@@ -10,29 +10,26 @@ import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
-import net.leafenzo.mint.ModInit;
-import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.entity.ModBoatEntity;
 import net.leafenzo.mint.entity.ModEntityTypes;
 import net.leafenzo.mint.item.ModBoatItem;
-import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.registries.ModFabricRegistries;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.*;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
-import org.spongepowered.asm.mixin.Debug;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static net.leafenzo.mint.registration.ModRegistryHelper.*;
 
 public class WoodSet {
     //<editor-fold desc ="Properties">
@@ -41,6 +38,7 @@ public class WoodSet {
     private final Identifier name;
     private final MapColor sideColor;
     private final MapColor topColor;
+    private final MapColor leavesColor;
     private final WoodPreset woodPreset;
     private BlockSetType blockSetType;
     private PressurePlateBlock.ActivationRule pressurePlateActivationRule;
@@ -84,16 +82,16 @@ public class WoodSet {
     private final boolean hasMosaic;
     //</editor-fold>
     //<editor-fold desc ="Constructors">
-    public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, ModBoatEntity.ModBoat boatType, WoodPreset woodPreset, boolean hasMosaic, SaplingGenerator saplingGenerator){
+    public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, MapColor leavesColor, ModBoatEntity.ModBoat boatType, WoodPreset woodPreset, boolean hasMosaic, SaplingGenerator saplingGenerator){
         this.woodPreset = woodPreset;
         this.name = name;
         this.sideColor = sideColor;
         this.topColor = topColor;
+        this.leavesColor = leavesColor;
         this.boatType = boatType;
         this.hasMosaic = hasMosaic;
         this.saplingGenerator = saplingGenerator;
         registerWoodSet();
-        ModBlocks.WOODSETS.add(this);
     }
     //</editor-fold>
     //<editor-fold desc ="Getters">
@@ -279,6 +277,7 @@ public class WoodSet {
         boatItem = registerBoatItem();
         chestBoatItem = registerChestBoatItem();
 
+        ModBlocks.WOODSETS.add(this);
 //        // blockLogsTag = TagKey.of(RegistryKeys.BLOCK, new Identifier(this.getModID(), this.getName() + "_logs"));
 //        // itemLogsTag = TagKey.of(RegistryKeys.ITEM, new Identifier(this.getModID(), this.getName() + "_logs"));
 //        // addToBuildingTab(getButtonBefore(), getLogBefore(), getSignBefore(), getBoatBefore(), this);
@@ -288,18 +287,17 @@ public class WoodSet {
     //</editor-fold>
     //<editor-fold desc ="Registration">
     private Block registerBlock(String blockID, Block block) {
-        Block b = ModBlocks.registerBlock(blockID, block);
+        Block b = BlockRegistry.registerBlock(blockID, block);
         registeredBlocksList.add(b);
         return b;
     }
     private Block registerBlockWithoutBlockItem(String blockID, Block block) {
-        Block b = ModBlocks.registerBlockWithoutBlockItem(blockID, block);
+        Block b = BlockRegistry.registerBlockWithoutBlockItem(blockID, block);
         registeredBlocksList.add(b);
         return b;
     }
     public Item registerItem(String name, Item item){
-        //        Item i = ModItems.registerItem(name, item); // Doesn't work for some reason.
-        Item i = Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), (Item)item); //HUH??? why does that work? It's the same code! Maybe it's a load error issue?
+        Item i = ItemRegistry.registerItem(name, item);
         registeredItemsList.add(i);
         return i;
     }
@@ -320,41 +318,47 @@ public class WoodSet {
     //</editor-fold>
     //<editor-fold desc ="Registration Functions">
     private PillarBlock createLogBlock(MapColor topMapColor, MapColor sideMapColor) {
-        return new PillarBlock(AbstractBlock.Settings.create().mapColor(state -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ? topMapColor : sideMapColor).strength(2.0F).sounds(this.woodType().soundType()));
+        return new PillarBlock(FabricBlockSettings.copyOf(this.getBase()).mapColor(state -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ? topMapColor : sideMapColor).instrument(Instrument.BASS).strength(2.0F).sounds(this.woodType().soundType()));
     }
     private Block registerLogBlock() {
-        Block b = registerBlock(getLogName(), createLogBlock(this.getSideColor(), this.getTopColor()));
+        Block b = registerBlock(getLogName(), createLogBlock(this.getTopColor(), this.getSideColor()));
         ModFabricRegistries.registerFlammable(b, 5, 5);
+        ModBlocks.LOGS_THAT_BURN.add(b);
         return b;
     }
     private Block registerStrippedLogBlock() {
-        Block b = registerBlock("stripped_" + getLogName(), createLogBlock(this.getSideColor(), this.getTopColor()));
+        Block b = registerBlock("stripped_" + getLogName(), createLogBlock(this.getTopColor(), this.getTopColor()));
         ModFabricRegistries.registerFlammable(b, 5, 5);
+        ModBlocks.LOGS_THAT_BURN.add(b);
         return b;
     }
     private Block registerWoodBlock() {
         Block b = registerBlock(getWoodName(), createLogBlock(this.getSideColor(), this.getSideColor()));
         ModFabricRegistries.registerFlammable(b, 5, 5);
+        ModBlocks.LOGS_THAT_BURN.add(b);
         return b;
     }
     private Block registerStrippedWoodBlock() {
         Block b = registerBlock("stripped_" + getWoodName(), createLogBlock(this.getTopColor(), this.getTopColor()));
         ModFabricRegistries.registerFlammable(b, 5, 5);
+        ModBlocks.LOGS_THAT_BURN.add(b);
         return b;
     }
     private Block registerLeavesBlock() {
-        Block b = registerBlock(this.getName() + "_leaves", new LeavesBlock(FabricBlockSettings.copy(getBaseLeaves())));
-        ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
+        Block b = registerBlock(this.getName() + "_leaves", new LeavesBlock(FabricBlockSettings.copy(getBaseLeaves()).mapColor(leavesColor)));
         ModFabricRegistries.registerCompostable(b, 0.3f);
         ModFabricRegistries.registerFlammable(b, 60, 30);
+        ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
+        ModBlocks.HAS_FOLIAGE_COLOR_PROVIDER.add(b);
         ModBlocks.LEAVES.add(b);
         return b;
     }
     private Block registerLeavesBlock(String prefix) {
-        Block b = registerBlock(prefix + this.getName() + "_leaves", new LeavesBlock(FabricBlockSettings.copy(getBaseLeaves())));
-        ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
+        Block b = registerBlock(prefix + this.getName() + "_leaves", new LeavesBlock(FabricBlockSettings.copy(getBaseLeaves()).mapColor(leavesColor)));
         ModFabricRegistries.registerCompostable(b, 0.3f);
         ModFabricRegistries.registerFlammable(b, 60, 30);
+        ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
+        ModBlocks.HAS_FOLIAGE_COLOR_PROVIDER.add(b);
         ModBlocks.LEAVES.add(b);
         return b;
     }
@@ -362,18 +366,21 @@ public class WoodSet {
         Block b = registerBlock(this.getName() + "_planks", new Block(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
         ModFabricRegistries.registerFlammable(b, 20, 5);
         ModFabricRegistries.registerFuel(b, 300);
+        ModBlocks.PLANKS.add(b);
         return b;
     }
     private Block registerStairsBlock(){
         Block b = registerBlock(this.getName() + "_stairs", new StairsBlock(getBase().getDefaultState(), FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
         ModFabricRegistries.registerFlammable(b, 20, 5);
         ModFabricRegistries.registerFuel(b, 300);
+        ModBlocks.WOODEN_STAIRS.add(b);
         return b;
     }
     private Block registerSlabBlock(){
         Block b = registerBlock(this.getName() + "_slab", new SlabBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
         ModFabricRegistries.registerFlammable(b, 20, 5);
         ModFabricRegistries.registerFuel(b, 150);
+        ModBlocks.WOODEN_SLABS.add(b);
         return b;
     }
     private Block registerMosaicBlock(){
@@ -398,65 +405,77 @@ public class WoodSet {
         Block b = registerBlock(this.getName() + "_fence", new FenceBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
         ModFabricRegistries.registerFlammable(b, 20, 5);
         ModFabricRegistries.registerFuel(b, 300);
+        ModBlocks.WOODEN_FENCES.add(b);
         return b;
     }
     private Block registerFenceGateBlock(){
         Block b = registerBlock(this.getName() + "_fence_gate", new FenceGateBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getWoodType()));
         ModFabricRegistries.registerFlammable(b, 20, 5);
         ModFabricRegistries.registerFuel(b, 300);
+        ModBlocks.FENCE_GATES.add(b);
         return b;
     }
     private Block createPressurePlate(){
         Block b = registerBlock(this.getName() + "_pressure_plate", new PressurePlateBlock(this.pressurePlateActivationRule, FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getBlockSetType()));
 //        ModFabricRegistries.registerFlammable(b, 20, 5); //TODO make sure this can ignite due to lava, but not fully burn. (as that's how it works in vanilla)
         ModFabricRegistries.registerFuel(b, 300);
+        ModBlocks.WOODEN_PRESSURE_PLATES.add(b);
         return b;
     }
     private Block registerButtonBlock(){
         Block b = registerBlock(this.getName() + "_button", new ButtonBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getBlockSetType(), 30, true));
         ModFabricRegistries.registerFuel(b, 100);
+        ModBlocks.WOODEN_BUTTONS.add(b);
         return b;
     }
     private Block registerDoorBlock(){
         Block b = registerBlock(this.getName() + "_door", new DoorBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor()), this.getBlockSetType()));
 //        ModFabricRegistries.registerFlammable(b, 20, 5); //TODO make sure this can ignite due to lava, but not fully burn. (as that's how it works in vanilla)
         ModFabricRegistries.registerFuel(b, 200);
+        ModBlocks.WOODEN_DOORS.add(b);
         return b;
     }
     private Block registerTrapdoorBlock() {
         Block b = registerBlock(this.getName() + "_trapdoor", new TrapdoorBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor()), this.getBlockSetType()));
 //        ModFabricRegistries.registerFlammable(b, 20, 5); //TODO make sure this can ignite due to lava, but not fully burn. (as that's how it works in vanilla)
         ModFabricRegistries.registerFuel(b, 300);
+        ModBlocks.WOODEN_TRAPDOORS.add(b);
         return b;
     }
     private Block registerSignBlock(){
         Block b = registerBlockWithoutBlockItem(this.getName() + "_sign", new SignBlock(FabricBlockSettings.copy(getSignBase()).mapColor(this.getTopColor()), this.getWoodType()));
         // ModFabricRegistries.registerFlammable(b, 20, 5); //TODO make sure this can ignite due to lava, but not fully burn. (as that's how it works in vanilla)
+        ModBlocks.SIGNS.add(b);
         return b;
     }
     private Block registerWallSignBlock(){
         Block b = registerBlockWithoutBlockItem(this.getName() + "_wall_sign", new WallSignBlock(FabricBlockSettings.copy(this.getSignBase()).mapColor(this.getTopColor()).dropsLike(this.getSign()), this.getWoodType()));
         // ModFabricRegistries.registerFlammable(b, 20, 5); //TODO make sure this can ignite due to lava, but not fully burn. (as that's how it works in vanilla)
+        ModBlocks.SIGNS.add(b);
         return b;
     }
     private Block registerHangingSignBlock(){
-        return registerBlockWithoutBlockItem(this.getName() + "_hanging_sign", new HangingSignBlock(FabricBlockSettings.copy(this.getHangingSignBase()).mapColor(this.getTopColor()), this.getWoodType()));
-        //TODO make sure this can ignite due to lava, but not fully burn. (as that's how it works in vanilla)
+        Block b = registerBlockWithoutBlockItem(this.getName() + "_hanging_sign", new HangingSignBlock(FabricBlockSettings.copy(this.getHangingSignBase()).mapColor(this.getTopColor()), this.getWoodType()));
+        ModBlocks.SIGNS.add(b);         //TODO make sure this can ignite due to lava, but not fully burn. (as that's how it works in vanilla)
+        return b;
     }
     private Block registerWallHangingSignBlock(){
-        return registerBlockWithoutBlockItem(this.getName() + "_wall_hanging_sign", new WallHangingSignBlock(FabricBlockSettings.copy(this.getHangingSignBase()).mapColor(this.getTopColor()).dropsLike(this.getHangingSign()), this.getWoodType()));
-        //TODO make sure this can ignite due to lava, but not fully burn. (as that's how it works in vanilla)
+        Block b = registerBlockWithoutBlockItem(this.getName() + "_wall_hanging_sign", new WallHangingSignBlock(FabricBlockSettings.copy(this.getHangingSignBase()).mapColor(this.getTopColor()).dropsLike(this.getHangingSign()), this.getWoodType()));
+        ModBlocks.SIGNS.add(b);         //TODO make sure this can ignite due to lava, but not fully burn. (as that's how it works in vanilla)
+        return b;
     }
     public Block registerSaplingBlock(SaplingGenerator saplingGenerator) {
-        Block b = ModBlocks.registerBlock(this.getName() + "_sapling", new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
+        Block b = registerBlock(this.getName() + "_sapling", new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
         ModFabricRegistries.registerCompostable(b, 0.3f);
         ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
+        ModBlocks.SAPLINGS.add(b);
         return b;
     }
     public Block registerSaplingBlock(String prefix, SaplingGenerator saplingGenerator) {
-        Block b = ModBlocks.registerBlock(prefix + this.getName() + "_sapling", new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
+        Block b = registerBlock(prefix + this.getName() + "_sapling", new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
         CompostingChanceRegistry.INSTANCE.add(b, 0.3F);
         ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
+        ModBlocks.SAPLINGS.add(b);
         return b;
     }
     public Block registerPottedSaplingBlock(Block sapling) {
@@ -474,21 +493,25 @@ public class WoodSet {
     private Item registerSignItem(Block sign, Block wallSign){
         Item i = registerItem(this.getName() + "_sign", new SignItem(new FabricItemSettings().maxCount(16), sign, wallSign));
         ModFabricRegistries.registerFuel(i, 200);
+        ItemRegistry.SIGN_ITEMS.add(i);
         return i;
     }
     private Item registerHangingSignItem(Block hangingSign, Block hangingWallSign){
         Item i = registerItem(this.getName() + "_hanging_sign", new HangingSignItem(hangingSign, hangingWallSign, new FabricItemSettings().maxCount(16)));
         ModFabricRegistries.registerFuel(i, 200);
+        ItemRegistry.HANGING_SIGN_ITEMS.add(i);
         return i;
     }
     private Item registerBoatItem(){
         Item i = registerItem(this.getName() + "_boat", new ModBoatItem(false, this.getBoatType(), new FabricItemSettings().maxCount(1)));
         ModFabricRegistries.registerFuel(i, 1200);
+        ItemRegistry.BOAT_ITEMS.add(i);
         return i;
     }
     private Item registerChestBoatItem(){
         Item i = registerItem(this.getName() + "_chest_boat", new ModBoatItem(true, this.getBoatType(), new  FabricItemSettings().maxCount(1)));
         ModFabricRegistries.registerFuel(i, 1200);
+        ItemRegistry.CHEST_BOAT_ITEMS.add(i);
         return i;
     }
     //</editor-fold>

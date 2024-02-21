@@ -20,6 +20,5 @@ public class ModClientInit implements ClientModInitializer {
         ModColorHandler.registerBlockColorProviders();
         ModParticleTypes.registerFactoriesForClient();
         ModEntityRenderers.registerEntityRenderers();
-        //BlockEntityRendererRegistryImpl.register(BlockEntityType.SHULKER_BOX, ShulkerBoxBlockEntityRenderer::new);
     }
 }
