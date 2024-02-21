@@ -36,106 +36,106 @@ object ModDyeColor {
 @ApiStatus.Internal
         companion object {
                 val MINT =
-                Values("MINT", "mint", Color(r = 100, g = 249, b = 162), 59,
+                Values("MINT", "mint", Color(r = 100, g = 249, b = 162), 61,
                 fireworkColor = Color(r = 101, g = 255, b = 142),
                 signColor = Color(r = 101, g = 255, b = 142)
                 )
                 val PEACH =
-                    Values("PEACH", "peach", Color(r = 253, g = 177, b = 140), 61,
+                    Values("PEACH", "peach", Color(r = 253, g = 177, b = 140), 60,
                     fireworkColor = Color(r = 251, g = 146, b = 95),
                     signColor = Color(r = 251, g = 146, b = 95)
                 )
                 val PERIWINKLE =
-                    Values("PERIWINKLE", "periwinkle", Color(r = 190, g = 177, b = 245), 6,
+                    Values("PERIWINKLE", "periwinkle", Color(r = 190, g = 177, b = 245), 5,
                     fireworkColor = Color(r = 153, g = 134, b = 235),
                     signColor = Color(r = 153, g = 134, b = 235)
                 )
                 val ARTICHOKE =
-                    Values("ARTICHOKE", "artichoke", Color(r = 193, g = 216, b = 30), 42,
+                    Values("ARTICHOKE", "artichoke", Color(r = 193, g = 216, b = 30), 41,
                     fireworkColor = Color(r = 193, g = 216, b = 30), //potion color = Color(r = 212, g = 112, b = 176)
                     signColor = Color(r = 193, g = 216, b = 30)
                 )
 
                 val FUCHSIA =
-                    Values("FUCHSIA", "fuchsia", Color(r = 223, g = 24, b = 120), 54,
+                    Values("FUCHSIA", "fuchsia", Color(r = 223, g = 24, b = 120), 53,
                     fireworkColor = Color(r = 220, g = 89, b = 152),
                     signColor = Color(r = 220, g = 89, b = 152)
                 )
                 val VERMILION =
-                    Values("VERMILION", "vermilion", Color(r = 251, g = 101, b = 40), 53,
+                    Values("VERMILION", "vermilion", Color(r = 251, g = 101, b = 40), 52,
                     fireworkColor = Color(r = 251, g = 101, b = 40),
                     signColor = Color(r = 255, g = 91, b = 30)
                 )
                 val SHAMROCK =
-                    Values("SHAMROCK", "shamrock", Color(r = 30, g = 188, b = 0), 34,
+                    Values("SHAMROCK", "shamrock", Color(r = 30, g = 188, b = 0), 33,
                     fireworkColor = Color(r = 30, g = 188, b = 0),
                     signColor = Color(r = 30, g = 188, b = 0)
                 )
                 val INDIGO =
-                    Values("INDIGO", "indigo", Color(r = 95, g = 63, b = 169), 33,
+                    Values("INDIGO", "indigo", Color(r = 95, g = 63, b = 169), 32,
                     fireworkColor = Color(r = 95, g = 63, b = 169),
                     signColor = Color(r = 95, g = 63, b = 169)
                 )
 
                 val BANANA =
-                    Values("BANANA", "banana", Color(r = 232, g = 201, b = 133), 3,
+                    Values("BANANA", "banana", Color(r = 232, g = 201, b = 133), 2,
                     fireworkColor = Color(r = 226, g = 193, b = 121),
                     signColor = Color(r = 226, g = 193, b = 121)
                 )
                 val CERULEAN =
-                Values("CERULEAN", "cerulean", Color(r = 67, g = 100, b = 132), 24,
+                Values("CERULEAN", "cerulean", Color(r = 67, g = 100, b = 132), 23,
                     fireworkColor = Color(r = 67, g = 100, b = 132),
                     signColor = Color(r = 67, g = 100, b = 132)
                 )
                 val ACORN =
-                Values("ACORN", "acorn", Color(r = 71, g = 50, b = 40), 49,
+                Values("ACORN", "acorn", Color(r = 71, g = 50, b = 40), 48,
                     fireworkColor = Color(r = 71, g = 50, b = 40),
                     signColor = Color(r = 71, g = 50, b = 40)
                 )
                 val MAUVE =
-                Values("MAUVE", "mauve", Color(r = 132, g = 67, b = 80), 47,
+                Values("MAUVE", "mauve", Color(r = 132, g = 67, b = 80), 46,
                     fireworkColor = Color(r = 132, g = 67, b = 80),
                     signColor = Color(r = 132, g = 67, b = 80)
                 )
 
                 val MAROON =
-                Values("MAROON", "maroon", Color(r = 85, g = 24, b = 16), 36,
+                Values("MAROON", "maroon", Color(r = 85, g = 24, b = 16), 35,
                     fireworkColor = Color(r = 85, g = 24, b = 16),
                     signColor = Color(r = 85, g = 24, b = 16)
                 )
                 val GRAPE =
-                Values("GRAPE", "grape", Color(r = 59, g = 0, b = 72), 48,
+                Values("GRAPE", "grape", Color(r = 59, g = 0, b = 72), 47,
                     fireworkColor = Color(r = 59, g = 0, b = 72),
                     signColor = Color(r = 59, g = 0, b = 72)
                 )
                 val NAVY =
-                Values("NAVY", "navy", Color(r = 11, g = 24, b = 71), 26,
+                Values("NAVY", "navy", Color(r = 11, g = 24, b = 71), 25,
                     fireworkColor = Color(r = 11, g = 24, b = 71),
                     signColor = Color(r = 11, g = 24, b = 71)
                 )
                 val SAP =
-                Values("SAP", "sap", Color(r = 25, g = 60, b = 35), 8,
+                Values("SAP", "sap", Color(r = 25, g = 60, b = 35), 7,
                     fireworkColor = Color(r = 25, g = 60, b = 35),
                     signColor = Color(r = 25, g = 60, b = 35)
                 )
 
                 val AMBER =
-                Values("AMBER", "amber", Color(r = 204, g = 141, b = 19), 41,
+                Values("AMBER", "amber", Color(r = 204, g = 141, b = 19), 40,
                     fireworkColor = Color(r = 204, g = 141, b = 19),
                     signColor = Color(r = 204, g = 141, b = 19)
                 )
                 val SAGE =
-                Values("SAGE", "sage", Color(r = 97, g = 122, b = 84), 62,
+                Values("SAGE", "sage", Color(r = 97, g = 122, b = 84), 61,
                     fireworkColor = Color(r = 97, g = 122, b = 84),
                     signColor = Color(r = 97, g = 122, b = 84)
                 )
                 val VELVET =
-                Values("VELVET", "velvet", Color(r = 159, g = 15, b = 70), 43,
+                Values("VELVET", "velvet", Color(r = 159, g = 15, b = 70), 42,
                     fireworkColor = Color(r = 159, g = 15, b = 70),
                     signColor = Color(r = 159, g = 15, b = 70)
                 )
                 val MOLD =
-                Values("MOLD", "mold", Color(r = 106, g = 95, b = 36), 50,
+                Values("MOLD", "mold", Color(r = 106, g = 95, b = 36), 49,
                     fireworkColor = Color(r = 106, g = 95, b = 36),
                     signColor = Color(r = 106, g = 95, b = 36)
                 )
