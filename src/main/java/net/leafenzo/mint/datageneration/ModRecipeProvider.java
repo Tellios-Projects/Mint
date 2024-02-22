@@ -7,11 +7,14 @@ import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.recipe.ModRecipeSerializer;
 import net.leafenzo.mint.registration.ModRegistryHelper;
+import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.registry.tag.ModTags;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.TexturedModel;
 import net.minecraft.data.server.recipe.*;
 import net.minecraft.item.*;
 import net.minecraft.recipe.Ingredient;
@@ -19,6 +22,7 @@ import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
@@ -27,6 +31,8 @@ import java.util.Arrays;
 import java.util.function.Consumer;
 
 import static net.leafenzo.mint.registration.ModRegistryHelper.*;
+import static net.leafenzo.mint.util.ModUtil.*;
+
 public class ModRecipeProvider extends FabricRecipeProvider {
     public ModRecipeProvider(FabricDataOutput output) { super(output); }
     public static void offerReversibleCompactingRecipes(Consumer<RecipeJsonProvider> exporter, RecipeCategory reverseCategory, ItemConvertible baseItem, RecipeCategory compactingCategory, ItemConvertible compactItem, String compactingId, @Nullable String compactingGroup, String reverseId, @Nullable String reverseGroup) {
@@ -199,7 +205,93 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                     .offerTo(exporter);
         }
     }
-    //
+
+
+//    public static void offerPlanksRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input, int count) {
+//        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, count).input(input).group("planks").criterion("has_logs", FabricRecipeProvider.conditionsFromItem(input)).offerTo(exporter);
+//    }
+
+//    public static void offerHangingSignRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input) {
+//        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, output, 6).group("hanging_sign")
+//        .input(Character.valueOf('#'), input).input(Character.valueOf('X'), Items.CHAIN).pattern("X X").pattern("###").pattern("###")
+//        .criterion("has_stripped_logs", RecipeProvider.conditionsFromItem(input)).offerTo(exporter);
+//    }
+
+    public static void offerTrapdoorRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input) {
+        createTrapdoorRecipe(output, Ingredient.ofItems(input))
+                .criterion("has_planks", FabricRecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
+    public static void offerDoorRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input) {
+        createDoorRecipe(output, Ingredient.ofItems(input))
+                .criterion("has_planks", FabricRecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
+    public static void offerButtonRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input) {
+        createTransmutationRecipe(output, Ingredient.ofItems(input))
+                .criterion("has_planks", FabricRecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
+    public static void offerFenceRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input) {
+        createFenceRecipe(output, Ingredient.ofItems(input))
+                .criterion("has_planks", FabricRecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
+    public static void offerFenceGateRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input) {
+        createFenceGateRecipe(output, Ingredient.ofItems(input))
+                .criterion("has_planks", FabricRecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
+    public static void offerSignRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input) {
+        createSignRecipe(output, Ingredient.ofItems(input))
+                .criterion("has_planks", FabricRecipeProvider.conditionsFromItem(input))
+                .offerTo(exporter);
+    }
+
+
+    public static void offerWoodsetRecipes(Consumer<RecipeJsonProvider> exporter, WoodSet woodSet) {
+        Block log = woodSet.getLog();
+        Block strippedLog = woodSet.getStrippedLog();
+        Block wood = woodSet.getWood();
+        Block planks = woodSet.getPlanks();
+        Block stairs = woodSet.getStairs();
+        Block slab = woodSet.getSlab();
+        Block trapDoor = woodSet.getTrapDoor();
+        Block door = woodSet.getDoor();
+        Block pressurePlate = woodSet.getPressurePlate();
+        Block button = woodSet.getButton();
+        Block fence = woodSet.getFence();
+        Block fenceGate = woodSet.getFenceGate();
+        Item boat = woodSet.getBoatItem();
+        Item chestBoat = woodSet.getChestBoatItem();
+        Item sign = woodSet.getSignItem();
+        Item hangingSign = woodSet.getHangingSignItem();
+
+        // this many checks is a lil stinky, but I just don't really want to deal with a woodset that doesn't have a trapdoor for some reason or another, which might happen
+        if(log != null && wood != null) { offerBarkBlockRecipe(exporter, wood, log); }
+        if(planks != null) {
+            //stick recipes are have already been handled by the item tag
+            offerPlanksRecipe(exporter, planks, woodSet.getItemLogsTag(), 4);
+            if (mario) {thenOnly(bros);}
+            if (trapDoor != null) { offerTrapdoorRecipe(exporter, trapDoor, planks); }
+            if (door != null) { offerDoorRecipe(exporter, door, planks); }
+            if (pressurePlate != null) { offerPressurePlateRecipe(exporter, pressurePlate, planks); }
+            if (button != null) { offerButtonRecipe(exporter, button, planks); }
+            if (fence != null) { offerFenceRecipe(exporter, fence, planks); }
+            if (fenceGate != null) { offerFenceGateRecipe(exporter, fenceGate, planks); }
+            if (boat != null) { offerBoatRecipe(exporter, boat, planks); }
+            if (chestBoat != null) { offerChestBoatRecipe(exporter, chestBoat, boat); }
+            if (stairs != null) { offerStairsRecipe(exporter, stairs, planks); }
+            if (slab != null) { offerSlabRecipe(exporter, slab, planks); }
+            if (sign != null) { offerSignRecipe(exporter, sign, planks); }
+            if (strippedLog != null && hangingSign != null) { offerHangingSignRecipe(exporter, hangingSign, strippedLog); }
+        }
+    }
 
     public static String groupName(ItemConvertible item) {
         return Registries.ITEM.getId(item.asItem()).toString();
@@ -230,6 +322,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         offerShapelessRecipe(exporter, ModItems.MINT_DYE, ModItems.MINT_SPRIG, "mint_dye", 1);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.MINT_SPRIG, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_SPRIG_BLOCK);
+
+        offerWoodsetRecipes(exporter, ModBlocks.WINTERGREEN_WOODSET);
 
         // PEACH - Special
         offerShapelessRecipe(exporter, ModItems.PEACH_DYE, ModBlocks.HYPERICUM, "peach_dye", 1);

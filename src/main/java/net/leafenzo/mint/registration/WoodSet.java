@@ -15,6 +15,7 @@ import net.leafenzo.mint.entity.ModBoatEntity;
 import net.leafenzo.mint.entity.ModEntityTypes;
 import net.leafenzo.mint.item.ModBoatItem;
 import net.leafenzo.mint.registries.ModFabricRegistries;
+import net.leafenzo.mint.registry.tag.ModTags;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
@@ -277,12 +278,14 @@ public class WoodSet {
         boatItem = registerBoatItem();
         chestBoatItem = registerChestBoatItem();
 
-        ModBlocks.WOODSETS.add(this);
-//        // blockLogsTag = TagKey.of(RegistryKeys.BLOCK, new Identifier(this.getModID(), this.getName() + "_logs"));
-//        // itemLogsTag = TagKey.of(RegistryKeys.ITEM, new Identifier(this.getModID(), this.getName() + "_logs"));
+        blockLogsTag = ModTags.Blocks.getOrCreateTag(this.getName() + "_logs");
+        itemLogsTag = ModTags.Items.getOrCreateTag(this.getName() + "_logs");
+
 //        // addToBuildingTab(getButtonBefore(), getLogBefore(), getSignBefore(), getBoatBefore(), this);
 //        // for(Block item : this.getRegisteredBlocksList()) ItemGroupEvents.modifyEntriesEvent(ModItemGroups.NS_WOOD_ITEM_GROUP).register(entries -> entries.add(item));
 //        // for(Item item : this.getRegisteredItemsList()) ItemGroupEvents.modifyEntriesEvent(ModItemGroups.NS_WOOD_ITEM_GROUP).register(entries -> entries.add(item));
+
+        ModBlocks.WOODSETS.add(this);
     }
     //</editor-fold>
     //<editor-fold desc ="Registration">

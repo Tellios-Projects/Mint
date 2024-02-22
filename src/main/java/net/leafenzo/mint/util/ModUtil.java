@@ -338,6 +338,11 @@ public class ModUtil {
         return set;
     }
 
+
+    public static final boolean mario = true;
+    public static final boolean bros = true;
+    public static void thenOnly(boolean bros) { }
+
     // this is smelly isn't it... oh well.
 //    public static Block[] ColoredBlocksOfColor(DyeColor color) {
 //        switch (color) {
