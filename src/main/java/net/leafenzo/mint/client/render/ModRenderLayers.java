@@ -14,6 +14,10 @@ public class ModRenderLayers {
     public static void registerBlockCutouts() {
         ModInit.LOGGER.info("Registering Client Render Layers for " + Super.MOD_ID);
 
+        for(Block block : ModBlocks.RENDER_LAYER_CUTOUT) {
+            BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
+        }
+
         for(Block block : ModBlocks.RENDER_LAYER_CUTOUT_MIPPED) {
             BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutoutMipped());
         }

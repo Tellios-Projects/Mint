@@ -77,6 +77,7 @@ public class ModBlocks {
     public static final ArrayList<Block> WOODEN_PRESSURE_PLATES = new ArrayList<Block>();
     public static final ArrayList<Block> WOODEN_BUTTONS = new ArrayList<Block>();
     public static final ArrayList<Block> SIGNS = new ArrayList<Block>();
+    public static final ArrayList<Block> RENDER_LAYER_CUTOUT = new ArrayList<Block>();
     public static final ArrayList<Block> RENDER_LAYER_CUTOUT_MIPPED = new ArrayList<Block>();
     public static final ArrayList<Block> RENDER_LAYER_TRANSLUCENT = new ArrayList<Block>();
     public static final ArrayList<Block> HAS_FOLIAGE_COLOR_PROVIDER = new ArrayList<Block>();
@@ -127,7 +128,7 @@ public class ModBlocks {
             new Identifier(Super.MOD_ID, "wintergreen"),
             MapColor.TEAL,
             MapColor.BRIGHT_TEAL,
-            MapColor.LIGHT_BLUE,
+            MapColor.DARK_GREEN,
             ModBoatEntity.ModBoat.WINTERGREEN,
             WoodSet.WoodPreset.DEFAULT,
             false,
@@ -195,7 +196,7 @@ public class ModBlocks {
     public static final Block HIDCOTE_LAVENDER = registerBlock("hidcote_lavender", createSpreadableFlowerBlock(StatusEffects.BAD_OMEN, 600, ModConfiguredFeatures.PATCH_HIDCOTE_LAVENDER)/*, ModItemGroups.PERIWINKLE*/);
     public static final Block POTTED_HIDCOTE_LAVENDER = registerBlock("potted_hidcote_lavender", createFlowerPotBlock(HIDCOTE_LAVENDER)/*, ModItemGroups.PERIWINKLE*/);
     public static final Block LAVENDER_OIL_LANTERN = registerBlock("lavender_oil_lantern", new LanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).solid().requiresTool().strength(3.5f).sounds(BlockSoundGroup.LANTERN).luminance(state -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY))/*, ModItemGroups.PERIWINKLE*/);
-        static { RENDER_LAYER_CUTOUT_MIPPED.add(LAVENDER_OIL_LANTERN); }
+        static { RENDER_LAYER_CUTOUT.add(LAVENDER_OIL_LANTERN); }
     //</editor-fold>
     //<editor-fold desc ="ARTICHOKE - Template">
     public static final Block ARTICHOKE_WOOL = registerBlock("artichoke_wool", createWoolBlock(ModDyeColor.ARTICHOKE)/*, ModItemGroups.ARTICHOKE*/);
