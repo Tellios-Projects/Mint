@@ -1,6 +1,7 @@
 /*
 * Sources
 * ReMod Studios - https://github.com/ReMod-Studios/Voidlands-Java/blob/1f07d4a1b72a103636ee104401a3652714411289/common/src/main/java/com/remodstudios/voidlands/mixin/BlockEntityTypeMixin.java#L17
+* Team Hibiscus - https://github.com/Team-Hibiscus/NaturesSpirit/blob/1.20.1/src/main/java/net/hibiscus/naturespirit/mixin/BlockEntityTypeMixin.java
 */
 
 package net.leafenzo.mint.mixin;
@@ -35,6 +36,13 @@ public class BlockEntityTypeMixin {
         else if (type == BlockEntityType.BANNER &&
                     (state.getBlock() instanceof BannerBlock ||
                 state.getBlock() instanceof WallBannerBlock)) {
+            cir.setReturnValue(true);
+        }
+
+        if(BlockEntityType.SIGN.equals(this) && (state.getBlock() instanceof AbstractSignBlock || state.getBlock() instanceof WallSignBlock)) {
+            cir.setReturnValue(true);
+        }
+        if(BlockEntityType.HANGING_SIGN.equals(this) && (state.getBlock() instanceof HangingSignBlock || state.getBlock() instanceof WallHangingSignBlock)) {
             cir.setReturnValue(true);
         }
 
