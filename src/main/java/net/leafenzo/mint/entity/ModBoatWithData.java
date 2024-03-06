@@ -10,8 +10,4 @@ import net.minecraft.item.ItemConvertible;
 
 public interface ModBoatWithData {
     ModBoatEntity.ModBoat getBoatData();
-
-    void setVariant(WoodType type);
-
-    ItemConvertible getDropItem();
 }

@@ -7,6 +7,7 @@ package net.leafenzo.mint.entity;
 
 import net.minecraft.block.WoodType;
 import net.minecraft.entity.vehicle.BoatEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.world.World;
 import net.minecraft.entity.vehicle.ChestBoatEntity;
@@ -28,10 +29,8 @@ public final class ModChestBoatEntity extends ChestBoatEntity implements ModBoat
         return Type.OAK;
     }
 
-    @Override public void setVariant(WoodType type) {
-    }
-
-    @Override public ItemConvertible getDropItem() {
+    @Override public Item asItem() {
         return boatData.chestBoat().asItem();
     }
+
 }
