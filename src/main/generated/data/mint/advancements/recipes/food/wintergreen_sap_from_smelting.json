@@ -3,16 +3,16 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:mint_tea_shapeless"
+        "recipe": "minecraft:wintergreen_sap_from_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_winter_medley": {
+    "has_wintergreen_leaves": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:winter_medley"
+              "mint:wintergreen_leaves"
             ]
           }
         ]
@@ -22,13 +22,13 @@
   },
   "requirements": [
     [
-      "has_winter_medley",
+      "has_wintergreen_leaves",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:mint_tea_shapeless"
+      "minecraft:wintergreen_sap_from_smelting"
     ]
   },
   "sends_telemetry_event": false

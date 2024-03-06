@@ -11,7 +11,7 @@
               "add": false,
               "conditions": [
                 {
-                  "block": "mint:mossy_lavender_brick_slab",
+                  "block": "mint:wintergreen_slab",
                   "condition": "minecraft:block_state_property",
                   "properties": {
                     "type": "double"
@@ -25,7 +25,7 @@
               "function": "minecraft:explosion_decay"
             }
           ],
-          "name": "mint:mossy_lavender_brick_slab"
+          "name": "mint:wintergreen_slab"
         }
       ],
       "rolls": 1.0

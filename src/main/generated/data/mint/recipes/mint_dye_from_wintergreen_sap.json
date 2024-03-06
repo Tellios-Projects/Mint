@@ -1,15 +1,13 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
+  "group": "mint_dye",
   "ingredients": [
     {
-      "item": "minecraft:potion"
-    },
-    {
-      "item": "mint:winter_medley"
+      "item": "mint:wintergreen_sap"
     }
   ],
   "result": {
-    "item": "mint:mint_tea"
+    "item": "mint:mint_dye"
   }
 }

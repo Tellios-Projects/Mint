@@ -3,13 +3,13 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "minecraft:potion"
+      "item": "mint:wintergreen_berries"
     },
     {
-      "item": "mint:winter_medley"
+      "item": "mint:mint_sprig"
     }
   ],
   "result": {
-    "item": "mint:mint_tea"
+    "item": "mint:winter_medley"
   }
 }

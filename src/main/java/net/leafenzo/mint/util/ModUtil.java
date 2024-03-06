@@ -3,6 +3,8 @@ package net.leafenzo.mint.util;
 import net.leafenzo.mint.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
@@ -341,13 +343,16 @@ public class ModUtil {
     public static final boolean bros = true;
     public static void thenOnly(boolean bros) { }
 
-    public static <E> void addToIfNotNull(ArrayList<E> collection, E value) {
-        if(value != null) {
-            collection.add(value);
+//    public static <E> void addToIfNotNull(ArrayList<E> collection, E value) {
+//        if(value != null) {
+//            collection.add(value);
+//        }
+//    }
+    public static void addToIfNotNull(ArrayList<ItemStack> collection, ItemConvertible item) {
+        if(item != null) {
+            collection.add(item.asItem().getDefaultStack());
         }
-    }
-
-    // this is smelly isn't it... oh well.
+    }    // this is smelly isn't it... oh well.
 //    public static Block[] ColoredBlocksOfColor(DyeColor color) {
 //        switch (color) {
 //            case WHITE: return WHITE_VANILLA_COLORED_BLOCKS;

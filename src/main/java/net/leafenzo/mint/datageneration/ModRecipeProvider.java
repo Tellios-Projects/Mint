@@ -253,6 +253,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
     }
 
+    public static void offerShapelessRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input1, ItemConvertible input2, int  outputCount) {
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, output, outputCount)
+                .input(input1)
+                .input(input2)
+                .criterion(RecipeProvider.hasItem(input1), RecipeProvider.conditionsFromItem(input1))
+                .criterion(RecipeProvider.hasItem(input2), RecipeProvider.conditionsFromItem(input2))
+                .offerTo(exporter, RecipeProvider.convertBetween(output, input1));
+    }
 
     public static void offerWoodsetRecipes(Consumer<RecipeJsonProvider> exporter, WoodSet woodSet) {
         Block log = woodSet.getLog();
@@ -309,8 +317,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         // MINT - Special
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.MINT_TEA, 1)
                 .input(Items.POTION)
-                .input(ModItems.MINT_SPRIG)    //TODO switch to winter medley once this is ready
-                .criterion(FabricRecipeProvider.hasItem(ModItems.MINT_SPRIG), FabricRecipeProvider.conditionsFromItem(ModItems.MINT_SPRIG))
+                .input(ModItems.WINTER_MEDLEY)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.WINTER_MEDLEY), FabricRecipeProvider.conditionsFromItem(ModItems.WINTER_MEDLEY))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.MINT_TEA) + "_shapeless"));
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.MINT_COOKIE, 4)
@@ -326,6 +334,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.MINT_SPRIG, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_SPRIG_BLOCK);
 
         offerWoodsetRecipes(exporter, ModBlocks.WINTERGREEN_WOODSET);
+
+        offerShapelessRecipe(exporter, ModItems.MINT_DYE, ModItems.WINTERGREEN_SAP, "mint_dye", 1);
+        offerShapelessRecipe(exporter, ModItems.WINTER_MEDLEY, ModItems.WINTERGREEN_BERRIES, ModItems.MINT_SPRIG, 1);
+        offerFoodCookingRecipe(exporter, "smelting", RecipeSerializer.SMELTING, 200, ModBlocks.WINTERGREEN_WOODSET.getLeaves(), ModItems.WINTERGREEN_SAP, 0.1f);
 
         // PEACH - Special
         offerShapelessRecipe(exporter, ModItems.PEACH_DYE, ModBlocks.HYPERICUM, "peach_dye", 1);
