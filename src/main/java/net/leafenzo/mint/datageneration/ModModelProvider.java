@@ -353,6 +353,7 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.MINT_COOKIE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MINT_TEA, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MINT_SPRIG, Models.GENERATED);
 
 //        itemModelGenerator.register(ModItems.PEACH_PIT, Models.GENERATED);
         itemModelGenerator.register(ModItems.PEACH, Models.GENERATED);
