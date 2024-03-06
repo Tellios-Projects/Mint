@@ -257,6 +257,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public static void offerWoodsetRecipes(Consumer<RecipeJsonProvider> exporter, WoodSet woodSet) {
         Block log = woodSet.getLog();
         Block strippedLog = woodSet.getStrippedLog();
+        Block strippedWood = woodSet.getStrippedWood();
         Block wood = woodSet.getWood();
         Block planks = woodSet.getPlanks();
         Block stairs = woodSet.getStairs();
@@ -274,6 +275,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         // this many checks is a lil stinky, but I just don't really want to deal with a woodset that doesn't have a trapdoor for some reason or another, which might happen
         if(log != null && wood != null) { offerBarkBlockRecipe(exporter, wood, log); }
+        if(strippedLog != null && strippedWood != null) { offerBarkBlockRecipe(exporter, strippedWood, strippedLog); }
         if(planks != null) {
             //stick recipes are have already been handled by the item tag
             offerPlanksRecipe(exporter, planks, woodSet.getItemLogsTag(), 4);
