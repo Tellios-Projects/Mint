@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
@@ -17,6 +18,8 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 import static net.leafenzo.mint.util.ModUtil.formatMultipleIdsForErrorLog;
@@ -96,9 +99,12 @@ public class ModItemGroups {
         });
     }
 
-    //keep in the right places to make a big rainbow ^~^
     public static void modifyVanillaItemGroupEntries() {
-        // Sort by Hue, then Light to Dark
+        addWoodsetItemsToVanillaItemGroups(ModBlocks.WINTERGREEN_WOODSET, Items.CHERRY_BUTTON, Items.CHERRY_HANGING_SIGN, Items.CHERRY_CHEST_BOAT);
+
+        //keep in the right places to make a big rainbow ^~^
+
+        // Roughly sort by Hue then Light to Dark
         // make sure they only ever are set to come before or after vanilla dyes!
 
         //White
@@ -173,15 +179,79 @@ public class ModItemGroups {
 //        });
     }
 
-//    public static Collection<ItemStack>
-//
-//    public static void modifyModItemGroups() {
-//
-//        ItemGroupEvents.modifyEntriesEvent(MINT).register(content -> {
-//            content.addAll();
-//        });
-//
-//    }
+    public static Collection<ItemStack> woodsetItems(WoodSet woodSet) {
+        ArrayList<ItemStack> c = new ArrayList<ItemStack>();
+        ModUtil.addToIfNotNull(c, woodSet.getLog().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getWood().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getStrippedLog().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getStrippedWood().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getPlanks().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getStairs().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getSlab().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getFence().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getFenceGate().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getDoor().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getTrapDoor().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getPressurePlate().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getButton().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getSignItem().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getHangingSignItem().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getBoatItem().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getChestBoatItem().asItem().getDefaultStack());
+        return c;
+    }
+    public static Collection<ItemStack> woodsetItemsForBuildingBlocksTab(WoodSet woodSet) {
+        ArrayList<ItemStack> c = new ArrayList<ItemStack>();
+        ModUtil.addToIfNotNull(c, woodSet.getLog().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getWood().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getStrippedLog().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getStrippedWood().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getPlanks().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getStairs().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getSlab().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getFence().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getFenceGate().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getDoor().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getTrapDoor().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getPressurePlate().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getButton().asItem().getDefaultStack());
+        return c;
+    }
+    public static Collection<ItemStack> woodsetItemsForFunctionalBlocksTab(WoodSet woodSet) {
+        ArrayList<ItemStack> c = new ArrayList<ItemStack>();
+        ModUtil.addToIfNotNull(c, woodSet.getSignItem().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getHangingSignItem().asItem().getDefaultStack());
+        return c;
+    }
+    public static Collection<ItemStack> woodsetItemsForToolsTab(WoodSet woodSet) {
+        ArrayList<ItemStack> c = new ArrayList<ItemStack>();
+        ModUtil.addToIfNotNull(c, woodSet.getBoatItem().asItem().getDefaultStack());
+        ModUtil.addToIfNotNull(c, woodSet.getChestBoatItem().asItem().getDefaultStack());
+        return c;
+    }
+    public static void addWoodsetItemsToVanillaItemGroups(WoodSet woodSet, ItemConvertible buttonBefore, ItemConvertible signBefore, ItemConvertible boatBefore) {
+        ArrayList<ItemStack> bb = (ArrayList<ItemStack>) woodsetItemsForBuildingBlocksTab(woodSet);
+        ArrayList<ItemStack> fb = (ArrayList<ItemStack>) woodsetItemsForFunctionalBlocksTab(woodSet);
+        ArrayList<ItemStack> tt = (ArrayList<ItemStack>) woodsetItemsForToolsTab(woodSet);
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(content -> {
+            for (int i = bb.size()-1; i >= 0; i--) {
+                content.addAfter(buttonBefore, bb.get(i));
+            }
+        });
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(content -> {
+            for (int i = fb.size()-1; i >= 0; i--) {
+                content.addAfter(signBefore, fb.get(i));
+            }
+        });
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(content -> {
+            for (int i = tt.size()-1; i >= 0; i--) {
+                content.addAfter(boatBefore, tt.get(i));
+            }
+        });
+    }
 
     public static ItemGroup DYE_MOD_ADDITIONS = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "dye_mod_additions"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".dye_mod_additions"))
@@ -199,7 +269,6 @@ public class ModItemGroups {
                         entries.add(ModItems.MINT_BANNER);
                         entries.add(ModItems.MINT_SHULKER_BOX);
                         entries.add(ModBlocks.MINT_CANDLE);
-
                         entries.add(ModItems.MINT_SPRIG);
                         entries.add(ModItems.MINT_COOKIE);
                         entries.add(ModBlocks.MINT_SPRIG_BLOCK);
@@ -209,6 +278,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.MINT_BRICK_SLAB);
                         entries.add(ModBlocks.MINT_BRICK_STAIRS);
                         //entries.add(ModBlocks.MINT_BRICK_WALL);
+                        entries.addAll(woodsetItems(ModBlocks.WINTERGREEN_WOODSET));
 
                         entries.add(ModItems.PEACH_DYE);
                         entries.add(ModBlocks.PEACH_WOOL);

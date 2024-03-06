@@ -11,8 +11,6 @@ import org.apache.http.annotation.Obsolete;
 
 import java.util.*;
 
-
-import static net.leafenzo.mint.registration.ModRegistryHelper.*;
 public class ModUtil {
 //    public static final Item[] VANILLA_DYES = { Items.BLACK_DYE, Items.BLUE_DYE, Items.BROWN_DYE, Items.CYAN_DYE, Items.GRAY_DYE, Items.GREEN_DYE, Items.LIGHT_BLUE_DYE, Items.LIGHT_GRAY_DYE, Items.LIME_DYE, Items.MAGENTA_DYE, Items.ORANGE_DYE, Items.PINK_DYE, Items.PURPLE_DYE, Items.RED_DYE, Items.YELLOW_DYE, Items.WHITE_DYE };
 //    public static final Block[] VANILLA_WOOLS = { Blocks.BLACK_WOOL, Blocks.BLUE_WOOL, Blocks.BROWN_WOOL, Blocks.CYAN_WOOL, Blocks.GRAY_WOOL, Blocks.GREEN_WOOL, Blocks.LIGHT_BLUE_WOOL, Blocks.LIGHT_GRAY_WOOL, Blocks.LIME_WOOL, Blocks.MAGENTA_WOOL, Blocks.ORANGE_WOOL, Blocks.PINK_WOOL, Blocks.PURPLE_WOOL, Blocks.RED_WOOL, Blocks.YELLOW_WOOL, Blocks.WHITE_WOOL };
@@ -342,6 +340,12 @@ public class ModUtil {
     public static final boolean mario = true;
     public static final boolean bros = true;
     public static void thenOnly(boolean bros) { }
+
+    public static <E> void addToIfNotNull(ArrayList<E> collection, E value) {
+        if(value != null) {
+            collection.add(value);
+        }
+    }
 
     // this is smelly isn't it... oh well.
 //    public static Block[] ColoredBlocksOfColor(DyeColor color) {
