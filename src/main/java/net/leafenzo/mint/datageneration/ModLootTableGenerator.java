@@ -44,72 +44,22 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         return BlockLootTableGenerator.dropsWithShears(dropWithShears, (LootPoolEntry.Builder)this.applyExplosionDecay(dropWithShears, ((LeafEntry.Builder)ItemEntry.builder(ModItems.MINT_SPRIG).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f))))));
     }
 
-    public LootTable.Builder waxcapGillSlabDrops(Block drop, Block dropWithSilkTouch) {
-//        return this.applyExplosionDecay(crop, LootTable.builder().pool(LootPool.builder().with(((LeafEntry.Builder)ItemEntry.builder(product).conditionally(condition)).alternatively(ItemEntry.builder(seeds)))).pool(LootPool.builder().conditionally(condition).with((LootPoolEntry.Builder<?>)((Object)ItemEntry.builder(seeds).apply(ApplyBonusLootFunction.binomialWithBonusCount(Enchantments.FORTUNE, 0.5714286f, 3))))));
+    public LootTable.Builder waxcapGillSlabDrops(Block block, Block waxDrop) {
+        AlternativeEntry.Builder builder =
+                ItemEntry.builder(block).conditionally(WITH_SILK_TOUCH)
+                        .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0f))).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(SlabBlock.TYPE, SlabType.DOUBLE)))
+                            .alternatively(ItemEntry.builder(block).conditionally(WITH_SILK_TOUCH).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0f)))
+                .alternatively(this.addSurvivesExplosionCondition(block, ItemEntry.builder(waxDrop)
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 6.0f)))).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(SlabBlock.TYPE, SlabType.DOUBLE)))
+                            .alternatively(ItemEntry.builder(waxDrop).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f))))));
 
-        return this.applyExplosionDecay(drop, LootTable.builder().pool(LootPool.builder().with((ItemEntry.builder(dropWithSilkTouch)
-                .conditionally(WITH_SILK_TOUCH)).conditionally(BlockStatePropertyLootCondition.builder(dropWithSilkTouch).properties(StatePredicate.Builder.create().exactMatch(SlabBlock.TYPE, SlabType.DOUBLE)))
-                .alternatively(ItemEntry.builder(drop)))).pool(LootPool.builder()
-                .conditionally(WITHOUT_SILK_TOUCH).with((LootPoolEntry.Builder<?>)((Object)ItemEntry.builder(drop).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f)))))));
-        //TODO Fixme
-        
-//        return this.applyExplosionDecay(drop, LootTable.builder().pool(LootPool.builder().with((ItemEntry.builder(dropWithSilkTouch)
-//                .apply((LootFunction.Builder)((Object)SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0f))
-//                        .conditionally(BlockStatePropertyLootCondition.builder(dropWithSilkTouch).properties(StatePredicate.Builder.create().exactMatch(SlabBlock.TYPE, SlabType.DOUBLE)))
-//                        .conditionally(WITH_SILK_TOUCH)))
-//
-//                .alternatively(ItemEntry.builder(drop)))).pool(LootPool.builder()
-//                .conditionally(WITHOUT_SILK_TOUCH).with((LootPoolEntry.Builder<?>)((Object)ItemEntry.builder(drop).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f)))))));
-
-//        LootPool.Builder a = LootPool.builder().apply (this.drops(dropWithSilkTouch)
-//                .apply((LootFunction.Builder)((Object)SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0f))
-//                        .conditionally(BlockStatePropertyLootCondition.builder(dropWithSilkTouch).properties(StatePredicate.Builder.create().exactMatch(SlabBlock.TYPE, SlabType.DOUBLE))))));
-//
-//        LootPool.Builder b = LootPool.builder()
-//                .with(this.applyExplosionDecay(drop, ItemEntry.builder(drop)
-//                        .apply((LootFunction.Builder)((Object)SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f))))
-//                        .conditionally(WITHOUT_SILK_TOUCH)
-////                        .apply((LootFunction.Builder)((Object)SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f))))
-////                        .conditionally(BlockStatePropertyLootCondition.builder(drop).properties(StatePredicate.Builder.create().exactMatch(SlabBlock.TYPE, SlabType.DOUBLE)))
-////                        .conditionally(WITHOUT_SILK_TOUCH)
-//                ));
-//
-//        return a;
+        return LootTable.builder().pool(LootPool.builder().with(builder));
     }
 
     public LootTable.Builder peachTreeDrops(Block peachTreeBlock, ItemConvertible branchItem/*, ItemConvertible fruitItem*/) {
         //Dropping of fruit is handled by the PeachTree class.
         ItemEntry.Builder builder = this.addSurvivesExplosionCondition(peachTreeBlock, ItemEntry.builder(branchItem).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))));
         return LootTable.builder().pool(LootPool.builder().with(builder).conditionally(BlockStatePropertyLootCondition.builder(peachTreeBlock).properties(StatePredicate.Builder.create().exactMatch(TwoTallCropBlock.HALF, DoubleBlockHalf.LOWER))).conditionally(LocationCheckLootCondition.builder(LocationPredicate.Builder.create().block(BlockPredicate.Builder.create().blocks(peachTreeBlock).state(StatePredicate.Builder.create().exactMatch(TwoTallCropBlock.HALF, DoubleBlockHalf.UPPER).build()).build()), new BlockPos(0, 1, 0)))).pool(LootPool.builder().with(builder).conditionally(BlockStatePropertyLootCondition.builder(peachTreeBlock).properties(StatePredicate.Builder.create().exactMatch(TwoTallCropBlock.HALF, DoubleBlockHalf.UPPER))).conditionally(LocationCheckLootCondition.builder(LocationPredicate.Builder.create().block(BlockPredicate.Builder.create().blocks(peachTreeBlock).state(StatePredicate.Builder.create().exactMatch(TwoTallCropBlock.HALF, DoubleBlockHalf.LOWER).build()).build()), new BlockPos(0, -1, 0))));
-
-        // I am going insane
-//        AlternativeEntry.Builder builder = ((LeafEntry.Builder)((LootPoolEntry.Builder)((Object)ItemEntry.builder(grass).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0f))))).conditionally(WITH_SHEARS))
-//        .alternatively((LootPoolEntry.Builder<?>)((LeafEntry.Builder)this.addSurvivesExplosionCondition(tallGrass, ItemEntry.builder(Items.WHEAT_SEEDS))).conditionally(RandomChanceLootCondition.builder(0.125f)));
-//        return LootTable.builder().pool(LootPool.builder().with(builder).conditionally(BlockStatePropertyLootCondition.builder(tallGrass).properties(StatePredicate.Builder.create().exactMatch(TallPlantBlock.HALF, DoubleBlockHalf.LOWER))).conditionally(LocationCheckLootCondition.builder(LocationPredicate.Builder.create().block(BlockPredicate.Builder.create().blocks(tallGrass).state(StatePredicate.Builder.create().exactMatch(TallPlantBlock.HALF, DoubleBlockHalf.UPPER).build()).build()), new BlockPos(0, 1, 0)))).pool(LootPool.builder().with(builder).conditionally(BlockStatePropertyLootCondition.builder(tallGrass).properties(StatePredicate.Builder.create().exactMatch(TallPlantBlock.HALF, DoubleBlockHalf.UPPER))).conditionally(LocationCheckLootCondition.builder(LocationPredicate.Builder.create().block(BlockPredicate.Builder.create().blocks(tallGrass).state(StatePredicate.Builder.create().exactMatch(TallPlantBlock.HALF, DoubleBlockHalf.LOWER).build()).build()), new BlockPos(0, -1, 0))));
-//        AlternativeEntry.Builder builder = this.addSurvivesExplosionCondition(peachTreeBlock, ItemEntry.builder(branchItem).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)))
-//                .alternatively(ItemEntry.builder(fruitItem).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f,3.0f)).conditionally(BlockStatePropertyLootCondition.builder(peachTreeBlock).properties(StatePredicate.Builder.create().exactMatch(PeachTreeBlock.AGE, PeachTreeBlock.MAX_AGE)))))
-//        );
-
-//        AlternativeEntry.Builder builder = ((AlternativeEntry.Builder)((LootPoolEntry.Builder)((Object)ItemEntry.builder(fruitItem).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f,3.0f))))).conditionally(BlockStatePropertyLootCondition.builder(peachTreeBlock).properties(StatePredicate.Builder.create().exactMatch(PeachTreeBlock.AGE, PeachTreeBlock.MAX_AGE))))
-//                .alternatively(this.addSurvivesExplosionCondition(peachTreeBlock, ItemEntry.builder(branchItem).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)))));
-//        ItemEntry.Builder builder1 = this.addSurvivesExplosionCondition(peachTreeBlock, ItemEntry.builder(branchItem).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))));
-//        ItemEntry.Builder builder2 = ItemEntry.builder(fruitItem).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f,3.0f)).conditionally(BlockStatePropertyLootCondition.builder(peachTreeBlock).properties(StatePredicate.Builder.create().exactMatch(PeachTreeBlock.AGE, PeachTreeBlock.MAX_AGE))));
-//        LootTable.Builder builder = LootTable.builder()
-//            .pool(LootPool.builder().with(this.addSurvivesExplosionCondition(peachTreeBlock, ItemEntry.builder(branchItem).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))))))
-//            .pool(LootPool.builder().with(ItemEntry.builder(fruitItem).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f,3.0f)).conditionally(BlockStatePropertyLootCondition.builder(peachTreeBlock).properties(StatePredicate.Builder.create().exactMatch(PeachTreeBlock.AGE, PeachTreeBlock.MAX_AGE))))));
-
-//        return LootTable.builder().pool(LootPool.builder().with(builder1).conditionally(BlockStatePropertyLootCondition.builder(peachTreeBlock).properties(StatePredicate.Builder.create().exactMatch(TwoTallCropBlock.HALF, DoubleBlockHalf.LOWER))).conditionally(LocationCheckLootCondition.builder(LocationPredicate.Builder.create().block(BlockPredicate.Builder.create().blocks(peachTreeBlock).state(StatePredicate.Builder.create().exactMatch(TwoTallCropBlock.HALF, DoubleBlockHalf.UPPER).build()).build()), new BlockPos(0, 1, 0)))).pool(LootPool.builder().with(builder1).conditionally(BlockStatePropertyLootCondition.builder(peachTreeBlock).properties(StatePredicate.Builder.create().exactMatch(TwoTallCropBlock.HALF, DoubleBlockHalf.UPPER))).conditionally(LocationCheckLootCondition.builder(LocationPredicate.Builder.create().block(BlockPredicate.Builder.create().blocks(peachTreeBlock).state(StatePredicate.Builder.create().exactMatch(TwoTallCropBlock.HALF, DoubleBlockHalf.LOWER).build()).build()), new BlockPos(0, -1, 0))))
-//        .pool(LootPool.builder().with(builder1).conditionally(BlockStatePropertyLootCondition.builder(peachTreeBlock).properties(StatePredicate.Builder.create().exactMatch(TwoTallCropBlock.HALF, DoubleBlockHalf.LOWER))).conditionally(LocationCheckLootCondition.builder(LocationPredicate.Builder.create().block(BlockPredicate.Builder.create().blocks(peachTreeBlock).state(StatePredicate.Builder.create().exactMatch(TwoTallCropBlock.HALF, DoubleBlockHalf.UPPER).build()).build()), new BlockPos(0, 1, 0)))).pool(LootPool.builder().with(builder1).conditionally(BlockStatePropertyLootCondition.builder(peachTreeBlock).properties(StatePredicate.Builder.create().exactMatch(TwoTallCropBlock.HALF, DoubleBlockHalf.UPPER))).conditionally(LocationCheckLootCondition.builder(LocationPredicate.Builder.create().block(BlockPredicate.Builder.create().blocks(peachTreeBlock).state(StatePredicate.Builder.create().exactMatch(TwoTallCropBlock.HALF, DoubleBlockHalf.LOWER).build()).build()), new BlockPos(0, -1, 0))));
-
-//        return LootTable.builder()
-//                .pool(this.addSurvivesExplosionCondition(branchItem, LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0f))
-//                        .conditionally(BlockStatePropertyLootCondition.builder(peachTreeBlock).properties(StatePredicate.Builder.create().exactMatch(PeachTreeBlock.HALF, DoubleBlockHalf.LOWER))).conditionally(LocationCheckLootCondition.builder(LocationPredicate.Builder.create().block(BlockPredicate.Builder.create().blocks(peachTreeBlock).state(StatePredicate.Builder.create().exactMatch(PeachTreeBlock.HALF, DoubleBlockHalf.UPPER).build()).build()), new BlockPos(0, 1, 0)))
-//                        .with(ItemEntry.builder(branchItem).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)))
-//                        )))
-//                .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0f))
-//                        .conditionally(BlockStatePropertyLootCondition.builder(peachTreeBlock).properties(StatePredicate.Builder.create().exactMatch(PeachTreeBlock.HALF, DoubleBlockHalf.LOWER))).conditionally(LocationCheckLootCondition.builder(LocationPredicate.Builder.create().block(BlockPredicate.Builder.create().blocks(peachTreeBlock).state(StatePredicate.Builder.create().exactMatch(PeachTreeBlock.HALF, DoubleBlockHalf.UPPER).build()).build()), new BlockPos(0, 1, 0)))
-//                        .conditionally(BlockStatePropertyLootCondition.builder(peachTreeBlock).properties(StatePredicate.Builder.create().exactMatch(PeachTreeBlock.AGE, PeachTreeBlock.MAX_AGE)))
-//                        .with(ItemEntry.builder(fruitItem).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f)))));
     }
     public LootTable.Builder wintergreenLeavesDrops(Block leaves, Block drop, float ... chance) {
             return this.leavesDrops(leaves, drop, chance).pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0f)).conditionally(WITHOUT_SILK_TOUCH_NOR_SHEARS).with((LootPoolEntry.Builder<?>)((LeafEntry.Builder)this.addSurvivesExplosionCondition(leaves, ItemEntry.builder(ModItems.WINTERGREEN_BERRIES)))
@@ -163,15 +113,6 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         this.addPottedPlantDrops(ModBlocks.POTTED_HYPERICUM);
 
         this.addDrop(ModBlocks.PEACH_TREE, (Block block) -> this.peachTreeDrops((Block)block, ModItems.PEACH_BRANCH));
-
-//        BlockStatePropertyLootCondition.Builder peachTreeBuilder = BlockStatePropertyLootCondition.builder(ModBlocks.PEACH_TREE).properties(StatePredicate.Builder.create().exactMatch(PeachTreeBlock.HALF, DoubleBlockHalf.UPPER));
-//        this.addDrop(ModBlocks.PEACH_TREE, this.applyExplosionDecay(ModBlocks.PEACH_TREE, LootTable.builder().pool(LootPool.builder().conditionally(peachTreeBuilder).with((LootPoolEntry.Builder<?>)((Object)ItemEntry.builder(ModItems.PEACH_BRANCH).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f))))))));
-
-//        public LootTable.Builder tallGrassDrops(Block tallGrass, Block grass) {
-//            AlternativeEntry.Builder builder = ((LeafEntry.Builder)((LootPoolEntry.Builder)((Object)ItemEntry.builder(grass).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0f))))).conditionally(WITH_SHEARS)).alternatively((LootPoolEntry.Builder<?>)((LeafEntry.Builder)this.addSurvivesExplosionCondition(tallGrass, ItemEntry.builder(Items.WHEAT_SEEDS))).conditionally(RandomChanceLootCondition.builder(0.125f)));
-//            return LootTable.builder().pool(LootPool.builder().with(builder).conditionally(BlockStatePropertyLootCondition.builder(tallGrass).properties(StatePredicate.Builder.create().exactMatch(TallPlantBlock.HALF, DoubleBlockHalf.LOWER))).conditionally(LocationCheckLootCondition.builder(LocationPredicate.Builder.create().block(BlockPredicate.Builder.create().blocks(tallGrass).state(StatePredicate.Builder.create().exactMatch(TallPlantBlock.HALF, DoubleBlockHalf.UPPER).build()).build()), new BlockPos(0, 1, 0)))).pool(LootPool.builder().with(builder).conditionally(BlockStatePropertyLootCondition.builder(tallGrass).properties(StatePredicate.Builder.create().exactMatch(TallPlantBlock.HALF, DoubleBlockHalf.UPPER))).conditionally(LocationCheckLootCondition.builder(LocationPredicate.Builder.create().block(BlockPredicate.Builder.create().blocks(tallGrass).state(StatePredicate.Builder.create().exactMatch(TallPlantBlock.HALF, DoubleBlockHalf.LOWER).build()).build()), new BlockPos(0, -1, 0))));
-//        }
-
         this.addDrop(ModBlocks.PEACH_LOG);
         this.addDrop(ModBlocks.CORAL_ANEMONE);
 
@@ -199,7 +140,7 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(ModBlocks.WAXCAP_STEM_BLOCK, (Block block) -> this.mushroomBlockDrops((Block)block, ModBlocks.WAXCAP_MUSHROOM));
         this.addDrop(ModBlocks.HANGING_WAXCAP_WAX, (Block block) -> this.drops(ModItems.WAXCAP_WAX));
 
-        this.addDrop(ModBlocks.WAXCAP_GILL_SLAB, (Block block) ->  waxcapGillSlabDrops(ModBlocks.HANGING_WAXCAP_WAX, ModBlocks.WAXCAP_GILL_SLAB));
+        this.addDrop(ModBlocks.WAXCAP_GILL_SLAB, (Block block) ->  waxcapGillSlabDrops(ModBlocks.WAXCAP_GILL_SLAB, ModBlocks.HANGING_WAXCAP_WAX));
 
         this.addDrop(ModBlocks.WAXCAP_GILLS, (Block block) -> this.drops((Block)block, ModItems.WAXCAP_WAX, ConstantLootNumberProvider.create(4.0f)));
         BlockStatePropertyLootCondition.Builder artichokeCropBuilder = BlockStatePropertyLootCondition.builder(ModBlocks.ARTICHOKE_CROP).properties(StatePredicate.Builder.create().exactMatch(ArtichokeCropBlock.AGE, ArtichokeCropBlock.MAX_AGE));
@@ -244,13 +185,5 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         for(Block block : ModBlocks.BANNER_BLOCKS) { this.addDrop(block, (Block block2) -> this.bannerDrops((Block)block2)); }
 //  WALL_BANNER_BLOCKS
 //        for(Block block : ModBlocks.WALL_BANNER_BLOCKS) { }
-
-
-
-        //this.addDrop(ModBlocks.BLAZE_ROD_BLOCK);
-        //this.addDrop(ModBlocks.GRASS_CLIPPINGS_BLOCK, (Block block) -> this.drops((Block)block, block));
-        //this.addDrop(ModBlocks.BOOK_BLOCK, (Block block) -> this.drops((Block)block, Items.BOOK, ConstantLootNumberProvider.create(9.0f)));
-        //this.addDrop(ModBlocks.COMPRESSED_OAK_LEAVES, (Block block) -> this.leavesDrops((Block)block, Blocks.OAK_SAPLING, SAPLING_DROP_CHANCE));
-        //this.addDropWithSilkTouch(ModBlocks.EGG_BLOCK);
     }
 }

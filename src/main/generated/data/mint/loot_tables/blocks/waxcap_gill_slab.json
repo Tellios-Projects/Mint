@@ -1,10 +1,5 @@
 {
   "type": "minecraft:block",
-  "functions": [
-    {
-      "function": "minecraft:explosion_decay"
-    }
-  ],
   "pools": [
     {
       "bonus_rolls": 0.0,
@@ -27,54 +22,103 @@
                       }
                     ]
                   }
+                },
+                {
+                  "block": "mint:waxcap_gill_slab",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "type": "double"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "add": false,
+                  "count": 2.0,
+                  "function": "minecraft:set_count"
                 }
               ],
               "name": "mint:waxcap_gill_slab"
             },
             {
-              "type": "minecraft:item",
-              "name": "mint:waxcap_wax"
-            }
-          ]
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "condition": "minecraft:inverted",
-          "term": {
-            "condition": "minecraft:match_tool",
-            "predicate": {
-              "enchantments": [
+              "type": "minecraft:alternatives",
+              "children": [
                 {
-                  "enchantment": "minecraft:silk_touch",
-                  "levels": {
-                    "min": 1
-                  }
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "condition": "minecraft:match_tool",
+                      "predicate": {
+                        "enchantments": [
+                          {
+                            "enchantment": "minecraft:silk_touch",
+                            "levels": {
+                              "min": 1
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "add": false,
+                      "count": 1.0,
+                      "function": "minecraft:set_count"
+                    }
+                  ],
+                  "name": "mint:waxcap_gill_slab"
+                },
+                {
+                  "type": "minecraft:alternatives",
+                  "children": [
+                    {
+                      "type": "minecraft:item",
+                      "conditions": [
+                        {
+                          "condition": "minecraft:survives_explosion"
+                        },
+                        {
+                          "block": "mint:waxcap_gill_slab",
+                          "condition": "minecraft:block_state_property",
+                          "properties": {
+                            "type": "double"
+                          }
+                        }
+                      ],
+                      "functions": [
+                        {
+                          "add": false,
+                          "count": {
+                            "type": "minecraft:uniform",
+                            "max": 6.0,
+                            "min": 2.0
+                          },
+                          "function": "minecraft:set_count"
+                        }
+                      ],
+                      "name": "mint:waxcap_wax"
+                    },
+                    {
+                      "type": "minecraft:item",
+                      "functions": [
+                        {
+                          "add": false,
+                          "count": {
+                            "type": "minecraft:uniform",
+                            "max": 3.0,
+                            "min": 1.0
+                          },
+                          "function": "minecraft:set_count"
+                        }
+                      ],
+                      "name": "mint:waxcap_wax"
+                    }
+                  ]
                 }
               ]
             }
-          }
-        }
-      ],
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 3.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "mint:waxcap_wax"
+          ]
         }
       ],
       "rolls": 1.0
