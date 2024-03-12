@@ -7,12 +7,14 @@ import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.effect.ModEffects;
 import net.leafenzo.mint.item.ModItemGroups;
 import net.leafenzo.mint.item.ModItems;
+import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Debug;
 
@@ -59,8 +61,15 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
         generateTranslation(translationBuilder, arrowKey, "Arrow of " + effectName);
     }
 
+    private void generateShieldVariantTranslations(TranslationBuilder translationBuilder) {
+        for(DyeColor color : ModDyeColor.VALUES) {
+            String key = "item.minecraft.shield." + color.getName();
+            generateTranslation(translationBuilder, key, ModUtil.toSentanceCase(color.getName() + "_shield"));
+        }
+    }
+
     /**
-     * Can be necessary to run before automatic translation building to avoid wall banner nonsense
+     * Must be run before our automatic translation building to avoid wall banner nonsense
      * @param translationBuilder
      * @param BannerBlocks
      */
@@ -88,6 +97,8 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
         generateTranslation(translationBuilder, ModBlocks.WAXCAP_GILL_SLAB, "Waxcap Gills");
 
         generateBannerTranslations(translationBuilder, ModBlocks.BANNER_BLOCKS); // Necessary (albeit hacky) so we don't get Wall Banner nonsense
+        generateShieldVariantTranslations(translationBuilder);
+
         //Automatic
         for(Identifier id : ModUtil.allBlockIdsInNamespace(Super.MOD_ID)) {
             String key = Registries.BLOCK.get(id).getTranslationKey();
