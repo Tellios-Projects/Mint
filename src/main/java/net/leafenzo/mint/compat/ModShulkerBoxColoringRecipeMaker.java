@@ -27,14 +27,13 @@ import net.leafenzo.mint.registration.ModRegistryHelper.*;
 public class ModShulkerBoxColoringRecipeMaker {
     private static final String group = "jei.shulker.color";
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Super.MOD_ID);
-
+//    private static final Logger LOGGER = LoggerFactory.getLogger(Super.MOD_ID);
 
     public static List<CraftingRecipe> createRecipes() {
         ItemStack baseShulkerStack = new ItemStack(Blocks.SHULKER_BOX);
         Ingredient baseShulkerIngredient = Ingredient.ofStacks(baseShulkerStack);
 
-        LOGGER.info("BIG MEOW!  Starting to create JEI shulker box recipes using these dye colors: " + Arrays.toString(ModDyeColor.VALUES));
+//        LOGGER.info("BIG MEOW!  Starting to create JEI shulker box recipes using these dye colors: " + Arrays.toString(ModDyeColor.VALUES));
         return Arrays.stream(ModDyeColor.VALUES).map((color) -> createRecipe(color, baseShulkerIngredient)).toList();
     }
 
@@ -47,7 +46,7 @@ public class ModShulkerBoxColoringRecipeMaker {
         ItemStack output = new ItemStack(coloredShulkerBox);
         Identifier id = new Identifier("minecraft", "jei.shulker.color." + output.getTranslationKey());
 
-        LOGGER.info("BIG MEOW!  Created JEI shulker box recipe : " + "jei.shulker.color " + " : " + "output = " + output.getTranslationKey() + " inputs = " + Arrays.toString(inputs.toArray()));
+//        LOGGER.info("BIG MEOW!  Created JEI shulker box recipe : " + "jei.shulker.color " + " : " + "output = " + output.getTranslationKey() + " inputs = " + Arrays.toString(inputs.toArray()));
 
         return new ShapelessRecipe(id, "jei.shulker.color", CraftingRecipeCategory.MISC, output, inputs);
 //        return new ShapelessRecipe(id, "jei.shulker.color", CraftingRecipeCategory.MISC, output, inputs);

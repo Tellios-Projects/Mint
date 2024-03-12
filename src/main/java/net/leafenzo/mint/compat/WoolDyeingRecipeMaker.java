@@ -5,6 +5,7 @@ import mezz.jei.common.platform.IPlatformIngredientHelper;
 import mezz.jei.common.platform.Services;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.ModShulkerBoxBlock;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.registration.ModRegistryHelper;
 import net.leafenzo.mint.util.ModDyeColor;
@@ -18,6 +19,7 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.CraftingRecipe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import java.util.Arrays;
@@ -31,29 +33,53 @@ import net.minecraft.util.collection.DefaultedList;
 
 import net.leafenzo.mint.registration.ModRegistryHelper.*;
 public final class WoolDyeingRecipeMaker {
-    private static final String group = Super.MOD_ID + ".wool.coloring";
+    private static final String group = Super.MOD_ID + ".wool.color";
 
     // From JEI's ShulkerBoxColoringRecipeMaker
     public static List<CraftingRecipe> createRecipes() {
-        ItemStack baseWoolStack = new ItemStack(Blocks.WHITE_WOOL);
-        Ingredient baseWoolIngredient = Ingredient.ofStacks(baseWoolStack);
-        return Arrays.stream(ModDyeColor.VALUES)
-//                .filter(dc -> dc != DyeColor.WHITE)
-                .map((color) -> createRecipe(color, baseWoolIngredient))
-                .toList();
+        ItemStack baseShulkerStack = new ItemStack(Blocks.WHITE_WOOL);
+        Ingredient baseShulkerIngredient = Ingredient.ofStacks(new ItemStack[]{baseShulkerStack});
+        return Arrays.stream(ModDyeColor.VALUES).map((color) -> {
+            return createRecipe(color, baseShulkerIngredient);
+        }).toList();
     }
-    private static CraftingRecipe createRecipe(DyeColor color, Ingredient baseWoolIngredient) {
-        Ingredient colorIngredient = Ingredient.ofItems(ItemRegistry.DYE_ITEM_FROM_COLOR.get(color));
-        DefaultedList<Ingredient> inputs = DefaultedList.copyOf(Ingredient.EMPTY, baseWoolIngredient, colorIngredient);
 
-        Block coloredWool = BlockRegistry.COLOR_FROM_WOOL.get(color);
-
-        ItemStack output = new ItemStack(coloredWool);
-        Identifier id = new Identifier("minecraft", group + "." + output.getTranslationKey());
+    private static CraftingRecipe createRecipe(DyeColor color, Ingredient baseShulkerIngredient) {
+        IPlatformIngredientHelper ingredientHelper = Services.PLATFORM.getIngredientHelper();
+        Ingredient colorIngredient = ingredientHelper.createShulkerDyeIngredient(color);
+        DefaultedList<Ingredient> inputs = DefaultedList.copyOf(Ingredient.EMPTY, new Ingredient[]{baseShulkerIngredient, colorIngredient});
+        Block coloredShulkerBox = ModShulkerBoxBlock.get(color);
+        ItemStack output = new ItemStack(coloredShulkerBox);
+        Identifier id = new Identifier(Super.MOD_ID,group + "." + output.getTranslationKey());
         return new ShapelessRecipe(id, group, CraftingRecipeCategory.MISC, output, inputs);
     }
 
     private WoolDyeingRecipeMaker() {}
+
+
+//    public static List<CraftingRecipe> createRecipes() {
+//        ItemStack baseWoolStack = new ItemStack(Blocks.WHITE_WOOL);
+//        Ingredient baseWoolIngredient = Ingredient.ofStacks(baseWoolStack);
+//
+//        List<CraftingRecipe> cs = new ArrayList<>();
+//        Identifier id = new Identifier(Super.MOD_ID, group + "." + ModBlocks.BANANA_WOOL.getTranslationKey());
+//        cs.add(new ShapelessRecipe(id, group, CraftingRecipeCategory.MISC, ModBlocks.BANANA_WOOL.asItem().getDefaultStack(), DefaultedList.copyOf(Ingredient.ofItems(Blocks.WHITE_WOOL), Ingredient.ofItems(ModItems.BANANA_DYE))));
+//        return cs;
+//    }
+//    private static CraftingRecipe createRecipe(DyeColor color, Ingredient baseWoolIngredient) {
+//        Ingredient colorIngredient = Ingredient.ofItems(ItemRegistry.DYE_ITEM_FROM_COLOR.get(color));
+//        DefaultedList<Ingredient> inputs = DefaultedList.copyOf(Ingredient.EMPTY, baseWoolIngredient, colorIngredient);
+//
+//        Block coloredWool = BlockRegistry.COLOR_FROM_WOOL.get(color);
+//
+//        ItemStack output = new ItemStack(coloredWool);
+//        Identifier id = new Identifier("minecraft", group + "." + output.getTranslationKey());
+//
+////        return new ShapelessRecipe(id, group, CraftingRecipeCategory.MISC, output, inputs);
+//        return new ShapelessRecipe(id, group, CraftingRecipeCategory.MISC, ModBlocks.BANANA_WOOL.asItem().getDefaultStack(), DefaultedList.copyOf(Ingredient.EMPTY, Ingredient.ofItems(Blocks.WHITE_WOOL), Ingredient.ofItems(ModItems.BANANA_DYE)));
+//    }
+
+
 //
 //    public static Stream<CraftingRecipe> createRecipes() {
 //        ItemStack baseShulkerStack = Blocks.WHITE_WOOL.asItem().getDefaultStack();
