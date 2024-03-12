@@ -605,7 +605,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerStainedGlassPaneRecipes(exporter);
 
 //  SHULKER_BOX_BLOCKS
-        //Handled by the MIXIN to the serialized ShulkerBoxColoringRecipe
+        ComplexRecipeJsonBuilder.create(ModRecipeSerializer.MOD_SHULKER_BOX_COLORING_RECIPE).offerTo(exporter, "mod_shulker_box_coloring_recipe");
 
 //  BED_BLOCKS
         offerBedRecipes(exporter);

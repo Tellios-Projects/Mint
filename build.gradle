@@ -35,15 +35,21 @@ repositories {
 		url = "https://modmaven.dev"
 	}
 
+	// REI
+	maven { url = "https://maven.shedaniel.me/" }
 
-
-
-    // Add repositories to retrieve artifacts from in here.
+	// Add repositories to retrieve artifacts from in here.
 	// You should only use this when depending on other mods because
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 }
+
+//configurations.configureEach {
+//	resolutionStrategy {
+//		force("net.fabricmc:fabric-loader:$loader_version")
+//	}
+//}
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -53,15 +59,17 @@ dependencies {
 	modImplementation("net.fabricmc:fabric-language-kotlin:1.10.18+kotlin.1.9.22")
 
 	include(modImplementation('com.github.Chocohead:Fabric-ASM:v2.3'))
+	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.2.2")))
 
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
 
 	//JEI
-	// compile against the JEI API but do not include it at runtime
-	modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-	modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-fabric-api:${jei_version}")
-	// at runtime, use the full JEI jar for Fabric
-	modRuntimeOnly("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
+	//From: https://maven.blamejared.com/mezz/jei/
+	modImplementation files("libraries/jei/jei-1.20.1-fabric-15.3.0.4.jar")
+
+	// REI
+	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:$rei_version"
+	modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:$rei_version"
 
 	// uncomment if needed
 	//include implementation("net.dv8tion:JDA:${project.jda_version}") {
@@ -74,6 +82,22 @@ dependencies {
 	// Uncomment the following line to enable the deprecated Fabric API modules. 
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
+
+	devEnvDependencies(dependencies)
+}
+
+def devEnvDependencies(DependencyHandler deps) {
+	/* Mod Menu Integration */
+//	deps.modLocalRuntime("com.terraformersmc:modmenu:$modmenu_version")
+//	deps.modLocalRuntime("me.shedaniel.cloth:cloth-config-fabric:$clothconfig_version") {
+//		exclude(group: "net.fabricmc.fabric-api")
+//	}
+
+	/* JEI */
+	deps.modLocalRuntime("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
+
+	/* REI */
+//	deps.modLocalRuntime("me.shedaniel:RoughlyEnoughItems-fabric:$rei_version")
 }
 
 kotlin {
@@ -121,10 +145,6 @@ sourceSets {
 	}
 }
 
-tasks.withType(JavaCompile).configureEach {
-	// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
-	it.options.release = 17
-}
 
 java {
 	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task

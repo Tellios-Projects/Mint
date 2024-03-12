@@ -15,7 +15,9 @@
     "PlayerEntityMixin",
     "PointOfInterestTypesMixin",
     "SheepEntityMixin",
-    "ShulkerBoxColoringRecipeMixin"
+    "ShulkerBoxColoringRecipeMixin",
+
+    "compat.jei.ShulkerBoxColoringRecipeMakerMixin"
   ],
   "client": [
     "client.TexturedRenderLayersMixin"

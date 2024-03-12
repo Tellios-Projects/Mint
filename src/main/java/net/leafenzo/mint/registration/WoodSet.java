@@ -482,13 +482,13 @@ public class WoodSet {
         return b;
     }
     public Block registerPottedSaplingBlock(Block sapling) {
-        Block b = registerBlock("potted_" + this.getName() + "_sapling", new FlowerPotBlock(sapling, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+        Block b = registerBlockWithoutBlockItem("potted_" + this.getName() + "_sapling", new FlowerPotBlock(sapling, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
         ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
         ModBlocks.FLOWER_POT_FROM_BLOCK.put(sapling, (FlowerPotBlock) b);
         return b;
     }
     public Block registerPottedSaplingBlock(String prefix, Block sapling) {
-        Block b = registerBlock("potted_" + prefix + this.getName() + "_sapling", new FlowerPotBlock(sapling, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
+        Block b = registerBlockWithoutBlockItem("potted_" + prefix + this.getName() + "_sapling", new FlowerPotBlock(sapling, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
         ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
         ModBlocks.FLOWER_POT_FROM_BLOCK.put(sapling, (FlowerPotBlock) b);
         return b;

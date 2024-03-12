@@ -6,6 +6,7 @@ import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.sapling.WintergreenSaplingGenerator;
 import net.leafenzo.mint.datageneration.ModConfiguredFeatures;
 import net.leafenzo.mint.effect.ModEffects;
+import net.leafenzo.mint.registration.ModRegistryHelper;
 import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
@@ -41,6 +42,7 @@ public class ModBlocks {
     //<editor-fold desc ="Hashmaps & Arrays">
     public static final HashMap<Block, FlowerPotBlock> FLOWER_POT_FROM_BLOCK = new HashMap<Block, FlowerPotBlock>();
     public static final HashMap<Block, DyeColor> DYECOLOR_FROM_BLOCK = new HashMap<Block, DyeColor>();
+    public static final HashMap<DyeColor, Block> SHULKER_BOX_FROM_DYECOLOR = new HashMap<DyeColor, Block>();
     public static final HashMap<Block, Block> WOOL_CARPET_FROM_WOOL = new HashMap<Block, Block>();
     public static final HashMap<Block, Block> CANDLE_CAKE_FROM_CANDLE = new HashMap<Block, Block>();
     public static final HashMap<Block, Block> STAINED_GLASS_PANE_FROM_STAINED_GLASS = new HashMap<Block, Block>();
@@ -109,7 +111,7 @@ public class ModBlocks {
     public static final Block MINT_SHULKER_BOX = registerBlockWithoutBlockItem("mint_shulker_box", createShulkerBoxBlock(ModDyeColor.MINT));
     public static final Block MINT_BED = registerBlockWithoutBlockItem("mint_bed", createBedBlock(ModDyeColor.MINT));
     public static final Block MINT_CANDLE = registerBlock("mint_candle", createCandleBlock(ModDyeColor.MINT)/*, ModItemGroups.MINT*/);
-    public static final Block MINT_CANDLE_CAKE = registerBlock("mint_candle_cake", createCandleCakeBlock(ModDyeColor.MINT, MINT_CANDLE)/*, ModItemGroups.MINT*/);
+    public static final Block MINT_CANDLE_CAKE = registerBlockWithoutBlockItem("mint_candle_cake", createCandleCakeBlock(ModDyeColor.MINT, MINT_CANDLE)/*, ModItemGroups.MINT*/);
     public static final Block MINT_BANNER = registerBlockWithoutBlockItem("mint_banner", createBannerBlock(ModDyeColor.MINT));
     public static final Block MINT_WALL_BANNER = registerBlockWithoutBlockItem("mint_wall_banner", createWallBannerBlock(ModDyeColor.MINT, (BannerBlock)ModBlocks.MINT_BANNER));
     //</editor-fold>
@@ -118,7 +120,7 @@ public class ModBlocks {
         static { RENDER_LAYER_CUTOUT_MIPPED.add(MINT_CROP); }
 
     public static final Block WILD_MINT = registerBlock("wild_mint", createFlowerBlock(ModEffects.MINT_CHILL, 900)/*, ModItemGroups.MINT*/);
-    public static final Block POTTED_WILD_MINT = registerBlock("potted_wild_mint", createFlowerPotBlock((FlowerBlock) WILD_MINT)/*, ModItemGroups.MINT*/);
+    public static final Block POTTED_WILD_MINT = registerBlockWithoutBlockItem("potted_wild_mint", createFlowerPotBlock((FlowerBlock) WILD_MINT)/*, ModItemGroups.MINT*/);
     public static final Block MINT_SPRIG_BLOCK = registerBlock("mint_sprig_block", new Block(FabricBlockSettings.copyOf(Blocks.ACACIA_LEAVES).mapColor(MapColor.LICHEN_GREEN))/*, ModItemGroups.MINT*/);
     public static final Block MINT_BRICKS = registerBlock("mint_bricks", new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK).mapColor(MapColor.LICHEN_GREEN))/*, ModItemGroups.MINT*/);
     public static final Block MINT_BRICK_SLAB = registerBlock("mint_brick_slab", createSlabBlock(FabricBlockSettings.copyOf(MINT_BRICKS))/*, ModItemGroups.MINT*/);
@@ -149,13 +151,13 @@ public class ModBlocks {
     public static final Block PEACH_SHULKER_BOX = registerBlockWithoutBlockItem("peach_shulker_box", createShulkerBoxBlock(ModDyeColor.PEACH));
     public static final Block PEACH_BED = registerBlockWithoutBlockItem("peach_bed", createBedBlock(ModDyeColor.PEACH));
     public static final Block PEACH_CANDLE = registerBlock("peach_candle", createCandleBlock(ModDyeColor.PEACH)/*, ModItemGroups.PEACH*/);
-    public static final Block PEACH_CANDLE_CAKE = registerBlock("peach_candle_cake", createCandleCakeBlock(ModDyeColor.PEACH, PEACH_CANDLE)/*, ModItemGroups.PEACH*/);
+    public static final Block PEACH_CANDLE_CAKE = registerBlockWithoutBlockItem("peach_candle_cake", createCandleCakeBlock(ModDyeColor.PEACH, PEACH_CANDLE)/*, ModItemGroups.PEACH*/);
     public static final Block PEACH_BANNER = registerBlockWithoutBlockItem("peach_banner", createBannerBlock(ModDyeColor.PEACH));
     public static final Block PEACH_WALL_BANNER = registerBlockWithoutBlockItem("peach_wall_banner", createWallBannerBlock(ModDyeColor.PEACH, (BannerBlock)ModBlocks.PEACH_BANNER));
     //</editor-fold>
     //<editor-fold desc ="PEACH - Special">
     public static final Block HYPERICUM = registerBlock("hypericum", createFlowerBlock(StatusEffects.HUNGER, 900)/*, ModItemGroups.PEACH*/); //causes hunger because hypericum berries cause digestion issues irl
-    public static final Block POTTED_HYPERICUM = registerBlock("potted_hypericum", createFlowerPotBlock((FlowerBlock) HYPERICUM)/*, ModItemGroups.PEACH*/);
+    public static final Block POTTED_HYPERICUM = registerBlockWithoutBlockItem("potted_hypericum", createFlowerPotBlock((FlowerBlock) HYPERICUM)/*, ModItemGroups.PEACH*/);
     public static final Block PEACH_TREE = registerBlockWithoutBlockItem("peach_tree", new PeachTreeBlock(FabricBlockSettings.create().noCollision().strength(0.2f).sounds(BlockSoundGroup.GRASS).burnable().pistonBehavior(PistonBehavior.DESTROY).ticksRandomly().offset(AbstractBlock.OffsetType.XZ).nonOpaque().solidBlock(ModBlocks::never)));
         static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_TREE); }
     public static final Block PEACH_LOG = registerBlock("peach_log", new Block(FabricBlockSettings.create().instrument(Instrument.BASS).strength(2.0f).sounds(BlockSoundGroup.WOOD).burnable().mapColor(MapColor.STONE_GRAY))/*, ModItemGroups.PEACH*/);
@@ -175,7 +177,7 @@ public class ModBlocks {
     public static final Block PERIWINKLE_SHULKER_BOX = registerBlockWithoutBlockItem("periwinkle_shulker_box", createShulkerBoxBlock(ModDyeColor.PERIWINKLE));
     public static final Block PERIWINKLE_BED = registerBlockWithoutBlockItem("periwinkle_bed", createBedBlock(ModDyeColor.PERIWINKLE));
     public static final Block PERIWINKLE_CANDLE = registerBlock("periwinkle_candle", createCandleBlock(ModDyeColor.PERIWINKLE)/*, ModItemGroups.PERIWINKLE*/);
-    public static final Block PERIWINKLE_CANDLE_CAKE = registerBlock("periwinkle_candle_cake", createCandleCakeBlock(ModDyeColor.PERIWINKLE, PERIWINKLE_CANDLE)/*, ModItemGroups.PERIWINKLE*/);
+    public static final Block PERIWINKLE_CANDLE_CAKE = registerBlockWithoutBlockItem("periwinkle_candle_cake", createCandleCakeBlock(ModDyeColor.PERIWINKLE, PERIWINKLE_CANDLE)/*, ModItemGroups.PERIWINKLE*/);
     public static final Block PERIWINKLE_BANNER = registerBlockWithoutBlockItem("periwinkle_banner", createBannerBlock(ModDyeColor.PERIWINKLE));
     public static final Block PERIWINKLE_WALL_BANNER = registerBlockWithoutBlockItem("periwinkle_wall_banner", createWallBannerBlock(ModDyeColor.PERIWINKLE, (BannerBlock)ModBlocks.PERIWINKLE_BANNER));
     //</editor-fold>
@@ -194,7 +196,7 @@ public class ModBlocks {
     public static final Block PERIWINKLE_PETALS = registerBlock("periwinkle_petals", new FlowerbedBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS).mapColor(MapColor.DARK_GREEN))/*, ModItemGroups.PERIWINKLE*/);
         static { RENDER_LAYER_CUTOUT_MIPPED.add(PERIWINKLE_PETALS); }
     public static final Block HIDCOTE_LAVENDER = registerBlock("hidcote_lavender", createSpreadableFlowerBlock(StatusEffects.BAD_OMEN, 600, ModConfiguredFeatures.PATCH_HIDCOTE_LAVENDER)/*, ModItemGroups.PERIWINKLE*/);
-    public static final Block POTTED_HIDCOTE_LAVENDER = registerBlock("potted_hidcote_lavender", createFlowerPotBlock(HIDCOTE_LAVENDER)/*, ModItemGroups.PERIWINKLE*/);
+    public static final Block POTTED_HIDCOTE_LAVENDER = registerBlockWithoutBlockItem("potted_hidcote_lavender", createFlowerPotBlock(HIDCOTE_LAVENDER)/*, ModItemGroups.PERIWINKLE*/);
     public static final Block LAVENDER_OIL_LANTERN = registerBlock("lavender_oil_lantern", new LanternBlock(AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).solid().requiresTool().strength(3.5f).sounds(BlockSoundGroup.LANTERN).luminance(state -> 15).nonOpaque().pistonBehavior(PistonBehavior.DESTROY))/*, ModItemGroups.PERIWINKLE*/);
         static { RENDER_LAYER_CUTOUT.add(LAVENDER_OIL_LANTERN); }
     //</editor-fold>
@@ -210,15 +212,15 @@ public class ModBlocks {
     public static final Block ARTICHOKE_SHULKER_BOX = registerBlockWithoutBlockItem("artichoke_shulker_box", createShulkerBoxBlock(ModDyeColor.ARTICHOKE));
     public static final Block ARTICHOKE_BED = registerBlockWithoutBlockItem("artichoke_bed", createBedBlock(ModDyeColor.ARTICHOKE));
     public static final Block ARTICHOKE_CANDLE = registerBlock("artichoke_candle", createCandleBlock(ModDyeColor.ARTICHOKE)/*, ModItemGroups.ARTICHOKE*/);
-    public static final Block ARTICHOKE_CANDLE_CAKE = registerBlock("artichoke_candle_cake", createCandleCakeBlock(ModDyeColor.ARTICHOKE, ARTICHOKE_CANDLE)/*, ModItemGroups.ARTICHOKE*/);
+    public static final Block ARTICHOKE_CANDLE_CAKE = registerBlockWithoutBlockItem("artichoke_candle_cake", createCandleCakeBlock(ModDyeColor.ARTICHOKE, ARTICHOKE_CANDLE)/*, ModItemGroups.ARTICHOKE*/);
     public static final Block ARTICHOKE_BANNER = registerBlockWithoutBlockItem("artichoke_banner", createBannerBlock(ModDyeColor.ARTICHOKE));
     public static final Block ARTICHOKE_WALL_BANNER = registerBlockWithoutBlockItem("artichoke_wall_banner", createWallBannerBlock(ModDyeColor.ARTICHOKE, (BannerBlock)ModBlocks.ARTICHOKE_BANNER));
     //</editor-fold>
     //<editor-fold desc ="ARTICHOKE - Special">
     public static final Block THISTLE_FLOWER = registerBlock("thistle_flower", createFlowerBlock(ModEffects.THORNS, 600)/*, ModItemGroups.ARTICHOKE*/);
-    public static final Block POTTED_THISTLE_FLOWER = registerBlock("potted_thistle_flower", createFlowerPotBlock(THISTLE_FLOWER)/*, ModItemGroups.ARTICHOKE*/);
+    public static final Block POTTED_THISTLE_FLOWER = registerBlockWithoutBlockItem("potted_thistle_flower", createFlowerPotBlock(THISTLE_FLOWER)/*, ModItemGroups.ARTICHOKE*/);
     public static final Block WAXCAP_MUSHROOM = registerBlock("waxcap_mushroom", createMushroomPlantBlock(MapColor.DARK_GREEN, ModConfiguredFeatures.HUGE_WAXCAP_MUSHROOM)/*, ModItemGroups.ARTICHOKE*/);
-    public static final Block POTTED_WAXCAP_MUSHROOM = registerBlock("potted_waxcap_mushroom", createFlowerPotBlock(WAXCAP_MUSHROOM)/*, ModItemGroups.ARTICHOKE*/);
+    public static final Block POTTED_WAXCAP_MUSHROOM = registerBlockWithoutBlockItem("potted_waxcap_mushroom", createFlowerPotBlock(WAXCAP_MUSHROOM)/*, ModItemGroups.ARTICHOKE*/);
     public static final Block HANGING_WAXCAP_WAX = registerBlockWithoutBlockItem("hanging_waxcap_wax", new HangingWaxcapWaxBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).noCollision().breakInstantly().sounds(BlockSoundGroup.SLIME).offset(AbstractBlock.OffsetType.XZ).pistonBehavior(PistonBehavior.DESTROY)));
         static { RENDER_LAYER_CUTOUT_MIPPED.add(HANGING_WAXCAP_WAX); }
     public static final Block WAXCAP_WAX_BLOCK = registerBlock("waxcap_wax_block", new Block(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.NETHER_WOOD).strength(0.5f).burnable())/*, ModItemGroups.ARTICHOKE*/);
@@ -243,7 +245,7 @@ public class ModBlocks {
     public static final Block FUCHSIA_SHULKER_BOX = registerBlockWithoutBlockItem("fuchsia_shulker_box", createShulkerBoxBlock(ModDyeColor.FUCHSIA));
     public static final Block FUCHSIA_BED = registerBlockWithoutBlockItem("fuchsia_bed", createBedBlock(ModDyeColor.FUCHSIA));
     public static final Block FUCHSIA_CANDLE = registerBlock("fuchsia_candle", createCandleBlock(ModDyeColor.FUCHSIA)/*, ModItemGroups.FUCHSIA*/);
-    public static final Block FUCHSIA_CANDLE_CAKE = registerBlock("fuchsia_candle_cake", createCandleCakeBlock(ModDyeColor.FUCHSIA, FUCHSIA_CANDLE)/*, ModItemGroups.FUCHSIA*/);
+    public static final Block FUCHSIA_CANDLE_CAKE = registerBlockWithoutBlockItem("fuchsia_candle_cake", createCandleCakeBlock(ModDyeColor.FUCHSIA, FUCHSIA_CANDLE)/*, ModItemGroups.FUCHSIA*/);
     public static final Block FUCHSIA_BANNER = registerBlockWithoutBlockItem("fuchsia_banner", createBannerBlock(ModDyeColor.FUCHSIA));
     public static final Block FUCHSIA_WALL_BANNER = registerBlockWithoutBlockItem("fuchsia_wall_banner", createWallBannerBlock(ModDyeColor.FUCHSIA, (BannerBlock)ModBlocks.FUCHSIA_BANNER));
     //</editor-fold>
@@ -261,7 +263,7 @@ public class ModBlocks {
     public static final Block VERMILION_SHULKER_BOX = registerBlockWithoutBlockItem("vermilion_shulker_box", createShulkerBoxBlock(ModDyeColor.VERMILION));
     public static final Block VERMILION_BED = registerBlockWithoutBlockItem("vermilion_bed", createBedBlock(ModDyeColor.VERMILION));
     public static final Block VERMILION_CANDLE = registerBlock("vermilion_candle", createCandleBlock(ModDyeColor.VERMILION)/*, ModItemGroups.VERMILION*/);
-    public static final Block VERMILION_CANDLE_CAKE = registerBlock("vermilion_candle_cake", createCandleCakeBlock(ModDyeColor.VERMILION, VERMILION_CANDLE)/*, ModItemGroups.VERMILION*/);
+    public static final Block VERMILION_CANDLE_CAKE = registerBlockWithoutBlockItem("vermilion_candle_cake", createCandleCakeBlock(ModDyeColor.VERMILION, VERMILION_CANDLE)/*, ModItemGroups.VERMILION*/);
     public static final Block VERMILION_BANNER = registerBlockWithoutBlockItem("vermilion_banner", createBannerBlock(ModDyeColor.VERMILION));
     public static final Block VERMILION_WALL_BANNER = registerBlockWithoutBlockItem("vermilion_wall_banner", createWallBannerBlock(ModDyeColor.VERMILION, (BannerBlock)ModBlocks.VERMILION_BANNER));
     //</editor-fold>
@@ -279,7 +281,7 @@ public class ModBlocks {
     public static final Block SHAMROCK_SHULKER_BOX = registerBlockWithoutBlockItem("shamrock_shulker_box", createShulkerBoxBlock(ModDyeColor.SHAMROCK));
     public static final Block SHAMROCK_BED = registerBlockWithoutBlockItem("shamrock_bed", createBedBlock(ModDyeColor.SHAMROCK));
     public static final Block SHAMROCK_CANDLE = registerBlock("shamrock_candle", createCandleBlock(ModDyeColor.SHAMROCK)/*, ModItemGroups.SHAMROCK*/);
-    public static final Block SHAMROCK_CANDLE_CAKE = registerBlock("shamrock_candle_cake", createCandleCakeBlock(ModDyeColor.SHAMROCK, SHAMROCK_CANDLE)/*, ModItemGroups.SHAMROCK*/);
+    public static final Block SHAMROCK_CANDLE_CAKE = registerBlockWithoutBlockItem("shamrock_candle_cake", createCandleCakeBlock(ModDyeColor.SHAMROCK, SHAMROCK_CANDLE)/*, ModItemGroups.SHAMROCK*/);
     public static final Block SHAMROCK_BANNER = registerBlockWithoutBlockItem("shamrock_banner", createBannerBlock(ModDyeColor.SHAMROCK));
     public static final Block SHAMROCK_WALL_BANNER = registerBlockWithoutBlockItem("shamrock_wall_banner", createWallBannerBlock(ModDyeColor.SHAMROCK, (BannerBlock)ModBlocks.SHAMROCK_BANNER));
     //</editor-fold>
@@ -297,7 +299,7 @@ public class ModBlocks {
     public static final Block INDIGO_SHULKER_BOX = registerBlockWithoutBlockItem("indigo_shulker_box", createShulkerBoxBlock(ModDyeColor.INDIGO));
     public static final Block INDIGO_BED = registerBlockWithoutBlockItem("indigo_bed", createBedBlock(ModDyeColor.INDIGO));
     public static final Block INDIGO_CANDLE = registerBlock("indigo_candle", createCandleBlock(ModDyeColor.INDIGO)/*, ModItemGroups.INDIGO*/);
-    public static final Block INDIGO_CANDLE_CAKE = registerBlock("indigo_candle_cake", createCandleCakeBlock( ModDyeColor.INDIGO, INDIGO_CANDLE)/*, ModItemGroups.INDIGO*/);
+    public static final Block INDIGO_CANDLE_CAKE = registerBlockWithoutBlockItem("indigo_candle_cake", createCandleCakeBlock( ModDyeColor.INDIGO, INDIGO_CANDLE)/*, ModItemGroups.INDIGO*/);
     public static final Block INDIGO_BANNER = registerBlockWithoutBlockItem("indigo_banner", createBannerBlock(ModDyeColor.INDIGO));
     public static final Block INDIGO_WALL_BANNER = registerBlockWithoutBlockItem("indigo_wall_banner", createWallBannerBlock(ModDyeColor.INDIGO, (BannerBlock)ModBlocks.INDIGO_BANNER));
     //</editor-fold>
@@ -316,7 +318,7 @@ public class ModBlocks {
     public static final Block BANANA_SHULKER_BOX = registerBlockWithoutBlockItem("banana_shulker_box", createShulkerBoxBlock(ModDyeColor.BANANA));
     public static final Block BANANA_BED = registerBlockWithoutBlockItem("banana_bed", createBedBlock(ModDyeColor.BANANA));
     public static final Block BANANA_CANDLE = registerBlock("banana_candle", createCandleBlock(ModDyeColor.BANANA)/*, ModItemGroups.BANANA*/);
-    public static final Block BANANA_CANDLE_CAKE = registerBlock("banana_candle_cake", createCandleCakeBlock(ModDyeColor.BANANA, BANANA_CANDLE)/*, ModItemGroups.BANANA*/);
+    public static final Block BANANA_CANDLE_CAKE = registerBlockWithoutBlockItem("banana_candle_cake", createCandleCakeBlock(ModDyeColor.BANANA, BANANA_CANDLE)/*, ModItemGroups.BANANA*/);
     public static final Block BANANA_BANNER = registerBlockWithoutBlockItem("banana_banner", createBannerBlock(ModDyeColor.BANANA));
     public static final Block BANANA_WALL_BANNER = registerBlockWithoutBlockItem("banana_wall_banner", createWallBannerBlock(ModDyeColor.BANANA, (BannerBlock)ModBlocks.BANANA_BANNER));
     //</editor-fold>
@@ -334,7 +336,7 @@ public class ModBlocks {
     public static final Block CERULEAN_SHULKER_BOX = registerBlockWithoutBlockItem("cerulean_shulker_box", createShulkerBoxBlock(ModDyeColor.CERULEAN));
     public static final Block CERULEAN_BED = registerBlockWithoutBlockItem("cerulean_bed", createBedBlock(ModDyeColor.CERULEAN));
     public static final Block CERULEAN_CANDLE = registerBlock("cerulean_candle", createCandleBlock(ModDyeColor.CERULEAN)/*, ModItemGroups.CERULEAN*/);
-    public static final Block CERULEAN_CANDLE_CAKE = registerBlock("cerulean_candle_cake", createCandleCakeBlock(ModDyeColor.CERULEAN, CERULEAN_CANDLE)/*, ModItemGroups.CERULEAN*/);
+    public static final Block CERULEAN_CANDLE_CAKE = registerBlockWithoutBlockItem("cerulean_candle_cake", createCandleCakeBlock(ModDyeColor.CERULEAN, CERULEAN_CANDLE)/*, ModItemGroups.CERULEAN*/);
     public static final Block CERULEAN_BANNER = registerBlockWithoutBlockItem("cerulean_banner", createBannerBlock(ModDyeColor.CERULEAN));
     public static final Block CERULEAN_WALL_BANNER = registerBlockWithoutBlockItem("cerulean_wall_banner", createWallBannerBlock(ModDyeColor.CERULEAN, (BannerBlock)ModBlocks.CERULEAN_BANNER));
     //</editor-fold>
@@ -352,7 +354,7 @@ public class ModBlocks {
     public static final Block ACORN_SHULKER_BOX = registerBlockWithoutBlockItem("acorn_shulker_box", createShulkerBoxBlock(ModDyeColor.ACORN));
     public static final Block ACORN_BED = registerBlockWithoutBlockItem("acorn_bed", createBedBlock(ModDyeColor.ACORN));
     public static final Block ACORN_CANDLE = registerBlock("acorn_candle", createCandleBlock(ModDyeColor.ACORN)/*, ModItemGroups.ACORN*/);
-    public static final Block ACORN_CANDLE_CAKE = registerBlock("acorn_candle_cake", createCandleCakeBlock(ModDyeColor.ACORN, ACORN_CANDLE)/*, ModItemGroups.ACORN*/);
+    public static final Block ACORN_CANDLE_CAKE = registerBlockWithoutBlockItem("acorn_candle_cake", createCandleCakeBlock(ModDyeColor.ACORN, ACORN_CANDLE)/*, ModItemGroups.ACORN*/);
     public static final Block ACORN_BANNER = registerBlockWithoutBlockItem("acorn_banner", createBannerBlock(ModDyeColor.ACORN));
     public static final Block ACORN_WALL_BANNER = registerBlockWithoutBlockItem("acorn_wall_banner", createWallBannerBlock(ModDyeColor.ACORN, (BannerBlock)ModBlocks.ACORN_BANNER));
     //</editor-fold>
@@ -370,7 +372,7 @@ public class ModBlocks {
     public static final Block MAUVE_SHULKER_BOX = registerBlockWithoutBlockItem("mauve_shulker_box", createShulkerBoxBlock(ModDyeColor.MAUVE));
     public static final Block MAUVE_BED = registerBlockWithoutBlockItem("mauve_bed", createBedBlock(ModDyeColor.MAUVE));
     public static final Block MAUVE_CANDLE = registerBlock("mauve_candle", createCandleBlock(ModDyeColor.MAUVE)/*, ModItemGroups.MAUVE*/);
-    public static final Block MAUVE_CANDLE_CAKE = registerBlock("mauve_candle_cake", createCandleCakeBlock(ModDyeColor.MAUVE, MAUVE_CANDLE)/*, ModItemGroups.MAUVE*/);
+    public static final Block MAUVE_CANDLE_CAKE = registerBlockWithoutBlockItem("mauve_candle_cake", createCandleCakeBlock(ModDyeColor.MAUVE, MAUVE_CANDLE)/*, ModItemGroups.MAUVE*/);
     public static final Block MAUVE_BANNER = registerBlockWithoutBlockItem("mauve_banner", createBannerBlock(ModDyeColor.MAUVE));
     public static final Block MAUVE_WALL_BANNER = registerBlockWithoutBlockItem("mauve_wall_banner", createWallBannerBlock(ModDyeColor.MAUVE, (BannerBlock)ModBlocks.MAUVE_BANNER));
     //</editor-fold>
@@ -389,7 +391,7 @@ public class ModBlocks {
     public static final Block MAROON_SHULKER_BOX = registerBlockWithoutBlockItem("maroon_shulker_box", createShulkerBoxBlock(ModDyeColor.MAROON));
     public static final Block MAROON_BED = registerBlockWithoutBlockItem("maroon_bed", createBedBlock(ModDyeColor.MAROON));
     public static final Block MAROON_CANDLE = registerBlock("maroon_candle", createCandleBlock(ModDyeColor.MAROON)/*, ModItemGroups.MAROON*/);
-    public static final Block MAROON_CANDLE_CAKE = registerBlock("maroon_candle_cake", createCandleCakeBlock(ModDyeColor.MAROON, MAROON_CANDLE)/*, ModItemGroups.MAROON*/);
+    public static final Block MAROON_CANDLE_CAKE = registerBlockWithoutBlockItem("maroon_candle_cake", createCandleCakeBlock(ModDyeColor.MAROON, MAROON_CANDLE)/*, ModItemGroups.MAROON*/);
     public static final Block MAROON_BANNER = registerBlockWithoutBlockItem("maroon_banner", createBannerBlock(ModDyeColor.MAROON));
     public static final Block MAROON_WALL_BANNER = registerBlockWithoutBlockItem("maroon_wall_banner", createWallBannerBlock(ModDyeColor.MAROON, (BannerBlock)ModBlocks.MAROON_BANNER));
     //</editor-fold>
@@ -407,7 +409,7 @@ public class ModBlocks {
     public static final Block GRAPE_SHULKER_BOX = registerBlockWithoutBlockItem("grape_shulker_box", createShulkerBoxBlock(ModDyeColor.GRAPE));
     public static final Block GRAPE_BED = registerBlockWithoutBlockItem("grape_bed", createBedBlock(ModDyeColor.GRAPE));
     public static final Block GRAPE_CANDLE = registerBlock("grape_candle", createCandleBlock(ModDyeColor.GRAPE)/*, ModItemGroups.GRAPE*/);
-    public static final Block GRAPE_CANDLE_CAKE = registerBlock("grape_candle_cake", createCandleCakeBlock(ModDyeColor.GRAPE, GRAPE_CANDLE)/*, ModItemGroups.GRAPE*/);
+    public static final Block GRAPE_CANDLE_CAKE = registerBlockWithoutBlockItem("grape_candle_cake", createCandleCakeBlock(ModDyeColor.GRAPE, GRAPE_CANDLE)/*, ModItemGroups.GRAPE*/);
     public static final Block GRAPE_BANNER = registerBlockWithoutBlockItem("grape_banner", createBannerBlock(ModDyeColor.GRAPE));
     public static final Block GRAPE_WALL_BANNER = registerBlockWithoutBlockItem("grape_wall_banner", createWallBannerBlock(ModDyeColor.GRAPE, (BannerBlock)ModBlocks.GRAPE_BANNER));
     //</editor-fold>
@@ -425,7 +427,7 @@ public class ModBlocks {
     public static final Block NAVY_SHULKER_BOX = registerBlockWithoutBlockItem("navy_shulker_box", createShulkerBoxBlock(ModDyeColor.NAVY));
     public static final Block NAVY_BED = registerBlockWithoutBlockItem("navy_bed", createBedBlock(ModDyeColor.NAVY));
     public static final Block NAVY_CANDLE = registerBlock("navy_candle", createCandleBlock(ModDyeColor.NAVY)/*, ModItemGroups.NAVY*/);
-    public static final Block NAVY_CANDLE_CAKE = registerBlock("navy_candle_cake", createCandleCakeBlock(ModDyeColor.NAVY, NAVY_CANDLE)/*, ModItemGroups.NAVY*/);
+    public static final Block NAVY_CANDLE_CAKE = registerBlockWithoutBlockItem("navy_candle_cake", createCandleCakeBlock(ModDyeColor.NAVY, NAVY_CANDLE)/*, ModItemGroups.NAVY*/);
     public static final Block NAVY_BANNER = registerBlockWithoutBlockItem("navy_banner", createBannerBlock(ModDyeColor.NAVY));
     public static final Block NAVY_WALL_BANNER = registerBlockWithoutBlockItem("navy_wall_banner", createWallBannerBlock(ModDyeColor.NAVY, (BannerBlock)ModBlocks.NAVY_BANNER));
     //</editor-fold>
@@ -443,7 +445,7 @@ public class ModBlocks {
     public static final Block SAP_SHULKER_BOX = registerBlockWithoutBlockItem("sap_shulker_box", createShulkerBoxBlock(ModDyeColor.SAP));
     public static final Block SAP_BED = registerBlockWithoutBlockItem("sap_bed", createBedBlock(ModDyeColor.SAP));
     public static final Block SAP_CANDLE = registerBlock("sap_candle", createCandleBlock(ModDyeColor.SAP)/*, ModItemGroups.SAP*/);
-    public static final Block SAP_CANDLE_CAKE = registerBlock("sap_candle_cake", createCandleCakeBlock(ModDyeColor.SAP, SAP_CANDLE)/*, ModItemGroups.SAP*/);
+    public static final Block SAP_CANDLE_CAKE = registerBlockWithoutBlockItem("sap_candle_cake", createCandleCakeBlock(ModDyeColor.SAP, SAP_CANDLE)/*, ModItemGroups.SAP*/);
     public static final Block SAP_BANNER = registerBlockWithoutBlockItem("sap_banner", createBannerBlock(ModDyeColor.SAP));
     public static final Block SAP_WALL_BANNER = registerBlockWithoutBlockItem("sap_wall_banner", createWallBannerBlock(ModDyeColor.SAP, (BannerBlock)ModBlocks.SAP_BANNER));
     //</editor-fold>
@@ -462,7 +464,7 @@ public class ModBlocks {
     public static final Block AMBER_SHULKER_BOX = registerBlockWithoutBlockItem("amber_shulker_box", createShulkerBoxBlock(ModDyeColor.AMBER));
     public static final Block AMBER_BED = registerBlockWithoutBlockItem("amber_bed", createBedBlock(ModDyeColor.AMBER));
     public static final Block AMBER_CANDLE = registerBlock("amber_candle", createCandleBlock(ModDyeColor.AMBER)/*, ModItemGroups.AMBER*/);
-    public static final Block AMBER_CANDLE_CAKE = registerBlock("amber_candle_cake", createCandleCakeBlock(ModDyeColor.AMBER, AMBER_CANDLE)/*, ModItemGroups.AMBER*/);
+    public static final Block AMBER_CANDLE_CAKE = registerBlockWithoutBlockItem("amber_candle_cake", createCandleCakeBlock(ModDyeColor.AMBER, AMBER_CANDLE)/*, ModItemGroups.AMBER*/);
     public static final Block AMBER_BANNER = registerBlockWithoutBlockItem("amber_banner", createBannerBlock(ModDyeColor.AMBER));
     public static final Block AMBER_WALL_BANNER = registerBlockWithoutBlockItem("amber_wall_banner", createWallBannerBlock(ModDyeColor.AMBER, (BannerBlock)ModBlocks.AMBER_BANNER));
     //</editor-fold>
@@ -481,7 +483,7 @@ public class ModBlocks {
     public static final Block SAGE_SHULKER_BOX = registerBlockWithoutBlockItem("sage_shulker_box", createShulkerBoxBlock(ModDyeColor.SAGE));
     public static final Block SAGE_BED = registerBlockWithoutBlockItem("sage_bed", createBedBlock(ModDyeColor.SAGE));
     public static final Block SAGE_CANDLE = registerBlock("sage_candle", createCandleBlock(ModDyeColor.SAGE)/*, ModItemGroups.SAGE*/);
-    public static final Block SAGE_CANDLE_CAKE = registerBlock("sage_candle_cake", createCandleCakeBlock(ModDyeColor.SAGE, SAGE_CANDLE)/*, ModItemGroups.SAGE*/);
+    public static final Block SAGE_CANDLE_CAKE = registerBlockWithoutBlockItem("sage_candle_cake", createCandleCakeBlock(ModDyeColor.SAGE, SAGE_CANDLE)/*, ModItemGroups.SAGE*/);
     public static final Block SAGE_BANNER = registerBlockWithoutBlockItem("sage_banner", createBannerBlock(ModDyeColor.SAGE));
     public static final Block SAGE_WALL_BANNER = registerBlockWithoutBlockItem("sage_wall_banner", createWallBannerBlock(ModDyeColor.SAGE, (BannerBlock)ModBlocks.SAGE_BANNER));
     //</editor-fold>
@@ -500,7 +502,7 @@ public class ModBlocks {
     public static final Block VELVET_SHULKER_BOX = registerBlockWithoutBlockItem("velvet_shulker_box", createShulkerBoxBlock(ModDyeColor.VELVET));
     public static final Block VELVET_BED = registerBlockWithoutBlockItem("velvet_bed", createBedBlock(ModDyeColor.VELVET));
     public static final Block VELVET_CANDLE = registerBlock("velvet_candle", createCandleBlock(ModDyeColor.VELVET)/*, ModItemGroups.VELVET*/);
-    public static final Block VELVET_CANDLE_CAKE = registerBlock("velvet_candle_cake", createCandleCakeBlock(ModDyeColor.VELVET, VELVET_CANDLE)/*, ModItemGroups.VELVET*/);
+    public static final Block VELVET_CANDLE_CAKE = registerBlockWithoutBlockItem("velvet_candle_cake", createCandleCakeBlock(ModDyeColor.VELVET, VELVET_CANDLE)/*, ModItemGroups.VELVET*/);
     public static final Block VELVET_BANNER = registerBlockWithoutBlockItem("velvet_banner", createBannerBlock(ModDyeColor.VELVET));
     public static final Block VELVET_WALL_BANNER = registerBlockWithoutBlockItem("velvet_wall_banner", createWallBannerBlock(ModDyeColor.VELVET, (BannerBlock)ModBlocks.VELVET_BANNER));
     //</editor-fold>
@@ -519,7 +521,7 @@ public class ModBlocks {
     public static final Block MOLD_SHULKER_BOX = registerBlockWithoutBlockItem("mold_shulker_box", createShulkerBoxBlock(ModDyeColor.MOLD));
     public static final Block MOLD_BED = registerBlockWithoutBlockItem("mold_bed", createBedBlock(ModDyeColor.MOLD));
     public static final Block MOLD_CANDLE = registerBlock("mold_candle", createCandleBlock(ModDyeColor.MOLD)/*, ModItemGroups.MOLD*/);
-    public static final Block MOLD_CANDLE_CAKE = registerBlock("mold_candle_cake", createCandleCakeBlock(ModDyeColor.MOLD, MOLD_CANDLE)/*, ModItemGroups.MOLD*/);
+    public static final Block MOLD_CANDLE_CAKE = registerBlockWithoutBlockItem("mold_candle_cake", createCandleCakeBlock(ModDyeColor.MOLD, MOLD_CANDLE)/*, ModItemGroups.MOLD*/);
     public static final Block MOLD_BANNER = registerBlockWithoutBlockItem("mold_banner", createBannerBlock(ModDyeColor.MOLD));
     public static final Block MOLD_WALL_BANNER = registerBlockWithoutBlockItem("mold_wall_banner", createWallBannerBlock(ModDyeColor.MOLD, (BannerBlock)ModBlocks.MOLD_BANNER));
     //</editor-fold>
@@ -555,6 +557,7 @@ public class ModBlocks {
         );
         WOOL_BLOCKS.add(block);
         DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        COLOR_FROM_WOOL.put(color, block);
         COLORED_BLOCKS.add(block);
         return block;
     }
@@ -676,6 +679,7 @@ public class ModBlocks {
         );
         SHULKER_BOX_BLOCKS.add(block);
         DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        SHULKER_BOX_FROM_DYECOLOR.put(color, (Block) block);
         COLORED_BLOCKS.add(block);
         FUNCTIONAL_BLOCKS.add(block);
         return block;

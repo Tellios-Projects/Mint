@@ -163,12 +163,12 @@ public class ModItemGroups {
         addColoredItemsBefore(DyeColor.PINK, ModDyeColor.FUCHSIA);
         //Pink
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(content -> {
-            content.addAfter(Items.COOKIE, ModItems.MINT_COOKIE);
-            content.addAfter(Items.MILK_BUCKET, ModItems.MINT_SPRIG, ModItems.MINT_TEA);
-//            content.addAfter(Items.GLOW_BERRIES, ModItems.MINT_SPRIG);
-//            content.addAfter(Items.MILK_BUCKET, ModItems.MINT_TEA);
-        });
+//        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(content -> {
+//            content.addAfter(Items.COOKIE, ModItems.MINT_COOKIE);
+//            content.addAfter(Items.MILK_BUCKET, ModItems.MINT_SPRIG, ModItems.MINT_TEA);
+////            content.addAfter(Items.GLOW_BERRIES, ModItems.MINT_SPRIG);
+////            content.addAfter(Items.MILK_BUCKET, ModItems.MINT_TEA);
+//        });
 
 //        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(content -> {
 //            content.addAfter(Items.LARGE_FERN, ModBlocks.WILD_MINT, ModBlocks.MINT_SPRIG_BLOCK);

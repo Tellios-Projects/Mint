@@ -7,6 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.registry.DynamicRegistryManager;
@@ -23,6 +24,11 @@ extends SpecialCraftingRecipe {
     public AbstractColoringRecipe(Identifier identifier, CraftingRecipeCategory craftingRecipeCategory) {
         super(identifier, craftingRecipeCategory);
 
+    }
+
+    public static class Type implements RecipeType<AbstractColoringRecipe> {
+        public static final Type INSTANCE = new Type();
+        public static final String ID = "abstract_coloring_recipe_type";
     }
 
     protected abstract TagKey<Block> getDyablesTag();

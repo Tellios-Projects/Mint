@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.registration.ModRegistryHelper;
 import net.leafenzo.mint.util.Color;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
@@ -115,11 +116,6 @@ public class ModItems {
                     .hunger(7)
                     .saturationModifier(0.6f)
                     .build())));
-    public static final Item RAW_ANEMONE = registerItem("raw_anemone", new Item(new FabricItemSettings()
-            .food(new FoodComponent.Builder()
-                    .hunger(2)
-                    .saturationModifier(0.6f)
-                    .build())));
     public static final Item PEACH_BRANCH = registerItem("peach_branch", new Item(new FabricItemSettings()));
     //public static final Item PEACH_BRANCH = registerItem(new BlockItem(ModBlocks.PEACH_TREE, new FabricItemSettings()));
     //</editor-fold>
@@ -157,16 +153,16 @@ public class ModItems {
 
 
     //<editor-fold desc ="Decor Additions">
-    static {
-        for (DyeColor color : ModUtil.concat(ModDyeColor.VALUES, ModUtil.VANILLA_DYE_COLORS)) {
-            if(color == DyeColor.WHITE) {
-                registerItem("paper_covering", new Item(new FabricItemSettings()));
-            }
-            else {
-                registerItem(color.getName() + "_paper_covering", new Item(new FabricItemSettings()));
-            }
-        }
-    }
+//    static {
+//        for (DyeColor color : ModUtil.concat(ModDyeColor.VALUES, ModUtil.VANILLA_DYE_COLORS)) {
+//            if(color == DyeColor.WHITE) {
+//                ModRegistryHelper.ItemRegistry.DYED_PAPER_ITEMS.add(registerItem("paper_covering", new Item(new FabricItemSettings())));
+//            }
+//            else {
+//                ModRegistryHelper.ItemRegistry.DYED_PAPER_ITEMS.add(registerItem(color.getName() + "_paper_covering", new Item(new FabricItemSettings())));
+//            }
+//        }
+//    }
     //</editor-fold>
 
 

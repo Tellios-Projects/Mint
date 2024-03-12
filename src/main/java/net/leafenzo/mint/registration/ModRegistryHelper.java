@@ -8,7 +8,7 @@ package net.leafenzo.mint.registration;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.leafenzo.mint.Super;
 import net.minecraft.block.Block;
-import net.minecraft.block.FlowerPotBlock;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -122,6 +122,26 @@ public class ModRegistryHelper {
 //    /**
 //     * This list is just used in ItemGroups
 //     */ public static final ArrayList<Block> FUNCTIONAL_BLOCKS = new ArrayList<Block>();
+
+        public static final HashMap<DyeColor, Block> COLOR_FROM_WOOL = new HashMap<DyeColor, Block>(); static {
+            COLOR_FROM_WOOL.put(DyeColor.WHITE, Blocks.WHITE_WOOL);
+            COLOR_FROM_WOOL.put(DyeColor.ORANGE, Blocks.ORANGE_WOOL);
+            COLOR_FROM_WOOL.put(DyeColor.MAGENTA, Blocks.MAGENTA_WOOL);
+            COLOR_FROM_WOOL.put(DyeColor.LIGHT_BLUE, Blocks.LIGHT_BLUE_WOOL);
+            COLOR_FROM_WOOL.put(DyeColor.YELLOW, Blocks.YELLOW_WOOL);
+            COLOR_FROM_WOOL.put(DyeColor.LIME, Blocks.LIME_WOOL);
+            COLOR_FROM_WOOL.put(DyeColor.PINK, Blocks.PINK_WOOL);
+            COLOR_FROM_WOOL.put(DyeColor.GRAY, Blocks.GRAY_WOOL);
+            COLOR_FROM_WOOL.put(DyeColor.LIGHT_GRAY, Blocks.LIGHT_GRAY_WOOL);
+            COLOR_FROM_WOOL.put(DyeColor.CYAN, Blocks.CYAN_WOOL);
+            COLOR_FROM_WOOL.put(DyeColor.PURPLE, Blocks.PURPLE_WOOL);
+            COLOR_FROM_WOOL.put(DyeColor.BLUE, Blocks.BLUE_WOOL);
+            COLOR_FROM_WOOL.put(DyeColor.BROWN, Blocks.BROWN_WOOL);
+            COLOR_FROM_WOOL.put(DyeColor.GREEN, Blocks.GREEN_WOOL);
+            COLOR_FROM_WOOL.put(DyeColor.RED, Blocks.RED_WOOL);
+            COLOR_FROM_WOOL.put(DyeColor.BLACK, Blocks.BLACK_WOOL);
+        }
+
 
         public static Block registerBlock(String name, Block block) {
             registerBlockItem(name,block);

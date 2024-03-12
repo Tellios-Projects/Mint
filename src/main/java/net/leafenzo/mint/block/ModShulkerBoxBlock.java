@@ -52,9 +52,10 @@ public class ModShulkerBoxBlock extends ShulkerBoxBlock {
         if (dyeColor == null) {
             return Blocks.SHULKER_BOX;
         }
-        else if (dyeColor == ModDyeColor.MINT) {return ModBlocks.MINT_SHULKER_BOX; }
         else {
             switch (dyeColor) {
+                default:
+                    return ModBlocks.SHULKER_BOX_FROM_DYECOLOR.get(dyeColor);
                 case WHITE:
                     return Blocks.WHITE_SHULKER_BOX;
                 case ORANGE:
@@ -76,7 +77,6 @@ public class ModShulkerBoxBlock extends ShulkerBoxBlock {
                 case CYAN:
                     return Blocks.CYAN_SHULKER_BOX;
                 case PURPLE:
-                default:
                     return Blocks.PURPLE_SHULKER_BOX;
                 case BLUE:
                     return Blocks.BLUE_SHULKER_BOX;
