@@ -10,6 +10,8 @@ import net.leafenzo.mint.block.PeachTreeBlock;
 import net.leafenzo.mint.world.feature.ModSimpleBlockStateProvider;
 import net.leafenzo.mint.world.gen.HugeWaxcapMushroomDecorator;
 import net.leafenzo.mint.world.gen.MushroomBlockDirectionDecorator;
+import net.leafenzo.mint.world.gen.WintergreenFoliagePlacer;
+import net.leafenzo.mint.world.gen.WintergreenTrunkPlacer;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.SlabType;
 import net.minecraft.fluid.Fluids;
@@ -26,6 +28,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.math.intprovider.BiasedToBottomIntProvider;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
@@ -54,6 +57,8 @@ public class ModConfiguredFeatures {
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_THISTLE_FLOWER = registerKey("patch_thistle_flower");
     public static final RegistryKey <ConfiguredFeature <?, ?>> HUGE_WAXCAP_MUSHROOM = registerKey("huge_waxcap_mushroom");
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_WAXCAP_MUSHROOM = registerKey("patch_waxcap_mushroom");
+
+    public static final RegistryKey <ConfiguredFeature <?, ?>> WINTERGREEN = registerKey("wintergreen");
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> ORE_MUCKTUFF = registerKey("ore_mucktuff");
 
@@ -107,6 +112,17 @@ public class ModConfiguredFeatures {
         register(context, PATCH_WAXCAP_MUSHROOM, Feature.RANDOM_PATCH,
                 new RandomPatchFeatureConfig(16, 16, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.WAXCAP_MUSHROOM))))
         );
+
+        register(context, WINTERGREEN, Feature.TREE,
+                new TreeFeatureConfig.Builder(
+                        BlockStateProvider.of(ModBlocks.WINTERGREEN_WOODSET.getLog()),
+                        new WintergreenTrunkPlacer(13, 0, 0),
+                        BlockStateProvider.of(ModBlocks.WINTERGREEN_WOODSET.getLeaves()),
+                        new WintergreenFoliagePlacer(UniformIntProvider.create(2,3),UniformIntProvider.create(0,0),UniformIntProvider.create(1,1)),
+                        new TwoLayersFeatureSize(1, 0, 1)
+                ).ignoreVines().build()
+        );
+
 //        ConfiguredFeatures.register(featureRegisterable, PATCH_BROWN_MUSHROOM, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.BROWN_MUSHROOM))));
 
 //        DataPool.Builder<BlockState> builder2 = DataPool.builder();

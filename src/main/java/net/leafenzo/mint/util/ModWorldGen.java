@@ -9,6 +9,8 @@ import net.leafenzo.mint.mixin.BlockStateProviderMixin;
 import net.leafenzo.mint.world.gen.HugeWaxcapMushroomDecorator;
 import net.leafenzo.mint.world.feature.ModSimpleBlockStateProvider;
 import net.leafenzo.mint.world.gen.MushroomBlockDirectionDecorator;
+import net.leafenzo.mint.world.gen.WintergreenFoliagePlacer;
+import net.leafenzo.mint.world.gen.WintergreenTrunkPlacer;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -27,6 +29,9 @@ public class ModWorldGen {
 //    public static final FoliagePlacerType<HugeWaxcapMushroomFoliagePlacer> HUGE_WAXCAP_MUSHROOM_FOLIAGE_PLACER = registerFoliagePlacer("huge_waxcap_mushroom_foliage_placer", HugeWaxcapMushroomFoliagePlacer.CODEC);
 
     public static final BlockStateProviderType<ModSimpleBlockStateProvider> MOD_SIMPLE_BLOCK_STATE_PROVIDER = BlockStateProviderMixin.callRegister("mod_simple_block_state_provider", ModSimpleBlockStateProvider.CODEC);
+
+    public static final TrunkPlacerType<WintergreenTrunkPlacer> WINTERGREEN_TRUNK_PLACER = registerTrunkPlacer("wintergreen_trunk_placer", WintergreenTrunkPlacer.CODEC);
+    public static final FoliagePlacerType<WintergreenFoliagePlacer> WINTERGREEN_FOLIAGE_PLACER = registerFoliagePlacer("wintergreen_foliage_placer", WintergreenFoliagePlacer.CODEC);
 
     private static <P extends FoliagePlacer> FoliagePlacerType<P> registerFoliagePlacer(String id, Codec<P> codec) {
         return (FoliagePlacerType) Registry.register(Registries.FOLIAGE_PLACER_TYPE, new Identifier(Super.MOD_ID, id), new FoliagePlacerType(codec));
