@@ -254,6 +254,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, RecipeProvider.convertBetween(output, input1));
     }
 
+    public static void offerPlanksRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input, int count) {
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, count).input(input).group("planks").criterion("has_logs", RecipeProvider.conditionsFromItem(input)).offerTo(exporter);
+    }
+
+
     public static void offerWoodsetRecipes(Consumer<RecipeJsonProvider> exporter, WoodSet woodSet) {
         Block log = woodSet.getLog();
         Block strippedLog = woodSet.getStrippedLog();

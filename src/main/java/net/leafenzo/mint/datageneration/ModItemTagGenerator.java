@@ -2,6 +2,7 @@ package net.leafenzo.mint.datageneration;
 
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
+import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.registry.tag.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -55,6 +56,13 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
 
 
     // Main
+        for(WoodSet woodSet : ModBlocks.WOODSETS) {
+            getOrCreateTagBuilder(woodSet.getItemLogsTag()).add(woodSet.getLog().asItem());
+            getOrCreateTagBuilder(woodSet.getItemLogsTag()).add(woodSet.getStrippedLog().asItem());
+            getOrCreateTagBuilder(woodSet.getItemLogsTag()).add(woodSet.getWood().asItem());
+            getOrCreateTagBuilder(woodSet.getItemLogsTag()).add(woodSet.getStrippedWood().asItem());
+        }
+
         for (Block block : ModBlocks.WOOL_CARPET_BLOCKS) {
             getOrCreateTagBuilder(ItemTags.WOOL_CARPETS).add(block.asItem());  // used for adding a carpet to llamas in LlamaEntity.isHorseArmor()
         }
