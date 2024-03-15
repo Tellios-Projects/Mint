@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_brown_dye": {
+    "has_black_dye": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:brown_dye"
+              "minecraft:black_dye"
             ]
           }
         ]
@@ -27,7 +27,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:mauve_dye_from_red_dye_and_brown_dye"
+        "recipe": "minecraft:mauve_dye_from_red_dye_and_black_dye"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -35,13 +35,13 @@
   "requirements": [
     [
       "has_red_dye",
-      "has_brown_dye",
+      "has_black_dye",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:mauve_dye_from_red_dye_and_brown_dye"
+      "minecraft:mauve_dye_from_red_dye_and_black_dye"
     ]
   },
   "sends_telemetry_event": false
