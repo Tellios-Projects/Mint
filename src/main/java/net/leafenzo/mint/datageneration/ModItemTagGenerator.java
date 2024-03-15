@@ -50,7 +50,7 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
                 .add(Blocks.COBBLESTONE.asItem())
         ;
 
-        // Special
+    // Special
         getOrCreateTagBuilder(ItemTags.VILLAGER_PLANTABLE_SEEDS)
                 //TODO make sure that everything we want plantable by villagers are right here
                 .add(ModItems.MINT_SPRIG)

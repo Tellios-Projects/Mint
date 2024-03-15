@@ -162,6 +162,7 @@ public class ModBlocks {
     public static final Block PEACH_TREE = registerBlockWithoutBlockItem("peach_tree", new PeachTreeBlock(FabricBlockSettings.create().noCollision().strength(0.2f).sounds(BlockSoundGroup.GRASS).burnable().pistonBehavior(PistonBehavior.DESTROY).ticksRandomly().offset(AbstractBlock.OffsetType.XZ).nonOpaque().solidBlock(ModBlocks::never)));
         static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_TREE); }
     public static final Block PEACH_LOG = registerBlock("peach_log", new Block(FabricBlockSettings.create().instrument(Instrument.BASS).strength(2.0f).sounds(BlockSoundGroup.WOOD).burnable().mapColor(MapColor.STONE_GRAY))/*, ModItemGroups.PEACH*/);
+        static { LOGS_THAT_BURN.add(PEACH_LOG); }
     public static final Block CORAL_ANEMONE = registerBlock("coral_anemone", new CoralAnemoneBlock(FabricBlockSettings.create().breakInstantly().sounds(BlockSoundGroup.SLIME).mapColor(MapColor.RAW_IRON_PINK).nonOpaque().pistonBehavior(PistonBehavior.DESTROY).luminance(createLightLevelFromBooleanProperty(6, Properties.WATERLOGGED)))/*, ModItemGroups.PEACH*/);
         static { RENDER_LAYER_CUTOUT_MIPPED.add(CORAL_ANEMONE); }
 

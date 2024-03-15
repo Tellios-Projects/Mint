@@ -359,6 +359,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ModItems.PEACH_DYE, ModBlocks.CORAL_ANEMONE, "peach_dye", 1);
         offerShapelessRecipe(exporter, ModItems.PEACH_SLICE, ModItems.PEACH, "peach_slice", 4);
         offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PEACH_LOG, ModItems.PEACH_BRANCH);
+        offerShapelessRecipe(exporter, Blocks.JUNGLE_PLANKS, ModBlocks.PEACH_LOG, "jungle_planks", 4);
 
         offerFoodCookingRecipe(exporter, "smoking", RecipeSerializer.SMOKING, 100, ModBlocks.CORAL_ANEMONE, ModItems.COOKED_ANEMONE, 0.35f);
         offerFoodCookingRecipe(exporter, "campfire_cooking", RecipeSerializer.CAMPFIRE_COOKING, 600, ModBlocks.CORAL_ANEMONE, ModItems.COOKED_ANEMONE, 0.35f);

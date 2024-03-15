@@ -89,6 +89,9 @@ public class ModFabricRegistries {
 //        ModInit.LOGGER.debug("Registering Smelting Fuels for " + Super.MOD_ID); //This log is commented out because this is not the only place our mod registers this
         FuelRegistry registry = FuelRegistry.INSTANCE;
 
+        registry.add(ModBlocks.PEACH_LOG, 300);
+        registry.add(ModItems.PEACH_BRANCH, 100);
+
         for(ItemConvertible item : ModBlocks.BANNER_BLOCKS) {
             registry.add(item, 300);
         }

@@ -1,5 +1,6 @@
 package net.leafenzo.mint.datageneration;
 
+import dev.architectury.platform.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.leafenzo.mint.block.ModBlocks;
