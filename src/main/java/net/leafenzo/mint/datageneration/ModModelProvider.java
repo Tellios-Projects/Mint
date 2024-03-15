@@ -21,6 +21,7 @@ import net.minecraft.state.property.Property;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 
+import javax.swing.*;
 import java.util.stream.IntStream;
 
 import static net.leafenzo.mint.registration.ModRegistryHelper.*;
@@ -115,8 +116,8 @@ public class ModModelProvider extends FabricModelProvider {
                         (a, b) -> BlockStateVariant.create().put(VariantSettings.MODEL, TextureMap.getSubId(crop, "_stage" + b + (a == DoubleBlockHalf.LOWER ? "_bottom" : "_top")))))
         );
     }
-    public final void createWoodSign(BlockStateModelGenerator blockStateModelGenerator, Block signBlock, Block wallSignBlock) {
-        TextureMap textureMapping = TextureMap.texture(signBlock);
+    public final void createWoodSign(BlockStateModelGenerator blockStateModelGenerator, Block planks, Block signBlock, Block wallSignBlock) {
+        TextureMap textureMapping = TextureMap.texture(planks);
         Identifier resourceLocation = Models.PARTICLE.upload(signBlock, textureMapping, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(signBlock, resourceLocation));
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(wallSignBlock, resourceLocation));
@@ -185,7 +186,7 @@ public class ModModelProvider extends FabricModelProvider {
 
         Block sign = woodSet.getSign();
         Block wallSign = woodSet.getWallSign();
-        if(sign != null && wallSign != null) { createWoodSign(blockStateModelGenerator, sign, wallSign); }
+        if(sign != null && wallSign != null && planks != null) { createWoodSign(blockStateModelGenerator, planks, sign, wallSign); }
 
         Block hangingSign = woodSet.getHangingSign();
         Block hangingWallSign = woodSet.getHangingWallSign();
@@ -374,12 +375,9 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.LAVENDER_SOAP, Models.GENERATED);
         itemModelGenerator.register(ModItems.LAVENDER_OIL, Models.GENERATED);
 
-        //itemModelGenerator.register(ModItems.THISTLE_FLOWER, Models.GENERATED);
         itemModelGenerator.register(ModItems.ARTICHOKE_HEART, Models.GENERATED);
         itemModelGenerator.register(ModItems.ARTICHOKE_LAMB, Models.GENERATED);
         itemModelGenerator.register(ModItems.BREAKFAST_PORKCHOP, Models.GENERATED);
-//        itemModelGenerator.register(ModBlocks.THISTLE_FLOWER.asItem(), Models.GENERATED);
-//        itemModelGenerator.register(ModBlocks.WAXCAP_WAX.asItem(), Models.GENERATED);
 
 // Decor Additions
 //        for(Item item : DYED_PAPER_ITEMS) {
