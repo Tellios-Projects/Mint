@@ -16,7 +16,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-@Environment(value= EnvType.CLIENT)
+//@Environment(value= EnvType.CLIENT)
 public class ModParticleTypes {
     public static final DefaultParticleType SOAP_BUBBLE = registerParticle("soap_bubble");
     public static final DefaultParticleType SOAP_SPLASH = registerParticle("soap_splash");

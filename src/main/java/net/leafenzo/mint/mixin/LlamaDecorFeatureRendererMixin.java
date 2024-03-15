@@ -37,7 +37,7 @@ import java.util.HashMap;
 
 //@Debug(export = true)
 @Mixin(LlamaDecorFeatureRenderer.class)
-@Environment(value= EnvType.CLIENT)
+//@Environment(value= EnvType.CLIENT)
 public abstract class LlamaDecorFeatureRendererMixin extends FeatureRenderer<LlamaEntity, LlamaEntityModel<LlamaEntity>> {
     public LlamaDecorFeatureRendererMixin(FeatureRendererContext<LlamaEntity, LlamaEntityModel<LlamaEntity>> context, EntityModelLoader loader) {
         super(context);
