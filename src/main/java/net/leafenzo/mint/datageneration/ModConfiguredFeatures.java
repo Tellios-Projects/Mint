@@ -116,9 +116,9 @@ public class ModConfiguredFeatures {
         register(context, WINTERGREEN, Feature.TREE,
                 new TreeFeatureConfig.Builder(
                         BlockStateProvider.of(ModBlocks.WINTERGREEN_WOODSET.getLog()),
-                        new WintergreenTrunkPlacer(13, 0, 0),
+                        new WintergreenTrunkPlacer(11, 0, 0),
                         BlockStateProvider.of(ModBlocks.WINTERGREEN_WOODSET.getLeaves()),
-                        new WintergreenFoliagePlacer(UniformIntProvider.create(2,3),UniformIntProvider.create(0,0),UniformIntProvider.create(1,1)),
+                        new WintergreenFoliagePlacer(UniformIntProvider.create(2,2),UniformIntProvider.create(0,0),UniformIntProvider.create(1,1)),
                         new TwoLayersFeatureSize(1, 0, 1)
                 ).ignoreVines().build()
         );

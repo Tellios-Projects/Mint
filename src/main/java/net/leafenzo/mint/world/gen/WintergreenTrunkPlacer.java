@@ -6,28 +6,20 @@
 package net.leafenzo.mint.world.gen;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.kinds.Applicative;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.leafenzo.mint.util.ModUtil;
 import net.leafenzo.mint.util.ModWorldGen;
 import net.minecraft.block.BlockState;
-import net.minecraft.util.dynamic.Codecs;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.intprovider.IntProvider;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
-import net.minecraft.world.gen.trunk.BendingTrunkPlacer;
-import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacerType;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 
@@ -45,17 +37,25 @@ public class WintergreenTrunkPlacer extends TrunkPlacer {
 
     @Override
     public List<FoliagePlacer.TreeNode> generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, int height, BlockPos startPos, TreeFeatureConfig config) {
+//        TrunkPlacer.setToDirt(world, replacer, random, startPos.down(), config);
+//        for (int i = 0; i < height; ++i) {
+//            this.getAndSetState(world, replacer, random, startPos.up(i), config);
+//        }
+//        return ImmutableList.of(new FoliagePlacer.TreeNode(startPos.up(height), 0, false));
+
+        Direction d = ModUtil.randomHorizontalDirectionWithCoordinateSeed(startPos);
+
         TrunkPlacer.setToDirt(world, replacer, random, startPos.down(), config);
-        int base = Math.max(baseHeight, 13);
+        int base = Math.max(baseHeight, 11);
         for (int i = 0; i < height; ++i) {
             if(i < base-4) {
                 this.getAndSetState(world, replacer, random, startPos.up(i), config);
             }
             else if(i < base-1) {
-                this.getAndSetState(world, replacer, random, startPos.up(i).north(1), config);
+                this.getAndSetState(world, replacer, random, startPos.up(i).offset(d, 1), config);
             }
             else {
-                this.getAndSetState(world, replacer, random, startPos.up(i).north(2), config);
+                this.getAndSetState(world, replacer, random, startPos.up(i).offset(d, 2), config);
             }
         }
 

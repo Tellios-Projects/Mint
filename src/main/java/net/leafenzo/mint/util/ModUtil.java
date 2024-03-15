@@ -8,6 +8,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import org.apache.http.annotation.Obsolete;
 
@@ -338,6 +340,14 @@ public class ModUtil {
         return set;
     }
 
+    public static Direction randomHorizontalDirectionWithCoordinateSeed(BlockPos pos) {
+        int x = pos.getX();
+        int z = pos.getZ();
+        Random random = Random.create((long) x * z);
+
+        int d = random.nextInt(4);
+        return Direction.byId(d+2);
+    }
 
     public static final boolean mario = true;
     public static final boolean bros = true;

@@ -1,9 +1,8 @@
 package net.leafenzo.mint.world.gen;
 
-import com.mojang.datafixers.kinds.Applicative;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.leafenzo.mint.util.ModUtil;
 import net.leafenzo.mint.util.ModWorldGen;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -13,7 +12,6 @@ import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
-import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
 
 public class WintergreenFoliagePlacer
         extends FoliagePlacer {
@@ -31,15 +29,35 @@ public class WintergreenFoliagePlacer
     }
 
     @Override
-    protected void generate(TestableWorld world, BlockPlacer placer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {
+    protected void generate(TestableWorld world, FoliagePlacer.BlockPlacer placer, Random random, TreeFeatureConfig config, int trunkHeight, FoliagePlacer.TreeNode treeNode, int foliageHeight, int radius, int offset) {
         BlockPos blockPos = treeNode.getCenter();
-        Direction d = Direction.NORTH;
+        Direction d = ModUtil.randomHorizontalDirectionWithCoordinateSeed(blockPos);
 
-        int i = random.nextInt(2);
+        int i = 0;
         int j = 1;
         int k = 0;
-        for (int l = offset; l >= -foliageHeight; --l) {
-            this.generateSquare(world, placer, random, config, blockPos, i, l, treeNode.isGiantTrunk());
+
+        for (int l = offset+2; l >= -foliageHeight; --l) {
+            // lil swoosh at the top, and the reason why l = offset+2 to start with
+            if(l >= offset+2) {
+                this.generateSquare(world, placer, random, config, blockPos.offset(d, 4), 0, l, treeNode.isGiantTrunk());
+                this.generateSquare(world, placer, random, config, blockPos.offset(d, 4), 0, l-1, treeNode.isGiantTrunk());
+            }
+            else if(l >= offset+1) {
+                this.generateSquare(world, placer, random, config, blockPos.offset(d, 3), 0, l, treeNode.isGiantTrunk());
+                this.generateSquare(world, placer, random, config, blockPos.offset(d, 3), 0, l-1, treeNode.isGiantTrunk());
+            }
+            else if(l >= offset-1) {
+                this.generateSquare(world, placer, random, config, blockPos.offset(d, 2), 1, l, treeNode.isGiantTrunk());
+            }
+            else if(l >= offset-4) {
+                this.generateSquare(world, placer, random, config, blockPos.offset(d, 1), 1, l, treeNode.isGiantTrunk());
+            }
+            else {
+                this.generateSquare(world, placer, random, config, blockPos, i, l, treeNode.isGiantTrunk());
+            }
+
+            // Alternating leaves radius
             if (i >= j) {
                 i = k;
                 k = 1;
@@ -48,45 +66,11 @@ public class WintergreenFoliagePlacer
             }
             ++i;
         }
-
-
-        //            if(l >= (-foliageHeight-2)) {
-//                this.generateSquare();
-//                this.generateSquare(world, placer, random, config, blockPos, i, l, treeNode.isGiantTrunk());
-//            }
-
-//            if(l >= -(foliageHeight+4)) {
-//                this.generateSquare(world, placer, random, config, blockPos.offset(d) , i, l, treeNode.isGiantTrunk());
-//                if (i >= j) {
-//                    i = k;
-//                    k = 1;
-//                    j = Math.min(j + 1, radius + treeNode.getFoliageRadius());
-//                    continue;
-//                }
-//            }
-//            else if(l >= -(foliageHeight+1)) {
-//                this.generateSquare(world, placer, random, config, blockPos.offset(d, 1) , i, l, treeNode.isGiantTrunk());
-//                if (i >= j) {
-//                    i = k;
-//                    k = 1;
-//                    j = Math.min(j + 1, radius + treeNode.getFoliageRadius());
-//                    continue;
-//                }
-//            }
-//            else {
-//                this.generateSquare(world, placer, random, config, blockPos.offset(d, 2), i, l, treeNode.isGiantTrunk());
-//                if (i >= j) {
-//                    i = k;
-//                    k = 1;
-//                    j = Math.min(j + 1, radius + treeNode.getFoliageRadius());
-//                    continue;
-//                }
-//            }
     }
 
     @Override
     public int getRandomHeight(Random random, int trunkHeight, TreeFeatureConfig config) {
-        return 0;
+        return Math.max(4, trunkHeight - this.trunkHeight.get(random));
     }
 
     @Override

@@ -28,9 +28,6 @@ public class MintSprigItem extends AliasedBlockItem {
             Criteria.CONSUME_ITEM.trigger(serverPlayerEntity, stack);
             serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
         }
-        if (user instanceof PlayerEntity && !((PlayerEntity)user).getAbilities().creativeMode) {
-            stack.decrement(1);
-        }
         if (!world.isClient) {
             //add 5 seconds of freezing per snack, maxing out at 25 seconds of freezing
             user.setFrozenTicks(user.getFrozenTicks() <= 500 ? user.getFrozenTicks() + 100 : user.getFrozenTicks());

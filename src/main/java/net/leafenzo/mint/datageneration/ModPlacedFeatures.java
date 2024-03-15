@@ -5,18 +5,20 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBiomeTags;
 import net.leafenzo.mint.Super;
+import net.leafenzo.mint.block.ModBlocks;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.Heightmap;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.YOffset;
+import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
 import net.minecraft.world.gen.placementmodifier.*;
 
 import java.util.List;
@@ -35,6 +37,9 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> PATCH_THISTLE_FLOWER_PLACED = registerKey("patch_thistle_flower_placed");
 //    public static final RegistryKey<PlacedFeature> HUGE_WAXCAP_MUSHROOM_PLACED = registerKey("huge_waxcap_mushroom_placed"); // Don't add me unless needed
     public static final RegistryKey<PlacedFeature> PATCH_WAXCAP_MUSHROOM_OLD_GROWTH_PLACED = registerKey("patch_waxcap_mushroom_old_growth_placed");
+
+    public static final RegistryKey<PlacedFeature> WINTERGREEN_SNOWY_PLAINS_PLACED = registerKey("wintergreen_snowy_plains_placed");
+    public static final RegistryKey<PlacedFeature> WINTERGREEN_PLACED = registerKey("wintergreen_placed");
 
     public static final RegistryKey<PlacedFeature> ORE_MUCKTUFF_PLACED = registerKey("ore_mucktuff_placed");
 
@@ -130,6 +135,17 @@ public class ModPlacedFeatures {
 //        PlacedFeatures.register(featureRegisterable, BROWN_MUSHROOM_OLD_GROWTH, registryEntry18, VegetationPlacedFeatures.mushroomModifiers(4, CountPlacementModifier.of(3)));
 
         registerKey(context,
+                WINTERGREEN_SNOWY_PLAINS_PLACED,
+                configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WINTERGREEN),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(0, 0.02f, 1), ModBlocks.WINTERGREEN_WOODSET.getSapling())
+        );
+        registerKey(context,
+                WINTERGREEN_PLACED,
+                configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WINTERGREEN),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(0, 0.05f, 1), ModBlocks.WINTERGREEN_WOODSET.getSapling())
+        );
+
+        registerKey(context,
                 ORE_MUCKTUFF_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.ORE_MUCKTUFF),
                 RarityFilterPlacementModifier.of(35),
@@ -189,6 +205,15 @@ public class ModPlacedFeatures {
                 .add(ModificationPhase.ADDITIONS,
                         BiomeSelectors.includeByKey(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA).or(BiomeSelectors.includeByKey(BiomeKeys.OLD_GROWTH_PINE_TAIGA)), //TODO Nature's Spirit compat for Redwood Forest
                         context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_WAXCAP_MUSHROOM_OLD_GROWTH_PLACED); }
+                )
+
+                .add(ModificationPhase.ADDITIONS,
+                        BiomeSelectors.tag((ConventionalBiomeTags.SNOWY_PLAINS)),
+                        context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, WINTERGREEN_SNOWY_PLAINS_PLACED); }
+                )
+                .add(ModificationPhase.ADDITIONS,
+                        BiomeSelectors.tag((ConventionalBiomeTags.SNOWY_PLAINS)).negate().and(BiomeSelectors.tag(ConventionalBiomeTags.CLIMATE_COLD)),
+                        context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, WINTERGREEN_PLACED); }
                 )
 
                 .add(ModificationPhase.ADDITIONS,
