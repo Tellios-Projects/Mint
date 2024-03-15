@@ -2,8 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "S": {
-      "item": "mint:peach_slice"
+    "P": {
+      "item": "mint:peach"
     },
     "X": {
       "tag": "c:gold_ingots"
@@ -11,8 +11,8 @@
   },
   "pattern": [
     "XXX",
-    "SSX",
-    "SSX"
+    "XPX",
+    "XXX"
   ],
   "result": {
     "item": "mint:golden_peach"

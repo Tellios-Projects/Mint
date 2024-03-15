@@ -413,11 +413,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         // Silly backup recipe
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.GOLDEN_PEACH)
                 .pattern("XXX")
-                .pattern("SSX")
-                .pattern("SSX")
+                .pattern("XPX")
+                .pattern("XXX")
                 .input('X', ModTags.Items.GOLD_INGOTS)
-                .input('S', ModItems.PEACH_SLICE)
-                .criterion(FabricRecipeProvider.hasItem(ModItems.PEACH_SLICE), FabricRecipeProvider.conditionsFromItem(ModItems.PEACH_SLICE))
+                .input('P', ModItems.PEACH)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.PEACH), FabricRecipeProvider.conditionsFromItem(ModItems.PEACH))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.GOLDEN_PEACH)));
 
         //<editor-fold desc ="PERIWINKLE - Special">

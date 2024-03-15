@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_peach_slice": {
+    "has_peach": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:peach_slice"
+              "mint:peach"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_peach_slice",
+      "has_peach",
       "has_the_recipe"
     ]
   ],
