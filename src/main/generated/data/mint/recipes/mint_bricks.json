@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "O": {
+      "item": "mint:wintergreen_sap"
+    },
+    "X": {
+      "tag": "c:cobblestone"
+    }
+  },
+  "pattern": [
+    "XO",
+    "OX"
+  ],
+  "result": {
+    "count": 4,
+    "item": "mint:mint_bricks"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "mint:mint_bricks"
+  },
+  "result": "mint:mint_brick_wall"
+}

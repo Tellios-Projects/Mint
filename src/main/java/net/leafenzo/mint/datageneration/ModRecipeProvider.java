@@ -21,6 +21,7 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.DyeColor;
@@ -335,6 +336,22 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ModItems.MINT_DYE, ModItems.WINTERGREEN_SAP, "mint_dye", 1);
         offerShapelessRecipe(exporter, ModItems.WINTER_MEDLEY, ModItems.WINTERGREEN_BERRIES, ModItems.MINT_SPRIG, 1);
         offerFoodCookingRecipe(exporter, "smelting", RecipeSerializer.SMELTING, 200, ModBlocks.WINTERGREEN_WOODSET.getLeaves(), ModItems.WINTERGREEN_SAP, 0.1f);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_BRICKS, 4)
+                .pattern("XO")
+                .pattern("OX")
+                .input('X', ModTags.Items.COBBLESTONE)
+                .input('O', ModItems.WINTERGREEN_SAP)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.WINTERGREEN_SAP), FabricRecipeProvider.conditionsFromItem(ModItems.WINTERGREEN_SAP))
+                .criterion("has_cobblestone", FabricRecipeProvider.conditionsFromTag(ModTags.Items.COBBLESTONE))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.MINT_BRICKS)));
+
+        offerStairsRecipe(exporter, ModBlocks.MINT_BRICK_STAIRS, ModBlocks.MINT_BRICKS);
+        offerSlabRecipe(exporter, ModBlocks.MINT_BRICK_SLAB, ModBlocks.MINT_BRICKS);
+        offerWallRecipe(exporter, ModBlocks.MINT_BRICK_WALL, ModBlocks.MINT_BRICKS);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_BRICK_STAIRS, ModBlocks.MINT_BRICKS);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_BRICK_SLAB, ModBlocks.MINT_BRICKS, 2);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_BRICK_WALL, ModBlocks.MINT_BRICKS);
 
         // PEACH - Special
         offerShapelessRecipe(exporter, ModItems.PEACH_DYE, ModBlocks.HYPERICUM, "peach_dye", 1);

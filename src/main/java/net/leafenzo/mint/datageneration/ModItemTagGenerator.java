@@ -5,6 +5,7 @@ import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.registry.tag.ModTags;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.tag.ItemTags;
@@ -44,6 +45,9 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(ModTags.Items.WAX)
                 .add(Items.HONEYCOMB)
                 .add(ModBlocks.HANGING_WAXCAP_WAX.asItem())
+        ;
+        getOrCreateTagBuilder(ModTags.Items.COBBLESTONE)
+                .add(Blocks.COBBLESTONE.asItem())
         ;
 
         // Special

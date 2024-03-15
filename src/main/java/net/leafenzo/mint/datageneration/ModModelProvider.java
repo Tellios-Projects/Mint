@@ -211,7 +211,7 @@ public class ModModelProvider extends FabricModelProvider {
                 blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_BRICKS);
         mintBricksTexturePool.slab(ModBlocks.MINT_BRICK_SLAB);
         mintBricksTexturePool.stairs(ModBlocks.MINT_BRICK_STAIRS);
-        //mintBricksTexturePool.wall(ModBlocks.MINT_BRICK_WALL);
+        mintBricksTexturePool.wall(ModBlocks.MINT_BRICK_WALL);
 
         // PEACH - Special
         this.registerCoralAnemoneBlock(blockStateModelGenerator);

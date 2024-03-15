@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cobblestone": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "c:cobblestone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:mint_bricks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wintergreen_sap": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mint:wintergreen_sap"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_wintergreen_sap",
+      "has_cobblestone",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:mint_bricks"
+    ]
+  },
+  "sends_telemetry_event": false
+}

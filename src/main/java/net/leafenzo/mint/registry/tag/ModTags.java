@@ -29,6 +29,7 @@ public class ModTags {
         public static final TagKey<Item> IRON_INGOTS = getOrCreateCommonTag("iron_ingots");
         public static final TagKey<Item> MUSHROOMS = getOrCreateCommonTag("mushrooms");
         public static final TagKey<Item> WAX = getOrCreateCommonTag("wax");
+        public static final TagKey<Item> COBBLESTONE = getOrCreateCommonTag("cobblestone");
 
         public static TagKey<Item> getOrCreateTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(Super.MOD_ID, name));

@@ -31,7 +31,8 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
 //                .add(Blocks.RED_MUSHROOM_BLOCK)
 //                .add(Blocks.BROWN_MUSHROOM_BLOCK)
 
-    // Special - MINT
+    // Special
+        //TODO make sure this all checks out
         getOrCreateTagBuilder(BlockTags.LEAVES)
                 .add(ModBlocks.MINT_SPRIG_BLOCK)
         ;
