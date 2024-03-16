@@ -403,6 +403,24 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.PEACH_COBBLER)));
 
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CORALSOIL, 4)
+                .pattern("XO")
+                .pattern("OX")
+                .input('X', Items.CLAY_BALL)
+                .input('O', ModBlocks.CORAL_ANEMONE)
+                .criterion(FabricRecipeProvider.hasItem(ModBlocks.CORAL_ANEMONE.asItem()), FabricRecipeProvider.conditionsFromItem(ModBlocks.CORAL_ANEMONE.asItem()))
+                .criterion(FabricRecipeProvider.hasItem(Items.CLAY_BALL), FabricRecipeProvider.conditionsFromItem(Items.CLAY_BALL))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.CORALSOIL)));
+        offerSmelting(exporter, Collections.singletonList(ModBlocks.CORALSOIL), RecipeCategory.BUILDING_BLOCKS, ModBlocks.CORALSOIL_BRICKS, 0.1f, 200, "coralsoil_bricks");
+        offerCrackingRecipe(exporter, ModBlocks.CRACKED_CORALSOIL_BRICKS, ModBlocks.CORALSOIL_BRICKS);
+
+        offerStairsRecipe(exporter, ModBlocks.CORALSOIL_BRICK_STAIRS, ModBlocks.CORALSOIL_BRICKS);
+        offerSlabRecipe(exporter, ModBlocks.CORALSOIL_BRICK_SLAB, ModBlocks.CORALSOIL_BRICKS);
+        offerWallRecipe(exporter, ModBlocks.CORALSOIL_BRICK_WALL, ModBlocks.CORALSOIL_BRICKS);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CORALSOIL_BRICK_STAIRS, ModBlocks.CORALSOIL_BRICKS);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CORALSOIL_BRICK_SLAB, ModBlocks.CORALSOIL_BRICKS, 2);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CORALSOIL_BRICK_WALL, ModBlocks.CORALSOIL_BRICKS);
+
         // TODO remainder ignoring shaped recipe
 //        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.GOLDEN_PEACH)
 //                .pattern("XXX")

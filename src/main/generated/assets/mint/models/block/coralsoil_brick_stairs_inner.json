@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "mint:block/coralsoil_bricks",
+    "side": "mint:block/coralsoil_bricks",
+    "top": "mint:block/coralsoil_bricks"
+  }
+}

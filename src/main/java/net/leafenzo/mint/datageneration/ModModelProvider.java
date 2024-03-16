@@ -1,4 +1,5 @@
 package net.leafenzo.mint.datageneration;
+import dev.architectury.platform.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.leafenzo.mint.Super;
@@ -219,6 +220,13 @@ public class ModModelProvider extends FabricModelProvider {
         this.registerTwoTallCrop(blockStateModelGenerator, ModBlocks.PEACH_TREE, TwoTallCropBlock.AGE);
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.PEACH_LOG);
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.HYPERICUM, ModBlocks.POTTED_HYPERICUM, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.CORALSOIL);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.CRACKED_CORALSOIL_BRICKS);
+        BlockStateModelGenerator.BlockTexturePool coralsoilBricksTexturePool =
+                blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.CORALSOIL_BRICKS);
+        coralsoilBricksTexturePool.slab(ModBlocks.CORALSOIL_BRICK_SLAB);
+        coralsoilBricksTexturePool.stairs(ModBlocks.CORALSOIL_BRICK_STAIRS);
+        coralsoilBricksTexturePool.wall(ModBlocks.CORALSOIL_BRICK_WALL);
 
         // PERIWINKLE - Special
         BlockStateModelGenerator.BlockTexturePool lavenderBricksTexturePool =

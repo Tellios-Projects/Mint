@@ -165,6 +165,12 @@ public class ModBlocks {
         static { LOGS_THAT_BURN.add(PEACH_LOG); }
     public static final Block CORAL_ANEMONE = registerBlock("coral_anemone", new CoralAnemoneBlock(FabricBlockSettings.create().breakInstantly().sounds(BlockSoundGroup.SLIME).mapColor(MapColor.RAW_IRON_PINK).nonOpaque().pistonBehavior(PistonBehavior.DESTROY).luminance(createLightLevelFromBooleanProperty(6, Properties.WATERLOGGED)))/*, ModItemGroups.PEACH*/);
         static { RENDER_LAYER_CUTOUT_MIPPED.add(CORAL_ANEMONE); }
+    public static final Block CORALSOIL = registerBlock("coralsoil", new Block(FabricBlockSettings.copyOf(Blocks.CLAY))/*, ModItemGroups.PERIWINKLE*/);
+    public static final Block CRACKED_CORALSOIL_BRICKS = registerBlock("cracked_coralsoil_bricks", new Block(FabricBlockSettings.copyOf(Blocks.COBBLESTONE).mapColor(ModDyeColor.PEACH.getMapColor()).requiresTool())/*, ModItemGroups.PERIWINKLE*/);
+    public static final Block CORALSOIL_BRICKS = registerBlock("coralsoil_bricks", new Block(FabricBlockSettings.copyOf(Blocks.COBBLESTONE).mapColor(ModDyeColor.PEACH.getMapColor()).requiresTool())/*, ModItemGroups.PERIWINKLE*/);
+    public static final Block CORALSOIL_BRICK_SLAB = registerBlock("coralsoil_brick_slab", createSlabBlock(FabricBlockSettings.copyOf(CORALSOIL_BRICKS).requiresTool())/*, ModItemGroups.PERIWINKLE*/);
+    public static final Block CORALSOIL_BRICK_STAIRS = registerBlock("coralsoil_brick_stairs", createStairsBlock(CORALSOIL_BRICKS, FabricBlockSettings.copyOf(CORALSOIL_BRICKS).requiresTool())/*, ModItemGroups.PERIWINKLE*/);
+    public static final Block CORALSOIL_BRICK_WALL = registerBlock("coralsoil_brick_wall", createWallBlock(FabricBlockSettings.copyOf(CORALSOIL_BRICKS).requiresTool())/*, ModItemGroups.PERIWINKLE*/);
 
     //</editor-fold>
     //<editor-fold desc ="PERIWINKLE - Template">

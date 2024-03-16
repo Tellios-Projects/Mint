@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "mint:block/coralsoil_brick_slab"
+    },
+    "type=double": {
+      "model": "mint:block/coralsoil_bricks"
+    },
+    "type=top": {
+      "model": "mint:block/coralsoil_brick_slab_top"
+    }
+  }
+}

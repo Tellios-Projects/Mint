@@ -327,6 +327,13 @@ public class ModItemGroups {
                         entries.add(ModItems.COOKED_ANEMONE);
                         entries.add(ModItems.PEACH_BRANCH);
 
+                        entries.add(ModBlocks.CORALSOIL);
+                        entries.add(ModBlocks.CORALSOIL_BRICKS);
+                        entries.add(ModBlocks.CRACKED_CORALSOIL_BRICKS);
+                        entries.add(ModBlocks.CORALSOIL_BRICK_SLAB);
+                        entries.add(ModBlocks.CORALSOIL_BRICK_STAIRS);
+                        entries.add(ModBlocks.CORALSOIL_BRICK_WALL);
+
                         entries.add(ModItems.PERIWINKLE_DYE);
                         entries.add(ModBlocks.PERIWINKLE_WOOL);
                         entries.add(ModBlocks.PERIWINKLE_CARPET);
