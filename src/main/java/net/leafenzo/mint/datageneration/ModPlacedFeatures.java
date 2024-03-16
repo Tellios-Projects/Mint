@@ -148,11 +148,11 @@ public class ModPlacedFeatures {
         registerKey(context,
                 ORE_MUCKTUFF_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.ORE_MUCKTUFF),
-                RarityFilterPlacementModifier.of(35),
+//                RarityFilterPlacementModifier.of(35),
                 CountPlacementModifier.of(2),
                 SquarePlacementModifier.of(),
                 //PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
-                HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(-8)),
+                HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(0)),
                 BiomePlacementModifier.of()
         );
 
@@ -217,7 +217,7 @@ public class ModPlacedFeatures {
                 )
 
                 .add(ModificationPhase.ADDITIONS,
-                        BiomeSelectors.tag(ConventionalBiomeTags.OCEAN).or(BiomeSelectors.tag(ConventionalBiomeTags.SWAMP).or(BiomeSelectors.tag(ConventionalBiomeTags.JUNGLE))), //TODO Nature's Spirit compat for other swamps
+                        BiomeSelectors.tag(ConventionalBiomeTags.OCEAN).or(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES)).or(BiomeSelectors.includeByKey(BiomeKeys.DEEP_DARK)).or(BiomeSelectors.tag(ConventionalBiomeTags.SWAMP).or(BiomeSelectors.tag(ConventionalBiomeTags.JUNGLE))), //TODO Nature's Spirit compat for other swamps
                         context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.UNDERGROUND_ORES, ORE_MUCKTUFF_PLACED); }
                 )
         ;
