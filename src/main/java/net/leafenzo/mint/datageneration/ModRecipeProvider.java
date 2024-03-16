@@ -553,6 +553,20 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.BREAKFAST_PORKCHOP)));
         //</editor-fold>
 
+        //<editor-fold desc ="MOLD - Special">
+        // This doesn't work because it does not specify each dye needs to be unique from each other. No idea how to do that however
+//        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MOLD_DYE)
+//                    .input(ModTags.Items.DYES)
+//                    .input(ModTags.Items.DYES)
+//                    .input(ModTags.Items.DYES)
+//                    .input(ModTags.Items.DYES)
+//                    .input(ModTags.Items.DYES)
+//                    .input(ModTags.Items.DYES)
+//                    .group("mold_dye")
+//                    .criterion("has_dyes", FabricRecipeProvider.conditionsFromTag(ModTags.Items.DYES))
+//                    .offerTo(exporter, new Identifier(Super.MOD_ID, "mold_dye_from_goobmix"));
+        //</editor-fold>
+
 //Dyes from combining vanilla dyes
         // These work for sheep mixing too... somehow
         // Sheep bred with sheep of a non-vanilla dyeColor default to a 50/50 chance to get the color of either parent

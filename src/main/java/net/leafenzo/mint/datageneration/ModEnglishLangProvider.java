@@ -5,25 +5,21 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.effect.ModEffects;
-import net.leafenzo.mint.item.ModItemGroups;
-import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
-import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.client.resource.language.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
-import org.spongepowered.asm.mixin.Debug;
+import net.minecraft.util.Language;
+import org.apache.commons.codec.language.bm.Languages;
 
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static net.leafenzo.mint.util.ModUtil.toSentanceCase;
 
@@ -68,6 +64,17 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
         }
     }
 
+    private void generateBannerPatternColorTranslations(TranslationBuilder translationBuilder) {
+        for(DyeColor color : ModDyeColor.VALUES) {
+            for(Identifier id : Registries.BANNER_PATTERN.getIds()) {
+                String key = "block.minecraft.banner." + id.getPath();
+                String baseKey = "block.minecraft.banner." + id.getPath() + ".black";
+                generateTranslation(translationBuilder, key + "." + color.getName(), ModUtil.toSentanceCase(color.getName()) + " " + Language.getInstance().get(baseKey).replaceAll("Black ", ""));
+//                generateTranslation(translationBuilder, key + "." + color.getName(), ModUtil.toSentanceCase(color.getName()) + " " + ModUtil.toSentanceCase(key.replaceAll("block\\.minecraft\\.banner\\.", "")));
+            }
+        }
+    }
+
     /**
      * Must be run before our automatic translation building to avoid wall banner nonsense
      * @param translationBuilder
@@ -97,6 +104,7 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
         generateTranslation(translationBuilder, ModBlocks.WAXCAP_GILL_SLAB, "Waxcap Gills");
 
         generateBannerTranslations(translationBuilder, ModBlocks.BANNER_BLOCKS); // Necessary (albeit hacky) so we don't get Wall Banner nonsense
+        generateBannerPatternColorTranslations(translationBuilder);
         generateShieldVariantTranslations(translationBuilder);
 
         //Automatic

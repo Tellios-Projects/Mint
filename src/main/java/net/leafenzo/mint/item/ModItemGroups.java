@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.potions.ModPotions;
 import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
@@ -290,6 +291,13 @@ public class ModItemGroups {
                         entries.add(ModBlocks.MINT_BRICK_STAIRS);
                         //entries.add(ModBlocks.MINT_BRICK_WALL);
                         entries.addAll(woodsetItems(ModBlocks.WINTERGREEN_WOODSET));
+
+//                        entries.add((ItemConvertible) ModPotions.MINT_CHILL);
+//                        entries.add((ItemConvertible) ModPotions.LONG_MINT_CHILL);
+//                        entries.add((ItemConvertible) ModPotions.STRONG_MINT_CHILL);
+//                        entries.add((ItemConvertible) ModPotions.THORNS);
+//                        entries.add((ItemConvertible) ModPotions.LONG_THORNS);
+//                        entries.add((ItemConvertible) ModPotions.STRONG_THORNS);
 
 
                         entries.add(ModItems.PEACH_DYE);
