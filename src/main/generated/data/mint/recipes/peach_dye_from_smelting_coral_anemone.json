@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "group": "peach_dye",
+  "ingredient": {
+    "item": "mint:coral_anemone"
+  },
+  "result": "mint:peach_dye"
+}

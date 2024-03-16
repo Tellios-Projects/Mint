@@ -46,12 +46,16 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
                 .add(ModBlocks.MINT_BRICKS)
                 .add(ModBlocks.MINT_BRICK_SLAB)
                 .add(ModBlocks.MINT_BRICK_STAIRS)
+                .add(ModBlocks.MINT_BRICK_WALL)
 
                 .add(ModBlocks.LAVENDER_BRICKS)
                 .add(ModBlocks.LAVENDER_BRICK_SLAB)
                 .add(ModBlocks.LAVENDER_BRICK_STAIRS)
                 .add(ModBlocks.LAVENDER_BRICK_WALL)
                 .add(ModBlocks.MOSSY_LAVENDER_BRICKS)
+                .add(ModBlocks.MOSSY_LAVENDER_BRICK_SLAB)
+                .add(ModBlocks.MOSSY_LAVENDER_BRICK_STAIRS)
+                .add(ModBlocks.MOSSY_LAVENDER_BRICK_WALL)
         ;
 
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)

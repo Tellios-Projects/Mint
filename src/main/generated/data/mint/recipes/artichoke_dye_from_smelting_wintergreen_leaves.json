@@ -3,8 +3,9 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.35,
+  "group": "artichoke_dye",
   "ingredient": {
-    "item": "mint:coral_anemone"
+    "item": "mint:wintergreen_leaves"
   },
-  "result": "mint:peach_dye"
+  "result": "mint:artichoke_dye"
 }

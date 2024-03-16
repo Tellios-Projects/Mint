@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:artichoke_dye_from_smelting_waxcap_mushroom"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_waxcap_mushroom": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mint:waxcap_mushroom"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_waxcap_mushroom",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:artichoke_dye_from_smelting_waxcap_mushroom"
+    ]
+  },
+  "sends_telemetry_event": false
+}

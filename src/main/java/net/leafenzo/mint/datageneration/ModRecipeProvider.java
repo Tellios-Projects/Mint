@@ -29,6 +29,7 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.function.Consumer;
 
 import static net.leafenzo.mint.registration.ModRegistryHelper.*;
@@ -335,7 +336,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         offerShapelessRecipe(exporter, ModItems.MINT_DYE, ModItems.WINTERGREEN_SAP, "mint_dye", 1);
         offerShapelessRecipe(exporter, ModItems.WINTER_MEDLEY, ModItems.WINTERGREEN_BERRIES, ModItems.MINT_SPRIG, 1);
-        offerFoodCookingRecipe(exporter, "smelting", RecipeSerializer.SMELTING, 200, ModBlocks.WINTERGREEN_WOODSET.getLeaves(), ModItems.WINTERGREEN_SAP, 0.1f);
+        offerSmelting(exporter, Collections.singletonList(ModBlocks.WINTERGREEN_WOODSET.getLeaves()), RecipeCategory.MISC, ModItems.WINTERGREEN_SAP, 0.1f, 200, "wintergreen_sap");
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_BRICKS, 4)
                 .pattern("XO")
@@ -363,7 +364,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         offerFoodCookingRecipe(exporter, "smoking", RecipeSerializer.SMOKING, 100, ModBlocks.CORAL_ANEMONE, ModItems.COOKED_ANEMONE, 0.35f);
         offerFoodCookingRecipe(exporter, "campfire_cooking", RecipeSerializer.CAMPFIRE_COOKING, 600, ModBlocks.CORAL_ANEMONE, ModItems.COOKED_ANEMONE, 0.35f);
-        offerFoodCookingRecipe(exporter, "smelting", RecipeSerializer.SMELTING, 200, ModBlocks.CORAL_ANEMONE, ModItems.PEACH_DYE, 0.35f);
+        offerSmelting(exporter, Collections.singletonList(ModBlocks.CORAL_ANEMONE), RecipeCategory.MISC, ModItems.PEACH_DYE, 0.35f, 200, "peach_dye");
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.AMBROSIA)
                 .input(Items.GOLDEN_APPLE)
@@ -400,6 +401,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(Items.EGG), FabricRecipeProvider.conditionsFromItem(Items.EGG))
                 .criterion(FabricRecipeProvider.hasItem(Items.WHEAT), FabricRecipeProvider.conditionsFromItem(Items.WHEAT))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.PEACH_COBBLER)));
+
 
         // TODO remainder ignoring shaped recipe
 //        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.GOLDEN_PEACH)
@@ -481,7 +483,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ModItems.PERIWINKLE_DYE, ModBlocks.HIDCOTE_LAVENDER, "periwinkle_dye", 1);
 
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModBlocks.HIDCOTE_LAVENDER, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAVENDER_BUSHEL);
-        offerFoodCookingRecipe(exporter, "smoking", RecipeSerializer.SMOKING, 100, ModBlocks.HIDCOTE_LAVENDER, ModItems.SMOKED_LAVENDER, 0.1f);
+        CookingRecipeJsonBuilder.create(Ingredient.ofItems(ModBlocks.HIDCOTE_LAVENDER), RecipeCategory.MISC, ModItems.SMOKED_LAVENDER, 0.1f, 100, RecipeSerializer.SMOKING).criterion(RecipeProvider.hasItem(ModBlocks.HIDCOTE_LAVENDER), RecipeProvider.conditionsFromItem(ModBlocks.HIDCOTE_LAVENDER)).offerTo(exporter, RecipeProvider.getItemPath(ModItems.SMOKED_LAVENDER) + "_from_" + "smoking");
+//        offerFoodCookingRecipe(exporter, "smoking", RecipeSerializer.SMOKING, 100, ModBlocks.HIDCOTE_LAVENDER, ModItems.SMOKED_LAVENDER, 0.1f);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.LAVENDER_BREAD)
                 .pattern("LWL")
@@ -514,7 +517,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         //<editor-fold desc ="ARTICHOKE - Special">
         offerShapelessRecipe(exporter, ModItems.WAXCAP_WAX, ModBlocks.WAXCAP_MUSHROOM, groupName(ModItems.WAXCAP_WAX), 1);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC,  ModItems.WAXCAP_WAX, RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXCAP_WAX_BLOCK);
-        offerFoodCookingRecipe(exporter, "smelting", RecipeSerializer.SMELTING, 200, ModBlocks.WAXCAP_MUSHROOM, ModItems.ARTICHOKE_DYE, 0.35f);
+        offerSmelting(exporter, Collections.singletonList(ModBlocks.WAXCAP_MUSHROOM), RecipeCategory.MISC, ModItems.ARTICHOKE_DYE, 0.35f, 200, "artichoke_dye");
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.CANDLE)
                 .input(Character.valueOf('S'), Items.STRING)

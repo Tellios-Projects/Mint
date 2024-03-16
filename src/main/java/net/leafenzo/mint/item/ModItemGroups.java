@@ -289,7 +289,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.MINT_BRICKS);
                         entries.add(ModBlocks.MINT_BRICK_SLAB);
                         entries.add(ModBlocks.MINT_BRICK_STAIRS);
-                        //entries.add(ModBlocks.MINT_BRICK_WALL);
+                        entries.add(ModBlocks.MINT_BRICK_WALL);
                         entries.addAll(woodsetItems(ModBlocks.WINTERGREEN_WOODSET));
 
 //                        entries.add((ItemConvertible) ModPotions.MINT_CHILL);
