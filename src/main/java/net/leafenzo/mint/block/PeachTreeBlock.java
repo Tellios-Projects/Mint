@@ -65,7 +65,7 @@ public class PeachTreeBlock extends TwoTallCropBlock {
     }
     @Override
     public float getChanceToGrow(BlockState state) {
-        return this.getAge(state) < 4 ? 0.5f : 1.0f;
+        return this.getAge(state) < 4 ? 0.1f : 0.25f;
     }
     @Override
     public int getAgeToHarvestTo() { return 4; }
