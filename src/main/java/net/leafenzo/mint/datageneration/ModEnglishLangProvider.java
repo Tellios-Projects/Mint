@@ -5,10 +5,13 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.effect.ModEffects;
+import net.leafenzo.mint.entity.ModEntityTypes;
+import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
 import net.minecraft.client.resource.language.I18n;
+import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
@@ -75,6 +78,15 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
         }
     }
 
+    private void generateWoodsetTranslations(TranslationBuilder translationBuilder) {
+        for (WoodSet woodSet : ModBlocks.WOODSETS) {
+            String key = woodSet.getChestBoatEntityType().getTranslationKey();
+            String baseKey = "entity.minecraft.chest_boat";
+            generateTranslation(translationBuilder, key, Language.getInstance().get(baseKey));
+//            generateTranslation(translationBuilder, key, ModUtil.toSentanceCase(key.replaceAll("entity\\." + Super.MOD_ID + "\\.", "")));
+        }
+    }
+
     /**
      * Must be run before our automatic translation building to avoid wall banner nonsense
      * @param translationBuilder
@@ -102,6 +114,8 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
 
         generateTranslation(translationBuilder, ModBlocks.WAXCAP_GILLS, "Waxcap Gill Block");
         generateTranslation(translationBuilder, ModBlocks.WAXCAP_GILL_SLAB, "Waxcap Gills");
+
+        generateWoodsetTranslations(translationBuilder);
 
         generateBannerTranslations(translationBuilder, ModBlocks.BANNER_BLOCKS); // Necessary (albeit hacky) so we don't get Wall Banner nonsense
         generateBannerPatternColorTranslations(translationBuilder);
