@@ -50,6 +50,7 @@ public class ModConfiguredFeatures {
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_HYPERICUM = registerKey("patch_hypericum");
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_PEACH_TREE = registerKey("patch_peach_tree");
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_CORAL_ANEMONE = registerKey("patch_coral_anemone");
+    public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_BONEMEAL_CORAL_ANEMONE = registerKey("patch_bonemeal_coral_anemone");
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_HIDCOTE_LAVENDER = registerKey("patch_hidcote_lavender");
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_PERIWINKLE = registerKey("patch_periwinkle");
@@ -82,6 +83,9 @@ public class ModConfiguredFeatures {
         );
         register(context, PATCH_CORAL_ANEMONE, Feature.SIMPLE_BLOCK,
                new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.CORAL_ANEMONE.getDefaultState().with(Properties.WATERLOGGED, true)))
+        );
+        register(context, PATCH_BONEMEAL_CORAL_ANEMONE, Feature.RANDOM_PATCH, //TODO FIXME
+                new RandomPatchFeatureConfig(16, 5, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.CORAL_ANEMONE.getDefaultState().with(Properties.WATERLOGGED, true)))))
         );
 
         register(context, PATCH_HIDCOTE_LAVENDER, Feature.FLOWER,

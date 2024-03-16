@@ -5,23 +5,37 @@ import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
 import org.jetbrains.annotations.Nullable;
 
-public class CoralAnemoneBlock extends PlantBlock {
+import java.util.Optional;
+
+public class CoralAnemoneBlock extends PlantBlock
+//        implements Fertilizable
+{
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     protected static final VoxelShape COLLISION_SHAPE = Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 3.0, 11.0);
     protected static final VoxelShape OUTLINE_SHAPE = Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 3.0, 11.0);
-    public CoralAnemoneBlock(Settings settings) {
+    private final RegistryKey<ConfiguredFeature<?, ?>> featureKey;
+
+    public CoralAnemoneBlock(RegistryKey<ConfiguredFeature<?, ?>> featureKey, Settings settings) {
         super(settings);
+        this.featureKey = featureKey;
         this.setDefaultState(((BlockState)this.stateManager.getDefaultState()).with(WATERLOGGED, true));
     }
 
@@ -74,6 +88,23 @@ public class CoralAnemoneBlock extends PlantBlock {
         }
         return super.getFluidState(state);
     }
+
+//    @Override
+//    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
+//        return state.get(WATERLOGGED);
+//    }
+//    @Override
+//    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
+//        return state.get(WATERLOGGED);
+//    }
+//    @Override
+//    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
+//        Optional<RegistryEntry.Reference<ConfiguredFeature<?, ?>>> optional = world.getRegistryManager().get(RegistryKeys.CONFIGURED_FEATURE).getEntry(this.featureKey);
+//        if (optional.isEmpty()) { return; }
+//        //world.removeBlock(pos, false);
+//        ((ConfiguredFeature)((RegistryEntry)optional.get()).value()).generate(world, world.getChunkManager().getChunkGenerator(), random, pos);
+//        world.setBlockState(pos, state, Block.NOTIFY_ALL);
+//    }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

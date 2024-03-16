@@ -2,10 +2,10 @@
   "type": "minecraft:smelting",
   "category": "misc",
   "cookingtime": 200,
-  "experience": 0.35,
-  "group": "artichoke_dye",
+  "experience": 0.1,
+  "group": "wintergreen_sap",
   "ingredient": {
     "item": "mint:wintergreen_leaves"
   },
-  "result": "mint:artichoke_dye"
+  "result": "mint:wintergreen_sap"
 }

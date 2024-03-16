@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:artichoke_dye_from_smelting_wintergreen_leaves"
+        "recipe": "minecraft:wintergreen_sap_from_smelting_wintergreen_leaves"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:artichoke_dye_from_smelting_wintergreen_leaves"
+      "minecraft:wintergreen_sap_from_smelting_wintergreen_leaves"
     ]
   },
   "sends_telemetry_event": false
