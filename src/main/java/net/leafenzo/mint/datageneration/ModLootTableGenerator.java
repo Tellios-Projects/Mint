@@ -56,6 +56,15 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         return LootTable.builder().pool(LootPool.builder().with(builder));
     }
 
+    public LootTable.Builder waxcapGillFullBlockDrops(Block block, Block waxDrop) {
+        AlternativeEntry.Builder builder =
+                ItemEntry.builder(block).conditionally(WITH_SILK_TOUCH).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0f)))
+                                .alternatively(this.addSurvivesExplosionCondition(block, ItemEntry.builder(waxDrop)
+                                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 6.0f)))));
+
+        return LootTable.builder().pool(LootPool.builder().with(builder));
+    }
+
     public LootTable.Builder peachTreeDrops(Block peachTreeBlock, ItemConvertible branchItem/*, ItemConvertible fruitItem*/) {
         //Dropping of fruit is handled by the PeachTree class.
         ItemEntry.Builder builder = this.addSurvivesExplosionCondition(peachTreeBlock, ItemEntry.builder(branchItem).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))));
@@ -141,8 +150,9 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(ModBlocks.HANGING_WAXCAP_WAX, (Block block) -> this.drops(ModItems.WAXCAP_WAX));
 
         this.addDrop(ModBlocks.WAXCAP_GILL_SLAB, (Block block) ->  waxcapGillSlabDrops(ModBlocks.WAXCAP_GILL_SLAB, ModBlocks.HANGING_WAXCAP_WAX));
+        this.addDrop(ModBlocks.WAXCAP_GILLS, (Block block) ->  waxcapGillFullBlockDrops(ModBlocks.WAXCAP_GILLS, ModBlocks.HANGING_WAXCAP_WAX));
+//        this.addDrop(ModBlocks.WAXCAP_GILLS, (Block block) -> this.drops((Block)block, ModItems.WAXCAP_WAX, ConstantLootNumberProvider.create(4.0f)));
 
-        this.addDrop(ModBlocks.WAXCAP_GILLS, (Block block) -> this.drops((Block)block, ModItems.WAXCAP_WAX, ConstantLootNumberProvider.create(4.0f)));
         BlockStatePropertyLootCondition.Builder artichokeCropBuilder = BlockStatePropertyLootCondition.builder(ModBlocks.ARTICHOKE_CROP).properties(StatePredicate.Builder.create().exactMatch(ArtichokeCropBlock.AGE, ArtichokeCropBlock.MAX_AGE));
         this.addDrop(ModBlocks.ARTICHOKE_CROP, this.applyExplosionDecay(ModBlocks.ARTICHOKE_CROP, LootTable.builder().pool(LootPool.builder().with(ItemEntry.builder(ModItems.ARTICHOKE))).pool(LootPool.builder().conditionally(artichokeCropBuilder).with((LootPoolEntry.Builder<?>)((Object)ItemEntry.builder(ModItems.ARTICHOKE).apply(ApplyBonusLootFunction.binomialWithBonusCount(Enchantments.FORTUNE, 0.5714286f, 3)))))));
 

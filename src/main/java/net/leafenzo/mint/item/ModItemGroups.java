@@ -385,6 +385,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.WAXCAP_WAX_BLOCK);
                         entries.add(ModBlocks.WAXCAP_STEM_BLOCK);
                         entries.add(ModBlocks.WAXCAP_CAP_BLOCK);
+                        entries.add(ModBlocks.WAXCAP_GILLS);
                         entries.add(ModBlocks.WAXCAP_GILL_SLAB);
                         entries.add(ModBlocks.WAXCAP_MUSHROOM);
                         entries.add(ModItems.WAXCAP_WAX);

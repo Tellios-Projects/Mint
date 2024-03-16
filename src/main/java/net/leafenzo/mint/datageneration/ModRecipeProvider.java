@@ -553,6 +553,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(ModItems.WAXCAP_WAX), FabricRecipeProvider.conditionsFromItem(ModItems.WAXCAP_WAX))
                 .group("minecraft:torch") // might not really work but yknow might as well try
                 .offerTo(exporter);
+        offerSlabRecipe(exporter, ModBlocks.WAXCAP_GILL_SLAB, ModBlocks.WAXCAP_GILLS);
 
         offerShapelessRecipe(exporter, ModItems.ARTICHOKE, ModBlocks.THISTLE_FLOWER, groupName(ModItems.ARTICHOKE), 1);
         offerShapelessRecipe(exporter, ModItems.ARTICHOKE_HEART, ModItems.ARTICHOKE, groupName(ModItems.ARTICHOKE_HEART), 1);

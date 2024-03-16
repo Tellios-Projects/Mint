@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mint:waxcap_gill_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_waxcap_gills": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mint:waxcap_gills"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_waxcap_gills",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mint:waxcap_gill_slab"
+    ]
+  },
+  "sends_telemetry_event": false
+}
