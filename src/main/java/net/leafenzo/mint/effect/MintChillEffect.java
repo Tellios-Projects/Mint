@@ -14,10 +14,13 @@ public class MintChillEffect extends StatusEffect {
         if(amplifier <= 0) {
             entity.setFrozenTicks(80); //will continually keep the player frozen as the potion is in effect
         }
-        else if(amplifier >= 1) {
+        else if(amplifier == 1) {
             entity.setFrozenTicks(150);  //amplifier makes freezing deal damage, because min freeze damage ticks are 140... or rather they supposedly are; in truth it's a bit finicky
         }
-       //entity.damage(entity.getWorld().getDamageSources().freeze(), 0.25f * amplifier);
+        else if(amplifier >= 2) {
+            entity.setFrozenTicks(150);
+            entity.damage(entity.getWorld().getDamageSources().freeze(), 0.25f * amplifier);
+        }
     }
 
     @Override

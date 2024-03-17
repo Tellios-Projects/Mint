@@ -58,7 +58,13 @@ public class ModItems {
                     .build())));
     //TODO drop these from wintergreen leaves occasionally
 
-    public static final Item WINTER_MEDLEY = registerItem("winter_medley", new Item(new FabricItemSettings()));
+    public static final Item WINTER_MEDLEY = registerItem("winter_medley", new WinterMedleyItem(new FabricItemSettings()
+            .food(new FoodComponent.Builder()
+                    .alwaysEdible()
+//                    .hunger(0)
+                    .saturationModifier(4.0f)
+                    .build())));
+
     //TODO made from mint sprigs and wintergreen berries
     //TODO mint chill potion recipe using this instead of just a mint sprig
 
