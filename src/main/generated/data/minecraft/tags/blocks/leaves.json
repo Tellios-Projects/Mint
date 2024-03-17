@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mint:mint_sprig_block"
+    "mint:mint_sprig_block",
+    "mint:wintergreen_leaves"
   ]
 }

@@ -48,6 +48,7 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
                 .add(ModBlocks.MINT_BRICK_STAIRS)
                 .add(ModBlocks.MINT_BRICK_WALL)
 
+                .add(ModBlocks.LAVENDER_OIL_LANTERN)
                 .add(ModBlocks.LAVENDER_BRICKS)
                 .add(ModBlocks.LAVENDER_BRICK_SLAB)
                 .add(ModBlocks.LAVENDER_BRICK_STAIRS)
@@ -69,13 +70,18 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
                 .add(ModBlocks.CORALSOIL)
 
                 .add(ModBlocks.WAXCAP_WAX_BLOCK)
-                .add(ModBlocks.WAXCAP_GILL_SLAB)
-                .add(ModBlocks.WAXCAP_GILLS)
         ;
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.WAXCAP_STEM_BLOCK)
                 .add(ModBlocks.WAXCAP_CAP_BLOCK)
+        ;
+
+        getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
+                .add(ModBlocks.LAVENDER_BUSHEL)
+
+                .add(ModBlocks.WAXCAP_GILL_SLAB)
+                .add(ModBlocks.WAXCAP_GILLS)
         ;
 
 
@@ -134,6 +140,9 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
         for (Block block : ModBlocks.PLANKS) {
             getOrCreateTagBuilder(BlockTags.PLANKS).add(block);
         }
+        for (Block block : ModBlocks.LEAVES) {
+            getOrCreateTagBuilder(BlockTags.LEAVES).add(block);
+        }
 
 
 //  WOOL_BLOCKS
@@ -168,14 +177,14 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
         }
 
 ////  STAINED_GLASS_BLOCKS
-//
         for (Block block : ModBlocks.STAINED_GLASS_BLOCKS) {
             getOrCreateTagBuilder(ModTags.Blocks.GLASS).add(block);
             getOrCreateTagBuilder(ModTags.Blocks.GLASS_BLOCKS).add(block); //common tags just wanna be silly ig
         }
 
 ////  STAINED_GLASS_PANE_BLOCKS
-//
+        // Not needed, I think?
+
 ////  SHULKER_BOX_BLOCKS
         for (Block block : ModBlocks.SHULKER_BOX_BLOCKS) {
             getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
@@ -184,7 +193,7 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
 
 ////  BED_BLOCKS
         for (Block block : ModBlocks.BED_BLOCKS) {
-            getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(block);
+//            getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(block); // Nope! Not supposed to use that
             getOrCreateTagBuilder(BlockTags.BEDS).add(block);
         }
 

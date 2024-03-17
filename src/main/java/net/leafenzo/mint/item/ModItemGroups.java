@@ -279,6 +279,7 @@ public class ModItemGroups {
                         entries.add(ModItems.MINT_BANNER);
                         entries.add(ModItems.MINT_SHULKER_BOX);
                         entries.add(ModBlocks.MINT_CANDLE);
+
                         entries.add(ModItems.MINT_SPRIG);
                         entries.add(ModItems.MINT_COOKIE);
                         entries.add(ModBlocks.MINT_SPRIG_BLOCK);
@@ -329,7 +330,6 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CORAL_ANEMONE);
                         entries.add(ModItems.COOKED_ANEMONE);
                         entries.add(ModItems.PEACH_BRANCH);
-
                         entries.add(ModBlocks.CORALSOIL);
                         entries.add(ModBlocks.CORALSOIL_BRICKS);
                         entries.add(ModBlocks.CRACKED_CORALSOIL_BRICKS);

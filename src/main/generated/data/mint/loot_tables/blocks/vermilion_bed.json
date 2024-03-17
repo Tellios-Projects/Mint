@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "mint:vermilion_bed",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "part": "head"
+              }
+            }
+          ],
+          "name": "mint:vermilion_bed"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}
