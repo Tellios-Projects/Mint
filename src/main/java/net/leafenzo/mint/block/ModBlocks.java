@@ -122,6 +122,8 @@ public class ModBlocks {
     public static final Block WILD_MINT = registerBlock("wild_mint", createFlowerBlock(ModEffects.MINT_CHILL, 900)/*, ModItemGroups.MINT*/);
     public static final Block POTTED_WILD_MINT = registerBlockWithoutBlockItem("potted_wild_mint", createFlowerPotBlock((FlowerBlock) WILD_MINT)/*, ModItemGroups.MINT*/);
     public static final Block MINT_SPRIG_BLOCK = registerBlock("mint_sprig_block", new Block(FabricBlockSettings.copyOf(Blocks.ACACIA_LEAVES).mapColor(MapColor.LICHEN_GREEN))/*, ModItemGroups.MINT*/);
+        static { RENDER_LAYER_CUTOUT.add(MINT_SPRIG_BLOCK); }
+
     public static final Block MINT_BRICKS = registerBlock("mint_bricks", new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK).mapColor(MapColor.LICHEN_GREEN))/*, ModItemGroups.MINT*/);
     public static final Block MINT_BRICK_SLAB = registerBlock("mint_brick_slab", createSlabBlock(FabricBlockSettings.copyOf(MINT_BRICKS))/*, ModItemGroups.MINT*/);
     public static final Block MINT_BRICK_STAIRS = registerBlock("mint_brick_stairs", createStairsBlock(MINT_BRICKS, FabricBlockSettings.copyOf(MINT_BRICKS))/*, ModItemGroups.MINT*/);
