@@ -11,17 +11,20 @@ import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.particle.ModParticleTypes;
 import net.leafenzo.mint.potions.ModPotions;
 import net.leafenzo.mint.recipe.ModRecipeSerializer;
+import net.leafenzo.mint.recipe.ingredient.ModIngredientSerializers;
+import net.leafenzo.mint.recipe.ingredient.PotionIngredient;
 import net.leafenzo.mint.registries.ModFabricRegistries;
 import net.leafenzo.mint.registries.ModVillagerTrades;
-import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModWorldGen;
 //import net.leafenzo.mint.world.ModWorldGenModifications;
-import net.minecraft.util.DyeColor;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.Potions;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.Registries;
+import net.minecraft.util.Identifier;
+import org.lwjgl.system.windows.POINT;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class ModInit implements ModInitializer {
         public static final String MOD_ID = Super.MOD_ID;
@@ -43,6 +46,7 @@ public class ModInit implements ModInitializer {
             ModVillagerTrades.registerVillagerTrades();
             ModFabricRegistries.registerFuels();
             DispenserBehavior.RegisterDispenserBehaviors();
+            ModIngredientSerializers.registerModCustomIngredientSerializers();
             ModRecipeSerializer.registerModRecipeSerializer();
             ModEffects.registerModEffects();
             ModPotions.registerModPotions();
@@ -71,6 +75,12 @@ public class ModInit implements ModInitializer {
 //                System.out.println("ITEM BINGUS - " + Registries.ITEM.get(id).getTranslationKey());
 //                //translationBuilder.add(id, toSentanceCase(id.getPath()));
 //            }
+
+//            System.out.println("BIG MEOW 0a! - " + new PotionIngredient(Potions.WATER).requiredPotion.toString());
+//            System.out.println("BIG MEOW 0b! - " + new Identifier(new PotionIngredient(Potions.WATER).requiredPotion.toString()));
+//            System.out.println("BIG MEOW 1! - " + Ingredient.fromJson(new PotionIngredient(Potions.WATER).toVanilla().toJson()));
+//            System.out.println("BIG MEOW 2! - " + Registries.POTION.getId(Potions.WATER).toString());
+//            System.out.println("BIG MEOW 3! - " + Registries.POTION.getId(Potions.WATER).getPath());
 
 //            Set<Identifier> altered = ModUtil.getAllRegistryIds();
 //            ModEnglishLangProvider.TranslationsFromIds(original, altered);

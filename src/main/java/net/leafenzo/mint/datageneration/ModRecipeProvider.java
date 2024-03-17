@@ -6,6 +6,7 @@ import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.recipe.ModRecipeSerializer;
+import net.leafenzo.mint.recipe.ingredient.PotionIngredient;
 import net.leafenzo.mint.registration.ModRegistryHelper;
 import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.registry.tag.ModTags;
@@ -17,6 +18,9 @@ import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.TexturedModel;
 import net.minecraft.data.server.recipe.*;
 import net.minecraft.item.*;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionUtil;
+import net.minecraft.potion.Potions;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.RecipeCategory;
@@ -315,9 +319,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         // MINT - Special
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.MINT_TEA, 1)
+//                .input(Ingredient.fromJson(new PotionIngredient(Potions.WATER).toVanilla().toJson())) // Error?
+//                .input(Ingredient.ofStacks(PotionUtil.setPotion(Items.POTION.getDefaultStack(), Potions.WATER))) // Doesn't work, just allows any potion to be used
                 .input(Items.POTION)
-                .input(ModItems.WINTER_MEDLEY)
-                .criterion(FabricRecipeProvider.hasItem(ModItems.WINTER_MEDLEY), FabricRecipeProvider.conditionsFromItem(ModItems.WINTER_MEDLEY))
+                .input(ModItems.MINT_SPRIG)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.MINT_SPRIG), FabricRecipeProvider.conditionsFromItem(ModItems.MINT_SPRIG))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.MINT_TEA) + "_shapeless"));
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.MINT_COOKIE, 4)

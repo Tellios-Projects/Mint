@@ -1,28 +1,28 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:mint_tea_shapeless"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_winter_medley": {
+    "has_mint_sprig": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:winter_medley"
+              "mint:mint_sprig"
             ]
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:mint_tea_shapeless"
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_winter_medley",
+      "has_mint_sprig",
       "has_the_recipe"
     ]
   ],

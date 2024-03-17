@@ -12,6 +12,7 @@ import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
+import net.minecraft.potion.PotionUtil;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
@@ -292,13 +293,12 @@ public class ModItemGroups {
                         entries.add(ModBlocks.MINT_BRICK_WALL);
                         entries.addAll(woodsetItems(ModBlocks.WINTERGREEN_WOODSET));
 
-//                        entries.add((ItemConvertible) ModPotions.MINT_CHILL);
-//                        entries.add((ItemConvertible) ModPotions.LONG_MINT_CHILL);
-//                        entries.add((ItemConvertible) ModPotions.STRONG_MINT_CHILL);
-//                        entries.add((ItemConvertible) ModPotions.THORNS);
-//                        entries.add((ItemConvertible) ModPotions.LONG_THORNS);
-//                        entries.add((ItemConvertible) ModPotions.STRONG_THORNS);
-
+                        entries.add(PotionUtil.setPotion(Items.POTION.getDefaultStack(), ModPotions.MINT_CHILL));
+                        entries.add(PotionUtil.setPotion(Items.POTION.getDefaultStack(), ModPotions.LONG_MINT_CHILL));
+                        entries.add(PotionUtil.setPotion(Items.POTION.getDefaultStack(), ModPotions.STRONG_MINT_CHILL));
+                        entries.add(PotionUtil.setPotion(Items.POTION.getDefaultStack(), ModPotions.THORNS));
+                        entries.add(PotionUtil.setPotion(Items.POTION.getDefaultStack(), ModPotions.LONG_THORNS));
+                        entries.add(PotionUtil.setPotion(Items.POTION.getDefaultStack(), ModPotions.STRONG_THORNS));
 
                         entries.add(ModItems.PEACH_DYE);
                         entries.add(ModBlocks.PEACH_WOOL);
