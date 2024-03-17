@@ -35,7 +35,7 @@ public class ModPotions {
     public static void registerBrewingRecipeRegistries() {
         ModInit.LOGGER.info("Registering brewing recipe registries for " + Super.MOD_ID);
 
-        FabricBrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Ingredient.ofItems(ModItems.MINT_SPRIG), ModPotions.MINT_CHILL);
+        FabricBrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Ingredient.ofItems(ModItems.WINTER_MEDLEY), ModPotions.MINT_CHILL);
         FabricBrewingRecipeRegistry.registerPotionRecipe(ModPotions.MINT_CHILL, Ingredient.ofItems(Items.REDSTONE), ModPotions.LONG_MINT_CHILL);
         FabricBrewingRecipeRegistry.registerPotionRecipe(ModPotions.MINT_CHILL, Ingredient.ofItems(Items.GLOWSTONE_DUST), ModPotions.STRONG_MINT_CHILL);
 
