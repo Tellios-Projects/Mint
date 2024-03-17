@@ -296,9 +296,12 @@ public class ModItemGroups {
                         entries.add(PotionUtil.setPotion(Items.POTION.getDefaultStack(), ModPotions.MINT_CHILL));
                         entries.add(PotionUtil.setPotion(Items.POTION.getDefaultStack(), ModPotions.LONG_MINT_CHILL));
                         entries.add(PotionUtil.setPotion(Items.POTION.getDefaultStack(), ModPotions.STRONG_MINT_CHILL));
-                        entries.add(PotionUtil.setPotion(Items.POTION.getDefaultStack(), ModPotions.THORNS));
-                        entries.add(PotionUtil.setPotion(Items.POTION.getDefaultStack(), ModPotions.LONG_THORNS));
-                        entries.add(PotionUtil.setPotion(Items.POTION.getDefaultStack(), ModPotions.STRONG_THORNS));
+                        entries.add(PotionUtil.setPotion(Items.SPLASH_POTION.getDefaultStack(), ModPotions.MINT_CHILL));
+                        entries.add(PotionUtil.setPotion(Items.SPLASH_POTION.getDefaultStack(), ModPotions.LONG_MINT_CHILL));
+                        entries.add(PotionUtil.setPotion(Items.SPLASH_POTION.getDefaultStack(), ModPotions.STRONG_MINT_CHILL));
+                        entries.add(PotionUtil.setPotion(Items.LINGERING_POTION.getDefaultStack(), ModPotions.MINT_CHILL));
+                        entries.add(PotionUtil.setPotion(Items.LINGERING_POTION.getDefaultStack(), ModPotions.LONG_MINT_CHILL));
+                        entries.add(PotionUtil.setPotion(Items.LINGERING_POTION.getDefaultStack(), ModPotions.STRONG_MINT_CHILL));
 
                         entries.add(ModItems.PEACH_DYE);
                         entries.add(ModBlocks.PEACH_WOOL);
@@ -394,6 +397,16 @@ public class ModItemGroups {
                         entries.add(ModItems.ARTICHOKE_HEART);
                         entries.add(ModItems.ARTICHOKE_LAMB);
                         entries.add(ModItems.BREAKFAST_PORKCHOP);
+
+                        entries.add(PotionUtil.setPotion(Items.POTION.getDefaultStack(), ModPotions.THORNS));
+                        entries.add(PotionUtil.setPotion(Items.POTION.getDefaultStack(), ModPotions.LONG_THORNS));
+                        entries.add(PotionUtil.setPotion(Items.POTION.getDefaultStack(), ModPotions.STRONG_THORNS));
+                        entries.add(PotionUtil.setPotion(Items.SPLASH_POTION.getDefaultStack(), ModPotions.THORNS));
+                        entries.add(PotionUtil.setPotion(Items.SPLASH_POTION.getDefaultStack(), ModPotions.LONG_THORNS));
+                        entries.add(PotionUtil.setPotion(Items.SPLASH_POTION.getDefaultStack(), ModPotions.STRONG_THORNS));
+                        entries.add(PotionUtil.setPotion(Items.LINGERING_POTION.getDefaultStack(), ModPotions.THORNS));
+                        entries.add(PotionUtil.setPotion(Items.LINGERING_POTION.getDefaultStack(), ModPotions.LONG_THORNS));
+                        entries.add(PotionUtil.setPotion(Items.LINGERING_POTION.getDefaultStack(), ModPotions.STRONG_THORNS));
 
                         entries.add(ModItems.FUCHSIA_DYE);
                         entries.add(ModBlocks.FUCHSIA_WOOL);
