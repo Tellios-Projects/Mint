@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "artichoke_dye",
+  "ingredients": [
+    {
+      "item": "mint:artichoke_heart"
+    }
+  ],
+  "result": {
+    "item": "mint:artichoke_dye"
+  }
+}

@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:peach_dye_from_smelting_coral_anemone"
+        "recipe": "minecraft:cooked_anemone_from_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:peach_dye_from_smelting_coral_anemone"
+      "minecraft:cooked_anemone_from_smelting"
     ]
   },
   "sends_telemetry_event": false

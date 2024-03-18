@@ -370,7 +370,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         offerFoodCookingRecipe(exporter, "smoking", RecipeSerializer.SMOKING, 100, ModBlocks.CORAL_ANEMONE, ModItems.COOKED_ANEMONE, 0.35f);
         offerFoodCookingRecipe(exporter, "campfire_cooking", RecipeSerializer.CAMPFIRE_COOKING, 600, ModBlocks.CORAL_ANEMONE, ModItems.COOKED_ANEMONE, 0.35f);
-        offerSmelting(exporter, Collections.singletonList(ModBlocks.CORAL_ANEMONE), RecipeCategory.MISC, ModItems.PEACH_DYE, 0.35f, 200, "peach_dye");
+        offerFoodCookingRecipe(exporter, "smelting", RecipeSerializer.SMELTING, 200, ModBlocks.CORAL_ANEMONE, ModItems.COOKED_ANEMONE, 0.35f);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.AMBROSIA)
                 .input(Items.GOLDEN_APPLE)
@@ -407,7 +407,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(Items.EGG), FabricRecipeProvider.conditionsFromItem(Items.EGG))
                 .criterion(FabricRecipeProvider.hasItem(Items.WHEAT), FabricRecipeProvider.conditionsFromItem(Items.WHEAT))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.PEACH_COBBLER)));
-
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CORALSOIL, 4)
                 .pattern("XO")
@@ -542,6 +541,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ModItems.WAXCAP_WAX, ModBlocks.WAXCAP_MUSHROOM, groupName(ModItems.WAXCAP_WAX), 1);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC,  ModItems.WAXCAP_WAX, RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXCAP_WAX_BLOCK);
         offerSmelting(exporter, Collections.singletonList(ModBlocks.WAXCAP_MUSHROOM), RecipeCategory.MISC, ModItems.ARTICHOKE_DYE, 0.35f, 200, "artichoke_dye");
+        offerShapelessRecipe(exporter, ModItems.ARTICHOKE_DYE, ModItems.ARTICHOKE_HEART, "artichoke_dye", 1);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Items.CANDLE)
                 .input(Character.valueOf('S'), Items.STRING)
