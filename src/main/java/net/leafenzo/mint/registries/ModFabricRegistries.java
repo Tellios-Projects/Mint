@@ -56,16 +56,23 @@ public class ModFabricRegistries {
 //        ModInit.LOGGER.debug("Registering composting chances for " + Super.MOD_ID); //This log is commented out because this is not the only place our mod registers this
 
         CompostingChanceRegistry compostingChanceRegistry = CompostingChanceRegistry.INSTANCE;
+        compostingChanceRegistry.add(ModBlocks.WILD_MINT, 0.65f);
         compostingChanceRegistry.add(ModItems.MINT_SPRIG, 0.65f); // same as wheat
+        compostingChanceRegistry.add(ModBlocks.MINT_SPRIG_BLOCK, 1.0f);
         compostingChanceRegistry.add(ModItems.MINT_COOKIE, 0.85f); // same as cookie
+        compostingChanceRegistry.add(ModItems.WINTERGREEN_BERRIES, 0.65f);
+        compostingChanceRegistry.add(ModItems.WINTER_MEDLEY, 0.85f); // same as cookie
 
+        compostingChanceRegistry.add(ModBlocks.HYPERICUM, 0.65f);
         compostingChanceRegistry.add(ModItems.PEACH, 0.65f);
         compostingChanceRegistry.add(ModItems.PEACH_PIT, 0.5f);
         compostingChanceRegistry.add(ModItems.PEACH_SLICE, 0.3f);
 
+        compostingChanceRegistry.add(ModBlocks.HIDCOTE_LAVENDER, 0.65f);
         compostingChanceRegistry.add(ModBlocks.PERIWINKLE_PETALS, 0.5f);
         compostingChanceRegistry.add(ModItems.LAVENDER_BREAD, 0.85f);
 
+        compostingChanceRegistry.add(ModBlocks.THISTLE_FLOWER, 0.65f);
         compostingChanceRegistry.add(ModBlocks.WAXCAP_STEM_BLOCK, 0.65f);
         compostingChanceRegistry.add(ModBlocks.WAXCAP_CAP_BLOCK, 0.85f);
         compostingChanceRegistry.add(ModBlocks.WAXCAP_GILLS, 0.85f);

@@ -184,6 +184,7 @@ public class ModItemGroups {
     public static Collection<ItemStack> woodsetItems(WoodSet woodSet) {
         ArrayList<ItemStack> c = new ArrayList<ItemStack>();
         ModUtil.addToIfNotNull(c, woodSet.getLeaves());
+        ModUtil.addToIfNotNull(c, woodSet.getSapling());
         ModUtil.addToIfNotNull(c, woodSet.getLog());
         ModUtil.addToIfNotNull(c, woodSet.getWood());
         ModUtil.addToIfNotNull(c, woodSet.getStrippedLog());

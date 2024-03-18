@@ -126,7 +126,7 @@ public class TwoTallCropBlock extends CropBlock {
     }
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isIn(BlockTags.DIRT);
+        return floor.isIn(BlockTags.DIRT) || floor.isOf(Blocks.FARMLAND);
     }
     public float getChanceToGrow(BlockState state) {
         return 1.0f;
@@ -254,7 +254,7 @@ public class TwoTallCropBlock extends CropBlock {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if(this.getDroppedHarvestItem() == null) { return ActionResult.PASS; }
-        if (player.getStackInHand(hand).isOf(Items.BONE_MEAL)) { return ActionResult.PASS; }
+//        if (player.getStackInHand(hand).isOf(Items.BONE_MEAL)) { return ActionResult.PASS; }
 
         int j = this.getHarvestAmount(state, world.getRandom());
         if(j > 0) {
