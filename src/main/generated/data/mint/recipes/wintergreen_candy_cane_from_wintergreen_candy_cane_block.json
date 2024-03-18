@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "mint:wintergreen_candy_cane_reverse",
+  "ingredients": [
+    {
+      "item": "mint:wintergreen_candy_cane_block"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "mint:wintergreen_candy_cane"
+  }
+}

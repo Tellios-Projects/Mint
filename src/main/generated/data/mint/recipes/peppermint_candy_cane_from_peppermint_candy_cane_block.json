@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "mint:peppermint_candy_cane_reverse",
+  "ingredients": [
+    {
+      "item": "mint:peppermint_candy_cane_block"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "mint:peppermint_candy_cane"
+  }
+}

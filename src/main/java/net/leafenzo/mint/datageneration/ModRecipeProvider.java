@@ -264,6 +264,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, count).input(input).group("planks").criterion("has_logs", RecipeProvider.conditionsFromItem(input)).offerTo(exporter);
     }
 
+    public static void offerReversible2x2CompactingRecipes(Consumer<RecipeJsonProvider> exporter, RecipeCategory reverseCategory, ItemConvertible baseItem, RecipeCategory compactingCategory, ItemConvertible compactItem, String compactingId, @Nullable String compactingGroup, String reverseId, @Nullable String reverseGroup) {
+        ShapelessRecipeJsonBuilder.create(reverseCategory, baseItem, 4).input(compactItem).group(reverseGroup).criterion(RecipeProvider.hasItem(compactItem), RecipeProvider.conditionsFromItem(compactItem)).offerTo(exporter, new Identifier(reverseId+"_from_"+compactingId));
+        ShapedRecipeJsonBuilder.create(compactingCategory, compactItem)
+                .input(Character.valueOf('#'), baseItem)
+                .pattern("##")
+                .pattern("##")
+                .group(compactingGroup)
+                .criterion(FabricRecipeProvider.hasItem(baseItem), FabricRecipeProvider.conditionsFromItem(baseItem))
+                .offerTo(exporter, new Identifier(compactingId+"_from_"+reverseId));
+    }
+    public static void offerReversible2x2CompactingRecipes(Consumer<RecipeJsonProvider> exporter, RecipeCategory reverseCategory, ItemConvertible baseItem, RecipeCategory compactingCategory, ItemConvertible compactItem) {
+        offerReversible2x2CompactingRecipes(exporter, reverseCategory, baseItem, compactingCategory, compactItem, RecipeProvider.getRecipeName(compactItem), Super.MOD_ID + ":" + Registries.ITEM.getId(baseItem.asItem()).getPath(), RecipeProvider.getRecipeName(baseItem), Super.MOD_ID + ":" + Registries.ITEM.getId(baseItem.asItem()).getPath() + "_reverse");
+    }
 
     public static void offerWoodsetRecipes(Consumer<RecipeJsonProvider> exporter, WoodSet woodSet) {
         Block log = woodSet.getLog();
@@ -360,7 +373,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_BRICK_SLAB, ModBlocks.MINT_BRICKS, 2);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_BRICK_WALL, ModBlocks.MINT_BRICKS);
 
-        offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.WINTERGREEN_CANDY_CANE_BLOCK, ModItems.WINTERGREEN_CANDY_CANE);
+        offerReversible2x2CompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.WINTERGREEN_CANDY_CANE, RecipeCategory.MISC, ModBlocks.WINTERGREEN_CANDY_CANE_BLOCK);
         offerBarkBlockRecipe(exporter, ModBlocks.WINTERGREEN_CANDY_CANE_BARK, ModBlocks.WINTERGREEN_CANDY_CANE_BLOCK);
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.WINTERGREEN_CANDY_CANE, 4)
                 .input(Items.SUGAR)
@@ -369,7 +382,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(Items.SUGAR), FabricRecipeProvider.conditionsFromItem(Items.SUGAR))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.WINTERGREEN_CANDY_CANE)));
 
-        offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PEPPERMINT_CANDY_CANE_BLOCK, ModItems.PEPPERMINT_CANDY_CANE);
+        offerReversible2x2CompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.PEPPERMINT_CANDY_CANE, RecipeCategory.MISC, ModBlocks.PEPPERMINT_CANDY_CANE_BLOCK);
         offerBarkBlockRecipe(exporter, ModBlocks.PEPPERMINT_CANDY_CANE_BARK, ModBlocks.PEPPERMINT_CANDY_CANE_BLOCK);
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.PEPPERMINT_CANDY_CANE, 4)
                 .input(Items.SUGAR)

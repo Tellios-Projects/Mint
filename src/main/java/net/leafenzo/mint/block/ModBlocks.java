@@ -136,6 +136,8 @@ public class ModBlocks {
             false,
             new WintergreenSaplingGenerator()
     );
+    static { HAS_FOLIAGE_COLOR_PROVIDER.remove(WINTERGREEN_WOODSET.getLeaves()); }
+
     public static final Block WINTERGREEN_CANDY_CANE_BLOCK = registerBlock("wintergreen_candy_cane_block", new PillarBlock(FabricBlockSettings.create().mapColor(MapColor.OFF_WHITE).strength(0.4f).sounds(BlockSoundGroup.BONE).instrument(Instrument.CHIME)));
     public static final Block WINTERGREEN_CANDY_CANE_BARK = registerBlock("wintergreen_candy_cane_bark", new PillarBlock(FabricBlockSettings.copyOf(WINTERGREEN_CANDY_CANE_BLOCK).instrument(Instrument.CHIME)));
     public static final Block PEPPERMINT_CANDY_CANE_BLOCK = registerBlock("peppermint_candy_cane_block", new PillarBlock(FabricBlockSettings.copyOf(WINTERGREEN_CANDY_CANE_BLOCK).mapColor(MapColor.RAW_IRON_PINK).instrument(Instrument.CHIME)));
