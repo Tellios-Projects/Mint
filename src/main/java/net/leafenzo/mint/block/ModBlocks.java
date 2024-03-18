@@ -118,17 +118,14 @@ public class ModBlocks {
     //<editor-fold desc ="MINT - Special">
     public static final Block MINT_CROP = registerBlockWithoutBlockItem("mint_crop", new MintCropBlock(FabricBlockSettings.create().mapColor(MapColor.LICHEN_GREEN).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).pistonBehavior(PistonBehavior.DESTROY)));
         static { RENDER_LAYER_CUTOUT_MIPPED.add(MINT_CROP); }
-
     public static final Block WILD_MINT = registerBlock("wild_mint", createFlowerBlock(ModEffects.MINT_CHILL, 900)/*, ModItemGroups.MINT*/);
     public static final Block POTTED_WILD_MINT = registerBlockWithoutBlockItem("potted_wild_mint", createFlowerPotBlock((FlowerBlock) WILD_MINT)/*, ModItemGroups.MINT*/);
     public static final Block MINT_SPRIG_BLOCK = registerBlock("mint_sprig_block", new Block(FabricBlockSettings.copyOf(Blocks.ACACIA_LEAVES).mapColor(MapColor.LICHEN_GREEN))/*, ModItemGroups.MINT*/);
         static { RENDER_LAYER_CUTOUT.add(MINT_SPRIG_BLOCK); }
-
     public static final Block MINT_BRICKS = registerBlock("mint_bricks", new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK).mapColor(MapColor.LICHEN_GREEN))/*, ModItemGroups.MINT*/);
     public static final Block MINT_BRICK_SLAB = registerBlock("mint_brick_slab", createSlabBlock(FabricBlockSettings.copyOf(MINT_BRICKS))/*, ModItemGroups.MINT*/);
     public static final Block MINT_BRICK_STAIRS = registerBlock("mint_brick_stairs", createStairsBlock(MINT_BRICKS, FabricBlockSettings.copyOf(MINT_BRICKS))/*, ModItemGroups.MINT*/);
     public static final Block MINT_BRICK_WALL = registerBlock("mint_brick_wall", createWallBlock(FabricBlockSettings.copyOf(MINT_BRICKS))/*, ModItemGroups.MINT*/);
-
     public static WoodSet WINTERGREEN_WOODSET = new WoodSet(
             new Identifier(Super.MOD_ID, "wintergreen"),
             MapColor.TEAL,
@@ -139,6 +136,10 @@ public class ModBlocks {
             false,
             new WintergreenSaplingGenerator()
     );
+    public static final Block WINTERGREEN_CANDY_CANE_BLOCK = registerBlock("wintergreen_candy_cane_block", new PillarBlock(FabricBlockSettings.create().mapColor(MapColor.OFF_WHITE).strength(0.4f).sounds(BlockSoundGroup.BONE).instrument(Instrument.CHIME)));
+    public static final Block WINTERGREEN_CANDY_CANE_BARK = registerBlock("wintergreen_candy_cane_bark", new PillarBlock(FabricBlockSettings.copyOf(WINTERGREEN_CANDY_CANE_BLOCK).instrument(Instrument.CHIME)));
+    public static final Block PEPPERMINT_CANDY_CANE_BLOCK = registerBlock("peppermint_candy_cane_block", new PillarBlock(FabricBlockSettings.copyOf(WINTERGREEN_CANDY_CANE_BLOCK).mapColor(MapColor.RAW_IRON_PINK).instrument(Instrument.CHIME)));
+    public static final Block PEPPERMINT_CANDY_CANE_BARK = registerBlock("peppermint_candy_cane_bark", new PillarBlock(FabricBlockSettings.copyOf(PEPPERMINT_CANDY_CANE_BLOCK).instrument(Instrument.CHIME)));
 
     //public static final Block MINT_BRICK_WALL = registerBlock("mint_brick_wall", createWallBlock new WallBlock(FabricBlockSettings.copyOf(MINT_BRICKS/*)), ModItemGroups.MINT*/);
     //</editor-fold>

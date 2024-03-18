@@ -46,17 +46,12 @@ public class ModItems {
                     .build())));
 
     public static final Item WINTERGREEN_SAP = registerItem("wintergreen_sap", new Item(new FabricItemSettings()));
-    //TODO smelting recipe from wintergreen leaves to get these
-    //TODO mint dye recipe from this
-    //TODO mint bricks recipe using this
-
     public static final Item WINTERGREEN_BERRIES = registerItem("wintergreen_berries", new MintSprigItem(new FabricItemSettings()
             .food(new FoodComponent.Builder()
                     .alwaysEdible()
                     .hunger(1)
                     .saturationModifier(0.3f)
                     .build())));
-    //TODO drop these from wintergreen leaves occasionally
 
     public static final Item WINTER_MEDLEY = registerItem("winter_medley", new WinterMedleyItem(new FabricItemSettings()
             .food(new FoodComponent.Builder()
@@ -64,9 +59,16 @@ public class ModItems {
 //                    .hunger(0)
                     .saturationModifier(4.0f)
                     .build())));
-
-    //TODO made from mint sprigs and wintergreen berries
-    //TODO mint chill potion recipe using this instead of just a mint sprig
+    public static final Item WINTERGREEN_CANDY_CANE = registerItem("wintergreen_candy_cane", new CandyCaneItem(new FabricItemSettings()
+            .food(new FoodComponent.Builder()
+                    .hunger(2)
+                    .saturationModifier(0.0f)
+                    .build())));
+    public static final Item PEPPERMINT_CANDY_CANE = registerItem("peppermint_candy_cane", new CandyCaneItem(new FabricItemSettings()
+            .food(new FoodComponent.Builder()
+                    .hunger(2)
+                    .saturationModifier(0.0f)
+                    .build())));
 
     //</editor-fold>
     //<editor-fold desc ="PEACH - Special">

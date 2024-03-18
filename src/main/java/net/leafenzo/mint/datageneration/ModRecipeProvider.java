@@ -360,6 +360,24 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_BRICK_SLAB, ModBlocks.MINT_BRICKS, 2);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_BRICK_WALL, ModBlocks.MINT_BRICKS);
 
+        offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.WINTERGREEN_CANDY_CANE_BLOCK, ModItems.WINTERGREEN_CANDY_CANE);
+        offerBarkBlockRecipe(exporter, ModBlocks.WINTERGREEN_CANDY_CANE_BARK, ModBlocks.WINTERGREEN_CANDY_CANE_BLOCK);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.WINTERGREEN_CANDY_CANE, 4)
+                .input(Items.SUGAR)
+                .input(ModItems.WINTERGREEN_BERRIES)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.WINTERGREEN_BERRIES), FabricRecipeProvider.conditionsFromItem(ModItems.WINTERGREEN_BERRIES))
+                .criterion(FabricRecipeProvider.hasItem(Items.SUGAR), FabricRecipeProvider.conditionsFromItem(Items.SUGAR))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.WINTERGREEN_CANDY_CANE)));
+
+        offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PEPPERMINT_CANDY_CANE_BLOCK, ModItems.PEPPERMINT_CANDY_CANE);
+        offerBarkBlockRecipe(exporter, ModBlocks.PEPPERMINT_CANDY_CANE_BARK, ModBlocks.PEPPERMINT_CANDY_CANE_BLOCK);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.PEPPERMINT_CANDY_CANE, 4)
+                .input(Items.SUGAR)
+                .input(ModItems.MINT_SPRIG)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.MINT_SPRIG), FabricRecipeProvider.conditionsFromItem(ModItems.MINT_SPRIG))
+                .criterion(FabricRecipeProvider.hasItem(Items.SUGAR), FabricRecipeProvider.conditionsFromItem(Items.SUGAR))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.PEPPERMINT_CANDY_CANE)));
+
         // PEACH - Special
         offerShapelessRecipe(exporter, ModItems.PEACH_DYE, ModBlocks.HYPERICUM, "peach_dye", 1);
         offerShapelessRecipe(exporter, ModItems.PEACH_DYE, ModItems.PEACH_PIT, "peach_dye", 1);

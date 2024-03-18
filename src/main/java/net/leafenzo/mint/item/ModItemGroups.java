@@ -294,6 +294,12 @@ public class ModItemGroups {
                         entries.add(ModBlocks.MINT_BRICK_STAIRS);
                         entries.add(ModBlocks.MINT_BRICK_WALL);
                         entries.addAll(woodsetItems(ModBlocks.WINTERGREEN_WOODSET));
+                        entries.add(ModItems.WINTERGREEN_CANDY_CANE);
+                        entries.add(ModItems.PEPPERMINT_CANDY_CANE);
+                        entries.add(ModBlocks.WINTERGREEN_CANDY_CANE_BLOCK);
+                        entries.add(ModBlocks.WINTERGREEN_CANDY_CANE_BARK);
+                        entries.add(ModBlocks.PEPPERMINT_CANDY_CANE_BLOCK);
+                        entries.add(ModBlocks.PEPPERMINT_CANDY_CANE_BARK);
 
                         entries.add(PotionUtil.setPotion(Items.POTION.getDefaultStack(), ModPotions.MINT_CHILL));
                         entries.add(PotionUtil.setPotion(Items.POTION.getDefaultStack(), ModPotions.LONG_MINT_CHILL));

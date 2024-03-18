@@ -20,6 +20,8 @@ public class FloweringMelonItem extends Item {
     public FloweringMelonItem(Settings settings) {
         super(settings);
     }
+    //TODO maybe make this edible by the player too? Although, glistering melons aren't edible...
+
     @Override
     public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
         if(entity instanceof PassiveEntity passiveEntity && passiveEntity.isBaby() && !((IStuntable) passiveEntity).isStunted()) {

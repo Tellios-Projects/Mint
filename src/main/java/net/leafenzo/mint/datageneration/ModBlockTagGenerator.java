@@ -47,6 +47,8 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
                 .add(ModBlocks.MINT_BRICK_SLAB)
                 .add(ModBlocks.MINT_BRICK_STAIRS)
                 .add(ModBlocks.MINT_BRICK_WALL)
+                .add(ModBlocks.WINTERGREEN_CANDY_CANE_BLOCK)
+                .add(ModBlocks.PEPPERMINT_CANDY_CANE_BLOCK)
 
                 .add(ModBlocks.LAVENDER_OIL_LANTERN)
                 .add(ModBlocks.LAVENDER_BRICKS)

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "mint:block/peppermint_candy_cane_bark",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "mint:block/peppermint_candy_cane_bark"
+    },
+    "axis=z": {
+      "model": "mint:block/peppermint_candy_cane_bark",
+      "x": 90
+    }
+  }
+}

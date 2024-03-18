@@ -213,6 +213,11 @@ public class ModModelProvider extends FabricModelProvider {
         mintBricksTexturePool.slab(ModBlocks.MINT_BRICK_SLAB);
         mintBricksTexturePool.stairs(ModBlocks.MINT_BRICK_STAIRS);
         mintBricksTexturePool.wall(ModBlocks.MINT_BRICK_WALL);
+        
+        blockStateModelGenerator.registerLog(ModBlocks.WINTERGREEN_CANDY_CANE_BLOCK).log(ModBlocks.WINTERGREEN_CANDY_CANE_BLOCK).wood(ModBlocks.WINTERGREEN_CANDY_CANE_BARK);
+        blockStateModelGenerator.registerLog(ModBlocks.PEPPERMINT_CANDY_CANE_BLOCK).log(ModBlocks.PEPPERMINT_CANDY_CANE_BLOCK).wood(ModBlocks.PEPPERMINT_CANDY_CANE_BARK);
+//        if(log != null && wood != null) { blockStateModelGenerator.registerLog(log).log(log).wood(wood);  }
+//        else if(log != null) { blockStateModelGenerator.registerLog(log).log(log); }
 
         // PEACH - Special
         this.registerCoralAnemoneBlock(blockStateModelGenerator);
@@ -366,6 +371,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.WINTERGREEN_SAP, Models.GENERATED);
 //        itemModelGenerator.register(ModItems.WINTERGREEN_BERRIES, Models.GENERATED);
         itemModelGenerator.register(ModItems.WINTER_MEDLEY, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WINTERGREEN_CANDY_CANE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PEPPERMINT_CANDY_CANE, Models.GENERATED);
 
 //        itemModelGenerator.register(ModItems.PEACH_PIT, Models.GENERATED);
         itemModelGenerator.register(ModItems.PEACH, Models.GENERATED);
