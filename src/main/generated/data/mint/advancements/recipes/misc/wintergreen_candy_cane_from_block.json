@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_peppermint_candy_cane": {
+    "has_peppermint_candy_cane_block": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "mint:peppermint_candy_cane"
-            ]
+            "tag": "mint:wintergreen_candy_cane_blocks"
           }
         ]
       },
@@ -15,20 +13,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:peppermint_candy_cane_block_from_peppermint_candy_cane"
+        "recipe": "minecraft:wintergreen_candy_cane_from_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_peppermint_candy_cane",
+      "has_peppermint_candy_cane_block",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:peppermint_candy_cane_block_from_peppermint_candy_cane"
+      "minecraft:wintergreen_candy_cane_from_block"
     ]
   },
   "sends_telemetry_event": false

@@ -3,16 +3,16 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:wintergreen_candy_cane_from_wintergreen_candy_cane_block"
+        "recipe": "mint:wintergreen_candy_cane_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_wintergreen_candy_cane_block": {
+    "has_wintergreen_candy_cane": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:wintergreen_candy_cane_block"
+              "mint:wintergreen_candy_cane"
             ]
           }
         ]
@@ -22,13 +22,13 @@
   },
   "requirements": [
     [
-      "has_wintergreen_candy_cane_block",
+      "has_wintergreen_candy_cane",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:wintergreen_candy_cane_from_wintergreen_candy_cane_block"
+      "mint:wintergreen_candy_cane_block"
     ]
   },
   "sends_telemetry_event": false

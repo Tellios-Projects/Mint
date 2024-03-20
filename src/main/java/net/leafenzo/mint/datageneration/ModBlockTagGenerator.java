@@ -47,8 +47,6 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
                 .add(ModBlocks.MINT_BRICK_SLAB)
                 .add(ModBlocks.MINT_BRICK_STAIRS)
                 .add(ModBlocks.MINT_BRICK_WALL)
-                .add(ModBlocks.WINTERGREEN_CANDY_CANE_BLOCK)
-                .add(ModBlocks.PEPPERMINT_CANDY_CANE_BLOCK)
 
                 .add(ModBlocks.LAVENDER_OIL_LANTERN)
                 .add(ModBlocks.LAVENDER_BRICKS)
@@ -77,6 +75,10 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.WAXCAP_STEM_BLOCK)
                 .add(ModBlocks.WAXCAP_CAP_BLOCK)
+                .add(ModBlocks.WINTERGREEN_CANDY_CANE_BLOCK)
+                .add(ModBlocks.WINTERGREEN_CANDY_CANE_BARK)
+                .add(ModBlocks.PEPPERMINT_CANDY_CANE_BLOCK)
+                .add(ModBlocks.PEPPERMINT_CANDY_CANE_BARK)
         ;
 
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)

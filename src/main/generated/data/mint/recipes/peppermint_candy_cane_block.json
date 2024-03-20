@@ -1,10 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
-  "group": "mint:wintergreen_candy_cane",
+  "category": "building",
   "key": {
     "#": {
-      "item": "mint:wintergreen_candy_cane"
+      "item": "mint:peppermint_candy_cane"
     }
   },
   "pattern": [
@@ -12,7 +11,7 @@
     "##"
   ],
   "result": {
-    "item": "mint:wintergreen_candy_cane_block"
+    "item": "mint:peppermint_candy_cane_block"
   },
   "show_notification": true
 }

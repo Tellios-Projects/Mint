@@ -1,8 +1,5 @@
 # TODO LIST:
 # HIGH PRIORITY
-- Candy Cane blocks tool is Pickaxe instead of Axe
-- Candy Cane Bark Blocks have no preferred tool
-- Candy Cane Bark Blocks cannot be crafted down into 4 Candy Canes
 - Further server mixin testing
 
 # COMPAT

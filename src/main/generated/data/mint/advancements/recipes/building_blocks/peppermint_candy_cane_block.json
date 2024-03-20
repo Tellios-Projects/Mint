@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_peppermint_candy_cane_block": {
+    "has_peppermint_candy_cane": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mint:peppermint_candy_cane_block"
+              "mint:peppermint_candy_cane"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:peppermint_candy_cane_from_peppermint_candy_cane_block"
+        "recipe": "mint:peppermint_candy_cane_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_peppermint_candy_cane_block",
+      "has_peppermint_candy_cane",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:peppermint_candy_cane_from_peppermint_candy_cane_block"
+      "mint:peppermint_candy_cane_block"
     ]
   },
   "sends_telemetry_event": false

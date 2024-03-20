@@ -277,6 +277,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public static void offerReversible2x2CompactingRecipes(Consumer<RecipeJsonProvider> exporter, RecipeCategory reverseCategory, ItemConvertible baseItem, RecipeCategory compactingCategory, ItemConvertible compactItem) {
         offerReversible2x2CompactingRecipes(exporter, reverseCategory, baseItem, compactingCategory, compactItem, RecipeProvider.getRecipeName(compactItem), Super.MOD_ID + ":" + Registries.ITEM.getId(baseItem.asItem()).getPath(), RecipeProvider.getRecipeName(baseItem), Super.MOD_ID + ":" + Registries.ITEM.getId(baseItem.asItem()).getPath() + "_reverse");
     }
+    public static void offerCandyCaneBarkBlockRecipe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output, 4).input(Character.valueOf('#'), input).pattern("##").pattern("##").group("bark").criterion("has_log", RecipeProvider.conditionsFromItem(input)).offerTo(exporter);
+    }
 
     public static void offerWoodsetRecipes(Consumer<RecipeJsonProvider> exporter, WoodSet woodSet) {
         Block log = woodSet.getLog();
@@ -372,9 +375,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_BRICK_STAIRS, ModBlocks.MINT_BRICKS);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_BRICK_SLAB, ModBlocks.MINT_BRICKS, 2);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MINT_BRICK_WALL, ModBlocks.MINT_BRICKS);
-
-        offerReversible2x2CompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.WINTERGREEN_CANDY_CANE, RecipeCategory.MISC, ModBlocks.WINTERGREEN_CANDY_CANE_BLOCK);
-        offerBarkBlockRecipe(exporter, ModBlocks.WINTERGREEN_CANDY_CANE_BARK, ModBlocks.WINTERGREEN_CANDY_CANE_BLOCK);
+        
+        offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.WINTERGREEN_CANDY_CANE_BLOCK, ModItems.WINTERGREEN_CANDY_CANE);
+        offerCandyCaneBarkBlockRecipe(exporter, ModBlocks.WINTERGREEN_CANDY_CANE_BARK, ModBlocks.WINTERGREEN_CANDY_CANE_BLOCK);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WINTERGREEN_CANDY_CANE, 4)
+                .input(ModTags.Items.WINTERGREEN_CANDY_CANE_BLOCKS)
+                .criterion("has_peppermint_candy_cane_block", FabricRecipeProvider.conditionsFromTag(ModTags.Items.WINTERGREEN_CANDY_CANE_BLOCKS))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.WINTERGREEN_CANDY_CANE) + "_from_block"));
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.WINTERGREEN_CANDY_CANE, 4)
                 .input(Items.SUGAR)
                 .input(ModItems.WINTERGREEN_BERRIES)
@@ -382,8 +389,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(Items.SUGAR), FabricRecipeProvider.conditionsFromItem(Items.SUGAR))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.WINTERGREEN_CANDY_CANE)));
 
-        offerReversible2x2CompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.PEPPERMINT_CANDY_CANE, RecipeCategory.MISC, ModBlocks.PEPPERMINT_CANDY_CANE_BLOCK);
-        offerBarkBlockRecipe(exporter, ModBlocks.PEPPERMINT_CANDY_CANE_BARK, ModBlocks.PEPPERMINT_CANDY_CANE_BLOCK);
+        offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PEPPERMINT_CANDY_CANE_BLOCK, ModItems.PEPPERMINT_CANDY_CANE);
+        offerCandyCaneBarkBlockRecipe(exporter, ModBlocks.PEPPERMINT_CANDY_CANE_BARK, ModBlocks.PEPPERMINT_CANDY_CANE_BLOCK);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PEPPERMINT_CANDY_CANE, 4)
+                .input(ModTags.Items.PEPPERMINT_CANDY_CANE_BLOCKS)
+                .criterion("has_peppermint_candy_cane_block", FabricRecipeProvider.conditionsFromTag(ModTags.Items.PEPPERMINT_CANDY_CANE_BLOCKS))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.PEPPERMINT_CANDY_CANE) + "_from_block"));
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.PEPPERMINT_CANDY_CANE, 4)
                 .input(Items.SUGAR)
                 .input(ModItems.MINT_SPRIG)

@@ -58,6 +58,16 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
 //                .add(ModItems.PEACH_PIT) // Villagers wouldn't be able to harvest these anyway, so don't add
         ;
 
+        getOrCreateTagBuilder(ModTags.Items.WINTERGREEN_CANDY_CANE_BLOCKS)
+                .add(ModBlocks.WINTERGREEN_CANDY_CANE_BLOCK.asItem())
+                .add(ModBlocks.WINTERGREEN_CANDY_CANE_BARK.asItem())
+        ;
+
+        getOrCreateTagBuilder(ModTags.Items.PEPPERMINT_CANDY_CANE_BLOCKS)
+                .add(ModBlocks.PEPPERMINT_CANDY_CANE_BLOCK.asItem())
+                .add(ModBlocks.PEPPERMINT_CANDY_CANE_BARK.asItem())
+        ;
+
 
     // Main
         for(WoodSet woodSet : ModBlocks.WOODSETS) {
