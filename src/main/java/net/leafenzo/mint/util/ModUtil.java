@@ -342,8 +342,10 @@ public class ModUtil {
 
     public static Direction randomHorizontalDirectionWithCoordinateSeed(BlockPos pos) {
         int x = pos.getX();
+        int y = pos.getY();
         int z = pos.getZ();
-        Random random = Random.create((long) x * z);
+        long seed = ((long) x * z) - y;
+        Random random = Random.create(seed);
 
         int d = random.nextInt(4);
         return Direction.byId(d+2);
