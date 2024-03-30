@@ -10,13 +10,13 @@
     "BoatEntityMixin",
     "DyeColorMixin",
     "EntityMixin",
+    "ducks.FabricDataGeneratorMixin",
     "LlamaDecorFeatureRendererMixin",
     "PassiveEntityMixin",
     "PlayerEntityMixin",
     "PointOfInterestTypesMixin",
     "SheepEntityMixin",
     "ShulkerBoxColoringRecipeMixin",
-
     "compat.jei.ShulkerBoxColoringRecipeMakerMixin"
   ],
   "client": [
