@@ -48,3 +48,7 @@ local.properties
 *.csv~
 src/main/generated/.cache/*
 *.png~
+
+tools/templates/*
+tools/temp/*
+template_test/*

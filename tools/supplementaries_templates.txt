@@ -1,0 +1,4 @@
+present*magenta
+trapped_present*magenta
+candle_holder*magenta
+flag*magenta
