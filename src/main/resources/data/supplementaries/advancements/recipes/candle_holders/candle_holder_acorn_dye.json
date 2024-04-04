@@ -1,0 +1,46 @@
+{
+  "rewards": {
+    "recipes": [
+      "supplementaries:candle_holders/candle_holder_acorn_dye"
+    ]
+  },
+  "criteria": {
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "supplementaries:candle_holders/candle_holder_acorn_dye"
+      }
+    },
+    "has_candle_holder": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "supplementaries:candle_holder"
+            ]
+          }
+        ]
+      }
+    },
+    "forge:dyes/acorn": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dyes/acorn"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_candle_holder",
+      "has_the_recipe",
+      "has_candle_holder",
+      "forge:dyes/acorn"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

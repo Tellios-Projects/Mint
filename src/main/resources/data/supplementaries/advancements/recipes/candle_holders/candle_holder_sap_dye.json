@@ -1,0 +1,46 @@
+{
+  "rewards": {
+    "recipes": [
+      "supplementaries:candle_holders/candle_holder_sap_dye"
+    ]
+  },
+  "criteria": {
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "supplementaries:candle_holders/candle_holder_sap_dye"
+      }
+    },
+    "has_candle_holder": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "supplementaries:candle_holder"
+            ]
+          }
+        ]
+      }
+    },
+    "forge:dyes/sap": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dyes/sap"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_candle_holder",
+      "has_the_recipe",
+      "has_candle_holder",
+      "forge:dyes/sap"
+    ]
+  ],
+  "sends_telemetry_event": false
+}
