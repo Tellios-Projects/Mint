@@ -51,4 +51,5 @@ src/main/generated/.cache/*
 
 tools/templates/*
 tools/temp/*
+tools/jars/*
 template_test/*
