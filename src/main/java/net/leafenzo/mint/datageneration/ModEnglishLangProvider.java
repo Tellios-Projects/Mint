@@ -87,6 +87,18 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
         }
     }
 
+    private void generateColoredBlockAndItemTranslationsForMod(TranslationBuilder translationBuilder, String modId) {
+        for (Identifier id : ModUtil.allBlockIdsInNamespace(modId)) {
+            for (DyeColor color : ModDyeColor.VALUES) {
+                if (id.getPath().contains(color.getName())) {
+                    String key = "block." + modId + "." + id.getPath();
+                    usedTranslationKeys.add(key);
+                    translationBuilder.add(key, toSentanceCase(color.getName() + id.getPath().replace(color.getName(), (CharSequence) ("")))); //move the color name to the beginning
+                }
+            }
+        }
+    }
+
     /**
      * Must be run before our automatic translation building to avoid wall banner nonsense
      * @param translationBuilder
@@ -120,6 +132,9 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
         generateBannerTranslations(translationBuilder, ModBlocks.BANNER_BLOCKS); // Necessary (albeit hacky) so we don't get Wall Banner nonsense
         generateBannerPatternColorTranslations(translationBuilder);
         generateShieldVariantTranslations(translationBuilder);
+
+        //Compat
+//        generateColoredBlockAndItemTranslationsForMod(translationBuilder, "supplementarires");
 
         //Automatic
         for(Identifier id : ModUtil.allBlockIdsInNamespace(Super.MOD_ID)) {
