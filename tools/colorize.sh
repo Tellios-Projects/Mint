@@ -1,5 +1,4 @@
 #!/bin/bash
-VANILLA_COLORS=./vanilla_colors.txt
 COLORLIST=./colors.txt
 TEMPLATES=$1
 OUT_DIRECTORY=$2
