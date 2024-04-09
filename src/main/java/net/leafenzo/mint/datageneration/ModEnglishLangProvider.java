@@ -127,6 +127,8 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
         generateTranslation(translationBuilder, ModBlocks.WAXCAP_GILLS, "Waxcap Gill Block");
         generateTranslation(translationBuilder, ModBlocks.WAXCAP_GILL_SLAB, "Waxcap Gills");
 
+        generateTranslation(translationBuilder, ModBlocks.AMBER_BLOCK, "Block of Amber");
+
         generateWoodsetTranslations(translationBuilder);
 
         generateBannerTranslations(translationBuilder, ModBlocks.BANNER_BLOCKS); // Necessary (albeit hacky) so we don't get Wall Banner nonsense

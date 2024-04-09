@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "mint:block/amber_block"
+    }
+  }
+}

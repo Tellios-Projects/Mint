@@ -63,6 +63,13 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
                 .add(ModBlocks.CORALSOIL_BRICK_SLAB)
                 .add(ModBlocks.CORALSOIL_BRICK_STAIRS)
                 .add(ModBlocks.CORALSOIL_BRICK_WALL)
+
+                .add(ModBlocks.AMBER_BLOCK)
+                .add(ModBlocks.AMBER_BRICKS)
+                .add(ModBlocks.AMBER_BRICK_SLAB)
+                .add(ModBlocks.AMBER_BRICK_STAIRS)
+                .add(ModBlocks.AMBER_BRICK_WALL)
+                .add(ModBlocks.CHISELED_AMBER_BRICKS)
         ;
 
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)

@@ -274,6 +274,16 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerMushroomBlock(ModBlocks.WAXCAP_STEM_BLOCK);
         blockStateModelGenerator.registerCrop(ModBlocks.ARTICHOKE_CROP, ArtichokeCropBlock.AGE, IntStream.rangeClosed(0, ArtichokeCropBlock.MAX_AGE).toArray());
 
+
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AMBER_BLOCK);
+        BlockStateModelGenerator.BlockTexturePool amberBricksTexturePool =
+                blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.AMBER_BRICKS);
+        amberBricksTexturePool.slab(ModBlocks.AMBER_BRICK_SLAB);
+        amberBricksTexturePool.stairs(ModBlocks.AMBER_BRICK_STAIRS);
+        amberBricksTexturePool.wall(ModBlocks.AMBER_BRICK_WALL);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_AMBER_BRICKS);
+
+
         //Main
 // WOODSETS
         for (WoodSet woodSet : ModBlocks.WOODSETS) {

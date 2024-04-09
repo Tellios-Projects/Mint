@@ -597,6 +597,12 @@ public class ModItemGroups {
                         entries.add(ModBlocks.AMBER_SHULKER_BOX);
                         entries.add(ModBlocks.AMBER_CANDLE);
                         entries.add(ModItems.AMBER);
+                        entries.add(ModBlocks.AMBER_BLOCK);
+                        entries.add(ModBlocks.AMBER_BRICKS);
+                        entries.add(ModBlocks.AMBER_BRICK_STAIRS);
+                        entries.add(ModBlocks.AMBER_BRICK_SLAB);
+                        entries.add(ModBlocks.AMBER_BRICK_WALL);
+                        entries.add(ModBlocks.CHISELED_AMBER_BRICKS);
 
                         entries.add(ModItems.SAGE_DYE);
                         entries.add(ModBlocks.SAGE_WOOL);

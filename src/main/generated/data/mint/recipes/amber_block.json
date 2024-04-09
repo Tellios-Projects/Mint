@@ -1,10 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
-  "group": "bark",
   "key": {
     "#": {
-      "item": "mint:wintergreen_candy_cane_block"
+      "item": "mint:amber"
     }
   },
   "pattern": [
@@ -12,8 +11,7 @@
     "##"
   ],
   "result": {
-    "count": 4,
-    "item": "mint:wintergreen_candy_cane_bark"
+    "item": "mint:amber_block"
   },
   "show_notification": true
 }

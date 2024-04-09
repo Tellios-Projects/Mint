@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "mint:amber_bricks"
+  },
+  "result": "mint:amber_brick_stairs"
+}

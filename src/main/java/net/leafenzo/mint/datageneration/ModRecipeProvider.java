@@ -6,37 +6,24 @@ import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.recipe.ModRecipeSerializer;
-import net.leafenzo.mint.recipe.ingredient.PotionIngredient;
-import net.leafenzo.mint.registration.ModRegistryHelper;
 import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.registry.tag.ModTags;
-import net.leafenzo.mint.util.ModDyeColor;
-import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.TexturedModel;
 import net.minecraft.data.server.recipe.*;
 import net.minecraft.item.*;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionUtil;
-import net.minecraft.potion.Potions;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.function.Consumer;
 
-import static net.leafenzo.mint.registration.ModRegistryHelper.*;
+import static net.leafenzo.mint.registration.ModRegistryHelper.ItemRegistry;
 import static net.leafenzo.mint.util.ModUtil.*;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
@@ -622,6 +609,34 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .group(breakfastGroup)
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.BREAKFAST_PORKCHOP)));
         //</editor-fold>
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.AMBER_BLOCK, 1)
+                .pattern("##")
+                .pattern("##")
+                .input('#', ModItems.AMBER)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.AMBER), FabricRecipeProvider.conditionsFromItem(ModItems.AMBER))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.AMBER_BLOCK)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.AMBER_BRICKS, 4)
+                .pattern("##")
+                .pattern("##")
+                .input('#', ModBlocks.AMBER_BLOCK)
+                .criterion(FabricRecipeProvider.hasItem(ModBlocks.AMBER_BLOCK), FabricRecipeProvider.conditionsFromItem(ModBlocks.AMBER_BLOCK))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.AMBER_BRICKS)));
+
+        offerStairsRecipe(exporter, ModBlocks.AMBER_BRICK_STAIRS, ModBlocks.AMBER_BRICKS);
+        offerSlabRecipe(exporter, ModBlocks.AMBER_BRICK_SLAB, ModBlocks.AMBER_BRICKS);
+        offerWallRecipe(exporter, ModBlocks.AMBER_BRICK_WALL, ModBlocks.AMBER_BRICKS);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.AMBER_BRICK_STAIRS, ModBlocks.AMBER_BRICKS);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.AMBER_BRICK_SLAB, ModBlocks.AMBER_BRICKS, 2);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.AMBER_BRICK_WALL, ModBlocks.AMBER_BRICKS);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_AMBER_BRICKS, 1)
+                .pattern("#")
+                .pattern("#")
+                .input('#', ModBlocks.AMBER_BRICK_SLAB)
+                .criterion(FabricRecipeProvider.hasItem(ModBlocks.AMBER_BRICK_SLAB), FabricRecipeProvider.conditionsFromItem(ModBlocks.AMBER_BRICK_SLAB))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.CHISELED_AMBER_BRICKS)));
 
         //<editor-fold desc ="MOLD - Special">
         // This doesn't work because it does not specify each dye needs to be unique from each other. No idea how to do that however

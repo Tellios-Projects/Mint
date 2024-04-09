@@ -10,6 +10,7 @@ import net.leafenzo.mint.registration.ModRegistryHelper;
 import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
+import net.mehvahdjukaar.moonlight.api.block.ModStairBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.ShulkerBoxBlockEntity;
@@ -482,6 +483,13 @@ public class ModBlocks {
     public static final Block AMBER_WALL_BANNER = registerBlockWithoutBlockItem("amber_wall_banner", createWallBannerBlock(ModDyeColor.AMBER, (BannerBlock)ModBlocks.AMBER_BANNER));
     //</editor-fold>
     //<editor-fold desc ="AMBER - Special">
+    public static final Block AMBER_BLOCK = registerBlock("amber_block", new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK).mapColor(MapColor.GOLD)));
+    public static final Block AMBER_BRICKS = registerBlock("amber_bricks", new Block(FabricBlockSettings.copyOf(ModBlocks.AMBER_BLOCK)));
+    public static final Block AMBER_BRICK_STAIRS = registerBlock("amber_brick_stairs", createStairsBlock(AMBER_BRICKS, FabricBlockSettings.copyOf(ModBlocks.AMBER_BRICKS)));
+    public static final Block AMBER_BRICK_SLAB = registerBlock("amber_brick_slab", createSlabBlock(FabricBlockSettings.copyOf(ModBlocks.AMBER_BRICKS)));
+    public static final Block AMBER_BRICK_WALL = registerBlock("amber_brick_wall", createWallBlock(FabricBlockSettings.copyOf(ModBlocks.AMBER_BRICKS)));
+    public static final Block CHISELED_AMBER_BRICKS = registerBlock("chiseled_amber_bricks", new Block(FabricBlockSettings.copyOf(ModBlocks.AMBER_BLOCK)));
+
     //</editor-fold>
 
     //<editor-fold desc ="SAGE - Template">
