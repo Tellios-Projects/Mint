@@ -4,10 +4,6 @@
 
 # COMPAT
 SUPPLEMENTARIES
-- Figure out where to put our compat textures for it 
-- Implement present textures
-- Implement Candle Holders
-- Fix Flag models
 - Fix Localization
 - Sign fixes
 BETTER END

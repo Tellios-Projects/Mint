@@ -26,3 +26,4 @@ for f in $(find $TEMPLATES -type f -iwholename "*blockstates/*.json"); do
 done
 
 grep -qF -- "}" "$FILE_PATH" || echo "}" >> "$FILE_PATH" # and put one of these doohickey's at the end
+sed -i '1h;1!H;$!d;g;s/\(.*\),/\1/' "$FILE_PATH" # https://stackoverflow.com/questions/24005657/remove-the-last-occurrence-of-from-a-file
