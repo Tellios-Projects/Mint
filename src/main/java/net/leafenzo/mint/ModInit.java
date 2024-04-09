@@ -51,6 +51,7 @@ public class ModInit implements ModInitializer {
             ModEffects.registerModEffects();
             ModPotions.registerModPotions();
             ModWorldGen.registerWorldGen();
+            ModFabricRegistries.modifyLootTables();
             ModItemGroups.registerModItemGroups();
 
 //            List<DyeColor> original = Arrays.stream(DyeColor.values()).toList();

@@ -394,6 +394,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ARTICHOKE_LAMB, Models.GENERATED);
         itemModelGenerator.register(ModItems.BREAKFAST_PORKCHOP, Models.GENERATED);
 
+        itemModelGenerator.register(ModItems.AMBER, Models.GENERATED);
+
 // Decor Additions
 //        for(Item item : DYED_PAPER_ITEMS) {
 //            itemModelGenerator.register(item, Models.GENERATED);

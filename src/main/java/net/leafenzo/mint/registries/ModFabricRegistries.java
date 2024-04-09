@@ -1,5 +1,6 @@
 package net.leafenzo.mint.registries;
 
+import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
@@ -12,6 +13,8 @@ import net.leafenzo.mint.registration.WoodSet;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
+import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.util.Identifier;
 
 
 public class ModFabricRegistries {
@@ -108,5 +111,39 @@ public class ModFabricRegistries {
         for(ItemConvertible item : ModBlocks.WOOL_CARPET_BLOCKS) {
             registry.add(item, 67);
         }
+    }
+
+    public static void modifyLootTables() {
+        int amberDesertPyramidWeight = 2;
+        int amberDesertWellWeight = 2;
+        int amberOceanRuinColdWeight = 2;
+        int amberOceanRuinWarmWeight = 2;
+        int amberTrailRuinsWeight = 2;
+
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+            if (source.isBuiltin() && new Identifier("minecraft", "archaeology/desert_pyramid").equals(id)) {
+                tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(ModItems.AMBER).weight(amberDesertPyramidWeight)));
+            }
+        });
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+            if (source.isBuiltin() && new Identifier("minecraft", "archaeology/desert_well").equals(id)) {
+                tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(ModItems.AMBER).weight(amberDesertWellWeight)));
+            }
+        });
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+            if (source.isBuiltin() && new Identifier("minecraft", "archaeology/ocean_ruin_cold").equals(id)) {
+                tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(ModItems.AMBER).weight(amberOceanRuinColdWeight)));
+            }
+        });
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+            if (source.isBuiltin() && new Identifier("minecraft", "archaeology/ocean_warm_cold").equals(id)) {
+                tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(ModItems.AMBER).weight(amberOceanRuinWarmWeight)));
+            }
+        });
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+            if (source.isBuiltin() && new Identifier("minecraft", "archaeology/trail_ruins_common").equals(id)) {
+                tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(ModItems.AMBER).weight(amberTrailRuinsWeight)));
+            }
+        });
     }
 }

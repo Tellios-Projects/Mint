@@ -159,6 +159,9 @@ public class ModItems {
             .saturationModifier(0.8f)
             .build())));
 
+    public static final Item AMBER = registerItem("amber", new Item(new FabricItemSettings()));
+
+
 
     //<editor-fold desc ="Decor Additions">
 //    static {

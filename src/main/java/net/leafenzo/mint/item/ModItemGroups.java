@@ -596,6 +596,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.AMBER_BANNER);
                         entries.add(ModBlocks.AMBER_SHULKER_BOX);
                         entries.add(ModBlocks.AMBER_CANDLE);
+                        entries.add(ModItems.AMBER);
 
                         entries.add(ModItems.SAGE_DYE);
                         entries.add(ModBlocks.SAGE_WOOL);
