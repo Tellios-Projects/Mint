@@ -11,9 +11,11 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.client.render.entity.ModBoatEntityRenderer;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.projectile.SpectralArrowEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -29,6 +31,12 @@ public class ModEntityTypes {
     public static EntityType <BoatEntity> createBoatType(boolean chest, ModBoatEntity.ModBoat boat) {
         return FabricEntityTypeBuilder.create(SpawnGroup.MISC, boat.factory(chest)).dimensions(EntityDimensions.changing(1.375f, 0.5625f)).trackRangeChunks(10).build();
     }
+
+//    public static final EntityType<EmberArrowEntity> EMBER_ARROW = Registry.register(Registries.ENTITY_TYPE,
+//            new Identifier(ModInit.MOD_ID, "ember_arrow"),
+//            FabricEntityTypeBuilder.<EmberArrowEntity>create(SpawnGroup.CREATURE, EmberArrowEntity::new)
+//                    .dimensions(EntityDimensions.fixed(0.5f, 0.5f)).build());
+    
 
     public static void registerEntityTypes() {
         ModInit.LOGGER.debug("Registering mod entity types for " + Super.MOD_ID);

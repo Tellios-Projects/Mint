@@ -603,6 +603,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.AMBER_BRICK_SLAB);
                         entries.add(ModBlocks.AMBER_BRICK_WALL);
                         entries.add(ModBlocks.CHISELED_AMBER_BRICKS);
+                        entries.add(ModItems.EMBER);
+                        entries.add(ModItems.EMBER_ARROW);
 
                         entries.add(ModItems.SAGE_DYE);
                         entries.add(ModBlocks.SAGE_WOOL);

@@ -68,6 +68,10 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
                 .add(ModBlocks.PEPPERMINT_CANDY_CANE_BARK.asItem())
         ;
 
+        getOrCreateTagBuilder(ItemTags.ARROWS)
+                .add(ModItems.EMBER_ARROW)
+        ;
+
 
     // Main
         for(WoodSet woodSet : ModBlocks.WOODSETS) {

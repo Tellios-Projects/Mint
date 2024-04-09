@@ -610,6 +610,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.BREAKFAST_PORKCHOP)));
         //</editor-fold>
 
+        offerShapelessRecipe(exporter, ModItems.AMBER_DYE, ModItems.AMBER, "amber_dye", 2);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.AMBER_BLOCK, 1)
                 .pattern("##")
                 .pattern("##")

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "amber_dye",
+  "ingredients": [
+    {
+      "item": "mint:amber"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "mint:amber_dye"
+  }
+}
