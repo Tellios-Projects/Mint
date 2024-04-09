@@ -19,6 +19,7 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Language;
 import org.apache.commons.codec.language.bm.Languages;
+import org.apache.http.annotation.Experimental;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -87,6 +88,8 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
         }
     }
 
+    // UNTESTED
+    @Experimental
     private void generateColoredBlockAndItemTranslationsForMod(TranslationBuilder translationBuilder, String modId) {
         for (Identifier id : ModUtil.allBlockIdsInNamespace(modId)) {
             for (DyeColor color : ModDyeColor.VALUES) {
@@ -134,9 +137,6 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
         generateBannerTranslations(translationBuilder, ModBlocks.BANNER_BLOCKS); // Necessary (albeit hacky) so we don't get Wall Banner nonsense
         generateBannerPatternColorTranslations(translationBuilder);
         generateShieldVariantTranslations(translationBuilder);
-
-        //Compat
-//        generateColoredBlockAndItemTranslationsForMod(translationBuilder, "supplementarires");
 
         //Automatic
         for(Identifier id : ModUtil.allBlockIdsInNamespace(Super.MOD_ID)) {

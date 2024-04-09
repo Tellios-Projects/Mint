@@ -93,14 +93,11 @@ dependencies {
 	// Create - dependencies are added transitively
 //	modImplementation("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
 
+// MODS THAT BREAK DATAGEN (only uncomment these during testing):
 	// Supplementaries
-	modImplementation("maven.modrinth:supplementaries:${supplementaries_version}")
 //	modRuntimeOnly("maven.modrinth:supplementaries:${supplementaries_version}")
-
-//	modImplementation("maven.modrinth:ammendments:${ammendments_version}")
 //	modRuntimeOnly("maven.modrinth:ammendments:${ammendments_version}")
-
-	modImplementation("maven.modrinth:moonlight:${moonlight_version}")
+//	modRuntimeOnly("maven.modrinth:moonlight:${moonlight_version}")
 
 
 	// uncomment if needed
@@ -124,9 +121,6 @@ def devEnvDependencies(DependencyHandler deps) {
 //	deps.modLocalRuntime("me.shedaniel.cloth:cloth-config-fabric:$clothconfig_version") {
 //		exclude(group: "net.fabricmc.fabric-api")
 //	}
-
-//	modImplementation("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
-
 	switch (recipe_viewer.toLowerCase(Locale.ROOT)) {
 		case "jei": deps.modLocalRuntime("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"); break
 		case "rei": deps.modLocalRuntime("me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"); break
