@@ -489,7 +489,7 @@ public class ModBlocks {
     public static final Block AMBER_BRICK_WALL = registerBlock("amber_brick_wall", createWallBlock(FabricBlockSettings.copyOf(ModBlocks.AMBER_BRICKS)));
     public static final Block CHISELED_AMBER_BRICKS = registerBlock("chiseled_amber_bricks", new Block(FabricBlockSettings.copyOf(ModBlocks.AMBER_BLOCK)));
     public static final Block EMBER = registerBlockWithoutBlockItem("ember", new EmberBlock(FabricBlockSettings.create().mapColor(MapColor.GOLD).breakInstantly().nonOpaque().sounds(BlockSoundGroup.FROGSPAWN).noCollision().luminance(15)));
-    static { RENDER_LAYER_CUTOUT_MIPPED.add(EMBER); }
+    static { RENDER_LAYER_TRANSLUCENT.add(EMBER); }
     //</editor-fold>
 
     //<editor-fold desc ="SAGE - Template">
