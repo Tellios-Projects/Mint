@@ -96,7 +96,7 @@ dependencies {
 // MODS THAT BREAK DATAGEN (only uncomment these during testing):
 	// Supplementaries
 //	modRuntimeOnly("maven.modrinth:supplementaries:${supplementaries_version}")
-//	modRuntimeOnly("maven.modrinth:ammendments:${ammendments_version}")
+//	modRuntimeOnly("maven.modrinth:amendments:${amendments_version}")
 //	modRuntimeOnly("maven.modrinth:moonlight:${moonlight_version}")
 
 

@@ -3,15 +3,20 @@
 - Further server mixin testing
 
 # COMPAT
+TWIGS
+- Register new blocks
 SUPPLEMENTARIES
-- Fix Localization
-- Sign fixes
+  - Sign fixes
+SUPPLEMENTARIES AMENDMENTS
+  DONE | Quick sweep for amendments crashes
+  DONE | Carpet stairs work :3 
+  DONE | Also lanterns work :3
+
 BETTER END
 - Fix ColoredMaterial preventing game launch
 CREATE
-- Implement Seat Textures
-- Implement Valve Textures
-- Implement Toolbox Textures
+- Import Textures
+- Run Bash
 - Fix Nixie tube coloring crash
 JEI
 - None of the new dyed wools appear to have recipes
@@ -27,3 +32,6 @@ AMI
 - Corrugated Iron Soundgroup?
 - Custom Advancements (all the colors of the rainbowww :3)
 - Remove meaningless warning messages
+
+SUPPLEMENTARIES AMENDMENTS
+- Fix skull candle piles (don't bother)
