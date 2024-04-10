@@ -38,13 +38,13 @@ public class EmberArrowEntity extends PersistentProjectileEntity {
     protected void onBlockHit(BlockHitResult blockHitResult) {
         World world = getWorld();
         BlockPos pos = blockHitResult.getBlockPos().offset(blockHitResult.getSide());
-        if (world.getBlockState(pos).isAir()) {
-            world.setBlockState(blockHitResult.getBlockPos().offset(blockHitResult.getSide()), ModBlocks.EMBER.getDefaultState().with(EmberBlock.getProperty(blockHitResult.getSide().getOpposite()), true));
-        } else if (world.getBlockState(pos).isOf(ModBlocks.EMBER)) {
+        if (world.getBlockState(pos).isOf(ModBlocks.EMBER)) {
             BlockState prevState = world.getBlockState(pos);
             world.setBlockState(pos, ModBlocks.EMBER.getStateWithProperties(prevState).with(EmberBlock.getProperty(blockHitResult.getSide().getOpposite()), true));
+        } else if (world.getBlockState(pos).isReplaceable()) {
+            world.setBlockState(pos, ModBlocks.EMBER.getDefaultState().with(EmberBlock.getProperty(blockHitResult.getSide().getOpposite()), true));
         } else if (world.getBlockState(pos).getFluidState().isEqualAndStill(Fluids.WATER)) {
-            world.setBlockState(pos, ModBlocks.EMBER.getDefaultState().with(EmberBlock.getProperty(blockHitResult.getSide().getOpposite()), true).with(Properties.WATERLOGGED, true));
+            world.setBlockState(pos, ModBlocks.EMBER.getDefaultState().with(EmberBlock.getProperty(blockHitResult.getSide().getOpposite()), true).with(EmberBlock.WATERLOGGED, true));
         }
         hasPlacedEmber = true;
         super.onBlockHit(blockHitResult);

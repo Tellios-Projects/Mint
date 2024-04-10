@@ -488,8 +488,9 @@ public class ModBlocks {
     public static final Block AMBER_BRICK_SLAB = registerBlock("amber_brick_slab", createSlabBlock(FabricBlockSettings.copyOf(ModBlocks.AMBER_BRICKS)));
     public static final Block AMBER_BRICK_WALL = registerBlock("amber_brick_wall", createWallBlock(FabricBlockSettings.copyOf(ModBlocks.AMBER_BRICKS)));
     public static final Block CHISELED_AMBER_BRICKS = registerBlock("chiseled_amber_bricks", new Block(FabricBlockSettings.copyOf(ModBlocks.AMBER_BLOCK)));
-    public static final Block EMBER = registerBlockWithoutBlockItem("ember", new EmberBlock(FabricBlockSettings.create().mapColor(MapColor.GOLD).breakInstantly().nonOpaque().sounds(BlockSoundGroup.FROGSPAWN).noCollision().luminance(15)));
+    public static final Block EMBER = registerBlockWithoutBlockItem("ember", new EmberBlock(FabricBlockSettings.create().mapColor(MapColor.GOLD).breakInstantly().nonOpaque().sounds(BlockSoundGroup.FROGSPAWN).noCollision().luminance(15).replaceable()));
     static { RENDER_LAYER_TRANSLUCENT.add(EMBER); }
+//    public static final Block SHIMMERING_SAVANNABUDS_CROP = registerBlockWithoutBlockItem("shimmering_savannabuds_crop", new MintCropBlock(FabricBlockSettings.create().mapColor(MapColor.LICHEN_GREEN).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).pistonBehavior(PistonBehavior.DESTROY)));
     //</editor-fold>
 
     //<editor-fold desc ="SAGE - Template">

@@ -9,15 +9,17 @@ package net.leafenzo.mint.block;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.dispenser.ModBoatDispenserBehavior;
+import net.leafenzo.mint.entity.EmberArrowEntity;
 import net.leafenzo.mint.entity.ModBoatEntity;
+import net.leafenzo.mint.item.ModItems;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.DispenserBlock;
-import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.block.dispenser.BlockPlacementDispenserBehavior;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.util.DyeColor;
+import net.minecraft.block.dispenser.ProjectileDispenserBehavior;
+import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.Position;
+import net.minecraft.world.World;
 
 public class DispenserBehavior {
     public static void RegisterDispenserBehaviors() {
@@ -30,5 +32,12 @@ public class DispenserBehavior {
             DispenserBlock.registerBehavior(boat.boat(), new ModBoatDispenserBehavior(boat, false));
             DispenserBlock.registerBehavior(boat.chestBoat(), new ModBoatDispenserBehavior(boat, true));
         }
+
+        DispenserBlock.registerBehavior(ModItems.EMBER_ARROW, new ProjectileDispenserBehavior() {
+            @Override
+            protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
+                return new EmberArrowEntity(world, position.getX(), position.getY(), position.getZ());
+            }
+        });
     }
 }

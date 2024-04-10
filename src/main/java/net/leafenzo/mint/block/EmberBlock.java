@@ -3,6 +3,7 @@ package net.leafenzo.mint.block;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import net.minecraft.block.*;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
@@ -87,11 +88,18 @@ public class EmberBlock extends Block implements Waterloggable {
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if ((Boolean)state.get(WATERLOGGED)) {
+            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
         if (!hasAnyDirection(state)) {
             return Blocks.AIR.getDefaultState();
         } else {
             return hasDirection(state, direction) && !canPlaceOn(world, direction, neighborPos, neighborState) ? disableDirection(state, getProperty(direction)) : state;
         }
+    }
+
+    public FluidState getFluidState(BlockState state) {
+        return (Boolean)state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
