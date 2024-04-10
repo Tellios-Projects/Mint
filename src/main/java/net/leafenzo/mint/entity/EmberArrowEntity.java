@@ -66,7 +66,6 @@ public class EmberArrowEntity extends PersistentProjectileEntity {
 
     protected void onHit(LivingEntity target) {
         super.onHit(target);
-        target.setFireTicks(20);
-        target.setOnFire(true);
+        target.setOnFireFor(8);
     }
 }
