@@ -162,6 +162,7 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
 
         // AMBER - Special
         this.addDrop(ModBlocks.AMBER_BRICK_SLAB, (Block block) -> this.slabDrops((Block)block));
+        usedBlocks.add(ModBlocks.EMBER);
 
         // Decor Additions
         for(Block block : ModBlocks.ALL_MUCKTUFF_BLOCKS) { this.addDrop(block); }
@@ -205,7 +206,7 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         // FALLBACK
         for(Identifier id : ModUtil.allBlockIdsInNamespace(Super.MOD_ID)) {
             Block block = Registries.BLOCK.get(id);
-            if(usedBlocks.contains(block) || block instanceof AbstractBannerBlock ) { continue; }
+            if(usedBlocks.contains(block) || block instanceof AbstractBannerBlock) { continue; }
             this.addDrop(block);
         }
     }
