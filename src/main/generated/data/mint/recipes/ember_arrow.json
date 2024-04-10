@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "ember_arrow",
+  "ingredients": [
+    {
+      "item": "mint:ember"
+    },
+    {
+      "item": "minecraft:arrow"
+    }
+  ],
+  "result": {
+    "item": "mint:ember_arrow"
+  }
+}

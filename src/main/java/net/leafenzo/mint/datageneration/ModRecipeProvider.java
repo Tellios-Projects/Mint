@@ -612,6 +612,20 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         offerShapelessRecipe(exporter, ModItems.AMBER_DYE, ModItems.AMBER, "amber_dye", 2);
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.EMBER, 2)
+                .input(ModItems.AMBER)
+                .input(Items.BLAZE_POWDER)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.AMBER), FabricRecipeProvider.conditionsFromItem(ModItems.AMBER))
+                .group("ember")
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.EMBER)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.EMBER_ARROW)
+                .input(ModItems.EMBER)
+                .input(Items.ARROW)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.EMBER), FabricRecipeProvider.conditionsFromItem(ModItems.EMBER))
+                .group("ember_arrow")
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.EMBER_ARROW)));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.AMBER_BLOCK, 1)
                 .pattern("##")
                 .pattern("##")

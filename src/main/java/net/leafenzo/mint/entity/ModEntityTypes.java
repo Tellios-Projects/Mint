@@ -31,12 +31,11 @@ public class ModEntityTypes {
     public static EntityType <BoatEntity> createBoatType(boolean chest, ModBoatEntity.ModBoat boat) {
         return FabricEntityTypeBuilder.create(SpawnGroup.MISC, boat.factory(chest)).dimensions(EntityDimensions.changing(1.375f, 0.5625f)).trackRangeChunks(10).build();
     }
+    public static final EntityType<? extends EmberArrowEntity> EMBER_ARROW = Registry.register(Registries.ENTITY_TYPE,
+            new Identifier(ModInit.MOD_ID, "ember_arrow"),
+            FabricEntityTypeBuilder.<EmberArrowEntity>create(SpawnGroup.MISC, EmberArrowEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.5f, 0.5f)).build());
 
-//    public static final EntityType<EmberArrowEntity> EMBER_ARROW = Registry.register(Registries.ENTITY_TYPE,
-//            new Identifier(ModInit.MOD_ID, "ember_arrow"),
-//            FabricEntityTypeBuilder.<EmberArrowEntity>create(SpawnGroup.CREATURE, EmberArrowEntity::new)
-//                    .dimensions(EntityDimensions.fixed(0.5f, 0.5f)).build());
-    
 
     public static void registerEntityTypes() {
         ModInit.LOGGER.debug("Registering mod entity types for " + Super.MOD_ID);

@@ -160,7 +160,7 @@ public class ModItems {
             .build())));
 
     public static final Item AMBER = registerItem("amber", new Item(new FabricItemSettings()));
-    public static final Item EMBER = registerItem("ember", new Item(new FabricItemSettings()));
+    public static final Item EMBER = registerItem("ember", new AliasedBlockItem(ModBlocks.EMBER, new FabricItemSettings()));
     public static final Item EMBER_ARROW = registerItem("ember_arrow", new EmberArrowItem(new FabricItemSettings()));
 
 
