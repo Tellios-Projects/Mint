@@ -18,6 +18,9 @@ SUPPLEMENTARIES AMENDMENTS
 DONE | Quick sweep for amendments crashes
 DONE | Carpet stairs work :3 
 DONE | Also lanterns work :3
+SUPPLEMENTARIES SQUARED
+DONE | Bashgen resources
+- Import the compat textures once eliza's done with them 
 COMFORTS
 DONE | Import textures
 DONE | Run bash on it
