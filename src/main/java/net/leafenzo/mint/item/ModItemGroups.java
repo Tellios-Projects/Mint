@@ -609,6 +609,9 @@ public class ModItemGroups {
                         entries.add(ModBlocks.SHIMMERING_SAVANNABUDS);
                         entries.add(ModBlocks.PINEAPPLE);
                         entries.add(ModItems.PINEAPPLE_CROWN);
+                        entries.add(ModItems.PINEAPPLE_SLICES);
+                        entries.add(ModItems.PINEAPPLE_KEBAB);
+                        entries.add(ModItems.PINEAPPLE_TART);
 
                         entries.add(ModItems.SAGE_DYE);
                         entries.add(ModBlocks.SAGE_WOOL);

@@ -155,9 +155,26 @@ public class ModItems {
     public static final Item EMBER_ARROW = registerItem("ember_arrow", new EmberArrowItem(new FabricItemSettings()));
 
     public static final Item SAVANNABUD_SEEDS = registerItem("savannabud_seeds", new AliasedBlockItem(ModBlocks.SHIMMERING_SAVANNABUDS_CROP, new FabricItemSettings()));
+
     public static final Item PINEAPPLE_CROWN = registerItem("pineapple_crown", new PineappleCrownItem(ModBlocks.PINEAPPLE_STEM, new FabricItemSettings()));
+    public static final Item PINEAPPLE_SLICES = registerItem("pineapple_slices", new Item(new FabricItemSettings()
+            .recipeRemainder(PINEAPPLE_CROWN)
+            .food(new FoodComponent.Builder()
+                    .hunger(3)
+                    .saturationModifier(0.2f)
+                    .build())));
 
+    public static final Item PINEAPPLE_KEBAB = registerItem("pineapple_kebab", new Item(new FabricItemSettings()
+            .food(new FoodComponent.Builder()
+                    .hunger(8)
+                    .saturationModifier(0.5f)
+                    .build())));
 
+    public static final Item PINEAPPLE_TART = registerItem("pineapple_tart", new Item(new FabricItemSettings()
+            .food(new FoodComponent.Builder()
+                    .hunger(4)
+                    .saturationModifier(0.2f)
+                    .build())));
 
 
     //<editor-fold desc ="Decor Additions">

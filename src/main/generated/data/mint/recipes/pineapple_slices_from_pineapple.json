@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "pineapple_slices",
+  "ingredients": [
+    {
+      "item": "mint:pineapple"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "mint:pineapple_slices"
+  }
+}

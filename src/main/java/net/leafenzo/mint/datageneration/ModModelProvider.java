@@ -422,6 +422,9 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.SAVANNABUD_SEEDS, Models.GENERATED);
         itemModelGenerator.register(ModBlocks.PINEAPPLE.asItem(), Models.GENERATED);
         itemModelGenerator.register(ModItems.PINEAPPLE_CROWN, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PINEAPPLE_SLICES, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PINEAPPLE_KEBAB, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PINEAPPLE_TART, Models.GENERATED);
 
 // Decor Additions
 //        for(Item item : DYED_PAPER_ITEMS) {

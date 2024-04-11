@@ -655,6 +655,32 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.CHISELED_AMBER_BRICKS)));
 
         offerShapelessRecipe(exporter, ModItems.AMBER_DYE, ModBlocks.SHIMMERING_SAVANNABUDS, "amber_dye", 1);
+        offerShapelessRecipe(exporter, ModItems.AMBER_DYE, ModItems.PINEAPPLE_CROWN, "amber_dye", 1);
+
+        offerShapelessRecipe(exporter, ModItems.PINEAPPLE_SLICES, ModBlocks.PINEAPPLE, "pineapple_slices", 4);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.PINEAPPLE_KEBAB, 1)
+                .input(ModItems.PINEAPPLE_SLICES, 2)
+                .input(Items.COOKED_BEEF)
+                .input(Items.RED_MUSHROOM)
+                .input(Items.STICK)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.PINEAPPLE_SLICES), FabricRecipeProvider.conditionsFromItem(ModItems.PINEAPPLE_SLICES))
+                .criterion(FabricRecipeProvider.hasItem(Items.COOKED_BEEF), FabricRecipeProvider.conditionsFromItem(Items.COOKED_BEEF))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.PINEAPPLE_KEBAB) + "_red_mushroom"));
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.PINEAPPLE_KEBAB, 1)
+                .input(ModItems.PINEAPPLE_SLICES, 2)
+                .input(Items.COOKED_BEEF)
+                .input(Items.BROWN_MUSHROOM)
+                .input(Items.STICK)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.PINEAPPLE_SLICES), FabricRecipeProvider.conditionsFromItem(ModItems.PINEAPPLE_SLICES))
+                .criterion(FabricRecipeProvider.hasItem(Items.COOKED_BEEF), FabricRecipeProvider.conditionsFromItem(Items.COOKED_BEEF))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.PINEAPPLE_KEBAB) + "brown_mushroom"));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.PINEAPPLE_TART)
+                .input(ModItems.PINEAPPLE_SLICES, 1)
+                .input(Items.WHEAT)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.PINEAPPLE_SLICES), FabricRecipeProvider.conditionsFromItem(ModItems.PINEAPPLE_SLICES))
+                .criterion(FabricRecipeProvider.hasItem(Items.WHEAT), FabricRecipeProvider.conditionsFromItem(Items.WHEAT))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.PINEAPPLE_TART)));
 
         //<editor-fold desc ="MOLD - Special">
         // This doesn't work because it does not specify each dye needs to be unique from each other. No idea how to do that however
