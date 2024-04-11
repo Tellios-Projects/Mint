@@ -6,17 +6,21 @@
   Fix gratuitous error logs generated from running the game with resources
 that are not used when someone doesn't have every mod we do model compat for
 
+BOTANYPOTS
+DONE | Bashgen
+- Grow our seeds
 TWIGS
 - Register new blocks
+- Datagen for them
 SUPPLEMENTARIES
-  - Sign fixes
+- Sign fixes
 SUPPLEMENTARIES AMENDMENTS
-  DONE | Quick sweep for amendments crashes
-  DONE | Carpet stairs work :3 
-  DONE | Also lanterns work :3
+DONE | Quick sweep for amendments crashes
+DONE | Carpet stairs work :3 
+DONE | Also lanterns work :3
 COMFORTS
-  DONE | Import textures
-  DONE | Run bash on it
+DONE | Import textures
+DONE | Run bash on it
 BETTER END
 - Fix ColoredMaterial preventing game launch
 CREATE
