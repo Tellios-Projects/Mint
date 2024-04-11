@@ -7,3 +7,4 @@ mkdir $DIRNAME
 cd $DIRNAME
 jar xf ../../$MOD_JAR
 cd ../../
+echo $DIRNAME

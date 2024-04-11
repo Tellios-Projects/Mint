@@ -1,0 +1,1 @@
+{"bookshelf:load_conditions":[{"type":"bookshelf:item_exists","values":"botania:vermilion_mushroom"}],"type":"botanypots:crop","seed":{"item":"botania:vermilion_mushroom"},"categories":["mushroom"],"growthTicks":1200,"display":{"type":"botanypots:aging","block":"botania:vermilion_mushroom"},"drops":[{"chance":1.00,"output":{"item":"botania:vermilion_mushroom"}}]}

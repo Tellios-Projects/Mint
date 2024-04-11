@@ -1,0 +1,1 @@
+{"bookshelf:load_conditions":[{"type":"bookshelf:item_exists","values":"botania:cerulean_mushroom"}],"type":"botanypots:crop","seed":{"item":"botania:cerulean_mushroom"},"categories":["mushroom"],"growthTicks":1200,"display":{"type":"botanypots:aging","block":"botania:cerulean_mushroom"},"drops":[{"chance":1.00,"output":{"item":"botania:cerulean_mushroom"}}]}

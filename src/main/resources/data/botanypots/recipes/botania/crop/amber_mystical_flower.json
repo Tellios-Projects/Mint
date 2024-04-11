@@ -1,0 +1,1 @@
+{"bookshelf:load_conditions":[{"type":"bookshelf:item_exists","values":"botania:amber_mystical_flower"}],"type":"botanypots:crop","seed":{"item":"botania:amber_mystical_flower"},"categories":["dirt"],"growthTicks":1200,"display":{"type":"botanypots:aging","block":"botania:amber_mystical_flower"},"drops":[{"chance":1.00,"output":{"item":"botania:amber_mystical_flower"}}]}

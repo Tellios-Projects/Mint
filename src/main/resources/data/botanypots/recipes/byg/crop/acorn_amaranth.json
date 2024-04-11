@@ -1,0 +1,1 @@
+{"bookshelf:load_conditions":[{"type":"bookshelf:item_exists","values":["byg:acorn_amaranth"]}],"type":"botanypots:crop","seed":{"item":"byg:acorn_amaranth"},"categories":["dirt"],"growthTicks":1200,"display":{"type":"botanypots:aging","block":"byg:acorn_amaranth"},"drops":[{"chance":1.00,"output":{"item":"byg:acorn_amaranth"}}]}

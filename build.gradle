@@ -110,6 +110,11 @@ dependencies {
 //	modRuntimeOnly("com.illusivesoulworks.spectrelib:spectrelib-fabric:${spectrelib_version}") // { exclude(group = "net.fabricmc.fabric-api") }
 //	modRuntimeOnly("maven.modrinth:comforts:${comforts_version}")
 
+	// BotanyPots
+		// This way of loading it doesn't work, compat still does in practice though
+//	modImplementation "net.darkhax.bookshelf:Bookshelf-Fabric-${minecraft_version}:${bookshelf_version}"
+//	modRuntimeOnly("maven.modrinth:uy4Cnpcm:${bookshelf_version_id}")
+//	modRuntimeOnly("maven.modrinth:U6BUTZ7K:${botanypots_version_id}")
 
 	// uncomment if needed
 	//include implementation("net.dv8tion:JDA:${project.jda_version}") {

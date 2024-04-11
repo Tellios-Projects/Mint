@@ -1,0 +1,1 @@
+{"bookshelf:load_conditions":[{"type":"bookshelf:item_exists","values":["byg:indigo_amaranth"]}],"type":"botanypots:crop","seed":{"item":"byg:indigo_amaranth"},"categories":["dirt"],"growthTicks":1200,"display":{"type":"botanypots:aging","block":"byg:indigo_amaranth"},"drops":[{"chance":1.00,"output":{"item":"byg:indigo_amaranth"}}]}

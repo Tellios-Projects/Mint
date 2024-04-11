@@ -1,0 +1,1 @@
+{"bookshelf:load_conditions":[{"type":"bookshelf:item_exists","values":["byg:mauve_tulip"]}],"type":"botanypots:crop","seed":{"item":"byg:mauve_tulip"},"categories":["dirt"],"growthTicks":1200,"display":{"type":"botanypots:aging","block":"byg:mauve_tulip"},"drops":[{"chance":1.00,"output":{"item":"byg:mauve_tulip"}}]}
