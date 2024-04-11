@@ -607,6 +607,8 @@ public class ModItemGroups {
                         entries.add(ModItems.EMBER_ARROW);
                         entries.add(ModItems.SAVANNABUD_SEEDS);
                         entries.add(ModBlocks.SHIMMERING_SAVANNABUDS);
+                        entries.add(ModBlocks.PINEAPPLE);
+                        entries.add(ModItems.PINEAPPLE_CROWN);
 
                         entries.add(ModItems.SAGE_DYE);
                         entries.add(ModBlocks.SAGE_WOOL);

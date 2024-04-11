@@ -6,7 +6,6 @@ import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.sapling.WintergreenSaplingGenerator;
 import net.leafenzo.mint.datageneration.ModConfiguredFeatures;
 import net.leafenzo.mint.effect.ModEffects;
-import net.leafenzo.mint.registration.ModRegistryHelper;
 import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
@@ -494,6 +493,11 @@ public class ModBlocks {
     static { RENDER_LAYER_CUTOUT.add(SHIMMERING_SAVANNABUDS_CROP); }
     public static final Block SHIMMERING_SAVANNABUDS = registerBlock("shimmering_savannabuds", new SavannabudsBlock(FabricBlockSettings.create().mapColor(MapColor.EMERALD_GREEN).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offset(AbstractBlock.OffsetType.XZ).pistonBehavior(PistonBehavior.DESTROY).burnable()));
     static { RENDER_LAYER_CUTOUT.add(SHIMMERING_SAVANNABUDS); }
+
+    public static final Block PINEAPPLE = registerBlock("pineapple", new PineappleBlock(FabricBlockSettings.create().mapColor(MapColor.GOLD).sounds(BlockSoundGroup.WOOD).pistonBehavior(PistonBehavior.DESTROY).nonOpaque()));
+    static { RENDER_LAYER_CUTOUT.add(PINEAPPLE); }
+    public static final Block PINEAPPLE_STEM = registerBlockWithoutBlockItem("pineapple_stem", new PineappleStemBlock(FabricBlockSettings.create().mapColor(MapColor.EMERALD_GREEN).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).pistonBehavior(PistonBehavior.DESTROY)));
+    static { RENDER_LAYER_CUTOUT.add(PINEAPPLE_STEM); }
     //</editor-fold>
 
     //<editor-fold desc ="SAGE - Template">

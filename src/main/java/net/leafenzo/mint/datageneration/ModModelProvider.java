@@ -293,6 +293,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerItemModel(ModBlocks.SHIMMERING_SAVANNABUDS);
         blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.SHIMMERING_SAVANNABUDS, BlockStateModelGenerator.TintType.NOT_TINTED);
 
+        registerCrossCrop(blockStateModelGenerator, ModBlocks.PINEAPPLE_STEM, PineappleStemBlock.AGE);
 
         //Main
 // WOODSETS
@@ -418,6 +419,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.EMBER, Models.GENERATED);
         itemModelGenerator.register(ModItems.EMBER_ARROW, Models.GENERATED);
         itemModelGenerator.register(ModItems.SAVANNABUD_SEEDS, Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.PINEAPPLE.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModItems.PINEAPPLE_CROWN, Models.GENERATED);
 
 // Decor Additions
 //        for(Item item : DYED_PAPER_ITEMS) {

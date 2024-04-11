@@ -1,0 +1,42 @@
+{
+	"parent": "block/block",
+	"textures": {
+		"0": "mint:block/pineapple_side",
+		"1": "mint:block/pineapple_top",
+		"2": "mint:block/pineapple_bottom",
+		"3": "mint:block/pineapple_crown",
+		"particle": "mint:block/pineapple_side"
+	},
+	"elements": [
+		{
+			"from": [2, 0, 2],
+			"to": [14, 16, 14],
+			"faces": {
+				"north": {"uv": [2, 0, 14, 16], "texture": "#0"},
+				"east": {"uv": [2, 0, 14, 16], "texture": "#0"},
+				"south": {"uv": [2, 0, 14, 16], "texture": "#0"},
+				"west": {"uv": [2, 0, 14, 16], "texture": "#0"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#1", "cullface": "up"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#2", "cullface": "down"}
+			}
+		},
+		{
+			"from": [8, 16, 0.8],
+			"to": [8, 32, 15.2],
+			"rotation": {"angle": -45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#3", "cullface": "up"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#3", "cullface": "up"}
+			}
+		},
+		{
+			"from": [8, 16, 0.8],
+			"to": [8, 32, 15.2],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#3", "cullface": "up"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#3", "cullface": "up"}
+			}
+		}
+	]
+}
