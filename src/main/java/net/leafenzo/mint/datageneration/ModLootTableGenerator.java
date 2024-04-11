@@ -164,6 +164,21 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(ModBlocks.AMBER_BRICK_SLAB, (Block block) -> this.slabDrops((Block)block));
         usedBlocks.add(ModBlocks.EMBER);
 
+        addDrop(ModBlocks.SHIMMERING_SAVANNABUDS_CROP, LootTable.builder()
+                .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(BlockStatePropertyLootCondition.builder(ModBlocks.SHIMMERING_SAVANNABUDS_CROP)
+                                .properties(StatePredicate.Builder.create().exactMatch(SavannabudsCropBlock.AGE, 3)))
+                        .with(this.applyExplosionDecay(ModBlocks.SHIMMERING_SAVANNABUDS_CROP, ItemEntry.builder(ModBlocks.SHIMMERING_SAVANNABUDS))))
+                .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(BlockStatePropertyLootCondition.builder(ModBlocks.SHIMMERING_SAVANNABUDS_CROP)
+                                        .properties(StatePredicate.Builder.create().exactMatch(SavannabudsCropBlock.AGE, 0))
+                                .or(BlockStatePropertyLootCondition.builder(ModBlocks.SHIMMERING_SAVANNABUDS_CROP)
+                                        .properties(StatePredicate.Builder.create().exactMatch(SavannabudsCropBlock.AGE, 1))
+                                .or(BlockStatePropertyLootCondition.builder(ModBlocks.SHIMMERING_SAVANNABUDS_CROP)
+                                        .properties(StatePredicate.Builder.create().exactMatch(SavannabudsCropBlock.AGE, 2)))))
+                        .with(this.applyExplosionDecay(ModBlocks.SHIMMERING_SAVANNABUDS_CROP, ItemEntry.builder(ModItems.SAVANNABUD_SEEDS)))));
+
+
         // Decor Additions
         for(Block block : ModBlocks.ALL_MUCKTUFF_BLOCKS) { this.addDrop(block); }
         for(Block block : ModBlocks.ALL_CORRUGATED_IRON_BLOCKS) { this.addDrop(block); }

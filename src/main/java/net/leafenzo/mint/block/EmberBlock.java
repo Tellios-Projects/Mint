@@ -44,7 +44,7 @@ public class EmberBlock extends Block implements Waterloggable {
 
     public EmberBlock(AbstractBlock.Settings settings) {
         super(settings);
-        this.setDefaultState(withAllDirections(this.stateManager));
+        this.setDefaultState(withAllDirections(this.stateManager).with(WATERLOGGED, false));
         this.SHAPES = this.getShapesForStates(EmberBlock::getShapeForState);
         this.hasAllHorizontalDirections = Direction.Type.HORIZONTAL.stream().allMatch(this::canHaveDirection);
         this.canMirrorX = Direction.Type.HORIZONTAL.stream().filter(Direction.Axis.X).filter(this::canHaveDirection).count() % 2L == 0L;

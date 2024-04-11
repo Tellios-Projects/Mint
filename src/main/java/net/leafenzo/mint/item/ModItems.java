@@ -154,6 +154,9 @@ public class ModItems {
     public static final Item EMBER = registerItem("ember", new AliasedBlockItem(ModBlocks.EMBER, new FabricItemSettings()));
     public static final Item EMBER_ARROW = registerItem("ember_arrow", new EmberArrowItem(new FabricItemSettings()));
 
+    public static final Item SAVANNABUD_SEEDS = registerItem("savannabud_seeds", new AliasedBlockItem(ModBlocks.SHIMMERING_SAVANNABUDS_CROP, new FabricItemSettings()));
+
+
 
 
     //<editor-fold desc ="Decor Additions">

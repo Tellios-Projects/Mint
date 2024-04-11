@@ -3,10 +3,7 @@ import dev.architectury.platform.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.leafenzo.mint.Super;
-import net.leafenzo.mint.block.ArtichokeCropBlock;
-import net.leafenzo.mint.block.MintCropBlock;
-import net.leafenzo.mint.block.ModBlocks;
-import net.leafenzo.mint.block.TwoTallCropBlock;
+import net.leafenzo.mint.block.*;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.state.property.ModProperties;
@@ -116,6 +113,15 @@ public class ModModelProvider extends FabricModelProvider {
                 .coordinate(BlockStateVariantMap.create(Properties.DOUBLE_BLOCK_HALF, ageProperty).register(
                         (a, b) -> BlockStateVariant.create().put(VariantSettings.MODEL, TextureMap.getSubId(crop, "_stage" + b + (a == DoubleBlockHalf.LOWER ? "_bottom" : "_top")))))
         );
+    }
+    public final void registerCrossCrop(BlockStateModelGenerator blockStateModelGenerator, Block crop, Property<Integer> ageProperty) {
+        //This creates some extra unused models. This causes no issues whatsoever, so I've decided not to fix it.
+        for(int i = 0; i < ageProperty.getValues().size(); i++) {
+            blockStateModelGenerator.createSubModel(crop, "_stage" + i, Models.CROSS, TextureMap::cross);
+        }
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(crop)
+                .coordinate(BlockStateVariantMap.create(ageProperty).register(
+                        (a) -> BlockStateVariant.create().put(VariantSettings.MODEL, TextureMap.getSubId(crop, "_stage" + a)))));
     }
     public final void createWoodSign(BlockStateModelGenerator blockStateModelGenerator, Block planks, Block signBlock, Block wallSignBlock) {
         TextureMap textureMapping = TextureMap.texture(planks);
@@ -283,6 +289,10 @@ public class ModModelProvider extends FabricModelProvider {
         amberBricksTexturePool.wall(ModBlocks.AMBER_BRICK_WALL);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_AMBER_BRICKS);
 
+        registerCrossCrop(blockStateModelGenerator, ModBlocks.SHIMMERING_SAVANNABUDS_CROP, SavannabudsCropBlock.AGE);
+        blockStateModelGenerator.registerItemModel(ModBlocks.SHIMMERING_SAVANNABUDS);
+        blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.SHIMMERING_SAVANNABUDS, BlockStateModelGenerator.TintType.NOT_TINTED);
+
 
         //Main
 // WOODSETS
@@ -407,6 +417,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.AMBER, Models.GENERATED);
         itemModelGenerator.register(ModItems.EMBER, Models.GENERATED);
         itemModelGenerator.register(ModItems.EMBER_ARROW, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SAVANNABUD_SEEDS, Models.GENERATED);
 
 // Decor Additions
 //        for(Item item : DYED_PAPER_ITEMS) {

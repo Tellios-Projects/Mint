@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "mint:block/shimmering_savannabuds_crop_stage0"
+    },
+    "age=1": {
+      "model": "mint:block/shimmering_savannabuds_crop_stage1"
+    },
+    "age=2": {
+      "model": "mint:block/shimmering_savannabuds_crop_stage2"
+    },
+    "age=3": {
+      "model": "mint:block/shimmering_savannabuds_crop_stage3"
+    }
+  }
+}

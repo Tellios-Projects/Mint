@@ -654,6 +654,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(ModBlocks.AMBER_BRICK_SLAB), FabricRecipeProvider.conditionsFromItem(ModBlocks.AMBER_BRICK_SLAB))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.CHISELED_AMBER_BRICKS)));
 
+        offerShapelessRecipe(exporter, ModItems.AMBER_DYE, ModBlocks.SHIMMERING_SAVANNABUDS, "amber_dye", 1);
+
         //<editor-fold desc ="MOLD - Special">
         // This doesn't work because it does not specify each dye needs to be unique from each other. No idea how to do that however
 //        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MOLD_DYE)

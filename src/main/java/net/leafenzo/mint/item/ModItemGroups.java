@@ -605,6 +605,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CHISELED_AMBER_BRICKS);
                         entries.add(ModItems.EMBER);
                         entries.add(ModItems.EMBER_ARROW);
+                        entries.add(ModItems.SAVANNABUD_SEEDS);
+                        entries.add(ModBlocks.SHIMMERING_SAVANNABUDS);
 
                         entries.add(ModItems.SAGE_DYE);
                         entries.add(ModBlocks.SAGE_WOOL);

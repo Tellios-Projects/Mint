@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "amber_dye",
+  "ingredients": [
+    {
+      "item": "mint:shimmering_savannabuds"
+    }
+  ],
+  "result": {
+    "item": "mint:amber_dye"
+  }
+}

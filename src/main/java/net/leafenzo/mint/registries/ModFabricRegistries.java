@@ -145,5 +145,11 @@ public class ModFabricRegistries {
                 tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(ModItems.AMBER).weight(amberTrailRuinsWeight)));
             }
         });
+
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+            if (source.isBuiltin() && new Identifier("minecraft", "gameplay/sniffer_digging").equals(id)) {
+                tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(ModItems.SAVANNABUD_SEEDS)));
+            }
+        });
     }
 }
