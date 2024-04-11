@@ -294,6 +294,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.SHIMMERING_SAVANNABUDS, BlockStateModelGenerator.TintType.NOT_TINTED);
 
         registerCrossCrop(blockStateModelGenerator, ModBlocks.PINEAPPLE_STEM, PineappleStemBlock.AGE);
+        blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.PINEAPPLE_CROWN, BlockStateModelGenerator.TintType.NOT_TINTED);
 
         //Main
 // WOODSETS

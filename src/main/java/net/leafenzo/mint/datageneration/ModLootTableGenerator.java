@@ -178,6 +178,8 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
                                         .properties(StatePredicate.Builder.create().exactMatch(SavannabudsCropBlock.AGE, 2)))))
                         .with(this.applyExplosionDecay(ModBlocks.SHIMMERING_SAVANNABUDS_CROP, ItemEntry.builder(ModItems.SAVANNABUD_SEEDS)))));
 
+        addDrop(ModBlocks.PINEAPPLE_STEM, ModItems.PINEAPPLE_CROWN);
+        addDrop(ModBlocks.PINEAPPLE_CROWN, ModItems.PINEAPPLE_CROWN);
 
         // Decor Additions
         for(Block block : ModBlocks.ALL_MUCKTUFF_BLOCKS) { this.addDrop(block); }

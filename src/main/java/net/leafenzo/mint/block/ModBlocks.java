@@ -494,10 +494,13 @@ public class ModBlocks {
     public static final Block SHIMMERING_SAVANNABUDS = registerBlock("shimmering_savannabuds", new SavannabudsBlock(FabricBlockSettings.create().mapColor(MapColor.EMERALD_GREEN).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offset(AbstractBlock.OffsetType.XZ).pistonBehavior(PistonBehavior.DESTROY).burnable()));
     static { RENDER_LAYER_CUTOUT.add(SHIMMERING_SAVANNABUDS); }
 
-    public static final Block PINEAPPLE = registerBlock("pineapple", new PineappleBlock(FabricBlockSettings.create().mapColor(MapColor.GOLD).sounds(BlockSoundGroup.WOOD).pistonBehavior(PistonBehavior.DESTROY).nonOpaque()));
+    public static final Block PINEAPPLE = registerBlock("pineapple", new PineappleBlock(FabricBlockSettings.create().strength(1f, 1f).mapColor(MapColor.GOLD).sounds(BlockSoundGroup.WOOD).pistonBehavior(PistonBehavior.DESTROY).nonOpaque()));
     static { RENDER_LAYER_CUTOUT.add(PINEAPPLE); }
     public static final Block PINEAPPLE_STEM = registerBlockWithoutBlockItem("pineapple_stem", new PineappleStemBlock(FabricBlockSettings.create().mapColor(MapColor.EMERALD_GREEN).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).pistonBehavior(PistonBehavior.DESTROY)));
     static { RENDER_LAYER_CUTOUT.add(PINEAPPLE_STEM); }
+
+    public static final Block PINEAPPLE_CROWN = registerBlockWithoutBlockItem("pineapple_crown", new PineappleCrownBlock(FabricBlockSettings.create().mapColor(MapColor.GREEN).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).pistonBehavior(PistonBehavior.DESTROY)));
+    static { RENDER_LAYER_CUTOUT.add(PINEAPPLE_CROWN); }
     //</editor-fold>
 
     //<editor-fold desc ="SAGE - Template">

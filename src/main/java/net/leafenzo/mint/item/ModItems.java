@@ -155,7 +155,7 @@ public class ModItems {
     public static final Item EMBER_ARROW = registerItem("ember_arrow", new EmberArrowItem(new FabricItemSettings()));
 
     public static final Item SAVANNABUD_SEEDS = registerItem("savannabud_seeds", new AliasedBlockItem(ModBlocks.SHIMMERING_SAVANNABUDS_CROP, new FabricItemSettings()));
-    public static final Item PINEAPPLE_CROWN = registerItem("pineapple_crown", new AliasedBlockItem(ModBlocks.PINEAPPLE_STEM, new FabricItemSettings()));
+    public static final Item PINEAPPLE_CROWN = registerItem("pineapple_crown", new PineappleCrownItem(ModBlocks.PINEAPPLE_STEM, new FabricItemSettings()));
 
 
 
