@@ -420,7 +420,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.EMBER, Models.GENERATED);
         itemModelGenerator.register(ModItems.EMBER_ARROW, Models.GENERATED);
         itemModelGenerator.register(ModItems.SAVANNABUD_SEEDS, Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.PINEAPPLE.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModItems.PINEAPPLE, Models.GENERATED);
         itemModelGenerator.register(ModItems.PINEAPPLE_CROWN, Models.GENERATED);
         itemModelGenerator.register(ModItems.PINEAPPLE_SLICES, Models.GENERATED);
         itemModelGenerator.register(ModItems.PINEAPPLE_KEBAB, Models.GENERATED);

@@ -661,7 +661,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ModItems.AMBER_DYE, ModBlocks.SHIMMERING_SAVANNABUDS, "amber_dye", 1);
         offerShapelessRecipe(exporter, ModItems.AMBER_DYE, ModItems.PINEAPPLE_CROWN, "amber_dye", 1);
 
-        offerShapelessRecipe(exporter, ModItems.PINEAPPLE_SLICES, ModBlocks.PINEAPPLE, "pineapple_slices", 4);
+        offerShapelessRecipe(exporter, ModItems.PINEAPPLE_SLICES, ModItems.PINEAPPLE, "pineapple_slices", 4);
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.PINEAPPLE_KEBAB, 1)
                 .input(ModItems.PINEAPPLE_SLICES, 2)
                 .input(Items.COOKED_BEEF)

@@ -30,8 +30,8 @@ public class DiagonalSlabBlock extends SlabBlock {
     }
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        Direction lookDirection = ctx.getHorizontalPlayerFacing().getOpposite();
         float angle = ctx.getPlayerYaw();
+        Direction lookDirection = getDirection(angle, ctx);
 
         BlockPos blockPos = ctx.getBlockPos();
         BlockState blockState = ctx.getWorld().getBlockState(blockPos);
@@ -53,6 +53,24 @@ public class DiagonalSlabBlock extends SlabBlock {
                 && (!(angle > -22.5f) || !(angle < 22.5f))
                 && (!(angle > 67.5f) || !(angle < 112.5f))
                 && (!(angle > 157.5f) || !(angle < 180f));
+    }
+
+    protected static Direction getDirection(float angle, ItemPlacementContext ctx) {
+        if (isDiagonal(angle)) {
+            if (-157.5f < angle && angle < -112.5f) {
+                return Direction.WEST;
+            }
+            if (-67.5f < angle && angle < -22.5f) {
+                return Direction.NORTH;
+            }
+            if (22.5f < angle && angle < 67.5f) {
+                return Direction.EAST;
+            }
+            if (112.5f < angle && angle < 157.5f) {
+                return Direction.SOUTH;
+            }
+        }
+        return ctx.getHorizontalPlayerFacing().getOpposite();
     }
 
     @Override

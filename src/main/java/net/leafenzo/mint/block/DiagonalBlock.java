@@ -34,9 +34,9 @@ public class DiagonalBlock
 //                (ctx.getPlayer().getBlockY() - ctx.getBlockPos().getY()) * 90
 //                : ctx.getPlayerYaw();
 
-        Direction lookDirection = ctx.getHorizontalPlayerFacing().getOpposite();
         float angle = ctx.getPlayerYaw();
-        return this.getDefaultState().with(FACING, lookDirection).with(DIAGONAL, isDiagonal(angle));
+        Direction direction = getDirection(angle, ctx);
+        return this.getDefaultState().with(FACING, direction).with(DIAGONAL, isDiagonal(angle));
     }
 
     protected boolean isWall(ItemPlacementContext ctx) {
@@ -56,6 +56,24 @@ public class DiagonalBlock
         }
         //else
         return true;
+    }
+
+    protected static Direction getDirection(float angle, ItemPlacementContext ctx) {
+        if (isDiagonal(angle)) {
+            if (-157.5f < angle && angle < -112.5f) {
+                return Direction.WEST;
+            }
+            if (-67.5f < angle && angle < -22.5f) {
+                return Direction.NORTH;
+            }
+            if (22.5f < angle && angle < 67.5f) {
+                return Direction.EAST;
+            }
+            if (112.5f < angle && angle < 157.5f) {
+                return Direction.SOUTH;
+            }
+        }
+        return ctx.getHorizontalPlayerFacing().getOpposite();
     }
 
     @Override
