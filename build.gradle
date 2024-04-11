@@ -98,7 +98,7 @@ dependencies {
 	// Create - dependencies are added transitively
 //	modImplementation("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
 
-// EVERYTHING PSAT HERE BREAKS DATAGEN (only uncomment these during testing):
+// EVERYTHING PAST HERE BREAKS DATAGEN (only uncomment these during testing):
 	// Supplementaries
 //	modRuntimeOnly("maven.modrinth:supplementaries:${supplementaries_version}")
 //	modRuntimeOnly("maven.modrinth:dCCkNFwE:${supplementaries_squared_version_id}")
