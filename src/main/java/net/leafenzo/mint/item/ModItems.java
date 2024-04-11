@@ -4,21 +4,12 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
-import net.leafenzo.mint.registration.ModRegistryHelper;
-import net.leafenzo.mint.util.Color;
+import net.leafenzo.mint.registry.tag.ModTags;
 import net.leafenzo.mint.util.ModDyeColor;
-import net.leafenzo.mint.util.ModUtil;
-import net.minecraft.block.Block;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.util.DyeColor;
-import net.minecraft.util.Identifier;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import static net.leafenzo.mint.registration.ModRegistryHelper.ItemRegistry.*;
 
@@ -272,6 +263,7 @@ public class ModItems {
         DyeItem item = new DyeItem(color, new FabricItemSettings());
         DYE_ITEMS.add(item);
         DYE_ITEM_FROM_COLOR.put(color, item);
+        DYE_ITEM_TAG_FROM_DYE_ITEM.put(item, ModTags.Items.getOrCreateDyeItemCommonTag(item));
         return item;
     }
     //</editor-fold>

@@ -6,6 +6,7 @@ import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.registry.tag.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.DyeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.tag.ItemTags;
@@ -49,6 +50,11 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(ModTags.Items.COBBLESTONE)
                 .add(Blocks.COBBLESTONE.asItem())
         ;
+
+    // Dyes
+        for (DyeItem item : ItemRegistry.DYE_ITEM_TAG_FROM_DYE_ITEM.keySet()) {
+            getOrCreateTagBuilder(ItemRegistry.DYE_ITEM_TAG_FROM_DYE_ITEM.get(item)).add(item);
+        }
 
     // Special
         getOrCreateTagBuilder(ItemTags.VILLAGER_PLANTABLE_SEEDS)

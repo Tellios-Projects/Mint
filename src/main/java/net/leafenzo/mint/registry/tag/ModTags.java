@@ -4,6 +4,7 @@ import com.mojang.datafixers.types.templates.Tag;
 import net.fabricmc.fabric.impl.tag.convention.TagRegistration;
 import net.leafenzo.mint.Super;
 import net.minecraft.block.Block;
+import net.minecraft.item.DyeItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKeys;
@@ -38,8 +39,11 @@ public class ModTags {
         public static TagKey<Item> getOrCreateTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(Super.MOD_ID, name));
         }
-        private static TagKey<Item>  getOrCreateCommonTag(String name) {
+        public static TagKey<Item> getOrCreateCommonTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier("c", name));
+        }
+        public static TagKey<Item> getOrCreateDyeItemCommonTag(DyeItem item) {
+            return getOrCreateCommonTag(item.getColor().getName()+"_dyes");
         }
     }
 }

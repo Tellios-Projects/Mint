@@ -7,11 +7,13 @@ package net.leafenzo.mint.registration;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.leafenzo.mint.Super;
+import net.leafenzo.mint.registry.tag.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import org.apache.http.annotation.Obsolete;
@@ -39,6 +41,24 @@ public class ModRegistryHelper {
             DYE_ITEM_FROM_COLOR.put(DyeColor.GREEN, (DyeItem) Items.GREEN_DYE);
             DYE_ITEM_FROM_COLOR.put(DyeColor.RED, (DyeItem) Items.RED_DYE);
             DYE_ITEM_FROM_COLOR.put(DyeColor.BLACK, (DyeItem) Items.BLACK_DYE);
+        }
+        public static final HashMap<DyeItem, TagKey<Item>> DYE_ITEM_TAG_FROM_DYE_ITEM = new HashMap<DyeItem, TagKey<Item>>(); static {
+            DYE_ITEM_TAG_FROM_DYE_ITEM.put((DyeItem) Items.WHITE_DYE, ModTags.Items.getOrCreateDyeItemCommonTag((DyeItem) Items.WHITE_DYE));
+            DYE_ITEM_TAG_FROM_DYE_ITEM.put((DyeItem) Items.ORANGE_DYE, ModTags.Items.getOrCreateDyeItemCommonTag((DyeItem) Items.ORANGE_DYE));
+            DYE_ITEM_TAG_FROM_DYE_ITEM.put((DyeItem) Items.MAGENTA_DYE, ModTags.Items.getOrCreateDyeItemCommonTag((DyeItem) Items.MAGENTA_DYE));
+            DYE_ITEM_TAG_FROM_DYE_ITEM.put((DyeItem) Items.LIGHT_BLUE_DYE, ModTags.Items.getOrCreateDyeItemCommonTag((DyeItem) Items.LIGHT_BLUE_DYE));
+            DYE_ITEM_TAG_FROM_DYE_ITEM.put((DyeItem) Items.YELLOW_DYE, ModTags.Items.getOrCreateDyeItemCommonTag((DyeItem) Items.YELLOW_DYE));
+            DYE_ITEM_TAG_FROM_DYE_ITEM.put((DyeItem) Items.LIME_DYE, ModTags.Items.getOrCreateDyeItemCommonTag((DyeItem) Items.LIME_DYE));
+            DYE_ITEM_TAG_FROM_DYE_ITEM.put((DyeItem) Items.PINK_DYE, ModTags.Items.getOrCreateDyeItemCommonTag((DyeItem) Items.PINK_DYE));
+            DYE_ITEM_TAG_FROM_DYE_ITEM.put((DyeItem) Items.GRAY_DYE, ModTags.Items.getOrCreateDyeItemCommonTag((DyeItem) Items.GRAY_DYE));
+            DYE_ITEM_TAG_FROM_DYE_ITEM.put((DyeItem) Items.LIGHT_GRAY_DYE, ModTags.Items.getOrCreateDyeItemCommonTag((DyeItem) Items.LIGHT_GRAY_DYE));
+            DYE_ITEM_TAG_FROM_DYE_ITEM.put((DyeItem) Items.CYAN_DYE, ModTags.Items.getOrCreateDyeItemCommonTag((DyeItem) Items.CYAN_DYE));
+            DYE_ITEM_TAG_FROM_DYE_ITEM.put((DyeItem) Items.PURPLE_DYE, ModTags.Items.getOrCreateDyeItemCommonTag((DyeItem) Items.PURPLE_DYE));
+            DYE_ITEM_TAG_FROM_DYE_ITEM.put((DyeItem) Items.BLUE_DYE, ModTags.Items.getOrCreateDyeItemCommonTag((DyeItem) Items.BLUE_DYE));
+            DYE_ITEM_TAG_FROM_DYE_ITEM.put((DyeItem) Items.BROWN_DYE, ModTags.Items.getOrCreateDyeItemCommonTag((DyeItem) Items.BROWN_DYE));
+            DYE_ITEM_TAG_FROM_DYE_ITEM.put((DyeItem) Items.GREEN_DYE, ModTags.Items.getOrCreateDyeItemCommonTag((DyeItem) Items.GREEN_DYE));
+            DYE_ITEM_TAG_FROM_DYE_ITEM.put((DyeItem) Items.RED_DYE, ModTags.Items.getOrCreateDyeItemCommonTag((DyeItem) Items.RED_DYE));
+            DYE_ITEM_TAG_FROM_DYE_ITEM.put((DyeItem) Items.BLACK_DYE, ModTags.Items.getOrCreateDyeItemCommonTag((DyeItem) Items.BLACK_DYE));
         }
         public static final ArrayList<Item> DYE_ITEMS = new ArrayList<Item>();
         public static final ArrayList<Item> BOAT_ITEMS = new ArrayList<Item>();
