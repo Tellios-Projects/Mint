@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "comforts:hammock_velvet",
+      "comforts:hammock_to_velvet"
+    ]
+  },
+  "criteria": {
+    "has_velvet_wool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["mint:velvet_wool"]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "comforts:hammock_velvet"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_velvet_wool",
+      "has_the_recipe"
+    ]
+  ]
+}

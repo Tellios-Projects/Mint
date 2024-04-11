@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "comforts:sleeping_bag_shamrock",
+      "comforts:sleeping_bag_to_shamrock"
+    ]
+  },
+  "criteria": {
+    "has_shamrock_wool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["mint:shamrock_wool"]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "comforts:sleeping_bag_shamrock"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_shamrock_wool",
+      "has_the_recipe"
+    ]
+  ]
+}

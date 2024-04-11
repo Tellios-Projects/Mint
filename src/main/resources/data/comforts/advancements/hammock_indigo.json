@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "comforts:hammock_indigo",
+      "comforts:hammock_to_indigo"
+    ]
+  },
+  "criteria": {
+    "has_indigo_wool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["mint:indigo_wool"]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "comforts:hammock_indigo"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_indigo_wool",
+      "has_the_recipe"
+    ]
+  ]
+}

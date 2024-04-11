@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "comforts:hammock_cerulean",
+      "comforts:hammock_to_cerulean"
+    ]
+  },
+  "criteria": {
+    "has_cerulean_wool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["mint:cerulean_wool"]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "comforts:hammock_cerulean"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cerulean_wool",
+      "has_the_recipe"
+    ]
+  ]
+}

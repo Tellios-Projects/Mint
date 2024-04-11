@@ -28,6 +28,11 @@ repositories {
 	}
 
 	maven {
+		name = 'Ladysnake Mods'
+		url = 'https://maven.ladysnake.org/releases'
+	}
+
+	maven {
 		name = 'JitPack'
 		url = 'https://jitpack.io'
 	}
@@ -98,6 +103,12 @@ dependencies {
 //	modRuntimeOnly("maven.modrinth:supplementaries:${supplementaries_version}")
 //	modRuntimeOnly("maven.modrinth:amendments:${amendments_version}")
 //	modRuntimeOnly("maven.modrinth:moonlight:${moonlight_version}")
+
+	// Comforts
+//	modRuntimeOnly "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}"
+//	modRuntimeOnly "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}"
+//	modRuntimeOnly("com.illusivesoulworks.spectrelib:spectrelib-fabric:${spectrelib_version}") // { exclude(group = "net.fabricmc.fabric-api") }
+//	modRuntimeOnly("maven.modrinth:comforts:${comforts_version}")
 
 
 	// uncomment if needed

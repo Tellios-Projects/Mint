@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "comforts:sleeping_bag_artichoke",
+      "comforts:sleeping_bag_to_artichoke"
+    ]
+  },
+  "criteria": {
+    "has_artichoke_wool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["mint:artichoke_wool"]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "comforts:sleeping_bag_artichoke"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_artichoke_wool",
+      "has_the_recipe"
+    ]
+  ]
+}

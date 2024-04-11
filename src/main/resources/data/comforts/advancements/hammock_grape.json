@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "comforts:hammock_grape",
+      "comforts:hammock_to_grape"
+    ]
+  },
+  "criteria": {
+    "has_grape_wool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["mint:grape_wool"]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "comforts:hammock_grape"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_grape_wool",
+      "has_the_recipe"
+    ]
+  ]
+}

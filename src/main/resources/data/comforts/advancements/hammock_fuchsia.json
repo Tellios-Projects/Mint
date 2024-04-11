@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "comforts:hammock_fuchsia",
+      "comforts:hammock_to_fuchsia"
+    ]
+  },
+  "criteria": {
+    "has_fuchsia_wool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["mint:fuchsia_wool"]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "comforts:hammock_fuchsia"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_fuchsia_wool",
+      "has_the_recipe"
+    ]
+  ]
+}

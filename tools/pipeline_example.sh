@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Bring out a jar from our libraries
-bash acquire.sh maven/modrinth/supplementaries/qtARIsSl/supplementaries-qtARIsSl.jar
+bash acquire.sh ../.gradle/loom-cache/remapped_mods/net_fabricmc_yarn_1_20_1_1_20_1_build_9_v2/maven/modrinth/supplementaries/qtARIsSl/supplementaries-qtARIsSl.jar
 
 # Generate templates from a template search file
   # In the template search file:

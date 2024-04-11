@@ -1,0 +1,79 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "comforts:hammock_dyed",
+  "ingredients": [
+    [
+      {
+        "item": "comforts:hammock_white"
+      },
+      {
+        "item": "comforts:hammock_orange"
+      },
+      {
+        "item": "comforts:hammock_black"
+      },
+      {
+        "item": "comforts:hammock_light_blue"
+      },
+      {
+        "item": "comforts:hammock_yellow"
+      },
+      {
+        "item": "comforts:hammock_lime"
+      },
+      {
+        "item": "comforts:hammock_pink"
+      },
+      {
+        "item": "comforts:hammock_gray"
+      },
+      {
+        "item": "comforts:hammock_light_gray"
+      },
+      {
+        "item": "comforts:hammock_cyan"
+      },
+      {
+        "item": "comforts:hammock_purple"
+      },
+      {
+        "item": "comforts:hammock_blue"
+      },
+      {
+        "item": "comforts:hammock_brown"
+      },
+      {
+        "item": "comforts:hammock_green"
+      },
+      {
+        "item": "comforts:hammock_red"
+      },
+      { "item": "comforts:hammock_mint" },
+      { "item": "comforts:hammock_peach" },
+      { "item": "comforts:hammock_periwinkle" },
+      { "item": "comforts:hammock_artichoke" },
+      { "item": "comforts:hammock_fuchsia" },
+      { "item": "comforts:hammock_vermilion" },
+      { "item": "comforts:hammock_shamrock" },
+      { "item": "comforts:hammock_indigo" },
+      { "item": "comforts:hammock_banana" },
+      { "item": "comforts:hammock_cerulean" },
+      { "item": "comforts:hammock_acorn" },
+      { "item": "comforts:hammock_mauve" },
+      { "item": "comforts:hammock_maroon" },
+      { "item": "comforts:hammock_grape" },
+      { "item": "comforts:hammock_navy" },
+      { "item": "comforts:hammock_sap" },
+      { "item": "comforts:hammock_amber" },
+      { "item": "comforts:hammock_sage" },
+      { "item": "comforts:hammock_velvet" },
+      { "item": "comforts:hammock_mold" }
+    ],
+    {
+      "tag": "c:acorn_dyes"
+    }
+  ],
+  "result": {
+    "item": "comforts:hammock_acorn"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "comforts:sleeping_bag_mold",
+      "comforts:sleeping_bag_to_mold"
+    ]
+  },
+  "criteria": {
+    "has_mold_wool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["mint:mold_wool"]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "comforts:sleeping_bag_mold"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mold_wool",
+      "has_the_recipe"
+    ]
+  ]
+}

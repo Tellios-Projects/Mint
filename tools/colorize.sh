@@ -11,7 +11,7 @@ for f in $(find $TEMPLATES -type f -name "*.json"); do
     OUT_PATH="${OUT_DIRECTORY}"$(echo $f | rev | cut -d "/" -f2- | rev | cut -d "/" -f2-)
 
     mkdir -p $OUT_PATH
-    sed "s/${REPLACE}/${COLOR}/g" $f | sed "/minecraft:*${COLOR}/s/minecraft:/mint:/g" | sed "s/\"block\/${COLOR}/\"mint:block\/${COLOR}/g" > "${OUT_PATH}/${NAME}"
+    sed "s/${REPLACE}/${COLOR}/g" $f | sed "/minecraft:*${COLOR}/s/minecraft:/mint:/g" | sed "s/\"block\/${COLOR}/\"mint:block\/${COLOR}/g" | sed "s/\"minecraft:block\/${COLOR}/\"mint:block\/${COLOR}/g" > "${OUT_PATH}/${NAME}"
 
   done < $COLORLIST
 done

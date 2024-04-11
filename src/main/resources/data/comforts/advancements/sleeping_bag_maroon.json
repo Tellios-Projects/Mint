@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "comforts:sleeping_bag_maroon",
+      "comforts:sleeping_bag_to_maroon"
+    ]
+  },
+  "criteria": {
+    "has_maroon_wool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["mint:maroon_wool"]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "comforts:sleeping_bag_maroon"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_maroon_wool",
+      "has_the_recipe"
+    ]
+  ]
+}

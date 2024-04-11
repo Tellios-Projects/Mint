@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "comforts:hammock_vermilion",
+      "comforts:hammock_to_vermilion"
+    ]
+  },
+  "criteria": {
+    "has_vermilion_wool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["mint:vermilion_wool"]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "comforts:hammock_vermilion"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_vermilion_wool",
+      "has_the_recipe"
+    ]
+  ]
+}

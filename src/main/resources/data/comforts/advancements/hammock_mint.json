@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "comforts:hammock_mint",
+      "comforts:hammock_to_mint"
+    ]
+  },
+  "criteria": {
+    "has_mint_wool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["mint:mint_wool"]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "comforts:hammock_mint"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mint_wool",
+      "has_the_recipe"
+    ]
+  ]
+}

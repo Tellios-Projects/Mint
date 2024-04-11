@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "comforts:hammock_periwinkle",
+      "comforts:hammock_to_periwinkle"
+    ]
+  },
+  "criteria": {
+    "has_periwinkle_wool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["mint:periwinkle_wool"]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "comforts:hammock_periwinkle"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_periwinkle_wool",
+      "has_the_recipe"
+    ]
+  ]
+}

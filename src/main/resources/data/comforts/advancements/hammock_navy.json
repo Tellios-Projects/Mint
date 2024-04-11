@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "comforts:hammock_navy",
+      "comforts:hammock_to_navy"
+    ]
+  },
+  "criteria": {
+    "has_navy_wool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["mint:navy_wool"]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "comforts:hammock_navy"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_navy_wool",
+      "has_the_recipe"
+    ]
+  ]
+}

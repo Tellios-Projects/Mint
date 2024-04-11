@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "comforts:hammock_sap",
+      "comforts:hammock_to_sap"
+    ]
+  },
+  "criteria": {
+    "has_sap_wool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["mint:sap_wool"]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "comforts:hammock_sap"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_sap_wool",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,3 @@
+*sleeping_bag*magenta
+*hammock*magenta
+block/magenta_cloth
