@@ -619,10 +619,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .group("ember")
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.EMBER)));
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.EMBER_ARROW)
-                .input(ModItems.EMBER)
-                .input(Items.ARROW)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.EMBER_ARROW, 8)
+                .input('X', ModItems.EMBER)
+                .input('#', Items.ARROW)
+                .pattern("###")
+                .pattern("#X#")
+                .pattern("###")
                 .criterion(FabricRecipeProvider.hasItem(ModItems.EMBER), FabricRecipeProvider.conditionsFromItem(ModItems.EMBER))
+                .criterion(FabricRecipeProvider.hasItem(Items.ARROW), FabricRecipeProvider.conditionsFromItem(Items.ARROW))
                 .group("ember_arrow")
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.EMBER_ARROW)));
 

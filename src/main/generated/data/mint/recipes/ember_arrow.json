@@ -1,16 +1,23 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
   "group": "ember_arrow",
-  "ingredients": [
-    {
-      "item": "mint:ember"
-    },
-    {
+  "key": {
+    "#": {
       "item": "minecraft:arrow"
+    },
+    "X": {
+      "item": "mint:ember"
     }
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
   ],
   "result": {
+    "count": 8,
     "item": "mint:ember_arrow"
-  }
+  },
+  "show_notification": true
 }
