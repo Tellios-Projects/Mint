@@ -100,10 +100,10 @@ dependencies {
 
 // EVERYTHING PSAT HERE BREAKS DATAGEN (only uncomment these during testing):
 	// Supplementaries
-	modRuntimeOnly("maven.modrinth:supplementaries:${supplementaries_version}")
-	modRuntimeOnly("maven.modrinth:dCCkNFwE:${supplementaries_squared_version_id}")
-	modRuntimeOnly("maven.modrinth:amendments:${amendments_version}")
-	modRuntimeOnly("maven.modrinth:moonlight:${moonlight_version}")
+//	modRuntimeOnly("maven.modrinth:supplementaries:${supplementaries_version}")
+//	modRuntimeOnly("maven.modrinth:dCCkNFwE:${supplementaries_squared_version_id}")
+//	modRuntimeOnly("maven.modrinth:amendments:${amendments_version}")
+//	modRuntimeOnly("maven.modrinth:moonlight:${moonlight_version}")
 
 	// Comforts
 //	modRuntimeOnly "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}"
