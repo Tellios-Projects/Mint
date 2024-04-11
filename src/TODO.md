@@ -3,6 +3,9 @@
 - Further server mixin testing
 
 # COMPAT
+  Fix gratuitous error logs generated from running the game with resources
+that are not used when someone doesn't have every mod we do model compat for
+
 TWIGS
 - Register new blocks
 SUPPLEMENTARIES
@@ -11,7 +14,9 @@ SUPPLEMENTARIES AMENDMENTS
   DONE | Quick sweep for amendments crashes
   DONE | Carpet stairs work :3 
   DONE | Also lanterns work :3
-
+COMFORTS
+  DONE | Import textures
+  DONE | Run bash on it
 BETTER END
 - Fix ColoredMaterial preventing game launch
 CREATE
