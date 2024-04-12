@@ -61,6 +61,8 @@ public class ModConfiguredFeatures {
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> WINTERGREEN = registerKey("wintergreen");
 
+    public static final RegistryKey <ConfiguredFeature <?, ?>> PEACH = registerKey("peach");
+
     public static final RegistryKey <ConfiguredFeature <?, ?>> ORE_MUCKTUFF = registerKey("ore_mucktuff");
 
     public static void bootstrap(Registerable <ConfiguredFeature <?, ?>> context) {

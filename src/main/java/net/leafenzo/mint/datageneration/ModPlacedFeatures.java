@@ -28,6 +28,7 @@ public class ModPlacedFeatures {
 
     public static final RegistryKey<PlacedFeature> PATCH_HYPERICUM_PLACED = registerKey("patch_hypericum_placed");
     public static final RegistryKey<PlacedFeature> PATCH_PEACH_TREE_PLACED = registerKey("patch_peach_tree_placed");
+    public static final RegistryKey<PlacedFeature> PEACH_PLACED = registerKey("peach");
     public static final RegistryKey<PlacedFeature> PATCH_CORAL_ANEMONE_PLACED = registerKey("patch_coral_anemone_placed");
 
     public static final RegistryKey<PlacedFeature> PATCH_HIDCOTE_LAVENDER_PLACED = registerKey("patch_hidcote_lavender_placed");
@@ -177,8 +178,8 @@ public class ModPlacedFeatures {
                         context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_HYPERICUM_PLACED); }
                 )
                 .add(ModificationPhase.ADDITIONS,
-                        BiomeSelectors.includeByKey(BiomeKeys.SPARSE_JUNGLE).or(BiomeSelectors.includeByKey(BiomeKeys.BAMBOO_JUNGLE)),
-                        context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_PEACH_TREE_PLACED); }
+                        BiomeSelectors.includeByKey(BiomeKeys.SPARSE_JUNGLE),
+                        context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.PEACH_PLACED); }
                 )
                 .add(ModificationPhase.ADDITIONS,
                         BiomeSelectors.tag((ConventionalBiomeTags.AQUATIC_ICY)).negate().and(BiomeSelectors.tag(ConventionalBiomeTags.SHALLOW_OCEAN)), //Not Aquatic Icy, and is Shallow Ocean

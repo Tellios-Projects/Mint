@@ -102,6 +102,14 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
             );
     }
 
+    public LootTable.Builder hangingFruitDrops(Block block, Item drop) {
+        return LootTable.builder()
+                .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(BlockStatePropertyLootCondition.builder(block)
+                                .properties(StatePredicate.Builder.create().exactMatch(HangingFruitBlock.AGE, 4)))
+                        .with(this.applyExplosionDecay(block, ItemEntry.builder(drop))));
+    }
+
     public void addWoodsetDrops(WoodSet woodSet) {
         if(woodSet.getWoodType() == ModBlocks.WINTERGREEN_WOODSET.getWoodType()) {
             this.addDrop(woodSet.getLeaves(), (Block block) -> this.wintergreenLeavesDrops((Block)block, woodSet.getSapling(), SAPLING_DROP_CHANCE));
@@ -131,6 +139,8 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(woodSet.getHangingSign());
     }
 
+    public static final float[] FRUIT_SAPLING_DROP_CHANCE = new float[]{0.01F, 0.05F, 0.08F, 0.1F};
+    public static final float[] FLOWERING_FRUIT_SAPLING_DROP_CHANCE = new float[]{0.1F, 0.12F, 0.15F, 0.2F};
     @Override
     public void generate() {
         //  MINT - Special
@@ -144,6 +154,9 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(ModBlocks.CORALSOIL_BRICK_SLAB, (Block block) -> this.slabDrops((Block)block));
         this.addPottedPlantDrops(ModBlocks.POTTED_HYPERICUM);
         this.addDrop(ModBlocks.PEACH_TREE, (Block block) -> this.peachTreeDrops((Block)block, ModItems.PEACH_BRANCH));
+        this.addDrop(ModBlocks.HANGING_PEACH, hangingFruitDrops(ModBlocks.HANGING_PEACH, ModItems.PEACH));
+        addDrop(ModBlocks.PEACH_LEAVES, leavesDrops(ModBlocks.PEACH_LEAVES, ModBlocks.PEACH_SAPLING, FRUIT_SAPLING_DROP_CHANCE));
+        addDrop(ModBlocks.FLOWERING_PEACH_LEAVES, leavesDrops(ModBlocks.FLOWERING_PEACH_LEAVES, ModBlocks.PEACH_SAPLING, FLOWERING_FRUIT_SAPLING_DROP_CHANCE));
 
         //  PERIWINKLE - Special
         this.addDrop(ModBlocks.LAVENDER_BRICK_SLAB, (Block block) -> this.slabDrops((Block)block));

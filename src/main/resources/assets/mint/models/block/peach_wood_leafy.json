@@ -1,0 +1,7 @@
+{
+	"parent": "mint:block/template_fruit_wood_leafy",
+	"textures": {
+		"all": "mint:block/peach_log",
+		"leaves": "mint:block/peach_leaves"
+	}
+}

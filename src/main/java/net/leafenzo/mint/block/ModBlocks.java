@@ -3,9 +3,11 @@ package net.leafenzo.mint.block;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
+import net.leafenzo.mint.block.sapling.PeachSaplingGenerator;
 import net.leafenzo.mint.block.sapling.WintergreenSaplingGenerator;
 import net.leafenzo.mint.datageneration.ModConfiguredFeatures;
 import net.leafenzo.mint.effect.ModEffects;
+import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
@@ -19,6 +21,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.BooleanProperty;
@@ -165,8 +168,27 @@ public class ModBlocks {
     public static final Block POTTED_HYPERICUM = registerBlockWithoutBlockItem("potted_hypericum", createFlowerPotBlock((FlowerBlock) HYPERICUM)/*, ModItemGroups.PEACH*/);
     public static final Block PEACH_TREE = registerBlockWithoutBlockItem("peach_tree", new PeachTreeBlock(FabricBlockSettings.create().noCollision().strength(0.2f).sounds(BlockSoundGroup.GRASS).burnable().pistonBehavior(PistonBehavior.DESTROY).ticksRandomly().offset(AbstractBlock.OffsetType.XZ).nonOpaque().solidBlock(ModBlocks::never)));
         static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_TREE); }
-    public static final Block PEACH_LOG = registerBlock("peach_log", new Block(FabricBlockSettings.create().instrument(Instrument.BASS).strength(2.0f).sounds(BlockSoundGroup.WOOD).burnable().mapColor(MapColor.STONE_GRAY))/*, ModItemGroups.PEACH*/);
-        static { LOGS_THAT_BURN.add(PEACH_LOG); }
+
+    public static final Block PEACH_SAPLING = registerBlock("peach_sapling", new SaplingBlock(new PeachSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).sounds(BlockSoundGroup.CHERRY_SAPLING)));
+    static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_SAPLING); }
+    public static final Block POTTED_PEACH_SAPLING = registerBlockWithoutBlockItem("potted_peach_sapling", new FlowerPotBlock(ModBlocks.PEACH_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
+    static { RENDER_LAYER_CUTOUT_MIPPED.add(POTTED_PEACH_SAPLING); }
+    public static final Block HANGING_PEACH = registerBlockWithoutBlockItem("hanging_peach", new HangingPeachBlock(FabricBlockSettings.create().mapColor(MapColor.CLEAR).dynamicBounds().sounds(BlockSoundGroup.AZALEA).pistonBehavior(PistonBehavior.DESTROY).ticksRandomly().offset(AbstractBlock.OffsetType.XZ)));
+    static { RENDER_LAYER_CUTOUT_MIPPED.add(HANGING_PEACH); }
+    public static final Block PEACH_LEAVES = registerBlock("peach_leaves", new FruitLeavesBlock(ModBlocks.HANGING_PEACH, FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
+    static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_LEAVES); }
+    public static final Block FLOWERING_PEACH_LEAVES = registerBlock("flowering_peach_leaves", new FruitLeavesBlock(ModBlocks.HANGING_PEACH, FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
+    static { RENDER_LAYER_CUTOUT_MIPPED.add(FLOWERING_PEACH_LEAVES); }
+    public static final Block PEACH_LOG = registerBlock("peach_log", new FruitLogBlock(ModBlocks.PEACH_LEAVES, ModBlocks.FLOWERING_PEACH_LEAVES, FabricBlockSettings.create().instrument(Instrument.BASS).strength(2.0f).sounds(BlockSoundGroup.WOOD).burnable().mapColor(MapColor.STONE_GRAY))/*, ModItemGroups.PEACH*/);
+    static { LOGS_THAT_BURN.add(PEACH_LOG); }
+    static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_LOG); }
+    public static final Block PEACH_WOOD = registerBlock("peach_wood", new FruitLogBlock(ModBlocks.PEACH_LEAVES, ModBlocks.FLOWERING_PEACH_LEAVES, FabricBlockSettings.copyOf(ModBlocks.PEACH_LOG)));
+    static { LOGS_THAT_BURN.add(PEACH_WOOD); }
+    static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_WOOD); }
+    public static final Block STRIPPED_PEACH_LOG = registerBlock("stripped_peach_log", new StrippedFruitLogBlock(ModBlocks.PEACH_LEAVES, ModBlocks.FLOWERING_PEACH_LEAVES, FabricBlockSettings.create().instrument(Instrument.BASS).strength(2.0f).sounds(BlockSoundGroup.WOOD).burnable().mapColor(MapColor.TERRACOTTA_WHITE))/*, ModItemGroups.PEACH*/);
+    static { LOGS_THAT_BURN.add(STRIPPED_PEACH_LOG); }
+    public static final Block STRIPPED_PEACH_WOOD = registerBlock("stripped_peach_wood", new StrippedFruitLogBlock(ModBlocks.PEACH_LEAVES, ModBlocks.FLOWERING_PEACH_LEAVES, FabricBlockSettings.copyOf(ModBlocks.STRIPPED_PEACH_LOG)));
+    static { LOGS_THAT_BURN.add(STRIPPED_PEACH_WOOD); }
     public static final Block CORAL_ANEMONE = registerBlock("coral_anemone", new CoralAnemoneBlock(ModConfiguredFeatures.PATCH_BONEMEAL_CORAL_ANEMONE, FabricBlockSettings.create().breakInstantly().sounds(BlockSoundGroup.SLIME).mapColor(MapColor.RAW_IRON_PINK).nonOpaque().pistonBehavior(PistonBehavior.DESTROY).luminance(createLightLevelFromBooleanProperty(6, Properties.WATERLOGGED)))/*, ModItemGroups.PEACH*/);
         static { RENDER_LAYER_CUTOUT_MIPPED.add(CORAL_ANEMONE); }
     public static final Block CORALSOIL = registerBlock("coralsoil", new Block(FabricBlockSettings.copyOf(Blocks.CLAY))/*, ModItemGroups.PEACH*/);

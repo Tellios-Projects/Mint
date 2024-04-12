@@ -5,6 +5,9 @@
     "mint:stripped_wintergreen_log",
     "mint:wintergreen_wood",
     "mint:stripped_wintergreen_wood",
-    "mint:peach_log"
+    "mint:peach_log",
+    "mint:peach_wood",
+    "mint:stripped_peach_log",
+    "mint:stripped_peach_wood"
   ]
 }

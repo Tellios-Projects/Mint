@@ -1,10 +1,7 @@
 package net.leafenzo.mint.registries;
 
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
-import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.fabricmc.fabric.api.registry.VillagerInteractionRegistries;
+import net.fabricmc.fabric.api.registry.*;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
@@ -111,6 +108,11 @@ public class ModFabricRegistries {
         for(ItemConvertible item : ModBlocks.WOOL_CARPET_BLOCKS) {
             registry.add(item, 67);
         }
+    }
+
+    public static void registerStrippables() {
+        StrippableBlockRegistry.register(ModBlocks.PEACH_LOG, ModBlocks.STRIPPED_PEACH_LOG);
+        StrippableBlockRegistry.register(ModBlocks.PEACH_WOOD, ModBlocks.STRIPPED_PEACH_WOOD);
     }
 
     public static void modifyLootTables() {

@@ -115,7 +115,6 @@ public class ModModelProvider extends FabricModelProvider {
         );
     }
     public final void registerCrossCrop(BlockStateModelGenerator blockStateModelGenerator, Block crop, Property<Integer> ageProperty) {
-        //This creates some extra unused models. This causes no issues whatsoever, so I've decided not to fix it.
         for(int i = 0; i < ageProperty.getValues().size(); i++) {
             blockStateModelGenerator.createSubModel(crop, "_stage" + i, Models.CROSS, TextureMap::cross);
         }
@@ -229,7 +228,9 @@ public class ModModelProvider extends FabricModelProvider {
         this.registerCoralAnemoneBlock(blockStateModelGenerator);
         blockStateModelGenerator.registerItemModel(ModBlocks.PEACH_TREE.asItem());
         this.registerTwoTallCrop(blockStateModelGenerator, ModBlocks.PEACH_TREE, TwoTallCropBlock.AGE);
-        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.PEACH_LOG);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.PEACH_SAPLING, ModBlocks.POTTED_PEACH_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PEACH_LEAVES);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FLOWERING_PEACH_LEAVES);
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.HYPERICUM, ModBlocks.POTTED_HYPERICUM, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.CORALSOIL);
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.CRACKED_CORALSOIL_BRICKS);

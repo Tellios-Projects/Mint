@@ -40,6 +40,7 @@ public class ModInit implements ModInitializer {
             ModBlockEntityType.RegisterModBlockEntityTypes();
             ModEntityTypes.registerEntityTypes();
             ModParticleTypes.registerModParticleTypes();
+            ModFabricRegistries.registerStrippables();
             ModFabricRegistries.registerFlammableBlocks();
             ModFabricRegistries.registerCompostingChances();
             ModFabricRegistries.registerVillagerInteractions();

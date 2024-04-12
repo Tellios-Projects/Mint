@@ -326,7 +326,13 @@ public class ModItemGroups {
                         entries.add(ModBlocks.PEACH_CANDLE);
 
                         entries.add(ModBlocks.HYPERICUM);
+                        entries.add(ModBlocks.PEACH_SAPLING);
                         entries.add(ModBlocks.PEACH_LOG);
+                        entries.add(ModBlocks.PEACH_WOOD);
+                        entries.add(ModBlocks.STRIPPED_PEACH_LOG);
+                        entries.add(ModBlocks.STRIPPED_PEACH_WOOD);
+                        entries.add(ModBlocks.PEACH_LEAVES);
+                        entries.add(ModBlocks.FLOWERING_PEACH_LEAVES);
                         entries.add(ModItems.PEACH);
                         entries.add(ModItems.PEACH_PIT);
                         entries.add(ModItems.PEACH_SLICE);
