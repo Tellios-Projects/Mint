@@ -170,15 +170,15 @@ public class ModBlocks {
         static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_TREE); }
 
     public static final Block PEACH_SAPLING = registerBlock("peach_sapling", new SaplingBlock(new PeachSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).sounds(BlockSoundGroup.CHERRY_SAPLING)));
-    static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_SAPLING); }
+    static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_SAPLING); SAPLINGS.add(PEACH_SAPLING); }
     public static final Block POTTED_PEACH_SAPLING = registerBlockWithoutBlockItem("potted_peach_sapling", new FlowerPotBlock(ModBlocks.PEACH_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
     static { RENDER_LAYER_CUTOUT_MIPPED.add(POTTED_PEACH_SAPLING); }
     public static final Block HANGING_PEACH = registerBlockWithoutBlockItem("hanging_peach", new HangingPeachBlock(FabricBlockSettings.create().mapColor(MapColor.CLEAR).dynamicBounds().sounds(BlockSoundGroup.AZALEA).pistonBehavior(PistonBehavior.DESTROY).ticksRandomly().offset(AbstractBlock.OffsetType.XZ)));
     static { RENDER_LAYER_CUTOUT_MIPPED.add(HANGING_PEACH); }
     public static final Block PEACH_LEAVES = registerBlock("peach_leaves", new FruitLeavesBlock(ModBlocks.HANGING_PEACH, FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
-    static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_LEAVES); }
+    static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_LEAVES); LEAVES.add(PEACH_LEAVES);  }
     public static final Block FLOWERING_PEACH_LEAVES = registerBlock("flowering_peach_leaves", new FruitLeavesBlock(ModBlocks.HANGING_PEACH, FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
-    static { RENDER_LAYER_CUTOUT_MIPPED.add(FLOWERING_PEACH_LEAVES); }
+    static { RENDER_LAYER_CUTOUT_MIPPED.add(FLOWERING_PEACH_LEAVES); LEAVES.add(FLOWERING_PEACH_LEAVES); }
     public static final Block PEACH_LOG = registerBlock("peach_log", new FruitLogBlock(ModBlocks.PEACH_LEAVES, ModBlocks.FLOWERING_PEACH_LEAVES, FabricBlockSettings.create().instrument(Instrument.BASS).strength(2.0f).sounds(BlockSoundGroup.WOOD).burnable().mapColor(MapColor.STONE_GRAY))/*, ModItemGroups.PEACH*/);
     static { LOGS_THAT_BURN.add(PEACH_LOG); }
     static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_LOG); }
@@ -255,13 +255,13 @@ public class ModBlocks {
     public static final Block POTTED_THISTLE_FLOWER = registerBlockWithoutBlockItem("potted_thistle_flower", createFlowerPotBlock(THISTLE_FLOWER)/*, ModItemGroups.ARTICHOKE*/);
     public static final Block WAXCAP_MUSHROOM = registerBlock("waxcap_mushroom", createMushroomPlantBlock(MapColor.DARK_GREEN, ModConfiguredFeatures.HUGE_WAXCAP_MUSHROOM)/*, ModItemGroups.ARTICHOKE*/);
     public static final Block POTTED_WAXCAP_MUSHROOM = registerBlockWithoutBlockItem("potted_waxcap_mushroom", createFlowerPotBlock(WAXCAP_MUSHROOM)/*, ModItemGroups.ARTICHOKE*/);
-    public static final Block HANGING_WAXCAP_WAX = registerBlockWithoutBlockItem("hanging_waxcap_wax", new HangingWaxcapWaxBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).noCollision().breakInstantly().sounds(BlockSoundGroup.SLIME).offset(AbstractBlock.OffsetType.XZ).pistonBehavior(PistonBehavior.DESTROY)));
+    public static final Block HANGING_WAXCAP_WAX = registerBlockWithoutBlockItem("hanging_waxcap_wax", new HangingWaxcapWaxBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).noCollision().breakInstantly().sounds(BlockSoundGroup.SLIME).offset(AbstractBlock.OffsetType.XZ).pistonBehavior(PistonBehavior.DESTROY).burnable()));
         static { RENDER_LAYER_CUTOUT_MIPPED.add(HANGING_WAXCAP_WAX); }
     public static final Block WAXCAP_WAX_BLOCK = registerBlock("waxcap_wax_block", new Block(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.HONEY).strength(0.5f).burnable())/*, ModItemGroups.ARTICHOKE*/);
     public static final Block WAXCAP_GILL_SLAB = registerBlock("waxcap_gill_slab", new DiagonalSlabBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.SLIME).strength(0.5f).burnable().luminance(state -> 5))/*, ModItemGroups.ARTICHOKE*/);
         static { SLABS.add(WAXCAP_GILL_SLAB); }
     public static final Block WAXCAP_GILLS = registerBlock("waxcap_gills", new DiagonalBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.SLIME).breakInstantly().burnable().luminance(state -> 5))/*, ModItemGroups.ARTICHOKE*/);
-    public static final Block WAXCAP_STEM_BLOCK = registerBlock("waxcap_stem_block", new MushroomBlock(FabricBlockSettings.create().mapColor(MapColor.SPRUCE_BROWN).instrument(Instrument.BASS).strength(0.2f).sounds(BlockSoundGroup.WOOD))/*, ModItemGroups.ARTICHOKE*/);
+    public static final Block WAXCAP_STEM_BLOCK = registerBlock("waxcap_stem_block", new MushroomBlock(FabricBlockSettings.create().mapColor(MapColor.SPRUCE_BROWN).instrument(Instrument.BASS).strength(0.2f).sounds(BlockSoundGroup.WOOD).burnable())/*, ModItemGroups.ARTICHOKE*/);
     public static final Block WAXCAP_CAP_BLOCK = registerBlock("waxcap_cap_block", new MushroomBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_GREEN).instrument(Instrument.BASS).strength(0.2f).sounds(BlockSoundGroup.WOOD).burnable())/*, ModItemGroups.ARTICHOKE*/);
     public static final Block ARTICHOKE_CROP = registerBlockWithoutBlockItem("artichoke_crop", new ArtichokeCropBlock(FabricBlockSettings.create().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).pistonBehavior(PistonBehavior.DESTROY).mapColor(MapColor.DARK_GREEN)));
         static { RENDER_LAYER_CUTOUT_MIPPED.add(ARTICHOKE_CROP); }

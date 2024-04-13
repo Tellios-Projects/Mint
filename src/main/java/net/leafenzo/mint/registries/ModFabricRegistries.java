@@ -1,7 +1,9 @@
 package net.leafenzo.mint.registries;
 
+import dev.architectury.platform.Mod;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.fabric.api.registry.*;
+import net.fabricmc.fabric.api.util.Item2ObjectMap;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
@@ -11,6 +13,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
 
@@ -37,25 +40,37 @@ public class ModFabricRegistries {
         for(Block block : ModBlocks.WOOL_CARPET_BLOCKS) {
             registry.add(block, 20, 60);
         }
-
-        //TODO make sure everything that should be in here is here and .Burnable() too if need be
-
-        registry.add(ModBlocks.PEACH_LOG, 5, 5);
+        for(Block block : ModBlocks.LEAVES) {
+            registry.add(block, 60, 30);
+        }
+        for(Block block : ModBlocks.LOGS_THAT_BURN) {
+            registry.add(block, 5, 5);
+        }
+        registry.add(ModBlocks.PEACH_LOG, 10, 5);
+        registry.add(ModBlocks.PEACH_WOOD, 10, 5);
+        registry.add(ModBlocks.STRIPPED_PEACH_LOG, 10, 5);
+        registry.add(ModBlocks.STRIPPED_PEACH_WOOD, 10, 5);
 
         registry.add(ModBlocks.LAVENDER_BUSHEL, 20, 60);
         registry.add(ModBlocks.PERIWINKLE_PETALS, 100, 60);
 
-        // Extremely flammable because of their oily wax
         registry.add(ModBlocks.HANGING_WAXCAP_WAX, 20, 60);
         registry.add(ModBlocks.WAXCAP_WAX_BLOCK, 3, 60);
         registry.add(ModBlocks.WAXCAP_GILL_SLAB, 3, 60);
-        //registry.add(ModBlocks.WAXCAP_STEM_BLOCK, 3, 60);
+        registry.add(ModBlocks.WAXCAP_STEM_BLOCK, 3, 60);
         registry.add(ModBlocks.WAXCAP_CAP_BLOCK, 3, 60);
     }
     public static void registerCompostingChances() {
 //        ModInit.LOGGER.debug("Registering composting chances for " + Super.MOD_ID); //This log is commented out because this is not the only place our mod registers this
-
         CompostingChanceRegistry compostingChanceRegistry = CompostingChanceRegistry.INSTANCE;
+        for(ItemConvertible item : ModBlocks.SAPLINGS) {
+            compostingChanceRegistry.add(item, 0.3f);
+        }
+        for(ItemConvertible item : ModBlocks.LEAVES) {
+            compostingChanceRegistry.add(item, 0.3f);
+        }
+
+        //Registry values can be safely overwritten
         compostingChanceRegistry.add(ModBlocks.WILD_MINT, 0.65f);
         compostingChanceRegistry.add(ModItems.MINT_SPRIG, 0.65f); // same as wheat
         compostingChanceRegistry.add(ModBlocks.MINT_SPRIG_BLOCK, 1.0f);
@@ -84,10 +99,8 @@ public class ModFabricRegistries {
 
     public static void registerVillagerInteractions() {
         ModInit.LOGGER.debug("Registering villager interactions for " + Super.MOD_ID);
-
         VillagerInteractionRegistries.registerCollectable(ModItems.MINT_SPRIG);
         VillagerInteractionRegistries.registerCompostable(ModItems.MINT_SPRIG);
-
         VillagerInteractionRegistries.registerCollectable(ModItems.ARTICHOKE);
         VillagerInteractionRegistries.registerCompostable(ModItems.ARTICHOKE);
     }
@@ -95,10 +108,12 @@ public class ModFabricRegistries {
     public static void registerFuels() {
 //        ModInit.LOGGER.debug("Registering Smelting Fuels for " + Super.MOD_ID); //This log is commented out because this is not the only place our mod registers this
         FuelRegistry registry = FuelRegistry.INSTANCE;
-
-        registry.add(ModBlocks.PEACH_LOG, 300);
-        registry.add(ModItems.PEACH_BRANCH, 100);
-
+        for(ItemConvertible item : ModBlocks.SAPLINGS) {
+            registry.add(item, 100);
+        }
+        for(ItemConvertible item : ModBlocks.LOGS_THAT_BURN) {
+            registry.add(item, 300);
+        }
         for(ItemConvertible item : ModBlocks.BANNER_BLOCKS) {
             registry.add(item, 300);
         }
@@ -108,6 +123,13 @@ public class ModFabricRegistries {
         for(ItemConvertible item : ModBlocks.WOOL_CARPET_BLOCKS) {
             registry.add(item, 67);
         }
+
+        //Registry values can be safely overwritten
+        registry.add(ModBlocks.PEACH_LOG, 200);
+        registry.add(ModBlocks.PEACH_WOOD, 200);
+        registry.add(ModBlocks.STRIPPED_PEACH_LOG, 200);
+        registry.add(ModBlocks.STRIPPED_PEACH_WOOD, 200);
+        registry.add(ModItems.PEACH_BRANCH, 100);
     }
 
     public static void registerStrippables() {

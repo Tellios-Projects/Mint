@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "mint:mint_sprig_block",
+    "mint:peach_leaves",
+    "mint:flowering_peach_leaves",
     "mint:wintergreen_leaves"
   ]
 }

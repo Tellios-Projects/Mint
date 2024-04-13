@@ -420,55 +420,57 @@ public class WoodSet {
     }
     private Block createPressurePlate(){
         Block b = registerBlock(this.getName() + "_pressure_plate", new PressurePlateBlock(this.pressurePlateActivationRule, FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getBlockSetType()));
-//        ModFabricRegistries.registerFlammable(b, 20, 5); //TODO make sure this can ignite due to lava, but not fully burn. (as that's how it works in vanilla)
+//        ModFabricRegistries.registerFlammable(b, 20, 5);
         ModFabricRegistries.registerFuel(b, 300);
         ModBlocks.WOODEN_PRESSURE_PLATES.add(b);
         return b;
     }
     private Block registerButtonBlock(){
         Block b = registerBlock(this.getName() + "_button", new ButtonBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getBlockSetType(), 30, true));
+        // Not flammable
         ModFabricRegistries.registerFuel(b, 100);
         ModBlocks.WOODEN_BUTTONS.add(b);
         return b;
     }
     private Block registerDoorBlock(){
         Block b = registerBlock(this.getName() + "_door", new DoorBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor()), this.getBlockSetType()));
-//        ModFabricRegistries.registerFlammable(b, 20, 5); //TODO make sure this can ignite due to lava, but not fully burn. (as that's how it works in vanilla)
+//        ModFabricRegistries.registerFlammable(b, 20, 5);
         ModFabricRegistries.registerFuel(b, 200);
         ModBlocks.WOODEN_DOORS.add(b);
         return b;
     }
     private Block registerTrapdoorBlock() {
         Block b = registerBlock(this.getName() + "_trapdoor", new TrapdoorBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor()), this.getBlockSetType()));
-//        ModFabricRegistries.registerFlammable(b, 20, 5); //TODO make sure this can ignite due to lava, but not fully burn. (as that's how it works in vanilla)
+//        ModFabricRegistries.registerFlammable(b, 20, 5);
         ModFabricRegistries.registerFuel(b, 300);
         ModBlocks.WOODEN_TRAPDOORS.add(b);
         return b;
     }
     private Block registerSignBlock(){
         Block b = registerBlockWithoutBlockItem(this.getName() + "_sign", new SignBlock(FabricBlockSettings.copy(getSignBase()).mapColor(this.getTopColor()), this.getWoodType()));
-        // ModFabricRegistries.registerFlammable(b, 20, 5); //TODO make sure this can ignite due to lava, but not fully burn. (as that's how it works in vanilla)
+        // ModFabricRegistries.registerFlammable(b, 20, 5);
         ModBlocks.SIGNS.add(b);
         return b;
     }
     private Block registerWallSignBlock(){
         Block b = registerBlockWithoutBlockItem(this.getName() + "_wall_sign", new WallSignBlock(FabricBlockSettings.copy(this.getSignBase()).mapColor(this.getTopColor()).dropsLike(this.getSign()), this.getWoodType()));
-        // ModFabricRegistries.registerFlammable(b, 20, 5); //TODO make sure this can ignite due to lava, but not fully burn. (as that's how it works in vanilla)
+        // ModFabricRegistries.registerFlammable(b, 20, 5);
         ModBlocks.SIGNS.add(b);
         return b;
     }
     private Block registerHangingSignBlock(){
         Block b = registerBlockWithoutBlockItem(this.getName() + "_hanging_sign", new HangingSignBlock(FabricBlockSettings.copy(this.getHangingSignBase()).mapColor(this.getTopColor()), this.getWoodType()));
-        ModBlocks.SIGNS.add(b);         //TODO make sure this can ignite due to lava, but not fully burn. (as that's how it works in vanilla)
+        ModBlocks.SIGNS.add(b);
         return b;
     }
     private Block registerWallHangingSignBlock(){
         Block b = registerBlockWithoutBlockItem(this.getName() + "_wall_hanging_sign", new WallHangingSignBlock(FabricBlockSettings.copy(this.getHangingSignBase()).mapColor(this.getTopColor()).dropsLike(this.getHangingSign()), this.getWoodType()));
-        ModBlocks.SIGNS.add(b);         //TODO make sure this can ignite due to lava, but not fully burn. (as that's how it works in vanilla)
+        ModBlocks.SIGNS.add(b);
         return b;
     }
     public Block registerSaplingBlock(SaplingGenerator saplingGenerator) {
         Block b = registerBlock(this.getName() + "_sapling", new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
+        // Saplings are not flammable
         ModFabricRegistries.registerCompostable(b, 0.3f);
         ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
         ModBlocks.SAPLINGS.add(b);
