@@ -1,6 +1,7 @@
 # TODO LIST:
 # HIGH PRIORITY
 - Further server mixin testing
+- Make wintergreen wood non-flammable (like a nether wood)
 
 # COMPAT
   Fix gratuitous error logs generated from running the game with resources
