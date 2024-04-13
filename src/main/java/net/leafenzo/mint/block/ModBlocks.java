@@ -170,15 +170,15 @@ public class ModBlocks {
         static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_TREE); }
 
     public static final Block PEACH_SAPLING = registerBlock("peach_sapling", new SaplingBlock(new PeachSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).sounds(BlockSoundGroup.CHERRY_SAPLING)));
-    static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_SAPLING); }
+    static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_SAPLING); SAPLINGS.add(PEACH_SAPLING); }
     public static final Block POTTED_PEACH_SAPLING = registerBlockWithoutBlockItem("potted_peach_sapling", new FlowerPotBlock(ModBlocks.PEACH_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
     static { RENDER_LAYER_CUTOUT_MIPPED.add(POTTED_PEACH_SAPLING); }
     public static final Block HANGING_PEACH = registerBlockWithoutBlockItem("hanging_peach", new HangingPeachBlock(FabricBlockSettings.create().mapColor(MapColor.CLEAR).dynamicBounds().sounds(BlockSoundGroup.AZALEA).pistonBehavior(PistonBehavior.DESTROY).ticksRandomly().offset(AbstractBlock.OffsetType.XZ)));
     static { RENDER_LAYER_CUTOUT_MIPPED.add(HANGING_PEACH); }
     public static final Block PEACH_LEAVES = registerBlock("peach_leaves", new FruitLeavesBlock(ModBlocks.HANGING_PEACH, FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
-    static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_LEAVES); }
+    static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_LEAVES); LEAVES.add(PEACH_LEAVES);  }
     public static final Block FLOWERING_PEACH_LEAVES = registerBlock("flowering_peach_leaves", new FruitLeavesBlock(ModBlocks.HANGING_PEACH, FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
-    static { RENDER_LAYER_CUTOUT_MIPPED.add(FLOWERING_PEACH_LEAVES); }
+    static { RENDER_LAYER_CUTOUT_MIPPED.add(FLOWERING_PEACH_LEAVES); LEAVES.add(FLOWERING_PEACH_LEAVES); }
     public static final Block PEACH_LOG = registerBlock("peach_log", new FruitLogBlock(ModBlocks.PEACH_LEAVES, ModBlocks.FLOWERING_PEACH_LEAVES, FabricBlockSettings.create().instrument(Instrument.BASS).strength(2.0f).sounds(BlockSoundGroup.WOOD).burnable().mapColor(MapColor.STONE_GRAY))/*, ModItemGroups.PEACH*/);
     static { LOGS_THAT_BURN.add(PEACH_LOG); }
     static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_LOG); }
