@@ -25,16 +25,16 @@ import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 
 public class HangingPeachBlock extends HangingFruitBlock {
-    private static final VoxelShape[] SHAPES = new VoxelShape[]{Block.createCuboidShape(7, 13, 7, 9, 16, 9),
+    private static final VoxelShape[] SHAPES = new VoxelShape[]{Block.createCuboidShape(7, 14, 7, 9, 16, 9),
             Block.createCuboidShape(6, 13, 6, 10, 16, 10),
-            Block.createCuboidShape(6.5, 13, 6.5, 9.5, 16, 9.5),
-            VoxelShapes.combineAndSimplify(Block.createCuboidShape(5.5, 10, 5.5, 10.5, 15, 10.5), Block.createCuboidShape(7, 15, 7, 9, 16, 9), BooleanBiFunction.OR),
-            VoxelShapes.combineAndSimplify(Block.createCuboidShape(5, 8, 5, 11, 14, 11), Block.createCuboidShape(7, 14, 7, 9, 16, 9), BooleanBiFunction.OR)};
+            Block.createCuboidShape(7, 13, 7, 9, 16, 9),
+            VoxelShapes.combineAndSimplify(Block.createCuboidShape(6.5, 11, 6.5, 9.5, 14.5, 9.5), Block.createCuboidShape(7, 14.5, 7, 9, 16, 9), BooleanBiFunction.OR),
+            VoxelShapes.combineAndSimplify(Block.createCuboidShape(5.5, 9, 5.5, 10.5, 14, 10.5), Block.createCuboidShape(7, 14, 7, 9, 16, 9), BooleanBiFunction.OR)};
     private static final VoxelShape[] COLL_SHAPES = new VoxelShape[]{VoxelShapes.empty(),
             VoxelShapes.empty(),
-            Block.createCuboidShape(6.5, 13, 6.5, 9.5, 16, 9.5),
-            VoxelShapes.combineAndSimplify(Block.createCuboidShape(5.5, 10, 5.5, 10.5, 15, 10.5), Block.createCuboidShape(7, 15, 7, 9, 16, 9), BooleanBiFunction.OR),
-            VoxelShapes.combineAndSimplify(Block.createCuboidShape(5, 8, 5, 11, 14, 11), Block.createCuboidShape(7, 14, 7, 9, 16, 9), BooleanBiFunction.OR)};
+            Block.createCuboidShape(7, 13, 7, 9, 16, 9),
+            VoxelShapes.combineAndSimplify(Block.createCuboidShape(6.5, 11, 6.5, 9.5, 14.5, 9.5), Block.createCuboidShape(7, 14.5, 7, 9, 16, 9), BooleanBiFunction.OR),
+            VoxelShapes.combineAndSimplify(Block.createCuboidShape(5.5, 9, 5.5, 10.5, 14, 10.5), Block.createCuboidShape(7, 14, 7, 9, 16, 9), BooleanBiFunction.OR)};
     public HangingPeachBlock(Settings settings) {
         super(settings);
     }
