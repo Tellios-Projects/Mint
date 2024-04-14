@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "grape_dye",
+  "ingredients": [
+    {
+      "item": "mint:plum_cordyline"
+    }
+  ],
+  "result": {
+    "item": "mint:grape_dye"
+  }
+}

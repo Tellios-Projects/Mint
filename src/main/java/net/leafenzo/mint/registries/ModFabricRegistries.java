@@ -1,20 +1,23 @@
 package net.leafenzo.mint.registries;
 
-import dev.architectury.platform.Mod;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.fabric.api.registry.*;
-import net.fabricmc.fabric.api.util.Item2ObjectMap;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
-import net.leafenzo.mint.registration.WoodSet;
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemConvertible;
+import net.minecraft.loot.LootPool;
+import net.minecraft.loot.condition.TableBonusLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
-import net.minecraft.registry.tag.TagKey;
+import net.minecraft.loot.function.SetCountLootFunction;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
+import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.util.Identifier;
+
+import static net.minecraft.data.server.loottable.BlockLootTableGenerator.WITHOUT_SILK_TOUCH_NOR_SHEARS;
 
 
 public class ModFabricRegistries {
@@ -173,6 +176,12 @@ public class ModFabricRegistries {
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
             if (source.isBuiltin() && new Identifier("minecraft", "gameplay/sniffer_digging").equals(id)) {
                 tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(ModItems.SAVANNABUD_SEEDS)));
+            }
+        });
+
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+            if (source.isBuiltin() && new Identifier("minecraft", "blocks/cherry_leaves").equals(id)) {
+                tableBuilder.pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0F)).conditionally(WITHOUT_SILK_TOUCH_NOR_SHEARS).with(ItemEntry.builder(ModItems.CHERRIES).conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE, 0.03f, 0.0305555557f, 0.03125f, 0.033333334f, 0.06f)).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f)))));
             }
         });
     }

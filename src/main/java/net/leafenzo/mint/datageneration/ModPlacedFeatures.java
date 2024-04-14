@@ -42,6 +42,9 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> WINTERGREEN_SNOWY_PLAINS_PLACED = registerKey("wintergreen_snowy_plains_placed");
     public static final RegistryKey<PlacedFeature> WINTERGREEN_PLACED = registerKey("wintergreen_placed");
 
+    public static final RegistryKey<PlacedFeature> PATCH_STRAWBERRY_PLACED = registerKey("patch_strawberry_placed");
+    public static final RegistryKey<PlacedFeature> PATCH_CORDYLINE_PLACED = registerKey("patch_cordyline_placed");
+
     public static final RegistryKey<PlacedFeature> ORE_MUCKTUFF_PLACED = registerKey("ore_mucktuff_placed");
 
     public static void bootstrap(Registerable <PlacedFeature> context) {
@@ -133,6 +136,23 @@ public class ModPlacedFeatures {
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 BiomePlacementModifier.of()
         );
+        registerKey(context,
+                PATCH_STRAWBERRY_PLACED,
+                configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PATCH_STRAWBERRY),
+                RarityFilterPlacementModifier.of(30),
+                NoiseThresholdCountPlacementModifier.of(-0.8, 0, 60),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                BiomePlacementModifier.of()
+        );
+        registerKey(context,
+                PATCH_CORDYLINE_PLACED,
+                configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PATCH_CORDYLINE),
+                RarityFilterPlacementModifier.of(30),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                BiomePlacementModifier.of()
+        );
 //        PlacedFeatures.register(featureRegisterable, BROWN_MUSHROOM_OLD_GROWTH, registryEntry18, VegetationPlacedFeatures.mushroomModifiers(4, CountPlacementModifier.of(3)));
 
         registerKey(context,
@@ -202,6 +222,14 @@ public class ModPlacedFeatures {
                 .add(ModificationPhase.ADDITIONS,
                         BiomeSelectors.tag(BiomeTags.IS_SAVANNA), //TODO Nature's Spirit compat for the proper Mediterranean climates
                         context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_THISTLE_FLOWER_PLACED); }
+                )
+                .add(ModificationPhase.ADDITIONS,
+                        context -> context.getBiome().getTemperature() > .3f && context.getBiome().getTemperature() < 0.9f,
+                        context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_STRAWBERRY_PLACED); }
+                )
+                .add(ModificationPhase.ADDITIONS,
+                        context -> context.getBiome().getTemperature() > 1f,
+                        context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_CORDYLINE_PLACED); }
                 )
                 .add(ModificationPhase.ADDITIONS,
                         BiomeSelectors.includeByKey(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA).or(BiomeSelectors.includeByKey(BiomeKeys.OLD_GROWTH_PINE_TAIGA)), //TODO Nature's Spirit compat for Redwood Forest

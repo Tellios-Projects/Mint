@@ -542,6 +542,10 @@ public class ModBlocks {
     public static final Block SAGE_WALL_BANNER = registerBlockWithoutBlockItem("sage_wall_banner", createWallBannerBlock(ModDyeColor.SAGE, (BannerBlock)ModBlocks.SAGE_BANNER));
     //</editor-fold>
     //<editor-fold desc ="SAGE - Special">
+    public static final Block ALOE = registerBlock("aloe", new PlantBlock(FabricBlockSettings.copyOf(Blocks.FERN).mapColor(MapColor.LICHEN_GREEN)));
+    static {RENDER_LAYER_CUTOUT_MIPPED.add(ALOE);}
+    public static final Block POTTED_ALOE = registerBlock("potted_aloe", createFlowerPotBlock(ModBlocks.ALOE));
+    static {RENDER_LAYER_CUTOUT_MIPPED.add(POTTED_ALOE);}
     //</editor-fold>
 
     //<editor-fold desc ="VELVET - Template">
@@ -561,6 +565,23 @@ public class ModBlocks {
     public static final Block VELVET_WALL_BANNER = registerBlockWithoutBlockItem("velvet_wall_banner", createWallBannerBlock(ModDyeColor.VELVET, (BannerBlock)ModBlocks.VELVET_BANNER));
     //</editor-fold>
     //<editor-fold desc ="VELVET - Special">
+
+    public static final Block CORDYLINE = registerBlock("cordyline", new CordylineBlock(FabricBlockSettings.copyOf(Blocks.GRASS).mapColor(MapColor.DARK_DULL_PINK)));
+    static {RENDER_LAYER_CUTOUT_MIPPED.add(CORDYLINE);}
+    public static final Block POTTED_CORDYLINE = registerBlock("potted_cordyline", createFlowerPotBlock(ModBlocks.CORDYLINE));
+    static {RENDER_LAYER_CUTOUT_MIPPED.add(POTTED_CORDYLINE);}
+    public static final Block TALL_CORDYLINE = registerBlock("tall_cordyline", new TallPlantBlock(FabricBlockSettings.copyOf(Blocks.TALL_GRASS).mapColor(MapColor.DARK_DULL_PINK)));
+    static {RENDER_LAYER_CUTOUT_MIPPED.add(TALL_CORDYLINE);}
+    public static final Block PLUM_CORDYLINE = registerBlock("plum_cordyline", new CordylineBlock(FabricBlockSettings.copyOf(Blocks.GRASS).mapColor(MapColor.DARK_CRIMSON)));
+    static {RENDER_LAYER_CUTOUT_MIPPED.add(PLUM_CORDYLINE);}
+    public static final Block POTTED_PLUM_CORDYLINE = registerBlock("potted_plum_cordyline", createFlowerPotBlock(ModBlocks.PLUM_CORDYLINE));
+    static {RENDER_LAYER_CUTOUT_MIPPED.add(POTTED_PLUM_CORDYLINE);}
+    public static final Block TALL_PLUM_CORDYLINE = registerBlock("tall_plum_cordyline", new TallPlantBlock(FabricBlockSettings.copyOf(Blocks.GRASS).mapColor(MapColor.DARK_CRIMSON)));
+    static {RENDER_LAYER_CUTOUT_MIPPED.add(TALL_PLUM_CORDYLINE);}
+    public static final Block STRAWBERRY_PLANT = registerBlock("strawberry_plant", new StrawberryPlantBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS).mapColor(MapColor.DARK_GREEN).ticksRandomly()));
+    static {RENDER_LAYER_CUTOUT_MIPPED.add(STRAWBERRY_PLANT);}
+
+    public static final Block VELVET_CAKE = registerBlock("velvet_cake", new VelvetCakeBlock(FabricBlockSettings.copyOf(Blocks.CAKE).mapColor(MapColor.SPRUCE_BROWN)));
     //</editor-fold>
 
     //<editor-fold desc ="MOLD - Template">

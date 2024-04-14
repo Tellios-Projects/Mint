@@ -297,6 +297,17 @@ public class ModModelProvider extends FabricModelProvider {
         registerCrossCrop(blockStateModelGenerator, ModBlocks.PINEAPPLE_STEM, PineappleStemBlock.AGE);
         blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.PINEAPPLE_CROWN, BlockStateModelGenerator.TintType.NOT_TINTED);
 
+        blockStateModelGenerator.registerTintableCross(ModBlocks.ALOE, BlockStateModelGenerator.TintType.NOT_TINTED);
+        registerFlowerPot(blockStateModelGenerator, ModBlocks.ALOE, ModBlocks.POTTED_ALOE, BlockStateModelGenerator.TintType.NOT_TINTED);
+
+        blockStateModelGenerator.registerTintableCross(ModBlocks.CORDYLINE, BlockStateModelGenerator.TintType.NOT_TINTED);
+        registerFlowerPot(blockStateModelGenerator, ModBlocks.CORDYLINE, ModBlocks.POTTED_CORDYLINE, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerTintableCross(ModBlocks.PLUM_CORDYLINE, BlockStateModelGenerator.TintType.NOT_TINTED);
+        registerFlowerPot(blockStateModelGenerator, ModBlocks.PLUM_CORDYLINE, ModBlocks.POTTED_PLUM_CORDYLINE, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerDoubleBlock(ModBlocks.TALL_CORDYLINE, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerDoubleBlock(ModBlocks.TALL_PLUM_CORDYLINE, BlockStateModelGenerator.TintType.NOT_TINTED);
+
+
         //Main
 // WOODSETS
         for (WoodSet woodSet : ModBlocks.WOODSETS) {
@@ -426,6 +437,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.PINEAPPLE_SLICES, Models.GENERATED);
         itemModelGenerator.register(ModItems.PINEAPPLE_KEBAB, Models.GENERATED);
         itemModelGenerator.register(ModItems.PINEAPPLE_TART, Models.GENERATED);
+
+        itemModelGenerator.register(ModItems.STRAWBERRY, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CHERRIES, Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.VELVET_CAKE.asItem(), Models.GENERATED);
 
 // Decor Additions
 //        for(Item item : DYED_PAPER_ITEMS) {

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "mint:block/tall_plum_cordyline_top"
+  }
+}

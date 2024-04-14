@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mint:wintergreen_sapling"
+    "mint:wintergreen_sapling",
+    "mint:peach_sapling"
   ]
 }

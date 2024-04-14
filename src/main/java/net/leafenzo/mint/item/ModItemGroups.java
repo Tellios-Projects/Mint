@@ -602,6 +602,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.AMBER_BANNER);
                         entries.add(ModBlocks.AMBER_SHULKER_BOX);
                         entries.add(ModBlocks.AMBER_CANDLE);
+
                         entries.add(ModItems.AMBER);
                         entries.add(ModBlocks.AMBER_BLOCK);
                         entries.add(ModBlocks.AMBER_BRICKS);
@@ -633,6 +634,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.SAGE_SHULKER_BOX);
                         entries.add(ModBlocks.SAGE_CANDLE);
 
+                        entries.add(ModBlocks.ALOE);
+
                         entries.add(ModItems.VELVET_DYE);
                         entries.add(ModBlocks.VELVET_WOOL);
                         entries.add(ModBlocks.VELVET_CARPET);
@@ -646,6 +649,14 @@ public class ModItemGroups {
                         entries.add(ModBlocks.VELVET_BANNER);
                         entries.add(ModBlocks.VELVET_SHULKER_BOX);
                         entries.add(ModBlocks.VELVET_CANDLE);
+
+                        entries.add(ModItems.STRAWBERRY);
+                        entries.add(ModItems.CHERRIES);
+                        entries.add(ModBlocks.CORDYLINE);
+                        entries.add(ModBlocks.TALL_CORDYLINE);
+                        entries.add(ModBlocks.PLUM_CORDYLINE);
+                        entries.add(ModBlocks.TALL_PLUM_CORDYLINE);
+                        entries.add(ModBlocks.VELVET_CAKE);
 
                         entries.add(ModItems.MOLD_DYE);
                         entries.add(ModBlocks.MOLD_WOOL);

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/flowerbed_1",
+  "textures": {
+    "flowerbed": "mint:block/strawberry_plant_1",
+    "stem": "mint:block/strawberry_plant_stem"
+  }
+}

@@ -16,16 +16,17 @@ import net.minecraft.data.server.loottable.vanilla.VanillaBlockLootTableGenerato
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
-import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
-import net.minecraft.loot.condition.*;
+import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
+import net.minecraft.loot.condition.LocationCheckLootCondition;
+import net.minecraft.loot.condition.LootCondition;
+import net.minecraft.loot.condition.TableBonusLootCondition;
 import net.minecraft.loot.entry.AlternativeEntry;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
 import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
-import net.minecraft.loot.function.LootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
@@ -38,6 +39,7 @@ import net.minecraft.util.math.BlockPos;
 
 import java.util.ArrayList;
 import java.util.function.Function;
+import java.util.stream.IntStream;
 
 public class ModLootTableGenerator extends FabricBlockLootTableProvider {
     public ModLootTableGenerator(FabricDataOutput dataOutput) { super(dataOutput); }
@@ -193,6 +195,20 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
 
         addDrop(ModBlocks.PINEAPPLE_STEM, ModItems.PINEAPPLE_CROWN);
         addDrop(ModBlocks.PINEAPPLE_CROWN, ModItems.PINEAPPLE_CROWN);
+
+        this.addDrop(ModBlocks.STRAWBERRY_PLANT, LootTable.builder().pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0F)).with(this.applyExplosionDecay(ModBlocks.STRAWBERRY_PLANT, ItemEntry.builder(ModItems.STRAWBERRY).apply(IntStream.rangeClosed(1, 4).boxed().toList(), (flowerAmount) -> SetCountLootFunction.builder(ConstantLootNumberProvider.create((float)flowerAmount)).conditionally(BlockStatePropertyLootCondition.builder(ModBlocks.STRAWBERRY_PLANT).properties(StatePredicate.Builder.create().exactMatch(FlowerbedBlock.FLOWER_AMOUNT, flowerAmount))))))));
+
+        this.addDrop(ModBlocks.TALL_CORDYLINE, LootTable.builder().pool(this.addSurvivesExplosionCondition(ModBlocks.TALL_CORDYLINE, LootPool.builder()
+                .rolls(ConstantLootNumberProvider.create(1.0F))
+                .with(ItemEntry.builder(ModBlocks.TALL_CORDYLINE)
+                        .conditionally(BlockStatePropertyLootCondition.builder(ModBlocks.TALL_CORDYLINE)
+                                .properties(StatePredicate.Builder.create().exactMatch(TallPlantBlock.HALF, DoubleBlockHalf.LOWER)))))));
+        this.addDrop(ModBlocks.TALL_PLUM_CORDYLINE, LootTable.builder().pool(this.addSurvivesExplosionCondition(ModBlocks.TALL_PLUM_CORDYLINE, LootPool.builder()
+                .rolls(ConstantLootNumberProvider.create(1.0F))
+                .with(ItemEntry.builder(ModBlocks.TALL_PLUM_CORDYLINE)
+                        .conditionally(BlockStatePropertyLootCondition.builder(ModBlocks.TALL_PLUM_CORDYLINE)
+                                .properties(StatePredicate.Builder.create().exactMatch(TallPlantBlock.HALF, DoubleBlockHalf.LOWER)))))));
+
 
         // Decor Additions
         for(Block block : ModBlocks.ALL_MUCKTUFF_BLOCKS) { this.addDrop(block); }

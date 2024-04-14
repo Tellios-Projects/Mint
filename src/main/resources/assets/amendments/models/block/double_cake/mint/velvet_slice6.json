@@ -1,0 +1,13 @@
+{
+	"parent": "amendments:block/double_cake/slice6_template",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"side_up": "amendments:block/mint/double_velvet_cake_side",
+		"top_up": "amendments:block/mint/double_velvet_cake_top",
+		"inner": "amendments:block/mint/double_velvet_cake_inner",
+		"bottom": "mint:block/velvet_cake_bottom",
+		"top": "mint:block/velvet_cake_top",
+		"particle": "mint:block/velvet_cake_side",
+		"side": "mint:block/velvet_cake_side"
+	}
+}

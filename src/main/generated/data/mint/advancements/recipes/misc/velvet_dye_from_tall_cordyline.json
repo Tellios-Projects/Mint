@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_tall_cordyline": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mint:tall_cordyline"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:velvet_dye_from_tall_cordyline"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_tall_cordyline",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:velvet_dye_from_tall_cordyline"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -7,6 +7,7 @@ package net.leafenzo.mint.datageneration;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.block.PeachTreeBlock;
+import net.leafenzo.mint.block.StrawberryPlantBlock;
 import net.leafenzo.mint.world.feature.ModSimpleBlockStateProvider;
 import net.leafenzo.mint.world.gen.HugeWaxcapMushroomDecorator;
 import net.leafenzo.mint.world.gen.MushroomBlockDirectionDecorator;
@@ -63,6 +64,9 @@ public class ModConfiguredFeatures {
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> PEACH = registerKey("peach");
 
+    public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_STRAWBERRY = registerKey("patch_strawberry");
+    public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_CORDYLINE = registerKey("patch_cordyline");
+
     public static final RegistryKey <ConfiguredFeature <?, ?>> ORE_MUCKTUFF = registerKey("ore_mucktuff");
 
     public static void bootstrap(Registerable <ConfiguredFeature <?, ?>> context) {
@@ -117,6 +121,27 @@ public class ModConfiguredFeatures {
         ).build());
         register(context, PATCH_WAXCAP_MUSHROOM, Feature.RANDOM_PATCH,
                 new RandomPatchFeatureConfig(16, 16, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.WAXCAP_MUSHROOM))))
+        );
+
+        DataPool.Builder<BlockState> strawberryBuilder = DataPool.builder();
+        for (int i = 0; i < 5; i++) {
+            for (Direction direction : Direction.Type.HORIZONTAL) {
+                strawberryBuilder.add(( ModBlocks.STRAWBERRY_PLANT.getDefaultState().with(StrawberryPlantBlock.FLOWER_AMOUNT, 4)).with(StrawberryPlantBlock.FACING, direction).with(StrawberryPlantBlock.AGE, i), 5);
+                strawberryBuilder.add(( ModBlocks.STRAWBERRY_PLANT.getDefaultState().with(StrawberryPlantBlock.FLOWER_AMOUNT, 3)).with(StrawberryPlantBlock.FACING, direction).with(StrawberryPlantBlock.AGE, i), 2);
+            }
+        }
+        register(context, PATCH_STRAWBERRY, Feature.FLOWER,
+                new RandomPatchFeatureConfig(8, 2, 0, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(strawberryBuilder))))
+        );
+
+        DataPool.Builder<BlockState> cordylineBuilder = DataPool.builder();
+        cordylineBuilder.add(ModBlocks.CORDYLINE.getDefaultState(), 8);
+        cordylineBuilder.add(ModBlocks.PLUM_CORDYLINE.getDefaultState(), 6);
+        cordylineBuilder.add(ModBlocks.TALL_CORDYLINE.getDefaultState(), 4);
+        cordylineBuilder.add(ModBlocks.TALL_PLUM_CORDYLINE.getDefaultState(), 3);
+
+        register(context, PATCH_CORDYLINE, Feature.FLOWER,
+                new RandomPatchFeatureConfig(8, 4, 0, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(cordylineBuilder))))
         );
 
         register(context, WINTERGREEN, Feature.TREE,

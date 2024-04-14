@@ -1,0 +1,864 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age0"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "1|2|3|4",
+        "age": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age0",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "1|2|3|4",
+        "age": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age0",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "1|2|3|4",
+        "age": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age0",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "1|2|3|4",
+        "age": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age0"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "2|3|4",
+        "age": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age0",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "2|3|4",
+        "age": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age0",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "2|3|4",
+        "age": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age0",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "2|3|4",
+        "age": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age0"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "3|4",
+        "age": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age0",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "3|4",
+        "age": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age0",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "3|4",
+        "age": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age0",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "3|4",
+        "age": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age0"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "4",
+        "age": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age0",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "4",
+        "age": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age0",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "4",
+        "age": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age0",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "4",
+        "age": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age1"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "1|2|3|4",
+        "age": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age1",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "1|2|3|4",
+        "age": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age1",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "1|2|3|4",
+        "age": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age1",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "1|2|3|4",
+        "age": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age1"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "2|3|4",
+        "age": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age1",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "2|3|4",
+        "age": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age1",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "2|3|4",
+        "age": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age1",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "2|3|4",
+        "age": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age1"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "3|4",
+        "age": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age1",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "3|4",
+        "age": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age1",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "3|4",
+        "age": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age1",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "3|4",
+        "age": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age1"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "4",
+        "age": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age1",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "4",
+        "age": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age1",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "4",
+        "age": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age1",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "4",
+        "age": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age2"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "1|2|3|4",
+        "age": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age2",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "1|2|3|4",
+        "age": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age2",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "1|2|3|4",
+        "age": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age2",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "1|2|3|4",
+        "age": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age2"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "2|3|4",
+        "age": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age2",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "2|3|4",
+        "age": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age2",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "2|3|4",
+        "age": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age2",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "2|3|4",
+        "age": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age2"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "3|4",
+        "age": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age2",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "3|4",
+        "age": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age2",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "3|4",
+        "age": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age2",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "3|4",
+        "age": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age2"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "4",
+        "age": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age2",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "4",
+        "age": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age2",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "4",
+        "age": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age2",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "4",
+        "age": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age3"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "1|2|3|4",
+        "age": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age3",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "1|2|3|4",
+        "age": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age3",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "1|2|3|4",
+        "age": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age3",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "1|2|3|4",
+        "age": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age3"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "2|3|4",
+        "age": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age3",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "2|3|4",
+        "age": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age3",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "2|3|4",
+        "age": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age3",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "2|3|4",
+        "age": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age3"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "3|4",
+        "age": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age3",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "3|4",
+        "age": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age3",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "3|4",
+        "age": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age3",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "3|4",
+        "age": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age3"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "4",
+        "age": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age3",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "4",
+        "age": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age3",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "4",
+        "age": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age3",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "4",
+        "age": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age4"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "1|2|3|4",
+        "age": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age4",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "1|2|3|4",
+        "age": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age4",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "1|2|3|4",
+        "age": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_1_age4",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "1|2|3|4",
+        "age": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age4"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "2|3|4",
+        "age": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age4",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "2|3|4",
+        "age": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age4",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "2|3|4",
+        "age": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_2_age4",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "2|3|4",
+        "age": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age4"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "3|4",
+        "age": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age4",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "3|4",
+        "age": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age4",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "3|4",
+        "age": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_3_age4",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "3|4",
+        "age": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age4"
+      },
+      "when": {
+        "facing": "north",
+        "flower_amount": "4",
+        "age": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age4",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "flower_amount": "4",
+        "age": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age4",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "flower_amount": "4",
+        "age": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "mint:block/strawberry_plant_4_age4",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "flower_amount": "4",
+        "age": "4"
+      }
+    }
+  ]
+}

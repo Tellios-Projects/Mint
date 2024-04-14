@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "velvet_dye",
+  "ingredients": [
+    {
+      "item": "mint:tall_cordyline"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "mint:velvet_dye"
+  }
+}

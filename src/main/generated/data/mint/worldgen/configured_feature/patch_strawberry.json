@@ -1,0 +1,469 @@
+{
+  "type": "minecraft:flower",
+  "config": {
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "0",
+                    "facing": "north",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "0",
+                    "facing": "north",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "0",
+                    "facing": "east",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "0",
+                    "facing": "east",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "0",
+                    "facing": "south",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "0",
+                    "facing": "south",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "0",
+                    "facing": "west",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "0",
+                    "facing": "west",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "1",
+                    "facing": "north",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "1",
+                    "facing": "north",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "1",
+                    "facing": "east",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "1",
+                    "facing": "east",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "1",
+                    "facing": "south",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "1",
+                    "facing": "south",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "1",
+                    "facing": "west",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "1",
+                    "facing": "west",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "2",
+                    "facing": "north",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "2",
+                    "facing": "north",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "2",
+                    "facing": "east",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "2",
+                    "facing": "east",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "2",
+                    "facing": "south",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "2",
+                    "facing": "south",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "2",
+                    "facing": "west",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "2",
+                    "facing": "west",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "3",
+                    "facing": "north",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "3",
+                    "facing": "north",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "3",
+                    "facing": "east",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "3",
+                    "facing": "east",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "3",
+                    "facing": "south",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "3",
+                    "facing": "south",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "3",
+                    "facing": "west",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "3",
+                    "facing": "west",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "4",
+                    "facing": "north",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "4",
+                    "facing": "north",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "4",
+                    "facing": "east",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "4",
+                    "facing": "east",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "4",
+                    "facing": "south",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "4",
+                    "facing": "south",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "4",
+                    "facing": "west",
+                    "flower_amount": "4"
+                  }
+                },
+                "weight": 5
+              },
+              {
+                "data": {
+                  "Name": "mint:strawberry_plant",
+                  "Properties": {
+                    "age": "4",
+                    "facing": "west",
+                    "flower_amount": "3"
+                  }
+                },
+                "weight": 2
+              }
+            ]
+          }
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          }
+        }
+      ]
+    },
+    "tries": 8,
+    "xz_spread": 2,
+    "y_spread": 0
+  }
+}

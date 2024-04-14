@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "bites=0": {
+      "model": "mint:block/velvet_cake"
+    },
+    "bites=1": {
+      "model": "mint:block/velvet_cake_1"
+    },
+    "bites=2": {
+      "model": "mint:block/velvet_cake_2"
+    },
+    "bites=3": {
+      "model": "mint:block/velvet_cake_3"
+    },
+    "bites=4": {
+      "model": "mint:block/velvet_cake_4"
+    },
+    "bites=5": {
+      "model": "mint:block/velvet_cake_5"
+    },
+    "bites=6": {
+      "model": "mint:block/velvet_cake_6"
+    }
+  }
+}

@@ -160,7 +160,7 @@ public class ModItems {
     public static final Item PINEAPPLE = registerItem("pineapple", new AliasedBlockItem(ModBlocks.PINEAPPLE, new FabricItemSettings().recipeRemainder(PINEAPPLE_CROWN)));
     public static final Item PINEAPPLE_SLICES = registerItem("pineapple_slices", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder()
-                    .hunger(3)
+                    .hunger(4)
                     .saturationModifier(0.2f)
                     .build())));
 
@@ -172,9 +172,14 @@ public class ModItems {
 
     public static final Item PINEAPPLE_TART = registerItem("pineapple_tart", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder()
-                    .hunger(4)
+                    .hunger(5)
                     .saturationModifier(0.2f)
                     .build())));
+
+
+    public static final Item STRAWBERRY = registerItem("strawberry", new AliasedBlockItem(ModBlocks.STRAWBERRY_PLANT, new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(0.2f).snack().build())));
+    public static final Item CHERRIES = registerItem("cherries", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(0.2f).snack().build())));
+
 
 
     //<editor-fold desc ="Decor Additions">

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "mint:block/tall_cordyline_bottom"
+    },
+    "half=upper": {
+      "model": "mint:block/tall_cordyline_top"
+    }
+  }
+}

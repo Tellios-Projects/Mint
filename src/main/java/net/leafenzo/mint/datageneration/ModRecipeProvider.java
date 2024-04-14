@@ -686,6 +686,28 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(Items.WHEAT), FabricRecipeProvider.conditionsFromItem(Items.WHEAT))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.PINEAPPLE_TART)));
 
+        offerShapelessRecipe(exporter, ModItems.VELVET_DYE, ModItems.STRAWBERRY, "velvet_dye", 1);
+        offerShapelessRecipe(exporter, ModItems.VELVET_DYE, ModItems.CHERRIES, "velvet_dye", 1);
+        offerShapelessRecipe(exporter, ModItems.VELVET_DYE, ModBlocks.CORDYLINE, "velvet_dye", 1);
+        offerShapelessRecipe(exporter, ModItems.VELVET_DYE, ModBlocks.TALL_CORDYLINE, "velvet_dye", 2);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModBlocks.VELVET_CAKE, 1)
+                .pattern("MVM")
+                .pattern("SES")
+                .pattern("WCW")
+                .input('M', Items.MILK_BUCKET)
+                .input('V', ModItems.VELVET_DYE)
+                .input('S', Items.SUGAR)
+                .input('E', Items.EGG)
+                .input('W', Items.WHEAT)
+                .input('C', Items.COCOA_BEANS)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.VELVET_DYE), FabricRecipeProvider.conditionsFromItem(ModItems.VELVET_DYE))
+                .criterion(FabricRecipeProvider.hasItem(Items.COCOA_BEANS), FabricRecipeProvider.conditionsFromItem(Items.COCOA_BEANS))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.VELVET_CAKE)));
+
+
+        offerShapelessRecipe(exporter, ModItems.GRAPE_DYE, ModBlocks.PLUM_CORDYLINE, "grape_dye", 1);
+        offerShapelessRecipe(exporter, ModItems.GRAPE_DYE, ModBlocks.TALL_PLUM_CORDYLINE, "grape_dye", 2);
         //<editor-fold desc ="MOLD - Special">
         // This doesn't work because it does not specify each dye needs to be unique from each other. No idea how to do that however
 //        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MOLD_DYE)

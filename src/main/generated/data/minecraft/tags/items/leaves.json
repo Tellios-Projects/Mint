@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "mint:wintergreen_leaves"
+    "mint:wintergreen_leaves",
+    "mint:peach_leaves",
+    "mint:flowering_peach_leaves"
   ]
 }
