@@ -1,6 +1,7 @@
 package net.leafenzo.mint.block;
 
 import net.minecraft.block.*;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -17,6 +18,11 @@ public class CordylineBlock extends PlantBlock implements Fertilizable {
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;
+    }
+
+    @Override
+    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
+        return super.canPlantOnTop(floor, world, pos) || floor.isIn(BlockTags.SAND);
     }
 
     public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {

@@ -570,13 +570,13 @@ public class ModBlocks {
     static {RENDER_LAYER_CUTOUT_MIPPED.add(CORDYLINE);}
     public static final Block POTTED_CORDYLINE = registerBlock("potted_cordyline", createFlowerPotBlock(ModBlocks.CORDYLINE));
     static {RENDER_LAYER_CUTOUT_MIPPED.add(POTTED_CORDYLINE);}
-    public static final Block TALL_CORDYLINE = registerBlock("tall_cordyline", new TallPlantBlock(FabricBlockSettings.copyOf(Blocks.TALL_GRASS).mapColor(MapColor.DARK_DULL_PINK)));
+    public static final Block TALL_CORDYLINE = registerBlock("tall_cordyline", new TallCordylineBlock(FabricBlockSettings.copyOf(Blocks.TALL_GRASS).mapColor(MapColor.DARK_DULL_PINK)));
     static {RENDER_LAYER_CUTOUT_MIPPED.add(TALL_CORDYLINE);}
     public static final Block PLUM_CORDYLINE = registerBlock("plum_cordyline", new CordylineBlock(FabricBlockSettings.copyOf(Blocks.GRASS).mapColor(MapColor.DARK_CRIMSON)));
     static {RENDER_LAYER_CUTOUT_MIPPED.add(PLUM_CORDYLINE);}
     public static final Block POTTED_PLUM_CORDYLINE = registerBlock("potted_plum_cordyline", createFlowerPotBlock(ModBlocks.PLUM_CORDYLINE));
     static {RENDER_LAYER_CUTOUT_MIPPED.add(POTTED_PLUM_CORDYLINE);}
-    public static final Block TALL_PLUM_CORDYLINE = registerBlock("tall_plum_cordyline", new TallPlantBlock(FabricBlockSettings.copyOf(Blocks.GRASS).mapColor(MapColor.DARK_CRIMSON)));
+    public static final Block TALL_PLUM_CORDYLINE = registerBlock("tall_plum_cordyline", new TallCordylineBlock(FabricBlockSettings.copyOf(Blocks.GRASS).mapColor(MapColor.DARK_CRIMSON)));
     static {RENDER_LAYER_CUTOUT_MIPPED.add(TALL_PLUM_CORDYLINE);}
     public static final Block STRAWBERRY_PLANT = registerBlock("strawberry_plant", new StrawberryPlantBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS).mapColor(MapColor.DARK_GREEN).ticksRandomly()));
     static {RENDER_LAYER_CUTOUT_MIPPED.add(STRAWBERRY_PLANT);}
