@@ -134,9 +134,11 @@ public class ModBlocks {
             MapColor.BRIGHT_TEAL,
             MapColor.DARK_GREEN,
             ModBoatEntity.ModBoat.WINTERGREEN,
-            WoodSet.WoodPreset.DEFAULT,
+            WoodSet.WoodPreset.DEFAULT, // just so it's non-flammable, effects nothing else
             false,
-            new WintergreenSaplingGenerator()
+            new WintergreenSaplingGenerator(),
+            false,
+            false
     );
     static { HAS_FOLIAGE_COLOR_PROVIDER.remove(WINTERGREEN_WOODSET.getLeaves()); }
 

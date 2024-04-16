@@ -44,6 +44,8 @@ public class WoodSet {
     private BlockSetType blockSetType;
     private PressurePlateBlock.ActivationRule pressurePlateActivationRule;
     private WoodType woodType;
+    private final boolean isFlammable;
+    private final boolean isUsedAsFuel;
     private Block log;
     private Block strippedLog;
     private Block wood;
@@ -83,7 +85,7 @@ public class WoodSet {
     private final boolean hasMosaic;
     //</editor-fold>
     //<editor-fold desc ="Constructors">
-    public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, MapColor leavesColor, ModBoatEntity.ModBoat boatType, WoodPreset woodPreset, boolean hasMosaic, SaplingGenerator saplingGenerator){
+    public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, MapColor leavesColor, ModBoatEntity.ModBoat boatType, WoodPreset woodPreset, boolean hasMosaic, SaplingGenerator saplingGenerator, boolean isFlammable, boolean isUsedAsFuel) {
         this.woodPreset = woodPreset;
         this.name = name;
         this.sideColor = sideColor;
@@ -92,6 +94,9 @@ public class WoodSet {
         this.boatType = boatType;
         this.hasMosaic = hasMosaic;
         this.saplingGenerator = saplingGenerator;
+        this.isFlammable = isFlammable;
+        this.isUsedAsFuel = isUsedAsFuel;
+
         registerWoodSet();
     }
     //</editor-fold>
@@ -325,32 +330,58 @@ public class WoodSet {
     }
     private Block registerLogBlock() {
         Block b = registerBlock(getLogName(), createLogBlock(this.getTopColor(), this.getSideColor()));
-        ModFabricRegistries.registerFlammable(b, 5, 5);
-        ModBlocks.LOGS_THAT_BURN.add(b);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
+        if(isFlammable) {
+            ModFabricRegistries.registerFlammable(b, 5, 5);
+            ModBlocks.LOGS_THAT_BURN.add(b);
+        }
+        else {
+            ModBlocks.LOGS.add(b);
+        }
         return b;
     }
     private Block registerStrippedLogBlock() {
         Block b = registerBlock("stripped_" + getLogName(), createLogBlock(this.getTopColor(), this.getTopColor()));
-        ModFabricRegistries.registerFlammable(b, 5, 5);
-        ModBlocks.LOGS_THAT_BURN.add(b);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
+        if(isFlammable) {
+            ModFabricRegistries.registerFlammable(b, 5, 5);
+            ModBlocks.LOGS_THAT_BURN.add(b);
+        }
+        else {
+            ModBlocks.LOGS.add(b);
+        }
         return b;
     }
     private Block registerWoodBlock() {
         Block b = registerBlock(getWoodName(), createLogBlock(this.getSideColor(), this.getSideColor()));
-        ModFabricRegistries.registerFlammable(b, 5, 5);
-        ModBlocks.LOGS_THAT_BURN.add(b);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
+        if(isFlammable) {
+            ModFabricRegistries.registerFlammable(b, 5, 5);
+            ModBlocks.LOGS_THAT_BURN.add(b);
+        }
+        else {
+            ModBlocks.LOGS.add(b);
+        }
         return b;
     }
     private Block registerStrippedWoodBlock() {
         Block b = registerBlock("stripped_" + getWoodName(), createLogBlock(this.getTopColor(), this.getTopColor()));
-        ModFabricRegistries.registerFlammable(b, 5, 5);
-        ModBlocks.LOGS_THAT_BURN.add(b);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
+        if(isFlammable) {
+            ModFabricRegistries.registerFlammable(b, 5, 5);
+            ModBlocks.LOGS_THAT_BURN.add(b);
+        }
+        else {
+            ModBlocks.LOGS.add(b);
+        }
         return b;
     }
     private Block registerLeavesBlock() {
         Block b = registerBlock(this.getName() + "_leaves", new LeavesBlock(FabricBlockSettings.copy(getBaseLeaves()).mapColor(leavesColor)));
         ModFabricRegistries.registerCompostable(b, 0.3f);
-        ModFabricRegistries.registerFlammable(b, 60, 30);
+        if(isFlammable) {
+            ModFabricRegistries.registerFlammable(b, 60, 30);
+        }
         ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
         ModBlocks.HAS_FOLIAGE_COLOR_PROVIDER.add(b);
         ModBlocks.LEAVES.add(b);
@@ -359,7 +390,9 @@ public class WoodSet {
     private Block registerLeavesBlock(String prefix) {
         Block b = registerBlock(prefix + this.getName() + "_leaves", new LeavesBlock(FabricBlockSettings.copy(getBaseLeaves()).mapColor(leavesColor)));
         ModFabricRegistries.registerCompostable(b, 0.3f);
-        ModFabricRegistries.registerFlammable(b, 60, 30);
+        if(isFlammable) {
+            ModFabricRegistries.registerFlammable(b, 60, 30);
+        }
         ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
         ModBlocks.HAS_FOLIAGE_COLOR_PROVIDER.add(b);
         ModBlocks.LEAVES.add(b);
@@ -367,94 +400,88 @@ public class WoodSet {
     }
     private Block registerPlanksBlock(){
         Block b = registerBlock(this.getName() + "_planks", new Block(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
-        ModFabricRegistries.registerFlammable(b, 20, 5);
-        ModFabricRegistries.registerFuel(b, 300);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
+        if(isFlammable) { ModFabricRegistries.registerFlammable(b, 20, 5); }
         ModBlocks.PLANKS.add(b);
         return b;
     }
     private Block registerStairsBlock(){
         Block b = registerBlock(this.getName() + "_stairs", new StairsBlock(getBase().getDefaultState(), FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
-        ModFabricRegistries.registerFlammable(b, 20, 5);
-        ModFabricRegistries.registerFuel(b, 300);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
+        if(isFlammable) { ModFabricRegistries.registerFlammable(b, 20, 5); }
         ModBlocks.WOODEN_STAIRS.add(b);
         return b;
     }
     private Block registerSlabBlock(){
         Block b = registerBlock(this.getName() + "_slab", new SlabBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
-        ModFabricRegistries.registerFlammable(b, 20, 5);
-        ModFabricRegistries.registerFuel(b, 150);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 150); }
+        if(isFlammable) { ModFabricRegistries.registerFlammable(b, 20, 5); }
         ModBlocks.WOODEN_SLABS.add(b);
         return b;
     }
     private Block registerMosaicBlock(){
         Block b = registerBlock(this.getName() + "_mosaic", new Block(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
-        ModFabricRegistries.registerFlammable(b, 20, 5);
-        ModFabricRegistries.registerFuel(b, 300);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
+        if(isFlammable) { ModFabricRegistries.registerFlammable(b, 20, 5); }
         return b;
     }
     private Block registerMosaicStairsBlock(){
         Block b = registerBlock(this.getName() + "_mosaic_stairs", new StairsBlock(getBase().getDefaultState(), FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
-        ModFabricRegistries.registerFlammable(b, 20, 5);
-        ModFabricRegistries.registerFuel(b, 300);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
+        if(isFlammable) { ModFabricRegistries.registerFlammable(b, 20, 5); }
         return b;
     }
     private Block registerMosaicSlabBlock(){
         Block b = registerBlock(this.getName() + "_mosaic_slab", new SlabBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
-        ModFabricRegistries.registerFlammable(b, 20, 5);
-        ModFabricRegistries.registerFuel(b, 150);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 150); }
+        if(isFlammable) { ModFabricRegistries.registerFlammable(b, 20, 5); }
         return b;
     }
     private Block registerFenceBlock(){
         Block b = registerBlock(this.getName() + "_fence", new FenceBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
-        ModFabricRegistries.registerFlammable(b, 20, 5);
-        ModFabricRegistries.registerFuel(b, 300);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
+        if(isFlammable) { ModFabricRegistries.registerFlammable(b, 20, 5); }
         ModBlocks.WOODEN_FENCES.add(b);
         return b;
     }
     private Block registerFenceGateBlock(){
         Block b = registerBlock(this.getName() + "_fence_gate", new FenceGateBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getWoodType()));
-        ModFabricRegistries.registerFlammable(b, 20, 5);
-        ModFabricRegistries.registerFuel(b, 300);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
+        if(isFlammable) { ModFabricRegistries.registerFlammable(b, 20, 5); }
         ModBlocks.FENCE_GATES.add(b);
         return b;
     }
     private Block createPressurePlate(){
         Block b = registerBlock(this.getName() + "_pressure_plate", new PressurePlateBlock(this.pressurePlateActivationRule, FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getBlockSetType()));
-//        ModFabricRegistries.registerFlammable(b, 20, 5);
-        ModFabricRegistries.registerFuel(b, 300);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
         ModBlocks.WOODEN_PRESSURE_PLATES.add(b);
         return b;
     }
     private Block registerButtonBlock(){
         Block b = registerBlock(this.getName() + "_button", new ButtonBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getBlockSetType(), 30, true));
-        // Not flammable
-        ModFabricRegistries.registerFuel(b, 100);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 100); }
         ModBlocks.WOODEN_BUTTONS.add(b);
         return b;
     }
     private Block registerDoorBlock(){
-        Block b = registerBlock(this.getName() + "_door", new DoorBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor()), this.getBlockSetType()));
-//        ModFabricRegistries.registerFlammable(b, 20, 5);
-        ModFabricRegistries.registerFuel(b, 200);
+        Block b = registerBlock(this.getName() + "_door", new DoorBlock(FabricBlockSettings.copy(getBase()).burnable().sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor()), this.getBlockSetType()));
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 200); }
         ModBlocks.WOODEN_DOORS.add(b);
         return b;
     }
     private Block registerTrapdoorBlock() {
         Block b = registerBlock(this.getName() + "_trapdoor", new TrapdoorBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor()), this.getBlockSetType()));
-//        ModFabricRegistries.registerFlammable(b, 20, 5);
-        ModFabricRegistries.registerFuel(b, 300);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
         ModBlocks.WOODEN_TRAPDOORS.add(b);
         return b;
     }
     private Block registerSignBlock(){
         Block b = registerBlockWithoutBlockItem(this.getName() + "_sign", new SignBlock(FabricBlockSettings.copy(getSignBase()).mapColor(this.getTopColor()), this.getWoodType()));
-        // ModFabricRegistries.registerFlammable(b, 20, 5);
         ModBlocks.SIGNS.add(b);
         return b;
     }
     private Block registerWallSignBlock(){
         Block b = registerBlockWithoutBlockItem(this.getName() + "_wall_sign", new WallSignBlock(FabricBlockSettings.copy(this.getSignBase()).mapColor(this.getTopColor()).dropsLike(this.getSign()), this.getWoodType()));
-        // ModFabricRegistries.registerFlammable(b, 20, 5);
         ModBlocks.SIGNS.add(b);
         return b;
     }
@@ -470,7 +497,7 @@ public class WoodSet {
     }
     public Block registerSaplingBlock(SaplingGenerator saplingGenerator) {
         Block b = registerBlock(this.getName() + "_sapling", new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
-        // Saplings are not flammable
+        // Saplings are not ever flammable
         ModFabricRegistries.registerCompostable(b, 0.3f);
         ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
         ModBlocks.SAPLINGS.add(b);
@@ -497,25 +524,25 @@ public class WoodSet {
     }
     private Item registerSignItem(Block sign, Block wallSign){
         Item i = registerItem(this.getName() + "_sign", new SignItem(new FabricItemSettings().maxCount(16), sign, wallSign));
-        ModFabricRegistries.registerFuel(i, 200);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(i, 200); }
         ItemRegistry.SIGN_ITEMS.add(i);
         return i;
     }
     private Item registerHangingSignItem(Block hangingSign, Block hangingWallSign){
         Item i = registerItem(this.getName() + "_hanging_sign", new HangingSignItem(hangingSign, hangingWallSign, new FabricItemSettings().maxCount(16)));
-        ModFabricRegistries.registerFuel(i, 200);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(i, 200); }
         ItemRegistry.HANGING_SIGN_ITEMS.add(i);
         return i;
     }
     private Item registerBoatItem(){
         Item i = registerItem(this.getName() + "_boat", new ModBoatItem(false, this.getBoatType(), new FabricItemSettings().maxCount(1)));
-        ModFabricRegistries.registerFuel(i, 1200);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(i, 1200); }
         ItemRegistry.BOAT_ITEMS.add(i);
         return i;
     }
     private Item registerChestBoatItem(){
         Item i = registerItem(this.getName() + "_chest_boat", new ModBoatItem(true, this.getBoatType(), new  FabricItemSettings().maxCount(1)));
-        ModFabricRegistries.registerFuel(i, 1200);
+        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(i, 1200); }
         ItemRegistry.CHEST_BOAT_ITEMS.add(i);
         return i;
     }
