@@ -6,7 +6,7 @@
 # MEDIUM PRIORITY
    # COMPAT
 
-   Fix gratuitous error logs generated from running the game with resources
+- Fix gratuitous error logs generated from running the game with resources
 that are not used when someone doesn't have every mod we do model compat for
    (something to do with data-packs if I were to guess, 
      but I don't want to break datagen so I should try just some sort of error supression)
@@ -53,5 +53,5 @@ AMI
 
 SUPPLEMENTARIES AMENDMENTS
 - Fix skull candle piles (probably shouldn't bother)
-
-
+SUPPLEMENTARIES SQUARED
+- Fix SuppSquared+Base Supp Candle holder ordering
