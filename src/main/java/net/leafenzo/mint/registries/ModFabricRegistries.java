@@ -43,12 +43,10 @@ public class ModFabricRegistries {
         for(Block block : ModBlocks.WOOL_CARPET_BLOCKS) {
             registry.add(block, 20, 60);
         }
-        for(Block block : ModBlocks.LEAVES) {
-            registry.add(block, 60, 30);
-        }
-        for(Block block : ModBlocks.LOGS_THAT_BURN) {
-            registry.add(block, 5, 5);
-        }
+
+        //Registry values can be safely overwritten
+        registry.add(ModBlocks.PEACH_LEAVES, 60, 30);
+        registry.add(ModBlocks.FLOWERING_PEACH_LEAVES, 60, 30);
         registry.add(ModBlocks.PEACH_LOG, 10, 5);
         registry.add(ModBlocks.PEACH_WOOD, 10, 5);
         registry.add(ModBlocks.STRIPPED_PEACH_LOG, 10, 5);
@@ -128,6 +126,21 @@ public class ModFabricRegistries {
         }
 
         //Registry values can be safely overwritten
+        registry.remove(ModBlocks.WINTERGREEN_WOODSET.getSapling());
+        registry.remove(ModBlocks.WINTERGREEN_WOODSET.getBoatItem());
+        registry.remove(ModBlocks.WINTERGREEN_WOODSET.getChestBoatItem());
+        registry.remove(ModBlocks.WINTERGREEN_WOODSET.getSignItem());
+        registry.remove(ModBlocks.WINTERGREEN_WOODSET.getHangingSignItem());
+        registry.remove(ModBlocks.WINTERGREEN_WOODSET.getPlanks());
+        registry.remove(ModBlocks.WINTERGREEN_WOODSET.getSlab());
+        registry.remove(ModBlocks.WINTERGREEN_WOODSET.getStairs());
+        registry.remove(ModBlocks.WINTERGREEN_WOODSET.getButton());
+        registry.remove(ModBlocks.WINTERGREEN_WOODSET.getDoor());
+        registry.remove(ModBlocks.WINTERGREEN_WOODSET.getTrapDoor());
+        registry.remove(ModBlocks.WINTERGREEN_WOODSET.getFence());
+        registry.remove(ModBlocks.WINTERGREEN_WOODSET.getFenceGate());
+        registry.remove(ModBlocks.WINTERGREEN_WOODSET.getPressurePlate());
+
         registry.add(ModBlocks.PEACH_LOG, 200);
         registry.add(ModBlocks.PEACH_WOOD, 200);
         registry.add(ModBlocks.STRIPPED_PEACH_LOG, 200);

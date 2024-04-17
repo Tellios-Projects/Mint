@@ -100,8 +100,10 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
         }
 
         for (Block block : ModBlocks.LOGS_THAT_BURN) {
-//            getOrCreateTagBuilder(ItemTags.LOGS).add(block.asItem());
             getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).add(block.asItem());
+        }
+        for (Block block : ModBlocks.LOGS) {
+            getOrCreateTagBuilder(ItemTags.LOGS).add(block.asItem());
         }
 
         for (Block block : ModBlocks.PLANKS) {

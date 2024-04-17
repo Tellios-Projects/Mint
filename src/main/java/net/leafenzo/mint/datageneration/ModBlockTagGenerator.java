@@ -147,11 +147,17 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
         for (Block block : ModBlocks.LOGS_THAT_BURN) {
             getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).add(block);
         }
+        for (Block block : ModBlocks.LOGS) {
+            getOrCreateTagBuilder(BlockTags.LOGS).add(block);
+        }
         for (Block block : ModBlocks.PLANKS) {
             getOrCreateTagBuilder(BlockTags.PLANKS).add(block);
         }
         for (Block block : ModBlocks.LEAVES) {
             getOrCreateTagBuilder(BlockTags.LEAVES).add(block);
+        }
+        for (Block block : ModBlocks.SAPLINGS) {
+            getOrCreateTagBuilder(BlockTags.SAPLINGS).add(block);
         }
 
 

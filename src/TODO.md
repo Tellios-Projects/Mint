@@ -3,9 +3,13 @@
 - Further server mixin testing
 - Make wintergreen wood non-flammable (like a nether wood)
 
-# COMPAT
-  Fix gratuitous error logs generated from running the game with resources
+# MEDIUM PRIORITY
+   # COMPAT
+
+- Fix gratuitous error logs generated from running the game with resources
 that are not used when someone doesn't have every mod we do model compat for
+   (something to do with data-packs if I were to guess, 
+     but I don't want to break datagen so I should try just some sort of error supression)
 
 BOTANYPOTS
 DONE | Bashgen
@@ -19,6 +23,7 @@ SUPPLEMENTARIES AMENDMENTS
 DONE | Quick sweep for amendments crashes
 DONE | Carpet stairs work :3 
 DONE | Also lanterns work :3
+- Test and Fix cauldron crash
 SUPPLEMENTARIES SQUARED
 DONE | Bashgen resources
 - Import the compat textures once eliza's done with them 
@@ -47,4 +52,6 @@ AMI
 - Remove meaningless warning messages
 
 SUPPLEMENTARIES AMENDMENTS
-- Fix skull candle piles (don't bother)
+- Fix skull candle piles (probably shouldn't bother)
+SUPPLEMENTARIES SQUARED
+- Fix SuppSquared+Base Supp Candle holder ordering
