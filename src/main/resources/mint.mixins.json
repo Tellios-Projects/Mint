@@ -16,7 +16,7 @@
     "PointOfInterestTypesMixin",
     "SheepEntityMixin",
     "ShulkerBoxColoringRecipeMixin",
-
+    "compat.betterend.ColoredMaterialMixin",
     "compat.jei.ShulkerBoxColoringRecipeMakerMixin"
   ],
   "client": [
