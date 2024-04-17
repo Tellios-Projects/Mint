@@ -1,6 +1,10 @@
 package net.leafenzo.mint;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.api.ModContainer;
 import net.leafenzo.mint.block.DispenserBehavior;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.block.entity.ModBlockEntityType;
@@ -21,19 +25,39 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.Potions;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.lwjgl.system.windows.POINT;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Optional;
+
 public class ModInit implements ModInitializer {
         public static final String MOD_ID = Super.MOD_ID;
         public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+        private static void registerBuiltinResourcePack(ModContainer modContainer, String forModID) {
+            if (FabricLoader.getInstance().isModLoaded(forModID)) {
+                    ResourceManagerHelper.registerBuiltinResourcePack(
+                            new Identifier(Super.MOD_ID, forModID),
+                            modContainer,
+                            Text.translatable("pack." + Super.MOD_ID + forModID),
+                            ResourcePackActivationType.ALWAYS_ENABLED
+                    );
+            }
+        }
+
         @Override
         public void onInitialize() {
-            //Determine the original registries; used to determine what translations to automatically generate.
-//            Set<Identifier> original = ModUtil.getAllRegistryIds();
+            Optional<ModContainer> modContainer = FabricLoader.getInstance().getModContainer("mint");
+            if(modContainer.isPresent()) {
+                registerBuiltinResourcePack(modContainer.get(), "ammendments");
+                registerBuiltinResourcePack(modContainer.get(), "botanypots");
+                registerBuiltinResourcePack(modContainer.get(), "comforts");
+                registerBuiltinResourcePack(modContainer.get(), "supplementaries");
+                registerBuiltinResourcePack(modContainer.get(), "suppsquared");
+            }
 
             ModBlocks.registerModBlocks();
             ModItems.registerModItems();
@@ -87,5 +111,4 @@ public class ModInit implements ModInitializer {
 //            Set<Identifier> altered = ModUtil.getAllRegistryIds();
 //            ModEnglishLangProvider.TranslationsFromIds(original, altered);
         }
-    }
-
+}
