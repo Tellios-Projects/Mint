@@ -130,7 +130,7 @@
     },
     "facing=south,bites=6": {
       "model":  "amendments:block/double_cake/mint/velvet_slice6",
-    `  "uvlock": true,
+      "uvlock": true,
       "y": 270
     }
   }
