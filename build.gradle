@@ -117,6 +117,11 @@ dependencies {
 //	modRuntimeOnly("maven.modrinth:uy4Cnpcm:${bookshelf_version_id}")
 //	modRuntimeOnly("maven.modrinth:U6BUTZ7K:${botanypots_version_id}")
 
+	//BetterEnd
+	modCompileOnly("maven.modrinth:gc8OEnCC:${betterend_version}")
+	modCompileOnly("com.github.quiqueck:BCLib:${bclib_version}")
+	modCompileOnly("com.github.quiqueck:WunderLib:${wunderlib_version}")
+
 	// uncomment if needed
 	//include implementation("net.dv8tion:JDA:${project.jda_version}") {
 	//	exclude(module : "opus-java")
