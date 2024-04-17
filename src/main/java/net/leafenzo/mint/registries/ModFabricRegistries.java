@@ -143,8 +143,8 @@ public class ModFabricRegistries {
     public static void modifyLootTables() {
         int amberDesertPyramidWeight = 2;
         int amberDesertWellWeight = 2;
-        int amberOceanRuinColdWeight = 2;
-        int amberOceanRuinWarmWeight = 2;
+        int amberOceanRuinColdWeight = 3;
+        int amberOceanRuinWarmWeight = 3;
         int amberTrailRuinsWeight = 2;
 
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
@@ -163,7 +163,7 @@ public class ModFabricRegistries {
             }
         });
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-            if (source.isBuiltin() && new Identifier("minecraft", "archaeology/ocean_warm_cold").equals(id)) {
+            if (source.isBuiltin() && new Identifier("minecraft", "archaeology/ocean_ruin_warm").equals(id)) {
                 tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(ModItems.AMBER).weight(amberOceanRuinWarmWeight)));
             }
         });
