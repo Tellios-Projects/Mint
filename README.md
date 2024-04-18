@@ -13,15 +13,14 @@ Currently in Beta testing, new features soon to come :D
 
 <br> ₊ㆍ┈ㆍ┈ㆍ✿ㆍ┈ㆍ┈ㆍ┈ ✿ㆍ┈ㆍ┈ㆍ┈ ✿ㆍ┈ㆍ┈ㆍ₊ <br>
 ✩ Created By ✩ <br> 
-Leah (Programmer)<a href ="https://twitter.com/leafenzio"></a> <br>
-Eliza (Lead Artist)<a href ="https://twitter.com/tellioaridoitsu"></a>   
+Leah <a href ="https://twitter.com/leafenzio"></a> <br>
+Eliza <a href ="https://twitter.com/tellioaridoitsu"></a> <br>
+Hecco <a href="https://twitter.com/Hecco"></a>
  <br> <br>  
 ♥ With Help From ♥ <br>   
 Eka <a href ="https://github.com/Eko-byte"></a>
  <br>
 Enri <a href="https://twitter.com/enriarts_"></a>
- <br>
-Hecco <a href="https://twitter.com/Hecco"></a>
  <br>
 Zucchini <a href="https://twitter.com/zucchinibyday"></a> <br>
 <br> ⁺ㆍ┈ㆍ┈ㆍ✿ㆍ┈ㆍ┈ㆍ┈ ✿ㆍ┈ㆍ┈ㆍ┈ ✿ㆍ┈ㆍ┈ㆍ⁺

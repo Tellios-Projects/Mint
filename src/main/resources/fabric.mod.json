@@ -6,13 +6,13 @@
   "name": "El & L's Dye Mod",
   "description": "Adds 20 unique dyes, alongside decorative blocks, crops, and gameplay features",
   "authors": [
-    "Leah (@leafenzio)",
-    "Eliza (@tellioaridoitsu)"
+    "Leah (@leafenzio on Twitter)",
+    "Eliza (@tellioaridoitsu)",
+    "Hecco (@Hecco)"
   ],
   "contributors": [
     "Eka (Eko-byte)",
     "Enri (@enriarts_)",
-    "Hecco (@Hecco)",
     "Zucchini (@zucchinibyday)"
   ],
   "contact": {
@@ -57,5 +57,11 @@
   },
   "suggests": {
     "another-mod": "*"
+  },
+  "conflicts": {
+
+  },
+  "breaks": {
+    "dye-depot": "*"
   }
 }
