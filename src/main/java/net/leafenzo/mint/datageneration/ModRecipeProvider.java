@@ -691,6 +691,59 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ModItems.VELVET_DYE, ModBlocks.CORDYLINE, "velvet_dye", 1);
         offerShapelessRecipe(exporter, ModItems.VELVET_DYE, ModBlocks.TALL_CORDYLINE, "velvet_dye", 2);
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.CHOCOLATE_STRAWBERRY)
+                .input(ModItems.STRAWBERRY)
+                .input(Items.COCOA_BEANS)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.STRAWBERRY), FabricRecipeProvider.conditionsFromItem(ModItems.STRAWBERRY))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.CHOCOLATE_STRAWBERRY)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.GOLDEN_STRAWBERRY)
+                .pattern("GGG")
+                .pattern("GSG")
+                .pattern("GGG")
+                .input('G', Items.GOLD_NUGGET)
+                .input('S', ModItems.STRAWBERRY)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.STRAWBERRY), FabricRecipeProvider.conditionsFromItem(ModItems.STRAWBERRY))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.GOLDEN_STRAWBERRY)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.STRAWBERRY_MILK)
+                .input(ModItems.STRAWBERRY, 2)
+                .input(Items.MILK_BUCKET)
+                .input(Items.GLASS_BOTTLE)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.STRAWBERRY), FabricRecipeProvider.conditionsFromItem(ModItems.STRAWBERRY))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.STRAWBERRY_MILK)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.STRAWBERRY_SHORTCAKE)
+                .input(Items.WHEAT)
+                .input(Items.SUGAR)
+                .input(ModItems.STRAWBERRY, 2)
+                .criterion(FabricRecipeProvider.hasItem(Items.SUGAR), FabricRecipeProvider.conditionsFromItem(Items.SUGAR))
+                .criterion(FabricRecipeProvider.hasItem(ModItems.STRAWBERRY), FabricRecipeProvider.conditionsFromItem(ModItems.STRAWBERRY))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.STRAWBERRY_SHORTCAKE)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.STRAWBERRY_CHEESECAKE)
+                .input(ModItems.STRAWBERRY_MILK, 3)
+                .input(Items.WHEAT, 2)
+                .input(Items.SUGAR)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.STRAWBERRY_MILK), FabricRecipeProvider.conditionsFromItem(ModItems.STRAWBERRY_MILK))
+                .criterion(FabricRecipeProvider.hasItem(Items.SUGAR), FabricRecipeProvider.conditionsFromItem(Items.SUGAR))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.STRAWBERRY_CHEESECAKE)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.ANGEL_FOOD_CAKE)
+                .input(ModItems.GOLDEN_STRAWBERRY)
+                .input(Items.EGG, 2)
+                .input(Items.WHEAT)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.GOLDEN_STRAWBERRY), FabricRecipeProvider.conditionsFromItem(ModItems.GOLDEN_STRAWBERRY))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.ANGEL_FOOD_CAKE)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.CHERRY_PIE)
+                .input(ModItems.CHERRIES, 2)
+                .input(Items.EGG)
+                .input(Items.SUGAR)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.CHERRIES), FabricRecipeProvider.conditionsFromItem(ModItems.CHERRIES))
+                .criterion(FabricRecipeProvider.hasItem(Items.SUGAR), FabricRecipeProvider.conditionsFromItem(Items.SUGAR))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.CHERRY_PIE)));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModBlocks.VELVET_CAKE, 1)
                 .pattern("MVM")
                 .pattern("SES")

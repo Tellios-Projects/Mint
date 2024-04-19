@@ -651,7 +651,14 @@ public class ModItemGroups {
                         entries.add(ModBlocks.VELVET_CANDLE);
 
                         entries.add(ModItems.STRAWBERRY);
+                        entries.add(ModItems.CHOCOLATE_STRAWBERRY);
+                        entries.add(ModItems.GOLDEN_STRAWBERRY);
+                        entries.add(ModItems.STRAWBERRY_MILK);
+                        entries.add(ModItems.STRAWBERRY_SHORTCAKE);
+                        entries.add(ModItems.STRAWBERRY_CHEESECAKE);
+                        entries.add(ModItems.ANGEL_FOOD_CAKE);
                         entries.add(ModItems.CHERRIES);
+                        entries.add(ModItems.CHERRY_PIE);
                         entries.add(ModBlocks.CORDYLINE);
                         entries.add(ModBlocks.TALL_CORDYLINE);
                         entries.add(ModBlocks.PLUM_CORDYLINE);

@@ -439,7 +439,14 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.PINEAPPLE_TART, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.STRAWBERRY, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CHOCOLATE_STRAWBERRY, Models.GENERATED);
+        itemModelGenerator.register(ModItems.GOLDEN_STRAWBERRY, Models.GENERATED);
+        itemModelGenerator.register(ModItems.STRAWBERRY_MILK, Models.GENERATED);
+        itemModelGenerator.register(ModItems.STRAWBERRY_SHORTCAKE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.STRAWBERRY_CHEESECAKE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ANGEL_FOOD_CAKE, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHERRIES, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CHERRY_PIE, Models.GENERATED);
         itemModelGenerator.register(ModBlocks.VELVET_CAKE.asItem(), Models.GENERATED);
 
 // Decor Additions

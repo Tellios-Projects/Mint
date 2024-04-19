@@ -580,7 +580,7 @@ public class ModBlocks {
     static {RENDER_LAYER_CUTOUT_MIPPED.add(POTTED_PLUM_CORDYLINE);}
     public static final Block TALL_PLUM_CORDYLINE = registerBlock("tall_plum_cordyline", new TallCordylineBlock(FabricBlockSettings.copyOf(Blocks.GRASS).mapColor(MapColor.DARK_CRIMSON)));
     static {RENDER_LAYER_CUTOUT_MIPPED.add(TALL_PLUM_CORDYLINE);}
-    public static final Block STRAWBERRY_PLANT = registerBlock("strawberry_plant", new StrawberryPlantBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS).mapColor(MapColor.DARK_GREEN).ticksRandomly()));
+    public static final Block STRAWBERRY_PLANT = registerBlockWithoutBlockItem("strawberry_plant", new StrawberryPlantBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS).mapColor(MapColor.DARK_GREEN).ticksRandomly()));
     static {RENDER_LAYER_CUTOUT_MIPPED.add(STRAWBERRY_PLANT);}
 
     public static final Block VELVET_CAKE = registerBlock("velvet_cake", new VelvetCakeBlock(FabricBlockSettings.copyOf(Blocks.CAKE).mapColor(MapColor.SPRUCE_BROWN)));

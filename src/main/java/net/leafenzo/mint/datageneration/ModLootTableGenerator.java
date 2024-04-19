@@ -196,7 +196,11 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.PINEAPPLE_STEM, ModItems.PINEAPPLE_CROWN);
         addDrop(ModBlocks.PINEAPPLE_CROWN, ModItems.PINEAPPLE_CROWN);
 
-        this.addDrop(ModBlocks.STRAWBERRY_PLANT, LootTable.builder().pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0F)).with(this.applyExplosionDecay(ModBlocks.STRAWBERRY_PLANT, ItemEntry.builder(ModItems.STRAWBERRY).apply(IntStream.rangeClosed(1, 4).boxed().toList(), (flowerAmount) -> SetCountLootFunction.builder(ConstantLootNumberProvider.create((float)flowerAmount)).conditionally(BlockStatePropertyLootCondition.builder(ModBlocks.STRAWBERRY_PLANT).properties(StatePredicate.Builder.create().exactMatch(FlowerbedBlock.FLOWER_AMOUNT, flowerAmount))))))));
+        this.addDrop(ModBlocks.STRAWBERRY_PLANT, LootTable.builder().pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0F))
+                .with(this.applyExplosionDecay(ModBlocks.STRAWBERRY_PLANT, ItemEntry.builder(ModItems.STRAWBERRY)
+                        .apply(IntStream.rangeClosed(1, 4).boxed().toList(), (flowerAmount) -> SetCountLootFunction.builder(ConstantLootNumberProvider.create((float)flowerAmount))
+                                .conditionally(BlockStatePropertyLootCondition.builder(ModBlocks.STRAWBERRY_PLANT)
+                                        .properties(StatePredicate.Builder.create().exactMatch(FlowerbedBlock.FLOWER_AMOUNT, flowerAmount))))))));
 
         this.addDrop(ModBlocks.TALL_CORDYLINE, LootTable.builder().pool(this.addSurvivesExplosionCondition(ModBlocks.TALL_CORDYLINE, LootPool.builder()
                 .rolls(ConstantLootNumberProvider.create(1.0F))

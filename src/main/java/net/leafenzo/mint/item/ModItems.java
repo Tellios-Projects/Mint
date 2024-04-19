@@ -173,12 +173,55 @@ public class ModItems {
     public static final Item PINEAPPLE_TART = registerItem("pineapple_tart", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder()
                     .hunger(5)
-                    .saturationModifier(0.2f)
+                    .saturationModifier(0.5f)
                     .build())));
 
 
     public static final Item STRAWBERRY = registerItem("strawberry", new AliasedBlockItem(ModBlocks.STRAWBERRY_PLANT, new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(0.2f).snack().build())));
+    public static final Item STRAWBERRY_SHORTCAKE = registerItem("strawberry_shortcake", new Item(new FabricItemSettings()
+            .food(new FoodComponent.Builder()
+                    .hunger(5)
+                    .saturationModifier(0.8F)
+                    .build())));
+    public static final Item CHOCOLATE_STRAWBERRY = registerItem("chocolate_strawberry", new Item(new FabricItemSettings()
+            .food(new FoodComponent.Builder()
+                    .hunger(4)
+                    .saturationModifier(0.4F)
+                    .snack()
+                    .build())));
+    public static final Item GOLDEN_STRAWBERRY = registerItem("golden_strawberry", new Item(new FabricItemSettings()
+            .food(new FoodComponent.Builder()
+                    .hunger(6)
+                    .saturationModifier(1f)
+                    .snack()
+                    .statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 200, 0), 1f)
+                    .build())));
+    public static final Item STRAWBERRY_MILK = registerItem("strawberry_milk", new StrawberryMilkItem(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).maxCount(16)
+            .food(new FoodComponent.Builder()
+                    .hunger(5)
+                    .saturationModifier(0.5F)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 200, 0), 1f)
+                    .build())));
+
+    public static final Item STRAWBERRY_CHEESECAKE = registerItem("strawberry_cheesecake", new Item(new FabricItemSettings()
+            .food(new FoodComponent.Builder()
+                    .hunger(8)
+                    .saturationModifier(1.2F)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 600, 0), 1f)
+                    .build())));
+    public static final Item ANGEL_FOOD_CAKE = registerItem("angel_food_cake", new Item(new FabricItemSettings()
+            .food(new FoodComponent.Builder()
+                    .hunger(10)
+                    .saturationModifier(1.2F)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 200, 0), 1f)
+                    .build())));
+
     public static final Item CHERRIES = registerItem("cherries", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(0.2f).snack().build())));
+    public static final Item CHERRY_PIE = registerItem("cherry_pie", new Item(new FabricItemSettings()
+            .food(new FoodComponent.Builder()
+                    .hunger(8)
+                    .saturationModifier(0.4F)
+                    .build())));
 
 
 

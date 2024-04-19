@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "mint:strawberry_milk"
+    },
+    {
+      "item": "mint:strawberry_milk"
+    },
+    {
+      "item": "mint:strawberry_milk"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "mint:strawberry_cheesecake"
+  }
+}
