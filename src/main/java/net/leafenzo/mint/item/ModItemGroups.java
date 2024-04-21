@@ -648,6 +648,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.VELVET_SHULKER_BOX);
                         entries.add(ModBlocks.VELVET_CANDLE);
 
+                        entries.add(ModBlocks.STRAWBERRY_PLANT);
                         entries.add(ModItems.STRAWBERRY);
                         entries.add(ModItems.CHOCOLATE_STRAWBERRY);
                         entries.add(ModItems.GOLDEN_STRAWBERRY);

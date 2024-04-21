@@ -16,6 +16,7 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
@@ -691,6 +692,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ModItems.VELVET_DYE, ModBlocks.CORDYLINE, "velvet_dye", 1);
         offerShapelessRecipe(exporter, ModItems.VELVET_DYE, ModBlocks.TALL_CORDYLINE, "velvet_dye", 2);
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModBlocks.STRAWBERRY_PLANT)
+                .input(ModItems.STRAWBERRY, 3)
+                .input(ItemTags.DIRT)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.STRAWBERRY), FabricRecipeProvider.conditionsFromItem(ModItems.STRAWBERRY))
+                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.STRAWBERRY_PLANT)));
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.CHOCOLATE_STRAWBERRY)
                 .input(ModItems.STRAWBERRY)
                 .input(Items.COCOA_BEANS)

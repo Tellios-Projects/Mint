@@ -177,7 +177,7 @@ public class ModItems {
                     .build())));
 
 
-    public static final Item STRAWBERRY = registerItem("strawberry", new AliasedBlockItem(ModBlocks.STRAWBERRY_PLANT, new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(0.2f).snack().build())));
+    public static final Item STRAWBERRY = registerItem("strawberry", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(0.2f).snack().build())));
     public static final Item STRAWBERRY_SHORTCAKE = registerItem("strawberry_shortcake", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder()
                     .hunger(5)

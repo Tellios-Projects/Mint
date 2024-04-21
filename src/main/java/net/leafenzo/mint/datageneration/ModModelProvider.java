@@ -300,6 +300,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerTintableCross(ModBlocks.ALOE, BlockStateModelGenerator.TintType.NOT_TINTED);
         registerFlowerPot(blockStateModelGenerator, ModBlocks.ALOE, ModBlocks.POTTED_ALOE, BlockStateModelGenerator.TintType.NOT_TINTED);
 
+        blockStateModelGenerator.registerItemModel(ModBlocks.STRAWBERRY_PLANT.asItem());
         blockStateModelGenerator.registerTintableCross(ModBlocks.CORDYLINE, BlockStateModelGenerator.TintType.NOT_TINTED);
         registerFlowerPot(blockStateModelGenerator, ModBlocks.CORDYLINE, ModBlocks.POTTED_CORDYLINE, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(ModBlocks.PLUM_CORDYLINE, BlockStateModelGenerator.TintType.NOT_TINTED);
