@@ -55,7 +55,7 @@ public class ModInit implements ModInitializer {
         public void onInitialize() {
             Optional<ModContainer> modContainer = FabricLoader.getInstance().getModContainer("mint");
             if(modContainer.isPresent()) {
-                registerBuiltinResourcePack(modContainer.get(), "ammendments");
+                registerBuiltinResourcePack(modContainer.get(), "amendments");
                 registerBuiltinResourcePack(modContainer.get(), "botanypots");
                 registerBuiltinResourcePack(modContainer.get(), "comforts");
                 registerBuiltinResourcePack(modContainer.get(), "supplementaries");
