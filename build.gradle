@@ -133,8 +133,16 @@ dependencies {
 //	modRuntimeOnly("maven.modrinth:dye-depot:ldJ6vsnR")
 
 	// Botania
-//	modCompileOnly("maven.modrinth:botania:1.20.1-443-fabric")
-//	modRuntimeOnly("maven.modrinth:botania:1.20.1-443-fabric")
+//	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}")
+//	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}")
+//	modImplementation("maven.modrinth:trinkets:${trinkets_version}")
+//	modImplementation("maven.modrinth:botania:${botania_version}")
+//	modImplementation("maven.modrinth:patchouli:${patchouli_version}")
+
+//	modRuntimeOnly("maven.modrinth:trinkets:${trinkets_version}")
+//	modRuntimeOnly("maven.modrinth:botania:${botania_version}")
+//	modRuntimeOnly("maven.modrinth:patchouli:${patchouli_version}")
+
 
 	// Another Furniture
 
