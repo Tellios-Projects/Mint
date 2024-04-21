@@ -633,7 +633,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.SAGE_BANNER);
                         entries.add(ModBlocks.SAGE_SHULKER_BOX);
                         entries.add(ModBlocks.SAGE_CANDLE);
-                        
+
                         entries.add(ModItems.VELVET_DYE);
                         entries.add(ModBlocks.VELVET_WOOL);
                         entries.add(ModBlocks.VELVET_CARPET);

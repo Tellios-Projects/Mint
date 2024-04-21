@@ -156,7 +156,7 @@ public class ModItems {
 
     public static final Item SAVANNABUD_SEEDS = registerItem("savannabud_seeds", new AliasedBlockItem(ModBlocks.SHIMMERING_SAVANNABUDS_CROP, new FabricItemSettings()));
 
-    public static final Item PINEAPPLE_CROWN = registerItem("pineapple_crown", new PineappleCrownItem(ModBlocks.PINEAPPLE_STEM, new FabricItemSettings()));
+    public static final Item PINEAPPLE_CROWN = registerItem("pineapple_crown", new PineappleCrownItem(ModBlocks.PINEAPPLE_CROWN, new FabricItemSettings()));
     public static final Item PINEAPPLE = registerItem("pineapple", new AliasedBlockItem(ModBlocks.PINEAPPLE, new FabricItemSettings().recipeRemainder(PINEAPPLE_CROWN)));
     public static final Item PINEAPPLE_SLICES = registerItem("pineapple_slices", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder()

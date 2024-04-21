@@ -35,6 +35,7 @@ import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.*;
 import net.minecraft.world.gen.placementmodifier.BlockFilterPlacementModifier;
+import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.NoiseThresholdBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
@@ -63,6 +64,8 @@ public class ModConfiguredFeatures {
     public static final RegistryKey <ConfiguredFeature <?, ?>> WINTERGREEN = registerKey("wintergreen");
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> PEACH = registerKey("peach");
+
+    public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_PINEAPPLE = registerKey("patch_pineapple");
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_STRAWBERRY = registerKey("patch_strawberry");
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_CORDYLINE = registerKey("patch_cordyline");
@@ -122,6 +125,8 @@ public class ModConfiguredFeatures {
         register(context, PATCH_WAXCAP_MUSHROOM, Feature.RANDOM_PATCH,
                 new RandomPatchFeatureConfig(16, 16, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.WAXCAP_MUSHROOM))))
         );
+
+        register(context, PATCH_PINEAPPLE, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.PINEAPPLE)), List.of(Blocks.GRASS_BLOCK, Blocks.SAND), 30));
 
         DataPool.Builder<BlockState> strawberryBuilder = DataPool.builder();
         for (int i = 0; i < 5; i++) {
