@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "gumdrop",
+  "ingredients": [
+    {"item": "minecraft:sugar"},
+    {"item": "mint:sap_dye"}
+  ],
+  "result": {
+    "item": "snowyspirit:gumdrop_sap"
+  },
+  "conditions": [
+    {
+      "type": "snowyspirit:flag",
+      "flag": "gumdrops"
+    }
+  ]
+}

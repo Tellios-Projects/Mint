@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "gumdrop",
+  "ingredients": [
+    {"item": "minecraft:sugar"},
+    {"item": "mint:periwinkle_dye"}
+  ],
+  "result": {
+    "item": "snowyspirit:gumdrop_periwinkle"
+  },
+  "conditions": [
+    {
+      "type": "snowyspirit:flag",
+      "flag": "gumdrops"
+    }
+  ]
+}

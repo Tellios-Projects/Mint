@@ -1,0 +1,56 @@
+{
+  "variants": {
+    "facing=down,powered=false": {
+      "model": "snowyspirit:block/gumdrop_banana",
+      "x": 180
+    },
+    "facing=down,powered=true": {
+      "model": "snowyspirit:block/gumdrop_pressed_banana",
+      "x": 180
+    },
+    "facing=up,powered=false": {
+      "model": "snowyspirit:block/gumdrop_banana"
+    },
+    "facing=up,powered=true": {
+      "model": "snowyspirit:block/gumdrop_pressed_banana"
+    },
+    "facing=east,powered=false": {
+      "model": "snowyspirit:block/gumdrop_banana",
+      "y": 90,
+      "x": 90
+    },
+    "facing=east,powered=true": {
+      "model": "snowyspirit:block/gumdrop_pressed_banana",
+      "y": 90,
+      "x": 90
+    },
+    "facing=north,powered=false": {
+      "model": "snowyspirit:block/gumdrop_banana",
+      "x": 90
+    },
+    "facing=north,powered=true": {
+      "model": "snowyspirit:block/gumdrop_pressed_banana",
+      "x": 90
+    },
+    "facing=south,powered=false": {
+      "model": "snowyspirit:block/gumdrop_banana",
+      "y": 180,
+      "x": 90
+    },
+    "facing=south,powered=true": {
+      "model": "snowyspirit:block/gumdrop_pressed_banana",
+      "y": 180,
+      "x": 90
+    },
+    "facing=west,powered=false": {
+      "model": "snowyspirit:block/gumdrop_banana",
+      "y": 270,
+      "x": 90
+    },
+    "facing=west,powered=true": {
+      "model": "snowyspirit:block/gumdrop_pressed_banana",
+      "y": 270,
+      "x": 90
+    }
+  }
+}

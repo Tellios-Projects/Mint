@@ -74,7 +74,6 @@ repositories {
 //		force("net.fabricmc:fabric-loader:$loader_version")
 //	}
 //}
-
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
@@ -87,8 +86,12 @@ dependencies {
 
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
 
+	//Mod Menu
+	// /* doesn't work for some reason */ modImplementation("maven.modrinth:cloth-config:$clothconfig_version")
+	modRuntimeOnly("com.terraformersmc:modmenu:$modmenu_version")
+
 	//JEI
-		//From: https://maven.blamejared.com/mezz/jei/
+	//From: https://maven.blamejared.com/mezz/jei/
 	modImplementation files("libraries/jei/jei-1.20.1-fabric-15.3.0.4.jar")
 
 	// REI
@@ -96,14 +99,15 @@ dependencies {
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:$rei_version"
 
 	// Create - dependencies are added transitively
-//	modImplementation("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
+//	modCompileOnly("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
 
-// EVERYTHING PAST HERE BREAKS DATAGEN (only uncomment these during testing):
+// Datagen counts as runtime, it's safe to run datagen as long as our compat mods are modCompileOnly.
+
 	// Supplementaries
-//	modRuntimeOnly("maven.modrinth:supplementaries:${supplementaries_version}")
-//	modRuntimeOnly("maven.modrinth:dCCkNFwE:${supplementaries_squared_version_id}")
-//	modRuntimeOnly("maven.modrinth:amendments:${amendments_version}")
-//	modRuntimeOnly("maven.modrinth:moonlight:${moonlight_version}")
+	modRuntimeOnly("maven.modrinth:supplementaries:${supplementaries_version}")
+	modRuntimeOnly("maven.modrinth:dCCkNFwE:${supplementaries_squared_version_id}")
+	modRuntimeOnly("maven.modrinth:amendments:${amendments_version}")
+	modRuntimeOnly("maven.modrinth:moonlight:${moonlight_version}")
 
 	// Comforts
 //	modRuntimeOnly "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}"
@@ -112,7 +116,7 @@ dependencies {
 //	modRuntimeOnly("maven.modrinth:comforts:${comforts_version}")
 
 	// BotanyPots
-		// This way of loading it doesn't work, compat still does in practice though
+	// This way of loading it doesn't work, compat still does in practice though
 //	modImplementation "net.darkhax.bookshelf:Bookshelf-Fabric-${minecraft_version}:${bookshelf_version}"
 //	modRuntimeOnly("maven.modrinth:uy4Cnpcm:${bookshelf_version_id}")
 //	modRuntimeOnly("maven.modrinth:U6BUTZ7K:${botanypots_version_id}")
@@ -122,35 +126,34 @@ dependencies {
 	modCompileOnly("com.github.quiqueck:BCLib:${bclib_version}")
 	modCompileOnly("com.github.quiqueck:WunderLib:${wunderlib_version}")
 
+	// Twigs
+//	modRuntimeOnly("maven.modrinth:twigs:${twigs_version}")
+
+	// Dye Depot
+//	modRuntimeOnly("maven.modrinth:dye-depot:ldJ6vsnR")
+
+	// Botania
+//	modCompileOnly("maven.modrinth:botania:1.20.1-443-fabric")
+//	modRuntimeOnly("maven.modrinth:botania:1.20.1-443-fabric")
+
+	// Another Furniture
+
+	// Snowy Spirit
+	modRuntimeOnly("maven.modrinth:UiFDlI7w:VItD3Q0A")
+
 	// uncomment if needed
 	//include implementation("net.dv8tion:JDA:${project.jda_version}") {
 	//	exclude(module : "opus-java")
 	//}
 	// implementation 'com.opencsv:opencsv:5.7.1'  //Library Unused
 	//include('com.opencsv:opencsv:5.7.1')
-		//
+	//
 
-	// Uncomment the following line to enable the deprecated Fabric API modules. 
+	// Uncomment the following line to enable the deprecated Fabric API modules.
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
-
-	devEnvDependencies(dependencies)
 }
 
-def devEnvDependencies(DependencyHandler deps) {
-	/* Mod Menu Integration */
-//	deps.modLocalRuntime("com.terraformersmc:modmenu:$modmenu_version")
-//	deps.modLocalRuntime("me.shedaniel.cloth:cloth-config-fabric:$clothconfig_version") {
-//		exclude(group: "net.fabricmc.fabric-api")
-//	}
-	switch (recipe_viewer.toLowerCase(Locale.ROOT)) {
-		case "jei": deps.modLocalRuntime("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"); break
-		case "rei": deps.modLocalRuntime("me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"); break
-		case "emi": deps.modLocalRuntime("dev.emi:emi:${emi_version}"); break
-		case "disabled": break
-		default: println("Unknown recipe viewer specified: ${recipe_viewer}. Must be JEI, REI, EMI, or disabled.")
-	}
-}
 
 kotlin {
 	jvmToolchain {

@@ -6,27 +6,30 @@
 # MEDIUM PRIORITY
    # COMPAT
 
-- Fix gratuitous error logs generated from running the game with resources
-that are not used when someone doesn't have every mod we do model compat for
-   (something to do with data-packs if I were to guess, 
-     but I don't want to break datagen so I should try just some sort of error supression)
-
 BOTANYPOTS
 DONE | Bashgen
 - Grow our seeds
+
 TWIGS
 - Register new blocks
-- Datagen for them
+- Bashgen for them
+
+ANOTHER FURNITURE
+- Register stuff
+- Bashgen for them
+
 SUPPLEMENTARIES
 - Sign fixes
+
 SUPPLEMENTARIES AMENDMENTS
 DONE | Quick sweep for amendments crashes
 DONE | Carpet stairs work :3 
-DONE | Also lanterns work :3
-- Test and Fix cauldron crash
+DONE | Also lanterns work :3 
+DONE | See if dye-mixing cauldron crash happens | No it does not yippee. 
+
 SUPPLEMENTARIES SQUARED
-DONE | Bashgen resources
-- Import the compat textures once eliza's done with them 
+DONE |
+
 COMFORTS
 DONE | Import textures
 DONE | Run bash on it
@@ -36,6 +39,8 @@ CREATE
 - Import Textures
 - Run Bash
 - Fix Nixie tube coloring crash
+VAL FURNITURE
+- Dyecolor Truncator Mixin
 JEI
 - None of the new dyed wools appear to have recipes
 - None of the new dyed Shulker Boxes appear to have recipes
