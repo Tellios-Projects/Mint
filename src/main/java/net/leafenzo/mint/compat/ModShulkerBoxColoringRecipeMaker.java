@@ -1,14 +1,9 @@
 package net.leafenzo.mint.compat;
 
-import mezz.jei.common.platform.IPlatformIngredientHelper;
-import mezz.jei.common.platform.Services;
-import net.leafenzo.mint.Super;
-import net.leafenzo.mint.block.ModShulkerBoxBlock;
-import net.leafenzo.mint.registration.ModRegistryHelper;
+import net.leafenzo.mint.block.custom.ModShulkerBoxBlock;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.CraftingRecipe;
 import net.minecraft.recipe.Ingredient;
@@ -17,8 +12,6 @@ import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.List;

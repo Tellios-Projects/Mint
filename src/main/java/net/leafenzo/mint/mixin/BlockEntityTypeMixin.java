@@ -5,15 +5,11 @@
 */
 
 package net.leafenzo.mint.mixin;
-import net.leafenzo.mint.block.ModBlocks;
-import net.leafenzo.mint.block.ModShulkerBoxBlock;
+import net.leafenzo.mint.block.custom.ModShulkerBoxBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.*;
 
-import org.spongepowered.asm.mixin.Debug;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;

@@ -6,44 +6,33 @@ package net.leafenzo.mint.datageneration;
 
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
-import net.leafenzo.mint.block.PeachTreeBlock;
-import net.leafenzo.mint.block.StrawberryPlantBlock;
-import net.leafenzo.mint.world.feature.ModSimpleBlockStateProvider;
+import net.leafenzo.mint.block.custom.PeachTreeBlock;
+import net.leafenzo.mint.block.custom.StrawberryPlantBlock;
 import net.leafenzo.mint.world.gen.HugeWaxcapMushroomDecorator;
 import net.leafenzo.mint.world.gen.MushroomBlockDirectionDecorator;
 import net.leafenzo.mint.world.gen.WintergreenFoliagePlacer;
 import net.leafenzo.mint.world.gen.WintergreenTrunkPlacer;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.SlabType;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.registry.*;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.state.property.Properties;
-import net.minecraft.structure.rule.BlockStateMatchRuleTest;
 import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3i;
-import net.minecraft.util.math.intprovider.BiasedToBottomIntProvider;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.*;
-import net.minecraft.world.gen.placementmodifier.BlockFilterPlacementModifier;
-import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.minecraft.world.gen.stateprovider.NoiseThresholdBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 import java.util.List;
 import java.util.OptionalInt;
-import java.util.Random;
 
 public class ModConfiguredFeatures {
 

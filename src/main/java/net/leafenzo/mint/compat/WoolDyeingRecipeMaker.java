@@ -1,25 +1,15 @@
 package net.leafenzo.mint.compat;
 
-import dev.architectury.platform.Mod;
 import mezz.jei.common.platform.IPlatformIngredientHelper;
 import mezz.jei.common.platform.Services;
 import net.leafenzo.mint.Super;
-import net.leafenzo.mint.block.ModBlocks;
-import net.leafenzo.mint.block.ModShulkerBoxBlock;
-import net.leafenzo.mint.item.ModItems;
-import net.leafenzo.mint.registration.ModRegistryHelper;
+import net.leafenzo.mint.block.custom.ModShulkerBoxBlock;
 import net.leafenzo.mint.util.ModDyeColor;
-import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.ShulkerBoxBlock;
-import net.minecraft.item.DyeItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.CraftingRecipe;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import java.util.Arrays;
@@ -31,7 +21,6 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 
-import net.leafenzo.mint.registration.ModRegistryHelper.*;
 public final class WoolDyeingRecipeMaker {
     private static final String group = Super.MOD_ID + ".wool.color";
 

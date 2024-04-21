@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.*;
+import net.leafenzo.mint.block.custom.*;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.util.ModUtil;

@@ -13,7 +13,7 @@ import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.entity.ModBoatEntity;
 import net.leafenzo.mint.entity.ModEntityTypes;
-import net.leafenzo.mint.item.ModBoatItem;
+import net.leafenzo.mint.item.custom.ModBoatItem;
 import net.leafenzo.mint.registries.ModFabricRegistries;
 import net.leafenzo.mint.registry.tag.ModTags;
 import net.minecraft.block.*;

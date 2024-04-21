@@ -3,7 +3,7 @@ package net.leafenzo.mint.world.gen;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.leafenzo.mint.block.DiagonalBlock;
+import net.leafenzo.mint.block.custom.DiagonalBlock;
 import net.leafenzo.mint.util.ModWorldGen;
 import net.minecraft.block.*;
 import net.minecraft.util.math.BlockPos;

@@ -1,7 +1,6 @@
 package net.leafenzo.mint.recipe;
 
-import net.leafenzo.mint.block.ModShulkerBoxBlock;
-import net.leafenzo.mint.registration.ModRegistryHelper;
+import net.leafenzo.mint.block.custom.ModShulkerBoxBlock;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.minecraft.block.Block;
 import net.minecraft.block.ShulkerBoxBlock;
@@ -11,14 +10,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.ShulkerBoxColoringRecipe;
 import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Arrays;
 
