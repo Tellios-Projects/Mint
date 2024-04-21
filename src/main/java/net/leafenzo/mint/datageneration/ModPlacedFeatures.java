@@ -148,7 +148,7 @@ public class ModPlacedFeatures {
         registerKey(context,
                 PATCH_STRAWBERRY_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PATCH_STRAWBERRY),
-                RarityFilterPlacementModifier.of(30),
+                RarityFilterPlacementModifier.of(75),
                 NoiseThresholdCountPlacementModifier.of(-0.8, 0, 60),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
