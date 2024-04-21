@@ -96,6 +96,27 @@ public class ModFabricRegistries {
         compostingChanceRegistry.add(ModBlocks.WAXCAP_MUSHROOM, 0.65f);
         compostingChanceRegistry.add(ModItems.ARTICHOKE, 0.65f);
         compostingChanceRegistry.add(ModItems.ARTICHOKE_HEART, 0.65f);
+
+        compostingChanceRegistry.add(ModItems.PINEAPPLE, 0.65f);
+        compostingChanceRegistry.add(ModItems.PINEAPPLE_SLICES, 0.3f);
+        compostingChanceRegistry.add(ModItems.PINEAPPLE_CROWN, 0.5f);
+        compostingChanceRegistry.add(ModItems.PINEAPPLE_KEBAB, 0.65f);
+        compostingChanceRegistry.add(ModItems.PINEAPPLE_TART, 0.5f);
+        compostingChanceRegistry.add(ModItems.SAVANNABUD_SEEDS, 0.3f);
+        compostingChanceRegistry.add(ModBlocks.SHIMMERING_SAVANNABUDS, 0.85f);
+
+        compostingChanceRegistry.add(ModItems.STRAWBERRY, 0.3f);
+        compostingChanceRegistry.add(ModItems.CHOCOLATE_STRAWBERRY, 0.3f);
+        compostingChanceRegistry.add(ModItems.STRAWBERRY_SHORTCAKE, 0.85f);
+        compostingChanceRegistry.add(ModItems.STRAWBERRY_CHEESECAKE, 1f);
+        compostingChanceRegistry.add(ModItems.ANGEL_FOOD_CAKE, 1f);
+        compostingChanceRegistry.add(ModItems.CHERRIES, 0.3f);
+        compostingChanceRegistry.add(ModItems.CHERRY_PIE, 0.85f);
+        compostingChanceRegistry.add(ModBlocks.CORDYLINE, 0.65f);
+        compostingChanceRegistry.add(ModBlocks.PLUM_CORDYLINE, 0.65f);
+        compostingChanceRegistry.add(ModBlocks.TALL_CORDYLINE, 0.85f);
+        compostingChanceRegistry.add(ModBlocks.TALL_PLUM_CORDYLINE, 0.85f);
+        compostingChanceRegistry.add(ModBlocks.VELVET_CAKE, 1f);
     }
 
     public static void registerVillagerInteractions() {
