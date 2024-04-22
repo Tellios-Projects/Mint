@@ -136,6 +136,8 @@ dependencies {
 //	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}")
 //	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}")
 //	modImplementation("maven.modrinth:trinkets:${trinkets_version}")
+//	modImplementation("me.zeroeightsix:fiber:${fiber_version}")
+//	modImplementation("com.github.emilyploszaj:step-height-entity-attribute:${step_height_version}")
 //	modImplementation("maven.modrinth:patchouli:${patchouli_version}")
 //	modImplementation("maven.modrinth:botania:${botania_version}")
 
