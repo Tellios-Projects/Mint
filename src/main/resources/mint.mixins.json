@@ -17,6 +17,13 @@
     "SheepEntityMixin",
     "ShulkerBoxColoringRecipeMixin",
     "compat.betterend.ColoredMaterialMixin",
+    "compat.botania.BotaniaBlockEntitiesMixin",
+    "compat.botania.CompostingDataMixin",
+    "compat.botania.FabricCommonInitializerMixin",
+    "compat.botania.FlowerPouchItemMixin",
+    "compat.botania.ManaSparkEntityMixin",
+    "compat.botania.PaintableDataMixin",
+    "compat.botania.SpectrolusBlockEntityMixin",
     "compat.jei.ShulkerBoxColoringRecipeMakerMixin"
   ],
   "client": [

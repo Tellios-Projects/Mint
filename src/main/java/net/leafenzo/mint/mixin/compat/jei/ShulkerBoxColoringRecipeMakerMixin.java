@@ -7,16 +7,18 @@ import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.util.DyeColor;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 
 import java.util.Arrays;
 
+@Pseudo
 @Mixin(ShulkerBoxColoringRecipeMaker.class)
 public class ShulkerBoxColoringRecipeMakerMixin {
 
     @ModifyExpressionValue(
-            method = "createRecipes()Ljava/util/List;",
+            method = "*",
             at = @At(value = "INVOKE", target = "net/minecraft/util/DyeColor.values ()[Lnet/minecraft/util/DyeColor;")
     )
     private static DyeColor[] truncateDyeColors(DyeColor[] original) {

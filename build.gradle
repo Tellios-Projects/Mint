@@ -132,14 +132,14 @@ dependencies {
 	// Dye Depot
 //	modRuntimeOnly("maven.modrinth:dye-depot:ldJ6vsnR")
 
-	// Botania
-//	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}")
-//	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}")
-//	modImplementation("maven.modrinth:trinkets:${trinkets_version}")
-//	modImplementation("me.zeroeightsix:fiber:${fiber_version}")
-//	modImplementation("com.github.emilyploszaj:step-height-entity-attribute:${step_height_version}")
-//	modImplementation("maven.modrinth:patchouli:${patchouli_version}")
-//	modImplementation("maven.modrinth:botania:${botania_version}")
+	// Botania  	// this doesn't run here with modImpl but it does run in prod. So I'm chill with it.
+	modCompileOnly("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}")
+	modCompileOnly("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}")
+	modCompileOnly("maven.modrinth:trinkets:${trinkets_version}")
+	modCompileOnly("me.zeroeightsix:fiber:${fiber_version}")
+	modCompileOnly("com.github.emilyploszaj:step-height-entity-attribute:${step_height_version}")
+	modCompileOnly("maven.modrinth:patchouli:${patchouli_version}")
+	modCompileOnly("maven.modrinth:botania:${botania_version}")
 
 //	modRuntimeOnly("maven.modrinth:trinkets:${trinkets_version}")
 //	modRuntimeOnly("maven.modrinth:botania:${botania_version}")

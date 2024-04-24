@@ -39,7 +39,6 @@ public class ModInit implements ModInitializer {
         public static final String MOD_ID = Super.MOD_ID;
         public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-        public static ArrayList<MutableText> builtinResourcePackTranslationKeys = new ArrayList<MutableText>();
         private static void registerBuiltinResourcePack(ModContainer modContainer, String forModID) {
             if (FabricLoader.getInstance().isModLoaded(forModID)) {
                     ResourceManagerHelper.registerBuiltinResourcePack(
