@@ -53,3 +53,4 @@ tools/templates/*
 tools/temp/*
 tools/jars/*
 template_test/*
+/tools/output/*

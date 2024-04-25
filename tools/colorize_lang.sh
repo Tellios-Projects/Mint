@@ -1,4 +1,5 @@
 #!/bin/bash
+
 TEMPLATES=$1
 LANG_FILE=$2
 OUT_PATH=$3

@@ -1,4 +1,5 @@
 #!/bin/bash
+
 COLORLIST=./colors.txt
 TEMPLATES=$1
 OUT_DIRECTORY=$2
@@ -12,6 +13,6 @@ for f in $(find $TEMPLATES -type f -name "*.json"); do
 
     mkdir -p $OUT_PATH
     sed "s/${REPLACE}/${COLOR}/g" $f | sed "/minecraft:*${COLOR}/s/minecraft:/mint:/g" | sed "s/\"block\/${COLOR}/\"mint:block\/${COLOR}/g" | sed "s/\"minecraft:block\/${COLOR}/\"mint:block\/${COLOR}/g" > "${OUT_PATH}/${NAME}"
-
+    echo "${OUT_PATH}/${NAME}"
   done < $COLORLIST
 done
