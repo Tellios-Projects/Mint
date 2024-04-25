@@ -24,6 +24,7 @@
     "compat.botania.ManaSparkEntityMixin",
     "compat.botania.PaintableDataMixin",
     "compat.botania.SpectrolusBlockEntityMixin",
+    "compat.create.DyeHelperMixin",
     "compat.jei.ShulkerBoxColoringRecipeMakerMixin"
   ],
   "client": [
