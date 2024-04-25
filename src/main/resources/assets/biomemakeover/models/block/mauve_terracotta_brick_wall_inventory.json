@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "biomemakeover:block/mauve_terracotta_brick"
+  }
+}

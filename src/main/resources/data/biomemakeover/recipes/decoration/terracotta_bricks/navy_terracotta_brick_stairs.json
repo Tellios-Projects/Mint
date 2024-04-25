@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "biomemakeover:navy_terracotta_bricks"
+    }
+  },
+  "result": {
+    "item": "biomemakeover:navy_terracotta_brick_stairs",
+    "count": 4
+  }
+}

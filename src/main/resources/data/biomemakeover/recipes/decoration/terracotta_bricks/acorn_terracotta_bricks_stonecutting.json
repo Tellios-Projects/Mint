@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "mint:acorn_terracotta"
+  },
+  "result": "biomemakeover:acorn_terracotta_bricks",
+  "count": 1
+}

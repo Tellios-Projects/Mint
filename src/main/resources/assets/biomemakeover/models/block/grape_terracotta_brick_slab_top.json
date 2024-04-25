@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "biomemakeover:block/grape_terracotta_brick",
+    "top": "biomemakeover:block/grape_terracotta_brick",
+    "side": "biomemakeover:block/grape_terracotta_brick"
+  }
+}

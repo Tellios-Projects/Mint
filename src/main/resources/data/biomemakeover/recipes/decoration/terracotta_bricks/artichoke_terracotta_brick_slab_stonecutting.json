@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "biomemakeover:artichoke_terracotta_bricks"
+  },
+  "result": "biomemakeover:artichoke_terracotta_brick_slab",
+  "count": 2
+}

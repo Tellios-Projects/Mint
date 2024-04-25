@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "biomemakeover:block/sage_terracotta_brick",
+    "top": "biomemakeover:block/sage_terracotta_brick",
+    "side": "biomemakeover:block/sage_terracotta_brick"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "biomemakeover:block/sage_terracotta_brick"
+  }
+}
