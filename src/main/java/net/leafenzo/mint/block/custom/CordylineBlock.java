@@ -22,7 +22,7 @@ public class CordylineBlock extends PlantBlock implements Fertilizable {
     }
 
     @Override
-    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
+    public boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
         return super.canPlantOnTop(floor, world, pos) || floor.isIn(BlockTags.SAND);
     }
 

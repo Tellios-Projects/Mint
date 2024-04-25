@@ -125,7 +125,7 @@ public class TwoTallCropBlock extends CropBlock {
         return true; // return true if we haven't failed
     }
     @Override
-    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
+    public boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
         return floor.isIn(BlockTags.DIRT) || floor.isOf(Blocks.FARMLAND);
     }
     public float getChanceToGrow(BlockState state) {
