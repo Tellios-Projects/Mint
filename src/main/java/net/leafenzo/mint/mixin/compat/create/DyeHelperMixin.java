@@ -22,7 +22,7 @@ import java.util.Map;
 @Pseudo
 @Mixin(DyeHelper.class)
 public class DyeHelperMixin {
-    @ModifyReceiver(method = "<clinit>()V", at = @At(value = "INVOKE", target = "com/google/common/collect/ImmutableMap$Builder.build ()Lcom/google/common/collect/ImmutableMap;"))
+    @ModifyReceiver(method = "<clinit>()V", remap = false, at = @At(value = "INVOKE", target = "com/google/common/collect/ImmutableMap$Builder.build ()Lcom/google/common/collect/ImmutableMap;"))
     private static ImmutableMap.Builder<DyeColor, Couple<Integer>> appendToDyeTable(ImmutableMap.Builder<DyeColor, Couple<Integer>> original) {
         return original
                 // DyeColor, ( Front RGB, Back RGB )
