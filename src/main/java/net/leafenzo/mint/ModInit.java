@@ -61,6 +61,7 @@ public class ModInit implements ModInitializer {
                 registerBuiltinResourcePack(modContainer.get(), "suppsquared");
                 registerBuiltinResourcePack(modContainer.get(), "snowyspirit");
                 registerBuiltinResourcePack(modContainer.get(), "biomemakeover");
+                registerBuiltinResourcePack(modContainer.get(), "create");
             }
 
             ModBlocks.registerModBlocks();

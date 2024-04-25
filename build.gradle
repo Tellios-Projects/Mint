@@ -27,44 +27,23 @@ repositories {
 		}
 	}
 
-	maven {
-		name = 'Ladysnake Mods'
-		url = 'https://maven.ladysnake.org/releases'
-	}
-
-	maven {
-		name = 'JitPack'
-		url = 'https://jitpack.io'
-	}
-
-	//JEI
-	maven {
-		// location of the maven that hosts JEI files before January 2023
-		name = "Progwml6's maven"
-		url = "https://dvs1.progwml6.com/files/maven/"
-	}
-	maven {
-		// location of the maven that hosts JEI files since January 2023
-		name = "Jared's maven"
-		url = "https://maven.blamejared.com/"
-	}
-	maven {
-		// location of a maven mirror for JEI files, as a fallback
-		name = "ModMaven"
-		url = "https://modmaven.dev"
-	}
-
-	maven {
-		url = "https://maven.architectury.dev"
-	}
-
-	// REI
-	maven { url = "https://maven.shedaniel.me/" }
-
-	// Mod Menu
-	maven { url = "https://maven.terraformersmc.com/releases/" }
-	// Create, Porting Lib, Forge Tags, Milk Lib, Registrate
-	maven { url = "https://mvn.devos.one/snapshots/" }
+	maven { url = "https://maven.shedaniel.me/" } // Cloth Config, REI
+	maven { url = "https://maven.blamejared.com/" } // JEI
+	maven { url = "https://maven.parchmentmc.org" } // Parchment mappings
+	maven { url = "https://maven.quiltmc.org/repository/release" } // Quilt Mappings
+	maven { url = "https://api.modrinth.com/maven" } // LazyDFU
+	maven { url = "https://maven.terraformersmc.com/releases/" } // Mod Menu
+	maven { url = "https://mvn.devos.one/snapshots/" } // Create, Porting Lib, Forge Tags, Milk Lib, Registrate
+	maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // Forge Config API Port
+	maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
+	maven { url = "https://jitpack.io" } // Mixin Extras, Fabric ASM
+	maven { url = "https://maven.tterrag.com/" } // Flywheel
+	maven { url = 'https://maven.ladysnake.org/releases' }
+	maven { url = "https://dvs1.progwml6.com/files/maven/" } // location of the maven that hosts JEI files before January 2023
+	maven { url = "https://maven.blamejared.com/" } // location of the maven that hosts JEI files since January 2023
+	maven { url = "https://modmaven.dev" } // location of a maven mirror for JEI files, as a fallback
+	maven { url = "https://maven.architectury.dev" }
+	maven { url = "https://mvn.devos.one/snapshots/" } 	// Create, Porting Lib, Forge Tags, Milk Lib, Registrate
 
 	// Add repositories to retrieve artifacts from in here.
 	// You should only use this when depending on other mods because
@@ -75,14 +54,15 @@ repositories {
 
 //configurations.configureEach {
 //	resolutionStrategy {
-//		force("net.fabricmc:fabric-loader:$loader_version")
+//		force("net.fabricmc:fabric-loader:${loader_version}")
 //	}
 //}
+
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 	modImplementation("net.fabricmc:fabric-language-kotlin:1.10.18+kotlin.1.9.22")
 
 	include(modImplementation('com.github.Chocohead:Fabric-ASM:v2.3'))
@@ -101,9 +81,6 @@ dependencies {
 	// REI
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:$rei_version"
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:$rei_version"
-
-	// Create - dependencies are added transitively
-//	modCompileOnly("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
 
 // Datagen counts as runtime, it's safe to run datagen as long as our compat mods are modCompileOnly.
 
@@ -145,6 +122,10 @@ dependencies {
 	modCompileOnly("maven.modrinth:patchouli:${patchouli_version}")
 	modCompileOnly("maven.modrinth:botania:${botania_version}")
 
+	// Create - dependencies are added transitively
+	modCompileOnly("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
+//	modLocalRuntime("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
+
 	// Biome Makeover  // why do things keep only working in prod?? I think its incompatible mappings ain't it. ah well.
 //	modRuntimeOnly("dev.architectury:architectury-fabric:${architectury_version}")
 //	modRuntimeOnly("maven.modrinth:architectury-api:${architectury_version}+fabric")
@@ -178,11 +159,19 @@ kotlin {
 }
 
 processResources {
-	inputs.property "version", project.version
-	filteringCharset "UTF-8"
+	// require dependencies to be the version compiled against or newer
+	Map<String, String> properties = Map.of(
+			"version", version,
+			"fabric_loader_version", loader_version,
+			"fabric_api_version", fabric_api_version,
+			"create_version", create_version,
+			"minecraft_version", minecraft_version
+	)
+
+	inputs.properties(properties)
 
 	filesMatching("fabric.mod.json") {
-		expand "version": project.version
+		expand properties
 	}
 }
 
@@ -220,6 +209,9 @@ java {
 	// if it is present.
 	// If you remove this line, sources will not be generated.
 	withSourcesJar()
+
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
 }
 
 jar {
