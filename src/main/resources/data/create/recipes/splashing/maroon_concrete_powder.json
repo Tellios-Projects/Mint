@@ -1,0 +1,13 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "item": "mint:maroon_concrete_powder"
+    }
+  ],
+  "results": [
+    {
+      "item": "mint:maroon_concrete"
+    }
+  ]
+}

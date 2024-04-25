@@ -1,0 +1,13 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "item": "mint:vermilion_concrete_powder"
+    }
+  ],
+  "results": [
+    {
+      "item": "mint:vermilion_concrete"
+    }
+  ]
+}

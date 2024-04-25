@@ -1,0 +1,13 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "item": "mint:acorn_concrete_powder"
+    }
+  ],
+  "results": [
+    {
+      "item": "mint:acorn_concrete"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "item": "mint:fuchsia_concrete_powder"
+    }
+  ],
+  "results": [
+    {
+      "item": "mint:fuchsia_concrete"
+    }
+  ]
+}

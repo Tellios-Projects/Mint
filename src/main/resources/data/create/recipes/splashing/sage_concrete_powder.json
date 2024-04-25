@@ -1,0 +1,13 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "item": "mint:sage_concrete_powder"
+    }
+  ],
+  "results": [
+    {
+      "item": "mint:sage_concrete"
+    }
+  ]
+}

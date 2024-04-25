@@ -1,0 +1,13 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "item": "mint:artichoke_concrete_powder"
+    }
+  ],
+  "results": [
+    {
+      "item": "mint:artichoke_concrete"
+    }
+  ]
+}
