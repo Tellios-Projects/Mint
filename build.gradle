@@ -126,6 +126,9 @@ dependencies {
 	modCompileOnly("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
 //	modLocalRuntime("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
 
+	// Create Deco
+//	modLocalRuntime("maven.modrinth:create-deco:${createdeco_version}")
+
 	// Biome Makeover  // why do things keep only working in prod?? I think its incompatible mappings ain't it. ah well.
 //	modRuntimeOnly("dev.architectury:architectury-fabric:${architectury_version}")
 //	modRuntimeOnly("maven.modrinth:architectury-api:${architectury_version}+fabric")
