@@ -85,10 +85,11 @@ dependencies {
 // Datagen counts as runtime, it's safe to run datagen as long as our compat mods are modCompileOnly.
 
 	// Supplementaries
+//	modRuntimeOnly("maven.modrinth:moonlight:${moonlight_version}")
 //	modRuntimeOnly("maven.modrinth:supplementaries:${supplementaries_version}")
 //	modRuntimeOnly("maven.modrinth:dCCkNFwE:${supplementaries_squared_version_id}")
 //	modRuntimeOnly("maven.modrinth:amendments:${amendments_version}")
-//	modRuntimeOnly("maven.modrinth:moonlight:${moonlight_version}")
+
 
 	// Comforts
 //	modRuntimeOnly "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}"
@@ -133,6 +134,10 @@ dependencies {
 //	modRuntimeOnly("dev.architectury:architectury-fabric:${architectury_version}")
 //	modRuntimeOnly("maven.modrinth:architectury-api:${architectury_version}+fabric")
 //	modRuntimeOnly("maven.modrinth:biome-makeover:${biomemakeover_version}")
+
+	// Sleep Tight    // yet another mod that only works in production...
+//	modRuntimeOnly("maven.modrinth:moonlight:${moonlight_version}")
+//	modRuntimeOnly("maven.modrinth:sleep-tight:${sleeptight_version}")
 
 	// Another Furniture
 
