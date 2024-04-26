@@ -113,8 +113,8 @@ public class ModItems {
             .build())));
     public static final Item COOKED_ANEMONE = registerItem("cooked_anemone", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder()
-                    .hunger(7)
-                    .saturationModifier(0.6f)
+                    .hunger(4)
+                    .saturationModifier(0.4f)
                     .build())));
     public static final Item PEACH_BRANCH = registerItem("peach_branch", new Item(new FabricItemSettings()));
     //public static final Item PEACH_BRANCH = registerItem(new BlockItem(ModBlocks.PEACH_TREE, new FabricItemSettings()));
@@ -161,7 +161,7 @@ public class ModItems {
     public static final Item PINEAPPLE = registerItem("pineapple", new AliasedBlockItem(ModBlocks.PINEAPPLE, new FabricItemSettings().recipeRemainder(PINEAPPLE_CROWN)));
     public static final Item PINEAPPLE_SLICES = registerItem("pineapple_slices", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder()
-                    .hunger(4)
+                    .hunger(3)
                     .saturationModifier(0.2f)
                     .build())));
 
@@ -178,7 +178,11 @@ public class ModItems {
                     .build())));
 
 
-    public static final Item STRAWBERRY = registerItem("strawberry", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(0.2f).snack().build())));
+    public static final Item STRAWBERRY = registerItem("strawberry", new Item(new FabricItemSettings().food(new FoodComponent.Builder()
+            .hunger(2)
+            .saturationModifier(0.2f)
+            .snack()
+            .build())));
     public static final Item STRAWBERRY_SHORTCAKE = registerItem("strawberry_shortcake", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder()
                     .hunger(5)

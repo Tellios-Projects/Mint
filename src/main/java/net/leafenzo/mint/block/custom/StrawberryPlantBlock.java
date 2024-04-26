@@ -56,7 +56,7 @@ public class StrawberryPlantBlock extends FlowerbedBlock implements Fertilizable
 
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!isFullyGrown(state) && random.nextFloat() < 0.5) {
+        if (!isFullyGrown(state) && random.nextFloat() < 0.25) {
             world.setBlockState(pos, state.cycle(AGE), Block.NOTIFY_LISTENERS);
         }
         super.randomTick(state, world, pos, random);

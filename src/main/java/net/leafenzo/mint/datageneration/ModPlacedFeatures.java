@@ -140,7 +140,7 @@ public class ModPlacedFeatures {
         registerKey(context,
                 PATCH_PINEAPPLE_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PATCH_PINEAPPLE),
-                RarityFilterPlacementModifier.of(40),
+                RarityFilterPlacementModifier.of(64),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 BiomePlacementModifier.of()

@@ -545,7 +545,7 @@ public class ModBlocks {
     //<editor-fold desc ="SAGE - Special">
     public static final Block ALOE = registerBlock("aloe", new PlantBlock(FabricBlockSettings.copyOf(Blocks.FERN).mapColor(MapColor.LICHEN_GREEN)));
     static {RENDER_LAYER_CUTOUT_MIPPED.add(ALOE);}
-    public static final Block POTTED_ALOE = registerBlock("potted_aloe", createFlowerPotBlock(ModBlocks.ALOE));
+    public static final Block POTTED_ALOE = registerBlockWithoutBlockItem("potted_aloe", createFlowerPotBlock(ModBlocks.ALOE));
     static {RENDER_LAYER_CUTOUT_MIPPED.add(POTTED_ALOE);}
     //</editor-fold>
 
@@ -569,13 +569,13 @@ public class ModBlocks {
 
     public static final Block CORDYLINE = registerBlock("cordyline", new CordylineBlock(FabricBlockSettings.copyOf(Blocks.GRASS).mapColor(MapColor.DARK_DULL_PINK)));
     static {RENDER_LAYER_CUTOUT_MIPPED.add(CORDYLINE);}
-    public static final Block POTTED_CORDYLINE = registerBlock("potted_cordyline", createFlowerPotBlock(ModBlocks.CORDYLINE));
+    public static final Block POTTED_CORDYLINE = registerBlockWithoutBlockItem("potted_cordyline", createFlowerPotBlock(ModBlocks.CORDYLINE));
     static {RENDER_LAYER_CUTOUT_MIPPED.add(POTTED_CORDYLINE);}
     public static final Block TALL_CORDYLINE = registerBlock("tall_cordyline", new TallCordylineBlock(FabricBlockSettings.copyOf(Blocks.TALL_GRASS).mapColor(MapColor.DARK_DULL_PINK)));
     static {RENDER_LAYER_CUTOUT_MIPPED.add(TALL_CORDYLINE);}
     public static final Block PLUM_CORDYLINE = registerBlock("plum_cordyline", new CordylineBlock(FabricBlockSettings.copyOf(Blocks.GRASS).mapColor(MapColor.DARK_CRIMSON)));
     static {RENDER_LAYER_CUTOUT_MIPPED.add(PLUM_CORDYLINE);}
-    public static final Block POTTED_PLUM_CORDYLINE = registerBlock("potted_plum_cordyline", createFlowerPotBlock(ModBlocks.PLUM_CORDYLINE));
+    public static final Block POTTED_PLUM_CORDYLINE = registerBlockWithoutBlockItem("potted_plum_cordyline", createFlowerPotBlock(ModBlocks.PLUM_CORDYLINE));
     static {RENDER_LAYER_CUTOUT_MIPPED.add(POTTED_PLUM_CORDYLINE);}
     public static final Block TALL_PLUM_CORDYLINE = registerBlock("tall_plum_cordyline", new TallCordylineBlock(FabricBlockSettings.copyOf(Blocks.GRASS).mapColor(MapColor.DARK_CRIMSON)));
     static {RENDER_LAYER_CUTOUT_MIPPED.add(TALL_PLUM_CORDYLINE);}

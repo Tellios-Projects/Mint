@@ -105,6 +105,7 @@ public class ModFabricRegistries {
         compostingChanceRegistry.add(ModItems.SAVANNABUD_SEEDS, 0.3f);
         compostingChanceRegistry.add(ModBlocks.SHIMMERING_SAVANNABUDS, 0.85f);
 
+        compostingChanceRegistry.add(ModBlocks.STRAWBERRY_PLANT, 0.65f);
         compostingChanceRegistry.add(ModItems.STRAWBERRY, 0.3f);
         compostingChanceRegistry.add(ModItems.CHOCOLATE_STRAWBERRY, 0.3f);
         compostingChanceRegistry.add(ModItems.STRAWBERRY_SHORTCAKE, 0.85f);
