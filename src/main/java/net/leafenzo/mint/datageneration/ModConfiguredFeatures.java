@@ -58,6 +58,7 @@ public class ModConfiguredFeatures {
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_STRAWBERRY = registerKey("patch_strawberry");
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_CORDYLINE = registerKey("patch_cordyline");
+    public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_POKEWEED = registerKey("patch_pokeweed");
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> ORE_MUCKTUFF = registerKey("ore_mucktuff");
 
@@ -137,6 +138,8 @@ public class ModConfiguredFeatures {
         register(context, PATCH_CORDYLINE, Feature.FLOWER,
                 new RandomPatchFeatureConfig(8, 4, 0, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(cordylineBuilder))))
         );
+
+        register(context, PATCH_POKEWEED, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.POKEWEED)), List.of(Blocks.GRASS_BLOCK), 30));
 
         register(context, WINTERGREEN, Feature.TREE,
                 new TreeFeatureConfig.Builder(

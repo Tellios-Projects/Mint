@@ -45,6 +45,7 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> PATCH_PINEAPPLE_PLACED = registerKey("patch_pineapple_placed");
     public static final RegistryKey<PlacedFeature> PATCH_STRAWBERRY_PLACED = registerKey("patch_strawberry_placed");
     public static final RegistryKey<PlacedFeature> PATCH_CORDYLINE_PLACED = registerKey("patch_cordyline_placed");
+    public static final RegistryKey<PlacedFeature> PATCH_POKEWEED_PLACED = registerKey("patch_pokeweed_placed");
 
     public static final RegistryKey<PlacedFeature> ORE_MUCKTUFF_PLACED = registerKey("ore_mucktuff_placed");
 
@@ -140,7 +141,7 @@ public class ModPlacedFeatures {
         registerKey(context,
                 PATCH_PINEAPPLE_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PATCH_PINEAPPLE),
-                RarityFilterPlacementModifier.of(64),
+                RarityFilterPlacementModifier.of(50),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 BiomePlacementModifier.of()
@@ -158,6 +159,14 @@ public class ModPlacedFeatures {
                 PATCH_CORDYLINE_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PATCH_CORDYLINE),
                 RarityFilterPlacementModifier.of(30),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                BiomePlacementModifier.of()
+        );
+        registerKey(context,
+                PATCH_POKEWEED_PLACED,
+                configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PATCH_POKEWEED),
+                RarityFilterPlacementModifier.of(20),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 BiomePlacementModifier.of()
@@ -243,6 +252,10 @@ public class ModPlacedFeatures {
                 .add(ModificationPhase.ADDITIONS,
                         context -> context.getBiome().getTemperature() > 1f,
                         context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_CORDYLINE_PLACED); }
+                )
+                .add(ModificationPhase.ADDITIONS,
+                        context -> context.getBiome().getTemperature() < 0.4f,
+                        context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_POKEWEED_PLACED); }
                 )
                 .add(ModificationPhase.ADDITIONS,
                         BiomeSelectors.includeByKey(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA).or(BiomeSelectors.includeByKey(BiomeKeys.OLD_GROWTH_PINE_TAIGA)), //TODO Nature's Spirit compat for Redwood Forest

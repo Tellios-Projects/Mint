@@ -1,9 +1,9 @@
 {
-  "feature": "mint:patch_pineapple",
+  "feature": "mint:patch_pokeweed",
   "placement": [
     {
       "type": "minecraft:rarity_filter",
-      "chance": 50
+      "chance": 20
     },
     {
       "type": "minecraft:in_square"

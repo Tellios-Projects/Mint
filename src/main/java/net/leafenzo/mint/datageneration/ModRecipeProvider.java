@@ -691,6 +691,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ModItems.VELVET_DYE, ModItems.CHERRIES, "velvet_dye", 1);
         offerShapelessRecipe(exporter, ModItems.VELVET_DYE, ModBlocks.CORDYLINE, "velvet_dye", 1);
         offerShapelessRecipe(exporter, ModItems.VELVET_DYE, ModBlocks.TALL_CORDYLINE, "velvet_dye", 2);
+        offerShapelessRecipe(exporter, ModItems.VELVET_DYE, ModItems.POKEBERRIES, "velvet_dye", 1);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModBlocks.STRAWBERRY_PLANT)
                 .input(ModItems.STRAWBERRY, 3)

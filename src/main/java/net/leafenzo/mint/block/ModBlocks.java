@@ -28,6 +28,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import org.jetbrains.annotations.Nullable;
@@ -581,6 +582,17 @@ public class ModBlocks {
     static {RENDER_LAYER_CUTOUT_MIPPED.add(TALL_PLUM_CORDYLINE);}
     public static final Block STRAWBERRY_PLANT = registerBlock("strawberry_plant", new StrawberryPlantBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS).mapColor(MapColor.DARK_GREEN).ticksRandomly()));
     static {RENDER_LAYER_CUTOUT_MIPPED.add(STRAWBERRY_PLANT);}
+
+    public static final Block POKEWEED = registerBlockWithoutBlockItem("pokeweed", new PlantBlock(FabricBlockSettings.copyOf(Blocks.POPPY)) {
+        @Override
+        public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+            return Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+        }
+    });
+
+    static {RENDER_LAYER_CUTOUT_MIPPED.add(POKEWEED);}
+    public static final Block POTTED_POKEWEED = registerBlockWithoutBlockItem("potted_pokeweed", createFlowerPotBlock(ModBlocks.POKEWEED));
+    static {RENDER_LAYER_CUTOUT_MIPPED.add(POTTED_POKEWEED);}
 
     public static final Block VELVET_CAKE = registerBlock("velvet_cake", new VelvetCakeBlock(FabricBlockSettings.copyOf(Blocks.CAKE).mapColor(MapColor.SPRUCE_BROWN)));
     //</editor-fold>

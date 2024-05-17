@@ -662,6 +662,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.TALL_CORDYLINE);
                         entries.add(ModBlocks.PLUM_CORDYLINE);
                         entries.add(ModBlocks.TALL_PLUM_CORDYLINE);
+                        entries.add(ModItems.POKEBERRIES);
                         entries.add(ModBlocks.VELVET_CAKE);
 
                         entries.add(ModItems.MOLD_DYE);

@@ -307,6 +307,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerDoubleBlock(ModBlocks.TALL_CORDYLINE, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerDoubleBlock(ModBlocks.TALL_PLUM_CORDYLINE, BlockStateModelGenerator.TintType.NOT_TINTED);
 
+        blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.POKEWEED, BlockStateModelGenerator.TintType.NOT_TINTED);
+        registerFlowerPot(blockStateModelGenerator, ModBlocks.POKEWEED, ModBlocks.POTTED_POKEWEED, BlockStateModelGenerator.TintType.NOT_TINTED);
 
         //Main
 // WOODSETS
@@ -448,7 +450,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.CHERRIES, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHERRY_PIE, Models.GENERATED);
         itemModelGenerator.register(ModBlocks.VELVET_CAKE.asItem(), Models.GENERATED);
-
+        itemModelGenerator.register(ModItems.POKEBERRIES, Models.GENERATED);
 // Decor Additions
 //        for(Item item : DYED_PAPER_ITEMS) {
 //            itemModelGenerator.register(item, Models.GENERATED);

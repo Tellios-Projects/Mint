@@ -118,6 +118,7 @@ public class ModFabricRegistries {
         compostingChanceRegistry.add(ModBlocks.TALL_CORDYLINE, 0.85f);
         compostingChanceRegistry.add(ModBlocks.TALL_PLUM_CORDYLINE, 0.85f);
         compostingChanceRegistry.add(ModBlocks.VELVET_CAKE, 1f);
+        compostingChanceRegistry.add(ModItems.POKEBERRIES, 0.65f);
     }
 
     public static void registerVillagerInteractions() {
