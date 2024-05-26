@@ -432,6 +432,9 @@ public class ModBlocks {
     public static final Block MAROON_WALL_BANNER = registerBlockWithoutBlockItem("maroon_wall_banner", createWallBannerBlock(ModDyeColor.MAROON, (BannerBlock)ModBlocks.MAROON_BANNER));
     //</editor-fold>
     //<editor-fold desc ="MAROON - Special">
+    public static final Block COCHINEAL_BEETLES = registerBlock("cochineal_beetles", new CochinealBeetlesBlock(FabricBlockSettings.create().noCollision().ticksRandomly().breakInstantly().noBlockBreakParticles().sounds(BlockSoundGroup.INTENTIONALLY_EMPTY)));
+    static { RENDER_LAYER_CUTOUT.add(COCHINEAL_BEETLES); }
+    public static final Block CACTUS_FEED = registerBlock("cactus_feed", new Block(FabricBlockSettings.create().sounds(BlockSoundGroup.ROOTED_DIRT).hardness(0.5f)));
     //</editor-fold>
     //<editor-fold desc ="GRAPE - Template">
     public static final Block GRAPE_WOOL = registerBlock("grape_wool", createWoolBlock(ModDyeColor.GRAPE)/*, ModItemGroups.GRAPE*/);

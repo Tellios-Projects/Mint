@@ -281,6 +281,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerCrop(ModBlocks.ARTICHOKE_CROP, ArtichokeCropBlock.AGE, IntStream.rangeClosed(0, ArtichokeCropBlock.MAX_AGE).toArray());
 
 
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CACTUS_FEED);
+
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AMBER_BLOCK);
         BlockStateModelGenerator.BlockTexturePool amberBricksTexturePool =
                 blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.AMBER_BRICKS);
@@ -429,6 +431,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ARTICHOKE_HEART, Models.GENERATED);
         itemModelGenerator.register(ModItems.ARTICHOKE_LAMB, Models.GENERATED);
         itemModelGenerator.register(ModItems.BREAKFAST_PORKCHOP, Models.GENERATED);
+
+        itemModelGenerator.register(ModItems.CACTUS_CHUNK, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.AMBER, Models.GENERATED);
         itemModelGenerator.register(ModItems.EMBER, Models.GENERATED);
