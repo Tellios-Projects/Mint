@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "velvet_dye",
+  "ingredients": [
+    {
+      "item": "mint:pokeberries"
+    }
+  ],
+  "result": {
+    "item": "mint:velvet_dye"
+  }
+}

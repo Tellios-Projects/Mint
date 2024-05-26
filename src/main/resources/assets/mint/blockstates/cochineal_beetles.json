@@ -1,0 +1,108 @@
+{
+  "variants": {
+    "facing=up,age=0": {
+      "model": "mint:block/cochineal_beetles_stage0"
+    },
+    "facing=down,age=0": {
+      "model": "mint:block/cochineal_beetles_stage0",
+      "x": 180
+    },
+    "facing=east,age=0": {
+      "model": "mint:block/cochineal_beetles_stage0",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,age=0": {
+      "model": "mint:block/cochineal_beetles_stage0",
+      "x": 90
+    },
+    "facing=south,age=0": {
+      "model": "mint:block/cochineal_beetles_stage0",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west,age=0": {
+      "model": "mint:block/cochineal_beetles_stage0",
+      "x": 90,
+      "y": 270
+    },
+    "facing=up,age=1": {
+      "model": "mint:block/cochineal_beetles_stage1"
+    },
+    "facing=down,age=1": {
+      "model": "mint:block/cochineal_beetles_stage1",
+      "x": 180
+    },
+    "facing=east,age=1": {
+      "model": "mint:block/cochineal_beetles_stage1",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,age=1": {
+      "model": "mint:block/cochineal_beetles_stage1",
+      "x": 90
+    },
+    "facing=south,age=1": {
+      "model": "mint:block/cochineal_beetles_stage1",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west,age=1": {
+      "model": "mint:block/cochineal_beetles_stage1",
+      "x": 90,
+      "y": 270
+    },
+    "facing=up,age=2": {
+      "model": "mint:block/cochineal_beetles_stage2"
+    },
+    "facing=down,age=2": {
+      "model": "mint:block/cochineal_beetles_stage2",
+      "x": 180
+    },
+    "facing=east,age=2": {
+      "model": "mint:block/cochineal_beetles_stage2",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,age=2": {
+      "model": "mint:block/cochineal_beetles_stage2",
+      "x": 90
+    },
+    "facing=south,age=2": {
+      "model": "mint:block/cochineal_beetles_stage2",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west,age=2": {
+      "model": "mint:block/cochineal_beetles_stage2",
+      "x": 90,
+      "y": 270
+    },
+    "facing=up,age=3": {
+      "model": "mint:block/cochineal_beetles_stage3"
+    },
+    "facing=down,age=3": {
+      "model": "mint:block/cochineal_beetles_stage3",
+      "x": 180
+    },
+    "facing=east,age=3": {
+      "model": "mint:block/cochineal_beetles_stage3",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,age=3": {
+      "model": "mint:block/cochineal_beetles_stage3",
+      "x": 90
+    },
+    "facing=south,age=3": {
+      "model": "mint:block/cochineal_beetles_stage3",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west,age=3": {
+      "model": "mint:block/cochineal_beetles_stage3",
+      "x": 90,
+      "y": 270
+    }
+  }
+}
