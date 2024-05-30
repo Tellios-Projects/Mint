@@ -109,7 +109,7 @@ public class CochinealBeetlesBlock extends FacingBlock {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (isFullyGrown(state)) {
-            dropStack(world, pos, new ItemStack(ModItems.MAROON_DYE, world.random.nextBetween(1, 3)));
+            dropStack(world, pos, new ItemStack(ModItems.CARMINIC_COCHINEAL_BEETLE, world.random.nextBetween(1, 3)));
             world.setBlockState(pos, state.with(AGE, 0));
             world.playSound(null, pos, SoundEvents.ENTITY_TURTLE_EGG_CRACK, SoundCategory.BLOCKS, 1.0f, 0.8f + world.random.nextFloat()/3);
             return ActionResult.SUCCESS;

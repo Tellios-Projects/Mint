@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "mint:madder_log",
+    "mint:stripped_madder_log",
+    "mint:madder_wood",
+    "mint:stripped_madder_wood"
+  ]
+}

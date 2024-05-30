@@ -547,6 +547,16 @@ public class ModItemGroups {
                         entries.add(ModBlocks.MAROON_SHULKER_BOX);
                         entries.add(ModBlocks.MAROON_CANDLE);
 
+                        entries.add(ModItems.COCHINEAL_BEETLE);
+                        entries.add(ModItems.CARMINIC_COCHINEAL_BEETLE);
+                        entries.add(ModItems.CACTUS_CHUNK);
+                        entries.add(ModBlocks.CACTUS_FEED);
+                        entries.add(ModBlocks.MADDER);
+                        entries.add(ModBlocks.MADDER_ROOTED_GRASS_BLOCK);
+                        entries.add(ModBlocks.MADDER_ROOTED_DIRT);
+                        entries.add(ModItems.MADDER_ROOT);
+                        entries.addAll(woodsetItems(ModBlocks.MADDER_WOODSET));
+
                         entries.add(ModItems.GRAPE_DYE);
                         entries.add(ModBlocks.GRAPE_WOOL);
                         entries.add(ModBlocks.GRAPE_CARPET);

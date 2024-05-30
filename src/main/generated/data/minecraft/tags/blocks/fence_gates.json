@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mint:wintergreen_fence_gate"
+    "mint:wintergreen_fence_gate",
+    "mint:madder_fence_gate"
   ]
 }

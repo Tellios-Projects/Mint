@@ -151,7 +151,10 @@ public class ModItems {
             .saturationModifier(0.8f)
             .build())));
 
+    public static final Item COCHINEAL_BEETLE = registerItem("cochineal_beetle", new AliasedBlockItem(ModBlocks.COCHINEAL_BEETLES, new FabricItemSettings()));
+    public static final Item CARMINIC_COCHINEAL_BEETLE = registerItem("carminic_cochineal_beetle", new Item(new FabricItemSettings()));
     public static final Item CACTUS_CHUNK = registerItem("cactus_chunk", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(2).saturationModifier(0.1f).build())));
+    public static final Item MADDER_ROOT = registerItem("madder_root", new Item(new FabricItemSettings()));
 
 
     public static final Item AMBER = registerItem("amber", new Item(new FabricItemSettings()));

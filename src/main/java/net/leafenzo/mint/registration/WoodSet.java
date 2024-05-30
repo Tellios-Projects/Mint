@@ -633,7 +633,7 @@ public class WoodSet {
         return this.getWoodPreset() == WoodPreset.DEFAULT || this.getWoodPreset() == WoodPreset.FANCY || this.getWoodPreset() == WoodPreset.NO_SAPLING;
     }
     public boolean hasDefaultSapling() {
-        return this.getWoodPreset() != WoodPreset.NO_SAPLING;
+        return this.getWoodPreset() != WoodPreset.NO_SAPLING || this.getWoodPreset() != WoodPreset.NO_TREE;
     }
     public boolean hasBark(){
         return this.getWoodPreset() != WoodPreset.BAMBOO;
@@ -646,7 +646,8 @@ public class WoodSet {
         NO_SAPLING,
         FANCY,
         NETHER,
-        BAMBOO
+        BAMBOO,
+        NO_TREE
     }
     //</editor-fold>
 }

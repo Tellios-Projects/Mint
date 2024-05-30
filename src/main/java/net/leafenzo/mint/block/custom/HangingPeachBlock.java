@@ -1,5 +1,6 @@
 package net.leafenzo.mint.block.custom;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
 import net.minecraft.block.Block;
@@ -41,17 +42,32 @@ public class HangingPeachBlock extends HangingFruitBlock {
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        Vec3d vec3d = state.getModelOffset(world, pos);
         VoxelShape voxelShape = SHAPES[state.get(AGE)];
-        return voxelShape.offset(vec3d.x, vec3d.y, vec3d.z);
+        if (!FabricLoader.getInstance().isModLoaded("twigs") && !FabricLoader.getInstance().isModLoaded("etcetera")) {
+            Vec3d vec3d = state.getModelOffset(world, pos);
+            return voxelShape.offset(vec3d.x, vec3d.y, vec3d.z);
+        }
+        return voxelShape;
     }
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        Vec3d vec3d = state.getModelOffset(world, pos);
         VoxelShape voxelShape = COLL_SHAPES[state.get(AGE)];
-        return voxelShape.offset(vec3d.x, vec3d.y, vec3d.z);
+        if (!FabricLoader.getInstance().isModLoaded("twigs") && !FabricLoader.getInstance().isModLoaded("etcetera")) {
+            Vec3d vec3d = state.getModelOffset(world, pos);
+            return voxelShape.offset(vec3d.x, vec3d.y, vec3d.z);
+        }
+        return voxelShape;
     }
+
+    @Override
+    public float getMaxHorizontalModelOffset() {
+        if (FabricLoader.getInstance().isModLoaded("twigs") || FabricLoader.getInstance().isModLoaded("etcetera")) {
+            return 0;
+        }
+        return super.getMaxHorizontalModelOffset();
+    }
+
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {

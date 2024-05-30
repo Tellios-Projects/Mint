@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "mint:block/madder_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "mint:block/madder_log"
+    },
+    "axis=z": {
+      "model": "mint:block/madder_log_horizontal",
+      "x": 90
+    }
+  }
+}

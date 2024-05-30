@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "mint:block/madder_log",
+    "side": "mint:block/madder_log"
+  }
+}

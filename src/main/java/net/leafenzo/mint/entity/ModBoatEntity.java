@@ -55,6 +55,14 @@ public class ModBoatEntity extends BoatEntity {
                 () -> ModBlocks.WINTERGREEN_WOODSET.getChestBoatItem(),
                 () -> ModBlocks.WINTERGREEN_WOODSET.getBoatEntityType(),
                 () -> ModBlocks.WINTERGREEN_WOODSET.getChestBoatEntityType()
+        ),
+        MADDER(
+                "madder",
+                        () -> ModBlocks.MADDER_WOODSET.getPlanks(),
+                () -> ModBlocks.MADDER_WOODSET.getBoatItem(),
+                () -> ModBlocks.MADDER_WOODSET.getChestBoatItem(),
+                () -> ModBlocks.MADDER_WOODSET.getBoatEntityType(),
+                () -> ModBlocks.MADDER_WOODSET.getChestBoatEntityType()
         );
 
         private final String name;

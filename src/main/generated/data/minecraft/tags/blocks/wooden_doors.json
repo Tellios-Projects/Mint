@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mint:wintergreen_door"
+    "mint:wintergreen_door",
+    "mint:madder_door"
   ]
 }
