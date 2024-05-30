@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mint:wintergreen_slab"
+    "mint:wintergreen_slab",
+    "mint:madder_slab"
   ]
 }

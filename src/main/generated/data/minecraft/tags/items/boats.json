@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mint:wintergreen_boat"
+    "mint:wintergreen_boat",
+    "mint:madder_boat"
   ]
 }

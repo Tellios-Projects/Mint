@@ -85,6 +85,7 @@ public class ModBlocks {
     public static final ArrayList<Block> RENDER_LAYER_CUTOUT_MIPPED = new ArrayList<Block>();
     public static final ArrayList<Block> RENDER_LAYER_TRANSLUCENT = new ArrayList<Block>();
     public static final ArrayList<Block> HAS_FOLIAGE_COLOR_PROVIDER = new ArrayList<Block>();
+    public static final ArrayList<Block> HAS_GRASS_COLOR_PROVIDER = new ArrayList<Block>();
     public static final ArrayList<Block> LEAVES = new ArrayList<Block>();
     public static final ArrayList<Block> SAPLINGS = new ArrayList<Block>();
     public static final ArrayList<WoodSet> WOODSETS = new ArrayList<WoodSet>();
@@ -432,9 +433,28 @@ public class ModBlocks {
     public static final Block MAROON_WALL_BANNER = registerBlockWithoutBlockItem("maroon_wall_banner", createWallBannerBlock(ModDyeColor.MAROON, (BannerBlock)ModBlocks.MAROON_BANNER));
     //</editor-fold>
     //<editor-fold desc ="MAROON - Special">
-    public static final Block COCHINEAL_BEETLES = registerBlock("cochineal_beetles", new CochinealBeetlesBlock(FabricBlockSettings.create().noCollision().ticksRandomly().breakInstantly().noBlockBreakParticles().sounds(BlockSoundGroup.INTENTIONALLY_EMPTY)));
+    public static final Block COCHINEAL_BEETLES = registerBlockWithoutBlockItem("cochineal_beetles", new CochinealBeetlesBlock(FabricBlockSettings.create().noCollision().ticksRandomly().breakInstantly().noBlockBreakParticles().sounds(BlockSoundGroup.INTENTIONALLY_EMPTY)));
     static { RENDER_LAYER_CUTOUT.add(COCHINEAL_BEETLES); }
     public static final Block CACTUS_FEED = registerBlock("cactus_feed", new Block(FabricBlockSettings.create().sounds(BlockSoundGroup.ROOTED_DIRT).hardness(0.5f)));
+    public static final Block MADDER_ROOTED_DIRT = registerBlock("madder_rooted_dirt", new Block(FabricBlockSettings.copyOf(Blocks.ROOTED_DIRT)));
+    public static final Block MADDER_ROOTED_GRASS_BLOCK = registerBlock("madder_rooted_grass_block", new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
+    static { RENDER_LAYER_CUTOUT.add(MADDER_ROOTED_GRASS_BLOCK); }
+    static { HAS_GRASS_COLOR_PROVIDER.add(MADDER_ROOTED_GRASS_BLOCK); }
+
+    public static final Block MADDER = registerBlock("madder", new PlantBlock(FabricBlockSettings.copyOf(Blocks.POPPY)));
+    static { RENDER_LAYER_CUTOUT.add(MADDER); }
+    public static WoodSet MADDER_WOODSET = new WoodSet(
+            new Identifier(Super.MOD_ID, "madder"),
+            MapColor.DARK_RED,
+            MapColor.DARK_RED,
+            MapColor.DARK_RED,
+            ModBoatEntity.ModBoat.MADDER,
+            WoodSet.WoodPreset.NO_TREE,
+            false,
+            new WintergreenSaplingGenerator(),
+            false,
+            false
+    );
     //</editor-fold>
     //<editor-fold desc ="GRAPE - Template">
     public static final Block GRAPE_WOOL = registerBlock("grape_wool", createWoolBlock(ModDyeColor.GRAPE)/*, ModItemGroups.GRAPE*/);

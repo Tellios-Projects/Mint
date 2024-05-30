@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mint:wintergreen_wall_sign"
+    "mint:wintergreen_wall_sign",
+    "mint:madder_wall_sign"
   ]
 }

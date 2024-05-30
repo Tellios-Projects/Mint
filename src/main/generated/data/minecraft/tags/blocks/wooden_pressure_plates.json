@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mint:wintergreen_pressure_plate"
+    "mint:wintergreen_pressure_plate",
+    "mint:madder_pressure_plate"
   ]
 }

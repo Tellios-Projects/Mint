@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "mint:block/madder_slab"
+    },
+    "type=double": {
+      "model": "mint:block/madder_planks"
+    },
+    "type=top": {
+      "model": "mint:block/madder_slab_top"
+    }
+  }
+}

@@ -282,6 +282,9 @@ public class ModModelProvider extends FabricModelProvider {
 
 
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CACTUS_FEED);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MADDER_ROOTED_DIRT);
+        blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.MADDER, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerItemModel(ModBlocks.MADDER);
 
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AMBER_BLOCK);
         BlockStateModelGenerator.BlockTexturePool amberBricksTexturePool =
@@ -432,7 +435,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ARTICHOKE_LAMB, Models.GENERATED);
         itemModelGenerator.register(ModItems.BREAKFAST_PORKCHOP, Models.GENERATED);
 
+        itemModelGenerator.register(ModItems.COCHINEAL_BEETLE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CARMINIC_COCHINEAL_BEETLE, Models.GENERATED);
         itemModelGenerator.register(ModItems.CACTUS_CHUNK, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MADDER_ROOT, Models.GENERATED);
 
         itemModelGenerator.register(ModItems.AMBER, Models.GENERATED);
         itemModelGenerator.register(ModItems.EMBER, Models.GENERATED);

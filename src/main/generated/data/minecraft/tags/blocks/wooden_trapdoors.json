@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mint:wintergreen_trapdoor"
+    "mint:wintergreen_trapdoor",
+    "mint:madder_trapdoor"
   ]
 }

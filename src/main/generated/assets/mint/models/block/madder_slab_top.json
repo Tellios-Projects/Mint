@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "mint:block/madder_planks",
+    "side": "mint:block/madder_planks",
+    "top": "mint:block/madder_planks"
+  }
+}
