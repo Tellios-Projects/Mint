@@ -73,8 +73,7 @@ public class StrawberryPlantBlock extends FlowerbedBlock implements Fertilizable
     }
 
     public boolean canAgeNaturally(BlockState state, WorldView world, BlockPos pos) {
-        BlockState stateBelow = world.getBlockState(pos.down());
-        return (stateBelow.isIn(BlockTags.DIRT) || stateBelow.getBlock() instanceof FarmlandBlock); // This check is here instead of canPlaceAt just so you can still use it as decoration on cobblestone and stuff :3
+        return world.getBlockState(pos.down()).getBlock() instanceof FarmlandBlock || world.getBlockState(pos.down()).isIn(BlockTags.DIRT); // This check is here instead of canPlaceAt just so you can still use it as decoration on cobblestone and stuff :3
     }
 
     @Override
