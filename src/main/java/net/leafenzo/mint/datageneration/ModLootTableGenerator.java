@@ -69,6 +69,9 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(block, (Block flowerPot) -> this.pottedPlantDrops(((FlowerPotBlock)flowerPot).getContent()));
         usedBlocks.add(block);
     }
+    public void dropsNothing(Block block) {
+        usedBlocks.add(block);
+    }
 
 
     public LootTable.Builder wildMintDrops(Block dropWithShears) {
@@ -178,7 +181,7 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
 
         // AMBER - Special
         this.addDrop(ModBlocks.AMBER_BRICK_SLAB, (Block block) -> this.slabDrops((Block)block));
-        usedBlocks.add(ModBlocks.EMBER);
+        this.dropsNothing(ModBlocks.EMBER);
 
         addDrop(ModBlocks.SHIMMERING_SAVANNABUDS_CROP, LootTable.builder()
                 .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1))
