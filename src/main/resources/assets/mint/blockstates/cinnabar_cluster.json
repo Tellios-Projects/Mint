@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "mint:block/cinnabar_cluster",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "mint:block/cinnabar_cluster",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "mint:block/cinnabar_cluster",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "mint:block/cinnabar_cluster",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "mint:block/cinnabar_cluster"
+    },
+    "facing=west": {
+      "model": "mint:block/cinnabar_cluster",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

@@ -556,6 +556,13 @@ public class ModItemGroups {
                         entries.add(ModBlocks.MADDER_ROOTED_DIRT);
                         entries.add(ModItems.MADDER_ROOT);
                         entries.addAll(woodsetItems(ModBlocks.MADDER_WOODSET));
+                        entries.add(ModBlocks.CINNABAR_BLOCK);
+                        entries.add(ModBlocks.CINNABAR_PILLAR);
+                        entries.add(ModBlocks.BUDDING_CINNABAR);
+                        entries.add(ModBlocks.SMALL_CINNABAR_BUD);
+                        entries.add(ModBlocks.MEDIUM_CINNABAR_BUD);
+                        entries.add(ModBlocks.LARGE_CINNABAR_BUD);
+                        entries.add(ModBlocks.CINNABAR_CLUSTER);
 
                         entries.add(ModItems.GRAPE_DYE);
                         entries.add(ModBlocks.GRAPE_WOOL);

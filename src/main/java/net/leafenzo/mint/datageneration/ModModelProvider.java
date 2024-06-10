@@ -285,6 +285,12 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MADDER_ROOTED_DIRT);
         blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.MADDER, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerItemModel(ModBlocks.MADDER);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CINNABAR_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BUDDING_CINNABAR);
+        blockStateModelGenerator.registerItemModel(ModBlocks.SMALL_CINNABAR_BUD);
+        blockStateModelGenerator.registerItemModel(ModBlocks.MEDIUM_CINNABAR_BUD);
+        blockStateModelGenerator.registerItemModel(ModBlocks.LARGE_CINNABAR_BUD);
+        blockStateModelGenerator.registerItemModel(ModBlocks.CINNABAR_CLUSTER);
 
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AMBER_BLOCK);
         BlockStateModelGenerator.BlockTexturePool amberBricksTexturePool =

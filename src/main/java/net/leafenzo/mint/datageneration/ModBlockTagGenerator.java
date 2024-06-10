@@ -93,6 +93,10 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
                 .add(ModBlocks.WAXCAP_GILL_SLAB)
                 .add(ModBlocks.WAXCAP_GILLS)
         ;
+        getOrCreateTagBuilder(BlockTags.DIRT)
+                .add(ModBlocks.MADDER_ROOTED_DIRT)
+                .add(ModBlocks.MADDER_ROOTED_GRASS_BLOCK)
+        ;
 
 
     // Main

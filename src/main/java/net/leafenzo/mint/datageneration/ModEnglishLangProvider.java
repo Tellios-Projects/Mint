@@ -131,6 +131,7 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
         generateTranslation(translationBuilder, ModBlocks.WAXCAP_GILL_SLAB, "Waxcap Gills");
 
         generateTranslation(translationBuilder, ModBlocks.AMBER_BLOCK, "Block of Amber");
+        generateTranslation(translationBuilder, ModBlocks.CINNABAR_BLOCK, "Block of Cinnabar");
 
         generateWoodsetTranslations(translationBuilder);
 
