@@ -53,6 +53,7 @@ public class ModConfiguredFeatures {
     public static final RegistryKey <ConfiguredFeature <?, ?>> WINTERGREEN = registerKey("wintergreen");
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> PEACH = registerKey("peach");
+    public static final RegistryKey <ConfiguredFeature <?, ?>> COCHINEAL_CACTUS = registerKey("cochineal_cactus");
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_PINEAPPLE = registerKey("patch_pineapple");
 

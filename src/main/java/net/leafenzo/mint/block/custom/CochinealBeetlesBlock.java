@@ -22,6 +22,8 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -57,6 +59,16 @@ public class CochinealBeetlesBlock extends FacingBlock {
             }
         }
         return VoxelShapes.fullCube();
+    }
+
+    @Override
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        return canPlaceAt(state, world, pos) ? super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos) : Blocks.AIR.getDefaultState();
+    }
+
+    @Override
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        return world.getBlockState(pos.offset(state.get(FACING).getOpposite(), 1)).isSideSolidFullSquare(world, pos, state.get(FACING)) || world.getBlockState(pos.offset(state.get(FACING).getOpposite(), 1)).isOf(Blocks.CACTUS);
     }
 
     public boolean isOnCactusFeed(BlockState state, World world, BlockPos pos) {

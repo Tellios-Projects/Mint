@@ -435,12 +435,26 @@ public class ModBlocks {
     //<editor-fold desc ="MAROON - Special">
     public static final Block COCHINEAL_BEETLES = registerBlockWithoutBlockItem("cochineal_beetles", new CochinealBeetlesBlock(FabricBlockSettings.create().noCollision().ticksRandomly().breakInstantly().noBlockBreakParticles().sounds(BlockSoundGroup.INTENTIONALLY_EMPTY)));
     static { RENDER_LAYER_CUTOUT.add(COCHINEAL_BEETLES); }
-    public static final Block CACTUS_FEED = registerBlock("cactus_feed", new Block(FabricBlockSettings.create().sounds(BlockSoundGroup.ROOTED_DIRT).hardness(0.5f)));
+    public static final Block CACTUS_FEED = registerBlock("cactus_feed", new Block(FabricBlockSettings.create().sounds(BlockSoundGroup.ROOTED_DIRT).hardness(0.5f).mapColor(MapColor.GREEN)));
     public static final Block MADDER_ROOTED_DIRT = registerBlock("madder_rooted_dirt", new Block(FabricBlockSettings.copyOf(Blocks.ROOTED_DIRT)));
     public static final Block MADDER_ROOTED_GRASS_BLOCK = registerBlock("madder_rooted_grass_block", new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
     static { RENDER_LAYER_CUTOUT.add(MADDER_ROOTED_GRASS_BLOCK); }
     static { HAS_GRASS_COLOR_PROVIDER.add(MADDER_ROOTED_GRASS_BLOCK); }
 
+    public static final Block CINNABAR_BLOCK = registerBlock("cinnabar_block", new Block(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.TUFF).mapColor(MapColor.RED)));
+    public static final Block BUDDING_CINNABAR = registerBlock("budding_cinnabar", new BuddingCinnabarBlock(FabricBlockSettings.copyOf(CINNABAR_BLOCK).ticksRandomly()));
+    public static final Block CINNABAR_PILLAR = registerBlock("cinnabar_pillar", new PillarBlock(FabricBlockSettings.copyOf(CINNABAR_BLOCK)));
+    public static final Block SMALL_CINNABAR_BUD = registerBlock("small_cinnabar_bud", new CinnabarClusterBlock(3, 4, FabricBlockSettings.copyOf(CINNABAR_BLOCK)));
+    static { RENDER_LAYER_CUTOUT.add(SMALL_CINNABAR_BUD); }
+
+    public static final Block MEDIUM_CINNABAR_BUD = registerBlock("medium_cinnabar_bud", new CinnabarClusterBlock(4, 3, FabricBlockSettings.copyOf(CINNABAR_BLOCK)));
+    static { RENDER_LAYER_CUTOUT.add(MEDIUM_CINNABAR_BUD); }
+
+    public static final Block LARGE_CINNABAR_BUD = registerBlock("large_cinnabar_bud", new CinnabarClusterBlock(5, 3, FabricBlockSettings.copyOf(CINNABAR_BLOCK)));
+    static { RENDER_LAYER_CUTOUT.add(LARGE_CINNABAR_BUD); }
+
+    public static final Block CINNABAR_CLUSTER = registerBlock("cinnabar_cluster", new CinnabarClusterBlock(7, 3, FabricBlockSettings.copyOf(CINNABAR_BLOCK)));
+    static { RENDER_LAYER_CUTOUT.add(CINNABAR_CLUSTER); }
     public static final Block MADDER = registerBlock("madder", new PlantBlock(FabricBlockSettings.copyOf(Blocks.POPPY)));
     static { RENDER_LAYER_CUTOUT.add(MADDER); }
     public static WoodSet MADDER_WOODSET = new WoodSet(

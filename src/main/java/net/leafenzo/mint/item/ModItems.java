@@ -155,6 +155,9 @@ public class ModItems {
     public static final Item CARMINIC_COCHINEAL_BEETLE = registerItem("carminic_cochineal_beetle", new Item(new FabricItemSettings()));
     public static final Item CACTUS_CHUNK = registerItem("cactus_chunk", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(2).saturationModifier(0.1f).build())));
     public static final Item MADDER_ROOT = registerItem("madder_root", new Item(new FabricItemSettings()));
+    public static final Item CINNABAR = registerItem("cinnabar", new Item(new FabricItemSettings()));
+    public static final Item POWDERED_CINNABAR = registerItem("powdered_cinnabar", new Item(new FabricItemSettings()));
+    public static final Item GAS_BOMB = registerItem("gas_bomb", new Item(new FabricItemSettings()));
 
 
     public static final Item AMBER = registerItem("amber", new Item(new FabricItemSettings()));

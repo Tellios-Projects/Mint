@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "mint:block/medium_cinnabar_bud",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "mint:block/medium_cinnabar_bud",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "mint:block/medium_cinnabar_bud",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "mint:block/medium_cinnabar_bud",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "mint:block/medium_cinnabar_bud"
+    },
+    "facing=west": {
+      "model": "mint:block/medium_cinnabar_bud",
+      "x": 90,
+      "y": 270
+    }
+  }
+}
