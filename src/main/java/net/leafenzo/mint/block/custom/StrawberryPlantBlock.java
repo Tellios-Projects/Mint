@@ -1,13 +1,11 @@
 package net.leafenzo.mint.block.custom;
 
 import net.leafenzo.mint.item.ModItems;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Fertilizable;
-import net.minecraft.block.FlowerbedBlock;
+import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -56,10 +54,27 @@ public class StrawberryPlantBlock extends FlowerbedBlock implements Fertilizable
 
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!isFullyGrown(state) && random.nextFloat() < 0.25 && world.getBaseLightLevel(pos, 0) >= 9) {
-            world.setBlockState(pos, state.cycle(AGE), Block.NOTIFY_LISTENERS);
+        if (random.nextFloat() < 0.25 && world.getBaseLightLevel(pos, 0) >= 9 && canAgeNaturally(state, world, pos)) {
+            boolean isOnFarmland = world.getBlockState(pos.down()).getBlock() instanceof FarmlandBlock;
+            if (!isFullyGrown(state)) {
+                world.setBlockState(pos, state.cycle(AGE), Block.NOTIFY_LISTENERS);
+            }
+            else if (!isOnFarmland) { // I would put a moisture check here too, but I just don't really see a point since farmland decays without it
+                world.setBlockState(pos, state.with(AGE, random.nextBetween(0,3)), Block.NOTIFY_LISTENERS);
+            }
         }
+
         super.randomTick(state, world, pos, random);
+    }
+
+    @Override
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        return world.getBlockState(pos.down()).isOpaque() && !world.getBlockState(pos.down()).isOf(Blocks.DIRT); // Just so that it breaks if farmland is trampled underneath it
+    }
+
+    public boolean canAgeNaturally(BlockState state, WorldView world, BlockPos pos) {
+        BlockState stateBelow = world.getBlockState(pos.down());
+        return (stateBelow.isIn(BlockTags.DIRT) || stateBelow.getBlock() instanceof FarmlandBlock); // This check is here instead of canPlaceAt just so you can still use it as decoration on cobblestone and stuff :3
     }
 
     @Override
