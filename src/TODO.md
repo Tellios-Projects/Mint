@@ -16,6 +16,9 @@
 
 # COMPAT
 
+    NATURALIST
+| Fix Snail shell dyeing
+
     SUPPLEMENTARIES & SUPPLEMENTARIES SQUARED
 | Fix SuppSquared+Base Supp Candle holder ordering
 
@@ -72,3 +75,6 @@ DONE | Fix Nixie tube coloring crash
   
     VAL FURNITURE | CANT DO
 CANT DO | Dyecolor Truncator Mixin (their sources are private so we can't do a mixin very easily)
+
+    WAYSTONES | DONE
+DONE | They are doing compat on their end, and versions going forward shouldn't have any broken blocks in them from us

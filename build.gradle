@@ -45,6 +45,14 @@ repositories {
 	maven { url = "https://maven.architectury.dev" }
 	maven { url = "https://mvn.devos.one/snapshots/" } 	// Create, Porting Lib, Forge Tags, Milk Lib, Registrate
 
+	maven {
+		name = 'GeckoLib'
+		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+		content {
+			includeGroupByRegex("software\\.bernie.*")
+			includeGroup("com.eliotlash.mclib")
+		}
+	}
 	// Add repositories to retrieve artifacts from in here.
 	// You should only use this when depending on other mods because
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
@@ -83,6 +91,12 @@ dependencies {
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:$rei_version"
 
 // Datagen counts as runtime, it's safe to run datagen as long as our compat mods are modCompileOnly.
+
+	// Naturalist
+//	modCompileOnly("com.eliotlash.mclib:mclib:20")
+//	modCompileOnly("software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}")
+//	modCompileOnly("me.shedaniel.cloth:cloth-config-fabric:${cloth_fabric_version}")
+//	modCompileOnly("maven.modrinth:naturalist:${naturalist_version}");
 
 	// Supplementaries
 //	modRuntimeOnly("maven.modrinth:moonlight:${moonlight_version}")
