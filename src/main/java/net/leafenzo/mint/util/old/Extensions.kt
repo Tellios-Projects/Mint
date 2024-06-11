@@ -1,4 +1,4 @@
-package net.leafenzo.mint.util
+package net.leafenzo.mint.util.old
 
     @JvmInline
     value class Color(val value: Int) {

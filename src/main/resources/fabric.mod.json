@@ -37,10 +37,6 @@
     "fabric-datagen": [{
       "adapter": "kotlin",
       "value":  "net.leafenzo.mint.datageneration.ModDataGenerator"
-    }],
-    "mm:early_risers": [{
-      "adapter": "kotlin",
-      "value": "net.leafenzo.mint.ModEarlyRiser"
     }]
   },
   "accessWidener": "mint.accesswidener",
