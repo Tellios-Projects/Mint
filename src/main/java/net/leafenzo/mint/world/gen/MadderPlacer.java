@@ -40,7 +40,7 @@ public class MadderPlacer extends TrunkPlacer {
     }
 
     protected static <P extends MadderPlacer> Products.P1<RecordCodecBuilder.Mu<P>, Integer> fillPlacerFields(RecordCodecBuilder.Instance<P> instance) {
-        return instance.group(Codec.intRange(2, 10).fieldOf("root_radius").forGetter((placer) -> placer.rootRadius));
+        return instance.group(Codec.intRange(2, 10).fieldOf("root_size").forGetter((placer) -> placer.rootRadius));
     }
 
     @Override
