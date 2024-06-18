@@ -1,8 +1,3 @@
-/*
- * SOURCES:
- * Team Hibiscus - https://github.com/Team-Hibiscus/NaturesSpirit/blob/c69094e549abe10993e009cff36efdf2c5e1e828/remappedSrc/net/hibiscus/naturespirit/world/feature/trunk/MapleTrunkPlacer.java
- */
-
 package net.leafenzo.mint.world.gen;
 
 import com.google.common.collect.ImmutableList;
