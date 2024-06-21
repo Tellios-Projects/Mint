@@ -795,20 +795,25 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerDyeMixingRecipe(exporter, ModItems.INDIGO_DYE, Items.BLUE_DYE, Items.PURPLE_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.BANANA_DYE, Items.YELLOW_DYE, Items.WHITE_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.CERULEAN_DYE, Items.BLUE_DYE, Items.LIGHT_GRAY_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.CERULEAN_DYE, Items.LIGHT_BLUE_DYE, Items.GRAY_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.ACORN_DYE, Items.BROWN_DYE, Items.GRAY_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.ACORN_DYE, Items.ORANGE_DYE, Items.BLACK_DYE, RecipeCategory.MISC, 2);
         //offerDyeMixingRecipe(exporter, ModItems.MAUVE_DYE, ModItems.FUCHSIA_DYE, Items.GRAY_DYE, RecipeCategory.MISC, 2); // nuh uh bad doesn't work for sheep
         offerDyeMixingRecipe(exporter, ModItems.MAUVE_DYE, Items.MAGENTA_DYE, Items.BROWN_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.MAUVE_DYE, Items.PINK_DYE, Items.BROWN_DYE, RecipeCategory.MISC, 2);
-        offerDyeMixingRecipe(exporter, ModItems.MAUVE_DYE, Items.RED_DYE, Items.BLACK_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.MAUVE_DYE, Items.RED_DYE, Items.GRAY_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.MAROON_DYE, Items.RED_DYE, Items.BROWN_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.MAROON_DYE, Items.RED_DYE, Items.BLACK_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.GRAPE_DYE, Items.PURPLE_DYE, Items.BLACK_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.NAVY_DYE, Items.BLUE_DYE, Items.BLACK_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.NAVY_DYE, Items.CYAN_DYE, Items.BLACK_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.SAP_DYE, Items.GREEN_DYE, Items.CYAN_DYE, RecipeCategory.MISC, 2);
 //        offerDyeMixingRecipe(exporter, ModItems.MOLD_DYE, ModItems.ARTICHOKE, Items.BLACK_DYE, RecipeCategory.MISC, 2); // aaawwe, no fiddle
         offerDyeMixingRecipe(exporter, ModItems.MOLD_DYE, Items.GREEN_DYE, Items.BROWN_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.MOLD_DYE, Items.YELLOW_DYE, Items.BLACK_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.AMBER_DYE, Items.ORANGE_DYE, Items.YELLOW_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.SAGE_DYE, Items.GREEN_DYE, Items.LIGHT_GRAY_DYE, RecipeCategory.MISC, 2);
+        offerDyeMixingRecipe(exporter, ModItems.SAGE_DYE, Items.LIME_DYE, Items.GRAY_DYE, RecipeCategory.MISC, 2);
         offerDyeMixingRecipe(exporter, ModItems.VELVET_DYE, Items.PURPLE_DYE, Items.RED_DYE, RecipeCategory.MISC, 2);
 
         // Decor Additions

@@ -27,7 +27,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:mauve_dye_from_red_dye_and_black_dye"
+        "recipe": "minecraft:maroon_dye_from_red_dye_and_black_dye"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,7 +41,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:mauve_dye_from_red_dye_and_black_dye"
+      "minecraft:maroon_dye_from_red_dye_and_black_dye"
     ]
   },
   "sends_telemetry_event": false
