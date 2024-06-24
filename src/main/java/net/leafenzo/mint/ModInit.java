@@ -7,6 +7,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.leafenzo.mint.block.DispenserBehavior;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.ModIntegrations;
 import net.leafenzo.mint.block.entity.ModBlockEntityType;
 import net.leafenzo.mint.effect.ModEffects;
 import net.leafenzo.mint.entity.ModEntityTypes;
@@ -67,6 +68,7 @@ public class ModInit implements ModInitializer {
             }
 
             ModBlocks.registerModBlocks();
+//            ModIntegrations.registerModIntegrationBlocks();
             ModItems.registerModItems();
             ModBlockEntityType.RegisterModBlockEntityTypes();
             ModEntityTypes.registerEntityTypes();

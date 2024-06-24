@@ -4,6 +4,7 @@ import dev.architectury.platform.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.ModIntegrations;
 import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.registry.tag.ModTags;
 import net.minecraft.block.*;
@@ -27,12 +28,7 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
     }
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-    // common tags or Tags containing vanilla blocks
-//        getOrCreateTagBuilder(ModTags.Blocks.MUSHROOM_BLOCKS)
-//                .add(Blocks.RED_MUSHROOM_BLOCK)
-//                .add(Blocks.BROWN_MUSHROOM_BLOCK)
-
-    // Special
+        //<editor-fold desc ="Block Tags - Individual">
         getOrCreateTagBuilder(BlockTags.LEAVES)
                 .add(ModBlocks.MINT_SPRIG_BLOCK)
         ;
@@ -97,9 +93,27 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
                 .add(ModBlocks.MADDER_ROOTED_DIRT)
                 .add(ModBlocks.MADDER_ROOTED_GRASS_BLOCK)
         ;
+        //</editor-fold>
 
+        //<editor-fold desc ="Block Tags - Decor Additions">
+            //Decor Additions
+        for (Block block : ModBlocks.ALL_MUCKTUFF_BLOCKS) {
+            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+            getOrCreateTagBuilder(BlockTags.MOSS_REPLACEABLE).add(block);
+        }
 
-    // Main
+        for (Block block : ModBlocks.ALL_CORRUGATED_IRON_BLOCKS) {
+            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+        }
+        //</editor-fold>
+
+        //<editor-fold desc ="Block Tags - Integrations">
+//        for(Block block : ModIntegrations.TWIGS_PACKED_SILTS) {
+//
+//        }
+        //</editor-fold>
+
+        //<editor-fold desc ="Block Tags - Automatic">
 // SLABS & STAIRS & WALLS
         for (Block block : ModBlocks.SLABS) {
             getOrCreateTagBuilder(BlockTags.SLABS).add(block);
@@ -249,17 +263,7 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
             getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
             getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(block);
         }
-
-
-        //Decor Additions
-        for (Block block : ModBlocks.ALL_MUCKTUFF_BLOCKS) {
-            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
-            getOrCreateTagBuilder(BlockTags.MOSS_REPLACEABLE).add(block);
-        }
-
-        for (Block block : ModBlocks.ALL_CORRUGATED_IRON_BLOCKS) {
-            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
-        }
+        //</editor-fold>
 
     }
 }

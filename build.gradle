@@ -109,12 +109,13 @@ dependencies {
 	modCompileOnly("com.github.quiqueck:WunderLib:${wunderlib_version}")
 
 	// Twigs
-//	modRuntimeOnly("maven.modrinth:twigs:${twigs_version}")
+//	modCompileOnly("maven.modrinth:twigs:${twigs_version}")
+//	modLocalRuntime("maven.modrinth:twigs:${twigs_version}")
 
 	// Dye Depot
 //	modRuntimeOnly("maven.modrinth:dye-depot:ldJ6vsnR")
 
-	// Botania  	// this doesn't run here with modImpl but it does run in prod. So I'm chill with it.
+	// Botania  	// this doesn't work here when compiled in runtime as well, but it does work in production
 	modCompileOnly("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}")
 	modCompileOnly("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}")
 	modCompileOnly("maven.modrinth:trinkets:${trinkets_version}")
@@ -126,6 +127,10 @@ dependencies {
 	// Create - dependencies are added transitively
 	modCompileOnly("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
 //	modLocalRuntime("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
+
+	// Create Steam n Rails
+	modCompileOnly("maven.modrinth:create-steam-n-rails:${create_steam_and_rails_version}")
+//	modLocalRuntime("maven.modrinth:create-steam-n-rails:${create_steam_and_rails_version}")
 
 	// Create Deco
 //	modLocalRuntime("maven.modrinth:create-deco:${createdeco_version}")

@@ -161,8 +161,6 @@ public class ModRegistryHelper {
             COLOR_FROM_WOOL.put(DyeColor.RED, Blocks.RED_WOOL);
             COLOR_FROM_WOOL.put(DyeColor.BLACK, Blocks.BLACK_WOOL);
         }
-
-
         public static Block registerBlock(String name, Block block) {
             registerBlockItem(name,block);
             return Registry.register(Registries.BLOCK, new Identifier(Super.MOD_ID, name), block);

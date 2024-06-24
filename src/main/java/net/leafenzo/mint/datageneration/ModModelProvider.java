@@ -207,6 +207,7 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        //<editor-fold desc ="Blockstate Models - Manual">
         // MINT - Special
         blockStateModelGenerator.registerCrop(ModBlocks.MINT_CROP, MintCropBlock.AGE, IntStream.rangeClosed(0, MintCropBlock.MAX_AGE).toArray());
         blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MINT_SPRIG_BLOCK);
@@ -320,8 +321,15 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.POKEWEED, BlockStateModelGenerator.TintType.NOT_TINTED);
         registerFlowerPot(blockStateModelGenerator, ModBlocks.POKEWEED, ModBlocks.POTTED_POKEWEED, BlockStateModelGenerator.TintType.NOT_TINTED);
+        //</editor-fold>
 
-        //Main
+        //<editor-fold desc ="Blockstate Models - Integrations">
+        for(Block block : ModIntegrations.TWIGS_PACKED_SILTS) {
+            blockStateModelGenerator.registerSimpleCubeAll(block);
+        }
+        //</editor-fold>
+
+        //<editor-fold desc ="Blockstate Models - Automatic">
 // WOODSETS
         for (WoodSet woodSet : ModBlocks.WOODSETS) {
             registerBlocksInWoodSet(blockStateModelGenerator, woodSet);
@@ -408,6 +416,8 @@ public class ModModelProvider extends FabricModelProvider {
         for(Block block : ModBlocks.ALL_MUCKTUFF_BLOCKS) {
             blockStateModelGenerator.registerCubeAllModelTexturePool(block);
         }
+
+        //</editor-fold>
     }
 
     @Override
