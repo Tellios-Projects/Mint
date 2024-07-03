@@ -32,7 +32,7 @@ public class ModEntityTypes {
         return FabricEntityTypeBuilder.create(SpawnGroup.MISC, boat.factory(chest)).dimensions(EntityDimensions.changing(1.375f, 0.5625f)).trackRangeChunks(10).build();
     }
     public static final EntityType<? extends EmberArrowEntity> EMBER_ARROW = Registry.register(Registries.ENTITY_TYPE,
-            new Identifier(ModInit.MOD_ID, "ember_arrow"),
+            new Identifier(Super.MOD_ID, "ember_arrow"),
             FabricEntityTypeBuilder.<EmberArrowEntity>create(SpawnGroup.MISC, EmberArrowEntity::new)
                     .dimensions(EntityDimensions.fixed(0.5f, 0.5f)).build());
 

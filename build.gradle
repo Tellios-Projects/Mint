@@ -90,7 +90,6 @@ dependencies {
 //	modRuntimeOnly("maven.modrinth:dCCkNFwE:${supplementaries_squared_version_id}")
 //	modRuntimeOnly("maven.modrinth:amendments:${amendments_version}")
 
-
 	// Comforts
 //	modRuntimeOnly "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}"
 //	modRuntimeOnly "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}"
