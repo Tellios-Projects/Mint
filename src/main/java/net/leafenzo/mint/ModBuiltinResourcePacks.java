@@ -14,49 +14,33 @@ import java.util.Optional;
 
 public class ModBuiltinResourcePacks {
     private static void registerBuiltinResourcePack(ModContainer modContainer, String forModID) {
-        ResourceManagerHelper.registerBuiltinResourcePack(
-                new Identifier(Super.MOD_ID, forModID + "_res"),
+        boolean success = ResourceManagerHelper.registerBuiltinResourcePack(
+                new Identifier(Super.MOD_ID, forModID),
                 modContainer,
                 Text.translatable("pack." + Super.MOD_ID + "." + forModID),
                 ResourcePackActivationType.ALWAYS_ENABLED
         );
+        if(success) { ModInit.LOGGER.info("Registered builtin resource pack for " + forModID); }
+        else { ModInit.LOGGER.error("COULD NOT REGISTER BUILTIN RESOURCE PACK FOR " + forModID); }
     }
-
-    private static void registerBuiltinResourcePack(ModContainer modContainer, String forModID, String additional) {
-        ResourceManagerHelper.registerBuiltinResourcePack(
-                new Identifier(Super.MOD_ID, forModID + "_res_" + additional),
+    private static void registerBuiltinDataPack(ModContainer modContainer, String forModID) {
+        boolean success = ResourceManagerHelper.registerBuiltinResourcePack(
+                new Identifier(Super.MOD_ID, forModID),
                 modContainer,
                 Text.translatable("pack." + Super.MOD_ID + "." + forModID),
                 ResourcePackActivationType.ALWAYS_ENABLED
         );
+        if(success) { ModInit.LOGGER.info("Registered builtin data pack for " + forModID); }
+        else { ModInit.LOGGER.error("COULD NOT REGISTER BUILTIN DATA PACK FOR " + forModID); }
     }
-
-    private static void registerBuiltinDataPack(ModContainer modContainer, String packId) {
-        ResourceManagerHelper.registerBuiltinResourcePack(
-                new Identifier(Super.MOD_ID, packId + "_dat"),
-                modContainer,
-                Text.translatable("pack." + Super.MOD_ID + "." + packId),
-                ResourcePackActivationType.ALWAYS_ENABLED
-        );
-    }
-
-    private static void registerBuiltinDataPack(ModContainer modContainer, String packId, String additional) {
-        ResourceManagerHelper.registerBuiltinResourcePack(
-                new Identifier(Super.MOD_ID, packId + "_dat_" + additional),
-                modContainer,
-                Text.translatable("pack." + Super.MOD_ID + "." + packId),
-                ResourcePackActivationType.ALWAYS_ENABLED
-        );
-    }
-
     private static void registerPacks(Optional<ModContainer> modContainer, String modId) {
         if(Super.isModLoaded(modId) && modContainer.isPresent()) {
             registerBuiltinResourcePack(modContainer.get(), modId);
             registerBuiltinDataPack(modContainer.get(), modId);
         }
     }
-
     public static void registerBuiltinPacks() {
+        ModInit.LOGGER.info("Registering builtin resource and data packs for " + Super.MOD_ID);
         Optional<ModContainer> modContainer = FabricLoader.getInstance().getModContainer(Super.MOD_ID);
         registerPacks(modContainer, Super.AMENDMENTS_MOD_ID);
         registerPacks(modContainer, Super.BOTANY_POTS_MOD_ID);
@@ -68,5 +52,6 @@ public class ModBuiltinResourcePacks {
         registerPacks(modContainer, Super.CREATE_MOD_ID);
         registerPacks(modContainer, Super.CREATE_DECO_MOD_ID);
         registerPacks(modContainer, Super.SLEEP_TIGHT_MOD_ID);
+//        registerPacks(modContainer, Super.TWIGS_MOD_ID);
     }
 }

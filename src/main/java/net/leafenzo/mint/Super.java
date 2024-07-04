@@ -17,6 +17,7 @@ public class Super {
     public static final String CREATE_MOD_ID = "create";
     public static final String CREATE_DECO_MOD_ID = "createdeco";
     public static final String SLEEP_TIGHT_MOD_ID = "sleep_tight";
+    public static final String TWIGS_MOD_ID = "twigs";
 
     public static Identifier asResource(String path) {
         return new Identifier(MOD_ID, path.toLowerCase().replace(' ', '_')); // Silently make the path lowercase if it's not.
