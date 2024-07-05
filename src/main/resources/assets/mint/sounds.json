@@ -1,0 +1,47 @@
+{
+  "block.packed_silt.break": {
+    "sounds": [
+      "twigs:block/packed_silt/heavy1",
+      "twigs:block/packed_silt/heavy2",
+      "twigs:block/packed_silt/heavy3",
+      "twigs:block/packed_silt/heavy4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.packed_silt.fall": {
+    "sounds": [
+      {
+        "name": "twigs:block.packed_silt.break",
+        "type": "event"
+      }
+    ]
+  },
+  "block.packed_silt.hit": {
+    "sounds": [
+      {
+        "name": "twigs:block.packed_silt.step",
+        "type": "event"
+      }
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.packed_silt.place": {
+    "sounds": [
+      {
+        "name": "twigs:block.packed_silt.break",
+        "type": "event"
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.packed_silt.step": {
+    "sounds": [
+      "twigs:block/packed_silt/light1",
+      "twigs:block/packed_silt/light2",
+      "twigs:block/packed_silt/light3",
+      "twigs:block/packed_silt/light4",
+      "twigs:block/packed_silt/light5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  }
+}

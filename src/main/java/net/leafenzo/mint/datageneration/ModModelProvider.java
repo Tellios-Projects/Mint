@@ -324,7 +324,7 @@ public class ModModelProvider extends FabricModelProvider {
         //</editor-fold>
 
         //<editor-fold desc ="Blockstate Models - Integrations">
-        for(Block block : ModIntegrations.TWIGS_PACKED_SILTS) {
+        for(Block block : ModIntegrationBlocks.TWIGS_PACKED_SILTS) {
             blockStateModelGenerator.registerSimpleCubeAll(block);
         }
         //</editor-fold>

@@ -34,7 +34,7 @@ public class ModBuiltinResourcePacks {
         else { ModInit.LOGGER.error("COULD NOT REGISTER BUILTIN DATA PACK FOR " + forModID); }
     }
     private static void registerPacks(Optional<ModContainer> modContainer, String modId) {
-        if(Super.isModLoaded(modId) && modContainer.isPresent()) {
+        if(modContainer.isPresent() && Super.isModLoaded(modId)) {
             registerBuiltinResourcePack(modContainer.get(), modId);
             registerBuiltinDataPack(modContainer.get(), modId);
         }
@@ -52,6 +52,6 @@ public class ModBuiltinResourcePacks {
         registerPacks(modContainer, Super.CREATE_MOD_ID);
         registerPacks(modContainer, Super.CREATE_DECO_MOD_ID);
         registerPacks(modContainer, Super.SLEEP_TIGHT_MOD_ID);
-//        registerPacks(modContainer, Super.TWIGS_MOD_ID);
+        registerPacks(modContainer, Super.TWIGS_MOD_ID);
     }
 }

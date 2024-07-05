@@ -1,18 +1,13 @@
 package net.leafenzo.mint.block;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.compat.twigs.TwigsSoundEvents;
-import net.leafenzo.mint.registration.ModRegistryHelper;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
-import net.minecraft.util.Identifier;
 
 import javax.annotation.Nullable;
 
@@ -20,10 +15,9 @@ import java.util.ArrayList;
 
 import static net.leafenzo.mint.registration.ModRegistryHelper.BlockRegistry.*;
 
-public class ModIntegrations {
-
+public class ModIntegrationBlocks {
     public static void registerModIntegrationBlocks() {
-        if (FabricLoader.getInstance().isModLoaded("twigs") || FabricLoader.getInstance().isDevelopmentEnvironment()) { registerTwigsIntegrationBlocks(); }
+        if (Super.isDatagen() || FabricLoader.getInstance().isModLoaded(Super.TWIGS_MOD_ID)) { registerTwigsIntegrationBlocks(); }
     }
     public static void registerTwigsIntegrationBlocks() {
         registerPackedSiltBlocks();
