@@ -563,6 +563,9 @@ public class ModItemGroups {
                         entries.add(ModBlocks.MEDIUM_CINNABAR_BUD);
                         entries.add(ModBlocks.LARGE_CINNABAR_BUD);
                         entries.add(ModBlocks.CINNABAR_CLUSTER);
+                        entries.add(ModItems.CINNABAR);
+                        entries.add(ModItems.POWDERED_CINNABAR);
+                        entries.add(ModItems.GAS_BOMB);
 
                         entries.add(ModItems.GRAPE_DYE);
                         entries.add(ModBlocks.GRAPE_WOOL);

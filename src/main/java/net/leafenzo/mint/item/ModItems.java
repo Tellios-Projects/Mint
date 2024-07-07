@@ -157,7 +157,7 @@ public class ModItems {
     public static final Item MADDER_ROOT = registerItem("madder_root", new Item(new FabricItemSettings()));
     public static final Item CINNABAR = registerItem("cinnabar", new Item(new FabricItemSettings()));
     public static final Item POWDERED_CINNABAR = registerItem("powdered_cinnabar", new Item(new FabricItemSettings()));
-    public static final Item GAS_BOMB = registerItem("gas_bomb", new Item(new FabricItemSettings()));
+    public static final Item GAS_BOMB = registerItem("gas_bomb", new GasBombItem(new FabricItemSettings()));
 
 
     public static final Item AMBER = registerItem("amber", new Item(new FabricItemSettings()));

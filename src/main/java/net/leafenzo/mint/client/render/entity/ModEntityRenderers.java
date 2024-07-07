@@ -14,6 +14,7 @@ import net.leafenzo.mint.Super;
 import net.leafenzo.mint.entity.ModBoatEntity;
 import net.leafenzo.mint.entity.ModEntityTypes;
 import net.leafenzo.mint.entity.renderer.EmberArrowEntityRenderer;
+import net.minecraft.client.render.entity.EmptyEntityRenderer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
@@ -28,6 +29,8 @@ public class ModEntityRenderers {
             registerBoatModel(false, boat);
         }
         EntityRendererRegistry.register(ModEntityTypes.EMBER_ARROW, EmberArrowEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntityTypes.GAS_BOMB_PROJECTILE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntityTypes.CINNABAR_CLOUD, EmptyEntityRenderer::new);
     }
 
     private static void registerBoatModel(boolean chest, ModBoatEntity.ModBoat boat) {
