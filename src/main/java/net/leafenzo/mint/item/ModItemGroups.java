@@ -2,27 +2,26 @@ package net.leafenzo.mint.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.loader.api.FabricLoader;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.potions.ModPotions;
 import net.leafenzo.mint.registration.WoodSet;
-import net.leafenzo.mint.util.ModDyeColor;
+import net.leafenzo.mint.util.DyeSortingTables;
 import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
+import java.util.*;
 
 import static net.leafenzo.mint.util.ModUtil.formatMultipleIdsForErrorLog;
 
@@ -35,6 +34,8 @@ public class ModItemGroups {
     }
 
     // you can tell I was having a rough time huh :p
+
+    //</editor-fold>
     public static RuntimeException ColoredBlocksNotEqualError(DyeColor ca, DyeColor cb, Block[] a, Block[] b) {
         String errorMessage = (ca.getName() + " has " + a.length + " blocks in the colored blocks category" + ", while " + cb.getName() + " has " + b.length + " (" + formatMultipleIdsForErrorLog(a) + " VS " + formatMultipleIdsForErrorLog(b) + ")");
         ModInit.LOGGER.error(errorMessage);
@@ -46,12 +47,50 @@ public class ModItemGroups {
         return new RuntimeException(errorMessage);
     }
 
+    public static void modifyIntegrationItemGroups() {
+        if (Super.isDatagen() || FabricLoader.getInstance().isModLoaded(Super.TWIGS_MOD_ID)) { modifyTwigsItemGroups(); }
+    }
+//    public static void modifyTwigsItemGroups() {
+//        RegistryKey<ItemGroup> registryKey = RegistryKey.of(Registries.ITEM_GROUP.getKey(), new Identifier(Super.TWIGS_MOD_ID, "item_group"));
+//        ItemGroupEvents.modifyEntriesEvent(registryKey).register(content -> {
+//            Set<Identifier> packedSilts = sortedColoredBlocks()
+//            for() //TODO ADDME
+//
+//            content.addAfter();
+//        });
+//    }
+
+    public static Set<Identifier> sortedColoredBlocks(String namespace, String name) {
+         return sortByDyeOrder(findColoredBlocksWithName(namespace, name), DyeSortingTables.ITEM_GROUP_DYE_ORDER);
+    }
+    public static Set<Identifier> findColoredBlocksWithName(String namespace, String name) {
+        List<Identifier> list = ModUtil.allBlockIdsInNamespace(namespace).stream().toList();
+        Set<Identifier> result = new HashSet<>();
+
+        list.stream()
+                .filter(id -> id.getPath().contains(name))
+                .forEachOrdered(result::add);
+
+        return result;
+    }
+    public static Set<Identifier> sortByDyeOrder(Set<Identifier> list, List<DyeColor> dyeOrderTable) {
+        Set<Identifier> ids = new HashSet<Identifier>();
+        for(DyeColor color : dyeOrderTable) {
+            for(Identifier id : list) {
+                if(id.getPath().contains(color.getName())) {
+                    ids.add(id);
+                }
+            }
+        }
+        return ids;
+    }
+
     public static void addColoredItemsAfter(DyeColor reference, DyeColor toAdd) {
         @NotNull Block[] coloredBlocksReference = ModUtil.ColoredBlocksOfColor(reference);
         @NotNull Block[] coloredBlocksToAdd = ModUtil.ColoredBlocksOfColor(toAdd);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS).register(content -> {
-            if(coloredBlocksReference.length != coloredBlocksToAdd .length) {
-                throw ColoredBlocksNotEqualError(reference, toAdd, coloredBlocksReference, coloredBlocksToAdd );
+            if(coloredBlocksReference.length != coloredBlocksToAdd.length) {
+                throw ColoredBlocksNotEqualError(reference, toAdd, coloredBlocksReference, coloredBlocksToAdd);
             }
             for (int i = 0; i < coloredBlocksReference.length; i++) {
                 content.addAfter(coloredBlocksReference[i].asItem(), coloredBlocksToAdd [i].asItem());
@@ -62,7 +101,7 @@ public class ModItemGroups {
         @NotNull Block[] functionalBlocksAfter = ModUtil.FunctionalBlocksOfColor(toAdd);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(content -> {
             if(functionalBlocksBefore.length != functionalBlocksAfter.length) {
-                throw FunctionalBlocksNotEqualError(reference, toAdd, coloredBlocksReference, coloredBlocksToAdd );
+                throw FunctionalBlocksNotEqualError(reference, toAdd, coloredBlocksReference, coloredBlocksToAdd);
             }
             for (int i = 0; i < functionalBlocksBefore.length; i++) {
                 content.addAfter(functionalBlocksBefore[i].asItem(), functionalBlocksAfter[i].asItem());
@@ -101,69 +140,72 @@ public class ModItemGroups {
         });
     }
 
+    public static void addAllColoredItems() {
+        List<DyeColor> list = DyeSortingTables.ITEM_GROUP_DYE_ORDER;
+        for (int i = 0; i < list.size()-1; i++) {
+            addColoredItemsAfter(list.get(i), list.get(i+1));
+        }
+    }
+
     public static void modifyVanillaItemGroupEntries() {
         addWoodsetItemsToVanillaItemGroups(ModBlocks.WINTERGREEN_WOODSET, Items.CHERRY_BUTTON, Items.CHERRY_LEAVES, Items.CHERRY_SAPLING, Items.CHERRY_HANGING_SIGN, Items.CHERRY_CHEST_BOAT);
+        addAllColoredItems();
 
-        //keep in the right places to make a big rainbow ^~^
-
-        // Roughly sort by Hue then Light to Dark
-        // make sure they only ever are set to come before or after vanilla dyes!
-
-        //White
-        //Light Gray
-        //Gray
-
-        //Black
-        addColoredItemsAfter(DyeColor.BLACK, ModDyeColor.ACORN);
-
-
-        //Brown
-        addColoredItemsAfter(DyeColor.BROWN, ModDyeColor.MAROON);
-            addColoredItemsAfter(DyeColor.BROWN, ModDyeColor.MOLD); //this places it in order before Maroon
-
-
-        //Red
-        addColoredItemsAfter(DyeColor.RED, ModDyeColor.PEACH);
-
-        addColoredItemsBefore(DyeColor.ORANGE, ModDyeColor.VERMILION);
-        //Orange
-        addColoredItemsAfter(DyeColor.ORANGE, ModDyeColor.AMBER);
-
-
-        //Yellow
-        addColoredItemsAfter(DyeColor.YELLOW, ModDyeColor.BANANA);
-
-        addColoredItemsBefore(DyeColor.LIME, ModDyeColor.ARTICHOKE);
-        //Lime
-
-        addColoredItemsBefore(DyeColor.GREEN, ModDyeColor.SAP);
-        //Green
-        addColoredItemsAfter(DyeColor.GREEN, ModDyeColor.SHAMROCK);
-            addColoredItemsAfter(DyeColor.GREEN, ModDyeColor.SAGE); //this places it in order before Shamrock
-
-        addColoredItemsBefore(DyeColor.CYAN, ModDyeColor.MINT);
-        //Cyan
-
-
-        addColoredItemsBefore(DyeColor.LIGHT_BLUE, ModDyeColor.CERULEAN);
-        //Light Blue
-
-
-        addColoredItemsBefore(DyeColor.BLUE, ModDyeColor.NAVY);
-        //Blue
-        addColoredItemsAfter(DyeColor.BLUE, ModDyeColor.PERIWINKLE);
-
-        addColoredItemsBefore(DyeColor.PURPLE, ModDyeColor.GRAPE);
-        //Purple
-        addColoredItemsAfter(DyeColor.PURPLE, ModDyeColor.INDIGO);
-
-
-        //Magenta
-        addColoredItemsAfter(DyeColor.MAGENTA, ModDyeColor.MAUVE);
-            addColoredItemsAfter(DyeColor.MAGENTA, ModDyeColor.VELVET); //this places it in order before Mauve
-
-        addColoredItemsBefore(DyeColor.PINK, ModDyeColor.FUCHSIA);
-        //Pink
+//        //White
+//        //Light Gray
+//        //Gray
+//
+//        //Black
+//        addColoredItemsAfter(DyeColor.BLACK, ModDyeColor.ACORN);
+//
+//
+//        //Brown
+//        addColoredItemsAfter(DyeColor.BROWN, ModDyeColor.MAROON);
+//            addColoredItemsAfter(DyeColor.BROWN, ModDyeColor.MOLD); //this places it in order before Maroon
+//
+//
+//        //Red
+//        addColoredItemsAfter(DyeColor.RED, ModDyeColor.PEACH);
+//
+//        addColoredItemsBefore(DyeColor.ORANGE, ModDyeColor.VERMILION);
+//        //Orange
+//        addColoredItemsAfter(DyeColor.ORANGE, ModDyeColor.AMBER);
+//
+//
+//        //Yellow
+//        addColoredItemsAfter(DyeColor.YELLOW, ModDyeColor.BANANA);
+//
+//        addColoredItemsBefore(DyeColor.LIME, ModDyeColor.ARTICHOKE);
+//        //Lime
+//
+//        addColoredItemsBefore(DyeColor.GREEN, ModDyeColor.SAP);
+//        //Green
+//        addColoredItemsAfter(DyeColor.GREEN, ModDyeColor.SHAMROCK);
+//            addColoredItemsAfter(DyeColor.GREEN, ModDyeColor.SAGE); //this places it in order before Shamrock
+//
+//        addColoredItemsBefore(DyeColor.CYAN, ModDyeColor.MINT);
+//        //Cyan
+//
+//
+//        addColoredItemsBefore(DyeColor.LIGHT_BLUE, ModDyeColor.CERULEAN);
+//        //Light Blue
+//
+//
+//        addColoredItemsBefore(DyeColor.BLUE, ModDyeColor.NAVY);
+//        //Blue
+//        addColoredItemsAfter(DyeColor.BLUE, ModDyeColor.PERIWINKLE);
+//
+//        addColoredItemsBefore(DyeColor.PURPLE, ModDyeColor.GRAPE);
+//        //Purple
+//        addColoredItemsAfter(DyeColor.PURPLE, ModDyeColor.INDIGO);
+//
+//
+//        //Magenta
+//        addColoredItemsAfter(DyeColor.MAGENTA, ModDyeColor.MAUVE);
+//            addColoredItemsAfter(DyeColor.MAGENTA, ModDyeColor.VELVET); //this places it in order before Mauve
+//
+//        addColoredItemsBefore(DyeColor.PINK, ModDyeColor.FUCHSIA);
+//        //Pink
 
 //        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(content -> {
 //            content.addAfter(Items.COOKIE, ModItems.MINT_COOKIE);
@@ -181,6 +223,7 @@ public class ModItemGroups {
 //        });
     }
 
+    //<editor-fold desc ="Itemgroups Functions for Woodsets">
     public static Collection<ItemStack> woodsetItems(WoodSet woodSet) {
         ArrayList<ItemStack> c = new ArrayList<ItemStack>();
         ModUtil.addToIfNotNull(c, woodSet.getLeaves());
@@ -263,6 +306,7 @@ public class ModItemGroups {
             }
         });
     }
+    //</editor-fold>
 
     public static ItemGroup DYE_MOD_ADDITIONS = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "dye_mod_additions"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".dye_mod_additions"))
@@ -700,6 +744,7 @@ public class ModItemGroups {
                         for(Block block : ModBlocks.ALL_MUCKTUFF_BLOCKS) { entries.add(block.asItem()); }
                     }).build());
 
+    //<editor-fold desc ="Itemgroups : By Dye Color">
 //    public static ItemGroup MINT = Registry.register(Registries.ITEM_GROUP, new Identifier(Super.MOD_ID, "mint"),
 //            FabricItemGroup.builder().displayName(Text.translatable("itemgroup." + Super.MOD_ID + ".mint"))
 //                    .icon(() -> new ItemStack(ModItems.MINT_SPRIG)).entries((displayContext, entries) -> {
@@ -1121,4 +1166,5 @@ public class ModItemGroups {
 //                        for(Block block : ModBlocks.ALL_CORRUGATED_IRON_BLOCKS) { entries.add(block.asItem()); }
 //                        for(Block block : ModBlocks.ALL_MUCKTUFF_BLOCKS) { entries.add(block.asItem()); }
 //                    }).build());
+    //</editor-fold>
 }
