@@ -47,28 +47,28 @@ public class ModItemGroups {
         return new RuntimeException(errorMessage);
     }
 
-    public static void modifyIntegrationItemGroups() {
-        if (Super.isDatagen() || FabricLoader.getInstance().isModLoaded(Super.TWIGS_MOD_ID)) { modifyTwigsItemGroups(); }
-    }
+//    public static void modifyIntegrationItemGroups() {
+//        if (Super.isDatagen() || FabricLoader.getInstance().isModLoaded(Super.TWIGS_MOD_ID)) { modifyTwigsItemGroups(); }
+//    }
 //    public static void modifyTwigsItemGroups() {
 //        RegistryKey<ItemGroup> registryKey = RegistryKey.of(Registries.ITEM_GROUP.getKey(), new Identifier(Super.TWIGS_MOD_ID, "item_group"));
 //        ItemGroupEvents.modifyEntriesEvent(registryKey).register(content -> {
-//            Set<Identifier> packedSilts = sortedColoredBlocks()
+//            Set<Identifier> packedSilts = sortedColoredBlocks(Super.TWIGS_MOD_ID, "");
 //            for() //TODO ADDME
 //
 //            content.addAfter();
 //        });
 //    }
 
-    public static Set<Identifier> sortedColoredBlocks(String namespace, String name) {
-         return sortByDyeOrder(findColoredBlocksWithName(namespace, name), DyeSortingTables.ITEM_GROUP_DYE_ORDER);
+    public static Set<Identifier> sortedColoredBlocks(String namespace, String name_contains) {
+         return sortByDyeOrder(findColoredBlocksWithName(namespace, name_contains), DyeSortingTables.ITEM_GROUP_DYE_ORDER);
     }
-    public static Set<Identifier> findColoredBlocksWithName(String namespace, String name) {
+    public static Set<Identifier> findColoredBlocksWithName(String namespace, String name_contains) {
         List<Identifier> list = ModUtil.allBlockIdsInNamespace(namespace).stream().toList();
         Set<Identifier> result = new HashSet<>();
 
         list.stream()
-                .filter(id -> id.getPath().contains(name))
+                .filter(id -> id.getPath().contains(name_contains))
                 .forEachOrdered(result::add);
 
         return result;
