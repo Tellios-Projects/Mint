@@ -245,5 +245,27 @@ publishing {
 	}
 }
 
-//Sources:
-//https://github.com/ApexModder/MultiPlatform-Template/blob/master/fabric/build.gradle
+//afterEvaluate {
+//	// SOURCE : https://tuhrig.de/gradles-bootrun-and-windows-command-length-limit/
+//	if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
+//		task pathingJar(type: Jar) {
+//			dependsOn configurations.runtimeClasspath
+//			archiveAppendix = 'pathing'
+//
+//			doFirst {
+//				manifest {
+//					attributes "Class-Path": configurations.runtimeClasspath.collect {
+//						it.toString().replaceFirst("/file:/+/", "/")
+//					}.join(' ')
+//				}
+//			}
+//		}
+//
+//		genSources {
+//			dependsOn = pathingJar as Iterable<?>
+//			doFirst {
+//				classpath = files("$project.layout.buildDirectory/classes/main", "$project.layout.buildDirectory/resources/main", pathingJar.archiveFile)
+//			}
+//		}
+//	}
+//}
