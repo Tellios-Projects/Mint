@@ -2,6 +2,7 @@ plugins {
 	id 'fabric-loom' version '1.5-SNAPSHOT'
 	id 'maven-publish'
 	id 'org.jetbrains.kotlin.jvm' version("${kotlin_version}")
+	id("com.github.ManifestClasspath") version "0.1.0-RELEASE"
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -59,9 +60,10 @@ repositories {
 //}
 
 dependencies {
+//	classpath "gradle.plugin.com.github.viswaramamoorthy:gradle-util-plugins:0.1.0-RELEASE"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 	modImplementation("net.fabricmc:fabric-language-kotlin:1.10.18+kotlin.1.9.22")
 
@@ -244,6 +246,8 @@ publishing {
 		// retrieving dependencies.
 	}
 }
+
+
 
 //afterEvaluate {
 //	// SOURCE : https://tuhrig.de/gradles-bootrun-and-windows-command-length-limit/
