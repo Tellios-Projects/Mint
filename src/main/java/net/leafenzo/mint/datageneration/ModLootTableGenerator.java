@@ -17,12 +17,10 @@ import net.minecraft.data.server.loottable.vanilla.VanillaBlockLootTableGenerato
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
-import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
-import net.minecraft.loot.condition.LocationCheckLootCondition;
-import net.minecraft.loot.condition.LootCondition;
-import net.minecraft.loot.condition.TableBonusLootCondition;
+import net.minecraft.loot.condition.*;
 import net.minecraft.loot.entry.AlternativeEntry;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
@@ -35,6 +33,7 @@ import net.minecraft.predicate.BlockPredicate;
 import net.minecraft.predicate.StatePredicate;
 import net.minecraft.predicate.entity.LocationPredicate;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 
@@ -178,6 +177,12 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(ModBlocks.WAXCAP_GILLS, (Block block) ->  waxcapGillFullBlockDrops(ModBlocks.WAXCAP_GILLS, ModBlocks.HANGING_WAXCAP_WAX));
         BlockStatePropertyLootCondition.Builder artichokeCropBuilder = BlockStatePropertyLootCondition.builder(ModBlocks.ARTICHOKE_CROP).properties(StatePredicate.Builder.create().exactMatch(ArtichokeCropBlock.AGE, ArtichokeCropBlock.MAX_AGE));
         this.addDrop(ModBlocks.ARTICHOKE_CROP, this.applyExplosionDecay(ModBlocks.ARTICHOKE_CROP, LootTable.builder().pool(LootPool.builder().with(ItemEntry.builder(ModItems.ARTICHOKE))).pool(LootPool.builder().conditionally(artichokeCropBuilder).with((LootPoolEntry.Builder<?>)((Object)ItemEntry.builder(ModItems.ARTICHOKE).apply(ApplyBonusLootFunction.binomialWithBonusCount(Enchantments.FORTUNE, 0.5714286f, 3)))))));
+
+
+        this.addDropWithSilkTouch(ModBlocks.SMALL_CINNABAR_BUD);
+        this.addDropWithSilkTouch(ModBlocks.MEDIUM_CINNABAR_BUD);
+        this.addDropWithSilkTouch(ModBlocks.LARGE_CINNABAR_BUD);
+        this.addDrop(ModBlocks.CINNABAR_CLUSTER, (block) -> dropsWithSilkTouch(block, ItemEntry.builder(ModItems.CINNABAR).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(4.0F))).apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE)).conditionally(MatchToolLootCondition.builder(net.minecraft.predicate.item.ItemPredicate.Builder.create().tag(ItemTags.CLUSTER_MAX_HARVESTABLES))).alternatively(this.applyExplosionDecay(block, ItemEntry.builder(ModItems.CINNABAR).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0F)))))));
 
         // AMBER - Special
         this.addDrop(ModBlocks.AMBER_BRICK_SLAB, (Block block) -> this.slabDrops((Block)block));

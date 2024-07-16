@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "end": "mint:block/cinnabar_pillar",
+    "end": "mint:block/cinnabar_pillar_top",
     "side": "mint:block/cinnabar_pillar"
   }
 }
