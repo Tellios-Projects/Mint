@@ -5,20 +5,26 @@
 
 package net.leafenzo.mint.entity;
 
+import dev.architectury.registry.registries.DeferredRegister;
+import dev.architectury.registry.registries.Registrar;
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.fabricmc.fabric.impl.registry.sync.FabricRegistryInit;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.client.render.entity.ModBoatEntityRenderer;
+import net.leafenzo.mint.entity.renderer.BeetleRenderer;
 import net.minecraft.entity.*;
 import net.minecraft.entity.projectile.SpectralArrowEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
+import net.minecraft.registry.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
+
+import java.util.function.Supplier;
 
 public class ModEntityTypes {
     public static <T extends EntityType <?>> T registerEntityType(String id, T type) {
@@ -44,8 +50,11 @@ public class ModEntityTypes {
                     .dimensions(EntityDimensions.fixed(6.0F, 0.5F)).trackRangeBlocks(10)
                     .trackedUpdateRate(Integer.MAX_VALUE).fireImmune().build());
 
-
-
+    public static final EntityType<BeetleEntity> BEETLE = Registry.register(Registries.ENTITY_TYPE,
+            new Identifier(Super.MOD_ID, "beetle"),
+            FabricEntityTypeBuilder.<BeetleEntity>create(SpawnGroup.MISC, BeetleEntity::new)
+                    .dimensions(EntityDimensions.fixed(1.0F, 0.25F))
+                    .build());
 
     public static void registerEntityTypes() {
         ModInit.LOGGER.debug("Registering mod entity types for " + Super.MOD_ID);

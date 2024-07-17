@@ -45,6 +45,7 @@ repositories {
 	maven { url = "https://modmaven.dev" } // location of a maven mirror for JEI files, as a fallback
 	maven { url = "https://maven.architectury.dev" }
 	maven { url = "https://mvn.devos.one/snapshots/" } 	// Create, Porting Lib, Forge Tags, Milk Lib, Registrate
+	maven { url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' } // Geckolib
 
 	// Add repositories to retrieve artifacts from in here.
 	// You should only use this when depending on other mods because
@@ -66,6 +67,7 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 	modImplementation("net.fabricmc:fabric-language-kotlin:1.10.18+kotlin.1.9.22")
+	modImplementation("software.bernie.geckolib:geckolib-fabric-1.20.1:4.2.2")
 
 	include(modImplementation('com.github.Chocohead:Fabric-ASM:v2.3'))
 	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.2.2")))

@@ -133,6 +133,10 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
         generateTranslation(translationBuilder, ModBlocks.AMBER_BLOCK, "Block of Amber");
         generateTranslation(translationBuilder, ModBlocks.CINNABAR_BLOCK, "Block of Cinnabar");
 
+        generateTranslation(translationBuilder, "subtitles.entity.beetle.ambient", "Beetle Clicks");
+        generateTranslation(translationBuilder, "subtitles.entity.beetle.death", "Beetle Dies");
+        generateTranslation(translationBuilder, "subtitles.entity.beetle.hurt", "Beetle Hurts");
+
         generateWoodsetTranslations(translationBuilder);
 
         generateBannerTranslations(translationBuilder, ModBlocks.BANNER_BLOCKS); // Necessary (albeit hacky) so we don't get Wall Banner nonsense

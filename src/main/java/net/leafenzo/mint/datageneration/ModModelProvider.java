@@ -5,6 +5,7 @@ import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.*;
 import net.leafenzo.mint.block.custom.*;
 import net.leafenzo.mint.item.ModItems;
+import net.leafenzo.mint.registration.ModRegistryHelper;
 import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.state.property.ModProperties;
 import net.minecraft.block.Block;
@@ -19,6 +20,7 @@ import net.minecraft.state.property.Property;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import static net.leafenzo.mint.registration.ModRegistryHelper.*;
@@ -335,6 +337,9 @@ public class ModModelProvider extends FabricModelProvider {
 //            registerFlowerPotPlant(blockStateModelGenerator, block, ModBlocks.FLOWER_POT_FROM_BLOCK.get(block), BlockStateModelGenerator.TintType.NOT_TINTED);
 ////            blockStateModelGenerator.registerFlowerPotPlant(block, ModBlocks.FLOWER_POT_FROM_BLOCK.get(block), BlockStateModelGenerator.TintType.NOT_TINTED);
 //        }
+
+//  Spawn Eggs
+        Arrays.stream(ModRegistryHelper.ItemRegistry.SPAWN_EGG_ITEMS.toArray()).toList().forEach(item -> blockStateModelGenerator.registerParentedItemModel((Item)item, ModelIds.getMinecraftNamespacedItem("template_spawn_egg")));
 
 //  WOOL_BLOCKS     //  CARPET_BLOCKS
         for(Block wool : ModBlocks.WOOL_BLOCKS) {

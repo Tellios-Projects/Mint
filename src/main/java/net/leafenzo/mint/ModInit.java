@@ -7,7 +7,6 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.leafenzo.mint.block.DispenserBehavior;
 import net.leafenzo.mint.block.ModBlocks;
-import net.leafenzo.mint.block.TwigsBlocks;
 import net.leafenzo.mint.block.entity.ModBlockEntityType;
 import net.leafenzo.mint.effect.ModEffects;
 import net.leafenzo.mint.entity.ModEntityTypes;
@@ -32,6 +31,7 @@ import net.minecraft.util.Identifier;
 import org.lwjgl.system.windows.POINT;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import software.bernie.geckolib.GeckoLib;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -39,7 +39,6 @@ import java.util.Optional;
 public class ModInit implements ModInitializer {
         public static final String MOD_ID = Super.MOD_ID;
         public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
 
         private static void registerBuiltinResourcePack(ModContainer modContainer, String forModID) {
             if (FabricLoader.getInstance().isModLoaded(forModID)) {
@@ -68,10 +67,7 @@ public class ModInit implements ModInitializer {
                 registerBuiltinResourcePack(modContainer.get(), "sleep_tight");
             }
 
-
-
             ModBlocks.registerModBlocks();
-            if (FabricLoader.getInstance().getModContainer("twigs").isPresent()) {TwigsBlocks.registerBlocks();}
             ModItems.registerModItems();
             ModBlockEntityType.RegisterModBlockEntityTypes();
             ModEntityTypes.registerEntityTypes();
@@ -90,6 +86,7 @@ public class ModInit implements ModInitializer {
             ModWorldGen.registerWorldGen();
             ModFabricRegistries.modifyLootTables();
             ModItemGroups.registerModItemGroups();
+            GeckoLib.initialize();
 
 //            List<DyeColor> original = Arrays.stream(DyeColor.values()).toList();
 //            LOGGER.debug("BIG MEOW 1 : " + Arrays.toString(original.toArray()));
