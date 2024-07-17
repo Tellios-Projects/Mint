@@ -50,6 +50,10 @@ public class ModItemTagGenerator extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(ModTags.Items.COBBLESTONE)
                 .add(Blocks.COBBLESTONE.asItem())
         ;
+        getOrCreateTagBuilder(ModTags.Items.MUSHROOMS)
+                .add(Items.BROWN_MUSHROOM)
+                .add(Items.RED_MUSHROOM)
+        ;
 
     // Dyes
         for (DyeItem item : ItemRegistry.DYE_ITEM_TAG_FROM_DYE_ITEM.keySet()) {

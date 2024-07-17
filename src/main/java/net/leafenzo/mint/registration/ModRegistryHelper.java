@@ -10,6 +10,8 @@ import net.leafenzo.mint.Super;
 import net.leafenzo.mint.registry.tag.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -65,6 +67,7 @@ public class ModRegistryHelper {
         public static final ArrayList<Item> CHEST_BOAT_ITEMS = new ArrayList<Item>();
         public static final ArrayList<Item> SIGN_ITEMS = new ArrayList<Item>();
         public static final ArrayList<Item> HANGING_SIGN_ITEMS = new ArrayList<Item>();
+        public static final ArrayList<Item> SPAWN_EGG_ITEMS = new ArrayList<Item>();
 //    public static final ArrayList<Item> DYED_PAPER_ITEMS = new ArrayList<Item>();
 
         public static Item registerItem(Identifier id, Item item) {
@@ -77,6 +80,12 @@ public class ModRegistryHelper {
 
         public static Item registerItem(BlockItem item) {
             return Registry.register(Registries.ITEM, Registries.BLOCK.getId(item.getBlock()), (Item) item);
+        }
+
+        public static Item registerSpawnEgg(String name, EntityType<? extends MobEntity> type, int primaryColor, int secondaryColor, Item.Settings settings) {
+            Item i = new SpawnEggItem(type, primaryColor, secondaryColor, settings);
+            SPAWN_EGG_ITEMS.add(i);
+            return registerItem(name, i);
         }
 
         public static Item[] toItemArray(ArrayList<Item> input) {

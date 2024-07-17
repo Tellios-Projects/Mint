@@ -1,0 +1,31 @@
+{
+  "entity.beetle.ambient": {
+    "subtitle": "mint:subtitles.entity.beetle.ambient",
+    "sounds": [
+      "mint:mob/beetle/ambient1",
+      "mint:mob/beetle/ambient2"
+    ]
+  },
+  "entity.beetle.death": {
+    "subtitle": "mint:subtitles.entity.beetle.death",
+    "sounds": [
+      "mint:mob/beetle/death1"
+    ]
+  },
+  "entity.beetle.hurt": {
+    "subtitle": "mint:subtitles.entity.beetle.hurt",
+    "sounds": [
+      "mint:mob/beetle/hurt1",
+      "mint:mob/beetle/hurt2"
+    ]
+  },
+  "entity.beetle.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "mob/silverfish/step1",
+      "mob/silverfish/step2",
+      "mob/silverfish/step3",
+      "mob/silverfish/step4"
+    ]
+  }
+}

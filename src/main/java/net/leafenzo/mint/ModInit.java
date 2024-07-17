@@ -26,13 +26,13 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import software.bernie.geckolib.GeckoLib;
 
 import java.util.Optional;
 
 public class ModInit implements ModInitializer {
         public static final String MOD_ID = Super.MOD_ID;
         public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
 
         private static void registerBuiltinResourcePack(ModContainer modContainer, String forModID) {
             if (FabricLoader.getInstance().isModLoaded(forModID)) {
@@ -61,10 +61,7 @@ public class ModInit implements ModInitializer {
                 registerBuiltinResourcePack(modContainer.get(), "sleep_tight");
             }
 
-
-
             ModBlocks.registerModBlocks();
-            if (FabricLoader.getInstance().getModContainer("twigs").isPresent()) {TwigsBlocks.registerBlocks();}
             ModItems.registerModItems();
             ModBlockEntityType.RegisterModBlockEntityTypes();
             ModEntityTypes.registerEntityTypes();
@@ -84,6 +81,7 @@ public class ModInit implements ModInitializer {
             ModFabricRegistries.modifyLootTables();
             ModItemGroups.registerModItemGroups();
             ModFeatures.registerFeatures();
+            GeckoLib.initialize();
 
 //            List<DyeColor> original = Arrays.stream(DyeColor.values()).toList();
 //            LOGGER.debug("BIG MEOW 1 : " + Arrays.toString(original.toArray()));

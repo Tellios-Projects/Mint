@@ -599,6 +599,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.NAVY_BANNER);
                         entries.add(ModBlocks.NAVY_SHULKER_BOX);
                         entries.add(ModBlocks.NAVY_CANDLE);
+                        entries.add(ModItems.BEETLE_SPAWN_EGG);
 
                         entries.add(ModItems.SAP_DYE);
                         entries.add(ModBlocks.SAP_WOOL);

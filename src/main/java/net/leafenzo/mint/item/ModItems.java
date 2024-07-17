@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.entity.ModEntityTypes;
 import net.leafenzo.mint.item.custom.*;
 import net.leafenzo.mint.registry.tag.ModTags;
 import net.leafenzo.mint.util.ModDyeColor;
@@ -15,28 +16,23 @@ import net.minecraft.util.DyeColor;
 import static net.leafenzo.mint.registration.ModRegistryHelper.ItemRegistry.*;
 
 public class ModItems {
-    //<editor-fold desc ="MINT - Special">
+    //<editor-fold desc ="Custom Items - MINT">
     public static final Item MINT_SPRIG = registerItem("mint_sprig", new MintSprigItem(new FabricItemSettings()
             .food(new FoodComponent.Builder()
                     .alwaysEdible()
-                    //.hunger(0)
                     .saturationModifier(4.0f)
                     .build())));
-
     public static final Item MINT_COOKIE = registerItem("mint_cookie", new MintCookieItem(new FabricItemSettings()
             .food(new FoodComponent.Builder()
                     .alwaysEdible()
                     .hunger(4)
                     .saturationModifier(0.8f) //double that of a vanilla game cookie
                     .build())));
-
     public static final Item MINT_TEA = registerItem("mint_tea", new MintTeaItem(new FabricItemSettings().maxCount(1)
             .food(new FoodComponent.Builder()
                     .alwaysEdible()
-                    //.hunger(0)
                     .saturationModifier(4.0f)
                     .build())));
-
     public static final Item WINTERGREEN_SAP = registerItem("wintergreen_sap", new Item(new FabricItemSettings()));
     public static final Item WINTERGREEN_BERRIES = registerItem("wintergreen_berries", new MintSprigItem(new FabricItemSettings()
             .food(new FoodComponent.Builder()
@@ -44,11 +40,9 @@ public class ModItems {
                     .hunger(1)
                     .saturationModifier(0.3f)
                     .build())));
-
     public static final Item WINTER_MEDLEY = registerItem("winter_medley", new WinterMedleyItem(new FabricItemSettings()
             .food(new FoodComponent.Builder()
                     .alwaysEdible()
-//                    .hunger(0)
                     .saturationModifier(4.0f)
                     .build())));
     public static final Item WINTERGREEN_CANDY_CANE = registerItem("wintergreen_candy_cane", new CandyCaneItem(new FabricItemSettings()
@@ -61,9 +55,8 @@ public class ModItems {
                     .hunger(2)
                     .saturationModifier(0.0f)
                     .build())));
-
     //</editor-fold>
-    //<editor-fold desc ="PEACH - Special">
+    //<editor-fold desc ="Custom Items - PEACH">
     public static final Item PEACH_PIT = registerItem("peach_pit", new Item(new FabricItemSettings()));
     public static final Item PEACH = registerItem("peach", new Item(new FabricItemSettings()
             .recipeRemainder(PEACH_PIT)
@@ -83,7 +76,7 @@ public class ModItems {
                     .saturationModifier(1.2f) // golden apple
                     .statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 20, 5), 1.0f)
                     .statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 2400, 0), 1.0f)
-                    // consider, a "fast falling" effect that damages creatures near where you land
+                    // TODO consider a "fast falling" effect that damages creatures near where you land
             .build())));
     public static final Item PEACH_COBBLER = registerItem("peach_cobbler", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder()
@@ -116,11 +109,9 @@ public class ModItems {
                     .hunger(4)
                     .saturationModifier(0.4f)
                     .build())));
-    public static final Item PEACH_BRANCH = registerItem("peach_branch", new Item(new FabricItemSettings()));
-    //public static final Item PEACH_BRANCH = registerItem(new BlockItem(ModBlocks.PEACH_TREE, new FabricItemSettings()));
+    public static final Item PEACH_BRANCH = registerItem("peach_branch", new Item(new FabricItemSettings())); //Replaces: //@Obsolete public static final Item PEACH_BRANCH = registerItem(new BlockItem(ModBlocks.PEACH_TREE, new FabricItemSettings()));
     //</editor-fold>
-
-    //<editor-fold desc ="PERIWINKLE - Special">
+    //<editor-fold desc ="Custom Items - PERIWINKLE">
     public static final Item FLOWERING_MELON = registerItem("flowering_melon", new FloweringMelonItem(new FabricItemSettings()));
     public static final Item SMOKED_LAVENDER = registerItem("smoked_lavender", new Item(new FabricItemSettings()));
     public static final Item LAVENDER_BREAD = registerItem("lavender_bread", new Item(new FabricItemSettings().food(new FoodComponent.Builder()
@@ -130,8 +121,7 @@ public class ModItems {
     public static final Item LAVENDER_SOAP = registerItem("lavender_soap", new LavenderSoapItem(new FabricItemSettings().maxDamage(16)));
     public static final Item LAVENDER_OIL = registerItem("lavender_oil", new Item(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE)));
     //</editor-fold>
-
-    //<editor-fold desc ="ARTICHOKE - Special">
+    //<editor-fold desc ="Custom Items - ARTICHOKE">
     public static final Item WAXCAP_WAX = registerItem("waxcap_wax", new WaxcapWaxItem(ModBlocks.HANGING_WAXCAP_WAX, new FabricItemSettings()));
     public static final Item ARTICHOKE = registerItem("artichoke", new ArtichokeItem(ModBlocks.ARTICHOKE_CROP, new FabricItemSettings().food(new FoodComponent.Builder()
             .alwaysEdible()
@@ -150,7 +140,18 @@ public class ModItems {
             .hunger(11)
             .saturationModifier(0.8f)
             .build())));
-
+    //</editor-fold>
+    //<editor-fold desc ="Custom Items - FUCHSIA">
+    //</editor-fold>
+    //<editor-fold desc ="Custom Items - VERMILION">
+    //</editor-fold>
+    //<editor-fold desc ="Custom Items - SHAMROCK">
+    //</editor-fold>
+    //<editor-fold desc ="Custom Items - INDIGO">
+    //</editor-fold>
+    //<editor-fold desc ="Custom Items - BANANA">
+    //</editor-fold>
+    //<editor-fold desc ="Custom Items - CERULEAN">
     public static final Item COCHINEAL_BEETLE = registerItem("cochineal_beetle", new AliasedBlockItem(ModBlocks.COCHINEAL_BEETLES, new FabricItemSettings()));
     public static final Item CARMINIC_COCHINEAL_BEETLE = registerItem("carminic_cochineal_beetle", new Item(new FabricItemSettings()));
     public static final Item CACTUS_CHUNK = registerItem("cactus_chunk", new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(2).saturationModifier(0.1f).build())));
@@ -158,14 +159,30 @@ public class ModItems {
     public static final Item CINNABAR = registerItem("cinnabar", new Item(new FabricItemSettings()));
     public static final Item POWDERED_CINNABAR = registerItem("powdered_cinnabar", new Item(new FabricItemSettings()));
 //    public static final Item GAS_BOMB = registerItem("gas_bomb", new GasBombItem(new FabricItemSettings()));
-
-
+    public static final Item GAS_BOMB = registerItem("gas_bomb", new GasBombItem(new FabricItemSettings()));
+    //</editor-fold>
+    //<editor-fold desc ="Custom Items - ACORN">
+//    public static final Item WEEVIL_SPAWN_EGG = registerItem("weevil_spawn_egg",
+//            new SpawnEggItem(ModEntityTypes.WEEVIL.get(), 803406, 0x39d976,
+//                    new FabricItemSettings()));
+    //</editor-fold>
+    //<editor-fold desc ="Custom Items - MAUVE">
+    //</editor-fold>
+    //<editor-fold desc ="Custom Items - MAROON">
+    //</editor-fold>
+    //<editor-fold desc ="Custom Items - GRAPE">
+    //</editor-fold>
+    //<editor-fold desc ="Custom Items - NAVY">
+    public static final Item BEETLE_SPAWN_EGG = registerSpawnEgg("beetle_spawn_egg",
+            ModEntityTypes.BEETLE, 803406, 0x39d976, new FabricItemSettings());
+    //</editor-fold>
+    //<editor-fold desc ="Custom Items - SAP">
+    //</editor-fold>
+    //<editor-fold desc ="Custom Items - AMBER">
     public static final Item AMBER = registerItem("amber", new Item(new FabricItemSettings()));
     public static final Item EMBER = registerItem("ember", new AliasedBlockItem(ModBlocks.EMBER, new FabricItemSettings()));
     public static final Item EMBER_ARROW = registerItem("ember_arrow", new EmberArrowItem(new FabricItemSettings()));
-
     public static final Item SAVANNABUD_SEEDS = registerItem("savannabud_seeds", new AliasedBlockItem(ModBlocks.SHIMMERING_SAVANNABUDS_CROP, new FabricItemSettings()));
-
     public static final Item PINEAPPLE_CROWN = registerItem("pineapple_crown", new PineappleCrownItem(ModBlocks.PINEAPPLE_CROWN, new FabricItemSettings()));
     public static final Item PINEAPPLE = registerItem("pineapple", new AliasedBlockItem(ModBlocks.PINEAPPLE, new FabricItemSettings().recipeRemainder(PINEAPPLE_CROWN)));
     public static final Item PINEAPPLE_SLICES = registerItem("pineapple_slices", new Item(new FabricItemSettings()
@@ -185,8 +202,10 @@ public class ModItems {
                     .hunger(5)
                     .saturationModifier(0.5f)
                     .build())));
-
-
+    //</editor-fold>
+    //<editor-fold desc ="Custom Items - SAGE">
+    //</editor-fold>
+    //<editor-fold desc ="Custom Items - VELVET">
     public static final Item STRAWBERRY = registerItem("strawberry", new Item(new FabricItemSettings().food(new FoodComponent.Builder()
             .hunger(2)
             .saturationModifier(0.2f)
@@ -239,7 +258,9 @@ public class ModItems {
 
     public static final Item POKEBERRIES = registerItem("pokeberries", new AliasedBlockItem(ModBlocks.POKEWEED, new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(0.2f).snack().build())));
         //TODO make a new item class for this that when eaten poisons the player
-
+    //</editor-fold>
+    //<editor-fold desc ="Custom Items - MOLD">
+    //</editor-fold>
 
     //<editor-fold desc ="Decor Additions">
 //    static {
@@ -324,7 +345,7 @@ public class ModItems {
         public static final Item SAP_BED = registerItem(new BedItem(ModBlocks.SAP_BED, new FabricItemSettings().maxCount(1)));
         public static final Item SAP_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.SAP_SHULKER_BOX, new FabricItemSettings().maxCount(1)));
         public static final Item SAP_BANNER = registerItem(new BannerItem(ModBlocks.SAP_BANNER, ModBlocks.SAP_WALL_BANNER, new FabricItemSettings().maxCount(16)));
-        
+
         public static final Item AMBER_DYE = registerItem("amber_dye", createDyeItem(ModDyeColor.AMBER));
         public static final Item AMBER_BED = registerItem(new BedItem(ModBlocks.AMBER_BED, new FabricItemSettings().maxCount(1)));
         public static final Item AMBER_SHULKER_BOX = registerItem(new BlockItem(ModBlocks.AMBER_SHULKER_BOX, new FabricItemSettings().maxCount(1)));

@@ -1,4 +1,7 @@
 {
+  "subtitles.entity.beetle.ambient": "Beetle Clicks",
+  "subtitles.entity.beetle.death": "Beetle Dies",
+  "subtitles.entity.beetle.hurt": "Beetle Hurts",
   "block.minecraft.banner.base.acorn": "Acorn Fully Field",
   "block.minecraft.banner.base.amber": "Amber Fully Field",
   "block.minecraft.banner.base.artichoke": "Artichoke Fully Field",
