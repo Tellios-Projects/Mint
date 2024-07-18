@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "mint:block/cinnamon_brick_slab"
+    },
+    "type=double": {
+      "model": "mint:block/cinnamon_bricks"
+    },
+    "type=top": {
+      "model": "mint:block/cinnamon_brick_slab_top"
+    }
+  }
+}

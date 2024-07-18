@@ -63,6 +63,15 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
                 .add(ModBlocks.CORALSOIL_BRICK_STAIRS)
                 .add(ModBlocks.CORALSOIL_BRICK_WALL)
 
+                .add(ModBlocks.CINNABAR_BLOCK)
+                .add(ModBlocks.BUDDING_CINNABAR)
+                .add(ModBlocks.CINNABAR_PILLAR)
+                .add(ModBlocks.CINNAMON_BRICKS)
+                .add(ModBlocks.CINNAMON_BRICK_STAIRS)
+                .add(ModBlocks.CINNAMON_BRICK_SLAB)
+                .add(ModBlocks.CINNAMON_BRICK_WALL)
+                .add(ModBlocks.CRACKED_CINNAMON_BRICKS)
+
                 .add(ModBlocks.AMBER_BLOCK)
                 .add(ModBlocks.AMBER_BRICKS)
                 .add(ModBlocks.AMBER_BRICK_SLAB)

@@ -565,6 +565,11 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CINNABAR_CLUSTER);
                         entries.add(ModItems.CINNABAR);
                         entries.add(ModItems.POWDERED_CINNABAR);
+                        entries.add(ModBlocks.CINNAMON_BRICKS);
+                        entries.add(ModBlocks.CINNAMON_BRICK_STAIRS);
+                        entries.add(ModBlocks.CINNAMON_BRICK_SLAB);
+                        entries.add(ModBlocks.CINNAMON_BRICK_WALL);
+                        entries.add(ModBlocks.CRACKED_CINNAMON_BRICKS);
                         entries.add(ModItems.GAS_BOMB);
 
                         entries.add(ModItems.GRAPE_DYE);

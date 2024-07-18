@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "mint:block/cracked_cinnamon_bricks"
+  }
+}
