@@ -178,7 +178,32 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         BlockStatePropertyLootCondition.Builder artichokeCropBuilder = BlockStatePropertyLootCondition.builder(ModBlocks.ARTICHOKE_CROP).properties(StatePredicate.Builder.create().exactMatch(ArtichokeCropBlock.AGE, ArtichokeCropBlock.MAX_AGE));
         this.addDrop(ModBlocks.ARTICHOKE_CROP, this.applyExplosionDecay(ModBlocks.ARTICHOKE_CROP, LootTable.builder().pool(LootPool.builder().with(ItemEntry.builder(ModItems.ARTICHOKE))).pool(LootPool.builder().conditionally(artichokeCropBuilder).with((LootPoolEntry.Builder<?>)((Object)ItemEntry.builder(ModItems.ARTICHOKE).apply(ApplyBonusLootFunction.binomialWithBonusCount(Enchantments.FORTUNE, 0.5714286f, 3)))))));
 
-
+        this.addDrop(ModBlocks.MADDER_ROOTED_GRASS_BLOCK, LootTable.builder()
+                        .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(WITH_SILK_TOUCH)
+                                .with(this.applyExplosionDecay(ModBlocks.MADDER_ROOTED_GRASS_BLOCK, ItemEntry.builder(ModBlocks.MADDER_ROOTED_GRASS_BLOCK))))
+                        .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(WITHOUT_SILK_TOUCH)
+                                .with(this.applyExplosionDecay(ModBlocks.MADDER_ROOTED_GRASS_BLOCK, ItemEntry.builder(Blocks.DIRT))))
+                        .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(WITHOUT_SILK_TOUCH)
+                                .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0F)))
+                                .apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE))
+                                .with(this.applyExplosionDecay(ModBlocks.MADDER_ROOTED_GRASS_BLOCK, ItemEntry.builder(ModItems.MADDER_ROOT))))
+        );
+        this.addDrop(ModBlocks.MADDER_ROOTED_DIRT, LootTable.builder()
+                .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(WITH_SILK_TOUCH)
+                        .with(this.applyExplosionDecay(ModBlocks.MADDER_ROOTED_DIRT, ItemEntry.builder(ModBlocks.MADDER_ROOTED_DIRT))))
+                .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(WITHOUT_SILK_TOUCH)
+                        .with(this.applyExplosionDecay(ModBlocks.MADDER_ROOTED_DIRT, ItemEntry.builder(Blocks.DIRT))))
+                .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(WITHOUT_SILK_TOUCH)
+                        .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0F)))
+                        .apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE))
+                        .with(this.applyExplosionDecay(ModBlocks.MADDER_ROOTED_DIRT, ItemEntry.builder(ModItems.MADDER_ROOT))))
+        );
         this.addDropWithSilkTouch(ModBlocks.SMALL_CINNABAR_BUD);
         this.addDropWithSilkTouch(ModBlocks.MEDIUM_CINNABAR_BUD);
         this.addDropWithSilkTouch(ModBlocks.LARGE_CINNABAR_BUD);

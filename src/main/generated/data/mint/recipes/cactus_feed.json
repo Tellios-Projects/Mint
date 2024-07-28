@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:dirt"
+    },
+    "C": {
+      "item": "mint:cactus_chunk"
+    }
+  },
+  "pattern": [
+    " C ",
+    "C#C",
+    " C "
+  ],
+  "result": {
+    "item": "mint:cactus_feed"
+  },
+  "show_notification": true
+}

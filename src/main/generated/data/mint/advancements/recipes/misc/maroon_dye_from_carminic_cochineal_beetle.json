@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_carminic_cochineal_beetle": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mint:carminic_cochineal_beetle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:maroon_dye_from_carminic_cochineal_beetle"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_carminic_cochineal_beetle",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:maroon_dye_from_carminic_cochineal_beetle"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -613,16 +613,35 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         offerShapelessRecipe(exporter, ModItems.POWDERED_CINNABAR, ModItems.CINNABAR, "powdered_cinnabar", 2);
         offerShapelessRecipe(exporter, ModItems.MAROON_DYE, ModItems.POWDERED_CINNABAR, "maroon_dye", 1);
+        offerShapelessRecipe(exporter, ModItems.MAROON_DYE, ModItems.CARMINIC_COCHINEAL_BEETLE, "maroon_dye", 1);
 
+        offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MADDER_WOODSET.getLog(), ModItems.MADDER_ROOT);
+        offerWoodsetRecipes(exporter, ModBlocks.MADDER_WOODSET);
+        offerShapelessRecipe(exporter, ModItems.CACTUS_CHUNK, Items.CACTUS, "cactus_chunk", 4);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CINNABAR_PILLAR, 2)
+                .input('#', ModBlocks.CINNABAR_BLOCK)
+                .pattern("#")
+                .pattern("#")
+                .criterion(hasItem(ModBlocks.CINNABAR_BLOCK), conditionsFromItem(ModBlocks.CINNABAR_BLOCK))
+                .criterion(hasItem(ModBlocks.CINNABAR_PILLAR), conditionsFromItem(ModBlocks.CINNABAR_PILLAR))
+                .offerTo(exporter);
         ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CINNAMON_BRICKS)
-                .input(ModItems.POWDERED_CINNABAR, 2)
-                .input(Items.COBBLED_DEEPSLATE, 2)
+                .input(ModItems.POWDERED_CINNABAR)
+                .input(Items.COBBLED_DEEPSLATE)
                 .criterion(FabricRecipeProvider.hasItem(ModItems.POWDERED_CINNABAR), FabricRecipeProvider.conditionsFromItem(ModItems.POWDERED_CINNABAR))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.CINNAMON_BRICKS)));
         offerStairsRecipe(exporter, ModBlocks.CINNAMON_BRICK_STAIRS, ModBlocks.CINNAMON_BRICKS);
         offerSlabRecipe(exporter, ModBlocks.CINNAMON_BRICK_SLAB, ModBlocks.CINNAMON_BRICKS);
         offerWallRecipe(exporter, ModBlocks.CINNAMON_BRICK_WALL, ModBlocks.CINNAMON_BRICKS);
-
+        offerCrackingRecipe(exporter, ModBlocks.CRACKED_CINNAMON_BRICKS, ModBlocks.CINNAMON_BRICKS);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CACTUS_FEED)
+                .pattern(" C ")
+                .pattern("C#C")
+                .pattern(" C ")
+                .input('#', Blocks.DIRT)
+                .input('C', ModItems.CACTUS_CHUNK)
+                .criterion(hasItem(ModItems.CACTUS_CHUNK), conditionsFromItem(ModItems.CACTUS_CHUNK))
+                .offerTo(exporter);
         offerShapelessRecipe(exporter, ModItems.AMBER_DYE, ModItems.AMBER, "amber_dye", 2);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.EMBER, 2)

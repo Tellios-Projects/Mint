@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "mint:madder_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "mint:madder_planks"
+  }
+}

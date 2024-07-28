@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "maroon_dye",
+  "ingredients": [
+    {
+      "item": "mint:carminic_cochineal_beetle"
+    }
+  ],
+  "result": {
+    "item": "mint:maroon_dye"
+  }
+}

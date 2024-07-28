@@ -65,6 +65,10 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
 
                 .add(ModBlocks.CINNABAR_BLOCK)
                 .add(ModBlocks.BUDDING_CINNABAR)
+                .add(ModBlocks.SMALL_CINNABAR_BUD)
+                .add(ModBlocks.MEDIUM_CINNABAR_BUD)
+                .add(ModBlocks.LARGE_CINNABAR_BUD)
+                .add(ModBlocks.CINNABAR_CLUSTER)
                 .add(ModBlocks.CINNABAR_PILLAR)
                 .add(ModBlocks.CINNAMON_BRICKS)
                 .add(ModBlocks.CINNAMON_BRICK_STAIRS)
@@ -83,7 +87,8 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(ModBlocks.LAVENDER_CLAY)
                 .add(ModBlocks.CORALSOIL)
-
+                .add(ModBlocks.MADDER_ROOTED_GRASS_BLOCK)
+                .add(ModBlocks.MADDER_ROOTED_DIRT)
                 .add(ModBlocks.WAXCAP_WAX_BLOCK)
         ;
 
@@ -98,7 +103,7 @@ public class ModBlockTagGenerator extends FabricTagProvider<Block> {
 
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
                 .add(ModBlocks.LAVENDER_BUSHEL)
-
+                .add(ModBlocks.CACTUS_FEED)
                 .add(ModBlocks.WAXCAP_GILL_SLAB)
                 .add(ModBlocks.WAXCAP_GILLS)
         ;
