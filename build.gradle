@@ -11,6 +11,7 @@ targetCompatibility = JavaVersion.VERSION_17
 archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
+//dependencies = project.getDependencies()
 
 repositories {
 	mavenCentral()
@@ -54,14 +55,59 @@ repositories {
 	// for more information about repositories.
 }
 
-//configurations.configureEach {
-//	resolutionStrategy {
-//		force("net.fabricmc:fabric-loader:${loader_version}")
-//	}
-//}
+def setup(DependencyHandler deps) {
+	deps.minecraft("com.mojang:minecraft:${project.minecraft_version}")
+	deps.modImplementation("net.fabricmc:fabric-loader:${project.loader_version}")
+	deps.mappings("net.fabricmc:yarn:${project.yarn_mappings}:v2")
+}
+
+def dependencies(DependencyHandler deps) {
+	deps.modImplementation("net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}")
+	deps.modImplementation("net.fabricmc:fabric-language-kotlin:1.10.18+kotlin.1.9.22")
+	deps.implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}")
+}
+
+def devEnv(DependencyHandler deps) {
+	deps.modRuntimeOnly("com.terraformersmc:modmenu:$modmenu_version")
+	deps.modImplementation(files("libraries/jei/jei-1.20.1-fabric-15.3.0.4.jar")) //From: https://maven.blamejared.com/mezz/jei/
+	// /* doesn't work for some reason */ modImplementation("maven.modrinth:cloth-config:$clothconfig_version")
+}
+
+def compat(DependencyHandler deps) {
+	// Datagen counts as a runtime, it's safe to run datagen as long as any mods used in compat are compile only
+	
+	// REI
+	deps.modCompileOnly("me.shedaniel:RoughlyEnoughItems-api-fabric:$rei_version")
+	deps.modCompileOnly("me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:$rei_version")
+	
+	//BetterEnd
+	deps.modCompileOnly("maven.modrinth:gc8OEnCC:${betterend_version}")
+	deps.modCompileOnly("com.github.quiqueck:BCLib:${bclib_version}")
+	deps.modCompileOnly("com.github.quiqueck:WunderLib:${wunderlib_version}")
+
+	// Botania  	// this doesn't run here with modImpl but it does run in prod. So I'm chill with it.
+	modCompileOnly("deps.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}") // TODO test removing these libraries to see if our botania mixin still works
+	modCompileOnly("deps.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}")
+	modCompileOnly("maven.modrinth:trinkets:${trinkets_version}")
+	modCompileOnly("me.zeroeightsix:fiber:${fiber_version}")
+	modCompileOnly("com.github.emilyploszaj:step-height-entity-attribute:${step_height_version}")
+	modCompileOnly("maven.modrinth:patchouli:${patchouli_version}")
+	modCompileOnly("maven.modrinth:botania:${botania_version}")
+
+	// Create - dependencies are added transitively
+	deps.modCompileOnly("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
+}
 
 dependencies {
+	setup(dependencies)
+	devEnv(dependencies)
+		include(modImplementation('com.github.Chocohead:Fabric-ASM:v2.3'))
+		include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.2.2")))
+	compat(dependencies)
+	dependencies(dependencies)
+
 //	classpath "gradle.plugin.com.github.viswaramamoorthy:gradle-util-plugins:0.1.0-RELEASE"
+<<<<<<< Updated upstream
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
@@ -87,13 +133,14 @@ dependencies {
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:$rei_version"
 
 // Datagen counts as runtime, it's safe to run datagen as long as our compat mods are modCompileOnly.
+=======
+>>>>>>> Stashed changes
 
 	// Supplementaries
 //	modRuntimeOnly("maven.modrinth:moonlight:${moonlight_version}")
 //	modRuntimeOnly("maven.modrinth:supplementaries:${supplementaries_version}")
 //	modRuntimeOnly("maven.modrinth:dCCkNFwE:${supplementaries_squared_version_id}")
 //	modRuntimeOnly("maven.modrinth:amendments:${amendments_version}")
-
 
 	// Comforts
 //	modRuntimeOnly "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}"
@@ -107,29 +154,11 @@ dependencies {
 //	modRuntimeOnly("maven.modrinth:uy4Cnpcm:${bookshelf_version_id}")
 //	modRuntimeOnly("maven.modrinth:U6BUTZ7K:${botanypots_version_id}")
 
-	//BetterEnd
-	modCompileOnly("maven.modrinth:gc8OEnCC:${betterend_version}")
-	modCompileOnly("com.github.quiqueck:BCLib:${bclib_version}")
-	modCompileOnly("com.github.quiqueck:WunderLib:${wunderlib_version}")
-
 	// Twigs
 //	modRuntimeOnly("maven.modrinth:twigs:${twigs_version}")
 
 	// Dye Depot
 //	modRuntimeOnly("maven.modrinth:dye-depot:ldJ6vsnR")
-
-	// Botania  	// this doesn't run here with modImpl but it does run in prod. So I'm chill with it.
-	modCompileOnly("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}")
-	modCompileOnly("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}")
-	modCompileOnly("maven.modrinth:trinkets:${trinkets_version}")
-	modCompileOnly("me.zeroeightsix:fiber:${fiber_version}")
-	modCompileOnly("com.github.emilyploszaj:step-height-entity-attribute:${step_height_version}")
-	modCompileOnly("maven.modrinth:patchouli:${patchouli_version}")
-	modCompileOnly("maven.modrinth:botania:${botania_version}")
-
-	// Create - dependencies are added transitively
-	modCompileOnly("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
-//	modLocalRuntime("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
 
 	// Create Deco
 //	modLocalRuntime("maven.modrinth:create-deco:${createdeco_version}")
@@ -143,8 +172,6 @@ dependencies {
 //	modRuntimeOnly("maven.modrinth:moonlight:${moonlight_version}")
 //	modRuntimeOnly("maven.modrinth:sleep-tight:${sleeptight_version}")
 
-	// Another Furniture
-
 	// Snowy Spirit
 //	modRuntimeOnly("maven.modrinth:UiFDlI7w:VItD3Q0A")
 
@@ -155,12 +182,7 @@ dependencies {
 	// implementation 'com.opencsv:opencsv:5.7.1'  //Library Unused
 	//include('com.opencsv:opencsv:5.7.1')
 	//
-
-	// Uncomment the following line to enable the deprecated Fabric API modules.
-	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
-	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 }
-
 
 kotlin {
 	jvmToolchain {
