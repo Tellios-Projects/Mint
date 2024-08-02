@@ -45,6 +45,7 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> COCHINEAL_CACTUS_PLACED = registerKey("cochineal_cactus_placed");
     public static final RegistryKey<PlacedFeature> COCHINEAL_CACTUS_DESERT_PLACED = registerKey("cochineal_cactus_desert_placed");
     public static final RegistryKey<PlacedFeature> MADDER_PLACED = registerKey("madder_placed");
+    public static final RegistryKey<PlacedFeature> CINNABAR_PLACED = registerKey("cinnabar_ore_placed");
     public static final RegistryKey<PlacedFeature> PATCH_PINEAPPLE_PLACED = registerKey("patch_pineapple_placed");
     public static final RegistryKey<PlacedFeature> PATCH_STRAWBERRY_PLACED = registerKey("patch_strawberry_placed");
     public static final RegistryKey<PlacedFeature> PATCH_CORDYLINE_PLACED = registerKey("patch_cordyline_placed");
@@ -251,6 +252,10 @@ public class ModPlacedFeatures {
                 .add(ModificationPhase.ADDITIONS,
                         BiomeSelectors.includeByKey(BiomeKeys.DESERT),
                         context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, COCHINEAL_CACTUS_DESERT_PLACED); }
+                )
+                .add(ModificationPhase.ADDITIONS,
+                        context -> context.hasTag(BiomeTags.IS_OVERWORLD),
+                        context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.RAW_GENERATION, CINNABAR_PLACED); }
                 )
                 .add(ModificationPhase.ADDITIONS,
                         context -> context.getBiome().getTemperature() > .3f && context.getBiome().getTemperature() < 0.9f && context.hasTag(BiomeTags.IS_OVERWORLD),

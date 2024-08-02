@@ -204,6 +204,8 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
                         .apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE))
                         .with(this.applyExplosionDecay(ModBlocks.MADDER_ROOTED_DIRT, ItemEntry.builder(ModItems.MADDER_ROOT))))
         );
+
+        usedBlocks.add(ModBlocks.BUDDING_CINNABAR);
         this.addDropWithSilkTouch(ModBlocks.SMALL_CINNABAR_BUD);
         this.addDropWithSilkTouch(ModBlocks.MEDIUM_CINNABAR_BUD);
         this.addDropWithSilkTouch(ModBlocks.LARGE_CINNABAR_BUD);

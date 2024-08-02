@@ -441,7 +441,7 @@ public class ModBlocks {
     static { RENDER_LAYER_CUTOUT.add(MADDER_ROOTED_GRASS_BLOCK); }
     static { HAS_GRASS_COLOR_PROVIDER.add(MADDER_ROOTED_GRASS_BLOCK); }
 
-    public static final Block CINNABAR_BLOCK = registerBlock("cinnabar_block", new Block(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.TUFF).mapColor(MapColor.RED)));
+    public static final Block CINNABAR_BLOCK = registerBlock("cinnabar_block", new Block(FabricBlockSettings.copyOf(Blocks.STONE).strength(3.5f).sounds(BlockSoundGroup.TUFF).mapColor(MapColor.RED)));
     public static final Block BUDDING_CINNABAR = registerBlock("budding_cinnabar", new BuddingCinnabarBlock(FabricBlockSettings.copyOf(CINNABAR_BLOCK).ticksRandomly()));
     public static final Block CINNABAR_PILLAR = registerBlock("cinnabar_pillar", new PillarBlock(FabricBlockSettings.copyOf(CINNABAR_BLOCK)));
     public static final Block SMALL_CINNABAR_BUD = registerBlock("small_cinnabar_bud", new CinnabarClusterBlock(3, 4, FabricBlockSettings.copyOf(CINNABAR_BLOCK)));
