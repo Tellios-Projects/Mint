@@ -29,8 +29,8 @@ public class ModEntityRenderers {
             registerBoatModel(false, boat);
         }
         EntityRendererRegistry.register(ModEntityTypes.EMBER_ARROW, EmberArrowEntityRenderer::new);
-        EntityRendererRegistry.register(ModEntityTypes.GAS_BOMB_PROJECTILE, FlyingItemEntityRenderer::new);
-        EntityRendererRegistry.register(ModEntityTypes.CINNABAR_CLOUD, EmptyEntityRenderer::new);
+//        EntityRendererRegistry.register(ModEntityTypes.GAS_BOMB_PROJECTILE, FlyingItemEntityRenderer::new);
+//        EntityRendererRegistry.register(ModEntityTypes.CINNABAR_CLOUD, EmptyEntityRenderer::new);
     }
 
     private static void registerBoatModel(boolean chest, ModBoatEntity.ModBoat boat) {

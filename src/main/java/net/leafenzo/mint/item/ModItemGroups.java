@@ -570,7 +570,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.CINNAMON_BRICK_SLAB);
                         entries.add(ModBlocks.CINNAMON_BRICK_WALL);
                         entries.add(ModBlocks.CRACKED_CINNAMON_BRICKS);
-                        entries.add(ModItems.GAS_BOMB);
+//                        entries.add(ModItems.GAS_BOMB);
 
                         entries.add(ModItems.GRAPE_DYE);
                         entries.add(ModBlocks.GRAPE_WOOL);
