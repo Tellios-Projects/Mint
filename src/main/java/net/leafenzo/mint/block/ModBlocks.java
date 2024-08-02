@@ -437,7 +437,7 @@ public class ModBlocks {
     static { RENDER_LAYER_CUTOUT.add(COCHINEAL_BEETLES); }
     public static final Block CACTUS_FEED = registerBlock("cactus_feed", new Block(FabricBlockSettings.create().sounds(BlockSoundGroup.ROOTED_DIRT).hardness(0.5f).mapColor(MapColor.GREEN)));
     public static final Block MADDER_ROOTED_DIRT = registerBlock("madder_rooted_dirt", new Block(FabricBlockSettings.copyOf(Blocks.ROOTED_DIRT)));
-    public static final Block MADDER_ROOTED_GRASS_BLOCK = registerBlock("madder_rooted_grass_block", new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
+    public static final Block MADDER_ROOTED_GRASS_BLOCK = registerBlock("madder_rooted_grass_block", new MadderRootedGrassBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
     static { RENDER_LAYER_CUTOUT.add(MADDER_ROOTED_GRASS_BLOCK); }
     static { HAS_GRASS_COLOR_PROVIDER.add(MADDER_ROOTED_GRASS_BLOCK); }
 

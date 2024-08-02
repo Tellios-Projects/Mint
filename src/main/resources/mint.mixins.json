@@ -9,6 +9,7 @@
     "BoatEntityMixin",
     "DyeColorMixin",
     "EntityMixin",
+    "GrassBlockMixin",
     "LlamaDecorFeatureRendererMixin",
     "PassiveEntityMixin",
     "PlayerEntityMixin",

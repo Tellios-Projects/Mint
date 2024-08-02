@@ -54,7 +54,7 @@ public class StrawberryPlantBlock extends FlowerbedBlock implements Fertilizable
 
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (random.nextFloat() < 0.25 && world.getBaseLightLevel(pos, 0) >= 9 && canAgeNaturally(state, world, pos)) {
+        if (random.nextFloat() < 0.25 && world.getBaseLightLevel(pos, 0) >= 9 && canAgeNaturally(world, pos)) {
             boolean isOnFarmland = world.getBlockState(pos.down()).getBlock() instanceof FarmlandBlock;
             if (!isFullyGrown(state)) {
                 world.setBlockState(pos, state.cycle(AGE), Block.NOTIFY_LISTENERS);
@@ -72,7 +72,7 @@ public class StrawberryPlantBlock extends FlowerbedBlock implements Fertilizable
         return world.getBlockState(pos.down()).isOpaque() && !world.getBlockState(pos.down()).isOf(Blocks.DIRT); // Just so that it breaks if farmland is trampled underneath it
     }
 
-    public boolean canAgeNaturally(BlockState state, WorldView world, BlockPos pos) {
+    public boolean canAgeNaturally(WorldView world, BlockPos pos) {
         return world.getBlockState(pos.down()).getBlock() instanceof FarmlandBlock || world.getBlockState(pos.down()).isIn(BlockTags.DIRT); // This check is here instead of canPlaceAt just so you can still use it as decoration on cobblestone and stuff :3
     }
 
