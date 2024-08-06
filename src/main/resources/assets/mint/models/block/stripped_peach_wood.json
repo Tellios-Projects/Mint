@@ -1,6 +1,0 @@
-{
-	"parent": "mint:block/template_fruit_wood",
-	"textures": {
-		"all": "mint:block/stripped_peach_log"
-	}
-}

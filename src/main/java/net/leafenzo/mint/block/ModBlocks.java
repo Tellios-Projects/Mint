@@ -182,15 +182,15 @@ public class ModBlocks {
     static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_LEAVES); LEAVES.add(PEACH_LEAVES);  }
     public static final Block FLOWERING_PEACH_LEAVES = registerBlock("flowering_peach_leaves", new FruitLeavesBlock(ModBlocks.HANGING_PEACH, FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
     static { RENDER_LAYER_CUTOUT_MIPPED.add(FLOWERING_PEACH_LEAVES); LEAVES.add(FLOWERING_PEACH_LEAVES); }
-    public static final Block PEACH_LOG = registerBlock("peach_log", new FruitLogBlock(ModBlocks.PEACH_LEAVES, ModBlocks.FLOWERING_PEACH_LEAVES, FabricBlockSettings.create().instrument(Instrument.BASS).strength(2.0f).sounds(BlockSoundGroup.WOOD).burnable().mapColor(MapColor.STONE_GRAY))/*, ModItemGroups.PEACH*/);
+    public static final Block PEACH_LOG = registerBlock("peach_log", new FruitLogBlock(FabricBlockSettings.create().instrument(Instrument.BASS).strength(2.0f).sounds(BlockSoundGroup.WOOD).burnable().mapColor(MapColor.STONE_GRAY))/*, ModItemGroups.PEACH*/);
     static { LOGS_THAT_BURN.add(PEACH_LOG); }
     static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_LOG); }
-    public static final Block PEACH_WOOD = registerBlock("peach_wood", new FruitLogBlock(ModBlocks.PEACH_LEAVES, ModBlocks.FLOWERING_PEACH_LEAVES, FabricBlockSettings.copyOf(ModBlocks.PEACH_LOG)));
+    public static final Block PEACH_WOOD = registerBlock("peach_wood", new FruitLogBlock(FabricBlockSettings.copyOf(ModBlocks.PEACH_LOG)));
     static { LOGS_THAT_BURN.add(PEACH_WOOD); }
     static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_WOOD); }
-    public static final Block STRIPPED_PEACH_LOG = registerBlock("stripped_peach_log", new StrippedFruitLogBlock(ModBlocks.PEACH_LEAVES, ModBlocks.FLOWERING_PEACH_LEAVES, FabricBlockSettings.create().instrument(Instrument.BASS).strength(2.0f).sounds(BlockSoundGroup.WOOD).burnable().mapColor(MapColor.TERRACOTTA_WHITE))/*, ModItemGroups.PEACH*/);
+    public static final Block STRIPPED_PEACH_LOG = registerBlock("stripped_peach_log", new StrippedFruitLogBlock(FabricBlockSettings.create().instrument(Instrument.BASS).strength(2.0f).sounds(BlockSoundGroup.WOOD).burnable().mapColor(MapColor.TERRACOTTA_WHITE))/*, ModItemGroups.PEACH*/);
     static { LOGS_THAT_BURN.add(STRIPPED_PEACH_LOG); }
-    public static final Block STRIPPED_PEACH_WOOD = registerBlock("stripped_peach_wood", new StrippedFruitLogBlock(ModBlocks.PEACH_LEAVES, ModBlocks.FLOWERING_PEACH_LEAVES, FabricBlockSettings.copyOf(ModBlocks.STRIPPED_PEACH_LOG)));
+    public static final Block STRIPPED_PEACH_WOOD = registerBlock("stripped_peach_wood", new StrippedFruitLogBlock(FabricBlockSettings.copyOf(ModBlocks.STRIPPED_PEACH_LOG)));
     static { LOGS_THAT_BURN.add(STRIPPED_PEACH_WOOD); }
     public static final Block CORAL_ANEMONE = registerBlock("coral_anemone", new CoralAnemoneBlock(ModConfiguredFeatures.PATCH_BONEMEAL_CORAL_ANEMONE, FabricBlockSettings.create().breakInstantly().sounds(BlockSoundGroup.SLIME).mapColor(MapColor.RAW_IRON_PINK).nonOpaque().pistonBehavior(PistonBehavior.DESTROY).luminance(createLightLevelFromBooleanProperty(6, Properties.WATERLOGGED)))/*, ModItemGroups.PEACH*/);
         static { RENDER_LAYER_CUTOUT_MIPPED.add(CORAL_ANEMONE); }

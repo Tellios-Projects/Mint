@@ -1,3 +1,6 @@
 {
-  "parent": "mint:block/stripped_peach_log"
+	"parent": "mint:item/template_fruit_log",
+	"textures": {
+		"texture": "mint:block/stripped_peach_log"
+	}
 }

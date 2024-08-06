@@ -1,5 +1,5 @@
 {
-	"parent": "mint:item/template_fruit_wood",
+	"parent": "mint:block/template_fruit_log_otherside",
 	"textures": {
 		"texture": "mint:block/peach_log"
 	}
