@@ -28,8 +28,6 @@
     "compat.jei.ShulkerBoxColoringRecipeMakerMixin"
   ],
   "client": [
-    "client.BlockDustParticleMixin",
-    "client.ParticleColorAccessor",
     "client.TexturedRenderLayersMixin"
   ],
   "injectors": {
