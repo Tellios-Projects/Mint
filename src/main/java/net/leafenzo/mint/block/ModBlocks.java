@@ -461,7 +461,7 @@ public class ModBlocks {
     public static final Block CINNAMON_BRICK_SLAB = registerBlock("cinnamon_brick_slab", createSlabBlock(FabricBlockSettings.copyOf(CINNAMON_BRICKS)));
     public static final Block CINNAMON_BRICK_WALL = registerBlock("cinnamon_brick_wall", createWallBlock(FabricBlockSettings.copyOf(CINNAMON_BRICKS)));
     public static final Block CRACKED_CINNAMON_BRICKS = registerBlock("cracked_cinnamon_bricks", new Block(FabricBlockSettings.copyOf(CINNAMON_BRICKS)));
-    public static final Block MADDER = registerBlock("madder", new PlantBlock(FabricBlockSettings.copyOf(Blocks.POPPY)));
+    public static final Block MADDER = registerBlock("madder", new MadderBlock(FabricBlockSettings.copyOf(Blocks.POPPY)));
     static { RENDER_LAYER_CUTOUT.add(MADDER); }
     public static WoodSet MADDER_WOODSET = new WoodSet(
             new Identifier(Super.MOD_ID, "madder"),

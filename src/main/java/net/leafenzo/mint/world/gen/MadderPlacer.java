@@ -66,18 +66,6 @@ public class MadderPlacer extends TrunkPlacer {
                 }
             }
         }
-//        for (int i = -rootRadius - 1; i < rootRadius - 2; i++) {
-//            for (int j = -rootRadius - 1; i < rootRadius - 2; i++) {
-//                tryPlaceMadderRoot(world, startPos.down().add(i, 0, j), replacer);
-//            }
-//        }
-//        for (int i = 0; i < 11; i++) {
-//            for (int j = 0; j < 11; j++) {
-//                if (world.getBlockState(blockPos.add(i - 5, -k, j - 5)).getFluidState().isOf(Fluids.WATER)) {
-//                    return true;
-//                }
-//            }
-//        }
         return ImmutableList.of();
     }
 
