@@ -406,6 +406,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input(Items.GOLDEN_APPLE)
                 .input(Items.GLISTERING_MELON_SLICE)
                 .input(ModItems.GOLDEN_PEACH)
+                .input(ModItems.GOLDEN_STRAWBERRY)
                 .input(Items.BOWL)
                 .criterion(FabricRecipeProvider.hasItem(Items.GOLDEN_APPLE), FabricRecipeProvider.conditionsFromItem(Items.GOLDEN_APPLE))
                 .criterion(FabricRecipeProvider.hasItem(Items.GLISTERING_MELON_SLICE), FabricRecipeProvider.conditionsFromItem(Items.GLISTERING_MELON_SLICE))
@@ -595,7 +596,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ModItems.ARTICHOKE_HEART, ModItems.ARTICHOKE, groupName(ModItems.ARTICHOKE_HEART), 1);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.ARTICHOKE_LAMB)
-                .input(ModItems.ARTICHOKE_HEART)
+                .input(ModItems.ARTICHOKE_HEART, 4)
                 .input(Items.SWEET_BERRIES)
                 .input(Items.COOKED_MUTTON)
                 .criterion(FabricRecipeProvider.hasItem(ModItems.ARTICHOKE_HEART), FabricRecipeProvider.conditionsFromItem(ModItems.ARTICHOKE_HEART))
@@ -603,7 +604,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.ARTICHOKE_LAMB)));
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BREAKFAST_PORKCHOP)
-                .input(ModItems.ARTICHOKE_HEART)
+                .input(ModItems.ARTICHOKE_HEART, 4)
                 .input(Items.COOKED_PORKCHOP)
                 .input(Items.EGG)
                 .criterion(FabricRecipeProvider.hasItem(ModItems.ARTICHOKE_HEART), FabricRecipeProvider.conditionsFromItem(ModItems.ARTICHOKE_HEART))
@@ -625,6 +626,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModBlocks.CINNABAR_BLOCK), conditionsFromItem(ModBlocks.CINNABAR_BLOCK))
                 .criterion(hasItem(ModBlocks.CINNABAR_PILLAR), conditionsFromItem(ModBlocks.CINNABAR_PILLAR))
                 .offerTo(exporter);
+        offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CINNABAR_BLOCK, ModItems.CINNABAR);
         ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CINNAMON_BRICKS)
                 .input(ModItems.POWDERED_CINNABAR)
                 .input(Items.COBBLED_DEEPSLATE)

@@ -176,8 +176,8 @@ public class ModItems {
 
     public static final Item PINEAPPLE_KEBAB = registerItem("pineapple_kebab", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder()
-                    .hunger(8)
-                    .saturationModifier(0.5f)
+                    .hunger(9)
+                    .saturationModifier(0.9f)
                     .build())));
 
     public static final Item PINEAPPLE_TART = registerItem("pineapple_tart", new Item(new FabricItemSettings()
