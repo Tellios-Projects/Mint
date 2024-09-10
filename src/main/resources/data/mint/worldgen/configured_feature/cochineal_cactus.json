@@ -1,42 +1,6 @@
 {
-  "type": "minecraft:tree",
+  "type": "minecraft:cochineal_beetle_cactus",
   "config": {
-    "decorators": [],
-    "dirt_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "minecraft:dirt"
-      }
-    },
-    "foliage_placer": {
-      "type": "minecraft:blob_foliage_placer",
-      "height": 0,
-      "offset": 0,
-      "radius": 0
-    },
-    "foliage_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "minecraft:air"
-      }
-    },
-    "force_dirt": false,
-    "ignore_vines": true,
-    "minimum_size": {
-      "type": "minecraft:two_layers_feature_size",
-      "limit": 0,
-      "lower_size": 0,
-      "upper_size": 0
-    },
-    "trunk_placer": {
-      "type": "mint:cochineal_cactus_placer",
-      "beetle_chance": 5
-    },
-    "trunk_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "minecraft:cactus"
-      }
-    }
+    "beetle_chance": 5
   }
 }

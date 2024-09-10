@@ -17,23 +17,16 @@ import net.leafenzo.mint.particle.ModParticleTypes;
 import net.leafenzo.mint.potions.ModPotions;
 import net.leafenzo.mint.recipe.ModRecipeSerializer;
 import net.leafenzo.mint.recipe.ingredient.ModIngredientSerializers;
-import net.leafenzo.mint.recipe.ingredient.PotionIngredient;
 import net.leafenzo.mint.registries.ModFabricRegistries;
 import net.leafenzo.mint.registries.ModVillagerTrades;
 import net.leafenzo.mint.util.ModWorldGen;
 //import net.leafenzo.mint.world.ModWorldGenModifications;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.Potions;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.Registries;
-import net.minecraft.text.MutableText;
+import net.leafenzo.mint.world.gen.ModFeatures;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import org.lwjgl.system.windows.POINT;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 public class ModInit implements ModInitializer {
@@ -90,6 +83,7 @@ public class ModInit implements ModInitializer {
             ModWorldGen.registerWorldGen();
             ModFabricRegistries.modifyLootTables();
             ModItemGroups.registerModItemGroups();
+            ModFeatures.registerFeatures();
 
 //            List<DyeColor> original = Arrays.stream(DyeColor.values()).toList();
 //            LOGGER.debug("BIG MEOW 1 : " + Arrays.toString(original.toArray()));

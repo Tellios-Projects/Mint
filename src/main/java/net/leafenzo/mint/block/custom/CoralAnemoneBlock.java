@@ -36,7 +36,7 @@ public class CoralAnemoneBlock extends PlantBlock
     public CoralAnemoneBlock(RegistryKey<ConfiguredFeature<?, ?>> featureKey, Settings settings) {
         super(settings);
         this.featureKey = featureKey;
-        this.setDefaultState(((BlockState)this.stateManager.getDefaultState()).with(WATERLOGGED, true));
+        this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, true));
     }
 
     @Override

@@ -25,9 +25,6 @@ public class ModWorldGen {
     public static final TrunkPlacerType<WintergreenTrunkPlacer> WINTERGREEN_TRUNK_PLACER = registerTrunkPlacer("wintergreen_trunk_placer", WintergreenTrunkPlacer.CODEC);
     public static final FoliagePlacerType<WintergreenFoliagePlacer> WINTERGREEN_FOLIAGE_PLACER = registerFoliagePlacer("wintergreen_foliage_placer", WintergreenFoliagePlacer.CODEC);
 
-    public static final TrunkPlacerType<CochinealBeetleCactusPlacer> COCHINEAL_CACTUS_PLACER = registerTrunkPlacer("cochineal_cactus_placer", CochinealBeetleCactusPlacer.CODEC);
-    public static final TrunkPlacerType<MadderPlacer> MADDER_PLACER = registerTrunkPlacer("madder_placer", MadderPlacer.CODEC);
-
     private static <P extends FoliagePlacer> FoliagePlacerType<P> registerFoliagePlacer(String id, Codec<P> codec) {
         return (FoliagePlacerType) Registry.register(Registries.FOLIAGE_PLACER_TYPE, new Identifier(Super.MOD_ID, id), new FoliagePlacerType(codec));
     }
