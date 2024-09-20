@@ -1,5 +1,6 @@
 package net.leafenzo.mint.block.custom;
 
+import net.leafenzo.mint.ModInit;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.fluid.FluidState;
@@ -8,6 +9,7 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -26,7 +28,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 
 public class CoralAnemoneBlock extends PlantBlock
-//        implements Fertilizable
+        implements Fertilizable
 {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     protected static final VoxelShape COLLISION_SHAPE = Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 3.0, 11.0);
@@ -89,22 +91,30 @@ public class CoralAnemoneBlock extends PlantBlock
         return super.getFluidState(state);
     }
 
-//    @Override
-//    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
-//        return state.get(WATERLOGGED);
-//    }
-//    @Override
-//    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
-//        return state.get(WATERLOGGED);
-//    }
-//    @Override
-//    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
+    @Override
+    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
+        return state.get(WATERLOGGED);
+    }
+    @Override
+    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
+        return state.get(WATERLOGGED);
+    }
+    @Override
+    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
 //        Optional<RegistryEntry.Reference<ConfiguredFeature<?, ?>>> optional = world.getRegistryManager().get(RegistryKeys.CONFIGURED_FEATURE).getEntry(this.featureKey);
 //        if (optional.isEmpty()) { return; }
-//        //world.removeBlock(pos, false);
+//        world.removeBlock(pos, false);
 //        ((ConfiguredFeature)((RegistryEntry)optional.get()).value()).generate(world, world.getChunkManager().getChunkGenerator(), random, pos);
 //        world.setBlockState(pos, state, Block.NOTIFY_ALL);
-//    }
+        for (int i = 0; i < 8; i++) {
+            BlockPos newPos = pos.add((int) random.nextGaussian(), 0, (int) random.nextGaussian());
+            ModInit.LOGGER.info(newPos.getX() - pos.getX() + "");
+            if (world.getBlockState(newPos).isOf(Blocks.WATER) && canPlaceAt(world.getBlockState(newPos.down()), world, newPos)) {
+                world.setBlockState(newPos, this.getDefaultState());
+                break;
+            }
+        }
+    }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
