@@ -2,7 +2,7 @@ plugins {
 	id 'fabric-loom' version '1.5-SNAPSHOT'
 	id 'maven-publish'
 	id 'org.jetbrains.kotlin.jvm' version("${kotlin_version}")
-	id("com.github.ManifestClasspath") version "0.1.0-RELEASE"
+//	id("com.github.ManifestClasspath") version "0.1.0-RELEASE"
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -55,6 +55,22 @@ repositories {
 	// for more information about repositories.
 }
 
+//configurations{
+//	foo
+////	modCompile.extendsFrom foo
+//}
+
+//afterEvaluate {
+//	runClient {
+//		dependsOn configurations.foo.collect()
+//		exclude configurations.modCompile
+//	}
+//
+//	genSources {
+//		dependsOn configurations.foo.collect()
+//	}
+//}
+
 def setup(DependencyHandler deps) {
 	deps.minecraft("com.mojang:minecraft:${project.minecraft_version}")
 	deps.modImplementation("net.fabricmc:fabric-loader:${project.loader_version}")
@@ -65,6 +81,7 @@ def dependencies(DependencyHandler deps) {
 	deps.modImplementation("net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}")
 	deps.modImplementation("net.fabricmc:fabric-language-kotlin:1.10.18+kotlin.1.9.22")
 	deps.implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}")
+	deps.modImplementation("software.bernie.geckolib:${geckolib_version}")
 }
 
 def devEnv(DependencyHandler deps) {
@@ -82,17 +99,19 @@ def compat(DependencyHandler deps) {
 	
 	//BetterEnd
 	deps.modCompileOnly("maven.modrinth:gc8OEnCC:${betterend_version}")
-	deps.modCompileOnly("com.github.quiqueck:BCLib:${bclib_version}")
-	deps.modCompileOnly("com.github.quiqueck:WunderLib:${wunderlib_version}")
+		// TODO, can I remove these?
+		deps.modCompileOnly("com.github.quiqueck:BCLib:${bclib_version}")
+		deps.modCompileOnly("com.github.quiqueck:WunderLib:${wunderlib_version}")
 
-	// Botania  	// this doesn't run here with modImpl but it does run in prod. So I'm chill with it.
-	modCompileOnly("deps.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}") // TODO test removing these libraries to see if our botania mixin still works
-	modCompileOnly("deps.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}")
-	modCompileOnly("maven.modrinth:trinkets:${trinkets_version}")
-	modCompileOnly("me.zeroeightsix:fiber:${fiber_version}")
-	modCompileOnly("com.github.emilyploszaj:step-height-entity-attribute:${step_height_version}")
-	modCompileOnly("maven.modrinth:patchouli:${patchouli_version}")
-	modCompileOnly("maven.modrinth:botania:${botania_version}")
+	// Botania  	// this doesn't work in the dev environment with modImpl but it does run in prod.
+		// TODO test removing these libraries to see if our botania mixin still works
+		deps.modCompileOnly("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}")
+		deps.modCompileOnly("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}")
+		deps.modCompileOnly("maven.modrinth:trinkets:${trinkets_version}")
+		deps.modCompileOnly("me.zeroeightsix:fiber:${fiber_version}")
+		deps.modCompileOnly("com.github.emilyploszaj:step-height-entity-attribute:${step_height_version}")
+		deps.modCompileOnly("maven.modrinth:patchouli:${patchouli_version}")
+	deps.modCompileOnly("maven.modrinth:botania:${botania_version}")
 
 	// Create - dependencies are added transitively
 	deps.modCompileOnly("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
@@ -101,81 +120,47 @@ def compat(DependencyHandler deps) {
 dependencies {
 	setup(dependencies)
 	devEnv(dependencies)
-		include(modImplementation('com.github.Chocohead:Fabric-ASM:v2.3'))
-		include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.2.2")))
+	include(modImplementation('com.github.Chocohead:Fabric-ASM:v2.3'))
+	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.2.2")))
 	compat(dependencies)
 	dependencies(dependencies)
 
+//	foo.exclude group setup(dependencies)
+
 //	classpath "gradle.plugin.com.github.viswaramamoorthy:gradle-util-plugins:0.1.0-RELEASE"
-<<<<<<< Updated upstream
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
-	modImplementation("net.fabricmc:fabric-language-kotlin:1.10.18+kotlin.1.9.22")
-	modImplementation("software.bernie.geckolib:geckolib-fabric-1.20.1:4.2.2")
 
-	include(modImplementation('com.github.Chocohead:Fabric-ASM:v2.3'))
-	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.2.2")))
-
-	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
-
-	//Mod Menu
-	// /* doesn't work for some reason */ modImplementation("maven.modrinth:cloth-config:$clothconfig_version")
-	modRuntimeOnly("com.terraformersmc:modmenu:$modmenu_version")
-
-	//JEI
-	//From: https://maven.blamejared.com/mezz/jei/
-	modImplementation files("libraries/jei/jei-1.20.1-fabric-15.3.0.4.jar")
-
-	// REI
-	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:$rei_version"
-	modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:$rei_version"
-
-// Datagen counts as runtime, it's safe to run datagen as long as our compat mods are modCompileOnly.
-=======
->>>>>>> Stashed changes
-
+// Just for testing, uncomment if needed
 	// Supplementaries
 //	modRuntimeOnly("maven.modrinth:moonlight:${moonlight_version}")
 //	modRuntimeOnly("maven.modrinth:supplementaries:${supplementaries_version}")
 //	modRuntimeOnly("maven.modrinth:dCCkNFwE:${supplementaries_squared_version_id}")
 //	modRuntimeOnly("maven.modrinth:amendments:${amendments_version}")
-
 	// Comforts
 //	modRuntimeOnly "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}"
 //	modRuntimeOnly "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}"
 //	modRuntimeOnly("com.illusivesoulworks.spectrelib:spectrelib-fabric:${spectrelib_version}") // { exclude(group = "net.fabricmc.fabric-api") }
 //	modRuntimeOnly("maven.modrinth:comforts:${comforts_version}")
-
-	// BotanyPots
-	// This way of loading it doesn't work, compat still does in practice though
+	// BotanyPots 	// This way of loading it doesn't work, compat still does in practice though
 //	modImplementation "net.darkhax.bookshelf:Bookshelf-Fabric-${minecraft_version}:${bookshelf_version}"
 //	modRuntimeOnly("maven.modrinth:uy4Cnpcm:${bookshelf_version_id}")
 //	modRuntimeOnly("maven.modrinth:U6BUTZ7K:${botanypots_version_id}")
-
 	// Twigs
 //	modRuntimeOnly("maven.modrinth:twigs:${twigs_version}")
-
 	// Dye Depot
 //	modRuntimeOnly("maven.modrinth:dye-depot:ldJ6vsnR")
-
 	// Create Deco
 //	modLocalRuntime("maven.modrinth:create-deco:${createdeco_version}")
-
 	// Biome Makeover  // why do things keep only working in prod?? I think its incompatible mappings ain't it. ah well.
 //	modRuntimeOnly("dev.architectury:architectury-fabric:${architectury_version}")
 //	modRuntimeOnly("maven.modrinth:architectury-api:${architectury_version}+fabric")
 //	modRuntimeOnly("maven.modrinth:biome-makeover:${biomemakeover_version}")
-
 	// Sleep Tight    // yet another mod that only works in production...
 //	modRuntimeOnly("maven.modrinth:moonlight:${moonlight_version}")
 //	modRuntimeOnly("maven.modrinth:sleep-tight:${sleeptight_version}")
-
 	// Snowy Spirit
 //	modRuntimeOnly("maven.modrinth:UiFDlI7w:VItD3Q0A")
 
-	// uncomment if needed
+// Uncomment if needed
 	//include implementation("net.dv8tion:JDA:${project.jda_version}") {
 	//	exclude(module : "opus-java")
 	//}
@@ -270,8 +255,6 @@ publishing {
 		// retrieving dependencies.
 	}
 }
-
-
 
 //afterEvaluate {
 //	// SOURCE : https://tuhrig.de/gradles-bootrun-and-windows-command-length-limit/
