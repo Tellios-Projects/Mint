@@ -159,7 +159,6 @@ public class ModItems {
     public static final Item CINNABAR = registerItem("cinnabar", new Item(new FabricItemSettings()));
     public static final Item POWDERED_CINNABAR = registerItem("powdered_cinnabar", new Item(new FabricItemSettings()));
 //    public static final Item GAS_BOMB = registerItem("gas_bomb", new GasBombItem(new FabricItemSettings()));
-    public static final Item GAS_BOMB = registerItem("gas_bomb", new GasBombItem(new FabricItemSettings()));
     //</editor-fold>
     //<editor-fold desc ="Custom Items - ACORN">
 //    public static final Item WEEVIL_SPAWN_EGG = registerItem("weevil_spawn_egg",
@@ -173,8 +172,7 @@ public class ModItems {
     //<editor-fold desc ="Custom Items - GRAPE">
     //</editor-fold>
     //<editor-fold desc ="Custom Items - NAVY">
-    public static final Item BEETLE_SPAWN_EGG = registerSpawnEgg("beetle_spawn_egg",
-            ModEntityTypes.BEETLE, 803406, 0x39d976, new FabricItemSettings());
+//    public static final Item BEETLE_SPAWN_EGG = registerSpawnEgg("beetle_spawn_egg", ModEntityTypes.BEETLE, 803406, 0x39d976, new FabricItemSettings());
     //</editor-fold>
     //<editor-fold desc ="Custom Items - SAP">
     //</editor-fold>

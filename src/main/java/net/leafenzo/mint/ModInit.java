@@ -7,7 +7,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.leafenzo.mint.block.DispenserBehavior;
 import net.leafenzo.mint.block.ModBlocks;
-import net.leafenzo.mint.block.TwigsBlocks;
+//import net.leafenzo.mint.block.TwigsBlocks;
 import net.leafenzo.mint.block.entity.ModBlockEntityType;
 import net.leafenzo.mint.effect.ModEffects;
 import net.leafenzo.mint.entity.ModEntityTypes;
