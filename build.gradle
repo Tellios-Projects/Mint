@@ -87,8 +87,8 @@ def compat(DependencyHandler deps) {
 	deps.modCompileOnly("com.github.quiqueck:WunderLib:${wunderlib_version}")
 
 	// Botania  	// this doesn't run here with modImpl but it does run in prod. So I'm chill with it.
-	deps.modCompileOnly("deps.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}") // TODO test removing these libraries to see if our botania mixin still works
-	deps.modCompileOnly("deps.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}")
+	deps.modCompileOnly("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}") // TODO test removing these libraries to see if our botania mixin still works
+	deps.modCompileOnly("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}")
 	deps.modCompileOnly("maven.modrinth:trinkets:${trinkets_version}")
 	deps.modCompileOnly("me.zeroeightsix:fiber:${fiber_version}")
 	deps.modCompileOnly("com.github.emilyploszaj:step-height-entity-attribute:${step_height_version}")
