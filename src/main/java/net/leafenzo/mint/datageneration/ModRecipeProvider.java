@@ -615,6 +615,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ModItems.POWDERED_CINNABAR, ModItems.CINNABAR, "powdered_cinnabar", 2);
         offerShapelessRecipe(exporter, ModItems.MAROON_DYE, ModItems.POWDERED_CINNABAR, "maroon_dye", 1);
         offerShapelessRecipe(exporter, ModItems.MAROON_DYE, ModItems.CARMINIC_COCHINEAL_BEETLE, "maroon_dye", 1);
+        offerShapelessRecipe(exporter, ModItems.MAROON_DYE, ModItems.MADDER_ROOT, "maroon_dye", 1);
 
         offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MADDER_WOODSET.getLog(), ModItems.MADDER_ROOT);
         offerWoodsetRecipes(exporter, ModBlocks.MADDER_WOODSET);
