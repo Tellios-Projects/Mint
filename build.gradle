@@ -143,7 +143,7 @@ dependencies {
 	devEnv(dependencies)
 		include(modImplementation('com.github.Chocohead:Fabric-ASM:v2.3'))
 		include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.2.2")))
-	compat(dependencies)
+	compat(dependencies) // Comment this line out temporarily if genSources isn't working.
 	dependencies(dependencies)
 
 //	classpath "gradle.plugin.com.github.viswaramamoorthy:gradle-util-plugins:0.1.0-RELEASE"
