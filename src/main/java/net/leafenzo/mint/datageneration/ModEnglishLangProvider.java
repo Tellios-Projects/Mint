@@ -4,21 +4,16 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
-import net.leafenzo.mint.effect.ModEffects;
-import net.leafenzo.mint.entity.ModEntityTypes;
+import net.leafenzo.mint.effect.ModStatusEffects;
 import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.block.Block;
-import net.minecraft.client.resource.language.I18n;
-import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
-import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Language;
-import org.apache.commons.codec.language.bm.Languages;
 import org.apache.http.annotation.Experimental;
 
 import java.util.ArrayList;
@@ -115,15 +110,20 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
         //Manual
-        generateTranslation(translationBuilder, ModEffects.MINT_CHILL.getTranslationKey(), "Mint Chill");
+        generateTranslation(translationBuilder, ModStatusEffects.MINT_CHILL.getTranslationKey(), "Mint Chill");
         generatePotionTranslation(translationBuilder, "mint_chill", "Mint Chill");
         generatePotionTranslation(translationBuilder, "long_mint_chill", "Mint Chill");
         generatePotionTranslation(translationBuilder, "strong_mint_chill", "Mint Chill");
 
-        generateTranslation(translationBuilder, ModEffects.THORNS.getTranslationKey(), "Thorns");
+        generateTranslation(translationBuilder, ModStatusEffects.THORNS.getTranslationKey(), "Thorns");
         generatePotionTranslation(translationBuilder, "thorns", "Thorns");
         generatePotionTranslation(translationBuilder, "long_thorns", "Thorns");
         generatePotionTranslation(translationBuilder, "strong_thorns", "Thorns");
+
+        generateTranslation(translationBuilder, ModStatusEffects.FAST_FALL.getTranslationKey(), "Fast Fall");
+        generatePotionTranslation(translationBuilder, "fast_fall", "Fast Fall");
+        generatePotionTranslation(translationBuilder, "long_fast_fall", "Fast Fall");
+        generatePotionTranslation(translationBuilder, "strong_fast_fall", "Fast Fall");
 
         generateTranslation(translationBuilder, ModBlocks.MINT_SPRIG_BLOCK, "Pile of Mint");
 

@@ -1,6 +1,6 @@
 package net.leafenzo.mint.item.custom;
 
-import net.leafenzo.mint.effect.ModEffects;
+import net.leafenzo.mint.effect.ModStatusEffects;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -35,7 +35,7 @@ public class WinterMedleyItem  extends Item {
             stack.decrement(1);
         }
         if (!world.isClient) {
-            user.addStatusEffect(new StatusEffectInstance(ModEffects.MINT_CHILL, 150, 5));
+            user.addStatusEffect(new StatusEffectInstance(ModStatusEffects.MINT_CHILL, 150, 5));
 
             // steadily increasing chance of curing stomach ailments
             if(Random.create().nextFloat() < 0.25f + (0.75f * user.getFrozenTicks() / 380 )) { // 500 - (5 * 24) = 380

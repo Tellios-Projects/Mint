@@ -9,7 +9,7 @@ import net.leafenzo.mint.block.DispenserBehavior;
 import net.leafenzo.mint.block.ModBlocks;
 //import net.leafenzo.mint.block.TwigsBlocks;
 import net.leafenzo.mint.block.entity.ModBlockEntityType;
-import net.leafenzo.mint.effect.ModEffects;
+import net.leafenzo.mint.effect.ModStatusEffects;
 import net.leafenzo.mint.entity.ModEntityTypes;
 import net.leafenzo.mint.item.ModItemGroups;
 import net.leafenzo.mint.item.ModItems;
@@ -75,7 +75,7 @@ public class ModInit implements ModInitializer {
             DispenserBehavior.RegisterDispenserBehaviors();
             ModIngredientSerializers.registerModCustomIngredientSerializers();
             ModRecipeSerializer.registerModRecipeSerializer();
-            ModEffects.registerModEffects();
+            ModStatusEffects.registerModEffects();
             ModPotions.registerModPotions();
             ModWorldGen.registerWorldGen();
             ModFabricRegistries.modifyLootTables();

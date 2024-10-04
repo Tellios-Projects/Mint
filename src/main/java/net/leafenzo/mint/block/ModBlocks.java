@@ -7,7 +7,7 @@ import net.leafenzo.mint.block.custom.*;
 import net.leafenzo.mint.block.sapling.PeachSaplingGenerator;
 import net.leafenzo.mint.block.sapling.WintergreenSaplingGenerator;
 import net.leafenzo.mint.datageneration.ModConfiguredFeatures;
-import net.leafenzo.mint.effect.ModEffects;
+import net.leafenzo.mint.effect.ModStatusEffects;
 import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
@@ -121,7 +121,7 @@ public class ModBlocks {
     //<editor-fold desc ="MINT - Special">
     public static final Block MINT_CROP = registerBlockWithoutBlockItem("mint_crop", new MintCropBlock(FabricBlockSettings.create().mapColor(MapColor.LICHEN_GREEN).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).pistonBehavior(PistonBehavior.DESTROY)));
         static { RENDER_LAYER_CUTOUT_MIPPED.add(MINT_CROP); }
-    public static final Block WILD_MINT = registerBlock("wild_mint", createFlowerBlock(ModEffects.MINT_CHILL, 900)/*, ModItemGroups.MINT*/);
+    public static final Block WILD_MINT = registerBlock("wild_mint", createFlowerBlock(ModStatusEffects.MINT_CHILL, 900)/*, ModItemGroups.MINT*/);
     public static final Block POTTED_WILD_MINT = registerBlockWithoutBlockItem("potted_wild_mint", createFlowerPotBlock((FlowerBlock) WILD_MINT)/*, ModItemGroups.MINT*/);
     public static final Block MINT_SPRIG_BLOCK = registerBlock("mint_sprig_block", new Block(FabricBlockSettings.copyOf(Blocks.ACACIA_LEAVES).mapColor(MapColor.LICHEN_GREEN))/*, ModItemGroups.MINT*/);
         static { RENDER_LAYER_CUTOUT.add(MINT_SPRIG_BLOCK); }
@@ -254,7 +254,7 @@ public class ModBlocks {
     public static final Block ARTICHOKE_WALL_BANNER = registerBlockWithoutBlockItem("artichoke_wall_banner", createWallBannerBlock(ModDyeColor.ARTICHOKE, (BannerBlock)ModBlocks.ARTICHOKE_BANNER));
     //</editor-fold>
     //<editor-fold desc ="ARTICHOKE - Special">
-    public static final Block THISTLE_FLOWER = registerBlock("thistle_flower", createFlowerBlock(ModEffects.THORNS, 600)/*, ModItemGroups.ARTICHOKE*/);
+    public static final Block THISTLE_FLOWER = registerBlock("thistle_flower", createFlowerBlock(ModStatusEffects.THORNS, 600)/*, ModItemGroups.ARTICHOKE*/);
     public static final Block POTTED_THISTLE_FLOWER = registerBlockWithoutBlockItem("potted_thistle_flower", createFlowerPotBlock(THISTLE_FLOWER)/*, ModItemGroups.ARTICHOKE*/);
     public static final Block WAXCAP_MUSHROOM = registerBlock("waxcap_mushroom", createMushroomPlantBlock(MapColor.DARK_GREEN, ModConfiguredFeatures.HUGE_WAXCAP_MUSHROOM)/*, ModItemGroups.ARTICHOKE*/);
     public static final Block POTTED_WAXCAP_MUSHROOM = registerBlockWithoutBlockItem("potted_waxcap_mushroom", createFlowerPotBlock(WAXCAP_MUSHROOM)/*, ModItemGroups.ARTICHOKE*/);

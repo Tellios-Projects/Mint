@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.effect.ModStatusEffects;
 import net.leafenzo.mint.entity.ModEntityTypes;
 import net.leafenzo.mint.item.custom.*;
 import net.leafenzo.mint.registry.tag.ModTags;
@@ -76,7 +77,7 @@ public class ModItems {
                     .saturationModifier(1.2f) // golden apple
                     .statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 20, 5), 1.0f)
                     .statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 2400, 0), 1.0f)
-                    // TODO consider a "fast falling" effect that damages creatures near where you land
+                    .statusEffect(new StatusEffectInstance(ModStatusEffects.FAST_FALL, 600, 0), 1.0f)
             .build())));
     public static final Item PEACH_COBBLER = registerItem("peach_cobbler", new Item(new FabricItemSettings()
             .food(new FoodComponent.Builder()
