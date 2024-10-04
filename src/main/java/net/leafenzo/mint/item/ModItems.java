@@ -254,8 +254,7 @@ public class ModItems {
                     .saturationModifier(0.4F)
                     .build())));
 
-    public static final Item POKEBERRIES = registerItem("pokeberries", new AliasedBlockItem(ModBlocks.POKEWEED, new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(0.2f).snack().build())));
-        //TODO make a new item class for this that when eaten poisons the player
+    public static final Item POKEBERRIES = registerItem("pokeberries", new AliasedBlockItem(ModBlocks.POKEWEED, new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(0.2f).statusEffect(new StatusEffectInstance(StatusEffects.POISON, 600, 0), 1f).snack().build())));
     //</editor-fold>
     //<editor-fold desc ="Custom Items - MOLD">
     //</editor-fold>
