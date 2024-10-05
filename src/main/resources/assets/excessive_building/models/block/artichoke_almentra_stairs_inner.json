@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "excessive_building:block/artichoke_almentra",
+    "side": "excessive_building:block/artichoke_almentra",
+    "top": "excessive_building:block/artichoke_almentra"
+  }
+}
