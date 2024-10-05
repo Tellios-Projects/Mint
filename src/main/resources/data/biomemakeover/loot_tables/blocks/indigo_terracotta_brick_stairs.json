@@ -1,20 +1,28 @@
 {
- "type": "minecraft:block",
- "pools": [
-  {
-   "rolls": 1,
-   "entries": [
+  "type": "minecraft:block",
+  "pools": [
     {
-     "type": "minecraft:item",
-     "name": "biomemakeover:indigo_terracotta_brick_stairs"
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "biomemakeover:indigo_terracotta_brick_stairs"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ]
     }
-   ],
-   "conditions": [
+  ],
+  "random_sequence": "biomemakeover:blocks/indigo_terracotta_brick_stairs",
+  "fabric:load_conditions": [
     {
-     "condition": "minecraft:survives_explosion"
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "biomemakeover"
+      ]
     }
-   ]
-  }
- ],
- "random_sequence": "biomemakeover:blocks/indigo_terracotta_brick_stairs"
+  ]
 }

@@ -19,5 +19,13 @@
   },
   "result": {
     "item": "comforts:hammock_mint"
-  }
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "comforts"
+      ]
+    }
+  ]
 }

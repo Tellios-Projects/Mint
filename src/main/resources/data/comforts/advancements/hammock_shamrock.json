@@ -12,7 +12,7 @@
       "conditions": {
         "items": [
           {
-            "items": ["mint:shamrock_wool"]
+            "items": [ "mint:shamrock_wool" ]
           }
         ]
       }
@@ -29,5 +29,13 @@
       "has_shamrock_wool",
       "has_the_recipe"
     ]
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "comforts"
+      ]
+    }
   ]
 }

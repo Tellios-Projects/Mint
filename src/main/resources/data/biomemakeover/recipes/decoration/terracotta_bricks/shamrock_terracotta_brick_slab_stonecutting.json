@@ -4,5 +4,13 @@
     "item": "biomemakeover:shamrock_terracotta_bricks"
   },
   "result": "biomemakeover:shamrock_terracotta_brick_slab",
-  "count": 2
+  "count": 2,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "biomemakeover"
+      ]
+    }
+  ]
 }

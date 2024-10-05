@@ -1,1 +1,25 @@
-{"bookshelf:load_conditions":[{"type":"bookshelf:item_exists","values":["byg:navy_amaranth"]}],"type":"botanypots:crop","seed":{"item":"byg:navy_amaranth"},"categories":["dirt"],"growthTicks":1200,"display":{"type":"botanypots:aging","block":"byg:navy_amaranth"},"drops":[{"chance":1.00,"output":{"item":"byg:navy_amaranth"}}]}
+{
+  "type": "botanypots:crop",
+  "seed": { "item": "byg:navy_amaranth" },
+  "categories": [ "dirt" ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "byg:navy_amaranth"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": { "item": "byg:navy_amaranth" }
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "botanypots",
+        "byg"
+      ]
+    }
+  ]
+}

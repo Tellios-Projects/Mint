@@ -1,1 +1,20 @@
-{"type":"crafting_shaped","pattern":["S S","SPS"," S "],"key":{"S":{"item":"mint:velvet_terracotta"},"P":{"item":"mint:flower_pot"}},"result":{"item":"botanypots:velvet_terracotta_botany_pot","count":1}}
+{
+  "type": "crafting_shaped",
+  "pattern": [ "S S", "SPS", " S " ],
+  "key": {
+    "S": { "item": "mint:velvet_terracotta" },
+    "P": { "item": "minecraft:flower_pot" }
+  },
+  "result": {
+    "item": "botanypots:velvet_terracotta_botany_pot",
+    "count": 1
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "botanypots"
+      ]
+    }
+  ]
+}

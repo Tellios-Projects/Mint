@@ -11,5 +11,13 @@
   },
   "result": {
     "item": "comforts:sleeping_bag_navy"
-  }
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "comforts"
+      ]
+    }
+  ]
 }

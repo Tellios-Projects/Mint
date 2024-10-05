@@ -1,1 +1,29 @@
-{"bookshelf:load_conditions":[{"type":"bookshelf:item_exists","values":["croparia:seed_crop_peach","croparia:fruit_peach"]}],"type":"botanypots:crop","seed":{"item":"croparia:seed_crop_peach"},"categories":["dirt","farmland"],"growthTicks":1200,"display":{"type":"botanypots:aging","block":"croparia:block_crop_peach"},"drops":[{"chance":1.00,"output":{"item":"croparia:fruit_peach"}},{"chance":0.01,"output":{"item":"croparia:seed_crop_peach"}}]}
+{
+  "type": "botanypots:crop",
+  "seed": { "item": "croparia:seed_crop_peach" },
+  "categories": [ "dirt", "farmland" ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "croparia:block_crop_peach"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": { "item": "croparia:fruit_peach" }
+    },
+    {
+      "chance": 0.01,
+      "output": { "item": "croparia:seed_crop_peach" }
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "botanypots",
+        "croparia"
+      ]
+    }
+  ]
+}

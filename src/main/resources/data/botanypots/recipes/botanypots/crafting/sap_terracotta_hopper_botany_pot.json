@@ -1,1 +1,19 @@
-{"type":"minecraft:crafting_shapeless","ingredients":[{"item":"botanypots:sap_terracotta_botany_pot"},{"item":"minecraft:hopper"}],"result":{"item":"botanypots:sap_terracotta_hopper_botany_pot","count":1}}
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "botanypots:sap_terracotta_botany_pot" },
+    { "item": "minecraft:hopper" }
+  ],
+  "result": {
+    "item": "botanypots:sap_terracotta_hopper_botany_pot",
+    "count": 1
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "botanypots"
+      ]
+    }
+  ]
+}

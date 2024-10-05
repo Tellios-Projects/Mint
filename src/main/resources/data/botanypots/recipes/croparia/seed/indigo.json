@@ -1,1 +1,29 @@
-{"bookshelf:load_conditions":[{"type":"bookshelf:item_exists","values":["croparia:seed_crop_indigo","croparia:fruit_indigo"]}],"type":"botanypots:crop","seed":{"item":"croparia:seed_crop_indigo"},"categories":["dirt","farmland"],"growthTicks":1200,"display":{"type":"botanypots:aging","block":"croparia:block_crop_indigo"},"drops":[{"chance":1.00,"output":{"item":"croparia:fruit_indigo"}},{"chance":0.01,"output":{"item":"croparia:seed_crop_indigo"}}]}
+{
+  "type": "botanypots:crop",
+  "seed": { "item": "croparia:seed_crop_indigo" },
+  "categories": [ "dirt", "farmland" ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "croparia:block_crop_indigo"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": { "item": "croparia:fruit_indigo" }
+    },
+    {
+      "chance": 0.01,
+      "output": { "item": "croparia:seed_crop_indigo" }
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "botanypots",
+        "croparia"
+      ]
+    }
+  ]
+}

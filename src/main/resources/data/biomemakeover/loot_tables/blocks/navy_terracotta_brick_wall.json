@@ -1,20 +1,28 @@
 {
- "type": "minecraft:block",
- "pools": [
-  {
-   "rolls": 1,
-   "entries": [
+  "type": "minecraft:block",
+  "pools": [
     {
-     "type": "minecraft:item",
-     "name": "biomemakeover:navy_terracotta_brick_wall"
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "biomemakeover:navy_terracotta_brick_wall"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ]
     }
-   ],
-   "conditions": [
+  ],
+  "random_sequence": "biomemakeover:blocks/navy_terracotta_brick_wall",
+  "fabric:load_conditions": [
     {
-     "condition": "minecraft:survives_explosion"
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "biomemakeover"
+      ]
     }
-   ]
-  }
- ],
- "random_sequence": "biomemakeover:blocks/navy_terracotta_brick_wall"
+  ]
 }

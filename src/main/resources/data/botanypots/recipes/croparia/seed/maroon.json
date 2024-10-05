@@ -1,1 +1,29 @@
-{"bookshelf:load_conditions":[{"type":"bookshelf:item_exists","values":["croparia:seed_crop_maroon","croparia:fruit_maroon"]}],"type":"botanypots:crop","seed":{"item":"croparia:seed_crop_maroon"},"categories":["dirt","farmland"],"growthTicks":1200,"display":{"type":"botanypots:aging","block":"croparia:block_crop_maroon"},"drops":[{"chance":1.00,"output":{"item":"croparia:fruit_maroon"}},{"chance":0.01,"output":{"item":"croparia:seed_crop_maroon"}}]}
+{
+  "type": "botanypots:crop",
+  "seed": { "item": "croparia:seed_crop_maroon" },
+  "categories": [ "dirt", "farmland" ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "croparia:block_crop_maroon"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": { "item": "croparia:fruit_maroon" }
+    },
+    {
+      "chance": 0.01,
+      "output": { "item": "croparia:seed_crop_maroon" }
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "botanypots",
+        "croparia"
+      ]
+    }
+  ]
+}

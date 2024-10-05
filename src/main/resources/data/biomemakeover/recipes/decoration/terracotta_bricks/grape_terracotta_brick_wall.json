@@ -12,5 +12,13 @@
   "result": {
     "item": "biomemakeover:grape_terracotta_brick_wall",
     "count": 6
-  }
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "biomemakeover"
+      ]
+    }
+  ]
 }
