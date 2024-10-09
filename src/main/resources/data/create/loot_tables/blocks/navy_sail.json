@@ -17,5 +17,13 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "create:blocks/navy_sail"
+  "random_sequence": "create:blocks/navy_sail",
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
+  ]
 }

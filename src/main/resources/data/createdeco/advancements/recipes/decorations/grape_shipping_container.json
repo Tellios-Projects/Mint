@@ -31,5 +31,13 @@
       "mint:grape_shipping_container"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": false,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "createdeco"
+      ]
+    }
+  ]
 }

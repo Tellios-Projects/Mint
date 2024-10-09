@@ -17,5 +17,13 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "create:blocks/indigo_sail"
+  "random_sequence": "create:blocks/indigo_sail",
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
+  ]
 }

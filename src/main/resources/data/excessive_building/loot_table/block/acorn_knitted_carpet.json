@@ -11,10 +11,18 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "excessive_building:maroon_knitted_carpet"
+          "name": "excessive_building:acorn_knitted_carpet"
         }
       ],
       "rolls": 1.0
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
     }
   ]
 }

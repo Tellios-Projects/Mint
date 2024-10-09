@@ -2,8 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "group": "gumdrop",
   "ingredients": [
-    {"item": "minecraft:sugar"},
-    {"item": "mint:grape_dye"}
+    { "item": "minecraft:sugar" },
+    { "item": "mint:grape_dye" }
   ],
   "result": {
     "item": "snowyspirit:gumdrop_grape"
@@ -12,6 +12,14 @@
     {
       "type": "snowyspirit:flag",
       "flag": "gumdrops"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "snowyspirit"
+      ]
     }
   ]
 }

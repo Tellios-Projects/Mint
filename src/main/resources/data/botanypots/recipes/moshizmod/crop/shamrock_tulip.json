@@ -1,1 +1,29 @@
-{"bookshelf:load_conditions":[{"type":"bookshelf:item_exists","values":["ms:food/shamrock_tulip_seeds","ms:plant/shamrock_tulip"]}],"type":"botanypots:crop","seed":{"item":"ms:food/shamrock_tulip_seeds"},"categories":["dirt","farmland"],"growthTicks":1200,"display":{"type":"botanypots:aging","block":"ms:plant/shamrock_tulip_crop"},"drops":[{"chance":1.00,"output":{"item":"ms:plant/shamrock_tulip"}},{"chance":0.01,"output":{"item":"ms:food/shamrock_tulip_seeds"}}]}
+{
+  "type": "botanypots:crop",
+  "seed": { "item": "ms:food/shamrock_tulip_seeds" },
+  "categories": [ "dirt", "farmland" ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "ms:plant/shamrock_tulip_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": { "item": "ms:plant/shamrock_tulip" }
+    },
+    {
+      "chance": 0.01,
+      "output": { "item": "ms:food/shamrock_tulip_seeds" }
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "botanypots",
+        "ms"
+      ]
+    }
+  ]
+}

@@ -1,1 +1,21 @@
-{"type":"crafting_shaped","pattern":["SHS","SPS"," S "],"key":{"S":{"item":"mint:mint_concrete"},"P":{"item":"mint:flower_pot"},"H":{"item":"mint:hopper"}},"result":{"item":"botanypots:mint_concrete_hopper_botany_pot","count":1}}
+{
+  "type": "crafting_shaped",
+  "pattern": [ "SHS", "SPS", " S " ],
+  "key": {
+    "S": { "item": "mint:mint_concrete" },
+    "P": { "item": "minecraft:flower_pot" },
+    "H": { "item": "minecraft:hopper" }
+  },
+  "result": {
+    "item": "botanypots:mint_concrete_hopper_botany_pot",
+    "count": 1
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "botanypots"
+      ]
+    }
+  ]
+}

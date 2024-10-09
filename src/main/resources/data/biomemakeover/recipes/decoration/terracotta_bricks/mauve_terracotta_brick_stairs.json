@@ -13,5 +13,13 @@
   "result": {
     "item": "biomemakeover:mauve_terracotta_brick_stairs",
     "count": 4
-  }
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "biomemakeover"
+      ]
+    }
+  ]
 }

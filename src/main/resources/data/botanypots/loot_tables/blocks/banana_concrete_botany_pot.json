@@ -1,1 +1,30 @@
-{"type":"minecraft:block","pools":[{"bonus_rolls":0.0,"conditions":[{"condition":"minecraft:survives_explosion"}],"entries":[{"type":"minecraft:item","functions":[{"function":"minecraft:copy_name","source":"block_entity"}],"name":"botanypots:banana_concrete_botany_pot"}],"rolls":1.0}]}
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [ { "condition": "minecraft:survives_explosion" } ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:copy_name",
+              "source": "block_entity"
+            }
+          ],
+          "name": "botanypots:banana_concrete_botany_pot"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "botanypots"
+      ]
+    }
+  ]
+}

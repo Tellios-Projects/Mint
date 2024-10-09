@@ -11,10 +11,18 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "excessive_building:maroon_terracotta_tile_slab"
+          "name": "excessive_building:cerulean_terracotta_tile_slab"
         }
       ],
       "rolls": 1.0
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
     }
   ]
 }

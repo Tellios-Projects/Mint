@@ -11,5 +11,13 @@
   "result": {
     "item": "biomemakeover:acorn_terracotta_brick_slab",
     "count": 6
-  }
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "biomemakeover"
+      ]
+    }
+  ]
 }

@@ -1,1 +1,22 @@
-{"bookshelf:load_conditions":[{"type":"bookshelf:item_exists","values":["regions_unexplored:amber_snowbelle"]}],"type":"botanypots:crop","seed":{"item":"regions_unexplored:amber_snowbelle"},"categories":["dirt"],"growthTicks":1200,"display":{"block":"regions_unexplored:amber_snowbelle"},"drops":[{"chance":1,"output":{"item":"regions_unexplored:amber_snowbelle"}}]}
+{
+  "type": "botanypots:crop",
+  "seed": { "item": "regions_unexplored:amber_snowbelle" },
+  "categories": [ "dirt" ],
+  "growthTicks": 1200,
+  "display": { "block": "regions_unexplored:amber_snowbelle" },
+  "drops": [
+    {
+      "chance": 1,
+      "output": { "item": "regions_unexplored:amber_snowbelle" }
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "botanypots",
+        "regions_unexplored"
+      ]
+    }
+  ]
+}

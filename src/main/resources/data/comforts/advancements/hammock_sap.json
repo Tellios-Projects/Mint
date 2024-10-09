@@ -12,7 +12,7 @@
       "conditions": {
         "items": [
           {
-            "items": ["mint:sap_wool"]
+            "items": [ "mint:sap_wool" ]
           }
         ]
       }
@@ -29,5 +29,13 @@
       "has_sap_wool",
       "has_the_recipe"
     ]
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "comforts"
+      ]
+    }
   ]
 }

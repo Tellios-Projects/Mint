@@ -9,5 +9,13 @@
     {
       "item": "mint:velvet_concrete"
     }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
   ]
 }

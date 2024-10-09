@@ -12,7 +12,7 @@
       "conditions": {
         "items": [
           {
-            "items": ["mint:amber_wool"]
+            "items": [ "mint:amber_wool" ]
           }
         ]
       }
@@ -29,5 +29,13 @@
       "has_amber_wool",
       "has_the_recipe"
     ]
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "comforts"
+      ]
+    }
   ]
 }
