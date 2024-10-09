@@ -24,13 +24,10 @@
                 "blocks": "minecraft:air"
               },
               {
-                "type": "minecraft:matching_blocks",
-                "blocks": "minecraft:grass_block",
-                "offset": [
-                  0,
-                  -1,
-                  0
-                ]
+                "type": "minecraft:would_survive",
+                "state": {
+                  "Name": "minecraft:oak_sapling"
+                }
               }
             ]
           }

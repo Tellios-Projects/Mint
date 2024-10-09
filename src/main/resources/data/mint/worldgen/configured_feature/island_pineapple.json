@@ -29,7 +29,10 @@
               {
                 "type": "minecraft:would_survive",
                 "state": {
-                  "Name": "minecraft:dead_bush"
+                  "Name": "minecraft:dead_bush",
+                  "Properties": {
+                    "waterlogged": "false"
+                  }
                 }
               }
             ]
@@ -37,8 +40,8 @@
         }
       ]
     },
-    "tries": 30,
-    "xz_spread": 7,
+    "tries": 10,
+    "xz_spread": 2,
     "y_spread": 3
   }
 }

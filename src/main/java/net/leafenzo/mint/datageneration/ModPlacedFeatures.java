@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBiomeTags;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
 import net.minecraft.block.Blocks;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -47,6 +48,7 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> MADDER_PLACED = registerKey("madder_placed");
     public static final RegistryKey<PlacedFeature> CINNABAR_PLACED = registerKey("cinnabar_ore_placed");
     public static final RegistryKey<PlacedFeature> PATCH_PINEAPPLE_PLACED = registerKey("patch_pineapple_placed");
+    public static final RegistryKey<PlacedFeature> ISLAND_PINEAPPLE_PLACED = registerKey("island_pineapple_placed");
     public static final RegistryKey<PlacedFeature> PATCH_STRAWBERRY_PLACED = registerKey("patch_strawberry_placed");
     public static final RegistryKey<PlacedFeature> PATCH_CORDYLINE_PLACED = registerKey("patch_cordyline_placed");
     public static final RegistryKey<PlacedFeature> PATCH_POKEWEED_PLACED = registerKey("patch_pokeweed_placed");
@@ -92,6 +94,7 @@ public class ModPlacedFeatures {
                 RarityFilterPlacementModifier.of(7),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
+                BlockFilterPlacementModifier.of(BlockPredicate.matchingFluids(Fluids.WATER)),
                 BiomePlacementModifier.of()
         );
 //        PlacedFeatures.register(featureRegisterable, SEA_PICKLE, reference6, RarityFilterPlacementModifier.of(16), SquarePlacementModifier.of(), PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP, BiomePlacementModifier.of());
@@ -264,6 +267,10 @@ public class ModPlacedFeatures {
                 .add(ModificationPhase.ADDITIONS,
                         BiomeSelectors.includeByKey(BiomeKeys.SPARSE_JUNGLE, BiomeKeys.JUNGLE, BiomeKeys.BEACH),
                         context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_PINEAPPLE_PLACED); }
+                )
+                .add(ModificationPhase.ADDITIONS,
+                        BiomeSelectors.tag((ConventionalBiomeTags.AQUATIC_ICY)).negate().and(BiomeSelectors.tag(ConventionalBiomeTags.OCEAN)),
+                        context -> {context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, ISLAND_PINEAPPLE_PLACED);}
                 )
                 .add(ModificationPhase.ADDITIONS,
                         context -> context.getBiome().getTemperature() > .3f && context.getBiome().getTemperature() < 0.9f && context.hasTag(BiomeTags.IS_OVERWORLD),
