@@ -1,10 +1,18 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "excessive_building:maroon_polished_almentra"
+    "item": "excessive_building:velvet_polished_almentra"
   },
   "result": {
     "count": 1,
-    "item": "excessive_building:maroon_polished_almentra_vertical_stairs"
-  }
+    "item": "excessive_building:velvet_polished_almentra_vertical_stairs"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
+    }
+  ]
 }

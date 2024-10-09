@@ -3,7 +3,7 @@
   "category": "building",
   "key": {
     "#": {
-      "item": "excessive_building:maroon_almentra"
+      "item": "excessive_building:artichoke_almentra"
     }
   },
   "pattern": [
@@ -11,6 +11,14 @@
   ],
   "result": {
     "count": 6,
-    "item": "excessive_building:maroon_almentra_slab"
-  }
+    "item": "excessive_building:artichoke_almentra_slab"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
+    }
+  ]
 }

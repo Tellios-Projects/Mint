@@ -6,7 +6,7 @@
       "item": "excessive_building:polished_almentra"
     },
     "@": {
-      "item": "minecraft:maroon_dye"
+      "item": "mint:indigo_dye"
     }
   },
   "pattern": [
@@ -16,6 +16,14 @@
   ],
   "result": {
     "count": 8,
-    "item": "excessive_building:maroon_polished_almentra"
-  }
+    "item": "excessive_building:indigo_polished_almentra"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
+    }
+  ]
 }
