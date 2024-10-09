@@ -3,7 +3,7 @@
   "category": "building",
   "key": {
     "#": {
-      "item": "excessive_building:maroon_polished_almentra"
+      "item": "excessive_building:acorn_polished_almentra"
     }
   },
   "pattern": [
@@ -12,6 +12,14 @@
   ],
   "result": {
     "count": 4,
-    "item": "excessive_building:maroon_almentra_bricks"
-  }
+    "item": "excessive_building:acorn_almentra_bricks"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
+    }
+  ]
 }

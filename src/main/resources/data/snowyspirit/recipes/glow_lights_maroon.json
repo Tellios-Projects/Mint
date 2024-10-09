@@ -2,9 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "group": "glow_lights",
   "ingredients": [
-    {"item": "minecraft:glowstone_dust"},
-    {"item": "mint:maroon_dye"},
-    {"item": "minecraft:string"}
+    { "item": "minecraft:glowstone_dust" },
+    { "item": "mint:maroon_dye" },
+    { "item": "minecraft:string" }
   ],
   "result": {
     "item": "snowyspirit:glow_lights_maroon"
@@ -13,6 +13,14 @@
     {
       "type": "snowyspirit:flag",
       "flag": "glow_lights"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "snowyspirit"
+      ]
     }
   ]
 }

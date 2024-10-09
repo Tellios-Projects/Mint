@@ -11,10 +11,18 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "excessive_building:maroon_polished_almentra_stairs"
+          "name": "excessive_building:grape_polished_almentra_stairs"
         }
       ],
       "rolls": 1.0
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
     }
   ]
 }

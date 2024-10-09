@@ -45,5 +45,13 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "create:blocks/periwinkle_toolbox"
+  "random_sequence": "create:blocks/periwinkle_toolbox",
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
+  ]
 }

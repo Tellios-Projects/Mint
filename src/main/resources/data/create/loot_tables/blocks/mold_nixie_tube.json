@@ -17,5 +17,13 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "create:blocks/mold_nixie_tube"
+  "random_sequence": "create:blocks/mold_nixie_tube",
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
+  ]
 }

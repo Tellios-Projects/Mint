@@ -11,10 +11,18 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "excessive_building:maroon_almentra_statue"
+          "name": "excessive_building:acorn_almentra_statue"
         }
       ],
       "rolls": 1.0
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
     }
   ]
 }

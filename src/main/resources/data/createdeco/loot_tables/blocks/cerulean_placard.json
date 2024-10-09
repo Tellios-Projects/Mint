@@ -17,5 +17,13 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "createdeco:blocks/cerulean_placard"
+  "random_sequence": "createdeco:blocks/cerulean_placard",
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "createdeco"
+      ]
+    }
+  ]
 }
