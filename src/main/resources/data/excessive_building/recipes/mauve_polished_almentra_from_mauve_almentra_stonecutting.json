@@ -1,10 +1,18 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "excessive_building:maroon_almentra"
+    "item": "excessive_building:mauve_almentra"
   },
   "result": {
     "count": 1,
-    "item": "excessive_building:maroon_polished_almentra"
-  }
+    "item": "excessive_building:mauve_polished_almentra"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
+    }
+  ]
 }

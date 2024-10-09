@@ -6,7 +6,7 @@
       "item": "excessive_building:terracotta_tiles"
     },
     "@": {
-      "item": "minecraft:maroon_dye"
+      "item": "mint:mold_dye"
     }
   },
   "pattern": [
@@ -16,6 +16,14 @@
   ],
   "result": {
     "count": 8,
-    "item": "excessive_building:maroon_terracotta_tiles"
-  }
+    "item": "excessive_building:mold_terracotta_tiles"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
+    }
+  ]
 }
