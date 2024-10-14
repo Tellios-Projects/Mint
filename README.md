@@ -16,6 +16,8 @@ Currently in Beta testing, new features soon to come :D
 Leah <a href ="https://twitter.com/leafenzio"></a> <br>
 Eliza <a href ="https://twitter.com/tellioaridoitsu"></a> <br>
 Hecco <a href="https://twitter.com/Hecco"></a>
+<br>
+Athebyne <a href="https://github.com/f-raZ0R"></a>
  <br> <br>  
 ♥ With Help From ♥ <br>   
 Eka <a href ="https://github.com/Eko-byte"></a>
@@ -23,7 +25,6 @@ Eka <a href ="https://github.com/Eko-byte"></a>
 Enri <a href="https://twitter.com/enriarts_"></a>
  <br>
 Zucchini <a href="https://twitter.com/zucchinibyday"></a> 
-<br>
-Athebyne <a href="https://github.com/f-raZ0R"></a> <br>
+ <br>
 <br> ⁺ㆍ┈ㆍ┈ㆍ✿ㆍ┈ㆍ┈ㆍ┈ ✿ㆍ┈ㆍ┈ㆍ┈ ✿ㆍ┈ㆍ┈ㆍ⁺
 </h4>
