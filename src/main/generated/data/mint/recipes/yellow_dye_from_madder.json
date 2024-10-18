@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "yellow_dye",
+  "ingredients": [
+    {
+      "item": "mint:madder"
+    }
+  ],
+  "result": {
+    "item": "minecraft:yellow_dye"
+  }
+}

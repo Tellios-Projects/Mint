@@ -461,8 +461,7 @@ public class ModBlocks {
     public static final Block CINNAMON_BRICK_SLAB = registerBlock("cinnamon_brick_slab", createSlabBlock(FabricBlockSettings.copyOf(CINNAMON_BRICKS)));
     public static final Block CINNAMON_BRICK_WALL = registerBlock("cinnamon_brick_wall", createWallBlock(FabricBlockSettings.copyOf(CINNAMON_BRICKS)));
     public static final Block CRACKED_CINNAMON_BRICKS = registerBlock("cracked_cinnamon_bricks", new Block(FabricBlockSettings.copyOf(CINNAMON_BRICKS)));
-    public static final Block MADDER = registerBlock("madder", new MadderBlock(FabricBlockSettings.copyOf(Blocks.POPPY)));
-    static { RENDER_LAYER_CUTOUT.add(MADDER); }
+    public static final Block MADDER = registerBlock("madder", createMadderFlowerBlock(StatusEffects.NAUSEA, 15, ModConfiguredFeatures.PATCH_BONEMEAL_MADDER));
     public static WoodSet MADDER_WOODSET = new WoodSet(
             new Identifier(Super.MOD_ID, "madder"),
             MapColor.DARK_RED,
@@ -946,6 +945,12 @@ public class ModBlocks {
     }
     public static SpreadableFlowerBlock createSpreadableFlowerBlock(StatusEffect suspiciousStewEffect, int effectDuration, RegistryKey<ConfiguredFeature<?, ?>> featureKey) {
         SpreadableFlowerBlock block = new SpreadableFlowerBlock(suspiciousStewEffect, effectDuration, createFlowerBlockSettings(), featureKey);
+        SMALL_FLOWERS.add(block);
+        RENDER_LAYER_CUTOUT_MIPPED.add(block);
+        return block;
+    }
+    public static MadderFlowerBlock createMadderFlowerBlock(StatusEffect suspiciousStewEffect, int effectDuration, RegistryKey<ConfiguredFeature<?, ?>> featureKey) {
+        MadderFlowerBlock block = new MadderFlowerBlock(suspiciousStewEffect, effectDuration, createFlowerBlockSettings(), featureKey);
         SMALL_FLOWERS.add(block);
         RENDER_LAYER_CUTOUT_MIPPED.add(block);
         return block;

@@ -54,6 +54,7 @@ public class ModConfiguredFeatures {
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> PEACH = registerKey("peach");
     public static final RegistryKey <ConfiguredFeature <?, ?>> COCHINEAL_CACTUS = registerKey("cochineal_cactus");
+    public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_BONEMEAL_MADDER = registerKey("patch_bonemeal_madder");
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_PINEAPPLE = registerKey("patch_pineapple");
 
@@ -115,6 +116,10 @@ public class ModConfiguredFeatures {
         ).build());
         register(context, PATCH_WAXCAP_MUSHROOM, Feature.RANDOM_PATCH,
                 new RandomPatchFeatureConfig(16, 16, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.WAXCAP_MUSHROOM))))
+        );
+
+        register(context, PATCH_BONEMEAL_MADDER, Feature.FLOWER,
+                new RandomPatchFeatureConfig(2, 3, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.MADDER))))
         );
 
         register(context, PATCH_PINEAPPLE, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.PINEAPPLE)), List.of(Blocks.GRASS_BLOCK, Blocks.SAND), 30));

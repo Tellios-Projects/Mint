@@ -2,6 +2,10 @@ package net.leafenzo.mint.block.custom;
 
 import net.leafenzo.mint.block.ModBlocks;
 import net.minecraft.block.*;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
@@ -10,10 +14,18 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
 
-public class MadderBlock extends PlantBlock implements Fertilizable {
-    public MadderBlock(Settings settings) {
-        super(settings);
+import java.util.Optional;
+
+public class MadderFlowerBlock
+extends FlowerBlock
+implements Fertilizable {
+    private final RegistryKey<ConfiguredFeature<?, ?>> featureKey;
+
+    public MadderFlowerBlock(StatusEffect suspiciousStewEffect, int effectDuration, Settings settings, RegistryKey<ConfiguredFeature<?, ?>> featureKey) {
+        super(suspiciousStewEffect, effectDuration, settings);
+        this.featureKey = featureKey;
     }
 
     @Override
@@ -44,6 +56,12 @@ public class MadderBlock extends PlantBlock implements Fertilizable {
                 }
             }
         }
+
+        Optional<RegistryEntry.Reference<ConfiguredFeature<?, ?>>> optional = world.getRegistryManager().get(RegistryKeys.CONFIGURED_FEATURE).getEntry(this.featureKey);
+        if (optional.isEmpty()) { return; }
+        //world.removeBlock(pos, false);
+        ((ConfiguredFeature)((RegistryEntry)optional.get()).value()).generate(world, world.getChunkManager().getChunkGenerator(), random, pos);
+        world.setBlockState(pos, state, Block.NOTIFY_ALL);
     }
 
     private void tryPlaceMadderRoot(World world, BlockPos pos) {

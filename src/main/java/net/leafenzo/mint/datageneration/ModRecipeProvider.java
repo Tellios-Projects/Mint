@@ -318,10 +318,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
-        //TODO fix all recipe book unlock criterion
+        //TODO fix all recipe book unlock criterion / figure out if there is even a problem with that still.
         offerWaxingRecipes(exporter);
 
-        // MINT - Special
+        //<editor-fold desc ="MINT - Special">
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.MINT_TEA, 1)
 //                .input(Ingredient.fromJson(new PotionIngredient(Potions.WATER).toVanilla().toJson())) // Error?
 //                .input(Ingredient.ofStacks(PotionUtil.setPotion(Items.POTION.getDefaultStack(), Potions.WATER))) // Doesn't work, just allows any potion to be used
@@ -389,19 +389,17 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(ModItems.MINT_SPRIG), FabricRecipeProvider.conditionsFromItem(ModItems.MINT_SPRIG))
                 .criterion(FabricRecipeProvider.hasItem(Items.SUGAR), FabricRecipeProvider.conditionsFromItem(Items.SUGAR))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.PEPPERMINT_CANDY_CANE)));
-
-        // PEACH - Special
+        //</editor-fold>
+        //<editor-fold desc ="PEACH - Special">
         offerShapelessRecipe(exporter, ModItems.PEACH_DYE, ModBlocks.HYPERICUM, "peach_dye", 1);
         offerShapelessRecipe(exporter, ModItems.PEACH_DYE, ModItems.PEACH_PIT, "peach_dye", 1);
         offerShapelessRecipe(exporter, ModItems.PEACH_DYE, ModBlocks.CORAL_ANEMONE, "peach_dye", 1);
         offerShapelessRecipe(exporter, ModItems.PEACH_SLICE, ModItems.PEACH, "peach_slice", 4);
         offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PEACH_LOG, ModItems.PEACH_BRANCH);
         offerShapelessRecipe(exporter, Blocks.JUNGLE_PLANKS, ModBlocks.PEACH_LOG, "jungle_planks", 4);
-
         offerFoodCookingRecipe(exporter, "smoking", RecipeSerializer.SMOKING, 100, ModBlocks.CORAL_ANEMONE, ModItems.COOKED_ANEMONE, 0.35f);
         offerFoodCookingRecipe(exporter, "campfire_cooking", RecipeSerializer.CAMPFIRE_COOKING, 600, ModBlocks.CORAL_ANEMONE, ModItems.COOKED_ANEMONE, 0.35f);
         offerFoodCookingRecipe(exporter, "smelting", RecipeSerializer.SMELTING, 200, ModBlocks.CORAL_ANEMONE, ModItems.COOKED_ANEMONE, 0.35f);
-
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.AMBROSIA)
                 .input(Items.GOLDEN_APPLE)
                 .input(Items.GLISTERING_MELON_SLICE)
@@ -456,7 +454,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CORALSOIL_BRICK_STAIRS, ModBlocks.CORALSOIL_BRICKS);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CORALSOIL_BRICK_SLAB, ModBlocks.CORALSOIL_BRICKS, 2);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CORALSOIL_BRICK_WALL, ModBlocks.CORALSOIL_BRICKS);
-
         // TODO remainder ignoring shaped recipe
 //        ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.GOLDEN_PEACH)
 //                .pattern("XXX")
@@ -475,7 +472,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('P', ModItems.PEACH)
                 .criterion(FabricRecipeProvider.hasItem(ModItems.PEACH), FabricRecipeProvider.conditionsFromItem(ModItems.PEACH))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.GOLDEN_PEACH)));
-
+        //</editor-fold>
         //<editor-fold desc ="PERIWINKLE - Special">
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAVENDER_CLAY, 2)
                 .pattern(" C ")
@@ -493,25 +490,21 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('#', ModBlocks.LAVENDER_CLAY)
                 .criterion(FabricRecipeProvider.hasItem(ModBlocks.LAVENDER_CLAY), FabricRecipeProvider.conditionsFromItem(ModBlocks.LAVENDER_CLAY))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.LAVENDER_BRICKS)));
-
         offerStairsRecipe(exporter, ModBlocks.LAVENDER_BRICK_STAIRS, ModBlocks.LAVENDER_BRICKS);
         offerSlabRecipe(exporter, ModBlocks.LAVENDER_BRICK_SLAB, ModBlocks.LAVENDER_BRICKS);
         offerWallRecipe(exporter, ModBlocks.LAVENDER_BRICK_WALL, ModBlocks.LAVENDER_BRICKS);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAVENDER_BRICK_STAIRS, ModBlocks.LAVENDER_BRICKS);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAVENDER_BRICK_SLAB, ModBlocks.LAVENDER_BRICKS, 2);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAVENDER_BRICK_WALL, ModBlocks.LAVENDER_BRICKS);
-
         ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_LAVENDER_BRICKS)
                 .input(ModBlocks.LAVENDER_BRICKS)
                 .input(ModBlocks.PERIWINKLE_PETALS)
                 .criterion(FabricRecipeProvider.hasItem(ModBlocks.LAVENDER_BRICKS), FabricRecipeProvider.conditionsFromItem(ModBlocks.LAVENDER_BRICKS))
                 .criterion(FabricRecipeProvider.hasItem(ModBlocks.PERIWINKLE_PETALS), FabricRecipeProvider.conditionsFromItem(ModBlocks.PERIWINKLE_PETALS))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.MOSSY_LAVENDER_BRICKS)));
-
         offerStairsRecipe(exporter, ModBlocks.MOSSY_LAVENDER_BRICK_STAIRS, ModBlocks.MOSSY_LAVENDER_BRICKS);
         offerSlabRecipe(exporter, ModBlocks.MOSSY_LAVENDER_BRICK_SLAB, ModBlocks.MOSSY_LAVENDER_BRICKS);
         offerWallRecipe(exporter, ModBlocks.MOSSY_LAVENDER_BRICK_WALL, ModBlocks.MOSSY_LAVENDER_BRICKS);
-
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_LAVENDER_BRICK_STAIRS, ModBlocks.MOSSY_LAVENDER_BRICKS);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_LAVENDER_BRICK_SLAB, ModBlocks.MOSSY_LAVENDER_BRICKS, 2);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_LAVENDER_BRICK_WALL, ModBlocks.MOSSY_LAVENDER_BRICKS);
@@ -532,14 +525,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(Blocks.LANTERN), FabricRecipeProvider.conditionsFromItem(Blocks.LANTERN))
                 .criterion(FabricRecipeProvider.hasItem(ModItems.LAVENDER_OIL), FabricRecipeProvider.conditionsFromItem(ModItems.LAVENDER_OIL))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.LAVENDER_OIL_LANTERN) + "_from_nuggets"));
-
         offerShapelessRecipe(exporter, ModItems.PERIWINKLE_DYE, ModBlocks.PERIWINKLE_PETALS, "periwinkle_dye", 1);
         offerShapelessRecipe(exporter, ModItems.PERIWINKLE_DYE, ModBlocks.HIDCOTE_LAVENDER, "periwinkle_dye", 1);
-
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModBlocks.HIDCOTE_LAVENDER, RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAVENDER_BUSHEL);
         CookingRecipeJsonBuilder.create(Ingredient.ofItems(ModBlocks.HIDCOTE_LAVENDER), RecipeCategory.MISC, ModItems.SMOKED_LAVENDER, 0.1f, 100, RecipeSerializer.SMOKING).criterion(RecipeProvider.hasItem(ModBlocks.HIDCOTE_LAVENDER), RecipeProvider.conditionsFromItem(ModBlocks.HIDCOTE_LAVENDER)).offerTo(exporter, RecipeProvider.getItemPath(ModItems.SMOKED_LAVENDER) + "_from_" + "smoking");
 //        offerFoodCookingRecipe(exporter, "smoking", RecipeSerializer.SMOKING, 100, ModBlocks.HIDCOTE_LAVENDER, ModItems.SMOKED_LAVENDER, 0.1f);
-
         ShapedRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.LAVENDER_BREAD)
                 .pattern("LWL")
                 .input(Character.valueOf('L'), ModItems.SMOKED_LAVENDER)
@@ -566,8 +556,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(ModItems.SMOKED_LAVENDER), FabricRecipeProvider.conditionsFromItem(ModItems.SMOKED_LAVENDER))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.LAVENDER_SOAP)));
         //</editor-fold>
-
-
         //<editor-fold desc ="ARTICHOKE - Special">
         offerShapelessRecipe(exporter, ModItems.WAXCAP_WAX, ModBlocks.WAXCAP_MUSHROOM, groupName(ModItems.WAXCAP_WAX), 1);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC,  ModItems.WAXCAP_WAX, RecipeCategory.BUILDING_BLOCKS, ModBlocks.WAXCAP_WAX_BLOCK);
@@ -611,11 +599,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .group(breakfastGroup)
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.BREAKFAST_PORKCHOP)));
         //</editor-fold>
-
+        //<editor-fold desc ="MAROON - Special">
         offerShapelessRecipe(exporter, ModItems.POWDERED_CINNABAR, ModItems.CINNABAR, "powdered_cinnabar", 2);
         offerShapelessRecipe(exporter, ModItems.MAROON_DYE, ModItems.POWDERED_CINNABAR, "maroon_dye", 1);
         offerShapelessRecipe(exporter, ModItems.MAROON_DYE, ModItems.CARMINIC_COCHINEAL_BEETLE, "maroon_dye", 1);
         offerShapelessRecipe(exporter, ModItems.MAROON_DYE, ModItems.MADDER_ROOT, "maroon_dye", 1);
+        offerShapelessRecipe(exporter, Items.YELLOW_DYE, ModBlocks.MADDER, "yellow_dye", 1);
 
         offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MADDER_WOODSET.getLog(), ModItems.MADDER_ROOT);
         offerWoodsetRecipes(exporter, ModBlocks.MADDER_WOODSET);
@@ -645,8 +634,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('C', ModItems.CACTUS_CHUNK)
                 .criterion(hasItem(ModItems.CACTUS_CHUNK), conditionsFromItem(ModItems.CACTUS_CHUNK))
                 .offerTo(exporter);
+        //</editor-fold>
+        //<editor-fold desc ="AMBER - Special">
         offerShapelessRecipe(exporter, ModItems.AMBER_DYE, ModItems.AMBER, "amber_dye", 2);
-
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.EMBER, 2)
                 .input(ModItems.AMBER)
                 .input(Items.BLAZE_POWDER)
@@ -678,14 +668,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('#', ModBlocks.AMBER_BLOCK)
                 .criterion(FabricRecipeProvider.hasItem(ModBlocks.AMBER_BLOCK), FabricRecipeProvider.conditionsFromItem(ModBlocks.AMBER_BLOCK))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.AMBER_BRICKS)));
-
         offerStairsRecipe(exporter, ModBlocks.AMBER_BRICK_STAIRS, ModBlocks.AMBER_BRICKS);
         offerSlabRecipe(exporter, ModBlocks.AMBER_BRICK_SLAB, ModBlocks.AMBER_BRICKS);
         offerWallRecipe(exporter, ModBlocks.AMBER_BRICK_WALL, ModBlocks.AMBER_BRICKS);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.AMBER_BRICK_STAIRS, ModBlocks.AMBER_BRICKS);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.AMBER_BRICK_SLAB, ModBlocks.AMBER_BRICKS, 2);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.AMBER_BRICK_WALL, ModBlocks.AMBER_BRICKS);
-
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_AMBER_BRICKS, 1)
                 .pattern("#")
                 .pattern("#")
@@ -720,7 +708,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(ModItems.PINEAPPLE_SLICES), FabricRecipeProvider.conditionsFromItem(ModItems.PINEAPPLE_SLICES))
                 .criterion(FabricRecipeProvider.hasItem(Items.WHEAT), FabricRecipeProvider.conditionsFromItem(Items.WHEAT))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModItems.PINEAPPLE_TART)));
-
+        //</editor-fold>
+        //<editor-fold desc ="VELVET - Special">
         offerShapelessRecipe(exporter, ModItems.VELVET_DYE, ModItems.STRAWBERRY, "velvet_dye", 1);
         offerShapelessRecipe(exporter, ModItems.VELVET_DYE, ModItems.CHERRIES, "velvet_dye", 1);
         offerShapelessRecipe(exporter, ModItems.VELVET_DYE, ModBlocks.CORDYLINE, "velvet_dye", 1);
@@ -798,10 +787,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(ModItems.VELVET_DYE), FabricRecipeProvider.conditionsFromItem(ModItems.VELVET_DYE))
                 .criterion(FabricRecipeProvider.hasItem(Items.COCOA_BEANS), FabricRecipeProvider.conditionsFromItem(Items.COCOA_BEANS))
                 .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ModBlocks.VELVET_CAKE)));
-
-
+        //</editor-fold>
+        //<editor-fold desc ="GRAPE - Special">
         offerShapelessRecipe(exporter, ModItems.GRAPE_DYE, ModBlocks.PLUM_CORDYLINE, "grape_dye", 1);
         offerShapelessRecipe(exporter, ModItems.GRAPE_DYE, ModBlocks.TALL_PLUM_CORDYLINE, "grape_dye", 2);
+        //</editor-fold>
         //<editor-fold desc ="MOLD - Special">
         // This doesn't work because it does not specify each dye needs to be unique from each other. No idea how to do that however
 //        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MOLD_DYE)

@@ -2,21 +2,13 @@ package net.leafenzo.mint.world.gen;
 
 import com.mojang.serialization.Codec;
 import net.leafenzo.mint.block.ModBlocks;
-import net.leafenzo.mint.block.custom.CochinealBeetlesBlock;
-import net.leafenzo.mint.block.custom.MadderBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.PlantBlock;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.StructureWorldAccess;
-import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-
-import java.util.List;
-import java.util.function.BiConsumer;
 
 public class MadderFeature extends Feature<MadderFeatureConfig> {
     public MadderFeature(Codec<MadderFeatureConfig> configCodec) {
