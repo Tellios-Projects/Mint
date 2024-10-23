@@ -1,0 +1,12 @@
+{
+  "parent": "cookingforblockheads:item/dyed_oven",
+  "textures": {
+    "backsplash": "cookingforblockheads:block/artichoke_oven_side",
+    "ovenbottom": "cookingforblockheads:block/artichoke_oven_bottom",
+    "ovenfront": "cookingforblockheads:block/artichoke_oven_front",
+    "ovenfront_active": "cookingforblockheads:block/artichoke_oven_front_active",
+    "oventop": "cookingforblockheads:block/artichoke_oven_top",
+    "particle": "cookingforblockheads:block/artichoke_oven_side",
+    "texture": "cookingforblockheads:block/artichoke_oven_side"
+  }
+}

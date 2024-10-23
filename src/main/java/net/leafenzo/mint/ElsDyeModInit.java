@@ -51,6 +51,7 @@ public class ElsDyeModInit implements ModInitializer {
                 registerBuiltinResourcePack(modContainer.get(), "biomemakeover");
                 registerBuiltinResourcePack(modContainer.get(), "botanypots");
                 registerBuiltinResourcePack(modContainer.get(), "comforts");
+                registerBuiltinResourcePack(modContainer.get(), "cookingforblockheads");
                 registerBuiltinResourcePack(modContainer.get(), "create");
                 registerBuiltinResourcePack(modContainer.get(), "createdeco");
                 registerBuiltinResourcePack(modContainer.get(), "excessive_building");

@@ -1,0 +1,12 @@
+{
+  "parent": "cookingforblockheads:block/dyed_oven_door",
+  "textures": {
+    "backsplash": "cookingforblockheads:block/mauve_oven_side",
+    "ovenbottom": "cookingforblockheads:block/mauve_oven_bottom",
+    "ovenfront": "cookingforblockheads:block/mauve_oven_front",
+    "ovenfront_active": "cookingforblockheads:block/mauve_oven_front_active",
+    "oventop": "cookingforblockheads:block/mauve_oven_top",
+    "particle": "cookingforblockheads:block/mauve_oven_side",
+    "texture": "cookingforblockheads:block/mauve_oven_side"
+  }
+}

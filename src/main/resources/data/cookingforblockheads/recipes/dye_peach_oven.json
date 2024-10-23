@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "cookingforblockheads:ovens"
+    },
+    {
+      "tag": "c:peach_dyes"
+    }
+  ],
+  "result": {
+    "item": "cookingforblockheads:peach_oven"
+  }
+}
