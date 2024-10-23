@@ -8,8 +8,8 @@ package net.leafenzo.mint.world.gen;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.leafenzo.mint.util.ModUtil;
-import net.leafenzo.mint.util.ModWorldGen;
+import net.leafenzo.mint.util.ElsDyeModUtil;
+import net.leafenzo.mint.util.ElsDyeModWorldGen;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -32,7 +32,7 @@ public class WintergreenTrunkPlacer extends TrunkPlacer {
 
     @Override
     protected TrunkPlacerType<?> getType() {
-        return ModWorldGen.WINTERGREEN_TRUNK_PLACER;
+        return ElsDyeModWorldGen.WINTERGREEN_TRUNK_PLACER;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class WintergreenTrunkPlacer extends TrunkPlacer {
 //        }
 //        return ImmutableList.of(new FoliagePlacer.TreeNode(startPos.up(height), 0, false));
 
-        Direction d = ModUtil.randomHorizontalDirectionWithCoordinateSeed(startPos);
+        Direction d = ElsDyeModUtil.randomHorizontalDirectionWithCoordinateSeed(startPos);
 
         TrunkPlacer.setToDirt(world, replacer, random, startPos.down(), config);
         int base = Math.max(baseHeight, 11);

@@ -6,7 +6,7 @@
 
 package net.leafenzo.mint.mixin;
 
-import net.leafenzo.mint.block.custom.ModShulkerBoxBlock;
+import net.leafenzo.mint.block.custom.ElsDyeModShulkerBoxBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
 import org.spongepowered.asm.mixin.Mixin;
@@ -26,7 +26,7 @@ public class BlockEntityTypeMixin {
         }
         if (type == BlockEntityType.SHULKER_BOX &&
                     (state.getBlock() instanceof ShulkerBoxBlock ||
-                state.getBlock() instanceof ModShulkerBoxBlock)) {
+                state.getBlock() instanceof ElsDyeModShulkerBoxBlock)) {
             cir.setReturnValue(true);
         }
         else if (type == BlockEntityType.BANNER &&

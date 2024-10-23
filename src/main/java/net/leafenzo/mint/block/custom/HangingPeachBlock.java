@@ -1,8 +1,8 @@
 package net.leafenzo.mint.block.custom;
 
 import net.fabricmc.loader.api.FabricLoader;
-import net.leafenzo.mint.block.ModBlocks;
-import net.leafenzo.mint.item.ModItems;
+import net.leafenzo.mint.block.ElsDyeModBlocks;
+import net.leafenzo.mint.item.ElsDyeModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -72,8 +72,8 @@ public class HangingPeachBlock extends HangingFruitBlock {
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         return Block.sideCoversSmallSquare(world, pos.up(), Direction.DOWN) && !world.isWater(pos)
-                || world.getBlockState(pos.up()).isOf(ModBlocks.PEACH_LEAVES) && !world.isWater(pos)
-                || world.getBlockState(pos.up()).isOf(ModBlocks.FLOWERING_PEACH_LEAVES) && !world.isWater(pos);
+                || world.getBlockState(pos.up()).isOf(ElsDyeModBlocks.PEACH_LEAVES) && !world.isWater(pos)
+                || world.getBlockState(pos.up()).isOf(ElsDyeModBlocks.FLOWERING_PEACH_LEAVES) && !world.isWater(pos);
     }
 
     @Override
@@ -83,7 +83,7 @@ public class HangingPeachBlock extends HangingFruitBlock {
             return ActionResult.PASS;
         }
         if (i == 4) {
-            HangingFruitBlock.dropStack(world, pos, new ItemStack(ModItems.PEACH, 1));
+            HangingFruitBlock.dropStack(world, pos, new ItemStack(ElsDyeModItems.PEACH, 1));
             world.playSound(null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0f, 0.8f + world.random.nextFloat() * 0.4f);
             BlockState blockState = state.with(AGE, 0);
             world.setBlockState(pos, blockState, Block.NOTIFY_LISTENERS);
@@ -95,6 +95,6 @@ public class HangingPeachBlock extends HangingFruitBlock {
 
     @Override
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
-        return new ItemStack(ModItems.PEACH);
+        return new ItemStack(ElsDyeModItems.PEACH);
     }
 }

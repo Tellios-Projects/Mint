@@ -11,12 +11,12 @@ import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
-import net.leafenzo.mint.block.ModBlocks;
-import net.leafenzo.mint.entity.ModBoatEntity;
-import net.leafenzo.mint.entity.ModEntityTypes;
+import net.leafenzo.mint.block.ElsDyeModBlocks;
+import net.leafenzo.mint.entity.ElsDyeModBoatEntity;
+import net.leafenzo.mint.entity.ElsDyeModEntityTypes;
 import net.leafenzo.mint.item.custom.ModBoatItem;
-import net.leafenzo.mint.registries.ModFabricRegistries;
-import net.leafenzo.mint.registry.tag.ModTags;
+import net.leafenzo.mint.registries.ElsDyeModFabricRegistries;
+import net.leafenzo.mint.registry.tag.ElsDyeModTags;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.piston.PistonBehavior;
@@ -33,8 +33,8 @@ import net.minecraft.util.math.Direction;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.leafenzo.mint.registration.ModRegistryHelper.BlockRegistry;
-import static net.leafenzo.mint.registration.ModRegistryHelper.ItemRegistry;
+import static net.leafenzo.mint.registration.ElsDyeModRegistryHelper.BlockRegistry;
+import static net.leafenzo.mint.registration.ElsDyeModRegistryHelper.ItemRegistry;
 
 public class WoodSet {
     //<editor-fold desc ="Properties">
@@ -79,7 +79,7 @@ public class WoodSet {
     private Item chestBoatItem;
     private TagKey <Item> itemLogsTag;
     private TagKey <Block> blockLogsTag;
-    private final ModBoatEntity.ModBoat boatType;
+    private final ElsDyeModBoatEntity.ModBoat boatType;
     private EntityType<BoatEntity> boatEntityType;
     private EntityType<BoatEntity> chestBoatEntityType;
     private final SaplingGenerator saplingGenerator;
@@ -89,7 +89,7 @@ public class WoodSet {
     private final boolean hasMosaic;
     //</editor-fold>
     //<editor-fold desc ="Constructors">
-    public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, MapColor leavesColor, ModBoatEntity.ModBoat boatType, WoodPreset woodPreset, boolean hasMosaic, SaplingGenerator saplingGenerator, boolean isFlammable, boolean isUsedAsFuel) {
+    public WoodSet(Identifier name, MapColor sideColor, MapColor topColor, MapColor leavesColor, ElsDyeModBoatEntity.ModBoat boatType, WoodPreset woodPreset, boolean hasMosaic, SaplingGenerator saplingGenerator, boolean isFlammable, boolean isUsedAsFuel) {
         this.woodPreset = woodPreset;
         this.name = name;
         this.sideColor = sideColor;
@@ -210,7 +210,7 @@ public class WoodSet {
     public Block getLeaves() {return leaves;}
     public Block getSapling() {return sapling;}
     public Block getPottedSapling() {return pottedSapling;}
-    public ModBoatEntity.ModBoat getBoatType() {
+    public ElsDyeModBoatEntity.ModBoat getBoatType() {
         return boatType;
     }
     public EntityType <BoatEntity> getBoatEntityType() {
@@ -282,19 +282,19 @@ public class WoodSet {
         hangingWallSign = registerWallHangingSignBlock();
         hangingSignItem = registerHangingSignItem(hangingSign, hangingWallSign);
 
-        boatEntityType = ModEntityTypes.registerEntityType(this.getName() + "_boat", ModEntityTypes.createBoatType(false, this.getBoatType()));
-        chestBoatEntityType = ModEntityTypes.registerEntityType(this.getName() + "_chest_boat", ModEntityTypes.createBoatType(true, this.getBoatType()));
+        boatEntityType = ElsDyeModEntityTypes.registerEntityType(this.getName() + "_boat", ElsDyeModEntityTypes.createBoatType(false, this.getBoatType()));
+        chestBoatEntityType = ElsDyeModEntityTypes.registerEntityType(this.getName() + "_chest_boat", ElsDyeModEntityTypes.createBoatType(true, this.getBoatType()));
         boatItem = registerBoatItem();
         chestBoatItem = registerChestBoatItem();
 
-        blockLogsTag = ModTags.Blocks.getOrCreateTag(this.getName() + "_logs");
-        itemLogsTag = ModTags.Items.getOrCreateTag(this.getName() + "_logs");
+        blockLogsTag = ElsDyeModTags.Blocks.getOrCreateTag(this.getName() + "_logs");
+        itemLogsTag = ElsDyeModTags.Items.getOrCreateTag(this.getName() + "_logs");
 
 //        // addToBuildingTab(getButtonBefore(), getLogBefore(), getSignBefore(), getBoatBefore(), this);
 //        // for(Block item : this.getRegisteredBlocksList()) ItemGroupEvents.modifyEntriesEvent(ModItemGroups.NS_WOOD_ITEM_GROUP).register(entries -> entries.add(item));
 //        // for(Item item : this.getRegisteredItemsList()) ItemGroupEvents.modifyEntriesEvent(ModItemGroups.NS_WOOD_ITEM_GROUP).register(entries -> entries.add(item));
 
-        ModBlocks.WOODSETS.add(this);
+        ElsDyeModBlocks.WOODSETS.add(this);
     }
     //</editor-fold>
     //<editor-fold desc ="Registration">
@@ -334,219 +334,219 @@ public class WoodSet {
     }
     private Block registerLogBlock() {
         Block b = registerBlock(getLogName(), createLogBlock(this.getTopColor(), this.getSideColor()));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(b, 300); }
         if(isFlammable) {
-            ModFabricRegistries.registerFlammable(b, 5, 5);
-            ModBlocks.LOGS_THAT_BURN.add(b);
+            ElsDyeModFabricRegistries.registerFlammable(b, 5, 5);
+            ElsDyeModBlocks.LOGS_THAT_BURN.add(b);
         }
         else {
-            ModBlocks.LOGS.add(b);
+            ElsDyeModBlocks.LOGS.add(b);
         }
         return b;
     }
     private Block registerStrippedLogBlock() {
         Block b = registerBlock("stripped_" + getLogName(), createLogBlock(this.getTopColor(), this.getTopColor()));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(b, 300); }
         if(isFlammable) {
-            ModFabricRegistries.registerFlammable(b, 5, 5);
-            ModBlocks.LOGS_THAT_BURN.add(b);
+            ElsDyeModFabricRegistries.registerFlammable(b, 5, 5);
+            ElsDyeModBlocks.LOGS_THAT_BURN.add(b);
         }
         else {
-            ModBlocks.LOGS.add(b);
+            ElsDyeModBlocks.LOGS.add(b);
         }
         return b;
     }
     private Block registerWoodBlock() {
         Block b = registerBlock(getWoodName(), createLogBlock(this.getSideColor(), this.getSideColor()));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(b, 300); }
         if(isFlammable) {
-            ModFabricRegistries.registerFlammable(b, 5, 5);
-            ModBlocks.LOGS_THAT_BURN.add(b);
+            ElsDyeModFabricRegistries.registerFlammable(b, 5, 5);
+            ElsDyeModBlocks.LOGS_THAT_BURN.add(b);
         }
         else {
-            ModBlocks.LOGS.add(b);
+            ElsDyeModBlocks.LOGS.add(b);
         }
         return b;
     }
     private Block registerStrippedWoodBlock() {
         Block b = registerBlock("stripped_" + getWoodName(), createLogBlock(this.getTopColor(), this.getTopColor()));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(b, 300); }
         if(isFlammable) {
-            ModFabricRegistries.registerFlammable(b, 5, 5);
-            ModBlocks.LOGS_THAT_BURN.add(b);
+            ElsDyeModFabricRegistries.registerFlammable(b, 5, 5);
+            ElsDyeModBlocks.LOGS_THAT_BURN.add(b);
         }
         else {
-            ModBlocks.LOGS.add(b);
+            ElsDyeModBlocks.LOGS.add(b);
         }
         return b;
     }
     private Block registerLeavesBlock() {
         Block b = registerBlock(this.getName() + "_leaves", new LeavesBlock(FabricBlockSettings.copy(getBaseLeaves()).mapColor(leavesColor)));
-        ModFabricRegistries.registerCompostable(b, 0.3f);
+        ElsDyeModFabricRegistries.registerCompostable(b, 0.3f);
         if(isFlammable) {
-            ModFabricRegistries.registerFlammable(b, 60, 30);
+            ElsDyeModFabricRegistries.registerFlammable(b, 60, 30);
         }
-        ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
-        ModBlocks.HAS_FOLIAGE_COLOR_PROVIDER.add(b);
-        ModBlocks.LEAVES.add(b);
+        ElsDyeModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
+        ElsDyeModBlocks.HAS_FOLIAGE_COLOR_PROVIDER.add(b);
+        ElsDyeModBlocks.LEAVES.add(b);
         return b;
     }
     private Block registerLeavesBlock(String prefix) {
         Block b = registerBlock(prefix + this.getName() + "_leaves", new LeavesBlock(FabricBlockSettings.copy(getBaseLeaves()).mapColor(leavesColor)));
-        ModFabricRegistries.registerCompostable(b, 0.3f);
+        ElsDyeModFabricRegistries.registerCompostable(b, 0.3f);
         if(isFlammable) {
-            ModFabricRegistries.registerFlammable(b, 60, 30);
+            ElsDyeModFabricRegistries.registerFlammable(b, 60, 30);
         }
-        ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
-        ModBlocks.HAS_FOLIAGE_COLOR_PROVIDER.add(b);
-        ModBlocks.LEAVES.add(b);
+        ElsDyeModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
+        ElsDyeModBlocks.HAS_FOLIAGE_COLOR_PROVIDER.add(b);
+        ElsDyeModBlocks.LEAVES.add(b);
         return b;
     }
     private Block registerPlanksBlock(){
         Block b = registerBlock(this.getName() + "_planks", new Block(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
-        if(isFlammable) { ModFabricRegistries.registerFlammable(b, 20, 5); }
-        ModBlocks.PLANKS.add(b);
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(b, 300); }
+        if(isFlammable) { ElsDyeModFabricRegistries.registerFlammable(b, 20, 5); }
+        ElsDyeModBlocks.PLANKS.add(b);
         return b;
     }
     private Block registerStairsBlock(){
         Block b = registerBlock(this.getName() + "_stairs", new StairsBlock(getBase().getDefaultState(), FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
-        if(isFlammable) { ModFabricRegistries.registerFlammable(b, 20, 5); }
-        ModBlocks.WOODEN_STAIRS.add(b);
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(b, 300); }
+        if(isFlammable) { ElsDyeModFabricRegistries.registerFlammable(b, 20, 5); }
+        ElsDyeModBlocks.WOODEN_STAIRS.add(b);
         return b;
     }
     private Block registerSlabBlock(){
         Block b = registerBlock(this.getName() + "_slab", new SlabBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 150); }
-        if(isFlammable) { ModFabricRegistries.registerFlammable(b, 20, 5); }
-        ModBlocks.WOODEN_SLABS.add(b);
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(b, 150); }
+        if(isFlammable) { ElsDyeModFabricRegistries.registerFlammable(b, 20, 5); }
+        ElsDyeModBlocks.WOODEN_SLABS.add(b);
         return b;
     }
     private Block registerMosaicBlock(){
         Block b = registerBlock(this.getName() + "_mosaic", new Block(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
-        if(isFlammable) { ModFabricRegistries.registerFlammable(b, 20, 5); }
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(b, 300); }
+        if(isFlammable) { ElsDyeModFabricRegistries.registerFlammable(b, 20, 5); }
         return b;
     }
     private Block registerMosaicStairsBlock(){
         Block b = registerBlock(this.getName() + "_mosaic_stairs", new StairsBlock(getBase().getDefaultState(), FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
-        if(isFlammable) { ModFabricRegistries.registerFlammable(b, 20, 5); }
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(b, 300); }
+        if(isFlammable) { ElsDyeModFabricRegistries.registerFlammable(b, 20, 5); }
         return b;
     }
     private Block registerMosaicSlabBlock(){
         Block b = registerBlock(this.getName() + "_mosaic_slab", new SlabBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 150); }
-        if(isFlammable) { ModFabricRegistries.registerFlammable(b, 20, 5); }
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(b, 150); }
+        if(isFlammable) { ElsDyeModFabricRegistries.registerFlammable(b, 20, 5); }
         return b;
     }
     private Block registerFenceBlock(){
         Block b = registerBlock(this.getName() + "_fence", new FenceBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor())));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
-        if(isFlammable) { ModFabricRegistries.registerFlammable(b, 20, 5); }
-        ModBlocks.WOODEN_FENCES.add(b);
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(b, 300); }
+        if(isFlammable) { ElsDyeModFabricRegistries.registerFlammable(b, 20, 5); }
+        ElsDyeModBlocks.WOODEN_FENCES.add(b);
         return b;
     }
     private Block registerFenceGateBlock(){
         Block b = registerBlock(this.getName() + "_fence_gate", new FenceGateBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getWoodType()));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
-        if(isFlammable) { ModFabricRegistries.registerFlammable(b, 20, 5); }
-        ModBlocks.FENCE_GATES.add(b);
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(b, 300); }
+        if(isFlammable) { ElsDyeModFabricRegistries.registerFlammable(b, 20, 5); }
+        ElsDyeModBlocks.FENCE_GATES.add(b);
         return b;
     }
     private Block createPressurePlate(){
         Block b = registerBlock(this.getName() + "_pressure_plate", new PressurePlateBlock(this.pressurePlateActivationRule, FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getBlockSetType()));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
-        ModBlocks.WOODEN_PRESSURE_PLATES.add(b);
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(b, 300); }
+        ElsDyeModBlocks.WOODEN_PRESSURE_PLATES.add(b);
         return b;
     }
     private Block registerButtonBlock(){
         Block b = registerBlock(this.getName() + "_button", new ButtonBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).mapColor(getTopColor()), this.getBlockSetType(), 30, true));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 100); }
-        ModBlocks.WOODEN_BUTTONS.add(b);
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(b, 100); }
+        ElsDyeModBlocks.WOODEN_BUTTONS.add(b);
         return b;
     }
     private Block registerDoorBlock(){
         Block b = registerBlock(this.getName() + "_door", new DoorBlock(FabricBlockSettings.copy(getBase()).burnable().sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor()), this.getBlockSetType()));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 200); }
-        ModBlocks.WOODEN_DOORS.add(b);
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(b, 200); }
+        ElsDyeModBlocks.WOODEN_DOORS.add(b);
         return b;
     }
     private Block registerTrapdoorBlock() {
         Block b = registerBlock(this.getName() + "_trapdoor", new TrapdoorBlock(FabricBlockSettings.copy(getBase()).sounds(getBlockSetType().soundType()).nonOpaque().mapColor(getTopColor()), this.getBlockSetType()));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(b, 300); }
-        ModBlocks.WOODEN_TRAPDOORS.add(b);
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(b, 300); }
+        ElsDyeModBlocks.WOODEN_TRAPDOORS.add(b);
         return b;
     }
     private Block registerSignBlock(){
         Block b = registerBlockWithoutBlockItem(this.getName() + "_sign", new SignBlock(FabricBlockSettings.copy(getSignBase()).mapColor(this.getTopColor()), this.getWoodType()));
-        ModBlocks.SIGNS.add(b);
+        ElsDyeModBlocks.SIGNS.add(b);
         return b;
     }
     private Block registerWallSignBlock(){
         Block b = registerBlockWithoutBlockItem(this.getName() + "_wall_sign", new WallSignBlock(FabricBlockSettings.copy(this.getSignBase()).mapColor(this.getTopColor()).dropsLike(this.getSign()), this.getWoodType()));
-        ModBlocks.SIGNS.add(b);
+        ElsDyeModBlocks.SIGNS.add(b);
         return b;
     }
     private Block registerHangingSignBlock(){
         Block b = registerBlockWithoutBlockItem(this.getName() + "_hanging_sign", new HangingSignBlock(FabricBlockSettings.copy(this.getHangingSignBase()).mapColor(this.getTopColor()), this.getWoodType()));
-        ModBlocks.SIGNS.add(b);
+        ElsDyeModBlocks.SIGNS.add(b);
         return b;
     }
     private Block registerWallHangingSignBlock(){
         Block b = registerBlockWithoutBlockItem(this.getName() + "_wall_hanging_sign", new WallHangingSignBlock(FabricBlockSettings.copy(this.getHangingSignBase()).mapColor(this.getTopColor()).dropsLike(this.getHangingSign()), this.getWoodType()));
-        ModBlocks.SIGNS.add(b);
+        ElsDyeModBlocks.SIGNS.add(b);
         return b;
     }
     public Block registerSaplingBlock(SaplingGenerator saplingGenerator) {
         Block b = registerBlock(this.getName() + "_sapling", new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
         // Saplings are not ever flammable
-        ModFabricRegistries.registerCompostable(b, 0.3f);
-        ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
-        ModBlocks.SAPLINGS.add(b);
+        ElsDyeModFabricRegistries.registerCompostable(b, 0.3f);
+        ElsDyeModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
+        ElsDyeModBlocks.SAPLINGS.add(b);
         return b;
     }
     public Block registerSaplingBlock(String prefix, SaplingGenerator saplingGenerator) {
         Block b = registerBlock(prefix + this.getName() + "_sapling", new SaplingBlock(saplingGenerator, FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING)));
         CompostingChanceRegistry.INSTANCE.add(b, 0.3F);
-        ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
-        ModBlocks.SAPLINGS.add(b);
+        ElsDyeModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
+        ElsDyeModBlocks.SAPLINGS.add(b);
         return b;
     }
     public Block registerPottedSaplingBlock(Block sapling) {
         Block b = registerBlockWithoutBlockItem("potted_" + this.getName() + "_sapling", new FlowerPotBlock(sapling, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
-        ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
-        ModBlocks.FLOWER_POT_FROM_BLOCK.put(sapling, (FlowerPotBlock) b);
+        ElsDyeModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
+        ElsDyeModBlocks.FLOWER_POT_FROM_BLOCK.put(sapling, (FlowerPotBlock) b);
         return b;
     }
     public Block registerPottedSaplingBlock(String prefix, Block sapling) {
         Block b = registerBlockWithoutBlockItem("potted_" + prefix + this.getName() + "_sapling", new FlowerPotBlock(sapling, FabricBlockSettings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY)));
-        ModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
-        ModBlocks.FLOWER_POT_FROM_BLOCK.put(sapling, (FlowerPotBlock) b);
+        ElsDyeModBlocks.RENDER_LAYER_CUTOUT_MIPPED.add(b);
+        ElsDyeModBlocks.FLOWER_POT_FROM_BLOCK.put(sapling, (FlowerPotBlock) b);
         return b;
     }
     private Item registerSignItem(Block sign, Block wallSign){
         Item i = registerItem(this.getName() + "_sign", new SignItem(new FabricItemSettings().maxCount(16), sign, wallSign));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(i, 200); }
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(i, 200); }
         ItemRegistry.SIGN_ITEMS.add(i);
         return i;
     }
     private Item registerHangingSignItem(Block hangingSign, Block hangingWallSign){
         Item i = registerItem(this.getName() + "_hanging_sign", new HangingSignItem(hangingSign, hangingWallSign, new FabricItemSettings().maxCount(16)));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(i, 200); }
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(i, 200); }
         ItemRegistry.HANGING_SIGN_ITEMS.add(i);
         return i;
     }
     private Item registerBoatItem(){
         Item i = registerItem(this.getName() + "_boat", new ModBoatItem(false, this.getBoatType(), new FabricItemSettings().maxCount(1)));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(i, 1200); }
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(i, 1200); }
         ItemRegistry.BOAT_ITEMS.add(i);
         return i;
     }
     private Item registerChestBoatItem(){
         Item i = registerItem(this.getName() + "_chest_boat", new ModBoatItem(true, this.getBoatType(), new  FabricItemSettings().maxCount(1)));
-        if(isUsedAsFuel) { ModFabricRegistries.registerFuel(i, 1200); }
+        if(isUsedAsFuel) { ElsDyeModFabricRegistries.registerFuel(i, 1200); }
         ItemRegistry.CHEST_BOAT_ITEMS.add(i);
         return i;
     }

@@ -2,7 +2,7 @@ package net.leafenzo.mint.world.gen;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.leafenzo.mint.util.ModWorldGen;
+import net.leafenzo.mint.util.ElsDyeModWorldGen;
 import net.minecraft.block.MushroomBlock;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
@@ -28,7 +28,7 @@ public class MushroomBlockDirectionDecorator extends TreeDecorator {
 
     @Override
     protected TreeDecoratorType<?> getType() {
-        return ModWorldGen.MUSHROOM_BLOCK_DIRECTION_DECORATOR;
+        return ElsDyeModWorldGen.MUSHROOM_BLOCK_DIRECTION_DECORATOR;
     }
 
     public void generate(Generator context) {

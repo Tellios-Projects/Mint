@@ -1,6 +1,6 @@
 package net.leafenzo.mint.block.custom;
 
-import net.leafenzo.mint.state.property.ModProperties;
+import net.leafenzo.mint.state.property.ElsDyeModProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SlabBlock;
@@ -19,7 +19,7 @@ import net.minecraft.util.math.Direction;
 
 public class DiagonalSlabBlock extends SlabBlock {
     public static final DirectionProperty FACING = Properties.FACING;
-    public static final BooleanProperty DIAGONAL = ModProperties.DIAGONAL;
+    public static final BooleanProperty DIAGONAL = ElsDyeModProperties.DIAGONAL;
 
     public DiagonalSlabBlock(Settings settings) {
         super(settings);

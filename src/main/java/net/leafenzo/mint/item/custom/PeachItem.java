@@ -1,6 +1,6 @@
 package net.leafenzo.mint.item.custom;
 
-import net.leafenzo.mint.item.ModItems;
+import net.leafenzo.mint.item.ElsDyeModItems;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -24,6 +24,6 @@ extends Item {
         if (user instanceof PlayerEntity && ((PlayerEntity)user).getAbilities().creativeMode) {
             return itemStack;
         }
-        return new ItemStack(ModItems.PEACH_PIT);
+        return new ItemStack(ElsDyeModItems.PEACH_PIT);
     }
 }

@@ -3,8 +3,8 @@ package net.leafenzo.mint.mixin;
 // SOURCES:
 // Dodo Gang - https://github.com/dodogang/marbles/blob/a49fc890db99275919d57cc3064b8b429b1a8eb6/src/main/java/net/dodogang/marbles/mixin/client/render/LlamaDecorFeatureRendererMixin.java
 
-import net.leafenzo.mint.Super;
-import net.leafenzo.mint.util.ModDyeColor;
+import net.leafenzo.mint.ElsDyeMod;
+import net.leafenzo.mint.util.ElsDyeModDyeColor;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
@@ -40,26 +40,26 @@ public abstract class LlamaDecorFeatureRendererMixin extends FeatureRenderer<Lla
     @Shadow @Final private LlamaEntityModel<LlamaEntity> model;
 
     @Unique private static final HashMap<DyeColor, Identifier> LLAMA_DECOR = new HashMap<DyeColor, Identifier>(); static {{
-        LLAMA_DECOR.put(ModDyeColor.MINT, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/mint.png"));
-        LLAMA_DECOR.put(ModDyeColor.PEACH, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/peach.png"));
-        LLAMA_DECOR.put(ModDyeColor.PERIWINKLE, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/periwinkle.png"));
-        LLAMA_DECOR.put(ModDyeColor.ARTICHOKE, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/artichoke.png"));
-        LLAMA_DECOR.put(ModDyeColor.FUCHSIA, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/fuchsia.png"));
-        LLAMA_DECOR.put(ModDyeColor.VERMILION, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/vermilion.png"));
-        LLAMA_DECOR.put(ModDyeColor.SHAMROCK, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/shamrock.png"));
-        LLAMA_DECOR.put(ModDyeColor.INDIGO, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/indigo.png"));
-        LLAMA_DECOR.put(ModDyeColor.BANANA, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/banana.png"));
-        LLAMA_DECOR.put(ModDyeColor.CERULEAN, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/cerulean.png"));
-        LLAMA_DECOR.put(ModDyeColor.ACORN, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/acorn.png"));
-        LLAMA_DECOR.put(ModDyeColor.MAUVE, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/mauve.png"));
-        LLAMA_DECOR.put(ModDyeColor.MAROON, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/maroon.png"));
-        LLAMA_DECOR.put(ModDyeColor.GRAPE, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/grape.png"));
-        LLAMA_DECOR.put(ModDyeColor.NAVY, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/navy.png"));
-        LLAMA_DECOR.put(ModDyeColor.SAP, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/sap.png"));
-        LLAMA_DECOR.put(ModDyeColor.AMBER, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/amber.png"));
-        LLAMA_DECOR.put(ModDyeColor.SAGE, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/sage.png"));
-        LLAMA_DECOR.put(ModDyeColor.VELVET, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/velvet.png"));
-        LLAMA_DECOR.put(ModDyeColor.MOLD, new Identifier(Super.MOD_ID, "textures/entity/llama/decor/mold.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.MINT, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/mint.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.PEACH, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/peach.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.PERIWINKLE, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/periwinkle.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.ARTICHOKE, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/artichoke.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.FUCHSIA, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/fuchsia.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.VERMILION, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/vermilion.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.SHAMROCK, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/shamrock.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.INDIGO, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/indigo.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.BANANA, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/banana.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.CERULEAN, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/cerulean.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.ACORN, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/acorn.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.MAUVE, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/mauve.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.MAROON, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/maroon.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.GRAPE, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/grape.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.NAVY, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/navy.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.SAP, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/sap.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.AMBER, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/amber.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.SAGE, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/sage.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.VELVET, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/velvet.png"));
+        LLAMA_DECOR.put(ElsDyeModDyeColor.MOLD, new Identifier(ElsDyeMod.MOD_ID, "textures/entity/llama/decor/mold.png"));
     }}
 //    @Unique private static Identifier getLlamaDecorByColor(DyeColor color) {
 //        return LLAMA_DECOR.get(color);
@@ -71,7 +71,7 @@ public abstract class LlamaDecorFeatureRendererMixin extends FeatureRenderer<Lla
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, LlamaEntity llamaEntity, float f, float g, float h, float j, float k, float l, CallbackInfo ci) {
         Identifier identifier;
         DyeColor dyeColor = llamaEntity.getCarpetColor();
-        if (dyeColor != null && Arrays.stream(ModDyeColor.VALUES).anyMatch(x -> x == dyeColor)) {
+        if (dyeColor != null && Arrays.stream(ElsDyeModDyeColor.VALUES).anyMatch(x -> x == dyeColor)) {
             identifier = LLAMA_DECOR.get(dyeColor);
 
             LlamaDecorFeatureRenderer $this = LlamaDecorFeatureRenderer.class.cast(this);

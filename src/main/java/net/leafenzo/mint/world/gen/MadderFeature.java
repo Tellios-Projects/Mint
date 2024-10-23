@@ -1,7 +1,7 @@
 package net.leafenzo.mint.world.gen;
 
 import com.mojang.serialization.Codec;
-import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.ElsDyeModBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.tag.BlockTags;
@@ -21,7 +21,7 @@ public class MadderFeature extends Feature<MadderFeatureConfig> {
         for (int i = 1; i > -2; i--) {
             for (int j = 1; j > -2; j--) {
                 if (context.getRandom().nextFloat() < 0.2) {
-                    tryPlaceMadder(context.getWorld(), context.getOrigin().add(i, 0, j), ModBlocks.MADDER.getDefaultState());
+                    tryPlaceMadder(context.getWorld(), context.getOrigin().add(i, 0, j), ElsDyeModBlocks.MADDER.getDefaultState());
                 }
             }
         }
@@ -52,10 +52,10 @@ public class MadderFeature extends Feature<MadderFeatureConfig> {
         }
     }
     private void tryPlaceMadderRoot(StructureWorldAccess world, BlockPos pos) {
-        if (world.testBlockState(pos, blockState -> blockState.isOf(Blocks.GRASS_BLOCK)) || world.testBlockState(pos, blockState -> blockState.isOf(ModBlocks.MADDER_ROOTED_GRASS_BLOCK))) {
-            world.setBlockState(pos, ModBlocks.MADDER_ROOTED_GRASS_BLOCK.getDefaultState(), 2);
+        if (world.testBlockState(pos, blockState -> blockState.isOf(Blocks.GRASS_BLOCK)) || world.testBlockState(pos, blockState -> blockState.isOf(ElsDyeModBlocks.MADDER_ROOTED_GRASS_BLOCK))) {
+            world.setBlockState(pos, ElsDyeModBlocks.MADDER_ROOTED_GRASS_BLOCK.getDefaultState(), 2);
         } else if (world.testBlockState(pos, blockState -> blockState.isIn(BlockTags.DIRT))) {
-            world.setBlockState(pos, ModBlocks.MADDER_ROOTED_DIRT.getDefaultState(), 2);
+            world.setBlockState(pos, ElsDyeModBlocks.MADDER_ROOTED_DIRT.getDefaultState(), 2);
         }
     }
 }

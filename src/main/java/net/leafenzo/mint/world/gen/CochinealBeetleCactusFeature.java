@@ -1,7 +1,7 @@
 package net.leafenzo.mint.world.gen;
 
 import com.mojang.serialization.Codec;
-import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.ElsDyeModBlocks;
 import net.leafenzo.mint.block.custom.CochinealBeetlesBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -27,7 +27,7 @@ public class CochinealBeetleCactusFeature extends Feature<CochinealBeetleCactusF
             this.getAndSetState(context.getWorld(), context.getOrigin().up(i), Blocks.CACTUS.getDefaultState());
             for (Direction direction : directions) {
                 if (context.getRandom().nextBetween(1, 10) <= beetleChance) {
-                    this.getAndSetState(context.getWorld(), context.getOrigin().up(i).offset(direction, 1), ModBlocks.COCHINEAL_BEETLES.getDefaultState().with(CochinealBeetlesBlock.FACING, direction).with(CochinealBeetlesBlock.AGE, context.getRandom().nextBetween(0, 3)));
+                    this.getAndSetState(context.getWorld(), context.getOrigin().up(i).offset(direction, 1), ElsDyeModBlocks.COCHINEAL_BEETLES.getDefaultState().with(CochinealBeetlesBlock.FACING, direction).with(CochinealBeetlesBlock.AGE, context.getRandom().nextBetween(0, 3)));
                 }
             }
         }
@@ -35,7 +35,7 @@ public class CochinealBeetleCactusFeature extends Feature<CochinealBeetleCactusF
     }
 
     private void getAndSetState(StructureWorldAccess world, BlockPos pos, BlockState state) {
-        if (world.testBlockState(pos, (blockstate) -> blockstate.isAir() || blockstate.isOf(ModBlocks.COCHINEAL_BEETLES))) {
+        if (world.testBlockState(pos, (blockstate) -> blockstate.isAir() || blockstate.isOf(ElsDyeModBlocks.COCHINEAL_BEETLES))) {
             world.setBlockState(pos, state, 2);
         }
     }

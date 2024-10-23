@@ -1,6 +1,6 @@
 package net.leafenzo.mint.item.custom;
 
-import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.ElsDyeModBlocks;
 import net.leafenzo.mint.block.custom.PineappleStemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -19,7 +19,7 @@ public class PineappleCrownItem extends AliasedBlockItem {
     protected BlockState getPlacementState(ItemPlacementContext context) {
         BlockState blockState = this.getBlock().getPlacementState(context);
         return blockState != null && context.getWorld().getBlockState(context.getBlockPos().down()).isOf(Blocks.FARMLAND) ?
-                ModBlocks.PINEAPPLE_STEM.getDefaultState().with(PineappleStemBlock.AGE, 0) :
+                ElsDyeModBlocks.PINEAPPLE_STEM.getDefaultState().with(PineappleStemBlock.AGE, 0) :
                 super.getPlacementState(context);
     }
 }

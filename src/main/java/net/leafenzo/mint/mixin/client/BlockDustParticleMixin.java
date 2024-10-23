@@ -1,6 +1,6 @@
 package net.leafenzo.mint.mixin.client;
 
-import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.ElsDyeModBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.particle.BlockDustParticle;
 import net.minecraft.client.world.ClientWorld;
@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class BlockDustParticleMixin {
     @Inject(method = "<init>*", at = @At("TAIL"))
     private void init(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, BlockState state, BlockPos blockPos, CallbackInfo ci) {
-        if (state.isOf(ModBlocks.MADDER_ROOTED_GRASS_BLOCK)) {
+        if (state.isOf(ElsDyeModBlocks.MADDER_ROOTED_GRASS_BLOCK)) {
             ParticleColorAccessor accessor = (ParticleColorAccessor) this;
             accessor.setRed(0.6f);
             accessor.setGreen(0.6f);

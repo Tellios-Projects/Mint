@@ -18,6 +18,6 @@ extends AbstractColoringRecipe {
     }
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return ModRecipeSerializer.WOOL_COLORING_RECIPE;
+        return ElsDyeModRecipeSerializer.WOOL_COLORING_RECIPE;
     }
 }

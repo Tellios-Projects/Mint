@@ -7,8 +7,8 @@
 package net.leafenzo.mint.mixin.client;
 
 import com.google.common.collect.ImmutableList;
-import net.leafenzo.mint.Super;
-import net.leafenzo.mint.util.ModDyeColor;
+import net.leafenzo.mint.ElsDyeMod;
+import net.leafenzo.mint.util.ElsDyeModDyeColor;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.util.DyeColor;
@@ -33,12 +33,12 @@ public abstract class TexturedRenderLayersMixin {
     static {
         ImmutableList.Builder<SpriteIdentifier> shulkerBoxTexturesBuilder = ImmutableList.builder();
         shulkerBoxTexturesBuilder.addAll(COLORED_SHULKER_BOXES_TEXTURES);
-        for (DyeColor value : ModDyeColor.VALUES) {
+        for (DyeColor value : ElsDyeModDyeColor.VALUES) {
             shulkerBoxTexturesBuilder.add(
                     new SpriteIdentifier(SHULKER_BOXES_ATLAS_TEXTURE,
-                            new Identifier(Super.MOD_ID, "entity/shulker/shulker_" + value.getName())));
+                            new Identifier(ElsDyeMod.MOD_ID, "entity/shulker/shulker_" + value.getName())));
             BED_TEXTURES[value.getId()] = new SpriteIdentifier(BEDS_ATLAS_TEXTURE,
-                    new Identifier(Super.MOD_ID, "entity/bed/bed_" + value.getName()));
+                    new Identifier(ElsDyeMod.MOD_ID, "entity/bed/bed_" + value.getName()));
         }
         COLORED_SHULKER_BOXES_TEXTURES = shulkerBoxTexturesBuilder.build();
     }

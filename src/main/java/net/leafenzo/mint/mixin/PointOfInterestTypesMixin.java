@@ -5,7 +5,7 @@
 
 package net.leafenzo.mint.mixin;
 
-import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.ElsDyeModBlocks;
 import net.minecraft.block.BedBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.enums.BedPart;
@@ -39,7 +39,7 @@ public class PointOfInterestTypesMixin {
 
     @Inject(method = "getTypeForState", at = @At(value = "RETURN"), cancellable = true)
     private static void checkForCustomBedStates(BlockState state, CallbackInfoReturnable<Optional<RegistryEntry<PointOfInterestType>>> cir){
-        if(state.getBlock() instanceof BedBlock && Arrays.stream(ModBlocks.toBlockArray(ModBlocks.BED_BLOCKS)).anyMatch(x -> x.equals(state.getBlock())) && state.get(BedBlock.PART) == BedPart.HEAD){
+        if(state.getBlock() instanceof BedBlock && Arrays.stream(ElsDyeModBlocks.toBlockArray(ElsDyeModBlocks.BED_BLOCKS)).anyMatch(x -> x.equals(state.getBlock())) && state.get(BedBlock.PART) == BedPart.HEAD){
             cir.setReturnValue(
                     Optional.ofNullable(Registries.POINT_OF_INTEREST_TYPE.getEntry(PointOfInterestTypes.HOME).orElse(null))
             );

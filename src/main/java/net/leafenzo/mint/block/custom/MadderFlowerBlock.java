@@ -1,6 +1,6 @@
 package net.leafenzo.mint.block.custom;
 
-import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.ElsDyeModBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.registry.RegistryKey;
@@ -65,10 +65,10 @@ implements Fertilizable {
     }
 
     private void tryPlaceMadderRoot(World world, BlockPos pos) {
-        if (world.testBlockState(pos, blockState -> blockState.isOf(Blocks.GRASS_BLOCK)) || world.testBlockState(pos, blockState -> blockState.isOf(ModBlocks.MADDER_ROOTED_GRASS_BLOCK))) {
-            world.setBlockState(pos, ModBlocks.MADDER_ROOTED_GRASS_BLOCK.getDefaultState());
+        if (world.testBlockState(pos, blockState -> blockState.isOf(Blocks.GRASS_BLOCK)) || world.testBlockState(pos, blockState -> blockState.isOf(ElsDyeModBlocks.MADDER_ROOTED_GRASS_BLOCK))) {
+            world.setBlockState(pos, ElsDyeModBlocks.MADDER_ROOTED_GRASS_BLOCK.getDefaultState());
         } else if (world.testBlockState(pos, blockState -> blockState.isIn(BlockTags.DIRT))) {
-            world.setBlockState(pos, ModBlocks.MADDER_ROOTED_DIRT.getDefaultState());
+            world.setBlockState(pos, ElsDyeModBlocks.MADDER_ROOTED_DIRT.getDefaultState());
         }
     }
 }

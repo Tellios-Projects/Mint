@@ -1,6 +1,6 @@
 package net.leafenzo.mint.item.custom;
 
-import net.leafenzo.mint.particle.ModParticleTypes;
+import net.leafenzo.mint.particle.ElsDyeModParticleTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.PassiveEntity;
@@ -61,13 +61,13 @@ public class LavenderSoapItem extends Item {
                 double xPos = random.nextGaussian() * 0.15;
                 double ySpeed = 0.1;
                 double zPos = random.nextGaussian() * 0.15;
-                world.addParticle(ModParticleTypes.SOAP_BUBBLE, entity.getParticleX(1.0) + xPos, entity.getRandomBodyY() + 0.5, entity.getParticleZ(1.0) + zPos, 0, ySpeed, 0);
+                world.addParticle(ElsDyeModParticleTypes.SOAP_BUBBLE, entity.getParticleX(1.0) + xPos, entity.getRandomBodyY() + 0.5, entity.getParticleZ(1.0) + zPos, 0, ySpeed, 0);
             }
             for (int i = 0; i < sudsCount; i++) { // Spinning Suds
                 double xPos = random.nextGaussian() * 0.005;
                 double ySpeed = 0.0f;
                 double zPos = random.nextGaussian() * 0.005;
-                world.addParticle(ModParticleTypes.SOAP_SPLASH, entity.getParticleX(1.0) + xPos, entity.getRandomBodyY(), entity.getParticleZ(1.0) + zPos, 0, ySpeed, 0);
+                world.addParticle(ElsDyeModParticleTypes.SOAP_SPLASH, entity.getParticleX(1.0) + xPos, entity.getRandomBodyY(), entity.getParticleZ(1.0) + zPos, 0, ySpeed, 0);
             }
         }
     }

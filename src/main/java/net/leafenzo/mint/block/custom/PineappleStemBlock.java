@@ -1,6 +1,6 @@
 package net.leafenzo.mint.block.custom;
 
-import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.ElsDyeModBlocks;
 import net.minecraft.block.*;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
@@ -41,7 +41,7 @@ public class PineappleStemBlock extends PlantBlock implements Fertilizable {
             if (state.get(AGE) == 4) {
                 BlockPos pineapplePos = pos.offset(Direction.UP);
                 if ((world.getBlockState(pineapplePos).isAir())) {
-                    world.setBlockState(pineapplePos, ModBlocks.PINEAPPLE.getDefaultState(), 2);
+                    world.setBlockState(pineapplePos, ElsDyeModBlocks.PINEAPPLE.getDefaultState(), 2);
                     world.setBlockState(pos, state.cycle(AGE), Block.NOTIFY_LISTENERS);
                 }
             }
@@ -62,7 +62,7 @@ public class PineappleStemBlock extends PlantBlock implements Fertilizable {
 
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        if (isFullyGrown(state) && !world.getBlockState(pos.up()).isOf(ModBlocks.PINEAPPLE)) {
+        if (isFullyGrown(state) && !world.getBlockState(pos.up()).isOf(ElsDyeModBlocks.PINEAPPLE)) {
             return state.with(AGE, 4);
         }
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);

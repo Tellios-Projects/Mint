@@ -42,19 +42,19 @@ public class WaxcapWaxParticle extends SpriteBillboardParticle {
     protected void updateAge() {
         if (this.maxAge-- <= 0) {
             this.markDead();
-            this.world.addParticle(ModParticleTypes.FALLING_WAXCAP_WAX, this.x, this.y, this.z, this.velocityX, this.velocityY, this.velocityZ);
+            this.world.addParticle(ElsDyeModParticleTypes.FALLING_WAXCAP_WAX, this.x, this.y, this.z, this.velocityX, this.velocityY, this.velocityZ);
         }
     }
     protected void updateVelocity() { }
 
     // Something to do with this doesn't seem to work for some reason. //TODO fix first stage of dripping waxcap wax particle
     public static SpriteBillboardParticle createDrippingWaxcapWax(DefaultParticleType type, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
-        WaxcapWaxParticle.Dripping blockLeakParticle = new Dripping(world, x, y, z, ModParticleTypes.FALLING_WAXCAP_WAX);
+        WaxcapWaxParticle.Dripping blockLeakParticle = new Dripping(world, x, y, z, ElsDyeModParticleTypes.FALLING_WAXCAP_WAX);
         blockLeakParticle.setColor(0.8f, 0.8627450980392157f, 0.2313725490196078f); //TODO fix colors
         return blockLeakParticle;
     }
     public static SpriteBillboardParticle createFallingWaxcapWax(DefaultParticleType type, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
-        WaxcapWaxParticle.HangingWaxcapWaxDrip blockLeakParticle = new HangingWaxcapWaxDrip(world, x, y, z, ModParticleTypes.LANDING_WAXCAP_WAX);
+        WaxcapWaxParticle.HangingWaxcapWaxDrip blockLeakParticle = new HangingWaxcapWaxDrip(world, x, y, z, ElsDyeModParticleTypes.LANDING_WAXCAP_WAX);
         blockLeakParticle.setColor(0.8f, 0.8627450980392157f, 0.2313725490196078f); //TODO fix colors
         return blockLeakParticle;
     }

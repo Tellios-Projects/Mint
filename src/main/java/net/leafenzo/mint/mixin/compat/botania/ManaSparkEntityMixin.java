@@ -1,7 +1,7 @@
 package net.leafenzo.mint.mixin.compat.botania;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import net.leafenzo.mint.util.ModDyeColor;
+import net.leafenzo.mint.util.ElsDyeModDyeColor;
 import net.minecraft.util.DyeColor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
@@ -19,7 +19,7 @@ public class ManaSparkEntityMixin {
             at = @At(value = "INVOKE", target = "net/minecraft/item/DyeItem.getColor ()Lnet/minecraft/util/DyeColor;")
     )
     private static DyeColor getDyeColorIfNotOurs(DyeColor original) {
-        if(Arrays.stream(ModDyeColor.VALUES).anyMatch(x -> x == original)) {
+        if(Arrays.stream(ElsDyeModDyeColor.VALUES).anyMatch(x -> x == original)) {
             return DyeColor.WHITE;
         }
         else {

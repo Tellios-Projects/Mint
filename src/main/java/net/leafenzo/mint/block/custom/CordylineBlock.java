@@ -1,6 +1,6 @@
 package net.leafenzo.mint.block.custom;
 
-import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.ElsDyeModBlocks;
 import net.minecraft.block.*;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
@@ -35,7 +35,7 @@ public class CordylineBlock extends PlantBlock implements Fertilizable {
     }
 
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        TallPlantBlock tallPlantBlock = (TallPlantBlock)(state.isOf(ModBlocks.CORDYLINE) ? ModBlocks.TALL_CORDYLINE : ModBlocks.TALL_PLUM_CORDYLINE);
+        TallPlantBlock tallPlantBlock = (TallPlantBlock)(state.isOf(ElsDyeModBlocks.CORDYLINE) ? ElsDyeModBlocks.TALL_CORDYLINE : ElsDyeModBlocks.TALL_PLUM_CORDYLINE);
         if (tallPlantBlock.getDefaultState().canPlaceAt(world, pos) && world.isAir(pos.up())) {
             TallPlantBlock.placeAt(world, tallPlantBlock.getDefaultState(), pos, 2);
         }

@@ -2,9 +2,9 @@ package net.leafenzo.mint.compat;
 
 import mezz.jei.common.platform.IPlatformIngredientHelper;
 import mezz.jei.common.platform.Services;
-import net.leafenzo.mint.Super;
-import net.leafenzo.mint.block.custom.ModShulkerBoxBlock;
-import net.leafenzo.mint.util.ModDyeColor;
+import net.leafenzo.mint.ElsDyeMod;
+import net.leafenzo.mint.block.custom.ElsDyeModShulkerBoxBlock;
+import net.leafenzo.mint.util.ElsDyeModDyeColor;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
@@ -20,13 +20,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public final class WoolDyeingRecipeMaker {
-    private static final String group = Super.MOD_ID + ".wool.color";
+    private static final String group = ElsDyeMod.MOD_ID + ".wool.color";
 
     // From JEI's ShulkerBoxColoringRecipeMaker
     public static List<CraftingRecipe> createRecipes() {
         ItemStack baseShulkerStack = new ItemStack(Blocks.WHITE_WOOL);
         Ingredient baseShulkerIngredient = Ingredient.ofStacks(baseShulkerStack);
-        return Arrays.stream(ModDyeColor.VALUES).map((color) -> {
+        return Arrays.stream(ElsDyeModDyeColor.VALUES).map((color) -> {
             return createRecipe(color, baseShulkerIngredient);
         }).toList();
     }
@@ -35,9 +35,9 @@ public final class WoolDyeingRecipeMaker {
         IPlatformIngredientHelper ingredientHelper = Services.PLATFORM.getIngredientHelper();
         Ingredient colorIngredient = ingredientHelper.createShulkerDyeIngredient(color);
         DefaultedList<Ingredient> inputs = DefaultedList.copyOf(Ingredient.EMPTY, baseShulkerIngredient, colorIngredient);
-        Block coloredShulkerBox = ModShulkerBoxBlock.get(color);
+        Block coloredShulkerBox = ElsDyeModShulkerBoxBlock.get(color);
         ItemStack output = new ItemStack(coloredShulkerBox);
-        Identifier id = new Identifier(Super.MOD_ID,group + "." + output.getTranslationKey());
+        Identifier id = new Identifier(ElsDyeMod.MOD_ID,group + "." + output.getTranslationKey());
         return new ShapelessRecipe(id, group, CraftingRecipeCategory.MISC, output, inputs);
     }
 

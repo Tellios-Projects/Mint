@@ -29,19 +29,19 @@
   "entrypoints": {
     "main": [{
       "adapter": "kotlin",
-      "value": "net.leafenzo.mint.ModInit"
+      "value": "net.leafenzo.mint.ElsDyeModInit"
     }],
     "client": [{
       "adapter": "kotlin",
-      "value":  "net.leafenzo.mint.ModClientInit"
+      "value":  "net.leafenzo.mint.ElsDyeModClientInit"
     }],
     "fabric-datagen": [{
       "adapter": "kotlin",
-      "value":  "net.leafenzo.mint.datageneration.ModDataGenerator"
+      "value":  "net.leafenzo.mint.datageneration.ElsDyeModDataGenerator"
     }],
     "mm:early_risers": [{
       "adapter": "kotlin",
-      "value": "net.leafenzo.mint.ModEarlyRiser"
+      "value": "net.leafenzo.mint.ElsDyeModEarlyRiser"
     }]
   },
   "accessWidener": "mint.accesswidener",

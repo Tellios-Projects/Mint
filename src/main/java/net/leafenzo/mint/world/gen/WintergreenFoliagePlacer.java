@@ -2,8 +2,8 @@ package net.leafenzo.mint.world.gen;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.leafenzo.mint.util.ModUtil;
-import net.leafenzo.mint.util.ModWorldGen;
+import net.leafenzo.mint.util.ElsDyeModUtil;
+import net.leafenzo.mint.util.ElsDyeModWorldGen;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.IntProvider;
@@ -25,13 +25,13 @@ public class WintergreenFoliagePlacer
 
     @Override
     protected FoliagePlacerType<?> getType() {
-        return ModWorldGen.WINTERGREEN_FOLIAGE_PLACER;
+        return ElsDyeModWorldGen.WINTERGREEN_FOLIAGE_PLACER;
     }
 
     @Override
     protected void generate(TestableWorld world, FoliagePlacer.BlockPlacer placer, Random random, TreeFeatureConfig config, int trunkHeight, FoliagePlacer.TreeNode treeNode, int foliageHeight, int radius, int offset) {
         BlockPos blockPos = treeNode.getCenter();
-        Direction d = ModUtil.randomHorizontalDirectionWithCoordinateSeed(blockPos);
+        Direction d = ElsDyeModUtil.randomHorizontalDirectionWithCoordinateSeed(blockPos);
 
         int i = 0;
         int j = 1;

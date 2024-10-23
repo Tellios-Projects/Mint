@@ -1,6 +1,6 @@
 package net.leafenzo.mint.block.custom;
 
-import net.leafenzo.mint.item.ModItems;
+import net.leafenzo.mint.item.ElsDyeModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;
@@ -27,7 +27,7 @@ public class SavannabudsCropBlock extends CropBlock {
 
     @Override
     protected ItemConvertible getSeedsItem() {
-        return ModItems.SAVANNABUD_SEEDS;
+        return ElsDyeModItems.SAVANNABUD_SEEDS;
     }
 
     @Override

@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.leafenzo.mint.block.custom.DiagonalBlock;
-import net.leafenzo.mint.util.ModWorldGen;
+import net.leafenzo.mint.util.ElsDyeModWorldGen;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MushroomBlock;
 import net.minecraft.util.math.BlockPos;
@@ -44,7 +44,7 @@ public class HugeWaxcapMushroomDecorator extends TreeDecorator {
 
     @Override
     protected TreeDecoratorType<?> getType() {
-        return ModWorldGen.HUGE_WAXCAP_MUSHROOM_DECORATOR;
+        return ElsDyeModWorldGen.HUGE_WAXCAP_MUSHROOM_DECORATOR;
     }
 
 

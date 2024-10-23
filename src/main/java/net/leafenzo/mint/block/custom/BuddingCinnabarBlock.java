@@ -1,6 +1,6 @@
 package net.leafenzo.mint.block.custom;
 
-import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.ElsDyeModBlocks;
 import net.minecraft.block.*;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.server.world.ServerWorld;
@@ -22,13 +22,13 @@ public class BuddingCinnabarBlock extends Block {
             BlockState blockState = world.getBlockState(blockPos);
             Block block = null;
             if (canGrowIn(blockState)) {
-                block = ModBlocks.SMALL_CINNABAR_BUD;
-            } else if (blockState.isOf(ModBlocks.SMALL_CINNABAR_BUD) && blockState.get(AmethystClusterBlock.FACING) == direction) {
-                block = ModBlocks.MEDIUM_CINNABAR_BUD;
-            } else if (blockState.isOf(ModBlocks.MEDIUM_CINNABAR_BUD) && blockState.get(AmethystClusterBlock.FACING) == direction) {
-                block = ModBlocks.LARGE_CINNABAR_BUD;
-            } else if (blockState.isOf(ModBlocks.LARGE_CINNABAR_BUD) && blockState.get(AmethystClusterBlock.FACING) == direction) {
-                block = ModBlocks.CINNABAR_CLUSTER;
+                block = ElsDyeModBlocks.SMALL_CINNABAR_BUD;
+            } else if (blockState.isOf(ElsDyeModBlocks.SMALL_CINNABAR_BUD) && blockState.get(AmethystClusterBlock.FACING) == direction) {
+                block = ElsDyeModBlocks.MEDIUM_CINNABAR_BUD;
+            } else if (blockState.isOf(ElsDyeModBlocks.MEDIUM_CINNABAR_BUD) && blockState.get(AmethystClusterBlock.FACING) == direction) {
+                block = ElsDyeModBlocks.LARGE_CINNABAR_BUD;
+            } else if (blockState.isOf(ElsDyeModBlocks.LARGE_CINNABAR_BUD) && blockState.get(AmethystClusterBlock.FACING) == direction) {
+                block = ElsDyeModBlocks.CINNABAR_CLUSTER;
             }
 
             if (block != null) {

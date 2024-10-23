@@ -1,6 +1,6 @@
 package net.leafenzo.mint.block.custom;
 
-import net.leafenzo.mint.state.property.ModProperties;
+import net.leafenzo.mint.state.property.ElsDyeModProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemPlacementContext;
@@ -16,7 +16,7 @@ public class DiagonalBlock
     extends Block {
 
     public static final DirectionProperty FACING = Properties.FACING;
-    public static final BooleanProperty DIAGONAL = ModProperties.DIAGONAL;
+    public static final BooleanProperty DIAGONAL = ElsDyeModProperties.DIAGONAL;
 
     public DiagonalBlock(Settings settings) {
         super(settings);

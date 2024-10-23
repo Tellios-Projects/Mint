@@ -10,7 +10,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.fabricmc.fabric.api.recipe.v1.ingredient.CustomIngredient;
 import net.fabricmc.fabric.api.recipe.v1.ingredient.CustomIngredientSerializer;
-import net.leafenzo.mint.Super;
+import net.leafenzo.mint.ElsDyeMod;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.network.PacketByteBuf;
@@ -61,7 +61,7 @@ public class PotionIngredient implements CustomIngredient {
     public static final class Serializer implements CustomIngredientSerializer<PotionIngredient> {
         @Override
         public Identifier getIdentifier() {
-            return new Identifier(Super.MOD_ID, "potion");
+            return new Identifier(ElsDyeMod.MOD_ID, "potion");
         }
 
         @Override

@@ -1,6 +1,6 @@
 package net.leafenzo.mint.mixin;
 
-import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.ElsDyeModBlocks;
 import net.leafenzo.mint.block.custom.MadderRootedGrassBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -26,8 +26,8 @@ public class GrassBlockMixin {
                     BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
                     if (world.getBlockState(blockPos).isOf(Blocks.DIRT) && SpreadableBlock.canSpread(blockState, world, blockPos)) {
                         world.setBlockState(blockPos, blockState.with(GrassBlock.SNOWY, world.getBlockState(blockPos.up()).isOf(Blocks.SNOW)));
-                    } else if (world.getBlockState(blockPos).isOf(ModBlocks.MADDER_ROOTED_DIRT) && SpreadableBlock.canSpread(blockState, world, blockPos)) {
-                        blockState = ModBlocks.MADDER_ROOTED_GRASS_BLOCK.getDefaultState();
+                    } else if (world.getBlockState(blockPos).isOf(ElsDyeModBlocks.MADDER_ROOTED_DIRT) && SpreadableBlock.canSpread(blockState, world, blockPos)) {
+                        blockState = ElsDyeModBlocks.MADDER_ROOTED_GRASS_BLOCK.getDefaultState();
                         world.setBlockState(blockPos, blockState.with(MadderRootedGrassBlock.SNOWY, world.getBlockState(blockPos.up()).isOf(Blocks.SNOW)));
                     }
                 }

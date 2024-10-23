@@ -6,7 +6,7 @@
 
 package net.leafenzo.mint
 import com.chocohead.mm.api.ClassTinkerers
-import net.leafenzo.mint.util.ModDyeColor
+import net.leafenzo.mint.util.ElsDyeModDyeColor
 import net.minecraft.util.DyeColor
 
 @Suppress("unused")
@@ -16,43 +16,43 @@ object PlatformInterfaceImpl {
     }
 
     @JvmStatic fun getMintDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.MINT.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.MINT.fieldName)
     @JvmStatic fun getPeachDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.PEACH.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.PEACH.fieldName)
     @JvmStatic fun getPeriwinkleDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.PERIWINKLE.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.PERIWINKLE.fieldName)
     @JvmStatic fun getArtichokeDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.ARTICHOKE.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.ARTICHOKE.fieldName)
     @JvmStatic fun getFuchsiaDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.FUCHSIA.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.FUCHSIA.fieldName)
     @JvmStatic fun getVermilionDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.VERMILION.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.VERMILION.fieldName)
     @JvmStatic fun getShamrockDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.SHAMROCK.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.SHAMROCK.fieldName)
     @JvmStatic fun getIndigoDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.INDIGO.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.INDIGO.fieldName)
     @JvmStatic fun getBananaDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.BANANA.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.BANANA.fieldName)
     @JvmStatic fun getCeruleanDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.CERULEAN.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.CERULEAN.fieldName)
     @JvmStatic fun getAcornDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.ACORN.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.ACORN.fieldName)
     @JvmStatic fun getMauveDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.MAUVE.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.MAUVE.fieldName)
     @JvmStatic fun getMaroonDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.MAROON.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.MAROON.fieldName)
     @JvmStatic fun getGrapeDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.GRAPE.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.GRAPE.fieldName)
     @JvmStatic fun getNavyDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.NAVY.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.NAVY.fieldName)
     @JvmStatic fun getSapDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.SAP.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.SAP.fieldName)
     @JvmStatic fun getAmberDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.AMBER.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.AMBER.fieldName)
     @JvmStatic fun getSageDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.SAGE.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.SAGE.fieldName)
     @JvmStatic fun getVelvetDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.VELVET.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.VELVET.fieldName)
     @JvmStatic fun getMoldDyeColor(): DyeColor =
-            ClassTinkerers.getEnum(DyeColor::class.java, ModDyeColor.Values.MOLD.fieldName)
+            ClassTinkerers.getEnum(DyeColor::class.java, ElsDyeModDyeColor.Values.MOLD.fieldName)
 }

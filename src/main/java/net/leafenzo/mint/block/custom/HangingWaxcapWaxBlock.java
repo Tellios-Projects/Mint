@@ -1,6 +1,6 @@
 package net.leafenzo.mint.block.custom;
 
-import net.leafenzo.mint.particle.ModParticleTypes;
+import net.leafenzo.mint.particle.ElsDyeModParticleTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HangingRootsBlock;
 import net.minecraft.particle.DefaultParticleType;
@@ -34,7 +34,7 @@ public class HangingWaxcapWaxBlock extends HangingRootsBlock {
         double f = (double)((float)(pos.getY() + 1) - 0.6875f) - 0.0625;
         double g = (double)pos.getZ() + 0.5 + vec3d.z;
 //        Fluid fluid2 = PointedDripstoneBlock.getDripFluid(world, fluid);
-        DefaultParticleType particleEffect = ModParticleTypes.DRIPPING_WAXCAP_WAX;
+        DefaultParticleType particleEffect = ElsDyeModParticleTypes.DRIPPING_WAXCAP_WAX;
         world.addParticle(particleEffect, e, f, g, 0.0, 0.0, 0.0);
     }
 

@@ -1,7 +1,7 @@
 package net.leafenzo.mint.block.custom;
 
-import net.leafenzo.mint.block.ModBlocks;
-import net.leafenzo.mint.item.ModItems;
+import net.leafenzo.mint.block.ElsDyeModBlocks;
+import net.leafenzo.mint.item.ElsDyeModItems;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -72,7 +72,7 @@ public class CochinealBeetlesBlock extends FacingBlock {
     }
 
     public boolean isOnCactusFeed(BlockState state, World world, BlockPos pos) {
-        return world.getBlockState(pos.offset(state.get(FACING).getOpposite())).isOf(ModBlocks.CACTUS_FEED);
+        return world.getBlockState(pos.offset(state.get(FACING).getOpposite())).isOf(ElsDyeModBlocks.CACTUS_FEED);
     }
 
     public void spreadBeetles(BlockState state, World world, BlockPos pos) {
@@ -97,7 +97,7 @@ public class CochinealBeetlesBlock extends FacingBlock {
             dirsToCheck.add(Direction.SOUTH);
         }
         int randDir = world.random.nextBetween(0, 3);
-        if (world.getBlockState(pos.offset(dirsToCheck.get(randDir)).offset(facing.getOpposite())).isOf(ModBlocks.CACTUS_FEED) && world.getBlockState(pos.offset(dirsToCheck.get(randDir))).isAir()) {
+        if (world.getBlockState(pos.offset(dirsToCheck.get(randDir)).offset(facing.getOpposite())).isOf(ElsDyeModBlocks.CACTUS_FEED) && world.getBlockState(pos.offset(dirsToCheck.get(randDir))).isAir()) {
             world.setBlockState(pos.offset(dirsToCheck.get(randDir)), state.with(AGE, 0));
         }
     }
@@ -121,12 +121,12 @@ public class CochinealBeetlesBlock extends FacingBlock {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (isFullyGrown(state)) {
-            dropStack(world, pos, new ItemStack(ModItems.CARMINIC_COCHINEAL_BEETLE, world.random.nextBetween(1, 3)));
+            dropStack(world, pos, new ItemStack(ElsDyeModItems.CARMINIC_COCHINEAL_BEETLE, world.random.nextBetween(1, 3)));
             world.setBlockState(pos, state.with(AGE, 0));
             world.playSound(null, pos, SoundEvents.ENTITY_TURTLE_EGG_CRACK, SoundCategory.BLOCKS, 1.0f, 0.8f + world.random.nextFloat()/3);
             return ActionResult.SUCCESS;
         }
-        if (player.getStackInHand(hand).isOf(ModItems.CACTUS_CHUNK)) {
+        if (player.getStackInHand(hand).isOf(ElsDyeModItems.CACTUS_CHUNK)) {
             world.setBlockState(pos, state.cycle(AGE));
             if (!player.isCreative()) {
                 player.getStackInHand(hand).decrement(1);

@@ -1,6 +1,6 @@
 package net.leafenzo.mint.mixin;
 
-import net.leafenzo.mint.block.custom.ModShulkerBoxBlock;
+import net.leafenzo.mint.block.custom.ElsDyeModShulkerBoxBlock;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.ItemStack;
@@ -20,7 +20,7 @@ public class ShulkerBoxColoringRecipeMixin {
         for (int k = 0; k < recipeInputInventory.size(); ++k) {
             ItemStack itemStack = recipeInputInventory.getStack(k);
             if (itemStack.isEmpty()) continue;
-            if (Block.getBlockFromItem(itemStack.getItem()) instanceof ModShulkerBoxBlock) {
+            if (Block.getBlockFromItem(itemStack.getItem()) instanceof ElsDyeModShulkerBoxBlock) {
                 cir.setReturnValue(false);
             }
         }

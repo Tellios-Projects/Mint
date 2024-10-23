@@ -1,6 +1,6 @@
 package net.leafenzo.mint.item.custom;
 
-import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.ElsDyeModBlocks;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffects;
@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 
 public class MintSprigItem extends AliasedBlockItem {
     public MintSprigItem(Settings settings) {
-        super(ModBlocks.MINT_CROP, settings);
+        super(ElsDyeModBlocks.MINT_CROP, settings);
     }
 
     private static final int MAX_USE_TIME = 24;

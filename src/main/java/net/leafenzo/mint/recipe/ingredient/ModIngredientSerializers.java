@@ -1,8 +1,8 @@
 package net.leafenzo.mint.recipe.ingredient;
 
 import net.fabricmc.fabric.api.recipe.v1.ingredient.CustomIngredientSerializer;
-import net.leafenzo.mint.ModInit;
-import net.leafenzo.mint.Super;
+import net.leafenzo.mint.ElsDyeModInit;
+import net.leafenzo.mint.ElsDyeMod;
 
 public class ModIngredientSerializers {
 
@@ -14,6 +14,6 @@ public class ModIngredientSerializers {
     }
 
     public static void registerModCustomIngredientSerializers() {
-            ModInit.LOGGER.debug("Registering custom ingredient serializers for " + Super.MOD_ID);
+            ElsDyeModInit.LOGGER.debug("Registering custom ingredient serializers for " + ElsDyeMod.MOD_ID);
     }
 }

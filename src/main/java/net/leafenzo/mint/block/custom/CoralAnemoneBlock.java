@@ -1,6 +1,6 @@
 package net.leafenzo.mint.block.custom;
 
-import net.leafenzo.mint.ModInit;
+import net.leafenzo.mint.ElsDyeModInit;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.fluid.FluidState;
@@ -103,7 +103,7 @@ public class CoralAnemoneBlock extends PlantBlock
 //        world.setBlockState(pos, state, Block.NOTIFY_ALL);
         for (int i = 0; i < 8; i++) {
             BlockPos newPos = pos.add((int) random.nextGaussian(), 0, (int) random.nextGaussian());
-            ModInit.LOGGER.info(newPos.getX() - pos.getX() + "");
+            ElsDyeModInit.LOGGER.info(newPos.getX() - pos.getX() + "");
             if (world.getBlockState(newPos).isOf(Blocks.WATER) && canPlaceAt(world.getBlockState(newPos.down()), world, newPos)) {
                 world.setBlockState(newPos, this.getDefaultState());
                 break;

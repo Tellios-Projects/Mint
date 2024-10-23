@@ -1,6 +1,6 @@
 package net.leafenzo.mint.mixin;
 
-import net.leafenzo.mint.effect.ModEffects;
+import net.leafenzo.mint.effect.ElsDyeModEffects;
 import net.leafenzo.mint.effect.ThornsEffect;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -18,7 +18,7 @@ public abstract class EntityMixin {
     @Inject(method = "applyDamageEffects", at = @At(value = "TAIL"), cancellable = true)
     public void applyDamageEffects(LivingEntity attacker, Entity user, CallbackInfo ci) {
         if (user instanceof LivingEntity) {
-            StatusEffectInstance thorns = ((LivingEntity) user).getActiveStatusEffects().get(ModEffects.THORNS);
+            StatusEffectInstance thorns = ((LivingEntity) user).getActiveStatusEffects().get(ElsDyeModEffects.THORNS);
             if (thorns != null) {
                 ThornsEffect.apply(user, attacker);
             }

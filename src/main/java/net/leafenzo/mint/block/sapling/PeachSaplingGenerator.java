@@ -1,6 +1,6 @@
 package net.leafenzo.mint.block.sapling;
 
-import net.leafenzo.mint.datageneration.ModConfiguredFeatures;
+import net.leafenzo.mint.datageneration.ElsDyeModConfiguredFeatures;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.math.random.Random;
@@ -11,7 +11,7 @@ public class PeachSaplingGenerator  extends SaplingGenerator {
     @Nullable
     @Override
     protected RegistryKey<ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
-        return ModConfiguredFeatures.PEACH;
+        return ElsDyeModConfiguredFeatures.PEACH;
     }
 
 }

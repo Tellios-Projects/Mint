@@ -1,6 +1,6 @@
 package net.leafenzo.mint.block.custom;
 
-import net.leafenzo.mint.item.ModItems;
+import net.leafenzo.mint.item.ElsDyeModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -56,7 +56,7 @@ public class PeachTreeBlock extends TwoTallCropBlock {
     }
     @Override
     protected ItemConvertible getSeedsItem() {
-        return ModItems.PEACH_PIT;
+        return ElsDyeModItems.PEACH_PIT;
     }
     @Override
     public float getChanceToGrow(BlockState state) {
@@ -65,7 +65,7 @@ public class PeachTreeBlock extends TwoTallCropBlock {
     @Override
     public int getAgeToHarvestTo() { return 4; }
     @Override
-    public ItemConvertible getDroppedHarvestItem() { return ModItems.PEACH; }
+    public ItemConvertible getDroppedHarvestItem() { return ElsDyeModItems.PEACH; }
     @Override
     public int getHarvestAmount(BlockState state, Random random) {
         return this.getAge(state) < this.getMaxAge() ? 0 : 1 + random.nextInt(2);

@@ -5,16 +5,16 @@
 
 package net.leafenzo.mint.item.custom;
 
-import net.leafenzo.mint.entity.ModBoatEntity;
+import net.leafenzo.mint.entity.ElsDyeModBoatEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.BoatItem;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 
 public class ModBoatItem extends BoatItem {
-    private final ModBoatEntity.ModBoat boatData;
+    private final ElsDyeModBoatEntity.ModBoat boatData;
     private final boolean chest;
-    public ModBoatItem(boolean chest, ModBoatEntity.ModBoat boatData, Settings settings) {
+    public ModBoatItem(boolean chest, ElsDyeModBoatEntity.ModBoat boatData, Settings settings) {
         super(chest, BoatEntity.Type.OAK, settings);
         this.chest = chest;
         this.boatData = boatData;

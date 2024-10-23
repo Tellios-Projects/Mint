@@ -3,7 +3,7 @@ package net.leafenzo.mint.mixin.compat.jei;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import mezz.jei.library.plugins.vanilla.crafting.replacers.ShulkerBoxColoringRecipeMaker;
-import net.leafenzo.mint.util.ModUtil;
+import net.leafenzo.mint.util.ElsDyeModUtil;
 import net.minecraft.util.DyeColor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
@@ -19,7 +19,7 @@ public class ShulkerBoxColoringRecipeMakerMixin {
     )
     private static DyeColor[] truncateDyeColors(DyeColor[] original) {
         // Use only vanilla dye colors, assuming that it expects nothing else to be there
-        return ModUtil.VANILLA_DYE_COLORS;
+        return ElsDyeModUtil.VANILLA_DYE_COLORS;
 
         // Ignore the DyeColors we added, as it's not expecting those to be there.
 //        return (DyeColor[]) Arrays.stream(original)

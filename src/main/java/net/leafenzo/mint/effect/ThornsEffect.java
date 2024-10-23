@@ -16,7 +16,7 @@ public class ThornsEffect extends StatusEffect {
 
     public static void apply(Entity user, LivingEntity attacker) {
         Random random = attacker.getRandom();
-        int amplifier = ((LivingEntity) user).getStatusEffect(ModEffects.THORNS).getAmplifier();
+        int amplifier = ((LivingEntity) user).getStatusEffect(ElsDyeModEffects.THORNS).getAmplifier();
         int damage;
 
         if(!shouldDamageAttacker(amplifier, random)) { return; }

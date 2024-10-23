@@ -6,12 +6,12 @@
 
 package net.leafenzo.mint.block;
 
-import net.leafenzo.mint.ModInit;
-import net.leafenzo.mint.Super;
-import net.leafenzo.mint.block.dispenser.ModBoatDispenserBehavior;
+import net.leafenzo.mint.ElsDyeModInit;
+import net.leafenzo.mint.ElsDyeMod;
+import net.leafenzo.mint.block.dispenser.ElsDyeModBoatDispenserBehavior;
 import net.leafenzo.mint.entity.EmberArrowEntity;
-import net.leafenzo.mint.entity.ModBoatEntity;
-import net.leafenzo.mint.item.ModItems;
+import net.leafenzo.mint.entity.ElsDyeModBoatEntity;
+import net.leafenzo.mint.item.ElsDyeModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.BlockPlacementDispenserBehavior;
@@ -23,17 +23,17 @@ import net.minecraft.world.World;
 
 public class DispenserBehavior {
     public static void RegisterDispenserBehaviors() {
-        ModInit.LOGGER.debug("Registering dispenser behaviors for " + Super.MOD_ID);
+        ElsDyeModInit.LOGGER.debug("Registering dispenser behaviors for " + ElsDyeMod.MOD_ID);
 
         //Directly get the blockItem for each one instead of using "ShulkerBoxBlock.get(dyeColor)"
-        for(Block block : ModBlocks.SHULKER_BOX_BLOCKS) { DispenserBlock.registerBehavior(block.asItem(), new BlockPlacementDispenserBehavior()); }
+        for(Block block : ElsDyeModBlocks.SHULKER_BOX_BLOCKS) { DispenserBlock.registerBehavior(block.asItem(), new BlockPlacementDispenserBehavior()); }
 
-        for(ModBoatEntity.ModBoat boat : ModBoatEntity.ModBoat.values()) {
-            DispenserBlock.registerBehavior(boat.boat(), new ModBoatDispenserBehavior(boat, false));
-            DispenserBlock.registerBehavior(boat.chestBoat(), new ModBoatDispenserBehavior(boat, true));
+        for(ElsDyeModBoatEntity.ModBoat boat : ElsDyeModBoatEntity.ModBoat.values()) {
+            DispenserBlock.registerBehavior(boat.boat(), new ElsDyeModBoatDispenserBehavior(boat, false));
+            DispenserBlock.registerBehavior(boat.chestBoat(), new ElsDyeModBoatDispenserBehavior(boat, true));
         }
 
-        DispenserBlock.registerBehavior(ModItems.EMBER_ARROW, new ProjectileDispenserBehavior() {
+        DispenserBlock.registerBehavior(ElsDyeModItems.EMBER_ARROW, new ProjectileDispenserBehavior() {
             @Override
             protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
                 return new EmberArrowEntity(world, position.getX(), position.getY(), position.getZ());

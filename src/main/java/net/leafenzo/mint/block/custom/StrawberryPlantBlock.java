@@ -1,6 +1,6 @@
 package net.leafenzo.mint.block.custom;
 
-import net.leafenzo.mint.item.ModItems;
+import net.leafenzo.mint.item.ElsDyeModItems;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -38,11 +38,11 @@ public class StrawberryPlantBlock extends FlowerbedBlock implements Fertilizable
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         int i = state.get(AGE);
-        if (isFullyGrown(state) && (player.getStackInHand(hand).isOf(Items.BONE_MEAL) || player.getStackInHand(hand).isOf(ModItems.STRAWBERRY))) {
+        if (isFullyGrown(state) && (player.getStackInHand(hand).isOf(Items.BONE_MEAL) || player.getStackInHand(hand).isOf(ElsDyeModItems.STRAWBERRY))) {
             return ActionResult.PASS;
         }
         if (isFullyGrown(state)) {
-            dropStack(world, pos, new ItemStack(ModItems.STRAWBERRY, state.get(FLOWER_AMOUNT)));
+            dropStack(world, pos, new ItemStack(ElsDyeModItems.STRAWBERRY, state.get(FLOWER_AMOUNT)));
             world.playSound(null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0f, 0.8f + world.random.nextFloat() * 0.4f);
             BlockState blockState = state.with(AGE, 0);
             world.setBlockState(pos, blockState, Block.NOTIFY_LISTENERS);
