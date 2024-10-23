@@ -72,7 +72,7 @@ public class PotionIngredient implements CustomIngredient {
 //                Potion potion = Registries.POTION.get(id);
 //                return new PotionIngredient(potion);
             }
-            else { throw new RuntimeException(json.toString() + " has no member of name: \"potion\"!"); }
+            else { throw new RuntimeException(json + " has no member of name: \"potion\"!"); }
 //            return new PotionIngredient(Potions.WATER);
         }
 

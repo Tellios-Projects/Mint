@@ -71,11 +71,11 @@ public class ModRegistryHelper {
 //    public static final ArrayList<Item> DYED_PAPER_ITEMS = new ArrayList<Item>();
 
         public static Item registerItem(Identifier id, Item item) {
-            return Registry.register(Registries.ITEM, id, (Item) item);
+            return Registry.register(Registries.ITEM, id, item);
         }
 
         public static Item registerItem(String name, Item item) {
-            return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), (Item) item);
+            return Registry.register(Registries.ITEM, new Identifier(Super.MOD_ID, name), item);
         }
 
         public static Item registerItem(BlockItem item) {
@@ -95,7 +95,7 @@ public class ModRegistryHelper {
 
         public static Item registerItem(Block block, Item item) {
             BlockItem blockItem = new BlockItem(block, new FabricItemSettings());
-            return Registry.register(Registries.ITEM, Registries.BLOCK.getId(block), (Item) item);
+            return Registry.register(Registries.ITEM, Registries.BLOCK.getId(block), item);
         }
     }
 

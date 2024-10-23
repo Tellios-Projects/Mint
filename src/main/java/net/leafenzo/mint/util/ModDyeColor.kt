@@ -2,7 +2,8 @@
 * Sources:
 * ReMod Studios - https://github.com/ReMod-Studios/Voidlands-Java/blob/1f07d4a1b72a103636ee104401a3652714411289/common/src/main/kotlin/com/remodstudios/voidlands/util/VoidlandsDyeColors.kt#L4
  */
-package net.leafenzo.mint.util;
+package net.leafenzo.mint.util
+
 import net.leafenzo.mint.PlatformInterfaceImpl
 import net.leafenzo.mint.PlatformInterfaceImpl.getAcornDyeColor
 import net.leafenzo.mint.PlatformInterfaceImpl.getAmberDyeColor
@@ -24,7 +25,7 @@ import net.leafenzo.mint.PlatformInterfaceImpl.getSapDyeColor
 import net.leafenzo.mint.PlatformInterfaceImpl.getShamrockDyeColor
 import net.leafenzo.mint.PlatformInterfaceImpl.getVelvetDyeColor
 import net.leafenzo.mint.PlatformInterfaceImpl.getVermilionDyeColor
-import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.ApiStatus
 
 object ModDyeColor {
     @ApiStatus.Internal

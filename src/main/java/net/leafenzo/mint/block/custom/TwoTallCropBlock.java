@@ -34,7 +34,7 @@ public class TwoTallCropBlock extends CropBlock {
     public static final EnumProperty<DoubleBlockHalf> HALF = Properties.DOUBLE_BLOCK_HALF;
     public TwoTallCropBlock(Settings settings) {
         super(settings);
-        this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(HALF, DoubleBlockHalf.LOWER));
+        this.setDefaultState(this.stateManager.getDefaultState().with(HALF, DoubleBlockHalf.LOWER));
     }
     private static final VoxelShape[] AGE_TO_SHAPE_UPPER = new VoxelShape[]{
             Block.createCuboidShape(0.0, 0.0, 0.0, 11.0, 2.0, 11.0),
@@ -183,7 +183,7 @@ public class TwoTallCropBlock extends CropBlock {
             } else {
                 int j = this.getHarvestAmount(state, world.getRandom());
                 dropFruit(j, world, pos);
-                this.dropStacks(state, world, pos, null, player, player.getMainHandStack());
+                dropStacks(state, world, pos, null, player, player.getMainHandStack());
             }
         }
         super.onBreak(world, pos, state, player);

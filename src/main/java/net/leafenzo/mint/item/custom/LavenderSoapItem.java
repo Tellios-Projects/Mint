@@ -59,7 +59,7 @@ public class LavenderSoapItem extends Item {
             }
 
             //Damage soap
-            if (!((PlayerEntity)user).getAbilities().creativeMode) {
+            if (!user.getAbilities().creativeMode) {
                 stack.damage(1, user, playerx -> playerx.sendToolBreakStatus(hand));
             }
             return ActionResult.SUCCESS;

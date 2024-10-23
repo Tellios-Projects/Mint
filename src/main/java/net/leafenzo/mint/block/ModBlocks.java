@@ -122,7 +122,7 @@ public class ModBlocks {
     public static final Block MINT_CROP = registerBlockWithoutBlockItem("mint_crop", new MintCropBlock(FabricBlockSettings.create().mapColor(MapColor.LICHEN_GREEN).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).pistonBehavior(PistonBehavior.DESTROY)));
         static { RENDER_LAYER_CUTOUT_MIPPED.add(MINT_CROP); }
     public static final Block WILD_MINT = registerBlock("wild_mint", createFlowerBlock(ModEffects.MINT_CHILL, 900)/*, ModItemGroups.MINT*/);
-    public static final Block POTTED_WILD_MINT = registerBlockWithoutBlockItem("potted_wild_mint", createFlowerPotBlock((FlowerBlock) WILD_MINT)/*, ModItemGroups.MINT*/);
+    public static final Block POTTED_WILD_MINT = registerBlockWithoutBlockItem("potted_wild_mint", createFlowerPotBlock(WILD_MINT)/*, ModItemGroups.MINT*/);
     public static final Block MINT_SPRIG_BLOCK = registerBlock("mint_sprig_block", new Block(FabricBlockSettings.copyOf(Blocks.ACACIA_LEAVES).mapColor(MapColor.LICHEN_GREEN))/*, ModItemGroups.MINT*/);
         static { RENDER_LAYER_CUTOUT.add(MINT_SPRIG_BLOCK); }
     public static final Block MINT_BRICKS = registerBlock("mint_bricks", new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK).mapColor(MapColor.LICHEN_GREEN))/*, ModItemGroups.MINT*/);
@@ -168,7 +168,7 @@ public class ModBlocks {
     //</editor-fold>
     //<editor-fold desc ="PEACH - Special">
     public static final Block HYPERICUM = registerBlock("hypericum", createFlowerBlock(StatusEffects.HUNGER, 900)/*, ModItemGroups.PEACH*/); //causes hunger because hypericum berries cause digestion issues irl
-    public static final Block POTTED_HYPERICUM = registerBlockWithoutBlockItem("potted_hypericum", createFlowerPotBlock((FlowerBlock) HYPERICUM)/*, ModItemGroups.PEACH*/);
+    public static final Block POTTED_HYPERICUM = registerBlockWithoutBlockItem("potted_hypericum", createFlowerPotBlock(HYPERICUM)/*, ModItemGroups.PEACH*/);
     public static final Block PEACH_TREE = registerBlockWithoutBlockItem("peach_tree", new PeachTreeBlock(FabricBlockSettings.create().noCollision().strength(0.2f).sounds(BlockSoundGroup.GRASS).burnable().pistonBehavior(PistonBehavior.DESTROY).ticksRandomly().offset(AbstractBlock.OffsetType.XZ).nonOpaque().solidBlock(ModBlocks::never)));
         static { RENDER_LAYER_CUTOUT_MIPPED.add(PEACH_TREE); }
 
@@ -686,7 +686,7 @@ public class ModBlocks {
                 .burnable()
         );
         WOOL_BLOCKS.add(block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        DYECOLOR_FROM_BLOCK.put(block, color);
         COLOR_FROM_WOOL.put(color, block);
         COLORED_BLOCKS.add(block);
         return block;
@@ -700,7 +700,7 @@ public class ModBlocks {
         );
         WOOL_CARPET_BLOCKS.add(block);
         WOOL_CARPET_FROM_WOOL.put(wool, block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        DYECOLOR_FROM_BLOCK.put(block, color);
         COLORED_BLOCKS.add(block);
         return block;
     }
@@ -712,7 +712,7 @@ public class ModBlocks {
                 .strength(1.25f, 4.2f)
         );
         DYED_TERRACOTTA_BLOCKS.add(block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        DYECOLOR_FROM_BLOCK.put(block, color);
         COLORED_BLOCKS.add(block);
         return block;
     }
@@ -724,7 +724,7 @@ public class ModBlocks {
                 .strength(1.8f)
         );
         CONCRETE_BLOCKS.add(block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        DYECOLOR_FROM_BLOCK.put(block, color);
         COLORED_BLOCKS.add(block);
         return block;
     }
@@ -736,7 +736,7 @@ public class ModBlocks {
                 .sounds(BlockSoundGroup.SAND)
         );
         CONCRETE_POWDER_BLOCKS.add(block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        DYECOLOR_FROM_BLOCK.put(block, color);
         COLORED_BLOCKS.add(block);
         return block;
     }
@@ -749,7 +749,7 @@ public class ModBlocks {
                 .pistonBehavior(PistonBehavior.PUSH_ONLY)
         );
         GLAZED_TERRACOTTA_BLOCKS.add(block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        DYECOLOR_FROM_BLOCK.put(block, color);
         COLORED_BLOCKS.add(block);
         return block;
     }
@@ -766,7 +766,7 @@ public class ModBlocks {
                 .blockVision(ModBlocks::never)
         );
         STAINED_GLASS_BLOCKS.add(block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        DYECOLOR_FROM_BLOCK.put(block, color);
         COLORED_BLOCKS.add(block);
         RENDER_LAYER_TRANSLUCENT.add(block);
         return block;
@@ -781,7 +781,7 @@ public class ModBlocks {
         );
         STAINED_GLASS_PANE_BLOCKS.add(block);
         STAINED_GLASS_PANE_FROM_STAINED_GLASS.put(glass, block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        DYECOLOR_FROM_BLOCK.put(block, color);
         COLORED_BLOCKS.add(block);
         RENDER_LAYER_TRANSLUCENT.add(block);
         return block;
@@ -789,10 +789,9 @@ public class ModBlocks {
     private static ModShulkerBoxBlock createShulkerBoxBlock(DyeColor color) {
         AbstractBlock.ContextPredicate contextPredicate = (state, world, pos) -> {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (!(blockEntity instanceof ShulkerBoxBlockEntity)) {
+            if (!(blockEntity instanceof ShulkerBoxBlockEntity shulkerBoxBlockEntity)) {
                 return true;
             }
-            ShulkerBoxBlockEntity shulkerBoxBlockEntity = (ShulkerBoxBlockEntity)blockEntity;
             return shulkerBoxBlockEntity.suffocates();
         };
         ModShulkerBoxBlock block = new ModShulkerBoxBlock(color, FabricBlockSettings.copyOf(Blocks.SHULKER_BOX)
@@ -808,8 +807,8 @@ public class ModBlocks {
                 .solidBlock(ModBlocks::always)
         );
         SHULKER_BOX_BLOCKS.add(block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
-        SHULKER_BOX_FROM_DYECOLOR.put(color, (Block) block);
+        DYECOLOR_FROM_BLOCK.put(block, color);
+        SHULKER_BOX_FROM_DYECOLOR.put(color, block);
         COLORED_BLOCKS.add(block);
         FUNCTIONAL_BLOCKS.add(block);
         return block;
@@ -824,7 +823,7 @@ public class ModBlocks {
                 .pistonBehavior(PistonBehavior.DESTROY)
         );
         BED_BLOCKS.add(block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        DYECOLOR_FROM_BLOCK.put(block, color);
         COLORED_BLOCKS.add(block);
         FUNCTIONAL_BLOCKS.add(block);
         return block;
@@ -839,7 +838,7 @@ public class ModBlocks {
                 .pistonBehavior(PistonBehavior.DESTROY)
         );
         CANDLE_BLOCKS.add(block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        DYECOLOR_FROM_BLOCK.put(block, color);
         COLORED_BLOCKS.add(block);
         FUNCTIONAL_BLOCKS.add(block);
         return block;
@@ -855,7 +854,7 @@ public class ModBlocks {
         );
         CANDLE_CAKE_BLOCKS.add(block);
         CANDLE_CAKE_FROM_CANDLE.put(candle, block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        DYECOLOR_FROM_BLOCK.put(block, color);
         return block;
     }
     private static BannerBlock createBannerBlock(DyeColor color) {
@@ -869,7 +868,7 @@ public class ModBlocks {
                 .burnable()
         );
         BANNER_BLOCKS.add(block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        DYECOLOR_FROM_BLOCK.put(block, color);
         COLORED_BLOCKS.add(block);
         FUNCTIONAL_BLOCKS.add(block);
         return block;
@@ -887,7 +886,7 @@ public class ModBlocks {
         );
         WALL_BANNER_BLOCKS.add(block);
         WALL_BANNER_FROM_BANNER.put(banner, block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        DYECOLOR_FROM_BLOCK.put(block, color);
         return block;
     }
     //</editor-fold>
@@ -904,9 +903,9 @@ public class ModBlocks {
                         .strength(3) // less than iron block
                         .requiresTool()
         );
-        ALL_CORRUGATED_IRON_BLOCKS.add((Block) block);
+        ALL_CORRUGATED_IRON_BLOCKS.add(block);
         if(color != null) {
-            DYECOLOR_FROM_BLOCK.put((Block) block, color);
+            DYECOLOR_FROM_BLOCK.put(block, color);
         }
         return block;
     }
@@ -918,7 +917,7 @@ public class ModBlocks {
                         .mapColor(color.getMapColor())
         );
         ALL_MUCKTUFF_BLOCKS.add(block);
-        DYECOLOR_FROM_BLOCK.put((Block) block, color);
+        DYECOLOR_FROM_BLOCK.put(block, color);
         return block;
     }
     public static Block createMucktuffBlock() {
@@ -1045,7 +1044,7 @@ public class ModBlocks {
     }
     private static boolean always(BlockState state, BlockView world, BlockPos pos) { return true; }
     private static ToIntFunction<BlockState> createLightLevelFromBooleanProperty(int litLevel, BooleanProperty property) {
-        return state -> state.get(property) != false ? litLevel : 0;
+        return state -> state.get(property) ? litLevel : 0;
     }
 //    private static ToFloatFunction<BlockState> createStrengthFromIntProperty(int cutoff, int above, int below, IntProperty property) {
 //        return state -> state.get(property) >= cutoff ? above : below; // grahhh why doesn't this work?

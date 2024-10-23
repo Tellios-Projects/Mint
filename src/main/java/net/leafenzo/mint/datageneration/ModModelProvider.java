@@ -31,7 +31,7 @@ public class ModModelProvider extends FabricModelProvider {
 
     private void registerUpDefaultOrientable(BlockStateModelGenerator blockStateModelGenerator, Block block, TexturedModel.Factory modelFactory) {
         Identifier identifier = modelFactory.upload(block, blockStateModelGenerator.modelCollector);
-        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block, BlockStateVariant.create().put(VariantSettings.MODEL, identifier)).coordinate(this.createUpDefaultRotationStates()));
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block, BlockStateVariant.create().put(VariantSettings.MODEL, identifier)).coordinate(createUpDefaultRotationStates()));
         //blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(block).coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates(), identifier));
     }
     private static BlockStateVariantMap createUpDefaultRotationStates() {
@@ -396,7 +396,7 @@ public class ModModelProvider extends FabricModelProvider {
         for(Block candle : ModBlocks.CANDLE_BLOCKS) {
             Block cake = ModBlocks.CANDLE_CAKE_FROM_CANDLE.get(candle);
             if(cake != null) { blockStateModelGenerator.registerCandle(candle, cake); }
-            else { throw new RuntimeException(Registries.BLOCK.getId(candle).toString() + "does not have a candle cake"); }
+            else { throw new RuntimeException(Registries.BLOCK.getId(candle) + "does not have a candle cake"); }
         }
 
 //  BANNER_BLOCKS     // WALL_BANNER_BLOCKS
@@ -407,7 +407,7 @@ public class ModModelProvider extends FabricModelProvider {
                         .includeWithItem(banner)
                         .includeWithoutItem(wallBanner);
             }
-            else { throw new RuntimeException(Registries.BLOCK.getId(banner).toString() + "does not have a wall banner"); }
+            else { throw new RuntimeException(Registries.BLOCK.getId(banner) + "does not have a wall banner"); }
         }
 
         //Decor Additions

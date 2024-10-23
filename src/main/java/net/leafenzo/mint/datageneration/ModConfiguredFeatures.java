@@ -76,9 +76,9 @@ public class ModConfiguredFeatures {
                 new RandomPatchFeatureConfig(8, 3, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.HYPERICUM))))
         );
         DataPool.Builder<BlockState> peachTreeBuilder = DataPool.builder();
-            peachTreeBuilder.add((BlockState)((BlockState) ModBlocks.PEACH_TREE.getDefaultState().with(PeachTreeBlock.AGE, 2)), 1);
-            peachTreeBuilder.add((BlockState)((BlockState) ModBlocks.PEACH_TREE.getDefaultState().with(PeachTreeBlock.AGE, 1)), 1);
-            peachTreeBuilder.add((BlockState)((BlockState) ModBlocks.PEACH_TREE.getDefaultState().with(PeachTreeBlock.AGE, 0)), 1);
+            peachTreeBuilder.add(ModBlocks.PEACH_TREE.getDefaultState().with(PeachTreeBlock.AGE, 2), 1);
+            peachTreeBuilder.add(ModBlocks.PEACH_TREE.getDefaultState().with(PeachTreeBlock.AGE, 1), 1);
+            peachTreeBuilder.add(ModBlocks.PEACH_TREE.getDefaultState().with(PeachTreeBlock.AGE, 0), 1);
         register(context, PATCH_PEACH_TREE, Feature.FLOWER,
                 new RandomPatchFeatureConfig(16, 8, 5, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(peachTreeBuilder))))
         );
@@ -94,8 +94,8 @@ public class ModConfiguredFeatures {
         );
         DataPool.Builder<BlockState> periwinkleBuilder = DataPool.builder();
         for (Direction direction : Direction.Type.HORIZONTAL) {
-                periwinkleBuilder.add((BlockState)((BlockState) ModBlocks.PERIWINKLE_PETALS.getDefaultState().with(FlowerbedBlock.FLOWER_AMOUNT, 4)).with(FlowerbedBlock.FACING, direction), 5);
-                periwinkleBuilder.add((BlockState)((BlockState) ModBlocks.PERIWINKLE_PETALS.getDefaultState().with(FlowerbedBlock.FLOWER_AMOUNT, 3)).with(FlowerbedBlock.FACING, direction), 2);
+                periwinkleBuilder.add(ModBlocks.PERIWINKLE_PETALS.getDefaultState().with(FlowerbedBlock.FLOWER_AMOUNT, 4).with(FlowerbedBlock.FACING, direction), 5);
+                periwinkleBuilder.add(ModBlocks.PERIWINKLE_PETALS.getDefaultState().with(FlowerbedBlock.FLOWER_AMOUNT, 3).with(FlowerbedBlock.FACING, direction), 2);
 //                periwinkleBuilder.add((BlockState)((BlockState) ModBlocks.PERIWINKLE_PETALS.getDefaultState().with(FlowerbedBlock.FLOWER_AMOUNT, 2)).with(FlowerbedBlock.FACING, direction), 1);
         }
         register(context, PATCH_PERIWINKLE, Feature.FLOWER,
@@ -164,7 +164,7 @@ public class ModConfiguredFeatures {
 //            builder2.add((BlockState)((BlockState) ModBlocks.ALL_MUCKTUFF_BLOCKS.get(2).getDefaultState()), 1);
         register(context, ORE_MUCKTUFF, Feature.ORE,
                 new OreFeatureConfig(
-                        (RuleTest) new TagMatchRuleTest(BlockTags.BASE_STONE_OVERWORLD),
+                        new TagMatchRuleTest(BlockTags.BASE_STONE_OVERWORLD),
                         ModBlocks.MUCKTUFF.getDefaultState(),
 //                        new ModSimpleBlockStateProvider(new WeightedBlockStateProvider(builder))
 //                        BlockStateProvider.of(new WeightedBlockStateProvider(builder)),

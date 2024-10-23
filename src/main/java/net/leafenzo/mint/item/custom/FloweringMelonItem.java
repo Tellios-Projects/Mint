@@ -41,7 +41,7 @@ public class FloweringMelonItem extends Item {
                 world.addParticle(ParticleTypes.CRIT, entity.getParticleX(1.0) + xPos, entity.getRandomBodyY() + 0.5, entity.getParticleZ(1.0) + zPos, 0, ySpeed, 0);
             }
 
-            if (!((PlayerEntity) user).getAbilities().creativeMode) {
+            if (!user.getAbilities().creativeMode) {
                 stack.decrement(1);
             }
             return ActionResult.SUCCESS;

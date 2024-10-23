@@ -96,7 +96,7 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
                 if (id.getPath().contains(color.getName())) {
                     String key = "block." + modId + "." + id.getPath();
                     usedTranslationKeys.add(key);
-                    translationBuilder.add(key, toSentanceCase(color.getName() + id.getPath().replace(color.getName(), (CharSequence) ("")))); //move the color name to the beginning
+                    translationBuilder.add(key, toSentanceCase(color.getName() + id.getPath().replace(color.getName(), ""))); //move the color name to the beginning
                 }
             }
         }

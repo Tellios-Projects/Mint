@@ -25,7 +25,7 @@ public class NeonExciterBlock extends FacingBlock {
 
     protected NeonExciterBlock(Settings settings) {
         super(settings);
-        this.setDefaultState((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.SOUTH)).with(POWER, 0).with(POWERED, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.SOUTH).with(POWER, 0).with(POWERED, false));
     }
 
     @Override
@@ -35,7 +35,7 @@ public class NeonExciterBlock extends FacingBlock {
 
     @Override
     public BlockState rotate(BlockState state, BlockRotation rotation) {
-        return (BlockState)state.with(FACING, rotation.rotate(state.get(FACING)));
+        return state.with(FACING, rotation.rotate(state.get(FACING)));
     }
 
     @Override
@@ -69,7 +69,7 @@ public class NeonExciterBlock extends FacingBlock {
             return;
         }
         if (!world.isClient() && state.get(POWERED).booleanValue() && !world.getBlockTickScheduler().isQueued(pos, this)) {
-            BlockState blockState = (BlockState)state.with(POWERED, false);
+            BlockState blockState = state.with(POWERED, false);
             world.setBlockState(pos, blockState, Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
             this.updateNeighbors(world, pos, blockState);
         }
@@ -78,7 +78,7 @@ public class NeonExciterBlock extends FacingBlock {
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (state.get(POWERED).booleanValue() && !world.isReceivingRedstonePower(pos)) {
-            world.setBlockState(pos, (BlockState)state.cycle(POWERED), Block.NOTIFY_LISTENERS);
+            world.setBlockState(pos, state.cycle(POWERED), Block.NOTIFY_LISTENERS);
         }
     }
 
@@ -93,7 +93,7 @@ public class NeonExciterBlock extends FacingBlock {
             if (bl) {
                 world.scheduleBlockTick(pos, this, 4);
             } else {
-                world.setBlockState(pos, (BlockState)state.cycle(POWERED).with(POWER, receivedRedstonePower), Block.NOTIFY_LISTENERS);
+                world.setBlockState(pos, state.cycle(POWERED).with(POWER, receivedRedstonePower), Block.NOTIFY_LISTENERS);
             }
         }
     }
@@ -115,6 +115,6 @@ public class NeonExciterBlock extends FacingBlock {
 //    }
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState)this.getDefaultState().with(FACING, ctx.getPlayerLookDirection().getOpposite().getOpposite());
+        return this.getDefaultState().with(FACING, ctx.getPlayerLookDirection().getOpposite().getOpposite());
     }
 }

@@ -157,7 +157,7 @@ public class ModUtil {
     }
 
     public static String toSentanceCase(String s) {
-        String words[] = s.split("[\\s|_]");
+        String[] words = s.split("[\\s|_]");
         StringBuilder capitalizeWord = new StringBuilder();
         for(String w : words){
             String first = w.substring(0,1);

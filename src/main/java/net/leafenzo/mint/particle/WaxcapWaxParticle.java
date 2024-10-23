@@ -35,15 +35,15 @@ public class WaxcapWaxParticle extends SpriteBillboardParticle {
         if (this.dead) {
             return;
         }
-        this.velocityY -= (double)this.gravityStrength;
+        this.velocityY -= this.gravityStrength;
         this.move(this.velocityX, this.velocityY, this.velocityZ);
         this.updateVelocity();
         if (this.dead) {
             return;
         }
-        this.velocityX *= (double)0.98f;
-        this.velocityY *= (double)0.98f;
-        this.velocityZ *= (double)0.98f;
+        this.velocityX *= 0.98f;
+        this.velocityY *= 0.98f;
+        this.velocityZ *= 0.98f;
     }
     protected void updateAge() {
         if (this.maxAge-- <= 0) {

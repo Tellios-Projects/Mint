@@ -55,10 +55,10 @@ public class CoralAnemoneBlock extends PlantBlock
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
         boolean bl = fluidState.getFluid() == Fluids.WATER;
-        return (BlockState)super.getPlacementState(ctx).with(WATERLOGGED, bl);
+        return super.getPlacementState(ctx).with(WATERLOGGED, bl);
     }
     public static boolean isDry(BlockState state) {
-        return state.get(WATERLOGGED) == false;
+        return !state.get(WATERLOGGED);
     }
 
     @Override

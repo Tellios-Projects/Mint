@@ -82,7 +82,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerTerracottaDyeingRecipe(exporter, output, dye);
             }
             else {
-                throw new RuntimeException(Registries.BLOCK.getId((Block)output).toString() + " failed to find associated DyeColor");
+                throw new RuntimeException(Registries.BLOCK.getId((Block)output) + " failed to find associated DyeColor");
             }
         }
     }
@@ -146,7 +146,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public static void offerWaxingRecipes(Consumer<RecipeJsonProvider> exporter) {
         HoneycombItem.UNWAXED_TO_WAXED_BLOCKS.get().forEach((input, output)
                 -> ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output)
-                .input((ItemConvertible)input)
+                .input(input)
                 .input(ModTags.Items.WAX)
                 .group(RecipeProvider.getItemPath(output))
                 .criterion(RecipeProvider.hasItem(input), RecipeProvider.conditionsFromItem(input))

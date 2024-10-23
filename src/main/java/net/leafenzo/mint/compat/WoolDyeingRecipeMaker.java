@@ -27,7 +27,7 @@ public final class WoolDyeingRecipeMaker {
     // From JEI's ShulkerBoxColoringRecipeMaker
     public static List<CraftingRecipe> createRecipes() {
         ItemStack baseShulkerStack = new ItemStack(Blocks.WHITE_WOOL);
-        Ingredient baseShulkerIngredient = Ingredient.ofStacks(new ItemStack[]{baseShulkerStack});
+        Ingredient baseShulkerIngredient = Ingredient.ofStacks(baseShulkerStack);
         return Arrays.stream(ModDyeColor.VALUES).map((color) -> {
             return createRecipe(color, baseShulkerIngredient);
         }).toList();
@@ -36,7 +36,7 @@ public final class WoolDyeingRecipeMaker {
     private static CraftingRecipe createRecipe(DyeColor color, Ingredient baseShulkerIngredient) {
         IPlatformIngredientHelper ingredientHelper = Services.PLATFORM.getIngredientHelper();
         Ingredient colorIngredient = ingredientHelper.createShulkerDyeIngredient(color);
-        DefaultedList<Ingredient> inputs = DefaultedList.copyOf(Ingredient.EMPTY, new Ingredient[]{baseShulkerIngredient, colorIngredient});
+        DefaultedList<Ingredient> inputs = DefaultedList.copyOf(Ingredient.EMPTY, baseShulkerIngredient, colorIngredient);
         Block coloredShulkerBox = ModShulkerBoxBlock.get(color);
         ItemStack output = new ItemStack(coloredShulkerBox);
         Identifier id = new Identifier(Super.MOD_ID,group + "." + output.getTranslationKey());

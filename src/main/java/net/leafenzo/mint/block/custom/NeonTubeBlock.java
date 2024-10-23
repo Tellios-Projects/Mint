@@ -36,8 +36,8 @@ public class NeonTubeBlock extends PillarBlock {
 
     public NeonTubeBlock(AbstractBlock.Settings settings) {
         super(settings);
-        this.setDefaultState((BlockState)this.getDefaultState().with(POWER, 0));
-        this.setDefaultState((BlockState)this.getDefaultState().with(LIT, true));
+        this.setDefaultState(this.getDefaultState().with(POWER, 0));
+        this.setDefaultState(this.getDefaultState().with(LIT, true));
     }
 
     //public int getRedstonePower(BlockView world, BlockPos pos, Direction direction)
@@ -56,7 +56,7 @@ public class NeonTubeBlock extends PillarBlock {
     @Override
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState)this.getDefaultState().with(AXIS, ctx.getSide().getAxis());
+        return this.getDefaultState().with(AXIS, ctx.getSide().getAxis());
     }
 
     private BlockState getPlacementState(BlockView world, BlockState state, BlockPos pos) {
@@ -70,7 +70,7 @@ public class NeonTubeBlock extends PillarBlock {
     public void prepare(BlockState state, WorldAccess world, BlockPos pos, int flags, int maxUpdateDepth) {
         BlockPos.Mutable mutable = new BlockPos.Mutable();
         for (Direction direction : Direction.values()) {
-            if (world.getBlockState(mutable.set((Vec3i)pos, direction)).getBlock() != this.asBlock()) continue;
+            if (world.getBlockState(mutable.set(pos, direction)).getBlock() != this.asBlock()) continue;
             Vec3i blockPos = mutable.offset(direction.getOpposite());
             world.replaceWithStateForNeighborUpdate(direction.getOpposite(), world.getBlockState((BlockPos)blockPos), mutable, (BlockPos)blockPos, flags, maxUpdateDepth);
 
@@ -80,7 +80,7 @@ public class NeonTubeBlock extends PillarBlock {
                 Vec3i blockPos1 = mutable.offset(direction.getOpposite());
                 world.replaceWithStateForNeighborUpdate(direction.getOpposite(), world.getBlockState((BlockPos)blockPos1), mutable, (BlockPos)blockPos1, flags, maxUpdateDepth);
             }
-            mutable.set((Vec3i)pos, direction).move(Direction.UP);
+            mutable.set(pos, direction).move(Direction.UP);
             BlockState blockState2 = world.getBlockState(mutable);
             if (!blockState2.isOf(this)) continue;
             Vec3i blockPos2 = mutable.offset(direction.getOpposite());
@@ -94,7 +94,7 @@ public class NeonTubeBlock extends PillarBlock {
         int i = this.getReceivedRedstonePower(world, pos);
         if (state.get(POWER) != i) {
             if (world.getBlockState(pos) == state) {
-                world.setBlockState(pos, (BlockState)state.with(POWER, i), Block.NOTIFY_LISTENERS);
+                world.setBlockState(pos, state.with(POWER, i), Block.NOTIFY_LISTENERS);
             }
             HashSet<BlockPos> set = Sets.newHashSet();
             set.add(pos);

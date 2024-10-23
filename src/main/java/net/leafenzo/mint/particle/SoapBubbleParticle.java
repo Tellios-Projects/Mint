@@ -30,9 +30,9 @@ public class SoapBubbleParticle extends SpriteBillboardParticle {
         }
         this.velocityY += 0.002;
         this.move(this.velocityX, this.velocityY, this.velocityZ);
-        this.velocityX *= (double)0.85f;
-        this.velocityY *= (double)0.85f;
-        this.velocityZ *= (double)0.85f;
+        this.velocityX *= 0.85f;
+        this.velocityY *= 0.85f;
+        this.velocityZ *= 0.85f;
 //        if (!this.world.getFluidState(BlockPos.ofFloored(this.x, this.y, this.z)).isIn(FluidTags.WATER)) {
 //            this.markDead();
 //        }

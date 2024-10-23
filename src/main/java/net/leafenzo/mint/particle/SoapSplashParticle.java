@@ -35,9 +35,9 @@ public class SoapSplashParticle extends SpriteBillboardParticle {
 //        this.velocityY -= 0.006;
         this.velocityY -= 0.02;
         this.move(this.velocityX, this.velocityY, this.velocityZ);
-        this.velocityX *= (double)0.5f;
-        this.velocityY *= (double)0.5f;
-        this.velocityZ *= (double)0.5f;
+        this.velocityX *= 0.5f;
+        this.velocityY *= 0.5f;
+        this.velocityZ *= 0.5f;
     }
 
     @Override

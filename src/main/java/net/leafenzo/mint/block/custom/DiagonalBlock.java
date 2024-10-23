@@ -20,7 +20,7 @@ public class DiagonalBlock
 
     public DiagonalBlock(Settings settings) {
         super(settings);
-        this.setDefaultState((BlockState)(BlockState)this.getDefaultState()
+        this.setDefaultState(this.getDefaultState()
                 .with(FACING, Direction.NORTH)
                 .with(DIAGONAL, false)
         );
@@ -45,17 +45,12 @@ public class DiagonalBlock
     }
 
     protected static boolean isDiagonal(float angle) {
-        if (
-            angle > -180.0f && angle < -157.5f
-         || angle > -112.5f && angle < -67.5f
-         || angle > -22.5f && angle < 22.5f
-         || angle > 67.5f && angle < 112.5f
-         || angle > 157.5f && angle < 180f
-        ){
-            return false;
-        }
+        return (!(angle > -180.0f) || !(angle < -157.5f))
+                && (!(angle > -112.5f) || !(angle < -67.5f))
+                && (!(angle > -22.5f) || !(angle < 22.5f))
+                && (!(angle > 67.5f) || !(angle < 112.5f))
+                && (!(angle > 157.5f) || !(angle < 180f));
         //else
-        return true;
     }
 
     protected static Direction getDirection(float angle, ItemPlacementContext ctx) {

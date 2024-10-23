@@ -25,7 +25,7 @@ public class ModShulkerBoxBlock extends ShulkerBoxBlock {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof ShulkerBoxBlockEntity shulkerBoxBlockEntity) {
             if (!world.isClient && player.isCreative() && !shulkerBoxBlockEntity.isEmpty()) {
-                ItemStack itemStack = this.getItemStack(this.getColor());
+                ItemStack itemStack = getItemStack(this.getColor());
                 blockEntity.setStackNbt(itemStack);
                 if (shulkerBoxBlockEntity.hasCustomName()) {
                     itemStack.setCustomName(shulkerBoxBlockEntity.getCustomName());

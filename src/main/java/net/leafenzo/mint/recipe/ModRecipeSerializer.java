@@ -16,7 +16,7 @@ public interface ModRecipeSerializer<T extends Recipe<?>> {
         return Registry.register(Registries.RECIPE_SERIALIZER, id, serializer);
     }
 
-    public static void registerModRecipeSerializer() {
+    static void registerModRecipeSerializer() {
         ModInit.LOGGER.debug("Registering the recipe serializer for " + Super.MOD_ID);
     }
 }

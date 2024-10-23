@@ -81,14 +81,14 @@ public class EmberBlock extends Block implements Waterloggable {
         for(int var4 = 0; var4 < var3; ++var4) {
             Direction direction = var2[var4];
             if (this.canHaveDirection(direction)) {
-                builder.add(new Property[]{getProperty(direction)});
+                builder.add(getProperty(direction));
             }
         }
         builder.add(WATERLOGGED);
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        if ((Boolean)state.get(WATERLOGGED)) {
+        if (state.get(WATERLOGGED)) {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
         if (!hasAnyDirection(state)) {
@@ -99,11 +99,11 @@ public class EmberBlock extends Block implements Waterloggable {
     }
 
     public FluidState getFluidState(BlockState state) {
-        return (Boolean)state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return (VoxelShape)this.SHAPES.get(state);
+        return this.SHAPES.get(state);
     }
 
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
@@ -195,7 +195,7 @@ public class EmberBlock extends Block implements Waterloggable {
         for(int var6 = 0; var6 < var5; ++var6) {
             Direction direction = var4[var6];
             if (this.canHaveDirection(direction)) {
-                blockState = (BlockState)blockState.with(getProperty((Direction)mirror.apply(direction)), (Boolean)state.get(getProperty(direction)));
+                blockState = blockState.with(getProperty(mirror.apply(direction)), state.get(getProperty(direction)));
             }
         }
 
@@ -204,7 +204,7 @@ public class EmberBlock extends Block implements Waterloggable {
 
     public static boolean hasDirection(BlockState state, Direction direction) {
         BooleanProperty booleanProperty = getProperty(direction);
-        return state.contains(booleanProperty) && (Boolean)state.get(booleanProperty);
+        return state.contains(booleanProperty) && state.get(booleanProperty);
     }
 
     public static boolean canPlaceOn(BlockView world, Direction direction, BlockPos pos, BlockState state) {
@@ -216,22 +216,22 @@ public class EmberBlock extends Block implements Waterloggable {
     }
 
     private static BlockState disableDirection(BlockState state, BooleanProperty direction) {
-        BlockState blockState = (BlockState)state.with(direction, false);
+        BlockState blockState = state.with(direction, false);
         return hasAnyDirection(blockState) ? blockState : Blocks.AIR.getDefaultState();
     }
 
     public static BooleanProperty getProperty(Direction direction) {
-        return (BooleanProperty)FACING_PROPERTIES.get(direction);
+        return FACING_PROPERTIES.get(direction);
     }
 
     private static BlockState withAllDirections(StateManager<Block, BlockState> stateManager) {
-        BlockState blockState = (BlockState)stateManager.getDefaultState();
+        BlockState blockState = stateManager.getDefaultState();
         Iterator var2 = FACING_PROPERTIES.values().iterator();
 
         while(var2.hasNext()) {
             BooleanProperty booleanProperty = (BooleanProperty)var2.next();
             if (blockState.contains(booleanProperty)) {
-                blockState = (BlockState)blockState.with(booleanProperty, false);
+                blockState = blockState.with(booleanProperty, false);
             }
         }
 

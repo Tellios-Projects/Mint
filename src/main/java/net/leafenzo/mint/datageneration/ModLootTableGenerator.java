@@ -117,10 +117,10 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
 
     public void addWoodsetDrops(WoodSet woodSet) {
         if(woodSet.getWoodType() == ModBlocks.WINTERGREEN_WOODSET.getWoodType()) {
-            this.addDrop(woodSet.getLeaves(), (Block block) -> this.wintergreenLeavesDrops((Block)block, woodSet.getSapling(), SAPLING_DROP_CHANCE));
+            this.addDrop(woodSet.getLeaves(), (Block block) -> this.wintergreenLeavesDrops(block, woodSet.getSapling(), SAPLING_DROP_CHANCE));
         }
         else {
-            this.addDrop(woodSet.getLeaves(), (Block block) -> this.leavesDrops((Block)block, woodSet.getSapling(), SAPLING_DROP_CHANCE));
+            this.addDrop(woodSet.getLeaves(), (Block block) -> this.leavesDrops(block, woodSet.getSapling(), SAPLING_DROP_CHANCE));
         }
         this.addDrop(woodSet.getSapling());
         this.addPottedPlantDrops(woodSet.getPottedSapling());
@@ -130,13 +130,13 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(woodSet.getStrippedWood());
         if (woodSet.getPlanks() != null) { this.addDrop(woodSet.getPlanks()); }
         if (woodSet.getStairs() != null) { this.addDrop(woodSet.getStairs()); }
-        if (woodSet.getSlab() != null) { this.addDrop(woodSet.getSlab(), (Block block) -> this.slabDrops((Block) block)); }
+        if (woodSet.getSlab() != null) { this.addDrop(woodSet.getSlab(), (Block block) -> this.slabDrops(block)); }
         if (woodSet.getMosaic() != null) { this.addDrop(woodSet.getMosaic()); }
         if (woodSet.getMosaicStairs() != null) { this.addDrop(woodSet.getMosaicStairs()); }
-        if (woodSet.getMosaicSlab() != null) { this.addDrop(woodSet.getMosaicSlab(), (Block block) -> this.slabDrops((Block)block)); }
+        if (woodSet.getMosaicSlab() != null) { this.addDrop(woodSet.getMosaicSlab(), (Block block) -> this.slabDrops(block)); }
         this.addDrop(woodSet.getFence());
         this.addDrop(woodSet.getFenceGate());
-        this.addDrop(woodSet.getDoor(),(Block block) -> this.doorDrops((Block) block));
+        this.addDrop(woodSet.getDoor(),(Block block) -> this.doorDrops(block));
         this.addDrop(woodSet.getTrapDoor());
         this.addDrop(woodSet.getPressurePlate());
         this.addDrop(woodSet.getButton());
@@ -151,32 +151,32 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         //  MINT - Special
         this.addDrop(ModBlocks.WILD_MINT, (Block block) -> this.wildMintDrops(ModBlocks.WILD_MINT));
         BlockStatePropertyLootCondition.Builder mintCropBuilder = BlockStatePropertyLootCondition.builder(ModBlocks.MINT_CROP).properties(StatePredicate.Builder.create().exactMatch(MintCropBlock.AGE, MintCropBlock.MAX_AGE));
-        this.addDrop(ModBlocks.MINT_CROP, this.applyExplosionDecay(ModBlocks.MINT_CROP, LootTable.builder().pool(LootPool.builder().with(ItemEntry.builder(ModItems.MINT_SPRIG))).pool(LootPool.builder().conditionally(mintCropBuilder).with((LootPoolEntry.Builder<?>)((Object)ItemEntry.builder(ModItems.MINT_SPRIG).apply(ApplyBonusLootFunction.binomialWithBonusCount(Enchantments.FORTUNE, 0.5714286f, 3)))))));
-        this.addDrop(ModBlocks.MINT_BRICK_SLAB, (Block block) -> this.slabDrops((Block)block));
+        this.addDrop(ModBlocks.MINT_CROP, this.applyExplosionDecay(ModBlocks.MINT_CROP, LootTable.builder().pool(LootPool.builder().with(ItemEntry.builder(ModItems.MINT_SPRIG))).pool(LootPool.builder().conditionally(mintCropBuilder).with((LootPoolEntry.Builder<?>) ItemEntry.builder(ModItems.MINT_SPRIG).apply(ApplyBonusLootFunction.binomialWithBonusCount(Enchantments.FORTUNE, 0.5714286f, 3))))));
+        this.addDrop(ModBlocks.MINT_BRICK_SLAB, (Block block) -> this.slabDrops(block));
         this.addWoodsetDrops(ModBlocks.WINTERGREEN_WOODSET);
 
         //  PEACH - Special
-        this.addDrop(ModBlocks.CORALSOIL_BRICK_SLAB, (Block block) -> this.slabDrops((Block)block));
+        this.addDrop(ModBlocks.CORALSOIL_BRICK_SLAB, (Block block) -> this.slabDrops(block));
         this.addPottedPlantDrops(ModBlocks.POTTED_HYPERICUM);
-        this.addDrop(ModBlocks.PEACH_TREE, (Block block) -> this.peachTreeDrops((Block)block, ModItems.PEACH_BRANCH));
+        this.addDrop(ModBlocks.PEACH_TREE, (Block block) -> this.peachTreeDrops(block, ModItems.PEACH_BRANCH));
         this.addDrop(ModBlocks.HANGING_PEACH, hangingFruitDrops(ModBlocks.HANGING_PEACH, ModItems.PEACH));
         addDrop(ModBlocks.PEACH_LEAVES, leavesDrops(ModBlocks.PEACH_LEAVES, ModBlocks.PEACH_SAPLING, FRUIT_SAPLING_DROP_CHANCE));
         addDrop(ModBlocks.FLOWERING_PEACH_LEAVES, leavesDrops(ModBlocks.FLOWERING_PEACH_LEAVES, ModBlocks.PEACH_SAPLING, FLOWERING_FRUIT_SAPLING_DROP_CHANCE));
 
         //  PERIWINKLE - Special
-        this.addDrop(ModBlocks.LAVENDER_BRICK_SLAB, (Block block) -> this.slabDrops((Block)block));
-        this.addDrop(ModBlocks.MOSSY_LAVENDER_BRICK_SLAB, (Block block) -> this.slabDrops((Block)block));
+        this.addDrop(ModBlocks.LAVENDER_BRICK_SLAB, (Block block) -> this.slabDrops(block));
+        this.addDrop(ModBlocks.MOSSY_LAVENDER_BRICK_SLAB, (Block block) -> this.slabDrops(block));
         this.addDrop(ModBlocks.PERIWINKLE_PETALS, this.flowerbedDrops(ModBlocks.PERIWINKLE_PETALS));
         this.addDrop(ModBlocks.LAVENDER_OIL_LANTERN, this::drops);
 
         //  ARTICHOKE - Special
-        this.addDrop(ModBlocks.WAXCAP_CAP_BLOCK, (Block block) -> this.mushroomBlockDrops((Block)block, ModBlocks.WAXCAP_MUSHROOM));
-        this.addDrop(ModBlocks.WAXCAP_STEM_BLOCK, (Block block) -> this.mushroomBlockDrops((Block)block, ModBlocks.WAXCAP_MUSHROOM));
+        this.addDrop(ModBlocks.WAXCAP_CAP_BLOCK, (Block block) -> this.mushroomBlockDrops(block, ModBlocks.WAXCAP_MUSHROOM));
+        this.addDrop(ModBlocks.WAXCAP_STEM_BLOCK, (Block block) -> this.mushroomBlockDrops(block, ModBlocks.WAXCAP_MUSHROOM));
         this.addDrop(ModBlocks.HANGING_WAXCAP_WAX, (Block block) -> this.drops(ModItems.WAXCAP_WAX));
         this.addDrop(ModBlocks.WAXCAP_GILL_SLAB, (Block block) ->  waxcapGillSlabDrops(ModBlocks.WAXCAP_GILL_SLAB, ModBlocks.HANGING_WAXCAP_WAX));
         this.addDrop(ModBlocks.WAXCAP_GILLS, (Block block) ->  waxcapGillFullBlockDrops(ModBlocks.WAXCAP_GILLS, ModBlocks.HANGING_WAXCAP_WAX));
         BlockStatePropertyLootCondition.Builder artichokeCropBuilder = BlockStatePropertyLootCondition.builder(ModBlocks.ARTICHOKE_CROP).properties(StatePredicate.Builder.create().exactMatch(ArtichokeCropBlock.AGE, ArtichokeCropBlock.MAX_AGE));
-        this.addDrop(ModBlocks.ARTICHOKE_CROP, this.applyExplosionDecay(ModBlocks.ARTICHOKE_CROP, LootTable.builder().pool(LootPool.builder().with(ItemEntry.builder(ModItems.ARTICHOKE))).pool(LootPool.builder().conditionally(artichokeCropBuilder).with((LootPoolEntry.Builder<?>)((Object)ItemEntry.builder(ModItems.ARTICHOKE).apply(ApplyBonusLootFunction.binomialWithBonusCount(Enchantments.FORTUNE, 0.5714286f, 3)))))));
+        this.addDrop(ModBlocks.ARTICHOKE_CROP, this.applyExplosionDecay(ModBlocks.ARTICHOKE_CROP, LootTable.builder().pool(LootPool.builder().with(ItemEntry.builder(ModItems.ARTICHOKE))).pool(LootPool.builder().conditionally(artichokeCropBuilder).with((LootPoolEntry.Builder<?>) ItemEntry.builder(ModItems.ARTICHOKE).apply(ApplyBonusLootFunction.binomialWithBonusCount(Enchantments.FORTUNE, 0.5714286f, 3))))));
 
         this.addDrop(ModBlocks.MADDER_ROOTED_GRASS_BLOCK, LootTable.builder()
                         .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1))
@@ -212,7 +212,7 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(ModBlocks.CINNABAR_CLUSTER, (block) -> dropsWithSilkTouch(block, ItemEntry.builder(ModItems.CINNABAR).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(4.0F))).apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE)).conditionally(MatchToolLootCondition.builder(net.minecraft.predicate.item.ItemPredicate.Builder.create().tag(ItemTags.CLUSTER_MAX_HARVESTABLES))).alternatively(this.applyExplosionDecay(block, ItemEntry.builder(ModItems.CINNABAR).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0F)))))));
 
         // AMBER - Special
-        this.addDrop(ModBlocks.AMBER_BRICK_SLAB, (Block block) -> this.slabDrops((Block)block));
+        this.addDrop(ModBlocks.AMBER_BRICK_SLAB, (Block block) -> this.slabDrops(block));
         this.dropsNothing(ModBlocks.EMBER);
 
         addDrop(ModBlocks.SHIMMERING_SAVANNABUDS_CROP, LootTable.builder()
@@ -281,15 +281,15 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
 //  STAINED_GLASS_PANE_BLOCKS
         for(Block block : ModBlocks.STAINED_GLASS_PANE_BLOCKS) { this.addDropWithSilkTouch(block); }
 //  SHULKER_BOX_BLOCKS
-        for(Block block : ModBlocks.SHULKER_BOX_BLOCKS) {  this.addDrop(block, (Block block2) -> this.shulkerBoxDrops((Block)block2)); }
+        for(Block block : ModBlocks.SHULKER_BOX_BLOCKS) {  this.addDrop(block, (Block block2) -> this.shulkerBoxDrops(block2)); }
 //  BED_BLOCKS
-        for(Block block : ModBlocks.BED_BLOCKS) { this.addDrop(block, (Block b) -> this.dropsWithProperty((Block)b, BedBlock.PART, BedPart.HEAD)); }
+        for(Block block : ModBlocks.BED_BLOCKS) { this.addDrop(block, (Block b) -> this.dropsWithProperty(b, BedBlock.PART, BedPart.HEAD)); }
 //  CANDLE_BLOCKS
-        for(Block block : ModBlocks.CANDLE_BLOCKS) { this.addDrop(ModBlocks.MINT_CANDLE, (Block block2) -> this.candleDrops((Block)block2)); }
+        for(Block block : ModBlocks.CANDLE_BLOCKS) { this.addDrop(ModBlocks.MINT_CANDLE, (Block block2) -> this.candleDrops(block2)); }
 //  CANDLE_CAKE_BLOCKS
         for(Block block : ModBlocks.CANDLE_CAKE_FROM_CANDLE.values()) { VanillaBlockLootTableGenerator.candleCakeDrops(block); }
 //  BANNER_BLOCKS
-        for(Block block : ModBlocks.BANNER_BLOCKS) { this.addDrop(block, (Block block2) -> this.bannerDrops((Block)block2)); }
+        for(Block block : ModBlocks.BANNER_BLOCKS) { this.addDrop(block, (Block block2) -> this.bannerDrops(block2)); }
 //  WALL_BANNER_BLOCKS
 //        for(Block block : ModBlocks.WALL_BANNER_BLOCKS) { } // Not needed
 

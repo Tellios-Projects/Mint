@@ -26,7 +26,7 @@ public abstract class EntityMixin {
         if (user instanceof LivingEntity) {
             StatusEffectInstance thorns = ((LivingEntity) user).getActiveStatusEffects().get(ModEffects.THORNS);
             if (thorns != null) {
-                ThornsEffect.apply(user, (LivingEntity) attacker);
+                ThornsEffect.apply(user, attacker);
             }
         }
     }
