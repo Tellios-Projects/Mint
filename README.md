@@ -2,7 +2,7 @@
 <font size="15px"> El & L's Dye Mod </font>
 <br>	
 <img src="https://img.shields.io/badge/Available%20for-MC%201.20.1-c70039" alt="Supported Versions">
-  	<a href="https://discord.gg/uNZQ5NbnMX"><img src="https://img.shields.io/static/v1?label= &message=Tellio's Projects&style=flat&logo=Discord&color=363b5c" alt="Our Discord"></a>
+  	<a href="https://discord.gg/4dpWsGbvMQ"><img src="https://img.shields.io/static/v1?label= &message=Tellio's Projects&style=flat&logo=Discord&color=363b5c" alt="Our Discord"></a>
     <br> 
     <a href="https://modrinth.com/mod/el-and-ls-dye-mod"><img src="https://raw.githubusercontent.com/intergrav/devins-badges/v2/assets/compact/available/modrinth_46h.png" alt="Download our mod on Modrinth!" width="270">
     <br>
