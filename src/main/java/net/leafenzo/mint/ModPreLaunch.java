@@ -1,10 +1,6 @@
 package net.leafenzo.mint;
-import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
-import net.leafenzo.mint.block.ModBlocks;
-import net.leafenzo.mint.util.ModDyeColor;
-import net.minecraft.block.Block;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

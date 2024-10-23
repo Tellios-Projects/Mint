@@ -3,15 +3,11 @@ package net.leafenzo.mint.mixin.compat.jei;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import mezz.jei.library.plugins.vanilla.crafting.replacers.ShulkerBoxColoringRecipeMaker;
-import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.util.DyeColor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-
-import java.util.Arrays;
 
 @Pseudo
 @Mixin(ShulkerBoxColoringRecipeMaker.class)

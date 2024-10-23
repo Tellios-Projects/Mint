@@ -5,12 +5,6 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
-import net.minecraft.particle.ParticleEffect;
-import net.minecraft.registry.tag.FluidTags;
-import net.minecraft.server.command.SpawnArmorTrimsCommand;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.math.BlockPos;
 
 @Environment(value = EnvType.CLIENT)
 public class SoapBubbleParticle extends SpriteBillboardParticle {

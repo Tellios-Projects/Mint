@@ -1,6 +1,5 @@
 package net.leafenzo.mint.item.custom;
 
-import net.leafenzo.mint.Super;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

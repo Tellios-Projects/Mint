@@ -8,7 +8,6 @@ import net.leafenzo.mint.item.ModItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.village.TradeOffer;
-import net.minecraft.village.VillagerProfession;
 
 public class ModVillagerTrades {
     public static void registerVillagerTrades() {

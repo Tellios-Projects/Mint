@@ -1,8 +1,9 @@
 package net.leafenzo.mint.datageneration;
+
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.leafenzo.mint.Super;
-import net.leafenzo.mint.block.*;
+import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.block.custom.*;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.registration.ModRegistryHelper;
@@ -23,7 +24,7 @@ import net.minecraft.util.math.Direction;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-import static net.leafenzo.mint.registration.ModRegistryHelper.*;
+import static net.leafenzo.mint.registration.ModRegistryHelper.ItemRegistry;
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
         super(output);

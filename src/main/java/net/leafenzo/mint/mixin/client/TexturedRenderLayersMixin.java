@@ -7,19 +7,16 @@
 package net.leafenzo.mint.mixin.client;
 
 import com.google.common.collect.ImmutableList;
-
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
-// import net.minecraft.util.SignType;
-
-import org.spongepowered.asm.mixin.*;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Mutable;
+import org.spongepowered.asm.mixin.Shadow;
 
 import java.util.List;
 

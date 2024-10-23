@@ -3,8 +3,6 @@ package net.leafenzo.mint.mixin;
 // SOURCES:
 // Dodo Gang - https://github.com/dodogang/marbles/blob/a49fc890db99275919d57cc3064b8b429b1a8eb6/src/main/java/net/dodogang/marbles/mixin/client/render/LlamaDecorFeatureRendererMixin.java
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.minecraft.client.render.OverlayTexture;
@@ -14,22 +12,18 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.feature.LlamaDecorFeatureRenderer;
-import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.render.entity.model.EntityModelLoader;
 import net.minecraft.client.render.entity.model.LlamaEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.VariantHolder;
-import net.minecraft.entity.ai.RangedAttackMob;
-import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.passive.*;
+import net.minecraft.entity.passive.LlamaEntity;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
-import org.jetbrains.annotations.Nullable;
-import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Slice;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Arrays;

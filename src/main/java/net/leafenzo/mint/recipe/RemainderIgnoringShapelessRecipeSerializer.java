@@ -1,11 +1,6 @@
 package net.leafenzo.mint.recipe;
 
 
-import com.google.gson.JsonObject;
-import net.minecraft.network.PacketByteBuf;
-import net.minecraft.recipe.ShapelessRecipe;
-import net.minecraft.util.Identifier;
-
 //public class RemainderIgnoringShapelessRecipeSerializer extends ShapelessRecipe.Serializer {
 //    public static final RemainderIgnoringShapelessRecipeSerializer INSTANCE = new RemainderIgnoringShapelessRecipeSerializer();
 //

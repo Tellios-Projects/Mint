@@ -1,7 +1,6 @@
 package net.leafenzo.mint.potions;
 
 import net.fabricmc.fabric.api.registry.FabricBrewingRecipeRegistry;
-import net.fabricmc.fabric.mixin.item.ItemStackMixin;
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
 import net.leafenzo.mint.block.ModBlocks;
@@ -9,7 +8,6 @@ import net.leafenzo.mint.effect.ModEffects;
 import net.leafenzo.mint.item.ModItems;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.Items;
-import net.minecraft.item.PotionItem;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.Potions;
 import net.minecraft.recipe.BrewingRecipeRegistry;

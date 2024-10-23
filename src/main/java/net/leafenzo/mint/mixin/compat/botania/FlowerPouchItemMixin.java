@@ -6,10 +6,6 @@ import net.minecraft.util.DyeColor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import vazkii.botania.common.handler.CompostingData;
-import vazkii.botania.common.handler.PaintableData;
 import vazkii.botania.common.item.FlowerPouchItem;
 
 @Pseudo

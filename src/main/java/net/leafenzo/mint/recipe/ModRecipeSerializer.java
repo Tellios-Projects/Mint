@@ -2,7 +2,8 @@ package net.leafenzo.mint.recipe;
 
 import net.leafenzo.mint.ModInit;
 import net.leafenzo.mint.Super;
-import net.minecraft.recipe.*;
+import net.minecraft.recipe.Recipe;
+import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 

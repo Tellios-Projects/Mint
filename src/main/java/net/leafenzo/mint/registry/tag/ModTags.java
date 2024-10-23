@@ -1,12 +1,9 @@
 package net.leafenzo.mint.registry.tag;
 
-import com.mojang.datafixers.types.templates.Tag;
-import net.fabricmc.fabric.impl.tag.convention.TagRegistration;
 import net.leafenzo.mint.Super;
 import net.minecraft.block.Block;
 import net.minecraft.item.DyeItem;
 import net.minecraft.item.Item;
-import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;

@@ -4,6 +4,7 @@
  */
 
 package net.leafenzo.mint.registration;
+
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
@@ -22,7 +23,9 @@ import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.BoatEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.HangingSignItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.SignItem;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
@@ -30,7 +33,8 @@ import net.minecraft.util.math.Direction;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.leafenzo.mint.registration.ModRegistryHelper.*;
+import static net.leafenzo.mint.registration.ModRegistryHelper.BlockRegistry;
+import static net.leafenzo.mint.registration.ModRegistryHelper.ItemRegistry;
 
 public class WoodSet {
     //<editor-fold desc ="Properties">

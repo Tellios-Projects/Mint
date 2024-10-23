@@ -1,6 +1,7 @@
 package net.leafenzo.mint.compat;
 
 import net.leafenzo.mint.block.custom.ModShulkerBoxBlock;
+import net.leafenzo.mint.registration.ModRegistryHelper.ItemRegistry;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -15,8 +16,6 @@ import net.minecraft.util.collection.DefaultedList;
 
 import java.util.Arrays;
 import java.util.List;
-
-import net.leafenzo.mint.registration.ModRegistryHelper.*;
 public class ModShulkerBoxColoringRecipeMaker {
     private static final String group = "jei.shulker.color";
 

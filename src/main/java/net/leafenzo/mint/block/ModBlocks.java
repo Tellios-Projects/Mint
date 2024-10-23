@@ -8,6 +8,7 @@ import net.leafenzo.mint.block.sapling.PeachSaplingGenerator;
 import net.leafenzo.mint.block.sapling.WintergreenSaplingGenerator;
 import net.leafenzo.mint.datageneration.ModConfiguredFeatures;
 import net.leafenzo.mint.effect.ModEffects;
+import net.leafenzo.mint.entity.ModBoatEntity;
 import net.leafenzo.mint.registration.WoodSet;
 import net.leafenzo.mint.util.ModDyeColor;
 import net.leafenzo.mint.util.ModUtil;
@@ -32,7 +33,6 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import org.jetbrains.annotations.Nullable;
-import net.leafenzo.mint.entity.ModBoatEntity;
 
 import java.util.ArrayList;
 import java.util.HashMap;

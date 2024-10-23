@@ -1,5 +1,7 @@
 package net.leafenzo.mint.datageneration;
 
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.leafenzo.mint.block.ModBlocks;
 import net.leafenzo.mint.item.ModItems;
 import net.leafenzo.mint.registration.WoodSet;
@@ -9,16 +11,13 @@ import net.minecraft.block.Blocks;
 import net.minecraft.item.DyeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.minecraft.registry.tag.ItemTags;
-
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
-import static net.leafenzo.mint.registration.ModRegistryHelper.*;
+import static net.leafenzo.mint.registration.ModRegistryHelper.ItemRegistry;
 public class ModItemTagGenerator extends FabricTagProvider<Item> {
     /**
      * Constructs a new {@link FabricTagProvider} with the default computed path.

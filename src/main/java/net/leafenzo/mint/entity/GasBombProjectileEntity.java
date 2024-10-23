@@ -1,20 +1,5 @@
 package net.leafenzo.mint.entity;
 
-import net.leafenzo.mint.item.ModItems;
-import net.minecraft.entity.*;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
-import net.minecraft.item.Item;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.listener.ClientPlayPacketListener;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
-import net.minecraft.potion.PotionUtil;
-import net.minecraft.util.hit.HitResult;
-import net.minecraft.world.World;
-
-import java.util.Iterator;
-
 //public class GasBombProjectileEntity extends ThrownItemEntity {
 //    public GasBombProjectileEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
 //        super(entityType, world);

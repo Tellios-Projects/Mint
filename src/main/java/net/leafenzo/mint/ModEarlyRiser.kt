@@ -5,12 +5,11 @@
 
 package net.leafenzo.mint
 
-import net.leafenzo.mint.util.ModDyeColor
 import com.chocohead.mm.api.ClassTinkerers
 import com.chocohead.mm.api.EnumAdder
 import net.fabricmc.loader.api.FabricLoader
+import net.leafenzo.mint.util.ModDyeColor
 import net.minecraft.block.MapColor
-import org.spongepowered.asm.mixin.Debug
 
 //@Debug(export = true)
 @Suppress("unused")

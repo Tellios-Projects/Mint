@@ -5,7 +5,6 @@ import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 
 public class WintergreenSaplingGenerator extends SaplingGenerator {
     public WintergreenSaplingGenerator() { }

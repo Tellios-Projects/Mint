@@ -5,9 +5,6 @@
 
 package net.leafenzo.mint.entity;
 
-import net.minecraft.block.WoodType;
-import net.minecraft.item.ItemConvertible;
-
 public interface ModBoatWithData {
     ModBoatEntity.ModBoat getBoatData();
 }

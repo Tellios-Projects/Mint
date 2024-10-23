@@ -1,7 +1,7 @@
 package net.leafenzo.mint.entity;
 
-import net.leafenzo.mint.block.custom.EmberBlock;
 import net.leafenzo.mint.block.ModBlocks;
+import net.leafenzo.mint.block.custom.EmberBlock;
 import net.leafenzo.mint.item.ModItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;

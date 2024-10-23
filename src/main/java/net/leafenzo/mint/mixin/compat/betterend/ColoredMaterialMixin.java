@@ -1,7 +1,6 @@
 package net.leafenzo.mint.mixin.compat.betterend;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import mezz.jei.library.plugins.vanilla.crafting.replacers.ShulkerBoxColoringRecipeMaker;
 import net.leafenzo.mint.util.ModUtil;
 import net.minecraft.util.DyeColor;
 import org.betterx.betterend.complexmaterials.ColoredMaterial;

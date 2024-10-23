@@ -7,7 +7,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 import vazkii.botania.common.block.block_entity.BotaniaBlockEntities;
-import vazkii.botania.fabric.FabricCommonInitializer;
 
 @Pseudo
 @Mixin(BotaniaBlockEntities.class)

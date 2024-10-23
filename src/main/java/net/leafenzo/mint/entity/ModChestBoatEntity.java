@@ -5,13 +5,11 @@
 
 package net.leafenzo.mint.entity;
 
-import net.minecraft.block.WoodType;
-import net.minecraft.entity.vehicle.BoatEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.world.World;
-import net.minecraft.entity.vehicle.ChestBoatEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.vehicle.BoatEntity;
+import net.minecraft.entity.vehicle.ChestBoatEntity;
+import net.minecraft.item.Item;
+import net.minecraft.world.World;
 
 public final class ModChestBoatEntity extends ChestBoatEntity implements ModBoatWithData {
     private final ModBoatEntity.ModBoat boatData;

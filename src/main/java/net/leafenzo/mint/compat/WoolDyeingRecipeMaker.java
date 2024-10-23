@@ -9,17 +9,15 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.CraftingRecipe;
-
-import java.util.List;
-
-import java.util.Arrays;
-
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.ShapelessRecipe;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
+
+import java.util.Arrays;
+import java.util.List;
 
 public final class WoolDyeingRecipeMaker {
     private static final String group = Super.MOD_ID + ".wool.color";
