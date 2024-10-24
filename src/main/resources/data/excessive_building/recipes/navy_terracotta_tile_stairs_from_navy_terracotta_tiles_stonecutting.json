@@ -5,14 +5,6 @@
   },
   "result": {
     "count": 1,
-    "item": "excessive_building:navy_terracotta_tile_stairs"
-  },
-  "fabric:load_conditions": [
-    {
-      "condition": "fabric:all_mods_loaded",
-      "values": [
-        "excessive_building"
-      ]
-    }
-  ]
+    "id": "excessive_building:navy_terracotta_tile_stairs"
+  }
 }

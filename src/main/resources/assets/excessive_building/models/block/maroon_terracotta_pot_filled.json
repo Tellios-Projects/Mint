@@ -1,0 +1,7 @@
+{
+  "parent": "excessive_building:block/template_pot",
+  "textures": {
+    "0": "excessive_building:block/maroon_terracotta_pot_filled",
+    "particle": "mint:block/maroon_terracotta"
+  }
+}

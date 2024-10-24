@@ -5,14 +5,6 @@
   },
   "result": {
     "count": 1,
-    "item": "excessive_building:periwinkle_terracotta_tile_vertical_stairs"
-  },
-  "fabric:load_conditions": [
-    {
-      "condition": "fabric:all_mods_loaded",
-      "values": [
-        "excessive_building"
-      ]
-    }
-  ]
+    "id": "excessive_building:periwinkle_terracotta_tile_vertical_stairs"
+  }
 }

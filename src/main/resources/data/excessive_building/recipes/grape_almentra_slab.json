@@ -11,14 +11,6 @@
   ],
   "result": {
     "count": 6,
-    "item": "excessive_building:grape_almentra_slab"
-  },
-  "fabric:load_conditions": [
-    {
-      "condition": "fabric:all_mods_loaded",
-      "values": [
-        "excessive_building"
-      ]
-    }
-  ]
+    "id": "excessive_building:grape_almentra_slab"
+  }
 }
