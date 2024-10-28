@@ -111,7 +111,14 @@ public class ElsDyeModItems {
     public static final Item PEACH_BRANCH = registerItem("peach_branch", new Item(new FabricItemSettings())); //Replaces: //@Obsolete public static final Item PEACH_BRANCH = registerItem(new BlockItem(ModBlocks.PEACH_TREE, new FabricItemSettings()));
     //</editor-fold>
     //<editor-fold desc ="Custom Items - PERIWINKLE">
-    public static final Item FLOWERING_MELON = registerItem("flowering_melon", new FloweringMelonItem(new FabricItemSettings()));
+    public static final Item FLOWERING_MELON = registerItem("flowering_melon", new FloweringMelonItem(new FabricItemSettings().food(new FoodComponent.Builder()
+            .hunger(1)
+            .saturationModifier(1.0f)
+            .statusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 600, 1), 1.0f)
+            .statusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 300, 0), 1.0f)
+            .statusEffect(new StatusEffectInstance(StatusEffects.WITHER, 300, 1), 1.0f)
+            .build())
+    ));
     public static final Item SMOKED_LAVENDER = registerItem("smoked_lavender", new Item(new FabricItemSettings()));
     public static final Item LAVENDER_BREAD = registerItem("lavender_bread", new Item(new FabricItemSettings().food(new FoodComponent.Builder()
             .hunger(6)

@@ -2,6 +2,8 @@ package net.leafenzo.mint.item.custom;
 
 import net.leafenzo.mint.entity.IStuntable;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -18,12 +20,14 @@ public class FloweringMelonItem extends Item {
     public FloweringMelonItem(Settings settings) {
         super(settings);
     }
-    //TODO maybe make this edible by the player too? Although, glistering melons aren't edible...
 
     @Override
     public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
         if(entity instanceof PassiveEntity passiveEntity && passiveEntity.isBaby() && !((IStuntable) passiveEntity).isStunted()) {
             ((IStuntable) passiveEntity).setStunted(true);
+            passiveEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 1200, 1));
+            passiveEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 600, 0));
+
             World world = entity.getWorld();
             Random random = entity.getRandom();
 
