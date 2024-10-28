@@ -10,15 +10,21 @@
             "entries": [
               {
                 "data": {
-                  "Name": "mint:cordyline"
+                  "Name": "minecraft:dead_bush"
                 },
                 "weight": 8
               },
               {
                 "data": {
+                  "Name": "mint:cordyline"
+                },
+                "weight": 4
+              },
+              {
+                "data": {
                   "Name": "mint:plum_cordyline"
                 },
-                "weight": 6
+                "weight": 8
               },
               {
                 "data": {
@@ -27,7 +33,7 @@
                     "half": "lower"
                   }
                 },
-                "weight": 4
+                "weight": 2
               },
               {
                 "data": {
@@ -52,8 +58,8 @@
         }
       ]
     },
-    "tries": 32,
-    "xz_spread": 5,
+    "tries": 24,
+    "xz_spread": 4,
     "y_spread": 1
   }
 }

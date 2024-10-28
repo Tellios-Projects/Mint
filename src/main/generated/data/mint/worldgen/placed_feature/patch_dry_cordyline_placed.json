@@ -1,13 +1,9 @@
 {
-  "feature": "mint:patch_thistle_flower",
+  "feature": "mint:patch_dry_cordyline",
   "placement": [
     {
       "type": "minecraft:rarity_filter",
-      "chance": 80
-    },
-    {
-      "type": "minecraft:count",
-      "count": 3
+      "chance": 50
     },
     {
       "type": "minecraft:in_square"

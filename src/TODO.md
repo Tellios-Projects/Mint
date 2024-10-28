@@ -1,23 +1,25 @@
+# (Also check the TODO pane in your IDE, there's a lot of //TODO's scattered about)
+
 # TODO LIST:
 # HIGH PRIORITY
 - Check if I've already fixed Coral Anemone to not spawn on surface
 - Strawberries non-farmland decay
 - Change shape of strawberry patch to be less square (might just copy lavender or periwinkle)
-- Multiplayer and Server testing
+- Multiplayer and Server testing (for thorns effect particularly)
 
 # MEDIUM PRIORITY
 
 # LOW PRIORITY
-- Flowering Melon can’t be eaten (Optional to add, maybe it could give you blindness or something)
 - Corrugated Iron SoundGroup from LTONES
 - Custom Advancements (all the colors of the rainbowww :3)
-- Change name of Fabric Compat Resource pack
-
 
 # COMPAT
 
     SUPPLEMENTARIES & SUPPLEMENTARIES SQUARED
 | Fix SuppSquared+Base Supp Candle holder ordering
+
+    EXCESSIVE BUILDING
+| Fix ItemGroups
 
     TWIGS
 | Register new blocks
@@ -48,7 +50,18 @@ DONE | Bashgen
 | Tag Translations
 
 
-# DONE
+# DONE 1.0.4
+
+- Fix strawberry planting
+- Flowering melon is now edible
+- Adjust strawberry patches to be somewhat more common
+- Adjust thistle flowers patches to be rarer outside sparse jungles
+- Adjust pineapple patches to be rarer
+- Adjust cordyline patch generation
+
+
+# DONE <1.0
+
     SUPPLEMENTARIES AMENDMENTS | DONE
 DONE | Quick sweep for amendments crashes
 DONE | Carpet stairs work :3

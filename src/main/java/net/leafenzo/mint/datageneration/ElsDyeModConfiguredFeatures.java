@@ -61,6 +61,7 @@ public class ElsDyeModConfiguredFeatures {
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_STRAWBERRY = registerKey("patch_strawberry");
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_CORDYLINE = registerKey("patch_cordyline");
+    public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_DRY_CORDYLINE = registerKey("patch_dry_cordyline");
     public static final RegistryKey <ConfiguredFeature <?, ?>> PATCH_POKEWEED = registerKey("patch_pokeweed");
 
     public static final RegistryKey <ConfiguredFeature <?, ?>> ORE_MUCKTUFF = registerKey("ore_mucktuff");
@@ -137,13 +138,21 @@ public class ElsDyeModConfiguredFeatures {
         );
 
         DataPool.Builder<BlockState> cordylineBuilder = DataPool.builder();
-        cordylineBuilder.add(ElsDyeModBlocks.CORDYLINE.getDefaultState(), 8);
-        cordylineBuilder.add(ElsDyeModBlocks.PLUM_CORDYLINE.getDefaultState(), 6);
-        cordylineBuilder.add(ElsDyeModBlocks.TALL_CORDYLINE.getDefaultState(), 4);
-        cordylineBuilder.add(ElsDyeModBlocks.TALL_PLUM_CORDYLINE.getDefaultState(), 3);
-
+            cordylineBuilder.add(ElsDyeModBlocks.CORDYLINE.getDefaultState(), 8);
+            cordylineBuilder.add(ElsDyeModBlocks.PLUM_CORDYLINE.getDefaultState(), 6);
+            cordylineBuilder.add(ElsDyeModBlocks.TALL_CORDYLINE.getDefaultState(), 4);
+            cordylineBuilder.add(ElsDyeModBlocks.TALL_PLUM_CORDYLINE.getDefaultState(), 3);
         register(context, PATCH_CORDYLINE, Feature.FLOWER,
-                new RandomPatchFeatureConfig(8, 4, 0, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(cordylineBuilder))))
+                new RandomPatchFeatureConfig(32, 5, 1, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(cordylineBuilder))))
+        );
+        DataPool.Builder<BlockState> dryCordylineBuilder = DataPool.builder();
+            dryCordylineBuilder.add(Blocks.DEAD_BUSH.getDefaultState(), 8);
+            dryCordylineBuilder.add(ElsDyeModBlocks.CORDYLINE.getDefaultState(), 4);
+            dryCordylineBuilder.add(ElsDyeModBlocks.PLUM_CORDYLINE.getDefaultState(), 8);
+            dryCordylineBuilder.add(ElsDyeModBlocks.TALL_CORDYLINE.getDefaultState(), 2);
+            dryCordylineBuilder.add(ElsDyeModBlocks.TALL_PLUM_CORDYLINE.getDefaultState(), 3);
+        register(context, PATCH_DRY_CORDYLINE, Feature.FLOWER,
+                new RandomPatchFeatureConfig(24, 4, 1, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(dryCordylineBuilder))))
         );
 
         register(context, PATCH_POKEWEED, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ElsDyeModBlocks.POKEWEED)), List.of(Blocks.GRASS_BLOCK), 30));

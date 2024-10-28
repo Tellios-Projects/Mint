@@ -49,6 +49,7 @@ public class ElsDyeModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> ISLAND_PINEAPPLE_PLACED = registerKey("island_pineapple_placed");
     public static final RegistryKey<PlacedFeature> PATCH_STRAWBERRY_PLACED = registerKey("patch_strawberry_placed");
     public static final RegistryKey<PlacedFeature> PATCH_CORDYLINE_PLACED = registerKey("patch_cordyline_placed");
+    public static final RegistryKey<PlacedFeature> PATCH_DRY_CORDYLINE_PLACED = registerKey("patch_dry_cordyline_placed");
     public static final RegistryKey<PlacedFeature> PATCH_POKEWEED_PLACED = registerKey("patch_pokeweed_placed");
 
     public static final RegistryKey<PlacedFeature> ORE_MUCKTUFF_PLACED = registerKey("ore_mucktuff_placed");
@@ -129,7 +130,7 @@ public class ElsDyeModPlacedFeatures {
         registerKey(context,
                 PATCH_THISTLE_FLOWER_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ElsDyeModConfiguredFeatures.PATCH_THISTLE_FLOWER),
-                RarityFilterPlacementModifier.of(50),
+                RarityFilterPlacementModifier.of(80),
                 CountPlacementModifier.of(3),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
@@ -146,7 +147,7 @@ public class ElsDyeModPlacedFeatures {
         registerKey(context,
                 PATCH_PINEAPPLE_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ElsDyeModConfiguredFeatures.PATCH_PINEAPPLE),
-                RarityFilterPlacementModifier.of(50),
+                RarityFilterPlacementModifier.of(100),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 BiomePlacementModifier.of()
@@ -154,7 +155,7 @@ public class ElsDyeModPlacedFeatures {
         registerKey(context,
                 PATCH_STRAWBERRY_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ElsDyeModConfiguredFeatures.PATCH_STRAWBERRY),
-                RarityFilterPlacementModifier.of(75),
+                RarityFilterPlacementModifier.of(100),
                 NoiseThresholdCountPlacementModifier.of(-0.8, 0, 60),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
@@ -163,7 +164,15 @@ public class ElsDyeModPlacedFeatures {
         registerKey(context,
                 PATCH_CORDYLINE_PLACED,
                 configuredFeatureRegistryEntryLookup.getOrThrow(ElsDyeModConfiguredFeatures.PATCH_CORDYLINE),
-                RarityFilterPlacementModifier.of(30),
+                RarityFilterPlacementModifier.of(15),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                BiomePlacementModifier.of()
+        );
+        registerKey(context,
+                PATCH_DRY_CORDYLINE_PLACED,
+                configuredFeatureRegistryEntryLookup.getOrThrow(ElsDyeModConfiguredFeatures.PATCH_DRY_CORDYLINE),
+                RarityFilterPlacementModifier.of(50),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 BiomePlacementModifier.of()
@@ -275,8 +284,12 @@ public class ElsDyeModPlacedFeatures {
                         context -> context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_STRAWBERRY_PLACED)
                 )
                 .add(ModificationPhase.ADDITIONS,
-                        context -> context.getBiome().getTemperature() > 1f && context.hasTag(BiomeTags.IS_OVERWORLD),
+                        context -> context.hasTag(ConventionalBiomeTags.CLIMATE_HOT) && context.hasTag(BiomeTags.IS_OVERWORLD) && !context.hasTag(ConventionalBiomeTags.CLIMATE_DRY),
                         context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_CORDYLINE_PLACED); }
+                )
+                .add(ModificationPhase.ADDITIONS,
+                        context -> context.hasTag(ConventionalBiomeTags.CLIMATE_HOT) && context.hasTag(BiomeTags.IS_OVERWORLD) && context.hasTag(ConventionalBiomeTags.CLIMATE_DRY),
+                        context -> { context.getGenerationSettings().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PATCH_DRY_CORDYLINE_PLACED); }
                 )
                 .add(ModificationPhase.ADDITIONS,
                         context -> context.getBiome().getTemperature() < 0.4f && context.hasTag(BiomeTags.IS_OVERWORLD),
