@@ -716,11 +716,6 @@ public class ElsDyeModRecipeProvider extends FabricRecipeProvider {
         offerShapelessRecipe(exporter, ElsDyeModItems.VELVET_DYE, ElsDyeModBlocks.TALL_CORDYLINE, "velvet_dye", 2);
         offerShapelessRecipe(exporter, ElsDyeModItems.VELVET_DYE, ElsDyeModItems.POKEBERRIES, "velvet_dye", 1);
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ElsDyeModBlocks.STRAWBERRY_PLANT)
-                .input(ElsDyeModItems.STRAWBERRY, 3)
-                .input(ItemTags.DIRT)
-                .criterion(FabricRecipeProvider.hasItem(ElsDyeModItems.STRAWBERRY), FabricRecipeProvider.conditionsFromItem(ElsDyeModItems.STRAWBERRY))
-                .offerTo(exporter, new Identifier(FabricRecipeProvider.getRecipeName(ElsDyeModBlocks.STRAWBERRY_PLANT)));
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ElsDyeModItems.CHOCOLATE_STRAWBERRY)
                 .input(ElsDyeModItems.STRAWBERRY)
                 .input(Items.COCOA_BEANS)

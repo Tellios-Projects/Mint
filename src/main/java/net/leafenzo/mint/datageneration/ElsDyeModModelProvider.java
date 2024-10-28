@@ -470,7 +470,6 @@ public class ElsDyeModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ElsDyeModItems.PINEAPPLE_KEBAB, Models.GENERATED);
         itemModelGenerator.register(ElsDyeModItems.PINEAPPLE_TART, Models.GENERATED);
 
-        itemModelGenerator.register(ElsDyeModItems.STRAWBERRY, Models.GENERATED);
         itemModelGenerator.register(ElsDyeModItems.CHOCOLATE_STRAWBERRY, Models.GENERATED);
         itemModelGenerator.register(ElsDyeModItems.GOLDEN_STRAWBERRY, Models.GENERATED);
         itemModelGenerator.register(ElsDyeModItems.STRAWBERRY_MILK, Models.GENERATED);

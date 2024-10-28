@@ -241,6 +241,10 @@ public class ElsDyeModUtil {
         return random.nextBetween(min, max);
     }
 
+    public static int intAtRandom(Random random, int[] numbers) {
+        return numbers[random.nextBetween(0, numbers.length-1)];
+    }
+
 //    public static Set<Identifier> allTranslatableInNamespace(String namespace) {
 //        Set<Identifier> set = Registries.POTION.getIds();
 //        Set<Identifier> a = new HashSet<>();

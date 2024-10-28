@@ -62,7 +62,7 @@ public class ElsDyeModItemTagGenerator extends FabricTagProvider<Item> {
                 //TODO make sure that everything we want plantable by villagers are right here
                 .add(ElsDyeModItems.MINT_SPRIG)
                 .add(ElsDyeModItems.ARTICHOKE)
-//                .add(ModItems.PEACH_PIT) // Villagers wouldn't be able to harvest these anyway, so don't add
+                .add(ElsDyeModItems.STRAWBERRY)
         ;
 
         getOrCreateTagBuilder(ElsDyeModTags.Items.WINTERGREEN_CANDY_CANE_BLOCKS)

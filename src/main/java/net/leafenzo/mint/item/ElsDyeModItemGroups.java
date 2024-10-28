@@ -673,7 +673,6 @@ public class ElsDyeModItemGroups {
                         entries.add(ElsDyeModBlocks.VELVET_SHULKER_BOX);
                         entries.add(ElsDyeModBlocks.VELVET_CANDLE);
 
-                        entries.add(ElsDyeModBlocks.STRAWBERRY_PLANT);
                         entries.add(ElsDyeModItems.STRAWBERRY);
                         entries.add(ElsDyeModItems.CHOCOLATE_STRAWBERRY);
                         entries.add(ElsDyeModItems.GOLDEN_STRAWBERRY);

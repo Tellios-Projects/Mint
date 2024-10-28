@@ -127,6 +127,8 @@ public class ElsDyeModFabricRegistries {
         VillagerInteractionRegistries.registerCompostable(ElsDyeModItems.MINT_SPRIG);
         VillagerInteractionRegistries.registerCollectable(ElsDyeModItems.ARTICHOKE);
         VillagerInteractionRegistries.registerCompostable(ElsDyeModItems.ARTICHOKE);
+        VillagerInteractionRegistries.registerCollectable(ElsDyeModItems.STRAWBERRY);
+        VillagerInteractionRegistries.registerCompostable(ElsDyeModItems.STRAWBERRY);
     }
 
     public static void registerFuels() {

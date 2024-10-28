@@ -235,10 +235,11 @@ public class ElsDyeModLootTableGenerator extends FabricBlockLootTableProvider {
             .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0F))
                     .with(this.applyExplosionDecay(ElsDyeModBlocks.STRAWBERRY_PLANT, ItemEntry.builder(ElsDyeModItems.STRAWBERRY)
                         .conditionally(BlockStatePropertyLootCondition.builder(ElsDyeModBlocks.STRAWBERRY_PLANT)
-                                .properties(StatePredicate.Builder.create().exactMatch(StrawberryPlantBlock.AGE, StrawberryPlantBlock.MAX_AGE)))
+                                .properties(StatePredicate.Builder.create().exactMatch(StrawberryPlantBlock.AGE, StrawberryPlantBlock.MAX_AGE)).or(WITH_SILK_TOUCH_OR_SHEARS))
                         .apply(IntStream.rangeClosed(1, 4).boxed().toList(), (flowerAmount) -> SetCountLootFunction.builder(ConstantLootNumberProvider.create((float)flowerAmount))
                                 .conditionally(BlockStatePropertyLootCondition.builder(ElsDyeModBlocks.STRAWBERRY_PLANT)
-                                        .properties(StatePredicate.Builder.create().exactMatch(FlowerbedBlock.FLOWER_AMOUNT, flowerAmount))))))));
+                                        .properties(StatePredicate.Builder.create().exactMatch(FlowerbedBlock.FLOWER_AMOUNT, flowerAmount)))
+                        )))));
 
 
         this.addDrop(ElsDyeModBlocks.TALL_CORDYLINE, LootTable.builder().pool(this.addSurvivesExplosionCondition(ElsDyeModBlocks.TALL_CORDYLINE, LootPool.builder()

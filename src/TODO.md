@@ -52,9 +52,11 @@ DONE | Bashgen
 
 # DONE 1.0.4
 
-- Fix strawberry planting
 - Flowering melon is now edible
 - Adjust strawberry patches to be somewhat more common
+- Fix strawberry planting and remove strawberry plant item in favor of just using the strawberries themselves as seeds
+- Fix strawberry loot table
+- Add strawberry villager planting behavior
 - Adjust thistle flowers patches to be rarer outside sparse jungles
 - Adjust pineapple patches to be rarer
 - Adjust cordyline patch generation

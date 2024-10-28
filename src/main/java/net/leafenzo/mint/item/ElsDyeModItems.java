@@ -209,7 +209,7 @@ public class ElsDyeModItems {
     //<editor-fold desc ="Custom Items - SAGE">
     //</editor-fold>
     //<editor-fold desc ="Custom Items - VELVET">
-    public static final Item STRAWBERRY = registerItem("strawberry", new Item(new FabricItemSettings().food(new FoodComponent.Builder()
+    public static final Item STRAWBERRY = registerItem("strawberry", new AliasedBlockItem(ElsDyeModBlocks.STRAWBERRY_PLANT, new FabricItemSettings().food(new FoodComponent.Builder()
             .hunger(2)
             .saturationModifier(0.2f)
             .snack()

@@ -15,6 +15,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
+@Deprecated
 public class PeachTreeBlock extends TwoTallCropBlock {
     public static final int MAX_AGE = 7;
     public static final IntProperty AGE = IntProperty.of("age", 0, MAX_AGE);

@@ -23,8 +23,10 @@ import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.AcaciaFoliagePlacer;
@@ -133,8 +135,9 @@ public class ElsDyeModConfiguredFeatures {
                 strawberryBuilder.add(( ElsDyeModBlocks.STRAWBERRY_PLANT.getDefaultState().with(StrawberryPlantBlock.FLOWER_AMOUNT, 3)).with(StrawberryPlantBlock.FACING, direction).with(StrawberryPlantBlock.AGE, i), 2);
             }
         }
+        BlockPredicate strawberryPredicate = BlockPredicate.allOf(BlockPredicate.wouldSurvive(Blocks.BAMBOO.getDefaultState(), Vec3i.ZERO), BlockPredicate.matchingBlocks(Blocks.AIR));
         register(context, PATCH_STRAWBERRY, Feature.FLOWER,
-                new RandomPatchFeatureConfig(8, 2, 0, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(strawberryBuilder))))
+                new RandomPatchFeatureConfig(3, 3, 0, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(strawberryBuilder)), strawberryPredicate))
         );
 
         DataPool.Builder<BlockState> cordylineBuilder = DataPool.builder();

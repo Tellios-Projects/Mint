@@ -459,19 +459,19 @@
             "type": "minecraft:all_of",
             "predicates": [
               {
-                "type": "minecraft:matching_blocks",
-                "blocks": "minecraft:air"
-              },
-              {
                 "type": "minecraft:would_survive",
                 "state": {
                   "Name": "minecraft:bamboo",
                   "Properties": {
-                    "stage": "0",
+                    "age": "0",
                     "leaves": "none",
-                    "age": "0"
+                    "stage": "0"
                   }
                 }
+              },
+              {
+                "type": "minecraft:matching_blocks",
+                "blocks": "minecraft:air"
               }
             ]
           }
