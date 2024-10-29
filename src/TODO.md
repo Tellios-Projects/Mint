@@ -2,12 +2,13 @@
 
 # TODO LIST:
 # HIGH PRIORITY
-- Check if I've already fixed Coral Anemone to not spawn on surface
-- Multiplayer and Server testing (for thorns effect particularly)
+- Fix log spam
 
 # MEDIUM PRIORITY
+- Multiplayer and Server testing (for thorns effect particularly)
 
 # LOW PRIORITY
+- Figure out what's up with the very rare mutated wintergreen trees
 - Corrugated Iron SoundGroup from LTONES
 - Custom Advancements (all the colors of the rainbowww :3)
 
