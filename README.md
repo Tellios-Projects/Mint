@@ -31,6 +31,7 @@ Hecco <a href="https://twitter.com/Hecco"></a> <br>
 Athebyne <a href="https://github.com/f-raZ0R"></a> <br> <br>
 ♥ With Much Help From ♥ <br> Eka <a href ="https://github.com/Eko-byte"></a> <br>
 Enri <a href="https://twitter.com/enriarts_"></a> <br>
+Julius <a href="https://portfoliojulius.carrd.co/"></a> <br>
 Zucchini <a href="https://twitter.com/zucchinibyday"></a>
 <br> ⁺ㆍ┈ㆍ┈ㆍ✿ㆍ┈ㆍ┈ㆍ┈ ✿ㆍ┈ㆍ┈ㆍ┈ ✿ㆍ┈ㆍ┈ㆍ⁺ 
 </a></h1>
