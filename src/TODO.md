@@ -3,8 +3,6 @@
 # TODO LIST:
 # HIGH PRIORITY
 - Check if I've already fixed Coral Anemone to not spawn on surface
-- Strawberries non-farmland decay
-- Change shape of strawberry patch to be less square (might just copy lavender or periwinkle)
 - Multiplayer and Server testing (for thorns effect particularly)
 
 # MEDIUM PRIORITY
@@ -50,8 +48,9 @@ DONE | Bashgen
 | Tag Translations
 
 
-# DONE 1.0.4
+# DONE 1.0.4 
 
+- Brazilian Portuguese translation
 - Flowering melon is now edible
 - Adjust strawberry patches to be somewhat more common
 - Fix strawberry planting and remove strawberry plant item in favor of just using the strawberries themselves as seeds
