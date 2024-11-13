@@ -12,6 +12,14 @@
   ],
   "result": {
     "count": 4,
-    "id": "excessive_building:fuchsia_almentra_bricks"
-  }
+    "item": "excessive_building:fuchsia_almentra_bricks"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
+    }
+  ]
 }

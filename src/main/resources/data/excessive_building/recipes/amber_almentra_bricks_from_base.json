@@ -16,6 +16,14 @@
   ],
   "result": {
     "count": 8,
-    "id": "excessive_building:amber_almentra_bricks"
-  }
+    "item": "excessive_building:amber_almentra_bricks"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
+    }
+  ]
 }
