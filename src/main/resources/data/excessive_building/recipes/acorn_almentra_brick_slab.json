@@ -11,6 +11,14 @@
   ],
   "result": {
     "count": 6,
-    "id": "excessive_building:acorn_almentra_brick_slab"
-  }
+    "item": "excessive_building:acorn_almentra_brick_slab"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
+    }
+  ]
 }

@@ -16,6 +16,14 @@
   ],
   "result": {
     "count": 8,
-    "id": "excessive_building:fuchsia_terracotta_tiles"
-  }
+    "item": "excessive_building:fuchsia_terracotta_tiles"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
+    }
+  ]
 }

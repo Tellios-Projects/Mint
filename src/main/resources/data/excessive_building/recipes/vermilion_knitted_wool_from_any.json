@@ -16,6 +16,14 @@
   ],
   "result": {
     "count": 8,
-    "id": "excessive_building:vermilion_knitted_wool"
-  }
+    "item": "excessive_building:vermilion_knitted_wool"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
+    }
+  ]
 }

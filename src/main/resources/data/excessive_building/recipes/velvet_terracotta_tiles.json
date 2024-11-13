@@ -15,6 +15,14 @@
   ],
   "result": {
     "count": 4,
-    "id": "excessive_building:velvet_terracotta_tiles"
-  }
+    "item": "excessive_building:velvet_terracotta_tiles"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
+    }
+  ]
 }

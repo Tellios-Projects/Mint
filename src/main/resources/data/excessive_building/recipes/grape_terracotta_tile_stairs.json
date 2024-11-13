@@ -13,6 +13,14 @@
   ],
   "result": {
     "count": 4,
-    "id": "excessive_building:grape_terracotta_tile_stairs"
-  }
+    "item": "excessive_building:grape_terracotta_tile_stairs"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
+    }
+  ]
 }

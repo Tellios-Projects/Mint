@@ -5,6 +5,14 @@
   },
   "result": {
     "count": 1,
-    "id": "excessive_building:banana_terracotta_tile_vertical_stairs"
-  }
+    "item": "excessive_building:banana_terracotta_tile_vertical_stairs"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "excessive_building"
+      ]
+    }
+  ]
 }
