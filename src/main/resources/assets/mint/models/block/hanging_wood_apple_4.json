@@ -1,0 +1,50 @@
+{
+	"credit": "Made with Blockbench by Tellio-Ari",
+	"ambientocclusion": false,
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "mint:block/hanging_wood_apple",
+		"particle": "mint:block/hanging_wood_apple"
+	},
+	"elements": [
+		{
+			"from": [5, 8, 5],
+			"to": [11, 14, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 16, 8]},
+			"faces": {
+				"north": {"uv": [0, 13, 3, 16], "texture": "#0"},
+				"east": {"uv": [3, 13, 6, 16], "texture": "#0"},
+				"south": {"uv": [0, 10, 3, 13], "texture": "#0"},
+				"west": {"uv": [3, 10, 6, 13], "texture": "#0"},
+				"up": {"uv": [0, 7, 3, 10], "texture": "#0"},
+				"down": {"uv": [6, 7, 3, 10], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7, 14, 8],
+			"to": [9, 16, 8],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 14, 8]},
+			"faces": {
+				"north": {"uv": [6, 15, 7, 16], "texture": "#0"},
+				"east": {"uv": [2.5, 4, 3.5, 5], "texture": "#missing"},
+				"south": {"uv": [7, 15, 6, 16], "texture": "#0"},
+				"west": {"uv": [2.5, 4, 3.5, 5], "texture": "#missing"},
+				"up": {"uv": [2.5, 4, 3.5, 5], "texture": "#missing"},
+				"down": {"uv": [2.5, 4, 3.5, 5], "texture": "#missing"}
+			}
+		},
+		{
+			"from": [7, 14, 8],
+			"to": [9, 16, 8],
+			"rotation": {"angle": -45, "axis": "y", "origin": [8, 14, 8]},
+			"faces": {
+				"north": {"uv": [6, 14, 7, 15], "texture": "#0"},
+				"east": {"uv": [2.5, 4, 3.5, 5], "texture": "#missing"},
+				"south": {"uv": [7, 14, 6, 15], "texture": "#0"},
+				"west": {"uv": [2.5, 4, 3.5, 5], "texture": "#missing"},
+				"up": {"uv": [2.5, 4, 3.5, 5], "texture": "#missing"},
+				"down": {"uv": [2.5, 4, 3.5, 5], "texture": "#missing"}
+			}
+		}
+	]
+}
