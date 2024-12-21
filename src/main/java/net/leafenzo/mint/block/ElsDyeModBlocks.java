@@ -850,6 +850,7 @@ public class ElsDyeModBlocks {
                 .strength(0.5f)
                 .sounds(BlockSoundGroup.WOOL)
                 .pistonBehavior(PistonBehavior.DESTROY)
+                .dropsLike(candle)
                 .luminance(ElsDyeModBlocks.createLightLevelFromBooleanProperty(3, Properties.LIT))
         );
         CANDLE_CAKE_BLOCKS.add(block);
