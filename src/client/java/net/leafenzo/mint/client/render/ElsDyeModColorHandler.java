@@ -14,7 +14,6 @@ import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.item.BlockItem;
 
-@Environment(EnvType.CLIENT)
 public class ElsDyeModColorHandler {
     public static void registerBlockColorProviders() {
         for(Block block : ElsDyeModBlocks.HAS_FOLIAGE_COLOR_PROVIDER) {

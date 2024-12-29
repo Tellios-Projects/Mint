@@ -10,7 +10,6 @@
     "DyeColorMixin",
     "EntityMixin",
     "GrassBlockMixin",
-    "LlamaDecorFeatureRendererMixin",
     "PassiveEntityMixin",
     "PlayerEntityMixin",
     "PointOfInterestTypesMixin",
@@ -29,9 +28,6 @@
     "compat.botania.SpectrolusBlockEntityMixin",
     "compat.create.DyeHelperMixin",
     "compat.jei.ShulkerBoxColoringRecipeMakerMixin"
-  ],
-  "client": [
-    "client.TexturedRenderLayersMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -9,7 +9,6 @@ import net.leafenzo.mint.block.ElsDyeModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
 
-@Environment(EnvType.CLIENT)
 public class ElsDyeModRenderLayers {
     public static void registerBlockCutouts() {
         ElsDyeModInit.LOGGER.info("Registering Client Render Layers for " + ElsDyeMod.MOD_ID);

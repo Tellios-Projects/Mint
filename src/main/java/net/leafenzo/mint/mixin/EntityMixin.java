@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 //@Debug(export = true)
 @Mixin(Entity.class)
-//@Environment(value= EnvType.CLIENT)
+
 public abstract class EntityMixin {
 
     @Inject(method = "applyDamageEffects", at = @At(value = "TAIL"), cancellable = true)

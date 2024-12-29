@@ -2,16 +2,13 @@ plugins {
 	id 'fabric-loom' version '1.5-SNAPSHOT'
 	id 'maven-publish'
 	id 'org.jetbrains.kotlin.jvm' version("${kotlin_version}")
-//	id("com.github.ManifestClasspath") version "0.1.0-RELEASE"
 }
 
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
-
-archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
-//dependencies = project.getDependencies()
+base {
+	archivesName = project.archives_base_name
+}
 
 repositories {
 	mavenCentral()
@@ -55,25 +52,59 @@ repositories {
 	// for more information about repositories.
 }
 
+def dataOutput = 'src/main/generated'
+loom {
+	splitEnvironmentSourceSets()
+
+	mods {
+		modid {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+
+	runs {
+		datagen {
+			//server()
+			inherit(client)
+
+			name "Data Generation"
+			vmArg "-Dfabric-api.datagen"
+			vmArg "-Dfabric-api.datagen.output-dir=${file(dataOutput)}"
+			// vmArg('-Dfabric-api.datagen.strict-validation=true')
+
+			runDir "build/datagen"
+		}
+	}
+	accessWidenerPath = file("src/main/resources/mint.accesswidener")
+}
+sourceSets {
+	main {
+		resources {
+			srcDirs += [
+					'src/main/generated'
+			]
+		}
+	}
+}
+
 def setup(DependencyHandler deps) {
 	deps.minecraft("com.mojang:minecraft:${project.minecraft_version}")
 	deps.modImplementation("net.fabricmc:fabric-loader:${project.loader_version}")
 	deps.mappings("net.fabricmc:yarn:${project.yarn_mappings}:v2")
 }
-
 def dependencies(DependencyHandler deps) {
 	deps.modImplementation("net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}")
 	deps.modImplementation("net.fabricmc:fabric-language-kotlin:1.10.18+kotlin.1.9.22")
 	deps.implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}")
 	deps.modImplementation("software.bernie.geckolib:geckolib-fabric-1.20.1:4.2.2")
 }
-
 def devEnv(DependencyHandler deps) {
 	deps.modRuntimeOnly("com.terraformersmc:modmenu:$modmenu_version")
 	deps.modImplementation(files("libraries/jei/jei-1.20.1-fabric-15.3.0.4.jar")) //From: https://maven.blamejared.com/mezz/jei/
-	// /* doesn't work for some reason */ modImplementation("maven.modrinth:cloth-config:$clothconfig_version")
+	// TODO Fix me or find out if I would be useful \/
+		//modImplementation("maven.modrinth:cloth-config:$clothconfig_version")
 }
-
 def compat(DependencyHandler deps) {
 	// Datagen counts as a runtime, it's safe to run datagen as long as any mods used in compat are compile only
 
@@ -145,8 +176,6 @@ dependencies {
 		include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.2.2")))
 	compat(dependencies) // Comment this line out temporarily if genSources isn't working.
 	dependencies(dependencies)
-
-//	classpath "gradle.plugin.com.github.viswaramamoorthy:gradle-util-plugins:0.1.0-RELEASE"
 }
 
 kotlin {
@@ -173,35 +202,6 @@ processResources {
 		expand properties
 	}
 }
-
-def dataOutput = 'src/main/generated'
-loom {
-	runs {
-		datagen {
-			//server()
-			inherit(client)
-
-			name "Data Generation"
-			vmArg "-Dfabric-api.datagen"
-			vmArg "-Dfabric-api.datagen.output-dir=${file(dataOutput)}"
-			// vmArg('-Dfabric-api.datagen.strict-validation=true')
-
-			runDir "build/datagen"
-		}
-	}
-	accessWidenerPath = file("src/main/resources/mint.accesswidener")
-}
-
-sourceSets {
-	main {
-		resources {
-			srcDirs += [
-					'src/main/generated'
-			]
-		}
-	}
-}
-
 
 java {
 	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
@@ -235,28 +235,3 @@ publishing {
 		// retrieving dependencies.
 	}
 }
-
-//afterEvaluate {
-//	// SOURCE : https://tuhrig.de/gradles-bootrun-and-windows-command-length-limit/
-//	if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
-//		task pathingJar(type: Jar) {
-//			dependsOn configurations.runtimeClasspath
-//			archiveAppendix = 'pathing'
-//
-//			doFirst {
-//				manifest {
-//					attributes "Class-Path": configurations.runtimeClasspath.collect {
-//						it.toString().replaceFirst("/file:/+/", "/")
-//					}.join(' ')
-//				}
-//			}
-//		}
-//
-//		genSources {
-//			dependsOn = pathingJar as Iterable<?>
-//			doFirst {
-//				classpath = files("$project.layout.buildDirectory/classes/main", "$project.layout.buildDirectory/resources/main", pathingJar.archiveFile)
-//			}
-//		}
-//	}
-//}

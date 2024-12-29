@@ -165,9 +165,9 @@ public class WaxcapWaxParticle extends SpriteBillboardParticle {
         }
     }
 
-    @Environment(EnvType.CLIENT)
+    
     public static abstract class Factory implements ParticleFactory<DefaultParticleType> {
-        @Environment(EnvType.CLIENT)
+        
         public static class Dripping extends Factory implements ParticleFactory<DefaultParticleType> {
             private final SpriteProvider spriteProvider;
             public Dripping(SpriteProvider spriteProvider) {
@@ -180,7 +180,7 @@ public class WaxcapWaxParticle extends SpriteBillboardParticle {
                 return particle;
             }
         }
-        @Environment(EnvType.CLIENT)
+        
         public static class Falling extends Factory implements ParticleFactory<DefaultParticleType> {
             private final SpriteProvider spriteProvider;
             public Falling(SpriteProvider spriteProvider) {
@@ -193,7 +193,7 @@ public class WaxcapWaxParticle extends SpriteBillboardParticle {
                 return particle;
             }
         }
-        @Environment(EnvType.CLIENT)
+        
         public static class Landing extends Factory implements ParticleFactory<DefaultParticleType> {
             private final SpriteProvider spriteProvider;
             public Landing(SpriteProvider spriteProvider) {

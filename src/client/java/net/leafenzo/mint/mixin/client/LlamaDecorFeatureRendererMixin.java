@@ -1,4 +1,4 @@
-package net.leafenzo.mint.mixin;
+package net.leafenzo.mint.mixin.client;
 
 // SOURCES:
 // Dodo Gang - https://github.com/dodogang/marbles/blob/a49fc890db99275919d57cc3064b8b429b1a8eb6/src/main/java/net/dodogang/marbles/mixin/client/render/LlamaDecorFeatureRendererMixin.java
@@ -31,7 +31,7 @@ import java.util.HashMap;
 
 //@Debug(export = true)
 @Mixin(LlamaDecorFeatureRenderer.class)
-//@Environment(value= EnvType.CLIENT)
+
 public abstract class LlamaDecorFeatureRendererMixin extends FeatureRenderer<LlamaEntity, LlamaEntityModel<LlamaEntity>> {
     public LlamaDecorFeatureRendererMixin(FeatureRendererContext<LlamaEntity, LlamaEntityModel<LlamaEntity>> context, EntityModelLoader loader) {
         super(context);

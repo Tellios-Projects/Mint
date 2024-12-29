@@ -8,7 +8,6 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.ProjectileEntityRenderer;
 import net.minecraft.util.Identifier;
 
-@Environment(EnvType.CLIENT)
 public class EmberArrowEntityRenderer extends ProjectileEntityRenderer<EmberArrowEntity> {
     public static final Identifier TEXTURE = new Identifier(ElsDyeModInit.MOD_ID, "textures/entity/projectiles/ember_arrow.png");
 

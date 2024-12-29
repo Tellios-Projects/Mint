@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.leafenzo.mint.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "client.BlockDustParticleMixin",
+    "client.LlamaDecorFeatureRendererMixin",
+    "client.ParticleColorAccessor",
+    "client.TexturedRenderLayersMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

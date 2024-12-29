@@ -5,6 +5,8 @@
 - Fix log spam
 
 # MEDIUM PRIORITY
+- Double check if llama renderer is working alright
+- Fix horse washing and horse flowering melon behavior  
 - Multiplayer and Server testing (for thorns effect particularly)
 
 # LOW PRIORITY

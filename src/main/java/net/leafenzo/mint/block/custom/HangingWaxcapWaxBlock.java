@@ -28,6 +28,7 @@ public class HangingWaxcapWaxBlock extends HangingRootsBlock {
     }
 
     private static void createParticle(World world, BlockPos pos, BlockState state) {
+        if(world.isClient) {
         Vec3d vec3d = state.getModelOffset(world, pos);
         double d = 0.0625;
         double e = (double)pos.getX() + 0.5 + vec3d.x;
@@ -36,6 +37,7 @@ public class HangingWaxcapWaxBlock extends HangingRootsBlock {
 //        Fluid fluid2 = PointedDripstoneBlock.getDripFluid(world, fluid);
         DefaultParticleType particleEffect = ElsDyeModParticleTypes.DRIPPING_WAXCAP_WAX;
         world.addParticle(particleEffect, e, f, g, 0.0, 0.0, 0.0);
+        }
     }
 
     public static boolean canDrip(BlockState state) {

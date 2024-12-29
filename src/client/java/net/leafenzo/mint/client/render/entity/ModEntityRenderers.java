@@ -17,7 +17,6 @@ import net.leafenzo.mint.entity.renderer.EmberArrowEntityRenderer;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
 
-@Environment(EnvType.CLIENT)
 public class ModEntityRenderers {
     public static void registerEntityRenderers() {
         ElsDyeModInit.LOGGER.debug("Registering client mod entity renderers for " + ElsDyeMod.MOD_ID);

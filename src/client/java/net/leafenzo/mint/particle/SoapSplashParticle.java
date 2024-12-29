@@ -6,7 +6,7 @@ import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 
-@Environment(value = EnvType.CLIENT)
+
 public class SoapSplashParticle extends SpriteBillboardParticle {
     protected SoapSplashParticle(ClientWorld clientWorld, double xCoord, double yCoord, double zCoord, double xd, double yd, double zd) {
         super(clientWorld, xCoord, yCoord, zCoord, xd, yd, zd);
@@ -42,7 +42,7 @@ public class SoapSplashParticle extends SpriteBillboardParticle {
         return ParticleTextureSheet.PARTICLE_SHEET_OPAQUE;
     }
 
-    @Environment(EnvType.CLIENT)
+    
     public static class Factory implements ParticleFactory<DefaultParticleType> {
         private final SpriteProvider spriteProvider;
 

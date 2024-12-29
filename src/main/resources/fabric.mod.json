@@ -47,9 +47,12 @@
   },
   "accessWidener": "mint.accesswidener",
   "mixins": [
-    "mint.mixins.json"
+    "mint.mixins.json",
+    {
+      "config": "mint.client.mixins.json",
+      "environment": "client"
+    }
   ],
-
   "depends": {
     "fabricloader": ">=0.14.14",
     "fabric-api": "*",
