@@ -1,0 +1,58 @@
+{
+	"credit": "Made with Blockbench by Tellio-Ari",
+	"textures": {
+		"0": "urban_decor:block/white_towel",
+		"particle": "urban_decor:block/white_towel_block"
+	},
+	"elements": [
+		{
+			"from": [0, 0.26, 2],
+			"to": [16, 0.26, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0.25, 2]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"east": {"uv": [0, 0, 12, 0], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"west": {"uv": [0, 0, 12, 0], "texture": "#0"},
+				"up": {"uv": [0, 2, 16, 14], "texture": "#0"},
+				"down": {"uv": [0, 2, 16, 14], "texture": "#0"}
+			}
+		},
+		{
+			"from": [16, 0.25, 2],
+			"to": [18, 0.25, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [16, 0.25, 2]},
+			"faces": {
+				"north": {"uv": [0, 0, 2, 0], "texture": "#0"},
+				"east": {"uv": [0, 0, 12, 0], "texture": "#0"},
+				"south": {"uv": [0, 0, 2, 0], "texture": "#0"},
+				"west": {"uv": [0, 0, 12, 0], "texture": "#0"},
+				"up": {"uv": [14, 16, 2, 14], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [2, 0, 14, 2], "rotation": 90, "texture": "#0"}
+			}
+		},
+		{
+			"from": [-2, 0.25, 2],
+			"to": [0, 0.25, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [-2, 0.25, 2]},
+			"faces": {
+				"north": {"uv": [0, 0, 2, 0], "texture": "#0"},
+				"east": {"uv": [0, 0, 12, 0], "texture": "#0"},
+				"south": {"uv": [0, 0, 2, 0], "texture": "#0"},
+				"west": {"uv": [0, 0, 12, 0], "texture": "#0"},
+				"up": {"uv": [14, 2, 2, 0], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [2, 14, 14, 16], "rotation": 90, "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "VoxelShapes",
+			"origin": [0, 0, 2],
+			"color": 0,
+			"children": [0]
+		},
+		1,
+		2
+	]
+}

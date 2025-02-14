@@ -1,0 +1,7 @@
+{
+  "parent": "urban_decor:block/towel",
+  "textures": {
+    "0": "urban_decor:block/pink_towel",
+    "particle": "urban_decor:block/pink_towel_block"
+  }
+}

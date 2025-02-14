@@ -1,0 +1,23 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "urban_decor:block/magenta_picture_frame_mounted",
+      "uvlock": false
+    },
+    "facing=south": {
+      "model": "urban_decor:block/magenta_picture_frame_mounted",
+      "y": 180,
+      "uvlock": false
+    },
+    "facing=west": {
+      "model": "urban_decor:block/magenta_picture_frame_mounted",
+      "y": 270,
+      "uvlock": false
+    },
+    "facing=east": {
+      "model": "urban_decor:block/magenta_picture_frame_mounted",
+      "y": 90,
+      "uvlock": false
+    }
+  }
+}

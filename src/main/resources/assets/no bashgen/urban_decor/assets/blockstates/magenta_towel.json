@@ -1,0 +1,23 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "urban_decor:block/magenta_towel",
+      "uvlock": false
+    },
+    "facing=south": {
+      "model": "urban_decor:block/magenta_towel",
+      "y": 180,
+      "uvlock": false
+    },
+    "facing=west": {
+      "model": "urban_decor:block/magenta_towel",
+      "y": 270,
+      "uvlock": false
+    },
+    "facing=east": {
+      "model": "urban_decor:block/magenta_towel",
+      "y": 90,
+      "uvlock": false
+    }
+  }
+}

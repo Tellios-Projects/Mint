@@ -1,0 +1,48 @@
+{
+	"credit": "Made with Blockbench by Tellio-Ari",
+	"textures": {
+		"0": "urban_decor:block/towel_bar",
+		"particle": "urban_decor:block/towel_bar"
+	},
+	"elements": [
+		{
+			"from": [0, 14, 14],
+			"to": [2, 16, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 14, 14]},
+			"faces": {
+				"north": {"uv": [3, 4, 5, 6], "texture": "#0"},
+				"east": {"uv": [3, 3, 5, 5], "texture": "#0"},
+				"south": {"uv": [9, 4, 11, 6], "texture": "#0"},
+				"west": {"uv": [2, 2, 0, 4], "texture": "#0"},
+				"up": {"uv": [0, 2, 2, 4], "texture": "#0"},
+				"down": {"uv": [2, 6, 4, 4], "texture": "#0"}
+			}
+		},
+		{
+			"from": [14, 14, 14],
+			"to": [16, 16, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [14, 14, 14]},
+			"faces": {
+				"north": {"uv": [3, 4, 5, 6], "texture": "#0"},
+				"east": {"uv": [0, 2, 2, 4], "texture": "#0"},
+				"south": {"uv": [9, 4, 11, 6], "texture": "#0"},
+				"west": {"uv": [12, 3, 14, 5], "texture": "#0"},
+				"up": {"uv": [13, 2, 15, 4], "texture": "#0"},
+				"down": {"uv": [12, 6, 14, 4], "texture": "#0"}
+			}
+		},
+		{
+			"from": [0, 14, 12],
+			"to": [16, 16, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 14, 12]},
+			"faces": {
+				"north": {"uv": [0, 2, 16, 4], "texture": "#0"},
+				"east": {"uv": [3, 2, 5, 4], "texture": "#0"},
+				"south": {"uv": [16, 2, 0, 4], "texture": "#0"},
+				"west": {"uv": [0, 2, 2, 4], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 2], "texture": "#0"},
+				"down": {"uv": [0, 4, 16, 6], "texture": "#0"}
+			}
+		}
+	]
+}

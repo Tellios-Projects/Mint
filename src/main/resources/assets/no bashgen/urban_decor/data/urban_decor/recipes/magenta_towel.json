@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "@": {
+      "item": "minecraft:magenta_carpet"
+    }
+  },
+  "pattern": [
+    "@@"
+  ],
+  "result": {
+    "item": "urban_decor:magenta_towel"
+  },
+  "show_notification": true
+}
