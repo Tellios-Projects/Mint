@@ -21,3 +21,5 @@ bash colorize_lang.sh templates/supplementaries-qtARIsSl/ jars/supplementaries-q
 # - IMO this is far less elegant than using a multi-pack datagen, we may need to switch to that someday
 # - Can be painfully slow to run (especially unpacking the jar)
 # - Template search files can miss important things if they are written wrong
+# - If it doesn't seem to be working, try using backslashes "\" as opposed to forward slashes "/", some OS's are unable to distinguish between the two
+# - If you are uncertain which slash your OS needs, start filling out the information you see above and press tab

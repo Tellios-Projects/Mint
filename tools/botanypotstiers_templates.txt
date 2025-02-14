@@ -1,0 +1,6 @@
+*magenta_concrete_botany_pot
+*magenta_concrete_hopper_botany_pot
+*magenta_terracotta_botany_pot
+*magenta_terracotta_hopper_botany_pot
+*magenta_glazed_terracotta_botany_pot
+*magenta_glazed_terracotta_hopper_botany_pot
